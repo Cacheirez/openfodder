@@ -1,0 +1,278 @@
+# Plan de trabajo vivo — OpenFodder modernizado para Windows
+
+**Versión del plan:** 1.0 · **Actualización:** 20 de octubre de 2026, Europe/Madrid.  
+**Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
+**Responsable de validación de usuario:** Miguel.  
+**Estado global:** base de Windows en preparación; gráficos e interpolación todavía no implementados.
+
+## 1. Objetivo y alcance
+
+Modernizar Cannon Fodder para Windows conservando su jugabilidad: controles, reglas, tiempos, dificultad, colisiones, comportamiento de enemigos y objetivos. Renovaremos personajes, vehículos, edificios, terreno, elementos, efectos e interfaz, y haremos más suave el desplazamiento de cámara y entidades.
+
+La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muestra completa y jugable con presentación moderna; después extenderemos ese resultado al alcance acordado del primer Cannon Fodder. La modernización completa de Cannon Fodder 2 queda fuera de la primera versión, aunque no debemos romper deliberadamente su funcionamiento existente.
+
+**Este documento es el seguimiento operativo.** El análisis técnico se conserva en [PLAN_MODERNIZACION_ES.md](PLAN_MODERNIZACION_ES.md), los resultados iniciales en [RESULTADOS.md](RESULTADOS.md) y la prueba de usuario en [PRIMER_ARRANQUE_WINDOWS.md](PRIMER_ARRANQUE_WINDOWS.md).
+
+## 2. Panel de situación
+
+| Campo | Estado al crear este plan |
+|---|---|
+| Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
+| Rama de trabajo | `modernization/windows-foundation` |
+| Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
+| Revisión de código de la propuesta | `1c0b42368c5ae44fb462933bde3db520560e231c` |
+| Compilación Windows observada | [Ejecución 39489706846](https://github.com/Cacheirez/openfodder/actions/runs/39489706846): en curso, compilando el ejecutable; configuración completada |
+| Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
+| Ejecutable Windows y 29 replays | Pendientes de verificar; no dar por aprobados |
+| Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
+| Pruebas focalizadas | 8 pruebas de la herramienta de auditoría; 8 casos de borde de la lectura del mapa |
+| Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
+| Prueba manual Windows | Pendiente |
+| Gráficos nuevos / scroll nuevo | Pendientes |
+| Tarea activa | **H1.1: resolver la compilación y las pruebas Windows** |
+| Siguiente intervención de Miguel | Probar el paquete cuando exista un resultado Windows aprobado |
+
+El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
+
+## 3. Cómo seguiremos el plan en el chat
+
+- `[x]` significa completado con evidencia disponible. `[ ]` significa pendiente, aunque haya trabajo iniciado.
+- Cada tarea tiene un ID estable, como **H3.2**. Usaremos esos IDs al conversar y en los cambios del proyecto.
+- Al empezar una sesión leeremos la última versión de este archivo en GitHub, el estado de la rama/PR y las pruebas relevantes. No dependeremos solo de la memoria del chat.
+- Trabajaremos en una tarea activa o en un lote pequeño que tenga sentido verificar junto.
+- Al terminar actualizaremos este mismo archivo: casillas, panel de situación, evidencia, bloqueos, decisiones y siguiente acción. No crearemos un plan distinto por sesión.
+- Si una prueba falla, el hito sigue abierto. Registraremos el primer fallo y lo resolveremos o delimitaremos explícitamente antes de avanzar.
+- Si falta una decisión artística, puedo seguir con las tareas técnicas independientes. Pediré decisiones concretas, con ejemplos, cuando afecten al resultado.
+- La documentación se actualizará separada del código cuando sea posible, evitando reconstrucciones innecesarias por simples cambios de estado.
+- Los trabajos se realizan durante las sesiones; este plan no crea avisos, tareas programadas ni actividad autónoma entre mensajes.
+
+**Mensaje suficiente para retomar:** «Seguimos con el plan de OpenFodder; revisa la tarea activa y continúa». Si has hecho una prueba, añade la versión y lo que observaste.
+
+**Formato de cierre de cada sesión:** tarea trabajada → cambio realizado → pruebas y resultados → límite o bloqueo → siguiente paso. Siempre en español y explicando los conceptos nuevos antes de utilizarlos.
+
+## 4. Reglas que protegerán el proyecto
+
+1. Conservar una referencia clásica reproducible y una forma de desactivar las mejoras visuales.
+2. No aumentar la velocidad de la simulación para conseguir más imágenes por segundo.
+3. No ampliar inicialmente el mundo visible: la visibilidad y el campo de visión pueden influir en comportamiento y dificultad.
+4. No alterar colisiones, alcance de armas, velocidad de soldados, temporizadores ni límites de entidades como consecuencia de un recurso gráfico nuevo.
+5. Hacer el renderizado adicional de solo lectura. Auditar antes los efectos del dibujo clásico, incluido `mWasDrawn`.
+6. Separar la aleatoriedad y el presupuesto de los efectos cosméticos de los del juego.
+7. Introducir cambios pequeños y reversibles, con evidencia suficiente. No fusionar automáticamente un borrador por tener un indicador verde.
+8. Mantener datos comerciales, partidas y credenciales fuera del repositorio y de los paquetes públicos. Las primeras pruebas usan las demos suministradas por el proyecto.
+9. Distinguir «compila», «completa replays», «pasa el detector de memoria» y «se juega correctamente en Windows». Son validaciones diferentes.
+
+## 5. Ruta de hitos
+
+| Hito | Entrega | Depende de | Estado |
+|---|---|---|---|
+| H0 | Auditoría, referencia y repositorio | — | Completado para el alcance inicial |
+| H1 | Primera compilación Windows y arranque verificado | H0 | En curso |
+| H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Pendiente |
+| H3 | Comparación reproducible de jugabilidad | H2 | Pendiente |
+| H4 | Dibujo separado de la simulación | H3 | Pendiente |
+| H5 | Cámara y movimiento suaves con gráficos originales | H4 | Pendiente |
+| H6 | Dirección artística y recursos de muestra | H1; diseño independiente de H2–H5 | Pendiente |
+| H7 | Misión completa con gráficos modernos | H5 y H6 | Pendiente |
+| H8 | Cobertura gráfica del alcance de Cannon Fodder 1 | H7 y datos necesarios disponibles | Pendiente |
+| H9 | Pulido, regresión y rendimiento Windows | H8; mediciones desde H5 | Pendiente |
+| H10 | Versión candidata y paquete final | H9 | Pendiente |
+
+No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimación se revisará al cerrar H2, H5 y H7. No se considerará acabado el proyecto al completar solo la misión de muestra.
+
+## H0. Auditoría y preparación — completado
+
+- [x] **H0.1 — Asistente:** inspeccionar temporización, cámara, superficies, sprites, entrada y pruebas existentes.
+- [x] **H0.2 — Asistente:** fijar las revisiones auditadas de motor, datos, scripts y grabaciones.
+- [x] **H0.3 — Asistente:** compilar la referencia Linux y ejecutar las 29 fases demo disponibles.
+- [x] **H0.4 — Asistente:** preparar el control de replays y comprobar sus ocho casos de prueba.
+- [x] **H0.5 — Asistente:** reproducir el fallo de lectura de pistas del mapa y preparar un parche con ocho casos de borde.
+- [x] **H0.6 — Asistente:** comprobar que las 29 fases completan tras ese parche; registrar el segundo fallo ASan en descompresión Amiga.
+- [x] **H0.7 — Miguel / asistente:** conectar GitHub, verificar el repositorio y crear la rama y el PR #1.
+- [x] **H0.8 — Asistente:** preparar el workflow Windows, la comparación de resultados y el empaquetado de las siete demos.
+
+**Evidencia:** PR #1, `RESULTADOS.md` y paquete inicial `OpenFodder_Modernizacion_Fase0.zip` entregado en el chat. La cobertura es de demos; no equivale a toda la campaña comercial.
+
+## H1. Primera versión comprobable en Windows — tarea activa
+
+**Objetivo:** que Miguel pueda ejecutar la base clásica sin tener que compilarla personalmente.
+
+- [ ] **H1.1 — Asistente:** consultar el resultado de Actions; si falla, leer el primer error real, corregirlo y repetir solo lo necesario. Si sigue activo, identificar el paso sin declarar éxito anticipado.
+- [ ] **H1.2 — Asistente:** verificar compilación x64 y que las 29 fases completan sin omisiones ni diferencias de nombres/resultados frente a la referencia.
+- [ ] **H1.3 — Asistente:** verificar el artefacto: ejecutable, DLL, demos, scripts, licencias, instrucciones, `VERSION.txt` y `PRUEBAS.json`; comprobar que no incluye partidas ni datos comerciales.
+- [ ] **H1.4 — Miguel, guiado por el asistente:** descargar, extraer en una carpeta nueva y abrir `INICIAR.cmd`.
+- [ ] **H1.5 — Miguel:** probar cinco minutos: movimiento, disparo, desplazamiento, audio, pausa, Alt+Tab y F11. Comunicar versión, demo y cualquier mensaje literal.
+- [ ] **H1.6 — Asistente:** registrar el resultado manual y corregir los problemas de arranque o empaquetado encontrados.
+
+**Aceptación:** build y replays Windows aprobados, paquete inspeccionado y arranque real confirmado por Miguel. Headless significa «sin ventana»: no sustituye H1.4–H1.5.
+
+**Si falla:** conservar el registro del intento y el primer error; no encadenar instrucciones de instalación al azar ni modificar la jugabilidad para forzar un resultado verde.
+
+## H2. Estabilización de la base
+
+- [ ] **H2.1 — Asistente:** aislar el acceso fuera de límites en `Source/Amiga/dernc.cpp`, con un recurso mínimo que lo reproduzca y longitudes de entrada/salida identificadas.
+- [ ] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
+- [ ] **H2.3 — Asistente:** repetir los replays relevantes y el recorrido completo disponible con AddressSanitizer; registrar cualquier siguiente defecto y distinguirlo del parche.
+- [ ] **H2.4 — Asistente:** revisar sincronización y propiedad de los datos que tocaremos al separar el renderizado. Investigar indicios concretos de carreras, sin dar por demostrado un fallo solo por ver `volatile`.
+- [ ] **H2.5 — Asistente:** confirmar referencias por plataforma y versiones de dependencias. Documentar diferencias inevitables y cobertura ausente.
+- [ ] **H2.6 — Asistente / Miguel:** revisar la base candidata y decidir su integración como punto de partida estable; conservar la referencia original recuperable.
+
+**Aceptación:** las rutas incluidas en la primera versión no tienen fallos de memoria reproducibles pendientes sin resolver o delimitar; los replays y el arranque siguen funcionando. Si existe una exclusión, debe figurar con su impacto y no presentarse la suite completa como aprobada.
+
+**Límite actual:** LeakSanitizer no pudo operar en el entorno local inicial; las pruebas posteriores desactivaron solo la detección de fugas. Añadir una comprobación de fugas donde sea viable, sin confundir su ausencia con un resultado favorable.
+
+## H3. Proteger la misma jugabilidad
+
+**Objetivo:** comprobar más que «la misión llega al final».
+
+- [ ] **H3.1 — Asistente:** repetir una grabación con la misma versión, datos, configuración y semilla para establecer si la referencia es determinista. Determinista significa obtener el mismo estado con las mismas entradas.
+- [ ] **H3.2 — Asistente:** definir los campos a comparar por tick: posiciones y fracciones, vida, munición, selección, proyectiles, temporizadores, objetivos, cambios de mapa y estado del generador aleatorio.
+- [ ] **H3.3 — Asistente:** implementar una traza o huella canónica sin punteros, direcciones de memoria ni relleno dependiente del compilador.
+- [ ] **H3.4 — Asistente:** mostrar el primer tick y campo que difiere; probar que una divergencia introducida deliberadamente es detectada.
+- [ ] **H3.5 — Asistente:** conservar referencias por plataforma si la equivalencia entre Windows y Linux no está demostrada. No ocultar diferencias con tolerancias arbitrarias.
+- [ ] **H3.6 — Asistente:** registrar el comportamiento lógico relacionado con visibilidad y con `mWasDrawn` para preservarlo al cambiar el dibujo.
+
+**Aceptación:** la herramienta detecta un cambio relevante y la referencia se reproduce bajo condiciones fijadas. Los cambios posteriores deben mantener los campos lógicos acordados o explicar y resolver cualquier divergencia.
+
+## H4. Separar presentación y simulación
+
+- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente.
+- [ ] **H4.2 — Asistente:** introducir estados de presentación coherentes y de solo lectura para cámara, sprites, terreno, paletas e interfaz.
+- [ ] **H4.3 — Asistente:** crear rutas clásica y moderna seleccionables, manteniendo inicialmente las imágenes originales.
+- [ ] **H4.4 — Asistente:** separar capas de terreno, entidades, efectos, panel y cursor; conservar orden, recortes, fundidos y visibilidad lógica.
+- [ ] **H4.5 — Asistente:** asegurar el uso correcto del hilo de ventana/SDL y la entrega de estados entre hilos, sin leer estructuras parcialmente actualizadas.
+- [ ] **H4.6 — Asistente:** ejecutar dibujo cero, una y varias veces entre pasos lógicos y comparar las trazas; probar cargas, cambios de fase, minimapa y pausa.
+
+**Aceptación:** dibujar más veces no altera las reglas ni consume aleatoriedad del motor; la imagen clásica sigue siendo una referencia utilizable. No introducir todavía arte nuevo que dificulte comparar resultados.
+
+## H5. Scroll y movimiento suaves
+
+- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos.
+- [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
+- [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
+- [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
+- [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar.
+- [ ] **H5.6 — Asistente:** añadir opciones de presentación —clásico/moderno, sincronización y límite de FPS cuando proceda— sin que cambien la velocidad de juego.
+- [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
+- [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
+
+**Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
+
+## H6. Dirección artística y cadena de recursos
+
+- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos.
+- [ ] **H6.2 — Miguel:** elegir la dirección visual. Propuesta inicial: 2D ilustrado, perspectiva original, siluetas claras y colores legibles; pendiente de aprobación visual.
+- [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
+- [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.
+- [ ] **H6.5 — Asistente:** preparar carga, validación y sustitución individual de recursos, con retorno automático al original cuando falte uno nuevo.
+- [ ] **H6.6 — Asistente:** validar transparencias, márgenes, unión de tiles, pivotes, ciclos de animación y consistencia entre direcciones.
+- [ ] **H6.7 — Asistente:** registrar procedencia y condiciones de uso de cada recurso; separar recursos propios de los originales.
+
+**Aceptación:** muestra aprobada y recursos reproducibles que el motor pueda cargar correctamente. No producir cientos de imágenes antes de comprobar cómo funcionan juntas dentro del juego.
+
+## H7. Primera misión moderna completa
+
+**Escenario inicial propuesto:** una fase pequeña de jungla de Cannon Fodder 1 disponible como demo —por ejemplo Amiga The One—, a confirmar al cerrar H1. Usar datos Amiga no impide ejecutar el juego en Windows.
+
+- [ ] **H7.1 — Asistente:** inventariar todos los recursos realmente utilizados por la fase elegida y fijar su grabación de referencia.
+- [ ] **H7.2 — Asistente:** sustituir suelo, caminos, agua, vegetación y obstáculos que aparezcan en esa fase.
+- [ ] **H7.3 — Asistente:** completar soldados y enemigos con todas las direcciones y estados usados: desplazamiento, disparo, daño y muerte.
+- [ ] **H7.4 — Asistente:** completar edificios, objetos interactivos, proyectiles, explosiones y las variantes destruidas necesarias.
+- [ ] **H7.5 — Asistente:** incorporar sombras y efectos cosméticos sin gastar plazas de sprites ni aleatoriedad de la simulación.
+- [ ] **H7.6 — Asistente:** renovar lo imprescindible de panel, selección, cursor y textos, sin perder información ni alterar zonas de clic.
+- [ ] **H7.7 — Asistente:** verificar recortes por agua, superposiciones, anclajes y congruencia entre aspecto y colisiones; comparar replays y rendimiento.
+- [ ] **H7.8 — Miguel:** jugar la fase y valorar legibilidad, estilo y respuesta. Registrar cambios solicitados por separado de errores funcionales.
+
+**Aceptación:** una fase se puede completar de principio a fin con cámara suave y presentación nueva coherente; sus recursos necesarios están cubiertos y la jugabilidad verificada. No basta una captura atractiva ni una demostración aislada de scroll.
+
+## H8. Extender el resultado a Cannon Fodder 1
+
+- [ ] **H8.1 — Asistente / Miguel:** confirmar la edición y campaña principal que se quiere cubrir. Para la campaña comercial completa harán falta los datos correspondientes disponibles legítimamente para las pruebas, sin publicarlos en GitHub.
+- [ ] **H8.2 — Asistente:** generar un inventario real de recursos y variantes de esa edición: biomas, tropas, civiles, vehículos, edificios, armas, interfaz y pantallas auxiliares.
+- [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan.
+- [ ] **H8.4 — Asistente:** completar escenarios por lotes coherentes y verificar uniones, destrucción, animaciones y colores de cada lote.
+- [ ] **H8.5 — Asistente:** completar vehículos, civiles, elementos especiales y efectos que no aparezcan en la primera fase.
+- [ ] **H8.6 — Asistente:** cubrir menús, briefing, reclutas, servicio, mapa y textos incluidos en el alcance; conservar variantes clásicas donde se acuerde explícitamente.
+- [ ] **H8.7 — Asistente:** detectar recursos faltantes automáticamente y ejecutar regresión con los nuevos escenarios disponibles.
+- [ ] **H8.8 — Miguel:** validar muestras representativas de cada lote sin tener que repetir manualmente todas las pruebas automatizadas.
+
+**Aceptación:** la matriz del alcance acordado no contiene recursos provisionales o ausencias ocultas. El fallback permite jugar durante el desarrollo, pero no sirve para declarar modernización completa de un recurso todavía original.
+
+## H9. Pulido y validación final Windows
+
+- [ ] **H9.1 — Asistente:** ejecutar las referencias lógicas disponibles con ambas rutas de presentación y los límites de FPS soportados.
+- [ ] **H9.2 — Asistente:** revisar errores de memoria, cargas y liberación de texturas, cambios de fase y sesiones largas en los entornos disponibles.
+- [ ] **H9.3 — Asistente / Miguel:** probar ventana/pantalla completa, pausa, Alt+Tab, ratón, minimapa, guardado/carga y escalado Windows 100/125/150 % cuando sea viable.
+- [ ] **H9.4 — Asistente / Miguel:** medir rendimiento en el PC de Miguel, registrar resolución/Hz/configuración y corregir cuellos de botella demostrados.
+- [ ] **H9.5 — Asistente:** verificar persistencia de opciones, mensajes comprensibles y recuperación ante recurso faltante o inválido.
+- [ ] **H9.6 — Asistente / Miguel:** realizar una sesión de juego suficientemente larga para cubrir varias fases y transiciones; anotar duración y cobertura real.
+
+**Aceptación:** no hay errores bloqueantes conocidos en el alcance acordado; las limitaciones menores quedan identificadas y aceptadas. La cobertura y los monitores probados se describen, sin prometer compatibilidad universal.
+
+## H10. Entrega y mantenimiento
+
+- [ ] **H10.1 — Asistente:** preparar una versión candidata con número, commit, configuración de construcción y cambios documentados.
+- [ ] **H10.2 — Asistente:** generar un paquete Windows reproducible con dependencias necesarias, licencias e instrucciones de datos y arranque.
+- [ ] **H10.3 — Asistente / Miguel:** validar instalación en carpeta limpia, actualización sin perder partidas y retorno a una versión anterior.
+- [ ] **H10.4 — Asistente:** revisar que el paquete y el código distribuido contienen los avisos y materiales correspondientes, sin incluir datos comerciales ajenos.
+- [ ] **H10.5 — Miguel / asistente:** confirmar la aceptación del resultado y el alcance de la publicación; después etiquetar/publicar la versión cuando esté autorizado.
+- [ ] **H10.6 — Asistente:** cerrar la matriz de cobertura y dejar una lista breve de mejoras opcionales posteriores, separada de defectos pendientes.
+
+**Definición de objetivo conseguido:** presentación renovada en todo el alcance acordado de Cannon Fodder 1, cámara y movimiento suaves, reglas conservadas según las pruebas, paquete Windows reproducible y validación de juego real de Miguel. Una base que compila o una sola misión HD no cumplen por sí solas esta definición.
+
+## 6. Decisiones pendientes
+
+| ID | Decisión | Propuesta inicial | Momento necesario |
+|---|---|---|---|
+| D1 | Estilo gráfico | 2D ilustrado fiel a siluetas y perspectiva | H6.2 |
+| D2 | Edición/campaña principal | Cannon Fodder 1; demos primero | H7.1 y H8.1 |
+| D3 | Campo de visión y panorámico | Conservar área lógica; adaptar presentación sin revelar más mapa | H4–H5 |
+| D4 | Monitor y objetivo de refresco | 60 Hz primero; 120/144 si procede | H5.7 |
+| D5 | Cobertura de pantallas auxiliares | Inventariar y acordar, sin olvidarlas al cerrar alcance | H8.2 |
+
+Ninguna decisión artística es necesaria para resolver ahora la compilación Windows.
+
+## 7. Riesgos y bloqueos conocidos
+
+| ID | Riesgo o bloqueo | Tratamiento |
+|---|---|---|
+| R1 | Lectura fuera de límites en descompresión RNC | H2.1–H2.3; fallo reproducido, no cerrado |
+| R2 | Dibujo con efectos sobre la lógica | H3.6 y H4; preservar visibilidad lógica y secuencia de actualizaciones |
+| R3 | Interpolación con retraso y desajuste al apuntar | Medir y probar transformación de coordenadas en H5.5 |
+| R4 | Diferencias entre plataformas o ejecuciones | Establecer determinismo antes de usar hashes como garantía |
+| R5 | Arte inconsistente o incompleto | Muestra dentro del juego antes de producción masiva; matriz de recursos |
+| R6 | Ampliar la vista cambia dificultad/comportamiento | Mantener área lógica original en la primera versión |
+| R7 | Falta de datos para campaña completa | Empezar con demos; acordar datos y cobertura en H8.1 |
+| R8 | CI verde interpretada como validación total | Separar pruebas lógicas, memoria, gráficos, audio y prueba manual |
+
+## 8. Registro de evidencias
+
+| Evidencia | Resultado confirmado | No demuestra |
+|---|---|---|
+| Auditoría Linux inicial | 29 fases completadas antes/después del parche | Toda la campaña comercial, identidad por tick o Windows |
+| Herramienta de auditoría | 8 pruebas superadas | Jugabilidad completa |
+| Casos de borde de mapa | 8 casos sobre el cuerpo real con ASan/UBSan | Ausencia de fallos en otros componentes |
+| ASan completo tras parche | 11 fases antes del fallo RNC | Suite de memoria aprobada |
+| ASan, PC Format | 8 fases completadas | Todas las rutas Amiga; estas 8 ya forman parte de las 29 |
+| Actions Windows, consulta de este plan | Preparación, pruebas de herramienta y configuración aprobadas; compilación en curso | Compilación terminada, replays Windows o paquete disponible |
+| Prueba manual de Miguel | Aún no realizada | — |
+
+Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
+
+## 9. Bitácora y siguiente sesión
+
+| Fecha | Trabajo | Resultado / siguiente acción |
+|---|---|---|
+| 2026-10-20 | Auditoría inicial, parche de límites y pruebas Linux | Referencia preparada; RNC pendiente |
+| 2026-10-20 | Conexión GitHub, rama y PR #1 | Automatización Windows iniciada |
+| 2026-10-20 | Creación de este plan v1.0 | Tarea activa H1.1; consultar resultado Windows y actuar según el primer fallo o éxito |
+
+**Checklist para retomar:**
+
+1. Leer este archivo en la rama vigente y comprobar si el PR #1 se ha actualizado o fusionado.
+2. Consultar la ejecución Windows asociada al código vigente. Un commit solo de documentación no invalida por sí mismo las pruebas del código anterior.
+3. Si falla, completar H1.1 con el registro exacto. Si pasa, verificar H1.2–H1.3.
+4. Entregar a Miguel el enlace y las instrucciones de H1.4–H1.5 cuando el paquete esté listo.
+5. Actualizar este documento con la evidencia y la nueva tarea activa.
+
+**Primera acción ahora:** revisar la compilación Windows; no empezar todavía a sustituir gráficos.
