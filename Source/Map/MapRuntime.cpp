@@ -152,7 +152,9 @@ void cFodder::Map_Load()
 
 void cFodder::Map_Collect_TileTracks()
 {
-    uint8 *tilePtr = mMap->data() + 0x62;
+    // Some original maps do not contain every tile implied by their dimensions.
+    // Preserve the legacy starting offset, but never read beyond the file.
+    size_t tileOffset = 0x62;
 
     uint16_t heightCount = 0, widthCount;
 
@@ -164,14 +166,17 @@ void cFodder::Map_Collect_TileTracks()
 
         while (widthCount < mMapLoaded->getWidth())
         {
-            uint16_t tile = (readLE<uint16>(tilePtr) & 0xE000) >> 8;
+            if (tileOffset > mMap->size() || mMap->size() - tileOffset < sizeof(uint16))
+                return;
+
+            uint16_t tile = (readLE<uint16>(mMap->data() + tileOffset) & 0xE000) >> 8;
 
             if (tile != 0)
             {
                 mMapTileTracks.emplace_back(widthCount, heightCount, tile >> 5);
             }
 
-            tilePtr += 2;
+            tileOffset += sizeof(uint16);
             widthCount++;
         }
 
