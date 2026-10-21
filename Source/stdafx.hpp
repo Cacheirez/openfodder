@@ -33,6 +33,7 @@
 #include <cassert>
 #include <map>
 #include <mutex>
+#include <atomic>
 #include <cmath>
 
 #include <SDL3/SDL.h>
