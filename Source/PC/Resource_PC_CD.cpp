@@ -23,6 +23,7 @@
 #include "stdafx.hpp"
 
 #include <algorithm>
+#include <stdexcept>
 
 const uint8 cResource_PC_CD::byte_29921[0x100] = {
     3,   3,   3,   3,   3,   3,   3,   3,   3,   3, 
@@ -403,17 +404,38 @@ uint8 cResource_PC_CD::data_Read() {
 	return al;
 }
 
+// Legacy address map: parent[node] occupies word_26DBE[0..626], while
+// parent[leaf] occupies word_272A4[0..313]. Treating the two separate C++
+// arrays as contiguous was undefined behavior, but the overlap is intentional
+// in the original adaptive Huffman algorithm. Route it explicitly instead.
+int16& cResource_PC_CD::Huffman_Parent(std::size_t index) {
+    const auto slot = PC_Huffman::parentLocation(index);
+    if (slot.kind == PC_Huffman::ParentKind::Node)
+        return word_26DBE[slot.offset];
+    if (slot.kind == PC_Huffman::ParentKind::Leaf)
+        return word_272A4[slot.offset];
+    throw std::out_of_range("Invalid Huffman parent index");
+}
+
+// freq[627] aliases word_27EE4, the historical 0xffff sentinel.
+int16& cResource_PC_CD::Huffman_Frequency(std::size_t index) {
+    if (index < PC_Huffman::Nodes)
+        return word_279FE[index];
+    if (index == PC_Huffman::Nodes)
+        return word_27EE4;
+    throw std::out_of_range("Invalid Huffman frequency index");
+}
+
 void cResource_PC_CD::Huffman_InitTables() {
     // Adaptive Huffman update scans until it reaches this maximum weight.
     // freq[Nodes] is an intentional sentinel, not the first element of an
     // unrelated neighboring array.
-    word_279FE[PC_Huffman::Nodes] = -1; // 0xffff as uint16
 	uint16 cx = 0;
 
 	while( cx < 0x13A ) {
 		uint16 bx = cx;
 
-		word_279FE[bx] = 1;
+		Huffman_Frequency(bx) = 1;
 		
 		uint16 ax = cx;
 		ax += 0x273;
@@ -430,22 +452,22 @@ void cResource_PC_CD::Huffman_InitTables() {
 	while( dx <= 0x272 ) {
 		uint16 bx = cx;
 
-		word_26DBE[bx + 1] = dx;
-		word_26DBE[bx] = dx;
+		Huffman_Parent(bx + 1) = dx;
+		Huffman_Parent(bx) = dx;
 
-		uint16 ax = word_279FE[bx];
-		ax += word_279FE[bx+1];
+		uint16 ax = Huffman_Frequency(bx);
+		ax += Huffman_Frequency(bx+1);
 
 		bx = dx;
 		//bx <<= 1;
-		word_279FE[bx]=  ax;
+		Huffman_Frequency(bx)=  ax;
 		word_27518[bx] = cx;
 		cx += 2;
 		++dx;
 	}
 	
 	word_27EE4 = -1;
-	word_26DBE[0x272] = 0;
+	Huffman_Parent(0x272) = 0;
 }
 
 uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
@@ -491,7 +513,7 @@ uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
 			saveSI = si;
 			saveBP = bp;
 
-			if( word_279FE[0x272] == -32768 ) 
+			if( Huffman_Frequency(0x272) == -32768 ) 
 				Huffman_RebuildTables();
 
 			//si <<= 1;
@@ -500,8 +522,8 @@ uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
 
 			do {
 
-				++word_279FE[si];
-				bp = word_279FE[si];
+				++Huffman_Frequency(si);
+				bp = Huffman_Frequency(si);
 
 				uint16 di = si;
 				uint16 dx = cx;
@@ -510,26 +532,26 @@ uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
 				//++di; 
 				++dx;
 
-				if( bp > (uint16) word_279FE[di] ) {
+				if( bp > (uint16) Huffman_Frequency(di) ) {
 
 					do {
 						++di;
-					} while( bp > (uint16) word_279FE[di] );
+					} while( bp > (uint16) Huffman_Frequency(di) );
 
 					--di;
 					dx = di;
 
-					uint16 tmp = word_279FE[di];
-					word_279FE[di] = bp;
+					uint16 tmp = Huffman_Frequency(di);
+					Huffman_Frequency(di) = bp;
 					bp = tmp;
-					word_279FE[si] = bp;
+					Huffman_Frequency(si) = bp;
 
 					uint16 bx = word_27518[si];
 					bp = bx;
 
-					word_26DBE[bx] = dx;
+					Huffman_Parent(bx) = dx;
 					if( bp < 0x273 )
-						word_26DBE[bx+1] = dx;
+						Huffman_Parent(bx+1) = dx;
 
 					// loc_26C9C
 					tmp = word_27518[di];
@@ -538,9 +560,9 @@ uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
 
 					bx = bp;
 
-					word_26DBE[bx] = cx;
+					Huffman_Parent(bx) = cx;
 					if( bp < 0x273 )
-						word_26DBE[bx+1] = cx;
+						Huffman_Parent(bx+1) = cx;
 
 					word_27518[si] = bp;
 
@@ -548,7 +570,7 @@ uint16 cResource_PC_CD::Huffman_DecodeSymbol() {
 					cx = dx;
 				}
 
-			si = word_26DBE[si];
+			si = Huffman_Parent(si);
 			cx = si;
 
 			} while( cx );
@@ -567,12 +589,12 @@ void cResource_PC_CD::Huffman_RebuildTables() {
 		
 		uint16 bx = dx;
 		if( word_27518[bx] >= 0x273 ) {	
-			uint16 ax = word_279FE[bx];
+			uint16 ax = Huffman_Frequency(bx);
 			++ax;
 			ax >>= 1;
 
 			uint16 bx = cx;
-			word_279FE[bx] = ax;
+			Huffman_Frequency(bx) = ax;
 			bx = dx;
 			ax = word_27518[bx];
 			bx = cx;
@@ -595,19 +617,19 @@ void cResource_PC_CD::Huffman_RebuildTables() {
 		++bp;
 		uint16 bx = dx;
 
-		si = word_279FE[bx];
-		si += word_279FE[bx + 1];
+		si = Huffman_Frequency(bx);
+		si += Huffman_Frequency(bx + 1);
 
 		bx = cx;
 
-		word_279FE[bx] = si;
+		Huffman_Frequency(bx) = si;
 		bp = cx;
 		--bp;
 
 		for(;;--bp) {
 
 			bx = bp;
-			uint16 ax = word_279FE[bx];
+			uint16 ax = Huffman_Frequency(bx);
 
 			if( ax <= si )
 				break;
@@ -632,8 +654,8 @@ void cResource_PC_CD::Huffman_RebuildTables() {
 		cx = 0;
 
 		while( cx < di ) {
-			uint16 ax = word_279FE[bx];
-			word_279FE[si] = ax;
+			uint16 ax = Huffman_Frequency(bx);
+			Huffman_Frequency(si) = ax;
 			ax = word_27518[bx];
 			word_27518[si] = ax;
 
@@ -646,7 +668,7 @@ void cResource_PC_CD::Huffman_RebuildTables() {
 		si = savedSI;
 
 		bx = bp;
-		word_279FE[si] = si;
+		Huffman_Frequency(si) = si;
 		word_27518[bx] = dx;
 		dx ++;
 		++cx;
@@ -662,11 +684,11 @@ void cResource_PC_CD::Huffman_RebuildTables() {
 		bp = word_27518[bx];
 		if( bp >= 0x273 ) {
 			bx = bp;
-			word_26DBE[bx] = dx;
+			Huffman_Parent(bx) = dx;
 		} else {
 			bx = bp;
-			word_26DBE[bx+1] = dx;
-			word_26DBE[bx] = dx;
+			Huffman_Parent(bx+1) = dx;
+			Huffman_Parent(bx) = dx;
 		}
 
 		++dx;

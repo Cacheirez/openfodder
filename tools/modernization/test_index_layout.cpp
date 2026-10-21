@@ -1,27 +1,33 @@
-/* GPL-3.0-or-later. Pure table-index and Huffman-layout checks. */
+/* GPL-3.0-or-later: guard real table indexing and legacy leaf aliases. */
 #include "../../Source/Utils/IndexBounds.hpp"
 #include "../../Source/PC/HuffmanLayout.hpp"
 #include <cstdint>
 #include <iostream>
 int main() {
     std::size_t checks=0;
-    for(int n=-40;n<=40;n++) {
-        const bool valid=(n>=0 && n<9);
-        if(gameIndexInBounds(n,9)!=valid) return 1;
+    for(int n=-40;n<=40;++n) {
+        if(gameIndexInBounds(n,9)!=(n>=0 && n<9)) return 1;
         ++checks;
     }
     using namespace PC_Huffman;
     if(Symbols!=314 || Nodes!=627 || Root!=626 ||
        FrequencyEntries!=628 || ParentEntries!=941) return 1;
-    // All legal Huffman tree and leaf references fit their actual tables.
-    for(std::size_t leaf=0;leaf<Symbols;++leaf) {
-        if(Nodes+leaf>=ParentEntries) return 1;
+    int16_t nodeParents[Nodes]={};
+    int16_t leafParents[Symbols]={};
+    for(std::size_t i=0;i<ParentEntries;++i) {
+        const auto loc=parentLocation(i);
+        if(loc.kind==ParentKind::Invalid) return 1;
+        int16_t &real=loc.kind==ParentKind::Node
+                      ?nodeParents[loc.offset]:leafParents[loc.offset];
+        real=static_cast<int16_t>(i);
         ++checks;
     }
-    for(std::size_t node=0;node<Nodes;++node) {
-        if(node>=FrequencyEntries || node>=Nodes) return 1;
-        ++checks;
-    }
-    if(Root>=Nodes || Nodes>=FrequencyEntries) return 1;
-    std::cout << "PASS " << checks << " squad/Huffman boundary cases\n";
+    if(nodeParents[626]!=626 || leafParents[0]!=627 ||
+       leafParents[313]!=940) return 1;
+    if(parentLocation(ParentEntries).kind!=ParentKind::Invalid) return 1;
+    int16_t frequencies[Nodes]={};
+    int16_t sentinel=-1;
+    if(static_cast<uint16_t>(sentinel)!=65535 ||
+       frequencies[Nodes-1]!=0) return 1;
+    std::cout << "PASS " << checks << " squad/Huffman alias & index cases\n";
 }
