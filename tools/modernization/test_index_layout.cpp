@@ -9,6 +9,17 @@ int main() {
         if(gameIndexInBounds(n,9)!=(n>=0 && n<9)) return 1;
         ++checks;
     }
+    // Preserve the original contiguous layout of five adjacent 9-slot
+    // squads, including indices 9..30 used by follower AI.
+    for(int index=-5; index<50; ++index) {
+        const auto slot=gameFlattenedIndex(index, 9, 5);
+        const bool valid=index>=0 && index<45;
+        if(slot.valid!=valid) return 1;
+        if(valid && (slot.group!=static_cast<std::size_t>(index/9) ||
+                     slot.offset!=static_cast<std::size_t>(index%9))) return 1;
+        ++checks;
+    }
+    if(gameFlattenedIndex(0,0,5).valid || gameFlattenedIndex(0,9,0).valid) return 1;
     using namespace PC_Huffman;
     if(Symbols!=314 || Nodes!=627 || Root!=626 ||
        FrequencyEntries!=628 || ParentEntries!=941) return 1;

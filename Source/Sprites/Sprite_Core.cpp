@@ -2034,12 +2034,14 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
     }
     else {
 
-        // The scanning counter also takes values 9..30; these are not
-        // valid squad slots. Treat them as "no follower" before indexing.
-        if (!gameIndexInBounds(pSprite->field_5E_Squad,
-                sizeof(mSquad_0_Sprites) / sizeof(mSquad_0_Sprites[0])))
+        // Original DOS-style indexing crosses consecutive 9-slot squads.
+        // Decode that logical flattened index without C++ array overflow.
+        const auto followerSlot = gameFlattenedIndex(pSprite->field_5E_Squad,
+            sizeof(mSquad_0_Sprites)/sizeof(mSquad_0_Sprites[0]),
+            sizeof(mSquads)/sizeof(mSquads[0]));
+        if (!followerSlot.valid)
             goto loc_21E4A;
-        Squad0_Member = mSquad_0_Sprites[pSprite->field_5E_Squad];
+        Squad0_Member = mSquads[followerSlot.group][followerSlot.offset];
         if (Squad0_Member == INVALID_SPRITE_PTR)
             goto loc_21E4A;
 
@@ -2170,13 +2172,15 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
         if (mSprite_FaceWeaponTarget)
             goto loc_22125;
 
-        if (!gameIndexInBounds(pSprite->field_5E_Squad,
-                sizeof(mSquad_0_Sprites) / sizeof(mSquad_0_Sprites[0])))
+        const auto targetSlot = gameFlattenedIndex(pSprite->field_5E_Squad,
+            sizeof(mSquad_0_Sprites)/sizeof(mSquad_0_Sprites[0]),
+            sizeof(mSquads)/sizeof(mSquads[0]));
+        if (!targetSlot.valid)
             goto loc_22125;
-        if (mSquad_0_Sprites[pSprite->field_5E_Squad] == INVALID_SPRITE_PTR)
+        if (mSquads[targetSlot.group][targetSlot.offset] == INVALID_SPRITE_PTR)
             goto loc_22125;
 
-        Data0 = mSquad_0_Sprites[pSprite->field_5E_Squad];
+        Data0 = mSquads[targetSlot.group][targetSlot.offset];
     }
 
     // "Sort of" Random Movement Target
