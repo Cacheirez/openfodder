@@ -13,4 +13,18 @@ Estos dos ensayos son **diagnósticos independientes**, ejecutados con SDL de v�
 
 La ejecución Linux [39640639835](https://github.com/Cacheirez/openfodder/actions/runs/39640639835) sobre el código `93c8aae` pasó el informe JSON de LeakSanitizer con 29 fases, `returncode=0`, cero omisiones y ningún aviso de fuga en `engine.log`. ThreadSanitizer pasó 8/8 fases de PC Format con `returncode=0` y cero avisos de carrera; ASan/UBSan pasó 29/29 fases sin errores, y H3 mantuvo 11.361 muestras lógicas.
 
-La revisión siguiente convierte LeakSanitizer en un paso **obligatorio** y amplía el recorrido ThreadSanitizer a las 29 fases públicas, en principio no bloqueante hasta validar las nuevas trazas. Ni LSan ni TSan acreditan seguridad de rutas no ejercitadas (audio real, CD32 privada, menús interactivos y Windows).
+**Seguimiento histórico:** aquella revisión convirtió LeakSanitizer en paso **obligatorio** y amplió ThreadSanitizer a las 29 fases públicas, inicialmente como diagnóstico no bloqueante. El resultado final de esa ampliación está verificado más abajo. Ni LSan ni TSan acreditan seguridad de rutas no ejercitadas (audio real, CD32 privada, menús interactivos y Windows).
+
+## Validación ampliada definitiva de las demos (21-10-2026)
+
+Tras la ampliación de TSan, se inspeccionó el artefacto de [Linux 39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896) (código `82166539cc7dfdcc9c1e1f1995797b257d992e47` en el PR, checkout de merge temporal `a813e72`). El ZIP `OpenFodder-Linux-H3-evidence` tiene CRC válido. **Se revisaron los tres `report.json` y `engine.log`:**
+
+| Detector | Fases | Omisiones | Código de salida | Avisos reportados |
+|---|---:|---:|---:|---:|
+| ASan + UBSan | 29/29 | 0 | 0 | 0 |
+| LeakSanitizer | 29/29 | 0 | 0 | 0 |
+| ThreadSanitizer | 29/29 | 0 | 0 | 0 |
+
+Los tres informes registran `verdict: PASS`. También [Windows 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057) supera compilación, 29 replays y las 11 fases de referencia H3 (11.361 muestras). El resultado limpio **solo cubre las rutas de prueba ejecutadas**; no cubre las 72 fases CD32 privadas, audio real ni todas las pantallas interactivas.
+
+**Política de CI vigente:** ASan/UBSan y LeakSanitizer son obligatorios; **TSan aún declara `continue-on-error: true`**, aunque su informe 29/29 resulte PASS. Para aceptación H2.6 se recomienda eliminar ese carácter no bloqueante tras asegurar que el entorno TSan es estable. Ver también [inventario y matriz H2.5](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md).
