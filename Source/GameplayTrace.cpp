@@ -100,7 +100,16 @@ void cFodder::GameplayTraceCapture() {
         << ",\"recruits_available\":" << game.mRecruits_Available_Count
         << ",\"final_time_remaining\":" << mMission_Final_TimeRemain
         << ",\"completion_timer\":" << mPhase_Completed_Timer
-        << ",\"goals_remaining\":[";
+        << ",\"squad_select_timer\":" << mSquad_Select_Timer
+        << ",\"squad_fire_cooldown\":" << mSquad_Member_Fire_CoolDown
+        << ",\"map_destroy_countdown\":" << mMap_Destroy_Tiles_Countdown
+        << ",\"map_destroy_queue\":[";
+    for (size_t i = 0; i < mMap_Destroy_Tiles.size(); ++i) {
+        if (i) writer.output << ',';
+        writer.output << '[' << mMap_Destroy_Tiles[i].mX << ','
+                      << mMap_Destroy_Tiles[i].mY << ']';
+    }
+    writer.output << "],\"goals_remaining\":[";
     for (int i = 0; i < 10; ++i) {
         if (i) writer.output << ',';
         writer.output << traceBool(phase.mGoals_Remaining[i]);
@@ -111,6 +120,10 @@ void cFodder::GameplayTraceCapture() {
     for (int i = 0; i < 3; ++i) { if (i) writer.output << ','; writer.output << mSquad_Rockets[i]; }
     writer.output << "],\"squad_weapons\":[";
     for (int i = 0; i < 3; ++i) { if (i) writer.output << ','; writer.output << mSquad_CurrentWeapon[i]; }
+    writer.output << "],\"walk_target_steps\":[";
+    for (int i = 0; i < 3; ++i) { if (i) writer.output << ','; writer.output << mSquad_Walk_Target_Steps[i]; }
+    writer.output << "],\"vehicle_enter_timers\":[";
+    for (int i = 0; i < 3; ++i) { if (i) writer.output << ','; writer.output << mSquad_EnteredVehicleTimer[i]; }
     writer.output << "],\"troops\":[";
     for (int i = 0; i < 9; ++i) {
         if (i) writer.output << ',';
@@ -158,6 +171,14 @@ void cFodder::GameplayTraceCapture() {
             << ",\"was_drawn\":" << int(s.mWasDrawn)
             << ",\"in_water\":" << int(s.mInWater)
             << ",\"terrain_type\":" << int(s.mTerrainType)
+            << ",\"person_type\":" << s.mPersonType
+            << ",\"draw_order\":" << s.mDrawOrder
+            << ",\"in_vehicle\":" << int(s.mInVehicle)
+            << ",\"sinking\":" << int(s.mIsSinking)
+            << ",\"vehicle_enabled\":" << int(s.mVehicleEnabled)
+            << ",\"fired_weapon_type\":" << int(s.mFiredWeaponType)
+            << ",\"weapon_anim_tick\":" << int(s.mWeaponAnimTick)
+            << ",\"has_shadow\":" << int(s.mHasShadow)
             << ",\"rows_to_skip\":" << s.mRowsToSkip
             << "}";
     }
