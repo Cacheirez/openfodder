@@ -1,6 +1,6 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.8 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.9 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
 **Estado global:** H1 y auditoría H3.1–H3.6 completadas en el alcance demo; 11.361 estados de referencia equivalentes Windows/Linux. En H2: 29/29 fases públicas sin hallazgos ASan, UBSan, LeakSanitizer ni ThreadSanitizer (Linux, ejecución 39641851896), y regresiones Windows aprobadas (39641852057). Aún faltan H2.1 (atribución histórica del RNC), H2.5 (dependencias y cobertura) y H2.6 (decisión de aceptación). H2.3/H2.4 solo se consideran validados para las rutas ensayadas. Sin gráficos HD ni scroll nuevo.
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.5: fijar versiones y matriz de cobertura Windows/Linux/Amiga**, cerrar el inventario de limitaciones y preparar la decisión H2.6. Sin ampliar alcance ni alterar H3. |
+| Tarea activa | **H2.6: preparar la aceptación de la base clásica** con riesgos pendientes expresos (SDL3_mixer Linux sin SHA, audio/interacción real, CF1 CD32 y H2.1); no fusionar PR ni iniciar H4 automáticamente. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -82,6 +82,8 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Actualización de control (21-10-2026):** prueba de los 29 replays Linux con ThreadSanitizer y LeakSanitizer validada mediante `report.json` y `engine.log` dentro del ZIP de evidencias; ambos detectores mostraron **cero hallazgos, 29 fases aprobadas, cero omisiones y retorno 0**. La comprobación de LSan ya es obligatoria en CI; TSan todavía conserva `continue-on-error: true`, por lo que debe revisarse el informe hasta endurecer su puerta. La cobertura real de audio SDL, ventanas interactivas y 72 fases CD32 no está demostrada. Se conserva H3 como barrera de regresión.
 
+**Matriz de referencias y cobertura:** [H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). La auditoría H2.5 ha terminado; las versiones flotantes y diferencias de reproducción son riesgos registrados, no defectos de jugabilidad probados.
+
 ## H0. Auditoría y preparación — completado
 
 - [x] **H0.1 — Asistente:** inspeccionar temporización, cámara, superficies, sprites, entrada y pruebas existentes.
@@ -112,6 +114,8 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H2. Estabilización de la base
 
+**H2.5 cerrado (21-10-2026):** [inventario de referencias, versiones y cobertura](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). C++14, OpenFodder 1.5.4, SDL3 3.4.0; SDL3_mixer 3.1.0 fijado por commit en Windows, 3.3.0 observado pero sin SHA en Linux; FFmpeg y XMP configurados de forma distinta. Completan 29/29 fases públicas en ambas plataformas, pero H3 registra solo 11 fases/11.361 estados, LSan/TSan solo Linux headless y no hay cobertura total CD32. El cierre documental **no cierra H2.6**.
+
 **Resultado más reciente (21-10-2026):** las 29 fases públicas pasan ASan/UBSan, LeakSanitizer y ThreadSanitizer en [Linux 39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896); también [Windows 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057) pasa compilación, 29 replays y referencia H3. Las pérdidas de `scandir()` y objetos Duktape `cPosition`, y las carreras de temporización/callback/preparación de fase se corrigieron sin rebaselinar H3. Este resultado **complementa y reemplaza operativamente** los diagnósticos históricos de 23/17 avisos que aparecen más abajo. La cobertura solo abarca rutas ejecutadas. Informe detallado: [H2_LEAK_THREAD_DIAGNOSTICOS.md](H2_LEAK_THREAD_DIAGNOSTICOS.md).
 
 
@@ -122,7 +126,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 - [x] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
 - [x] **H2.3 — Asistente:** ejecutar ASan/UBSan y LeakSanitizer sobre los 29 replays públicos con cero hallazgos. **Alcance demo cerrado; campañas privadas y flujos interactivos no cubiertos.**
 - [x] **H2.4 — Asistente:** proteger música Amiga, callback, temporización y transiciones de fase; confirmar ThreadSanitizer sin carreras en 29/29 replays públicos y H3 inalterado. **Auditoría demo terminada; todavía no implica cobertura general de audio real, ventanas, menús ni H4.**
-- [ ] **H2.5 — Asistente:** confirmar referencias por plataforma y versiones de dependencias. Documentar diferencias inevitables y cobertura ausente.
+- [x] **H2.5 — Asistente:** inventariar versiones reales y referencias fijadas por plataforma, documentar diferencias de SDL_mixer/XMP/FFmpeg, cobertura 29/11 fases y huecos de CD32/audio. **Cerrado como auditoría** en [H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md); la versión Linux de SDL_mixer sigue sin SHA fijado y se trata en H2.6.
 - [ ] **H2.6 — Asistente / Miguel:** revisar la base candidata y decidir su integración como punto de partida estable; conservar la referencia original recuperable.
 
 **Aceptación:** las rutas incluidas en la primera versión no tienen fallos de memoria reproducibles pendientes sin resolver o delimitar; los replays y el arranque siguen funcionando. Si existe una exclusión, debe figurar con su impacto y no presentarse la suite completa como aprobada.
@@ -301,16 +305,17 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 | 2026-10-21 | H2.3: índice plano de seguidores y tablas Huffman segmentadas, 1.077 tests de límites | Linux y Windows: 29 fases, H3 11.361 estados intactos, 6 avisos de índice eliminados; 17 UBSan no relacionados pendientes; informe H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md |
 | 2026-10-21 | H2.3: endian seguro, RNG idéntico y corrección de desplazamientos negativos | 29/29 fases, 0 ASan y 0 UBSan Linux, baseline H3 inalterado Linux y Windows; 262.144 RNG, 262.144 endian y 196.706 test de bits; compuerta CI estricta. H2.3 cobertura global pendiente. |
 | 2026-10-21 | H2.3/H2.4: LSan/TSan y mutex de audio/transición | Linux 39641851896: 29/29 ASan/UBSan, 29/29 LSan y 29/29 TSan, cero avisos; Windows 39641852057 y H3 11.361 muestras PASS. Siguiente paso H2.5 y decisión H2.6. |
+| 2026-10-21 | H2.5: inventario CMake, toolchains, SDL3/SDL3_mixer, Run/Scripts/tests y matriz de cobertura | Auditoría terminada; SDL3_mixer Linux sin revisión fija; 29 fases CI vs 11 trazadas; FFmpeg/XMP y audio real/CD32 fuera de equivalencia. H2.6 pasa a ser tarea activa. |
 
 **Checklist para retomar (versión 1.8):**
 
 1. Confirmar HEAD de PR #1 y los últimos resultados de Windows/Linux; el PR debe seguir en borrador.
-2. **H2.5:** inventariar y fijar versiones SDL3, SDL3_mixer, compiladores, submódulos y recursos; completar matriz de cobertura por plataforma, modo de juego, audio y campañas.
+2. **H2.5 COMPLETADO:** consultar [matriz técnica](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). La discrepancia y revisión flotante de SDL3_mixer en Linux son riesgo concreto a decidir/corregir en H2.6.
 3. Endurecer ThreadSanitizer en CI al comprobar la batería 29/29; mantener las pruebas H3 como puerta obligatoria.
 4. **H2.1:** documentar la limitación del caso mínimo RNC original, o delimitar explícitamente el riesgo residual del API heredada antes de aceptar H2.6.
 5. **H2.6:** producir la ficha de aceptación de base clásica con evidencias, límites y una decisión expresa antes de iniciar H4.
 
-**Primera acción del siguiente bloque:** H2.5 y ficha de aceptación H2.6. H4 no está iniciado. No subir recursos CD32 privados a GitHub.
+**Primera acción del siguiente bloque:** H2.6, ficha de aceptación con las limitaciones H2.5 (especialmente congelación de SDL3_mixer Linux) y decisión sobre RNC H2.1. H4 no está iniciado. No subir recursos CD32 privados a GitHub.
 
 ### Actualización del 21 de octubre de 2026
 
