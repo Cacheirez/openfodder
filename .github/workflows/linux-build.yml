@@ -67,12 +67,25 @@ jobs:
         run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "Amiga The One" --out reports/h3-linux-amiga --timeout 600
       - name: H3 - compare with pinned pre-stabilization gameplay baseline
         run: python3 tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-linux-pc/run1/traces reports/h3-linux-amiga/run1/traces
+      - name: H2.3 - full game-engine ASan and UBSan diagnostic
+        continue-on-error: true
+        env:
+          ASAN_OPTIONS: detect_leaks=0
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          cmake -S . -B build-h2-asan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined'
+          cmake --build build-h2-asan --parallel 2
+          python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: OpenFodder-Linux-H3-evidence
-          path: reports/h3-linux-*/
+          path: |
+            reports/h3-linux-*/
+            reports/h2-rnc/report.json
+            reports/h2-engine-asan/
           if-no-files-found: warn
           retention-days: 30
       - name: Package
