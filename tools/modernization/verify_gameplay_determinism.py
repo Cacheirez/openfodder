@@ -100,6 +100,21 @@ def main():
         if not detected or detected[1] != "state.game.kills_home":
             raise RuntimeError(f"Comparator failed actual-trace field mutation test: {detected}")
         results["mutation_detected"] = list(detected)
+        # Explicitly guard the legacy logical visibility flag. Again, change
+        # only a copy of a genuine emitted trace, never gameplay itself.
+        visibility_records = [json.loads(line) for line in source.read_text(encoding="utf-8").splitlines()]
+        target = next((r for r in visibility_records[1:] if r["state"]["sprites"]), None)
+        if target is None:
+            raise RuntimeError("No sprite available to test mWasDrawn visibility divergence")
+        target["state"]["sprites"][0]["was_drawn"] += 1
+        visibility_copy = out / "mutated_visibility_analysis_copy.jsonl"
+        visibility_copy.write_text(
+            "".join(json.dumps(r, separators=(",", ":")) + "\\n" for r in visibility_records),
+            encoding="utf-8")
+        visibility_difference = compare(source, visibility_copy)
+        if not visibility_difference or not visibility_difference[1].endswith(".was_drawn"):
+            raise RuntimeError(f"Comparator missed visibility divergence: {visibility_difference}")
+        results["visibility_mutation_detected"] = list(visibility_difference)
         results["verdict"] = "PASS"
     except (RuntimeError, TraceError, OSError, ValueError) as exc:
         results["failure"] = str(exc)
