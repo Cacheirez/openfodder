@@ -91,7 +91,7 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
 
 	if (g_Fodder->mStartParams->mUnitTesting && g_Fodder->mStartParams->mDemoPlayback) {
 		//g_Fodder->mStartParams->mSleepDelta = 0;
-		g_Fodder->mParams->mSleepDelta = 0;
+		g_Fodder->SetInterruptSleepDelta(0);
 	}
 
     while (g_Fodder->mGame_Data.mMission_Current) {
@@ -128,7 +128,7 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
             // And we have a resume cycle set
             if (g_Fodder->mStartParams->mDemoRecordResumeCycle) {
                 g_Debugger->Notice("Resuming " + MissionTitle);
-                g_Fodder->mParams->mSleepDelta = 0;
+                g_Fodder->SetInterruptSleepDelta(0);
             }
             else {
                 g_Fodder->mGame_Data.mDemoRecorded.clear();
@@ -137,10 +137,13 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
         }
 
         // Reset demo status
-        g_Fodder->mParams->mDemoFile = g_Fodder->mStartParams->mDemoFile;
-        g_Fodder->mParams->mDemoRecord = g_Fodder->mStartParams->mDemoRecord;
-        g_Fodder->mParams->mDemoPlayback = g_Fodder->mStartParams->mDemoPlayback;
-        g_Fodder->mParams->mAppVeyor = g_Fodder->mStartParams->mAppVeyor;
+        {
+            std::lock_guard<std::mutex> lock(g_Fodder->mSurfaceMtx);
+            g_Fodder->mParams->mDemoFile = g_Fodder->mStartParams->mDemoFile;
+            g_Fodder->mParams->mDemoRecord = g_Fodder->mStartParams->mDemoRecord;
+            g_Fodder->mParams->mDemoPlayback = g_Fodder->mStartParams->mDemoPlayback;
+            g_Fodder->mParams->mAppVeyor = g_Fodder->mStartParams->mAppVeyor;
+        }
         // Keep game state
         g_Fodder->mGame_Data_Backup = g_Fodder->mGame_Data;
 

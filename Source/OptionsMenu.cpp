@@ -245,9 +245,14 @@ void cOptionsMenu::RestoreSnapshot() {
     if (!mSnapshotValid || !g_Fodder || !g_Fodder->mStartParams)
         return;
 
-    *g_Fodder->mStartParams = mSnapshot;
-    if (g_Fodder->mParams)
-        *g_Fodder->mParams = mSnapshot;
+    {
+        std::lock_guard<std::mutex> lock(g_Fodder->mSurfaceMtx);
+        *g_Fodder->mStartParams = mSnapshot;
+        if (g_Fodder->mParams) {
+            *g_Fodder->mParams = mSnapshot;
+            g_Fodder->mInterruptSleepDelta.store(g_Fodder->mParams->mSleepDelta);
+        }
+    }
 
     ApplyWindowSizingLive();
     if (g_Fodder->mWindow) {

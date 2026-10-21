@@ -618,6 +618,7 @@ public:
     void            Phase_Paused();
 
     void            Interrupt_Sim();
+    void            SetInterruptSleepDelta(size_t sleepDelta);
 #ifdef EMSCRIPTEN
     void            Interrupt_Sim_Tick();
 #endif

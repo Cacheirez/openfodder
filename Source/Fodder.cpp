@@ -243,9 +243,13 @@ int16 cFodder::Phase_Cycle()
             mStartParams->mDemoPlayback = false;
             mStartParams->mDemoRecord = true;
             mStartParams->mDemoRecordResumeCycle = 0;
-            mParams->mSleepDelta = mStartParams->mSleepDelta;
-            mParams->mDemoRecord = mStartParams->mDemoRecord;
-            mParams->mDemoPlayback = mStartParams->mDemoPlayback;
+            {
+                std::lock_guard<std::mutex> lock(mSurfaceMtx);
+                mParams->mSleepDelta = mStartParams->mSleepDelta;
+                mParams->mDemoRecord = mStartParams->mDemoRecord;
+                mParams->mDemoPlayback = mStartParams->mDemoPlayback;
+                mInterruptSleepDelta.store(mParams->mSleepDelta);
+            }
             mStartParams->mDisableVideo = false;
             mStartParams->mDisableSound = false;
             Mouse_Setup();
@@ -633,6 +637,15 @@ void cFodder::Interrupt_Redraw()
 /**
  * Interrupt Simulation
  */
+void cFodder::SetInterruptSleepDelta(size_t sleepDelta)
+{
+    // The timer worker reads only the atomic cadence; the legacy parameter
+    // remains available to game code under the surface mutex.
+    std::lock_guard<std::mutex> lock(mSurfaceMtx);
+    mParams->mSleepDelta = sleepDelta;
+    mInterruptSleepDelta.store(sleepDelta);
+}
+
 void cFodder::Interrupt_Sim()
 {
     Uint32 startTick = SDL_GetTicks();
@@ -3535,8 +3548,12 @@ void cFodder::Start()
     {
         Demo_Load();
         mGame_Data.mDemoRecorded.playback();
-        mParams = mGame_Data.mDemoRecorded.mParams;
-        mParams->mDefaultPlatform = mStartParams->mDefaultPlatform;
+        {
+            std::lock_guard<std::mutex> lock(mSurfaceMtx);
+            mParams = mGame_Data.mDemoRecorded.mParams;
+            mParams->mDefaultPlatform = mStartParams->mDefaultPlatform;
+            mInterruptSleepDelta.store(mParams->mSleepDelta);
+        }
 
         mOpenFodder_Intro_Done = false;
     }
