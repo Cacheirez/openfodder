@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.3/H2.4: ampliar comprobaciones de memoria y sincronización**; H2.1 conserva pendiente la identificación del recurso mínimo original |
+| Tarea activa | **H2.3: investigar el nuevo fallo ASan en `Direction_Between_Points` (Fodder.cpp:2863)**; revisar avisos UBSan por separado. H2.1 mantiene pendiente la atribución del recurso RNC inicial |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
@@ -110,7 +110,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H2. Estabilización de la base
 
-**Actualización 21-10-2026:** [H2_ESTABILIZACION_2026-10-21.md](H2_ESTABILIZACION_2026-10-21.md). H2.2 dispone de lector RNC acotado: 88 recursos RNC y 1.047 casos inválidos probados con ASan/UBSan en Linux, 29 replays Windows y equivalencia de 11.361 estados previos/posteriores al cambio en ambas plataformas. La atribución del recurso mínimo del fallo original (H2.1), ASan del motor completo (H2.3), sincronización integral (H2.4) y aceptación H2.6 quedan abiertos.
+**Actualización 21-10-2026:** [H2_ESTABILIZACION_2026-10-21.md](H2_ESTABILIZACION_2026-10-21.md). H2.2 dispone de lector RNC acotado: 88 recursos RNC y 1.047 casos inválidos probados con ASan/UBSan en Linux, 29 replays Windows y equivalencia de 11.361 estados previos/posteriores al cambio en ambas plataformas. **H2.3 detecta un nuevo `global-buffer-overflow` de tabla de direcciones (Fodder.cpp:2863), distinto de RNC, tras 11 fases; ver [diagnóstico H2.3](H2_3_DIAGNOSTICO_ASAN_2026-10-21.md).** La atribución del recurso mínimo del fallo original (H2.1), ASan del motor completo (H2.3), sincronización integral (H2.4) y aceptación H2.6 quedan abiertos.
 
 
 - [ ] **H2.1 — Asistente:** aislar el acceso fuera de límites en `Source/Amiga/dernc.cpp`, con un recurso mínimo que lo reproduzca y longitudes de entrada/salida identificadas.
@@ -271,6 +271,8 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 | Prueba manual de Miguel, 21 de octubre | Demo funcional; campaña Cannon Fodder reconocida tras añadir Amiga_CD y jugable; responde afirmativamente a todas las comprobaciones solicitadas | No acredita completar las 72 fases, sesiones largas ni ausencia de defectos de memoria |
 
 Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
+
+**Diagnóstico adicional H2.3 (21-10-2026):** [H2_3_DIAGNOSTICO_ASAN_2026-10-21.md](H2_3_DIAGNOSTICO_ASAN_2026-10-21.md). El workflow Linux aparece verde, pero la etapa ASan del motor completo está en `continue-on-error` y su propio informe registra `FAIL`. No aceptar H2.3 hasta corregir y repetir la suite.
 
 ## 9. Bitácora y siguiente sesión
 
