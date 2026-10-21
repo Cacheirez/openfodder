@@ -49,6 +49,8 @@ jobs:
         run: python tools/modernization/verify_gameplay_determinism.py --exe Run/openfodder.exe --data Run --campaign "PC Format" --out reports/h3-pc --timeout 600
       - name: H3 - compare two real Amiga The One gameplay traces
         run: python tools/modernization/verify_gameplay_determinism.py --exe Run/openfodder.exe --data Run --campaign "Amiga The One" --out reports/h3-amiga --timeout 600
+      - name: H3 - compare with pinned pre-stabilization gameplay baseline
+        run: python tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-pc/run1/traces reports/h3-amiga/run1/traces
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build
