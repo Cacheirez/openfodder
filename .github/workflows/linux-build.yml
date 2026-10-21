@@ -65,6 +65,8 @@ jobs:
           SDL_VIDEODRIVER: dummy
           SDL_AUDIODRIVER: dummy
         run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "Amiga The One" --out reports/h3-linux-amiga --timeout 600
+      - name: H3 - compare with pinned pre-stabilization gameplay baseline
+        run: python3 tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-linux-pc/run1/traces reports/h3-linux-amiga/run1/traces
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4
