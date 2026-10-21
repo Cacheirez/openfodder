@@ -607,6 +607,7 @@ public:
 
 	bool			Engine_Loop();
 
+    void            GameplayTraceCapture(); // Optional, read-only H3 regression trace.
     virtual int16   Mission_Loop();
 	virtual int16	Phase_Cycle();
     virtual int16   Phase_Loop();
