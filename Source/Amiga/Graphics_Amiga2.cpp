@@ -79,7 +79,7 @@ void cGraphics_Amiga2::Mission_Intro_Load_Resources(const eTileTypes pTileset) {
 void cGraphics_Amiga2::SetActiveSpriteSheet(eGFX_Types pSpriteType) {
     switch (pSpriteType) {
     case eGFX_IN_GAME:
-        mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_CF2);
+        SetActiveCF2SpriteSheet();
         return;
 
     default:

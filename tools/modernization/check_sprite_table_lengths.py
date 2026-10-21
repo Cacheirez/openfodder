@@ -30,7 +30,13 @@ def main():
         if entries != expected: raise ValueError(f"{platform}: unexpected {entries} frame groups")
         graphics=(ROOT/"Source"/platform/f"Graphics_{platform}.cpp").read_text(encoding="utf-8")
         for name in tables:
-            if name == "mSpriteSheetTypes_InGame_Amiga_CF2": continue # Declared but inactive
+            if name == "mSpriteSheetTypes_InGame_Amiga_CF2":
+                if f"SetActiveSpriteSheetPtr({name}," not in graphics:
+                    raise ValueError("Missing CF2 sprite bounds helper")
+                amiga2=(ROOT/"Source"/"Amiga"/"Graphics_Amiga2.cpp").read_text(encoding="utf-8")
+                if "SetActiveCF2SpriteSheet();" not in amiga2:
+                    raise ValueError("CF2 subclass does not use bounded activation")
+                continue
             if f"SetActiveSpriteSheetPtr({name}, {name}_FrameCounts)" not in graphics:
                 raise ValueError("Missing bounds activation for "+name)
         print(f"PASS {platform}: {len(arrays)} arrays, {len(tables)} pointer tables, {entries} sheets")

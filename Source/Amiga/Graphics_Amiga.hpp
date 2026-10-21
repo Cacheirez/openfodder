@@ -96,6 +96,7 @@ protected:
     virtual void		Video_Draw_8_Alt( const uint8* RowPallete = 0 );
 
 	virtual void		SetActiveSpriteSheet(eGFX_Types pSpriteType );
+    void                SetActiveCF2SpriteSheet(); // Shares the real CF2 frame bounds.
 
 	virtual void		Sidebar_Copy_To_Surface( int16 pStartY, cSurface* pSurface = 0);
 	virtual void		Sidebar_Copy_Sprite_To_ScreenBufPtr( int16 pSpriteType, size_t pX, size_t pY );

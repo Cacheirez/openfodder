@@ -427,6 +427,11 @@ void cGraphics_Amiga::SetCursorPalette(uint16 pIndex) {
 	mCursorPalette = pIndex;
 }
 
+void cGraphics_Amiga::SetActiveCF2SpriteSheet() {
+    mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_CF2,
+                                    mSpriteSheetTypes_InGame_Amiga_CF2_FrameCounts);
+}
+
 void cGraphics_Amiga::SetActiveSpriteSheet(eGFX_Types pSpriteType) {
 
 	switch (pSpriteType) {
