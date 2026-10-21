@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/IndexBounds.hpp"
 #include "Utils/SpriteFrameBounds.hpp"
 
 void cFodder::Sprite_Clear_All() {
@@ -2033,6 +2034,11 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
     }
     else {
 
+        // The scanning counter also takes values 9..30; these are not
+        // valid squad slots. Treat them as "no follower" before indexing.
+        if (!gameIndexInBounds(pSprite->field_5E_Squad,
+                sizeof(mSquad_0_Sprites) / sizeof(mSquad_0_Sprites[0])))
+            goto loc_21E4A;
         Squad0_Member = mSquad_0_Sprites[pSprite->field_5E_Squad];
         if (Squad0_Member == INVALID_SPRITE_PTR)
             goto loc_21E4A;
@@ -2164,6 +2170,9 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
         if (mSprite_FaceWeaponTarget)
             goto loc_22125;
 
+        if (!gameIndexInBounds(pSprite->field_5E_Squad,
+                sizeof(mSquad_0_Sprites) / sizeof(mSquad_0_Sprites[0])))
+            goto loc_22125;
         if (mSquad_0_Sprites[pSprite->field_5E_Squad] == INVALID_SPRITE_PTR)
             goto loc_22125;
 

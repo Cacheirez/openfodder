@@ -1,4 +1,6 @@
 
+#include "PC/HuffmanLayout.hpp"
+
 class cResource_PC_CD : public cResources {
 	
 	tSharedBuffer 					mData;
@@ -8,10 +10,10 @@ class cResource_PC_CD : public cResources {
 	
 	uint8*							mCurPtr;
 	
-	int16							word_26DBE[0x273];
+	int16							word_26DBE[PC_Huffman::ParentEntries];
 	int16							word_272A4[0x13A];
 	int16							word_27518[0x273];
-	int16							word_279FE[0x273];
+	int16							word_279FE[PC_Huffman::FrequencyEntries];
 	int16							word_27EE4;
 	uint8							byte_27EE6[0x1A3B];
 	static const uint8				byte_29921[0x100];

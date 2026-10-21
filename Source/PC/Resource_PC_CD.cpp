@@ -84,12 +84,12 @@ const uint8 cResource_PC_CD::byte_29A21[0x101] = {
 
 cResource_PC_CD::cResource_PC_CD( const std::string& pDataFile ) : cResources() {
 
-	memset( word_26DBE, 0, 0x273 * 2 );
-	memset( word_272A4, 0, 0x13A * 2 );
-	memset( word_27518, 0, 0x273 * 2 );
-	memset( word_279FE, 0, 0x273 * 2 );
+	memset( word_26DBE, 0, sizeof(word_26DBE) );
+	memset( word_272A4, 0, sizeof(word_272A4) );
+	memset( word_27518, 0, sizeof(word_27518) );
+	memset( word_279FE, 0, sizeof(word_279FE) );
 
-	memset( byte_27EE6, 0, 0x1A3C );
+	memset( byte_27EE6, 0, sizeof(byte_27EE6) );
 	byte_26DB0 = 0;
 
 	mBytesRead = word_26DA8 = word_26DBA = 0;
@@ -404,6 +404,10 @@ uint8 cResource_PC_CD::data_Read() {
 }
 
 void cResource_PC_CD::Huffman_InitTables() {
+    // Adaptive Huffman update scans until it reaches this maximum weight.
+    // freq[Nodes] is an intentional sentinel, not the first element of an
+    // unrelated neighboring array.
+    word_279FE[PC_Huffman::Nodes] = -1; // 0xffff as uint16
 	uint16 cx = 0;
 
 	while( cx < 0x13A ) {
