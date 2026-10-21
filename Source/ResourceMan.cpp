@@ -24,6 +24,7 @@
 #include "Utils/md5.hpp"
 
 #include <chrono>
+#include <cstdlib> // free() entries returned by scandir()
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>

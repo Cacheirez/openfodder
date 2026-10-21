@@ -99,7 +99,7 @@ jobs:
         env:
           SDL_VIDEODRIVER: dummy
           SDL_AUDIODRIVER: dummy
-          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+          TSAN_OPTIONS: halt_on_error=0:exitcode=66:history_size=5:report_limit=40
         run: |
           cmake -S . -B build-h2-tsan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread'
           cmake --build build-h2-tsan --parallel 2
