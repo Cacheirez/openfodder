@@ -51,6 +51,10 @@ jobs:
           git submodule update --init --recursive
           git clone https://github.com/OpenFodder/tests.git Run/Tests
           git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
+      - name: H3.6 - verify the legacy visibility contract
+        run: python3 tools/modernization/check_visibility_contract.py
+      - name: H2 - bounded RNC fixtures under ASan and UBSan
+        run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
         env:
           SDL_VIDEODRIVER: dummy
