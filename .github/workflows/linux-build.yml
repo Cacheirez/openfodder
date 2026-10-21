@@ -46,6 +46,29 @@ jobs:
         run: cmake -S . -B build -G Ninja
       - name: Build
         run: cmake --build build
+      - name: Prepare pinned gameplay fixtures
+        run: |
+          git submodule update --init --recursive
+          git clone https://github.com/OpenFodder/tests.git Run/Tests
+          git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
+      - name: H3 - Linux PC Format gameplay reference
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "PC Format" --out reports/h3-linux-pc --timeout 600
+      - name: H3 - Linux Amiga The One gameplay reference
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "Amiga The One" --out reports/h3-linux-amiga --timeout 600
+      - name: Upload H3 Linux reference evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenFodder-Linux-H3-evidence
+          path: reports/h3-linux-*/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Package
         run: python -m zipfile -c OpenFodder-linux-latest.zip build/openfodder README.md COPYING openfodder.ini.example
       - name: Upload artifact
