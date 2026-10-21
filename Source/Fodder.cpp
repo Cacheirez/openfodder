@@ -640,8 +640,9 @@ void cFodder::Interrupt_Sim()
     while (!mExit)
     {
         Uint32 currentTick = SDL_GetTicks();
+        const size_t sleepDelta = mInterruptSleepDelta.load();
 
-        if (currentTick - startTick >= g_Fodder->mParams->mSleepDelta)
+        if (currentTick - startTick >= sleepDelta)
         {
             startTick = currentTick;
 
@@ -650,7 +651,7 @@ void cFodder::Interrupt_Sim()
             // wait for video_sleep call to finish
             while (!mVideo_Done && !mExit)
             {
-                SDL_Delay(g_Fodder->mParams->mSleepDelta == 0 ? 0 : 1);
+                SDL_Delay(sleepDelta == 0 ? 0 : 1);
             }
         }
         else
@@ -2540,6 +2541,7 @@ void cFodder::Prepare(std::shared_ptr<sFodderParameters> pParams)
 {
     mParams = std::make_shared<sFodderParameters>(*pParams);
     mStartParams = std::make_shared<sFodderParameters>(*pParams);
+    mInterruptSleepDelta.store(mParams->mSleepDelta);
 
     g_ResourceMan->refresh();
 

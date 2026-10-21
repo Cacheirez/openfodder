@@ -154,6 +154,7 @@ public:
     bool            mInput_Enabled;
 
     std::atomic<uint16> mPhase_InterruptTicks{0}; // Shared game/interrupt tick counter.
+    std::atomic<size_t> mInterruptSleepDelta{20}; // Avoid reading mutable mParams from the timer thread.
     std::atomic<bool> mVideo_Ticked{false}; // Cross-thread notification.
     std::atomic<bool> mVideo_Done{true}; // Cross-thread acknowledgement.
 

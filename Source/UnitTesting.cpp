@@ -209,7 +209,14 @@ bool cUnitTesting::Start() {
         if (CampaignName == "Random Map" || CampaignName == "Single Map")
             continue;
 
-        *g_Fodder->mParams = *g_Fodder->mStartParams;
+        {
+            // Interrupt_Redraw consults mParams while holding mSurfaceMtx.
+            // Replace the parameter snapshot under the same lock, and
+            // publish the cadence atomically for Interrupt_Sim.
+            std::lock_guard<std::mutex> lock(g_Fodder->mSurfaceMtx);
+            *g_Fodder->mParams = *g_Fodder->mStartParams;
+            g_Fodder->mInterruptSleepDelta.store(g_Fodder->mParams->mSleepDelta);
+        }
         g_Fodder->mStartParams->mCampaignName = CampaignName;
 
         g_Debugger->TestStart(CampaignName, "Campaign");
