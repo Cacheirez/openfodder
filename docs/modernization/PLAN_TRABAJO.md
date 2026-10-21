@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.3 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.4 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H1 completado; H3.1–H3.5 verificados con 11 fases y 11.361 muestras lógicas idénticas entre Windows y Linux; H3.6 y H2 pendientes; gráficos e interpolación todavía no implementados.
+**Estado global:** H1 y auditoría H3.1–H3.6 completadas en su alcance demo; 11.361 estados equivalentes Windows/Linux; H2 en estabilización (lector RNC acotado validado, sincronización atómica en validación, ASan global pendiente). Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H3.6: completar auditoría de consumidores de `mWasDrawn`**, manteniendo H2.1 abierto |
+| Tarea activa | **H2.3/H2.4: ampliar comprobaciones de memoria y sincronización**; H2.1 conserva pendiente la identificación del recurso mínimo original |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
@@ -69,7 +69,7 @@ El estado de Actions es una observación, no un seguimiento permanente. Antes de
 | H0 | Auditoría, referencia y repositorio | — | Completado para el alcance inicial |
 | H1 | Primera compilación Windows y arranque verificado | H0 | Completado |
 | H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Pendiente |
-| H3 | Comparación reproducible de jugabilidad | H2 | En curso: H3.1–H3.5 verificados, H3.6 pendiente |
+| H3 | Comparación reproducible de jugabilidad | H2 | H3.1–H3.6 completadas en el alcance demo, con pruebas de integración pendientes de H4 |
 | H4 | Dibujo separado de la simulación | H3 | Pendiente |
 | H5 | Cámara y movimiento suaves con gráficos originales | H4 | Pendiente |
 | H6 | Dirección artística y recursos de muestra | H1; diseño independiente de H2–H5 | Pendiente |
@@ -110,8 +110,11 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H2. Estabilización de la base
 
+**Actualización 21-10-2026:** [H2_ESTABILIZACION_2026-10-21.md](H2_ESTABILIZACION_2026-10-21.md). H2.2 dispone de lector RNC acotado: 88 recursos RNC y 1.047 casos inválidos probados con ASan/UBSan en Linux, 29 replays Windows y equivalencia de 11.361 estados previos/posteriores al cambio en ambas plataformas. La atribución del recurso mínimo del fallo original (H2.1), ASan del motor completo (H2.3), sincronización integral (H2.4) y aceptación H2.6 quedan abiertos.
+
+
 - [ ] **H2.1 — Asistente:** aislar el acceso fuera de límites en `Source/Amiga/dernc.cpp`, con un recurso mínimo que lo reproduzca y longitudes de entrada/salida identificadas.
-- [ ] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
+- [x] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
 - [ ] **H2.3 — Asistente:** repetir los replays relevantes y el recorrido completo disponible con AddressSanitizer; registrar cualquier siguiente defecto y distinguirlo del parche.
 - [ ] **H2.4 — Asistente:** revisar sincronización y propiedad de los datos que tocaremos al separar el renderizado. Investigar indicios concretos de carreras, sin dar por demostrado un fallo solo por ver `volatile`.
 - [ ] **H2.5 — Asistente:** confirmar referencias por plataforma y versiones de dependencias. Documentar diferencias inevitables y cobertura ausente.
@@ -123,7 +126,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H3. Proteger la misma jugabilidad
 
-**Actualización de validación:** [H3_VALIDACION_2026-10-21.md](H3_VALIDACION_2026-10-21.md). Las casillas H3.1–H3.5 indican aceptación para el alcance de las 11 fases ensayadas, no toda la campaña CD32. La mutación se realizó sobre copias de trazas reales, no alterando el motor. La auditoría de consumidores de `mWasDrawn` sigue abierta (H3.6).
+**Actualización de validación:** [H3_VALIDACION_2026-10-21.md](H3_VALIDACION_2026-10-21.md). H3.1–H3.5 verificadas para las 11 fases ensayadas, no toda la campaña CD32. H3.6 auditada y documentada en [H3_6_CONTRATO_VISIBILIDAD.md](H3_6_CONTRATO_VISIBILIDAD.md). La implementación de visibilidad independiente y las pruebas 0/1/N dibujos pertenecen a H4.
 
 
 **Objetivo:** comprobar más que «la misión llega al final».
@@ -133,7 +136,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 - [x] **H3.3 — Asistente:** implementar una traza o huella canónica sin punteros, direcciones de memoria ni relleno dependiente del compilador.
 - [x] **H3.4 — Asistente:** mostrar el primer tick y campo que difiere; probar que una divergencia introducida deliberadamente es detectada.
 - [x] **H3.5 — Asistente:** conservar referencias por plataforma si la equivalencia entre Windows y Linux no está demostrada. No ocultar diferencias con tolerancias arbitrarias.
-- [ ] **H3.6 — Asistente:** registrar el comportamiento lógico relacionado con visibilidad y con `mWasDrawn` para preservarlo al cambiar el dibujo.
+- [x] **H3.6 — Asistente:** registrar el comportamiento lógico relacionado con visibilidad y con `mWasDrawn` para preservarlo al cambiar el dibujo.
 
 **Aceptación:** la herramienta detecta un cambio relevante y la referencia se reproduce bajo condiciones fijadas. Los cambios posteriores deben mantener los campos lógicos acordados o explicar y resolver cualquier divergencia.
 
@@ -261,6 +264,9 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 | H3 en Windows, ejecución 39593037606 | 11 fases, 11.361 muestras de estado iguales en dos pasadas por campaña; 29 replays anteriores PASS; comparador detecta divergencias en bajas y `mWasDrawn` | Cobertura de toda CD32 o independencia de renderizado |
 | H3 en Linux, ejecución 39593037449 | 11 fases, 11.361 muestras; identidad byte a byte de run1/run2; comparación cruzada Windows/Linux exacta en estados tras normalizar saltos de línea | Ausencia de problemas de memoria o igualdad de estados no registrados |
 | Huellas canónicas de H3 | `tools/modernization/reference-gameplay-v1.json`, 11 huellas SHA256 lógicas, asociadas a commits y datos | Validez indefinida para futuras versiones sin rebaselinar |
+| Lector RNC acotado + 60 fixtures locales | ASan/UBSan PASS, 714 variantes inválidas rechazadas | ASan integral y CD32 |
+| Lector RNC acotado Linux CI 39599528660 | 88 recursos RNC válidos; 1.047 variantes inválidas; ASan/UBSan PASS; H3 PASS | Ausencia de errores en todos los componentes |
+| RNC + H3 Windows CI 39599528686 | 29 fases PASS, H3 PASS; mismo estado lógico anterior en 11.361 muestras | Campaña CD32 completa y ASan integral |
 | Datos CD32 recibidos el 21 de octubre | CRC ZIP correcto; 266/266 archivos requeridos con MD5 coincidente; 72 pares MAP/SPT | Campaña completada jugando: intento local omitió 72 fases por falta de replays |
 | Prueba manual de Miguel, 21 de octubre | Demo funcional; campaña Cannon Fodder reconocida tras añadir Amiga_CD y jugable; responde afirmativamente a todas las comprobaciones solicitadas | No acredita completar las 72 fases, sesiones largas ni ausencia de defectos de memoria |
 
@@ -273,7 +279,8 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 | 2026-10-20 | Auditoría inicial, parche de límites y pruebas Linux | Referencia preparada; RNC pendiente |
 | 2026-10-20 | Conexión GitHub, rama y PR #1 | Automatización Windows iniciada |
 | 2026-10-20 | Creación de este plan v1.0 | Tarea activa H1.1; consultar resultado Windows y actuar según el primer fallo o éxito |
-| 2026-10-21 | H3.1–H3.5: emisor, comparador, 2 pasadas por campaña en Windows/Linux | 11.361 muestras idénticas por plataforma y entre plataformas; H3.6 pendiente; detalles en H3_VALIDACION_2026-10-21.md |
+| 2026-10-21 | H3.1–H3.5: emisor, comparador, 2 pasadas por campaña en Windows/Linux | 11.361 muestras idénticas por plataforma y entre plataformas; H3.6 auditada posteriormente; detalles en H3_VALIDACION_2026-10-21.md |
+| 2026-10-21 | H3.6 cerrada; H2.2 lector acotado y pruebas | RNC validado Linux/Windows; H2.1/H2.3/H2.4 pendientes; ver H2_ESTABILIZACION_2026-10-21.md |
 
 **Checklist para retomar:**
 
