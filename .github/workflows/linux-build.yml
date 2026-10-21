@@ -72,7 +72,6 @@ jobs:
       - name: H3 - compare with pinned pre-stabilization gameplay baseline
         run: python3 tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-linux-pc/run1/traces reports/h3-linux-amiga/run1/traces
       - name: H2.3 - full game-engine ASan and UBSan diagnostic
-        continue-on-error: true
         env:
           ASAN_OPTIONS: detect_leaks=0
           SDL_VIDEODRIVER: dummy
@@ -82,7 +81,7 @@ jobs:
           cmake --build build-h2-asan --parallel 2
           ctest --test-dir build-h2-asan --output-on-failure
           python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
-      - name: H2.3 - enforce sanitized replay and index bounds gate
+      - name: H2.3 - enforce zero ASan and UBSan findings
         run: python3 tools/modernization/check_ubsan_indices.py --report reports/h2-engine-asan/report.json --log reports/h2-engine-asan/engine.log
       - name: Upload H3 Linux reference evidence
         if: always()

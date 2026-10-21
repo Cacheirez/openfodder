@@ -1,5 +1,5 @@
-"""Strict ASan and UBSan index gate for full OpenFodder demo regressions.
-Does not suppress other UBSan warnings. GPL-3.0-or-later.
+"""Strict ASan and UBSan gate for full OpenFodder demo regressions.
+Any sanitizer finding fails the build. GPL-3.0-or-later.
 """
 import argparse
 import json
@@ -22,6 +22,8 @@ def assess(report, log):
     if FATAL_ASAN.search(log):
         defects.append("Fatal AddressSanitizer finding")
     other = [line for line in log.splitlines() if OTHER_UBSAN.search(line)]
+    if other:
+        defects.append(f"{len(other)} additional UBSan runtime errors")
     return defects, bad_indices, other
 
 def main():
@@ -38,14 +40,14 @@ def main():
     defects, bad_indices, other = assess(report, log)
     for bad in bad_indices:
         print("INDEX ERROR:", bad, file=sys.stderr)
+    for bad in other:
+        print("UBSAN ERROR:", bad, file=sys.stderr)
     print(f"ASan/UBSan report: phases={report.get('phases_passed')}; "
           f"index_UBSan={len(bad_indices)}; other_UBSan={len(other)}")
     if defects:
         print("FAIL:", "; ".join(defects), file=sys.stderr)
         return 1
-    if other:
-        print(f"WARNING: {len(other)} non-index UBSan findings remain for H2.3")
-    print("PASS: full replay and ASan/array-index UBSan gate")
+    print("PASS: full sanitized replay; no ASan or UBSan findings")
     return 0
 
 if __name__ == "__main__":

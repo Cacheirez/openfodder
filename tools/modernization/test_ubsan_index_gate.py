@@ -11,7 +11,7 @@ class IndexGateTests(unittest.TestCase):
         defects, indices, others = assess(GOOD, 
             "Source/Camera.cpp:305: runtime error: left shift of negative value -1\n"
             "Source/stdafx.hpp:92: runtime error: load of misaligned address")
-        self.assertEqual(defects, [])
+        self.assertTrue(defects)
         self.assertEqual(len(indices), 0)
         self.assertEqual(len(others), 2)
     def test_index_is_failure(self):
