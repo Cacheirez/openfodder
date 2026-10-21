@@ -151,15 +151,15 @@ public:
 
     bool            mInput_Enabled;
 
-    uint16          mPhase_InterruptTicks;
-    volatile bool   mVideo_Ticked;
-    volatile bool   mVideo_Done;
+    std::atomic<uint16> mPhase_InterruptTicks{0}; // Shared game/interrupt tick counter.
+    std::atomic<bool> mVideo_Ticked{false}; // Cross-thread notification.
+    std::atomic<bool> mVideo_Done{true}; // Cross-thread acknowledgement.
 
     int16           mInterruptTick;
 
     std::function<void()> mInterruptCallback;
 
-    volatile bool   mExit;
+    std::atomic<bool> mExit{false}; // Thread shutdown request.
 
     int16           mButtonPressLeft, mButtonPressRight;
 
