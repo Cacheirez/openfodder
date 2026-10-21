@@ -291,7 +291,7 @@ void cFodder::Camera_Speed_Calculate()
     //  Calculate maximum right position of camera
     const int32 originXPixels = (int32)getMapVisibleOriginX() << 4;
     Data0 = originXPixels + getMapVisibleWidthPixels() - getCameraWidth();
-    Data0 = (Data0 << 16) | (Data0 >> 16);
+    Data0 = wrapShiftLeft32(Data0, 16) | (Data0 >> 16);
 
     int32 Data4 = mCameraX + mCamera_Speed_X;
     if (Data4 > Data0)
@@ -302,7 +302,7 @@ void cFodder::Camera_Speed_Calculate()
     // loc_11BE8
     const int32 originYPixels = (int32)getMapVisibleOriginY() << 4;
     Data0 = originYPixels + getMapVisibleHeightPixels() - getCameraHeight();
-    Data0 = (Data0 << 16) | (Data0 >> 16);
+    Data0 = wrapShiftLeft32(Data0, 16) | (Data0 >> 16);
 
     Data4 = mCameraY + mCamera_Speed_Y;
 

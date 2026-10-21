@@ -1155,7 +1155,7 @@ loc_2DF7B:;
 loc_2DFC7:;
     int16 ax = (mMap_Destroy_Tile_X >> 4);
     ax -= mMapTile_MovedHorizontal;
-    ax <<= 4;
+    ax = wrapShiftLeft16(ax, 4);
     ax -= mMapTile_ColumnOffset;
     ax += 0x40;
 
@@ -1163,7 +1163,7 @@ loc_2DFC7:;
 
     ax = (mMap_Destroy_Tile_Y >> 4);
     ax -= mMapTile_MovedVertical;
-    ax <<= 4;
+    ax = wrapShiftLeft16(ax, 4);
     ax -= mMapTile_RowOffset;
     ax += 0x10;
 

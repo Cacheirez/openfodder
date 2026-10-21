@@ -118,6 +118,8 @@ add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_fra
 add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)
 add_executable(openfodder_endian_io_tests tools/modernization/test_endian_io.cpp)
 add_executable(openfodder_rng_tests tools/modernization/test_rng_bit_exact.cpp)
+add_executable(openfodder_signed_bits_tests tools/modernization/test_signed_bits.cpp)
+add_test(NAME signed_bits_equivalence COMMAND $<TARGET_FILE:openfodder_signed_bits_tests>)
 add_test(NAME pseudorandom_bit_exact COMMAND $<TARGET_FILE:openfodder_rng_tests>)
 add_test(NAME endian_unaligned_reads COMMAND $<TARGET_FILE:openfodder_endian_io_tests>)
 add_test(NAME squad_huffman_index_layout COMMAND $<TARGET_FILE:openfodder_index_layout_tests>)

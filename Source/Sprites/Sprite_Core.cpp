@@ -294,7 +294,7 @@ void cFodder::Sprite_Update_DirectionMod(sSprite* pSprite) {
     DataC &= 0x0F;
     //seg007:0920
     DataC = (int16)mDirectionStepTable[DataC];
-    DataC <<= 1;
+    DataC = wrapShiftLeft16(DataC, 1);
 
     mDirectionMod = DataC;
 }
@@ -464,7 +464,7 @@ void cFodder::Sprite_Movement_Calculate(sSprite* pSprite) {
     Dataa8 *= Data4;
     DataaC *= Data4;
 
-    int32 tmp = (pSprite->mPosXFrac & 0xFFFF) | pSprite->mPosX << 16;
+    int32 tmp = packWords32(pSprite->mPosX, pSprite->mPosXFrac);
     tmp += Dataa8;
 
     pSprite->mPosXFrac = tmp & 0xFFFF;
@@ -476,7 +476,7 @@ void cFodder::Sprite_Movement_Calculate(sSprite* pSprite) {
         mSprite_Bullet_Destroy = -1;
     }
 
-    tmp = (pSprite->mPosYFrac & 0xFFFF) | pSprite->mPosY << 16;
+    tmp = packWords32(pSprite->mPosY, pSprite->mPosYFrac);
     tmp += DataaC;
     pSprite->mPosYFrac = tmp & 0xFFFF;
     pSprite->mPosY = tmp >> 16;
@@ -1219,8 +1219,8 @@ void cFodder::Sprite_PositionNext_AdjustByHeight(sSprite* pSprite) {
 void cFodder::Sprite_XY_Store(sSprite* pSprite) {
     mSprite_Reached_Target = 0;
 
-    mStoredSpriteX = (pSprite->mPosX & 0xFFFF) | (pSprite->mPosXFrac << 16);
-    mStoredSpriteY = (pSprite->mPosY & 0xFFFF) | (pSprite->mPosYFrac << 16);
+    mStoredSpriteX = packWords32(pSprite->mPosXFrac, pSprite->mPosX);
+    mStoredSpriteY = packWords32(pSprite->mPosYFrac, pSprite->mPosY);
 }
 
 void cFodder::Sprite_XY_Restore(sSprite* pSprite) {
