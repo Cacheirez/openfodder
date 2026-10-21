@@ -109,7 +109,7 @@ def main():
         target["state"]["sprites"][0]["was_drawn"] += 1
         visibility_copy = out / "mutated_visibility_analysis_copy.jsonl"
         visibility_copy.write_text(
-            "".join(json.dumps(r, separators=(",", ":")) + "\\n" for r in visibility_records),
+            "".join(json.dumps(r, separators=(",", ":")) + "\n" for r in visibility_records),
             encoding="utf-8")
         visibility_difference = compare(source, visibility_copy)
         if not visibility_difference or not visibility_difference[1].endswith(".was_drawn"):
