@@ -355,6 +355,7 @@ int16 cFodder::Phase_Cycle()
 
     if (mGame_Data.mGamePhase_Data.mIsComplete)
     {
+        GameplayTraceCapture(); // Capture terminal logical state before phase transition.
 
         if (mPhase_Aborted)
             Sprite_Handle_Player_Destroy_Unk();
@@ -382,6 +383,7 @@ int16 cFodder::Phase_Cycle()
     Sprite_HelicopterCallPad_Check();
     Mission_Final_Timer();
 
+    GameplayTraceCapture(); // After the completed logical cycle, not per rendered frame.
     return 1;
 }
 
