@@ -432,30 +432,30 @@ void cGraphics_Amiga::SetActiveSpriteSheet(eGFX_Types pSpriteType) {
 	switch (pSpriteType) {
 	case eGFX_IN_GAME:
 		if (mFodder->mVersionCurrent->isAmigaTheOne())
-			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_TheOne);
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_TheOne, mSpriteSheetTypes_InGame_Amiga_TheOne_FrameCounts);
 		else
-			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga);
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga, mSpriteSheetTypes_InGame_Amiga_FrameCounts);
 
 		return;
 
 	case eGFX_FONT:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_Amiga, mSpriteSheetTypes_Font_Amiga_FrameCounts);
 		return;
 
 	case eGFX_RECRUIT:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_Amiga, mSpriteSheetTypes_Recruit_Amiga_FrameCounts);
 		return;
 
 	case eGFX_HILL:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_Amiga, mSpriteSheetTypes_Hill_Amiga_FrameCounts);
 		return;
 
 	case eGFX_BRIEFING:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_Amiga, mSpriteSheetTypes_Briefing_Amiga_FrameCounts);
 		return;
 
 	case eGFX_SERVICE:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_Amiga, mSpriteSheetTypes_Service_Amiga_FrameCounts);
 		return;
 
 	default:
@@ -839,6 +839,7 @@ void cGraphics_Amiga::Hill_Prepare_Overlays() {
 	for (; a3->mSpriteType != -1; ++a3) {
 
 		auto SpriteSheet = mFodder->Sprite_Get_Sheet(a3->mSpriteType, a3->mFrame);
+        if (!SpriteSheet) continue; // No image data for invalid overlay frame.
 
 		int d0 = SpriteSheet->mColCount - 1;
 		int d1 = SpriteSheet->mRowCount - 1;

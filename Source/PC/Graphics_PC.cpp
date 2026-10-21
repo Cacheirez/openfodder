@@ -139,29 +139,29 @@ void cGraphics_PC::SetActiveSpriteSheet( eGFX_Types pSpriteType ) {
 	switch (pSpriteType) {
 		case eGFX_IN_GAME:
             if (mFodder->mVersionCurrent->isCannonFodder2())
-                mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC2);
+                mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC2, mSpriteSheetTypes_InGame_PC2_FrameCounts);
             else
-    			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_InGame_PC );
+    			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC, mSpriteSheetTypes_InGame_PC_FrameCounts);
 			return;
 
 		case eGFX_FONT:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Font_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_PC, mSpriteSheetTypes_Font_PC_FrameCounts);
 			return;
 
 		case eGFX_RECRUIT:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Recruit_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_PC, mSpriteSheetTypes_Recruit_PC_FrameCounts);
 			return;
 
 		case eGFX_HILL:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Hill_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_PC, mSpriteSheetTypes_Hill_PC_FrameCounts);
 			return;
 		
 		case eGFX_BRIEFING:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Briefing_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_PC, mSpriteSheetTypes_Briefing_PC_FrameCounts);
 			return;
 
 		case eGFX_SERVICE:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Service_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_PC, mSpriteSheetTypes_Service_PC_FrameCounts);
 			return;
 
         default:

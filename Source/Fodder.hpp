@@ -115,6 +115,8 @@ public:
     std::vector<sSprite>    mSprites;
 
     const sSpriteSheet**    mSprite_SheetPtr;
+    const std::size_t*      mSprite_FrameCounts;
+    std::size_t             mSprite_SheetCount;
 
     void                    (cFodder::*mSprite_Function[118])(sSprite* pSprite);
 	std::string				mSprite_Names[118];
@@ -1348,7 +1350,11 @@ public:
     cFodder(std::shared_ptr<cWindow> pWindow);
     virtual         ~cFodder();
 
-    void            SetActiveSpriteSheetPtr(const sSpriteSheet** pSpriteSheet);
+    void            SetActiveSpriteSheetPtr(const sSpriteSheet** pSpriteSheet, const std::size_t* pCounts, std::size_t pSheetCount);
+    template<std::size_t N>
+    void SetActiveSpriteSheetPtr(const sSpriteSheet* (&sheets)[N], const std::size_t (&counts)[N]) {
+        SetActiveSpriteSheetPtr(sheets, counts, N);
+    }
 
     void            String_Input_Print(int16 pPosY);
     void            String_Input_Check();

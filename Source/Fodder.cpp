@@ -204,6 +204,8 @@ cFodder::cFodder(std::shared_ptr<cWindow> pWindow)
     mSurfaceMapLeft = 0;
 
     mSprite_SheetPtr = 0;
+    mSprite_FrameCounts = nullptr;
+    mSprite_SheetCount = 0;
 
     mWindow_Focus = false;
     mWindow_MouseInside = false;
@@ -3177,10 +3179,12 @@ void cFodder::Mission_Set_Initial_Weapon()
     mSquad_CurrentWeapon[mGUI_Loop_Squad_Current] = eWeapon_Grenade;
 }
 
-void cFodder::SetActiveSpriteSheetPtr(const sSpriteSheet **pSpriteSheet)
+void cFodder::SetActiveSpriteSheetPtr(const sSpriteSheet **pSpriteSheet,
+                                    const std::size_t* pCounts, std::size_t pSheetCount)
 {
-
     mSprite_SheetPtr = pSpriteSheet;
+    mSprite_FrameCounts = pCounts;
+    mSprite_SheetCount = pSheetCount;
 }
 
 void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink, cSurface *pSurface, const bool pSkip)

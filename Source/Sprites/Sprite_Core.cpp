@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/SpriteFrameBounds.hpp"
 
 void cFodder::Sprite_Clear_All() {
 	mSprites.resize(mParams->mSpritesMax);
@@ -81,6 +82,11 @@ void cFodder::Sprite_Sort_DrawList() {
 
 void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination) {
     auto SheetData = Sprite_Get_Sheet(pSpriteType, pFrame);
+    if (!SheetData) {
+        // Preserve logical off-screen state when an animation frame is invalid.
+        pDi->mWasDrawn = 0;
+        return;
+    }
 
     mVideo_Draw_PaletteIndex = SheetData->mPalleteIndex & 0xFF;
     mVideo_Draw_FrameDataPtr = SheetData->GetGraphicsPtr();
@@ -589,9 +595,19 @@ loc_2A2F5:;
 }
 
 const sSpriteSheet* cFodder::Sprite_Get_Sheet(int16 pSpriteType, int16 pFrame) {
-    const sSpriteSheet* Sheet = &mSprite_SheetPtr[pSpriteType][pFrame];
-
-    return Sheet;
+    if (!spriteFrameInRange(pSpriteType, pFrame, mSprite_FrameCounts, mSprite_SheetCount) ||
+        !mSprite_SheetPtr || !mSprite_SheetPtr[pSpriteType]) {
+        static std::atomic<unsigned> warnings{0};
+        if (warnings.fetch_add(1) < 24) {
+            const std::size_t available = mSprite_FrameCounts && pSpriteType >= 0 &&
+                static_cast<std::size_t>(pSpriteType) < mSprite_SheetCount
+                ? mSprite_FrameCounts[pSpriteType] : 0;
+            std::cerr << "::warning::Invalid sprite sheet/frame: type=" << pSpriteType
+                      << " frame=" << pFrame << " available=" << available << std::endl;
+        }
+        return nullptr;
+    }
+    return &mSprite_SheetPtr[pSpriteType][pFrame];
 }
 
 void cFodder::Sprite_SetDirectionMod(sSprite* pSprite) {
