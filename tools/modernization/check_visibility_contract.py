@@ -11,7 +11,7 @@ import sys
 EXPECTED = {
     "Source/Sprites.hpp": 1,                    # Declares state
     "Source/Sprites.cpp": 1,                    # Initializes state
-    "Source/Sprites/Sprite_Core.cpp": 2,        # Sole runtime writer
+    "Source/Sprites/Sprite_Core.cpp": 3,        # Writes original 1/0 and invalid-frame off-screen
     "Source/Sprites/Sprite_Civilian.cpp": 4,    # Gameplay decisions
     "Source/Sprites/Sprite_Effects.cpp": 2,     # Effects and map operations
     "Source/Sprites/Sprite_Projectiles.cpp": 1,

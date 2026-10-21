@@ -39,6 +39,8 @@ jobs:
         run: python -m unittest discover -s tools/modernization -v
       - name: H3.6 - verify the legacy visibility contract
         run: python tools/modernization/check_visibility_contract.py
+      - name: H2.3 - verify actual sprite frame metadata
+        run: python tools/modernization/check_sprite_table_lengths.py
       - name: Configure Windows x64
         run: cmake -S . -B build-win -G "Visual Studio 17 2022" -A x64 -DOPENFODDER_ENABLE_FFMPEG=OFF
       - name: Build

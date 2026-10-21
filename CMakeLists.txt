@@ -114,6 +114,8 @@ add_executable(openfodder ${GAMEENGINE_SOURCE} ${GAMEENGINE_HEADERS})
 # Pure arithmetic boundary test: no SDL or game assets needed.
 enable_testing()
 add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
+add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
+add_test(NAME sprite_frame_bounds COMMAND $<TARGET_FILE:openfodder_sprite_frame_tests>)
 add_test(NAME direction_lookup_bounds COMMAND $<TARGET_FILE:openfodder_direction_tests>)
 
 if(WIN32)

@@ -42,6 +42,8 @@ jobs:
           cmake -S SDL_mixer -B SDL_mixer/build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSDLMIXER_VENDORED=OFF -DSDLMIXER_MOD_XMP=ON -DSDLMIXER_MOD_XMP_LITE=OFF -DSDLMIXER_MOD_XMP_SHARED=OFF
           cmake --build SDL_mixer/build
           sudo cmake --install SDL_mixer/build
+      - name: H2.3 - verify actual sprite frame metadata
+        run: python3 tools/modernization/check_sprite_table_lengths.py
       - name: Configure
         run: cmake -S . -B build -G Ninja
       - name: Build
