@@ -46,6 +46,8 @@ jobs:
         run: cmake -S . -B build -G Ninja
       - name: Build
         run: cmake --build build
+      - name: H2.3 - direction lookup boundary tests
+        run: ctest --test-dir build --output-on-failure
       - name: Prepare pinned gameplay fixtures
         run: |
           git submodule update --init --recursive
@@ -76,6 +78,7 @@ jobs:
         run: |
           cmake -S . -B build-h2-asan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined'
           cmake --build build-h2-asan --parallel 2
+          ctest --test-dir build-h2-asan --output-on-failure
           python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
       - name: Upload H3 Linux reference evidence
         if: always()

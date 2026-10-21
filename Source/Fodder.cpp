@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/DirectionLUT.hpp"
 
 #ifdef WIN32
 #include <windows.h>
@@ -2819,48 +2820,16 @@ bool cFodder::Demo_Amiga_ShowMenu()
 
 int16 cFodder::Direction_Between_Points(int16 &pData0, int16 &pData4, int16 &pData8, int16 &pDataC)
 {
-    int16 Data10 = 0, Data14 = 0;
-
-    pData0 -= pData8;
-    pData4 -= pDataC;
-    if (pData0 < 0)
-        Data10 = 1;
-
-    Data10 = -Data10;
-    if (pData0 < 0)
-        pData0 = -pData0;
-
-    if (pData4 < 0)
-        Data14 = 1;
-
-    Data14 = -Data14;
-    if (pData4 < 0)
-        pData4 = -pData4;
-
-    pData8 = 9;
-    do
-    {
-        int32 eax = 1 << pData8;
-
-        if (pData0 & eax)
-            break;
-
-        if (pData4 & eax)
-            break;
-
-    } while (--pData8 >= 0);
-
-    pData8 -= 4;
-    if (pData8 >= 0)
-    {
-        pData0 >>= pData8;
-        pData4 >>= pData8;
-    }
-
-    pData4 <<= 5;
-    pData4 |= pData0;
-    // pData4 <<= 1;
-    pData4 = mMap_DirectionsBetweenPoints[pData4];
+    // Differences may exceed int16 range even when both points are valid.
+    const int32_t dx = int32_t(pData0) - int32_t(pData8);
+    const int32_t dy = int32_t(pData4) - int32_t(pDataC);
+    const int16 Data10 = dx < 0 ? -1 : 0;
+    const int16 Data14 = dy < 0 ? -1 : 0;
+    const DirectionLutSample sample = directionLutNormalize(dx, dy);
+    // Preserve the legacy reference argument values on the valid domain.
+    pData8 = static_cast<int16>(sample.shift);
+    pData0 = static_cast<int16>(sample.x);
+    pData4 = mMap_DirectionsBetweenPoints[sample.index];
     if (pData4 < 0)
         return pData4;
 

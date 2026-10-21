@@ -43,6 +43,8 @@ jobs:
         run: cmake -S . -B build-win -G "Visual Studio 17 2022" -A x64 -DOPENFODDER_ENABLE_FFMPEG=OFF
       - name: Build
         run: cmake --build build-win --config Release --parallel 4
+      - name: H2.3 - direction lookup boundary tests
+        run: ctest --test-dir build-win -C Release --output-on-failure
       - name: Replay all available demos and compare completion outcomes
         run: python tools/modernization/audit_replays.py --exe Run/openfodder.exe --data Run --out reports/windows --timeout 600 --baseline tools/modernization/reference-completion.json
       - name: H3 - compare two real PC Format gameplay traces
