@@ -3062,10 +3062,16 @@ void cFodder::Menu_Loop(const std::function<void()> pButtonHandler)
     mGraphics->PaletteSet();
     mSurface->palette_FadeTowardNew();
 
-    mInterruptCallback = [this]()
     {
-        Mouse_DrawCursor();
-    };
+        // Interrupt_Redraw reads this callback under mSurfaceMtx.
+        // Publish the new function under the same mutex to avoid racing
+        // std::function's internal lifetime during a timer tick.
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mInterruptCallback = [this]()
+        {
+            Mouse_DrawCursor();
+        };
+    }
 
     for (;;)
     {
@@ -3076,7 +3082,10 @@ void cFodder::Menu_Loop(const std::function<void()> pButtonHandler)
             break;
     }
 
-    mInterruptCallback = nullptr;
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mInterruptCallback = nullptr;
+    }
     Image_FadeOut();
     mSurface->clearBuffer();
 }
