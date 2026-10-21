@@ -43,6 +43,10 @@ jobs:
         run: cmake --build build-win --config Release --parallel 4
       - name: Replay all available demos and compare completion outcomes
         run: python tools/modernization/audit_replays.py --exe Run/openfodder.exe --data Run --out reports/windows --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H3 - compare two real PC Format gameplay traces
+        run: python tools/modernization/verify_gameplay_determinism.py --exe Run/openfodder.exe --data Run --campaign "PC Format" --out reports/h3-pc --timeout 600
+      - name: H3 - compare two real Amiga The One gameplay traces
+        run: python tools/modernization/verify_gameplay_determinism.py --exe Run/openfodder.exe --data Run --campaign "Amiga The One" --out reports/h3-amiga --timeout 600
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build
