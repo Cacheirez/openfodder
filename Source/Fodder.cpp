@@ -430,6 +430,10 @@ void cFodder::Phase_Paused()
 
 void cFodder::Phase_Prepare()
 {
+    // The interrupt worker reads/mutates this same phase state under
+    // mSurfaceMtx. Hold it throughout preparation so no timer callback
+    // observes partially installed sprites, input or screen dimensions.
+    std::lock_guard<std::mutex> phaseStateGuard(mSurfaceMtx);
 
     Map_Load();
     Map_Load_Sprites();
