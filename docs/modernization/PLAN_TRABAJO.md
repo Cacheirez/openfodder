@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.1 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.2 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** paquete Windows verificado; pendiente prueba manual de Miguel; gráficos e interpolación todavía no implementados.
+**Estado global:** H1 completado; prueba manual Windows satisfactoria en demo y CD32; gráficos e interpolación todavía no implementados.
 
 ## 1. Objetivo y alcance
 
@@ -27,10 +27,10 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
 | Pruebas focalizadas | 8 pruebas de la herramienta de auditoría; 8 casos de borde de la lectura del mapa |
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
-| Prueba manual Windows | Pendiente |
+| Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes |
-| Tarea activa | **H1.4–H1.5: descarga, arranque y prueba manual de Miguel** |
-| Siguiente intervención de Miguel | Descargar el artefacto OpenFodder-Windows-x64-demos y probar primero una demo |
+| Tarea activa | **H2.1: aislar el fallo de memoria del descompresor RNC** |
+| Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
 
@@ -67,7 +67,7 @@ El estado de Actions es una observación, no un seguimiento permanente. Antes de
 | Hito | Entrega | Depende de | Estado |
 |---|---|---|---|
 | H0 | Auditoría, referencia y repositorio | — | Completado para el alcance inicial |
-| H1 | Primera compilación Windows y arranque verificado | H0 | En curso |
+| H1 | Primera compilación Windows y arranque verificado | H0 | Completado |
 | H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Pendiente |
 | H3 | Comparación reproducible de jugabilidad | H2 | Pendiente |
 | H4 | Dibujo separado de la simulación | H3 | Pendiente |
@@ -93,16 +93,16 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Evidencia:** PR #1, `RESULTADOS.md` y paquete inicial `OpenFodder_Modernizacion_Fase0.zip` entregado en el chat. La cobertura es de demos; no equivale a toda la campaña comercial.
 
-## H1. Primera versión comprobable en Windows — tarea activa
+## H1. Primera versión comprobable en Windows — completado
 
 **Objetivo:** que Miguel pueda ejecutar la base clásica sin tener que compilarla personalmente.
 
 - [x] **H1.1 — Asistente:** consultar el resultado de Actions; si falla, leer el primer error real, corregirlo y repetir solo lo necesario. Si sigue activo, identificar el paso sin declarar éxito anticipado.
 - [x] **H1.2 — Asistente:** verificar compilación x64 y que las 29 fases completan sin omisiones ni diferencias de nombres/resultados frente a la referencia.
 - [x] **H1.3 — Asistente:** verificar el artefacto: ejecutable, DLL, demos, scripts, licencias, instrucciones, `VERSION.txt` y `PRUEBAS.json`; comprobar que no incluye partidas ni datos comerciales.
-- [ ] **H1.4 — Miguel, guiado por el asistente:** descargar, extraer en una carpeta nueva y abrir `INICIAR.cmd`.
-- [ ] **H1.5 — Miguel:** probar cinco minutos: movimiento, disparo, desplazamiento, audio, pausa, Alt+Tab y F11. Comunicar versión, demo y cualquier mensaje literal.
-- [ ] **H1.6 — Asistente:** registrar el resultado manual y corregir los problemas de arranque o empaquetado encontrados.
+- [x] **H1.4 — Miguel, guiado por el asistente:** descargar, extraer en una carpeta nueva y abrir `INICIAR.cmd`.
+- [x] **H1.5 — Miguel:** probar cinco minutos: movimiento, disparo, desplazamiento, audio, pausa, Alt+Tab y F11. Comunicar versión, demo y cualquier mensaje literal.
+- [x] **H1.6 — Asistente:** registrar el resultado manual y corregir los problemas de arranque o empaquetado encontrados.
 
 **Aceptación:** build y replays Windows aprobados, paquete inspeccionado y arranque real confirmado por Miguel. Headless significa «sin ventana»: no sustituye H1.4–H1.5.
 
@@ -256,7 +256,7 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 | ASan, PC Format | 8 fases completadas | Todas las rutas Amiga; estas 8 ya forman parte de las 29 |
 | Actions Windows, ejecución 39489706846 | Compilación aprobada; ZIP inspeccionado; PRUEBAS.json PASS, 29 fases, cero omisiones | Prueba visual/audio en el PC de Miguel o ausencia de fallos de memoria |
 | Datos CD32 recibidos el 21 de octubre | CRC ZIP correcto; 266/266 archivos requeridos con MD5 coincidente; 72 pares MAP/SPT | Campaña completada jugando: intento local omitió 72 fases por falta de replays |
-| Prueba manual de Miguel | Aún no realizada | — |
+| Prueba manual de Miguel, 21 de octubre | Demo funcional; campaña Cannon Fodder reconocida tras añadir Amiga_CD y jugable; responde afirmativamente a todas las comprobaciones solicitadas | No acredita completar las 72 fases, sesiones largas ni ausencia de defectos de memoria |
 
 Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
 
@@ -272,11 +272,11 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 
 1. Leer este archivo en la rama vigente y comprobar si el PR #1 se ha actualizado o fusionado.
 2. Consultar la ejecución Windows asociada al código vigente. Un commit solo de documentación no invalida por sí mismo las pruebas del código anterior.
-3. Si falla, completar H1.1 con el registro exacto. Si pasa, verificar H1.2–H1.3.
-4. Entregar a Miguel el enlace y las instrucciones de H1.4–H1.5 cuando el paquete esté listo.
+3. Continuar H2.1: aislar la lectura fuera de límites en el descompresor RNC.
+4. Preparar una corrección y pruebas de regresión antes de entregar otro paquete.
 5. Actualizar este documento con la evidencia y la nueva tarea activa.
 
-**Primera acción ahora:** Miguel realiza H1.4–H1.5 con una demo. Después copia el contenido de FODDER a Data/Amiga_CD y prueba la primera fase de la campaña comercial.
+**Primera acción ahora:** asistente continúa H2.1. Miguel conserva la instalación validada como referencia; no tiene nuevas tareas obligatorias en este momento.
 
 ### Actualización del 21 de octubre de 2026
 
@@ -284,5 +284,7 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 - VERSION.txt del paquete: `4e7afb99abeda79de044fbf196b667711c4a4687`, revisión de integración usada por Actions para el PR; la rama de origen usa `1c0b42368c5ae44fb462933bde3db520560e231c`.
 - Inspeccionados ejecutable, SDL3.dll, SDL3_mixer.dll, scripts, campañas, siete directorios demo, licencias, lanzador e informe. Sin datos comerciales ni partidas en el ZIP.
 - Datos comerciales CD32 incorporados solamente al entorno local privado de pruebas. H8.1 tiene los datos disponibles; la cobertura completa sigue pendiente.
-- Próxima prueba de Miguel: arrancar demo, comprobar movimiento/disparo/cámara/audio/pausa/F11/Alt+Tab y comunicar VERSION.txt y errores. Después repetir arranque con sus datos CD32.
+- Prueba de Miguel completada: confirma demo funcional y campaña CD32 reconocida y jugable, con todas las comprobaciones solicitadas satisfactorias. No comunica errores. H1.4–H1.6 cerrados por este reporte; no se exige una captura adicional.
+- Se conserva el paquete indicado como referencia de la prueba por continuidad de las instrucciones; Miguel no ha enviado una lectura independiente de VERSION.txt. Duración y demo exacta no detalladas.
+- H2.1 pasa a ser la tarea activa. El fallo RNC sigue pendiente aunque no se haya manifestado en esta prueba manual.
 
