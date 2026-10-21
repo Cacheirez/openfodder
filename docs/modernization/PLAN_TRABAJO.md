@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.7 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.8 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H1 y auditoría H3.1–H3.6 completadas en su alcance demo; 11.361 estados equivalentes Windows/Linux; H2 en estabilización: lector RNC y protección de tablas de sprites validados; ASan del recorrido demo Linux sin nuevos fallos fatales, con 23 avisos UBSan pendientes y LeakSanitizer desactivado. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H1 y auditoría H3.1–H3.6 completadas en el alcance demo; 11.361 estados de referencia equivalentes Windows/Linux. En H2: 29/29 fases públicas sin hallazgos ASan, UBSan, LeakSanitizer ni ThreadSanitizer (Linux, ejecución 39641851896), y regresiones Windows aprobadas (39641852057). Aún faltan H2.1 (atribución histórica del RNC), H2.5 (dependencias y cobertura) y H2.6 (decisión de aceptación). H2.3/H2.4 solo se consideran validados para las rutas ensayadas. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -20,19 +20,19 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `cc5e337ddf8533a1a0377de987948d150760f272` (instrumentación H3; commits siguientes solo documentación) |
-| Compilación Windows observada | [Ejecución 39489706846](https://github.com/Cacheirez/openfodder/actions/runs/39489706846): completada correctamente; paquete inspeccionado |
+| Revisión de código de la propuesta | `93c8aae6c79120071982c39380c517f2ae3142e7` (correcciones H2.3/H2.4 verificadas); HEAD documental/CI más reciente: `d269bc852c204bb28ec10ff7a33cbc7cd19a7caa` |
+| Compilación Windows observada | [Ejecución 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057): compilación, 29 replays y comprobación H3 satisfactorios |
 | Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
 | Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; PRUEBAS.json verificado dentro del ZIP |
 | Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
 | Pruebas focalizadas | 8 pruebas de la herramienta de auditoría; 8 casos de borde de la lectura del mapa |
-| Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
+| Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.3: completar cobertura y detección de fugas**. La ejecución de las 29 fases disponibles pasa ASan/UBSan sin avisos tras corregir alineación, RNG y desplazamientos; H3 sigue intacto en Windows y Linux. H2.1/H2.4 siguen abiertas. |
+| Tarea activa | **H2.5: fijar versiones y matriz de cobertura Windows/Linux/Amiga**, cerrar el inventario de limitaciones y preparar la decisión H2.6. Sin ampliar alcance ni alterar H3. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
-El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
+El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
 
 ## 3. Cómo seguiremos el plan en el chat
 
@@ -80,6 +80,8 @@ El estado de Actions es una observación, no un seguimiento permanente. Antes de
 
 No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimación se revisará al cerrar H2, H5 y H7. No se considerará acabado el proyecto al completar solo la misión de muestra.
 
+**Actualización de control (21-10-2026):** prueba de los 29 replays Linux con ThreadSanitizer y LeakSanitizer validada mediante `report.json` y `engine.log` dentro del ZIP de evidencias; ambos detectores mostraron **cero hallazgos, 29 fases aprobadas, cero omisiones y retorno 0**. La comprobación de LSan ya es obligatoria en CI; TSan todavía conserva `continue-on-error: true`, por lo que debe revisarse el informe hasta endurecer su puerta. La cobertura real de audio SDL, ventanas interactivas y 72 fases CD32 no está demostrada. Se conserva H3 como barrera de regresión.
+
 ## H0. Auditoría y preparación — completado
 
 - [x] **H0.1 — Asistente:** inspeccionar temporización, cámara, superficies, sprites, entrada y pruebas existentes.
@@ -110,13 +112,16 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H2. Estabilización de la base
 
+**Resultado más reciente (21-10-2026):** las 29 fases públicas pasan ASan/UBSan, LeakSanitizer y ThreadSanitizer en [Linux 39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896); también [Windows 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057) pasa compilación, 29 replays y referencia H3. Las pérdidas de `scandir()` y objetos Duktape `cPosition`, y las carreras de temporización/callback/preparación de fase se corrigieron sin rebaselinar H3. Este resultado **complementa y reemplaza operativamente** los diagnósticos históricos de 23/17 avisos que aparecen más abajo. La cobertura solo abarca rutas ejecutadas. Informe detallado: [H2_LEAK_THREAD_DIAGNOSTICOS.md](H2_LEAK_THREAD_DIAGNOSTICOS.md).
+
+
 **Actualización 21-10-2026:** [H2_ESTABILIZACION_2026-10-21.md](H2_ESTABILIZACION_2026-10-21.md). H2.2 dispone de lector RNC acotado: 88 recursos RNC y 1.047 casos inválidos probados con ASan/UBSan en Linux, 29 replays Windows y equivalencia de 11.361 estados previos/posteriores al cambio en ambas plataformas. **H2.3: corregidos los bloqueos de tablas de direcciones y fotogramas; la nueva ejecución ASan Linux llega a 29 fases, pero hay 23 avisos UBSan pendientes. Consultar [informe de protección de fotogramas](H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md).** La atribución del recurso mínimo del fallo original (H2.1), ASan del motor completo (H2.3), sincronización integral (H2.4) y aceptación H2.6 quedan abiertos.
 
 
 - [ ] **H2.1 — Asistente:** aislar el acceso fuera de límites en `Source/Amiga/dernc.cpp`, con un recurso mínimo que lo reproduzca y longitudes de entrada/salida identificadas.
 - [x] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
-- [ ] **H2.3 — Asistente:** repetir los replays relevantes y el recorrido completo disponible con AddressSanitizer; registrar cualquier siguiente defecto y distinguirlo del parche.
-- [ ] **H2.4 — Asistente:** revisar sincronización y propiedad de los datos que tocaremos al separar el renderizado. Investigar indicios concretos de carreras, sin dar por demostrado un fallo solo por ver `volatile`.
+- [x] **H2.3 — Asistente:** ejecutar ASan/UBSan y LeakSanitizer sobre los 29 replays públicos con cero hallazgos. **Alcance demo cerrado; campañas privadas y flujos interactivos no cubiertos.**
+- [x] **H2.4 — Asistente:** proteger música Amiga, callback, temporización y transiciones de fase; confirmar ThreadSanitizer sin carreras en 29/29 replays públicos y H3 inalterado. **Auditoría demo terminada; todavía no implica cobertura general de audio real, ventanas, menús ni H4.**
 - [ ] **H2.5 — Asistente:** confirmar referencias por plataforma y versiones de dependencias. Documentar diferencias inevitables y cobertura ausente.
 - [ ] **H2.6 — Asistente / Miguel:** revisar la base candidata y decidir su integración como punto de partida estable; conservar la referencia original recuperable.
 
@@ -295,16 +300,17 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 | 2026-10-21 | H2.3: metadatos de tamaños de sprites + acceso acotado | Linux: 29 fases ASan sin fatal; UBSan 23 avisos pendientes. Windows CI pendiente en aquel corte; detalles H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md |
 | 2026-10-21 | H2.3: índice plano de seguidores y tablas Huffman segmentadas, 1.077 tests de límites | Linux y Windows: 29 fases, H3 11.361 estados intactos, 6 avisos de índice eliminados; 17 UBSan no relacionados pendientes; informe H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md |
 | 2026-10-21 | H2.3: endian seguro, RNG idéntico y corrección de desplazamientos negativos | 29/29 fases, 0 ASan y 0 UBSan Linux, baseline H3 inalterado Linux y Windows; 262.144 RNG, 262.144 endian y 196.706 test de bits; compuerta CI estricta. H2.3 cobertura global pendiente. |
+| 2026-10-21 | H2.3/H2.4: LSan/TSan y mutex de audio/transición | Linux 39641851896: 29/29 ASan/UBSan, 29/29 LSan y 29/29 TSan, cero avisos; Windows 39641852057 y H3 11.361 muestras PASS. Siguiente paso H2.5 y decisión H2.6. |
 
-**Checklist para retomar:**
+**Checklist para retomar (versión 1.8):**
 
-1. Leer este archivo en la rama vigente y comprobar si el PR #1 se ha actualizado o fusionado.
-2. Consultar la ejecución Windows asociada al código vigente. Un commit solo de documentación no invalida por sí mismo las pruebas del código anterior.
-3. Continuar H2.1: aislar la lectura fuera de límites en el descompresor RNC.
-4. Preparar una corrección y pruebas de regresión antes de entregar otro paquete.
-5. Actualizar este documento con la evidencia y la nueva tarea activa.
+1. Confirmar HEAD de PR #1 y los últimos resultados de Windows/Linux; el PR debe seguir en borrador.
+2. **H2.5:** inventariar y fijar versiones SDL3, SDL3_mixer, compiladores, submódulos y recursos; completar matriz de cobertura por plataforma, modo de juego, audio y campañas.
+3. Endurecer ThreadSanitizer en CI al comprobar la batería 29/29; mantener las pruebas H3 como puerta obligatoria.
+4. **H2.1:** documentar la limitación del caso mínimo RNC original, o delimitar explícitamente el riesgo residual del API heredada antes de aceptar H2.6.
+5. **H2.6:** producir la ficha de aceptación de base clásica con evidencias, límites y una decisión expresa antes de iniciar H4.
 
-**Primera acción tras este corte:** completar H3.6 y continuar H2.1 sin dar por estabilizado el descompresor. Miguel conserva la instalación validada; no tiene tareas obligatorias ahora.
+**Primera acción del siguiente bloque:** H2.5 y ficha de aceptación H2.6. H4 no está iniciado. No subir recursos CD32 privados a GitHub.
 
 ### Actualización del 21 de octubre de 2026
 
