@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.0 · **Actualización:** 20 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.1 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** base de Windows en preparación; gráficos e interpolación todavía no implementados.
+**Estado global:** paquete Windows verificado; pendiente prueba manual de Miguel; gráficos e interpolación todavía no implementados.
 
 ## 1. Objetivo y alcance
 
@@ -15,22 +15,22 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 
 ## 2. Panel de situación
 
-| Campo | Estado al crear este plan |
+| Campo | Estado comprobado el 21 de octubre de 2026 |
 |---|---|
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
 | Revisión de código de la propuesta | `1c0b42368c5ae44fb462933bde3db520560e231c` |
-| Compilación Windows observada | [Ejecución 39489706846](https://github.com/Cacheirez/openfodder/actions/runs/39489706846): en curso, compilando el ejecutable; configuración completada |
+| Compilación Windows observada | [Ejecución 39489706846](https://github.com/Cacheirez/openfodder/actions/runs/39489706846): completada correctamente; paquete inspeccionado |
 | Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
-| Ejecutable Windows y 29 replays | Pendientes de verificar; no dar por aprobados |
+| Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; PRUEBAS.json verificado dentro del ZIP |
 | Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
 | Pruebas focalizadas | 8 pruebas de la herramienta de auditoría; 8 casos de borde de la lectura del mapa |
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
 | Prueba manual Windows | Pendiente |
 | Gráficos nuevos / scroll nuevo | Pendientes |
-| Tarea activa | **H1.1: resolver la compilación y las pruebas Windows** |
-| Siguiente intervención de Miguel | Probar el paquete cuando exista un resultado Windows aprobado |
+| Tarea activa | **H1.4–H1.5: descarga, arranque y prueba manual de Miguel** |
+| Siguiente intervención de Miguel | Descargar el artefacto OpenFodder-Windows-x64-demos y probar primero una demo |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
 
@@ -97,9 +97,9 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Objetivo:** que Miguel pueda ejecutar la base clásica sin tener que compilarla personalmente.
 
-- [ ] **H1.1 — Asistente:** consultar el resultado de Actions; si falla, leer el primer error real, corregirlo y repetir solo lo necesario. Si sigue activo, identificar el paso sin declarar éxito anticipado.
-- [ ] **H1.2 — Asistente:** verificar compilación x64 y que las 29 fases completan sin omisiones ni diferencias de nombres/resultados frente a la referencia.
-- [ ] **H1.3 — Asistente:** verificar el artefacto: ejecutable, DLL, demos, scripts, licencias, instrucciones, `VERSION.txt` y `PRUEBAS.json`; comprobar que no incluye partidas ni datos comerciales.
+- [x] **H1.1 — Asistente:** consultar el resultado de Actions; si falla, leer el primer error real, corregirlo y repetir solo lo necesario. Si sigue activo, identificar el paso sin declarar éxito anticipado.
+- [x] **H1.2 — Asistente:** verificar compilación x64 y que las 29 fases completan sin omisiones ni diferencias de nombres/resultados frente a la referencia.
+- [x] **H1.3 — Asistente:** verificar el artefacto: ejecutable, DLL, demos, scripts, licencias, instrucciones, `VERSION.txt` y `PRUEBAS.json`; comprobar que no incluye partidas ni datos comerciales.
 - [ ] **H1.4 — Miguel, guiado por el asistente:** descargar, extraer en una carpeta nueva y abrir `INICIAR.cmd`.
 - [ ] **H1.5 — Miguel:** probar cinco minutos: movimiento, disparo, desplazamiento, audio, pausa, Alt+Tab y F11. Comunicar versión, demo y cualquier mensaje literal.
 - [ ] **H1.6 — Asistente:** registrar el resultado manual y corregir los problemas de arranque o empaquetado encontrados.
@@ -242,7 +242,7 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 | R4 | Diferencias entre plataformas o ejecuciones | Establecer determinismo antes de usar hashes como garantía |
 | R5 | Arte inconsistente o incompleto | Muestra dentro del juego antes de producción masiva; matriz de recursos |
 | R6 | Ampliar la vista cambia dificultad/comportamiento | Mantener área lógica original en la primera versión |
-| R7 | Falta de datos para campaña completa | Empezar con demos; acordar datos y cobertura en H8.1 |
+| R7 | Cobertura de pruebas de campaña completa | Datos CD32 recibidos y verificados; faltan replays de sus 72 fases |
 | R8 | CI verde interpretada como validación total | Separar pruebas lógicas, memoria, gráficos, audio y prueba manual |
 
 ## 8. Registro de evidencias
@@ -254,7 +254,8 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 | Casos de borde de mapa | 8 casos sobre el cuerpo real con ASan/UBSan | Ausencia de fallos en otros componentes |
 | ASan completo tras parche | 11 fases antes del fallo RNC | Suite de memoria aprobada |
 | ASan, PC Format | 8 fases completadas | Todas las rutas Amiga; estas 8 ya forman parte de las 29 |
-| Actions Windows, consulta de este plan | Preparación, pruebas de herramienta y configuración aprobadas; compilación en curso | Compilación terminada, replays Windows o paquete disponible |
+| Actions Windows, ejecución 39489706846 | Compilación aprobada; ZIP inspeccionado; PRUEBAS.json PASS, 29 fases, cero omisiones | Prueba visual/audio en el PC de Miguel o ausencia de fallos de memoria |
+| Datos CD32 recibidos el 21 de octubre | CRC ZIP correcto; 266/266 archivos requeridos con MD5 coincidente; 72 pares MAP/SPT | Campaña completada jugando: intento local omitió 72 fases por falta de replays |
 | Prueba manual de Miguel | Aún no realizada | — |
 
 Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
@@ -275,4 +276,13 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 4. Entregar a Miguel el enlace y las instrucciones de H1.4–H1.5 cuando el paquete esté listo.
 5. Actualizar este documento con la evidencia y la nueva tarea activa.
 
-**Primera acción ahora:** revisar la compilación Windows; no empezar todavía a sustituir gráficos.
+**Primera acción ahora:** Miguel realiza H1.4–H1.5 con una demo. Después copia el contenido de FODDER a Data/Amiga_CD y prueba la primera fase de la campaña comercial.
+
+### Actualización del 21 de octubre de 2026
+
+- H1.1–H1.3 completados. Artefacto: https://github.com/Cacheirez/openfodder/actions/runs/39489706846/artifacts/12294654792 . SHA256: `caf4eeaedd1ae857295230a099ecdcb78d99b4749a7a6ceca1a76d6896f22207`.
+- VERSION.txt del paquete: `4e7afb99abeda79de044fbf196b667711c4a4687`, revisión de integración usada por Actions para el PR; la rama de origen usa `1c0b42368c5ae44fb462933bde3db520560e231c`.
+- Inspeccionados ejecutable, SDL3.dll, SDL3_mixer.dll, scripts, campañas, siete directorios demo, licencias, lanzador e informe. Sin datos comerciales ni partidas en el ZIP.
+- Datos comerciales CD32 incorporados solamente al entorno local privado de pruebas. H8.1 tiene los datos disponibles; la cobertura completa sigue pendiente.
+- Próxima prueba de Miguel: arrancar demo, comprobar movimiento/disparo/cámara/audio/pausa/F11/Alt+Tab y comunicar VERSION.txt y errores. Después repetir arranque con sus datos CD32.
+
