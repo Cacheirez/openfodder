@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.3: investigar el nuevo fallo ASan en `Direction_Between_Points` (Fodder.cpp:2863)**; revisar avisos UBSan por separado. H2.1 mantiene pendiente la atribución del recurso RNC inicial |
+| Tarea activa | **H2.3: analizar el siguiente fallo ASan en `Sprite_Draw_Frame` (Sprite_Core.cpp:85)**. La tabla de direcciones se corrigió y se validaron los límites; no declarar H2.3 cerrada. Revisar UBSan por separado y conservar H2.1 pendiente. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
@@ -272,6 +272,8 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 
 Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
 
+**Seguimiento H2.3, corrección de direcciones (21-10-2026):** [H2_3_CORRECCION_DIRECCIONES_2026-10-21.md](H2_3_CORRECCION_DIRECCIONES_2026-10-21.md). La tabla 32×32 ya se consulta con un índice físicamente válido. 1.063.217 casos de aritmética de índices superan las pruebas aisladas; Linux (CTests y RNC) y Windows (compilación, CTests y 29 replays) conservan el baseline H3 de 11.361 estados. La suite ASan del motor completo vuelve a registrar **FAIL tras 11 fases**, ahora por una lectura en `Sprite_Draw_Frame` (`Source/Sprites/Sprite_Core.cpp:85`) de datos de animación Amiga. El primer error anterior de direcciones no vuelve a aparecer en este registro. `continue-on-error: true` en H2.3 hace que el workflow no falle; consultar siempre su `report.json`.
+
 **Diagnóstico adicional H2.3 (21-10-2026):** [H2_3_DIAGNOSTICO_ASAN_2026-10-21.md](H2_3_DIAGNOSTICO_ASAN_2026-10-21.md). El workflow Linux aparece verde, pero la etapa ASan del motor completo está en `continue-on-error` y su propio informe registra `FAIL`. No aceptar H2.3 hasta corregir y repetir la suite.
 
 ## 9. Bitácora y siguiente sesión
@@ -283,6 +285,7 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 | 2026-10-20 | Creación de este plan v1.0 | Tarea activa H1.1; consultar resultado Windows y actuar según el primer fallo o éxito |
 | 2026-10-21 | H3.1–H3.5: emisor, comparador, 2 pasadas por campaña en Windows/Linux | 11.361 muestras idénticas por plataforma y entre plataformas; H3.6 auditada posteriormente; detalles en H3_VALIDACION_2026-10-21.md |
 | 2026-10-21 | H3.6 cerrada; H2.2 lector acotado y pruebas | RNC validado Linux/Windows; H2.1/H2.3/H2.4 pendientes; ver H2_ESTABILIZACION_2026-10-21.md |
+| 2026-10-21 | H2.3: índice seguro de tabla de direcciones, regresión y ASan/UBSan | Direcciones verificadas; siguiente fallo ASan en Sprite_Core.cpp:85. H2.3 sigue abierta; ver H2_3_CORRECCION_DIRECCIONES_2026-10-21.md |
 
 **Checklist para retomar:**
 
