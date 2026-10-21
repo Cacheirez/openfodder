@@ -82,6 +82,8 @@ jobs:
           cmake --build build-h2-asan --parallel 2
           ctest --test-dir build-h2-asan --output-on-failure
           python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H2.3 - enforce sanitized replay and index bounds gate
+        run: python3 tools/modernization/check_ubsan_indices.py --report reports/h2-engine-asan/report.json --log reports/h2-engine-asan/engine.log
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4

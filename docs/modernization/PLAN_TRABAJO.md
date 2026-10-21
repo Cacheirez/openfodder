@@ -1,6 +1,6 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.5 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 1.6 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
 **Estado global:** H1 y auditoría H3.1–H3.6 completadas en su alcance demo; 11.361 estados equivalentes Windows/Linux; H2 en estabilización: lector RNC y protección de tablas de sprites validados; ASan del recorrido demo Linux sin nuevos fallos fatales, con 23 avisos UBSan pendientes y LeakSanitizer desactivado. Sin gráficos HD ni scroll nuevo.
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Primer fallo corregido experimentalmente; otro fallo de lectura RNC en recursos Amiga pendiente |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.3: investigar los 23 avisos UBSan del motor completo**, especialmente índices fuera de rango de sprites y recursos PC. La protección de fotogramas supera los 29 replays bajo ASan, pero H2.3 sigue abierta. Windows de la revisión vigente aún pendiente de CI. |
+| Tarea activa | **H2.3: tratar 15 desplazamientos negativos y 2 lecturas desalineadas (UBSan)**; los seis avisos de índices en sprites/Huffman ya están resueltos y verificados en 29 fases bajo ASan, con H3 intacto en Windows y Linux. H2.1/H2.4 siguen abiertas. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de continuar H1.1 consultar de nuevo esa ejecución y cualquier ejecución posterior. No confundir el commit de documentación de este plan con una nueva revisión del código del juego.
@@ -272,6 +272,8 @@ Ninguna decisión artística es necesaria para resolver ahora la compilación Wi
 
 Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
 
+**Seguimiento H2.3, índices de sprites y Huffman (21-10-2026):** [H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md](H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md). Linux: 29/29 fases con ASan, **0 errores fatales, 0 índices UBSan** (antes 6); 17 avisos UBSan adicionales pendientes. Windows: compilación, 29 replays y baseline H3 PASS. La primera tentativa con arrays físicos mayores rompió la decodificación y se revirtió; el resultado final preserva el mapeo de tablas heredado. Se incorpora un nuevo gate de CI para impedir que reaparezcan índices fuera de rango.
+
 **Seguimiento H2.3, protección de fotogramas (21-10-2026):** [H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md](H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md). Nuevas longitudes de animación de origen: 15 tablas (1.309 entradas) y protección de tipo/fotograma. La compilación Linux, pruebas de límites, auditoría RNC y baseline H3 (11.361 estados) pasan; **la prueba completa ASan Linux termina 29/29 fases, sin fatal**, pero UBSan informa 23 condiciones indefinidas (6 índices, 15 desplazamientos y 2 accesos desalineados). Este resultado **no** cierra H2.3. Windows CI está en cola a la fecha de esta revisión.
 
 **Seguimiento H2.3, corrección de direcciones (21-10-2026):** [H2_3_CORRECCION_DIRECCIONES_2026-10-21.md](H2_3_CORRECCION_DIRECCIONES_2026-10-21.md). La tabla 32×32 ya se consulta con un índice físicamente válido. 1.063.217 casos de aritmética de índices superan las pruebas aisladas; Linux (CTests y RNC) y Windows (compilación, CTests y 29 replays) conservan el baseline H3 de 11.361 estados. La suite ASan del motor completo vuelve a registrar **FAIL tras 11 fases**, ahora por una lectura en `Sprite_Draw_Frame` (`Source/Sprites/Sprite_Core.cpp:85`) de datos de animación Amiga. El primer error anterior de direcciones no vuelve a aparecer en este registro. `continue-on-error: true` en H2.3 hace que el workflow no falle; consultar siempre su `report.json`.
@@ -288,7 +290,8 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 | 2026-10-21 | H3.1–H3.5: emisor, comparador, 2 pasadas por campaña en Windows/Linux | 11.361 muestras idénticas por plataforma y entre plataformas; H3.6 auditada posteriormente; detalles en H3_VALIDACION_2026-10-21.md |
 | 2026-10-21 | H3.6 cerrada; H2.2 lector acotado y pruebas | RNC validado Linux/Windows; H2.1/H2.3/H2.4 pendientes; ver H2_ESTABILIZACION_2026-10-21.md |
 | 2026-10-21 | H2.3: índice seguro de tabla de direcciones, regresión y ASan/UBSan | Direcciones verificadas; siguiente fallo ASan en Sprite_Core.cpp:85. H2.3 sigue abierta; ver H2_3_CORRECCION_DIRECCIONES_2026-10-21.md |
-| 2026-10-21 | H2.3: metadatos de tamaños de sprites + acceso acotado | Linux: 29 fases ASan sin fatal; UBSan 23 avisos pendientes. Windows CI pendiente; detalles H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md |
+| 2026-10-21 | H2.3: metadatos de tamaños de sprites + acceso acotado | Linux: 29 fases ASan sin fatal; UBSan 23 avisos pendientes. Windows CI pendiente en aquel corte; detalles H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md |
+| 2026-10-21 | H2.3: índice plano de seguidores y tablas Huffman segmentadas, 1.077 tests de límites | Linux y Windows: 29 fases, H3 11.361 estados intactos, 6 avisos de índice eliminados; 17 UBSan no relacionados pendientes; informe H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md |
 
 **Checklist para retomar:**
 
