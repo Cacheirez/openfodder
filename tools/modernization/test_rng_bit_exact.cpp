@@ -28,7 +28,8 @@ int main() {
             z = 1664525u*z + 1013904223u;
             return fromBits(static_cast<std::uint16_t>(z >> 16));
         };
-        random.setSeed(next(),next(),next(),next());
+        const int16 s0=next(), s1=next(), s2=next(), s3=next();
+        random.setSeed(s0,s1,s2,s3);
         for(int step=0;step<512;++step) {
             const int16 value = random.get();
             int16 a,b,c,d;
