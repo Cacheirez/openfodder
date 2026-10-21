@@ -430,11 +430,8 @@ void cFodder::Phase_Paused()
 
 void cFodder::Phase_Prepare()
 {
-    // The interrupt worker reads/mutates this same phase state under
-    // mSurfaceMtx. Hold it throughout preparation so no timer callback
-    // observes partially installed sprites, input or screen dimensions.
-    std::lock_guard<std::mutex> phaseStateGuard(mSurfaceMtx);
-
+    // Preserve classic interrupt timing during resource/phase setup.
+    // Protect only shared-state handoffs, not the entire preparation.
     Map_Load();
     Map_Load_Sprites();
     Map_Overview_Prepare();
@@ -453,7 +450,10 @@ void cFodder::Phase_Prepare()
     MapTiles_ResetScrollState();
     Camera_Reset();
 
-    Mouse_ReadInputs();
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        Mouse_ReadInputs();
+    }
     Sprite_Frame_Modifier_Update();
 
     mSound->Stop();
@@ -468,9 +468,12 @@ void cFodder::Phase_Prepare()
     Sprite_Handle_Loop();
     Sprite_Create_Rank();
 
-    mCamera_Start_Adjust = true;
-    mCamera_StartPosition_X = mSprites[0].mPosX;
-    mCamera_StartPosition_Y = mSprites[0].mPosY;
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mCamera_Start_Adjust = true;
+        mCamera_StartPosition_X = mSprites[0].mPosX;
+        mCamera_StartPosition_Y = mSprites[0].mPosY;
+    }
 
     Music_Play_Tileset();
     word_82176 = 0;
@@ -479,8 +482,10 @@ void cFodder::Phase_Prepare()
     {
         if (mMapLoaded->getWidth() == 17)
         {
-            if (mMapLoaded->getHeight() == 12)
+            if (mMapLoaded->getHeight() == 12) {
+                std::lock_guard<std::mutex> lock(mSurfaceMtx);
                 mPhase_MapIs17x12 = -1;
+            }
         }
     }
 
@@ -502,17 +507,17 @@ void cFodder::Phase_Prepare()
     Sprite_Count_HelicopterCallPads();
     Mission_Set_Final_TimeRemaining();
 
-    mMouseSpriteNew = eSprite_pStuff_Mouse_Cursor;
-
-    mPhase_Aborted = false;
-    mPhase_Paused = false;
-    mPhase_In_Progress = true;
-    mPhase_EscapeKeyAbort = false;
-
-    mPhase_Finished = false;
-    mPhase_ShowMapOverview = 0;
-
-    Window_UpdateScreenSize();
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mMouseSpriteNew = eSprite_pStuff_Mouse_Cursor;
+        mPhase_Aborted = false;
+        mPhase_Paused = false;
+        mPhase_In_Progress = true;
+        mPhase_EscapeKeyAbort = false;
+        mPhase_Finished = false;
+        mPhase_ShowMapOverview = 0;
+        Window_UpdateScreenSize();
+    }
 
     mSurface->Save();
 }
