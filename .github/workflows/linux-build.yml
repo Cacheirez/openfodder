@@ -83,6 +83,27 @@ jobs:
           python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
       - name: H2.3 - enforce zero ASan and UBSan findings
         run: python3 tools/modernization/check_ubsan_indices.py --report reports/h2-engine-asan/report.json --log reports/h2-engine-asan/engine.log
+      # These diagnostic runs remain non-blocking until their sanitizer
+      # runtime and findings have been inspected. Workflow green != diagnostic PASS.
+      - name: H2.3 - LeakSanitizer diagnostic for all available demos
+        continue-on-error: true
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23:report_objects=1
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-leaksan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H2.4 - ThreadSanitizer diagnostic for PC Format
+        continue-on-error: true
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+        run: |
+          cmake -S . -B build-h2-tsan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread'
+          cmake --build build-h2-tsan --parallel 2
+          python3 tools/modernization/audit_replays.py --exe build-h2-tsan/openfodder --data Run --campaign "PC Format" --out reports/h2-threadsan --timeout 600
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -92,6 +113,8 @@ jobs:
             reports/h3-linux-*/
             reports/h2-rnc/report.json
             reports/h2-engine-asan/
+            reports/h2-leaksan/
+            reports/h2-threadsan/
           if-no-files-found: warn
           retention-days: 30
       - name: Package
