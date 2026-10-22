@@ -162,3 +162,44 @@ CI de esta revisión: Linux [39817991165](https://github.com/Cacheirez/openfodde
 - ZIP de evidencia descargados, CRC e informes internos comprobados. SHA-256 Windows: `2f642a0c5180f32582e0fdf98ce3602ceadd5da0cd91cc79917e525b6e95b0f3`; Linux: `35157ec615e25c54f4bb9848a73c0c96982449aaa8d6e754df4ef464efd5356b`.
 
 **Decisión:** encapsulación de preparación/recorte aceptada dentro de la cobertura descrita. H4.1 sigue abierta para el rasterizador y los efectos restantes. PR #1 abierto en borrador, sin fusionar; baseline clásica conservada en `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
+
+## 8. Rasterizador con datos explícitos — 22-10-2026
+
+Revisión de código: `691cb0dedd657cd99cab165cbce7ff26fa2bd537`.
+
+`Source/Utils/SpriteRaster.hpp` contiene `RasterizeSprite8`: recibe `SpriteDrawState`, `SpriteRasterLayout` (formato y dimensiones/planos de la imagen Amiga), `SpriteRasterTarget` (buffer y ancho del destino) y, opcionalmente, la paleta por fila de PC. Su única escritura es sobre los píxeles del destino. No conoce cFodder, cGraphics, cSurface, la ventana ni el sprite; conserva los bucles originales de píxeles, transparencia y paletas. Amiga sigue ignorando la paleta por fila como antes.
+
+La ruta de sprites pasa el resultado de `Sprite_PrepareLegacyFrame` directamente a `Video_Draw_8_Prepared`: ya no reconstruye geometría, fuente y paleta desde registros del motor para rasterizar. Las demás llamadas a `Video_Draw_8` usan una entrada de compatibilidad que captura los registros existentes. Los backends PC y Amiga suministran la descripción gráfica explícita mediante `GetSpriteRasterLayout`; Amiga2 hereda la ruta Amiga como antes.
+
+### Efectos clásicos conservados
+
+El rasterizador anterior cambiaba tres registros del motor antes de pintar: el número de columnas transformado para su formato, el salto de fuente por fila y el salto de destino. `PrepareSpriteRasterRegisters` calcula esos valores sin escribir en el motor; el coordinador `Video_Draw_8_Prepared` los publica inmediatamente antes de llamar al núcleo. Se mantienen valores, guard de vídeo y orden respecto al dibujo. La preparación sigue actualizando visibilidad en el punto original, incluso con vídeo desactivado.
+
+Por tanto, `Video_Draw_8_Prepared` **sigue siendo un adaptador con estado**. La API reutilizable sin escrituras en el motor es `RasterizeSprite8`, con entradas y destino explícitos. No se debe usar el coordinador clásico para aumentar la frecuencia de presentación.
+
+### Pruebas y cobertura
+
+- Nueva compuerta Linux `check_sprite_raster_equivalence.py`: extrae los cuerpos PC/Amiga originales y DrawPixels_8 de `77dac541`, y los coordinadores actuales, y los compila con ASan/UBSan.
+- **29.160 casos**: formatos PC/Amiga8, 1/4/5/8 planos Amiga, anchos de destino 352/672 y fuente Amiga 320/640, posiciones, tamaños, offsets, fuentes transparentes/opacas/mixtas y paletas por fila. Compara el buffer completo, incluidos márgenes, y los registros finales del adaptador.
+- Repite el núcleo tres veces por caso y comprueba igualdad de píxeles y conservación de fuente, descripción gráfica y datos de dibujo. Para la ruta preparada, altera los registros de fuente/posición/filas/paleta del motor antes de llamarla: el resultado sigue procediendo de las entradas explícitas.
+- Compilación Release local; 6/6 CTests, 13 tests Python, contrato de visibilidad y 306.432 casos de recorte aprobados.
+- H3 local: PC Format 7.956 estados + Amiga The One 3.405, dos pasadas por campaña; **11.361 estados coincidentes con la referencia original**. Replays: **29/29**, cero omisiones y retorno 0.
+
+### Límites y siguiente trabajo
+
+El núcleo requiere geometría previamente recortada y buffers válidos con extensión suficiente. Los recursos son prestados, de solo lectura, y deben seguir vivos durante el uso; el destino debe ser independiente de las entradas. El ancho entre planos Amiga conserva el cálculo histórico `altura × 40`, sin reinterpretar formatos en este refactor.
+
+H3 y los replays del motor se ejecutan con vídeo desactivado; verifican simulación, no imágenes renderizadas. La equivalencia de píxeles corresponde a los casos sintéticos del núcleo aislado.
+
+Esta extracción cubre Video_Draw_8 PC/Amiga. Video_Draw_16, Video_Draw_8_Alt y otras rutas de HUD, mapas y presentación siguen fuera de este núcleo. Las pruebas de repetición demuestran el comportamiento del núcleo aislado, no el frame completo ni la seguridad de publicación entre hilos. No se afirma equivalencia visual de toda la campaña CD32 ni cobertura de editor/bot.
+
+Siguiente bloque: inventariar los recursos y rutas restantes para construir un estado de presentación con vida útil controlada y probar 0/1/N presentaciones por tick. H4.1 continúa; no se introducen gráficos HD ni cambios de frecuencia, PR sin fusionar y baseline clásica intacta.
+
+### Evidencia CI final de 691cb0de
+
+- [Windows 39820699876](https://github.com/Cacheirez/openfodder/actions/runs/39820699876) y [Linux 39820699877](https://github.com/Cacheirez/openfodder/actions/runs/39820699877): ambos completados con éxito.
+- Windows: compilación, CTests y replays 29/29, cero omisiones, retorno 0. H3 en ambas plataformas: PC 7.956 + Amiga 3.405 estados; **11.361 estados coincidentes con el baseline original**, además de dos pasadas idénticas por campaña.
+- Linux: pruebas focalizadas de 29.160 casos de rasterización, 306.432 de recorte y 184.320 transiciones del temporizador aprobadas. ASan/UBSan, LSan y TSan del motor: cada informe PASS, 29 fases, cero omisiones, retorno 0 y razones vacías; sin diagnósticos en los engine.log examinados.
+- ZIP descargados, CRC e informes internos comprobados. SHA-256 Windows: `e5a69bb6791fa9d87871266ffccc3408e0e36eef7202f031e1da9b41dbb80712`; Linux: `f7343ffad6f2b436dd078bb0b50c12cab65c9050bf328a7bd4318d6431e52b0e`.
+
+**Decisión:** rasterizador PC/Amiga de esta ruta aceptado dentro de la cobertura descrita. Se mantiene H4.1 en curso por las rutas restantes y el estado de presentación. Base clásica conservada en `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; PR abierto en borrador, sin fusionar.

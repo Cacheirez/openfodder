@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.4 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.5 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: extracción de efectos y preparación/recorte por valor implementados en `73de45a`. H3 local conserva los 11.361 estados y pasan 29 replays; CI Windows/Linux aprobada: H3 intacto y sanitizadores Linux sin hallazgos en la cobertura ejercitada. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: rasterizador PC/Amiga con entradas explícitas en `691cb0de`; 29.160 casos equivalentes a nivel de píxel y registros. H3 local conserva los 11.361 estados y pasan 29 replays. CI Windows/Linux aprobada, con H3 original intacto y sanitizadores sin hallazgos en las rutas ejercitadas. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -20,16 +20,16 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `73de45aa12542c33e72a79fcbf2e10c0a5526d37`: preparación y recorte por valor |
-| Compilación Windows observada | [39817991168](https://github.com/Cacheirez/openfodder/actions/runs/39817991168): compilación, CTests, 29 replays y H3 aprobados |
+| Revisión de código de la propuesta | `691cb0dedd657cd99cab165cbce7ff26fa2bd537`: rasterizador con entradas explícitas |
+| Compilación Windows observada | [39820699876](https://github.com/Cacheirez/openfodder/actions/runs/39820699876): compilación, CTests, 29 replays y H3 aprobados |
 | Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
 | Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; PRUEBAS.json verificado dentro del ZIP |
 | Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
-| Pruebas focalizadas | 306.432 casos de recorte PC/Amiga; 184.320 transiciones del temporizador comercial; pruebas anteriores conservadas |
-| Memoria | CI Linux [39817991165](https://github.com/Cacheirez/openfodder/actions/runs/39817991165): 29/29 ASan/UBSan, LSan y TSan sin hallazgos en los informes revisados; no cubre toda CD32, audio real ni todas las pantallas |
+| Pruebas focalizadas | 29.160 casos de rasterización PC/Amiga; 306.432 casos de recorte PC/Amiga; 184.320 transiciones del temporizador comercial; pruebas anteriores conservadas |
+| Memoria | CI Linux [39820699877](https://github.com/Cacheirez/openfodder/actions/runs/39820699877): 29/29 ASan/UBSan, LSan y TSan sin hallazgos en los informes revisados; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: adaptar el rasterizador a los datos de dibujo explícitos y revisar efectos restantes**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
+| Tarea activa | **H4.1: revisar recursos y rutas restantes para construir el estado de presentación**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -374,3 +374,9 @@ H4.1 permanece en curso por los registros de dibujo/efectos restantes. Siguiente
 Código `73de45aa12542c33e72a79fcbf2e10c0a5526d37`: entradas y resultados propios en SpriteDrawState.hpp, cálculos puros y adaptación a los registros clásicos en el mismo punto de ejecución. 306.432 casos PC/Amiga equivalentes al código anterior, 6 CTests y 13 tests Python aprobados localmente. H3 original: 11.361 estados conservados; 29 replays aprobados sin omisiones. CI Windows 39817991168 y Linux 39817991165 aprobadas: H3 original intacto en ambas plataformas, 29/29 replays Windows y 29/29 en cada sanitizador Linux, sin diagnósticos observados. ZIP e informes internos comprobados. Detalles y límites en [H4_1_EFECTOS_DIBUJO.md, sección 7](H4_1_EFECTOS_DIBUJO.md#7-preparación-y-recorte-por-valor--22-10-2026).
 
 Siguiente trabajo: adaptar el rasterizador para consumir estos datos explícitamente. El adaptador clásico todavía escribe en el motor y los recursos son prestados; no se declara seguro dibujar el frame completo 0/1/N veces ni publicar snapshots entre hilos. H4.1 sigue abierta, PR sin fusionar y baseline clásica intacta.
+
+## Rasterizador con entradas explícitas — 22 de octubre de 2026
+
+Código `691cb0dedd657cd99cab165cbce7ff26fa2bd537`: núcleo RasterizeSprite8 PC/Amiga que escribe únicamente píxeles en el destino. La ruta de sprites transmite directamente la preparación; los adaptadores conservan las tres escrituras clásicas previas al dibujo. Prueba focalizada: 29.160 casos de igualdad de píxeles/registros, transparencia, paletas y repetición; ejecutada bajo ASan/UBSan e incorporada a CI Linux. H3 local original intacto (11.361 estados), 29/29 replays sin omisiones, 6 CTests y 13 tests Python aprobados.
+
+CI Windows 39820699876 y Linux 39820699877 aprobadas. H3 original intacto en ambas plataformas; 29/29 replays Windows y 29/29 en cada sanitizador Linux, cero omisiones y sin diagnósticos observados. Prueba de 29.160 casos de píxeles/registros aprobada en CI. ZIP e informes internos verificados. Detalles en [H4_1_EFECTOS_DIBUJO.md](H4_1_EFECTOS_DIBUJO.md), sección 8. H4.1 sigue abierta: quedan otras rutas de dibujo, vida útil de recursos y pruebas 0/1/N del frame completo. El siguiente bloque es inventariar esas rutas/recursos antes de construir el estado de presentación. No modificar la frecuencia de llamada de los adaptadores clásicos. PR sin fusionar y baseline clásica conservada.
