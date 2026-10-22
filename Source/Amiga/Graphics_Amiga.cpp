@@ -942,37 +942,13 @@ void cGraphics_Amiga::Map_Load_Resources() {
 	SetActiveSpriteSheet(eGFX_IN_GAME);
 }
 
-void cGraphics_Amiga::Video_Draw_8(cSurface* pTarget, const uint8* RowPallete) {
-	if (!pTarget)
-		pTarget = mSurface;
-
-	uint8* di = pTarget->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += pTarget->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mVideo_Draw_Columns -= 1;
-	mFodder->mVideo_Draw_Columns <<= 1;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - (mFodder->mVideo_Draw_Columns);
-	mFodder->mDraw_Dest_SkipPixelsPerRow = pTarget->GetWidth() - (mFodder->mVideo_Draw_Columns * 8);
-
-	// Height
-	for (int16 dx = mFodder->mVideo_Draw_Rows; dx > 0; --dx) {
-
-		// Width
-		for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-			DrawPixels_8(si, di);
-
-			di += 8;
-			si += 1;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+openfodder::SpriteRasterLayout cGraphics_Amiga::GetSpriteRasterLayout() const {
+    openfodder::SpriteRasterLayout layout;
+    layout.format = openfodder::SpriteDrawFormat::Amiga8;
+    layout.width = mBMHD_Current->mWidth;
+    layout.height = mBMHD_Current->mHeight;
+    layout.planes = mBMHD_Current->mPlanes;
+    return layout;
 }
 
 void cGraphics_Amiga::Video_Draw_8_Alt(const uint8* RowPalette) {

@@ -392,47 +392,8 @@ void cGraphics_PC::Map_Load_Resources() {
 	SetActiveSpriteSheet( eGFX_IN_GAME );
 }
 
-void cGraphics_PC::Video_Draw_8(cSurface *pTarget, const uint8* RowPallete) {
-	if (!pTarget)
-		pTarget = mSurface;
-
-	uint8*	di = pTarget->GetSurfaceBuffer();
-	uint8* 	si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += pTarget->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mVideo_Draw_Columns >>= 1;
-	mFodder->mDraw_Source_SkipPixelsPerRow = 160 - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = (uint16)(pTarget->GetWidth() - (mFodder->mVideo_Draw_Columns * 2));
-
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPallete) {
-			int16 bx = mFodder->mVideo_Draw_PosY + dx;
-
-			Palette = RowPallete[bx];
-		}
-
-		for (int16 cx = mFodder->mVideo_Draw_Columns; cx > 0; --cx) {
-			uint8 ah = *si;
-
-
-			uint8 al = ah >> 4;
-			if (al)
-				*di = al | Palette;
-
-			al = ah & 0x0F;
-			if (al)
-				*(di + 1) = al | Palette;
-
-			si++;
-			di+=2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+openfodder::SpriteRasterLayout cGraphics_PC::GetSpriteRasterLayout() const {
+    return {};
 }
 
 void cGraphics_PC::Video_Draw_16(const uint8* RowPallete) {

@@ -20,6 +20,8 @@
  *
  */
 
+#include "Utils/SpriteRaster.hpp"
+
 class cFodder;
 
 struct sILBM_BMHD {
@@ -207,7 +209,10 @@ public:
 	virtual void		PaletteLoad( const uint8  *pBuffer, uint32 pColors, uint32 pColorID = 0 ) = 0;
 
 	virtual void		Video_Draw_16(const uint8* RowPallete = 0) = 0;
-	virtual void		Video_Draw_8(cSurface *pTarget = 0, const uint8* RowPallete = 0) = 0;
+	virtual void		Video_Draw_8(cSurface *pTarget = 0, const uint8* RowPallete = 0);
+    virtual openfodder::SpriteRasterLayout GetSpriteRasterLayout() const = 0;
+    void Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
+                              cSurface* target = nullptr, const uint8* rowPalette = nullptr);
 
 	virtual void		SetActiveSpriteSheet( eGFX_Types pSpriteType ) = 0;
 	virtual void		SetImage( cSurface* pImage );

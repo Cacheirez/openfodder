@@ -197,3 +197,31 @@ void cGraphics::HeliIntro_TickParallaxAndText()
 	if (Heli_Front < 0)
 		Heli_Front += 320 << 16;
 }
+
+// Compatibility entry point for callers still using legacy drawing registers.
+void cGraphics::Video_Draw_8(cSurface* target, const uint8* rowPalette) {
+    openfodder::SpriteDrawState draw;
+    draw.source = mFodder->mVideo_Draw_FrameDataPtr;
+    draw.x = mFodder->mVideo_Draw_PosX;
+    draw.y = mFodder->mVideo_Draw_PosY;
+    draw.columns = mFodder->mVideo_Draw_Columns;
+    draw.rows = mFodder->mVideo_Draw_Rows;
+    draw.palette = mFodder->mVideo_Draw_PaletteIndex;
+    draw.format = GetSpriteRasterLayout().format;
+    Video_Draw_8_Prepared(draw, target, rowPalette);
+}
+
+// Stateful coordinator: preserve old register writes immediately before rasterization.
+// Reusable rendering calls RasterizeSprite8 with explicit layout/target instead.
+void cGraphics::Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
+                                    cSurface* target, const uint8* rowPalette) {
+    if (!target)
+        target = mSurface;
+    const auto layout = GetSpriteRasterLayout();
+    const openfodder::SpriteRasterTarget output{target->GetSurfaceBuffer(), target->GetWidth()};
+    const auto registers = openfodder::PrepareSpriteRasterRegisters(draw, layout, output.width);
+    mFodder->mVideo_Draw_Columns = registers.columns;
+    mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
+    mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    openfodder::RasterizeSprite8(draw, layout, output, rowPalette);
+}

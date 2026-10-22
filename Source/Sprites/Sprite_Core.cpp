@@ -85,13 +85,15 @@ void cFodder::Sprite_Sort_DrawList() {
 // Keep preparation at every legacy call site, including headless execution.
 // Additional presentation must not call this stateful compatibility wrapper.
 void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination) {
-    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame) && !mStartParams->mDisableVideo)
-        mGraphics->Video_Draw_8(pDestination);
+    openfodder::SpriteDrawState draw;
+    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame, draw) && !mStartParams->mDisableVideo)
+        mGraphics->Video_Draw_8_Prepared(draw, pDestination);
 }
 
 // Legacy adapter: resolve resources, prepare value-only geometry, then commit
 // visibility and clipped registers at the original logical point.
-bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame) {
+bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame,
+                                       openfodder::SpriteDrawState& draw) {
     auto SheetData = Sprite_Get_Sheet(pSpriteType, pFrame);
     if (!SheetData) {
         // Preserve logical off-screen state when an animation frame is invalid.
@@ -123,7 +125,7 @@ bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 p
     input.viewHeight = g_Window->GetScreenSize().getHeight();
     input.format = mVersionCurrent->isPC() ? openfodder::SpriteDrawFormat::PC
                                         : openfodder::SpriteDrawFormat::Amiga8;
-    const auto draw = openfodder::PrepareSpriteDraw(input);
+    draw = openfodder::PrepareSpriteDraw(input);
 
     // Only the compatibility adapter publishes legacy registers. The pure
     // preparation above can be repeated without writing engine/sprite state.
