@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.5 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.6 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: rasterizador PC/Amiga con entradas explícitas en `691cb0de`; 29.160 casos equivalentes a nivel de píxel y registros. H3 local conserva los 11.361 estados y pasan 29 replays. CI Windows/Linux aprobada, con H3 original intacto y sanitizadores sin hallazgos en las rutas ejercitadas. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: rasterizador PC/Amiga con entradas explícitas en `691cb0de`; 29.160 casos equivalentes a nivel de píxel y registros. H3 local conserva los 11.361 estados y pasan 29 replays. CI Windows/Linux aprobada, con H3 original intacto y sanitizadores sin hallazgos en las rutas ejercitadas. Auditoría posterior: quedan resolución con efectos y propiedad inmutable por separar; revisar la diferencia de orden de paleta Amiga documentada en H4_1_RUTAS_Y_RECURSOS.md. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | CI Linux [39820699877](https://github.com/Cacheirez/openfodder/actions/runs/39820699877): 29/29 ASan/UBSan, LSan y TSan sin hallazgos en los informes revisados; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: revisar recursos y rutas restantes para construir el estado de presentación**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
+| Tarea activa | **H4.1: comprobar el orden de paleta y separar la resolución de recursos con propietario estable**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -380,3 +380,11 @@ Siguiente trabajo: adaptar el rasterizador para consumir estos datos explícitam
 Código `691cb0dedd657cd99cab165cbce7ff26fa2bd537`: núcleo RasterizeSprite8 PC/Amiga que escribe únicamente píxeles en el destino. La ruta de sprites transmite directamente la preparación; los adaptadores conservan las tres escrituras clásicas previas al dibujo. Prueba focalizada: 29.160 casos de igualdad de píxeles/registros, transparencia, paletas y repetición; ejecutada bajo ASan/UBSan e incorporada a CI Linux. H3 local original intacto (11.361 estados), 29/29 replays sin omisiones, 6 CTests y 13 tests Python aprobados.
 
 CI Windows 39820699876 y Linux 39820699877 aprobadas. H3 original intacto en ambas plataformas; 29/29 replays Windows y 29/29 en cada sanitizador Linux, cero omisiones y sin diagnósticos observados. Prueba de 29.160 casos de píxeles/registros aprobada en CI. ZIP e informes internos verificados. Detalles en [H4_1_EFECTOS_DIBUJO.md](H4_1_EFECTOS_DIBUJO.md), sección 8. H4.1 sigue abierta: quedan otras rutas de dibujo, vida útil de recursos y pruebas 0/1/N del frame completo. El siguiente bloque es inventariar esas rutas/recursos antes de construir el estado de presentación. No modificar la frecuencia de llamada de los adaptadores clásicos. PR sin fusionar y baseline clásica conservada.
+
+## Auditoría de rutas y recursos — 22 de octubre de 2026
+
+Revisión de `a5a5cc42` completada: [H4_1_RUTAS_Y_RECURSOS.md](H4_1_RUTAS_Y_RECURSOS.md). Inventario de terreno, GUI/HUD, cursor, rasterizadores restantes, escenas, superficies/paletas y callbacks; propietarios, mutaciones y fronteras de cambio de fase/versión identificados. No se modifica el motor ni se construye todavía el estado completo.
+
+Hallazgo prioritario: GetSpriteData Amiga cambia paleta y cabecera. La preparación encapsulada altera el orden de paleta respecto a a2f63090 para segmentos donde el accessor la sustituye; no hay reproducción visual de misión y las pruebas anteriores no cubren esa resolución. Debe comprobarse/corregirse el contrato antes de extenderlo. Mantener shared_ptr no garantiza inmutabilidad de los bytes.
+
+Siguiente bloque: resolvedor explícito que reúna recurso propietario, offset/extensión, layout y paleta efectiva, preservando efectos y orden clásicos; prueba de resolución y retención de recursos antes de avanzar a comandos de terreno/HUD y al frame completo. H4.1 sigue abierta. Última CI del motor sigue siendo 691cb0de; esta auditoría documental no ejecuta H3 de nuevo ni amplía su cobertura. PR en borrador sin fusionar y baseline H2.6 intacta.

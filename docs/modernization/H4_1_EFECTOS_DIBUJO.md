@@ -203,3 +203,7 @@ Siguiente bloque: inventariar los recursos y rutas restantes para construir un e
 - ZIP descargados, CRC e informes internos comprobados. SHA-256 Windows: `e5a69bb6791fa9d87871266ffccc3408e0e36eef7202f031e1da9b41dbb80712`; Linux: `f7343ffad6f2b436dd078bb0b50c12cab65c9050bf328a7bd4318d6431e52b0e`.
 
 **Decisión:** rasterizador PC/Amiga de esta ruta aceptado dentro de la cobertura descrita. Se mantiene H4.1 en curso por las rutas restantes y el estado de presentación. Base clásica conservada en `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; PR abierto en borrador, sin fusionar.
+
+## 9. Auditoría de rutas pendientes y recursos
+
+[Inventario y contrato previo al estado de presentación](H4_1_RUTAS_Y_RECURSOS.md), sobre a5a5cc42. Incluye un hallazgo prioritario de orden/paleta en la resolución Amiga que no está cubierto por las pruebas del núcleo; consultar sección 4 antes de extender la ruta preparada. Esta revisión no cambia el motor ni declara H4.1 terminada.
