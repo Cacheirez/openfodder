@@ -2673,6 +2673,20 @@ void cFodder::Phase_TextSprite_Create_GameOver(sSprite *pData2C)
         Music_Play(8);
 }
 
+// Commit deferred destruction in the original draw-list order and under the
+// caller's mSpriteMtx. Do not batch this before/after the legacy sprite loop.
+bool cFodder::Sprite_CommitPendingDestroy(sSprite* sprite)
+{
+    if (!sprite->mPendingDestroy)
+        return false;
+
+    sprite->mPendingDestroy = 0;
+    sprite->mPosX = -32768;
+    mSprite_SpareUsed = 0;
+    mSprite_SpareUsed2 = 0;
+    return true;
+}
+
 void cFodder::Sprites_Draw(cSurface *pSurface)
 {
 
@@ -2681,14 +2695,7 @@ void cFodder::Sprites_Draw(cSurface *pSurface)
     for (auto &Sprite : mSprite_DrawList_Final)
     {
 
-        if (Sprite->mPendingDestroy)
-        {
-            Sprite->mPendingDestroy = 0;
-            Sprite->mPosX = -32768;
-            mSprite_SpareUsed = 0;
-            mSprite_SpareUsed2 = 0;
-        }
-        else
+        if (!Sprite_CommitPendingDestroy(Sprite))
         {
             int16 Data0 = Sprite->mSheetIndex;
             int16 Data4 = Sprite->mFrameIndex;

@@ -81,12 +81,21 @@ void cFodder::Sprite_Sort_DrawList() {
     }
 }
 
+// Keep preparation at every legacy call site, including headless execution.
+// Additional presentation must not call this stateful compatibility wrapper.
 void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination) {
+    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame) && !mStartParams->mDisableVideo)
+        mGraphics->Video_Draw_8(pDestination);
+}
+
+// Computes logical visibility and the backend-specific clipped draw registers.
+// These registers are still transient: this is not a reusable render snapshot.
+bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame) {
     auto SheetData = Sprite_Get_Sheet(pSpriteType, pFrame);
     if (!SheetData) {
         // Preserve logical off-screen state when an animation frame is invalid.
         pDi->mWasDrawn = 0;
-        return;
+        return false;
     }
 
     mVideo_Draw_PaletteIndex = SheetData->mPalleteIndex & 0xFF;
@@ -109,11 +118,11 @@ void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, c
 
     if (Sprite_OnScreen_Check()) {
         pDi->mWasDrawn = 1;
-        if(!mStartParams->mDisableVideo)
-            mGraphics->Video_Draw_8(pDestination);
+        return true;
     }
     else
         pDi->mWasDrawn = 0;
+    return false;
 }
 
 bool cFodder::Sprite_OnScreen_Check() {

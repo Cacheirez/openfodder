@@ -286,6 +286,14 @@ void cFodder::Mouse_UpdateButtons() {
 
 }
 
+// Called only after the legacy DisableVideo guard and coordinate setup.
+void cFodder::Mouse_CommitCursorRequest() {
+    if (mMouseSpriteNew >= 0) {
+        mMouseSpriteCurrent = mMouseSpriteNew;
+        mMouseSpriteNew = -1;
+    }
+}
+
 void cFodder::Mouse_DrawCursor() {
     if (mParams->mDisableVideo)
         return;
@@ -293,10 +301,7 @@ void cFodder::Mouse_DrawCursor() {
     mVideo_Draw_PosX = (mMouseX + mMouseX_Offset) + SIDEBAR_WIDTH;
     mVideo_Draw_PosY = (mMouseY + mMouseY_Offset) + 12;
 
-    if (mMouseSpriteNew >= 0) {
-        mMouseSpriteCurrent = mMouseSpriteNew;
-        mMouseSpriteNew = -1;
-    }
+    Mouse_CommitCursorRequest();
 
     if (mGraphics)
         mGraphics->Mouse_DrawCursor();

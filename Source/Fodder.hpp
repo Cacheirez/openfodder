@@ -732,6 +732,8 @@ public:
 
     void            GUI_Draw_Frame_8(int32 pSpriteType, int32 pFrame, const size_t pPositionX, const size_t pPositionY);
     void            GUI_Draw_Frame_16(int16 pSpriteType, int16 pFrame, const size_t pPosX, const size_t pPosY);
+    bool            Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame);
+    bool            Sprite_CommitPendingDestroy(sSprite* sprite);
     void            Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination = 0);
 
     bool            Sprite_OnScreen_Check();
@@ -1227,6 +1229,7 @@ public:
     void            GUI_Sidebar_SquadIcon_Update();
     void            GUI_Sidebar_SquadIcon_Current_Draw();
     int16           GUI_Sidebar_SquadIcon_Set();
+    void            GUI_Sidebar_UpdateWeaponSelection();
     void            GUI_Sidebar_Draw();
     void            GUI_Sidebar_SquadIcons_Draw();
     void            GUI_Sidebar_Grenades_CurrentSquad_Draw();
@@ -1272,6 +1275,7 @@ public:
     void            Sidebar_Render_To_BackBuffer();
     void            Sidebar_Render_To_ScreenBuffer();
     void            Squad_Switch_Weapon();
+    bool            Mission_Final_TimeToDie_Update();
     void            Mission_Final_TimeToDie();
     int16           Squad_UpdateLeader(sSprite*& pData20);
 
@@ -1327,6 +1331,7 @@ public:
     int16           Mouse_Button_Right_Toggled();
     void            Mouse_Cursor_Handle();
     void            Mouse_UpdateCursor();
+    void            Mouse_CommitCursorRequest();
     void            Mouse_DrawCursor();
     virtual void    Mouse_ReadInputs();
     void            Mouse_Inputs_Check();
