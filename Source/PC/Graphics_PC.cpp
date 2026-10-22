@@ -926,3 +926,18 @@ void cGraphics_PC::Briefing_Intro_Helicopter_Play( const bool pShowHelicopter, c
 	} while (mFodder->mBriefingHelicopter_NotDone || mFodder->mSurface->isPaletteAdjusting());
 	
 }
+
+// Ownership lookup only; legacy selection effects remain in GetSpriteData.
+tSharedBuffer cGraphics_PC::GetSpriteResourceStorage(uint16 segment) const {
+    switch (segment) {
+    case eGFX_IN_GAME: return mSpriteSheet_InGame1.mData;
+    case eGFX_IN_GAME2: return mSpriteSheet_InGame2.mData;
+    case eGFX_RANKFONT: return mSpriteSheet_RankFont.mData;
+    case eGFX_FONT: return mImageFonts.mData;
+    case eGFX_PSTUFF: return mImagePStuff.mData;
+    case eGFX_RECRUIT: return mImageRecruit.mData;
+    case eGFX_HILL: return mImageHillSprites.mData;
+    case eGFX_SERVICE: return mImageService.mData;
+    default: return {};
+    }
+}

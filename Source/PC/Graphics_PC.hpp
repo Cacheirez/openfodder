@@ -51,6 +51,7 @@ class cGraphics_PC : public cGraphics {
 	virtual				~cGraphics_PC();
 
 	virtual uint8*		GetSpriteData( uint16 pSegment );
+    tSharedBuffer GetSpriteResourceStorage(uint16 segment) const override;
 	virtual void		Mouse_DrawCursor();
 
 	virtual void		Tile_Prepare_Gfx();

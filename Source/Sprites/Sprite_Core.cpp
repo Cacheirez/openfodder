@@ -85,25 +85,29 @@ void cFodder::Sprite_Sort_DrawList() {
 // Keep preparation at every legacy call site, including headless execution.
 // Additional presentation must not call this stateful compatibility wrapper.
 void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination) {
-    openfodder::SpriteDrawState draw;
-    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame, draw) && !mStartParams->mDisableVideo)
-        mGraphics->Video_Draw_8_Prepared(draw, pDestination);
+    openfodder::PreparedSpriteDraw prepared;
+    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame, prepared) && !mStartParams->mDisableVideo)
+        mGraphics->Video_Draw_8_Resolved(prepared, pDestination);
 }
 
 // Legacy adapter: resolve resources, prepare value-only geometry, then commit
 // visibility and clipped registers at the original logical point.
 bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame,
-                                       openfodder::SpriteDrawState& draw) {
+                                       openfodder::PreparedSpriteDraw& prepared) {
     auto SheetData = Sprite_Get_Sheet(pSpriteType, pFrame);
-    if (!SheetData) {
+    prepared = {};
+    if (SheetData)
+        prepared.resource = mGraphics->ResolveSpriteResource(SheetData->mLoadSegment,
+            SheetData->mLoadOffset, SheetData->mPalleteIndex & 0xFF);
+    if (!SheetData || !prepared.resource) {
         // Preserve logical off-screen state when an animation frame is invalid.
         pDi->mWasDrawn = 0;
         return false;
     }
 
     openfodder::SpriteDrawInput input;
-    input.source = SheetData->GetGraphicsPtr();
-    input.palette = SheetData->mPalleteIndex & 0xFF;
+    input.source = prepared.resource.source();
+    input.palette = prepared.resource.palette;
     input.columns = SheetData->mColCount;
     input.rows = SheetData->mRowCount;
     input.rowsToSkip = pDi->mRowsToSkip;
@@ -123,14 +127,14 @@ bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 p
     input.mapY = mMapTile_DrawY;
     input.viewWidth = getWindowWidth();
     input.viewHeight = g_Window->GetScreenSize().getHeight();
-    input.format = mVersionCurrent->isPC() ? openfodder::SpriteDrawFormat::PC
-                                        : openfodder::SpriteDrawFormat::Amiga8;
+    input.format = prepared.resource.layout.format;
+    auto& draw = prepared.draw;
     draw = openfodder::PrepareSpriteDraw(input);
 
     // Only the compatibility adapter publishes legacy registers. The pure
     // preparation above can be repeated without writing engine/sprite state.
     mVideo_Draw_PaletteIndex = draw.palette;
-    mVideo_Draw_FrameDataPtr = const_cast<uint8*>(draw.source) + draw.sourceOffset;
+    mVideo_Draw_FrameDataPtr += draw.sourceOffset;
     mVideo_Draw_Columns = draw.columns;
     mVideo_Draw_Rows = draw.rows;
     mVideo_Draw_PosX = draw.x;

@@ -20,7 +20,7 @@
  *
  */
 
-#include "Utils/SpriteRaster.hpp"
+#include "Utils/ResolvedSpriteResource.hpp"
 
 class cFodder;
 
@@ -183,6 +183,12 @@ public:
 	virtual				~cGraphics() { };
 
 	virtual uint8*		GetSpriteData( uint16 pSegment ) = 0;
+    virtual tSharedBuffer GetSpriteResourceStorage(uint16 segment) const = 0;
+    openfodder::FrozenSpriteResources mFrozenSpriteResources;
+    openfodder::ResolvedSpriteResource ResolveSpriteResource(uint16 segment,
+                                                            size_t frameOffset, uint8 tablePalette);
+    void Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prepared,
+                               cSurface* target = nullptr);
 	virtual void		Mouse_DrawCursor() = 0;
 	virtual void		Load_pStuff() = 0;
 

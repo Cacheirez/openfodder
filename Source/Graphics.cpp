@@ -225,3 +225,35 @@ void cGraphics::Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
     openfodder::RasterizeSprite8(draw, layout, output, rowPalette);
 }
+
+openfodder::ResolvedSpriteResource cGraphics::ResolveSpriteResource(uint16 segment,
+        size_t frameOffset, uint8 tablePalette) {
+    // Exact classic order: table palette first, then backend selection effects.
+    mFodder->mVideo_Draw_PaletteIndex = tablePalette;
+    auto source = GetSpriteData(segment);
+    const auto storage = GetSpriteResourceStorage(segment);
+    if (!source || !storage || storage->empty()) return {};
+    // Valid GetSpriteData segments point inside their corresponding storage.
+    const size_t segmentOffset = static_cast<size_t>(source - storage->data());
+    if (segmentOffset >= storage->size() || frameOffset >= storage->size() - segmentOffset)
+        return {};
+    const auto layout = GetSpriteRasterLayout();
+    auto result = mFrozenSpriteResources.capture(segment, *storage,
+        segmentOffset + frameOffset, layout, mFodder->mVideo_Draw_PaletteIndex);
+    // Legacy registers must still refer to original storage, not a retained copy.
+    mFodder->mVideo_Draw_FrameDataPtr = source + frameOffset;
+    return result;
+}
+
+void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prepared,
+                                     cSurface* target) {
+    if (!target) target = mSurface;
+    const auto& draw = prepared.draw;
+    const auto& layout = prepared.resource.layout;
+    const openfodder::SpriteRasterTarget output{target->GetSurfaceBuffer(), target->GetWidth()};
+    const auto registers = openfodder::PrepareSpriteRasterRegisters(draw, layout, output.width);
+    mFodder->mVideo_Draw_Columns = registers.columns;
+    mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
+    mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    openfodder::RasterizeSprite8(draw, layout, output);
+}

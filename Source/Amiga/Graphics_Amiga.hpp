@@ -71,6 +71,7 @@ protected:
 	virtual void		Load_And_Draw_Image( const std::string &pFilename, unsigned int pColors = 0, size_t pBackColor = 0 );
 
 	virtual uint8*		GetSpriteData( uint16 pSegment );
+    tSharedBuffer GetSpriteResourceStorage(uint16 segment) const override;
 	virtual void		Mouse_DrawCursor();
 	virtual void		Tile_Prepare_Gfx();
 	virtual void		Load_pStuff();

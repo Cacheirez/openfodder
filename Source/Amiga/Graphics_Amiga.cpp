@@ -1549,3 +1549,21 @@ void cGraphics_Amiga::Briefing_Intro_Helicopter_Play(
 
 	mFodder->mMouse_Exit_Loop = false;
 }
+
+// Ownership lookup only; legacy selection effects remain in GetSpriteData.
+tSharedBuffer cGraphics_Amiga::GetSpriteResourceStorage(uint16 segment) const {
+    switch (segment) {
+    case eGFX_IN_GAME: return mSpriteSheet_InGame1.mData;
+    case eGFX_IN_GAME2: return mSpriteSheet_InGame2.mData;
+    case eGFX_RANKFONT: return mSpriteSheet_RankFont.mData;
+    case eGFX_FONT: return mImageFonts.mData;
+    case eGFX_PSTUFF: return mImagePStuff.mData;
+    case eGFX_RECRUIT: return mImageHillBackground.mData;
+    case eGFX_HILL: return mImageHillSprites.mData;
+    case eGFX_BRIEFING: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_1: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_2: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_3: return mImageMissionIntro.mData;
+    default: return {};
+    }
+}

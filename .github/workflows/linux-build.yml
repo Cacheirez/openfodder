@@ -76,6 +76,12 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin 77dac5410a7e92eee574a8da6aa231c8c0f5e88c
           python3 tools/modernization/check_sprite_raster_equivalence.py
+      - name: H4.1 - retained sprite resources and original palette resolution
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin a2f63090fc0732787df8ba56cc142e9938771d9c
+          python3 tools/modernization/check_sprite_resource_equivalence.py
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference

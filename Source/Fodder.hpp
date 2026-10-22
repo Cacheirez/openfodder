@@ -21,7 +21,7 @@
  */
 
 #include "Sprites.hpp"
-#include "Utils/SpriteDrawState.hpp"
+#include "Utils/ResolvedSpriteResource.hpp"
 #include "GameData.hpp"
 
 #define INVALID_SPRITE_PTR (sSprite*) -1
@@ -733,7 +733,7 @@ public:
 
     void            GUI_Draw_Frame_8(int32 pSpriteType, int32 pFrame, const size_t pPositionX, const size_t pPositionY);
     void            GUI_Draw_Frame_16(int16 pSpriteType, int16 pFrame, const size_t pPosX, const size_t pPosY);
-    bool            Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame, openfodder::SpriteDrawState& draw);
+    bool            Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame, openfodder::PreparedSpriteDraw& prepared);
     bool            Sprite_CommitPendingDestroy(sSprite* sprite);
     void            Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination = 0);
 
