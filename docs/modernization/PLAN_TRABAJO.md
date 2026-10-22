@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 1.9 · **Actualización:** 21 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 2.0 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H1 y auditoría H3.1–H3.6 completadas en el alcance demo; 11.361 estados de referencia equivalentes Windows/Linux. En H2: 29/29 fases públicas sin hallazgos ASan, UBSan, LeakSanitizer ni ThreadSanitizer (Linux, ejecución 39641851896), y regresiones Windows aprobadas (39641852057). Aún faltan H2.1 (atribución histórica del RNC), H2.5 (dependencias y cobertura) y H2.6 (decisión de aceptación). H2.3/H2.4 solo se consideran validados para las rutas ensayadas. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H1 y auditoría H3.1–H3.6 completadas en el alcance demo; 11.361 estados de referencia equivalentes Windows/Linux. En H2: 29/29 fases públicas sin hallazgos ASan, UBSan, LeakSanitizer ni ThreadSanitizer (Linux, ejecución 39641851896), y regresiones Windows aprobadas (39641852057). H2.5 está cerrado. Siguen pendientes H2.1 (atribución histórica del RNC) y H2.6 (decisión de aceptación tras nueva CI). H2.3/H2.4 solo se consideran validados para las rutas ensayadas. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.6: preparar la aceptación de la base clásica** con riesgos pendientes expresos (SDL3_mixer Linux sin SHA, audio/interacción real, CF1 CD32 y H2.1); no fusionar PR ni iniciar H4 automáticamente. |
+| Tarea activa | **H2.6: verificar CI de `5c564b19` y emitir decisión de aceptación**. SDL3_mixer Linux ya fijado y TSan obligatorio; nueva batería pendiente. [Ficha H2.6](H2_6_ACEPTACION_BASE_CLASICA.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -327,3 +327,17 @@ Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace
 - Se conserva el paquete indicado como referencia de la prueba por continuidad de las instrucciones; Miguel no ha enviado una lectura independiente de VERSION.txt. Duración y demo exacta no detalladas.
 - H2.1 pasa a ser la tarea activa. El fallo RNC sigue pendiente aunque no se haya manifestado en esta prueba manual.
 
+
+## Revisión vigente — 22 de octubre de 2026
+
+Esta sección sustituye operativamente los pendientes históricos de dependencia flotante/TSan no bloqueante del texto anterior; se conserva el historial.
+
+- Rama al retomar: `df99c678`; PR #1 abierto, borrador, sin fusionar.
+- **H2.6 avanzado, todavía abierto:** [ficha de aceptación](H2_6_ACEPTACION_BASE_CLASICA.md).
+- Cambio CI `5c564b1943e30a2504452e8ad51832a687b8988a`: SDL3_mixer Linux fijado a la revisión Windows, SHA efectivos archivados, TSan obligatorio y Ubuntu 24.04 explícito. Sin cambios del motor ni de H3.
+- Nuevas ejecuciones [Linux 39735380183](https://github.com/Cacheirez/openfodder/actions/runs/39735380183) y [Windows 39735380194](https://github.com/Cacheirez/openfodder/actions/runs/39735380194): **en curso al registrar esta actualización**, no aprobadas todavía.
+- Local: 13 tests Python PASS; YAML válido y diff limpio.
+- ZIP privado CD32: CRC correcto, 276 archivos, 72 pares MAP/SPT; lector RNC real probado con ASan/UBSan: **41 recursos válidos y 488 variantes inválidas rechazadas**, retorno 0, sin avisos. No es una ejecución del motor completo ni de las 72 fases. Recursos originales intactos y fuera de GitHub.
+- Se conserva la prueba manual satisfactoria que Miguel denomina «H6», incluida CD32. Versión exacta no atribuida; H6 artístico formal continúa pendiente.
+- H2.1 sigue como atribución histórica no resuelta; la carga actual llama al lector acotado. Audio físico, interacción y campaña CD32 completa siguen fuera de la cobertura automatizada.
+- **Siguiente acción:** revisar resultados e informes de estas ejecuciones, resolver fallos si aparecen y decidir H2.6 antes de iniciar H4. No se solicita repetir ahora la prueba manual.
