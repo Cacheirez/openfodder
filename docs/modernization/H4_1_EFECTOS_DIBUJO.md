@@ -1,0 +1,73 @@
+# H4.1 — Inventario inicial de efectos del dibujo
+
+Fecha: 22 de octubre de 2026. Fuente inspeccionada: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` (motor idéntico a la candidata H2.6).
+Estado: **H4.1 iniciado; auditoría de rutas principales realizada. Extracción de efectos todavía pendiente.**
+No hay cambios de simulación, renderer, frecuencias, assets ni huellas H3 en este bloque.
+
+## 1. Hallazgo principal: hay dos ritmos lógicos
+
+No debe trasladarse toda la lógica a Phase_Cycle ni aumentar las llamadas a Interrupt_Redraw para obtener más FPS.
+
+- `Interrupt_Sim → Interrupt_Redraw`, bajo `mSurfaceMtx`: avanza el contador de grabación cuando procede; llama a `Phase_Loop_Interrupt`; después ejecuta un callback o compone terreno/sprites/panel/cursor.
+- `Phase_Loop_Interrupt`: incrementa ticks según pausa/entrada, lee entradas, actualiza cámara, procesa órdenes, audio y cambio de arma. Incluye una llamada al cursor.
+- `Phase_Cycle`: espera los ticks originales o la marca del replay; actualiza panel, progreso, objetivos y escuadras; llama a `Mission_Sprites_Handle`; continúa temporizadores y captura H3.
+- `Mission_Sprites_Handle`: actualiza animación/comportamientos, ordena sprites, actualiza parámetros de mapa desde cámara, destruye tiles y **también llama a Sprites_Draw**.
+- `Video_Sleep`: presenta, restaura superficie, coordina señales con el hilo de interrupciones y procesa eventos.
+
+**Consecuencia:** Sprites_Draw se usa tanto en la ruta de interrupción como al actualizar sprites. Cambiarlo a «una vez por Phase_Cycle» alteraría el calendario observado. El primer refactor debe conservar los puntos de llamada, las condiciones y su orden.
+
+## 2. Matriz de efectos encontrados
+
+Rutas relativas a la raíz; las funciones son la referencia estable para localizar el código.
+
+| Función / archivo | Escrituras o efectos observados | Tratamiento requerido |
+|---|---|---|
+| `Interrupt_Redraw`, `Source/Fodder.cpp` | Tick de replay, Phase_Loop_Interrupt, callback, señales mVideo_Done/mVideo_Ticked | Mantener en el calendario heredado; el refresco extra no puede invocarlo |
+| `Sprites_Draw`, `Source/Fodder.cpp` | Consume mPendingDestroy; pone mPosX=-32768; libera mSprite_SpareUsed y mSprite_SpareUsed2 | Retirada lógica de entidades; mantener instante, orden y exclusión de la rama que dibuja |
+| `Sprite_Draw_Frame`, `Source/Sprites/Sprite_Core.cpp` | mWasDrawn=0/1, incluso sin vídeo; prepara registros mVideo_Draw_* | Separar evaluación lógica de visibilidad y escritura de píxeles sin cambiar PC/Amiga |
+| `Sprite_OnScreen_Check`, backends PC/Amiga; `Sprite_OnScreen_ClipY/Bottom`, `Source/Graphics.cpp` | Modifican posición, tamaño y puntero de origen; consultan tamaño de pantalla | No son predicados puros. Futuro comando de dibujo debe contener recorte propio y dimensiones lógicas clásicas |
+| `Video_Draw_8`, backends PC/Amiga | Modifica mVideo_Draw_Columns y saltos de origen/destino además de píxeles | No reutilizar registros globales ya consumidos al repetir una presentación |
+| `GUI_Sidebar_Draw`, `Source/GUI_Element.cpp` | Llama a Mission_Final_TimeToDie; cambia mSquad_CurrentWeapon según munición/refresh; consume banderas de refresco | Conservar en el paso principal; extraer efectos antes de convertir el HUD en lectura de snapshot |
+| `Mission_Final_TimeToDie`, mismo archivo | En CF1 retail, misión 24 fase 6: incrementa ticker, reduce tiempo restante; solo después considera DisableVideo | Caso comercial fuera de demos. Nunca actualizarlo por fotograma de pantalla |
+| `Mouse_DrawCursor`, `Source/Mouse.cpp` | Copia mMouseSpriteNew a mMouseSpriteCurrent y consume solicitud (-1); prepara coordenadas de dibujo | Conservar semántica y condición DisableVideo; presentación adicional lee cursor resuelto |
+| `Sprite_Sort_DrawList`, `Source/Sprites/Sprite_Core.cpp` | Reconstruye listas de punteros, ordena por Y y publica lista final bajo mSpriteMtx | Snapshot debe conservar orden y vida de entidades; no exponer punteros vivos a otro hilo |
+| `MapTile_UpdateFromCamera / Map_Destroy_Tiles`, `Source/Map/MapRuntime.cpp` | Copia estado de cámara; procesa cola/cuenta atrás y modifica mapa | Permanece en Mission_Sprites_Handle, antes de Sprites_Draw; jamás repetir para actualizar terreno visual |
+| `MapTiles_Draw`, backends PC/Amiga | Escribe buffer y lo guarda con Save; Amiga además lo limpia | Efecto de composición; separar memoria del snapshot de los buffers de destino |
+| `Video_Sleep / Video_SurfaceRender`, `Source/Fodder.cpp` | Presentación SDL, Restore, señales de sincronización y eventos | No usar Video_Sleep como simple «presentar otra imagen»: afecta al calendario |
+| `cSurface::draw / Save / Restore`, `Source/Surface.cpp` | Conversión paletizada, actualización de textura y copias de buffer | Recursos mutables del presentador; no tratarlos como estado inmutable compartido |
+| `palette_FadeTowardNew`, `Source/Surface.cpp` y llamadas | Avanza paleta/estado de fundido; puede gobernar salida de bucles | Conservar cadencia de cada pantalla; nuevo render lee la paleta del estado publicado |
+| `Service_ScrollUp_DrawList`, `Source/Service.cpp` | Mueve entradas y modifica condición de salida; llamado desde callback cada dos ticks | Animación/pantalla con estado; no ejecutar callback por cada FPS nuevo |
+
+La matriz es un inventario inicial de rutas examinadas, no una prueba de ausencia de cualquier otro efecto.
+
+## 3. Callbacks, pausa y pantallas auxiliares
+
+Se localizaron asignaciones de `mInterruptCallback` en Fodder, Service, Recruits, CampaignSelect, OptionsMenu y Start_Emscripten. El callback de opciones llama a Sprites_Draw; el de reclutas avanza paleta y copia superficies. Deben clasificarse antes de extender el nuevo presentador fuera de la fase jugable.
+
+Se observan asignaciones sin un lock local explícito en varias de esas pantallas. Esto **no prueba por sí solo una carrera**: falta auditar contexto de llamada, propiedad y vida del hilo. Es una revisión pendiente de H4.5, cubierta solo parcialmente por el TSan headless H2. No extrapolar la protección añadida a Menu_Loop a todos los callbacks.
+
+Pausa y minimapa tienen bucles propios. Phase_Paused presenta, avanza fundidos y procesa eventos. El mapa de resumen se omite en ciertas rutas de unit testing. Las demos automáticas no sustituyen su comprobación interactiva.
+
+## 4. Plan de implementación por cambios pequeños
+
+1. Extraer la retirada diferida de sprites y preparación/visibilidad a una etapa explícita, **en los mismos puntos de llamada heredados**. Mantener inicialmente el dibujo clásico y los bloqueos.
+2. Encapsular los registros de recorte/dibujo por operación, evitando que la presentación extra escriba mWasDrawn o consuma solicitudes y temporizadores.
+3. Separar efectos del panel y cursor conservando sus condiciones y frecuencia. El caso de temporizador comercial necesita prueba focalizada.
+4. Definir estados inmutables con cámara lógica, orden/identidad/generación de sprites, recursos, recortes, paleta, HUD y cursor (H4.2); establecer propiedad y publicación coherente (H4.5).
+5. Introducir presentaciones adicionales únicamente desde esos estados; conservar ruta clásica seleccionable. Después ejecutar 0/1/N dibujos (H4.6).
+
+No llamar más veces a Sprites_Draw, GUI_Sidebar_Draw, Interrupt_Redraw o Video_Sleep como atajo para aumentar FPS.
+
+## 5. Verificación y límites
+
+Ejecutados sobre el checkout inspeccionado:
+
+- `check_visibility_contract.py`: PASS, 15 referencias en 9 archivos.
+- `check_sprite_table_lengths.py`: PASS, 293 arrays Amiga y 297 PC; 1.309 entradas de tablas.
+- Inspección de `GameplayTrace.cpp`: H3 ya registra mWasDrawn, pending_destroy, arma por escuadra y tiempo final restante. No registra explícitamente todos los temporales descubiertos (p. ej. ticker final, spare-used y solicitud del cursor).
+
+Para el refactor, mantener **sin cambios** las huellas H3 originales y añadir observaciones/pruebas complementarias donde falte cobertura. No sustituir las 11.361 muestras por una referencia nueva.
+
+Pruebas específicas pendientes: destrucción/reutilización entre ticks, bordes PC/Amiga y fotograma inválido, agotamiento de munición, temporizador retail 24/6, solicitud de cursor con vídeo desactivado, pausa/minimapa y transición de fase. Su ejecución 0/1/N requiere la implementación, todavía no realizada.
+
+**Cierre de este bloque:** auditoría inicial y contrato de extracción preparados. H4.1 permanece en curso hasta preservar/extraer los efectos y verificar regresión; H4.2–H4.6 no se declaran implementados.
