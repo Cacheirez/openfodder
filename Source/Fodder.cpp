@@ -2691,6 +2691,9 @@ void cFodder::Sprites_Draw(cSurface *pSurface)
 {
 
     std::lock_guard<std::mutex> lock(mSpriteMtx);
+    // This loop only changes sprite/register/destination state. Source images
+    // are read-only until the pass ends; validate each segment once per pass.
+    openfodder::FrozenSpriteResources::ReadOnlyBatch resources(mGraphics->mFrozenSpriteResources);
 
     for (auto &Sprite : mSprite_DrawList_Final)
     {

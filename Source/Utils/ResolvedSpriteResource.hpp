@@ -26,19 +26,40 @@ class FrozenSpriteResources {
     struct Entry {
         std::shared_ptr<const std::vector<uint8_t>> bytes;
         uint64_t generation = 0;
+        uint64_t checkedBatch = 0;
     };
     std::map<uint16_t, Entry> entries;
     uint64_t nextGeneration = 0;
+    uint64_t nextBatch = 0;
+    uint64_t activeBatch = 0;
 public:
+    // The caller guarantees that source vectors are not written or replaced in
+    // this scope. Only use around the serialized, read-only sprite draw loop.
+    // A new scope rechecks bytes, including in-place edits between draw passes.
+    class ReadOnlyBatch {
+        FrozenSpriteResources& cache;
+        uint64_t previous;
+    public:
+        explicit ReadOnlyBatch(FrozenSpriteResources& owner)
+            : cache(owner), previous(owner.activeBatch) {
+            cache.activeBatch = ++cache.nextBatch;
+        }
+        ~ReadOnlyBatch() { cache.activeBatch = previous; }
+        ReadOnlyBatch(const ReadOnlyBatch&) = delete;
+        ReadOnlyBatch& operator=(const ReadOnlyBatch&) = delete;
+    };
+
     ResolvedSpriteResource capture(uint16_t segment, const std::vector<uint8_t>& source,
             size_t offset, SpriteRasterLayout layout, uint8_t palette) {
         if (offset >= source.size()) return {};
         auto& entry = entries[segment];
-        if (!entry.bytes || *entry.bytes != source) {
+        const bool checked = activeBatch && entry.checkedBatch == activeBatch;
+        if (!checked && (!entry.bytes || *entry.bytes != source)) {
             // Construct a const object from a private copy: no mutable alias.
             entry.bytes = std::make_shared<const std::vector<uint8_t>>(source);
             entry.generation = ++nextGeneration;
         }
+        entry.checkedBatch = activeBatch;
         ResolvedSpriteResource result;
         result.bytes = entry.bytes;
         result.offset = offset;

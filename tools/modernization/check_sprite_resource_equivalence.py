@@ -135,6 +135,7 @@ bool same(const Engine& a,const Engine& b) {
 int main() {
  cGraphics_PC pc; cGraphics_Amiga amiga;
  size_t cases=0;
+ for (bool batched:{false,true})
  for (bool isPC:{true,false})
  for (int special:{0,1,2,3})
  for (int segment=0;segment<=11;++segment) {
@@ -145,6 +146,8 @@ int main() {
   for (int offset:{0,7,160})
   for (int state:{0,1,2}) // visible, rejected geometry, invalid frame
   for (bool videoOff:{false,true}) {
+   std::unique_ptr<FrozenSpriteResources::ReadOnlyBatch> batch;
+   if(batched) batch.reset(new FrozenSpriteResources::ReadOnlyBatch(gfx->mFrozenSpriteResources));
    Version version;version.pc=isPC;version.special=special;
    Params params;params.mDisableVideo=videoOff;
    LegacyFodder legacy; legacy.mGraphics=gfx;legacy.mVersionCurrent=&version;legacy.mStartParams=&params;
@@ -190,6 +193,38 @@ int main() {
    if(oldTarget.pixels!=newTarget.pixels || !same(legacy,engine) || oldSprite.mWasDrawn!=newSprite.mWasDrawn) return 13;
    ++cases;
   }
+ }
+ // Read-only passes reuse bytes, but never cache effective metadata or skip
+ // checking edits between passes. Unscoped callers continue checking each time.
+ {
+  FrozenSpriteResources cache;
+  std::vector<uint8> bytes(128,0x22);
+  SpriteRasterLayout layout;
+  ResolvedSpriteResource first,second;
+  {
+   FrozenSpriteResources::ReadOnlyBatch batch(cache);
+   first=cache.capture(1,bytes,0,layout,0x30);
+   layout.planes=5;
+   second=cache.capture(1,bytes,7,layout,0x40);
+   if(first.bytes!=second.bytes || first.generation!=second.generation ||
+      second.offset!=7 || second.palette!=0x40 || second.layout.planes!=5) return 16;
+  }
+  bytes[0]^=0xFF;
+  {
+   FrozenSpriteResources::ReadOnlyBatch batch(cache);
+   auto changed=cache.capture(1,bytes,0,layout,0x50);
+   if(changed.bytes==first.bytes || changed.bytes->at(0)==first.bytes->at(0)) return 17;
+  }
+  bytes[1]^=0xFF;
+  auto unscoped=cache.capture(1,bytes,0,layout,0x60);
+  if(unscoped.bytes->at(1)!=bytes[1]) return 18;
+  try {
+   FrozenSpriteResources::ReadOnlyBatch batch(cache);
+   cache.capture(1,bytes,0,layout,0);
+   throw 1;
+  } catch(int) {}
+  bytes[2]^=0xFF;
+  if(cache.capture(1,bytes,0,layout,0).bytes->at(2)!=bytes[2]) return 19;
  }
  // Retention: actual resolver, cache reuse, mutation/resize/reload and backend destruction.
  PreparedSpriteDraw retained;
