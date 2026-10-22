@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.0 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 2.1 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H1 y auditoría H3.1–H3.6 completadas en el alcance demo; 11.361 estados de referencia equivalentes Windows/Linux. En H2: 29/29 fases públicas sin hallazgos ASan, UBSan, LeakSanitizer ni ThreadSanitizer (Linux, ejecución 39641851896), y regresiones Windows aprobadas (39641852057). H2.5 está cerrado. Siguen pendientes H2.1 (atribución histórica del RNC) y H2.6 (decisión de aceptación tras nueva CI). H2.3/H2.4 solo se consideran validados para las rutas ensayadas. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 iniciado con auditoría de efectos del dibujo; implementación de separación pendiente. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H2.6: verificar CI de `5c564b19` y emitir decisión de aceptación**. SDL3_mixer Linux ya fijado y TSan obligatorio; nueva batería pendiente. [Ficha H2.6](H2_6_ACEPTACION_BASE_CLASICA.md). |
+| Tarea activa | **H4.1: extraer/preservar los efectos del dibujo en sus puntos lógicos originales**. [Inventario inicial](H4_1_EFECTOS_DIBUJO.md). H2.6 aceptado en alcance limitado. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -68,9 +68,9 @@ El estado de Actions es una observación, no un seguimiento permanente. Antes de
 |---|---|---|---|
 | H0 | Auditoría, referencia y repositorio | — | Completado para el alcance inicial |
 | H1 | Primera compilación Windows y arranque verificado | H0 | Completado |
-| H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Pendiente |
+| H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Base aceptada en H2.6; H2.1 histórico delimitado y cobertura limitada |
 | H3 | Comparación reproducible de jugabilidad | H2 | H3.1–H3.6 completadas en el alcance demo, con pruebas de integración pendientes de H4 |
-| H4 | Dibujo separado de la simulación | H3 | Pendiente |
+| H4 | Dibujo separado de la simulación | H3 | H4.1 iniciado: inventario; extracción e independencia pendientes |
 | H5 | Cámara y movimiento suaves con gráficos originales | H4 | Pendiente |
 | H6 | Dirección artística y recursos de muestra | H1; diseño independiente de H2–H5 | Pendiente |
 | H7 | Misión completa con gráficos modernos | H5 y H6 | Pendiente |
@@ -127,7 +127,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 - [x] **H2.3 — Asistente:** ejecutar ASan/UBSan y LeakSanitizer sobre los 29 replays públicos con cero hallazgos. **Alcance demo cerrado; campañas privadas y flujos interactivos no cubiertos.**
 - [x] **H2.4 — Asistente:** proteger música Amiga, callback, temporización y transiciones de fase; confirmar ThreadSanitizer sin carreras en 29/29 replays públicos y H3 inalterado. **Auditoría demo terminada; todavía no implica cobertura general de audio real, ventanas, menús ni H4.**
 - [x] **H2.5 — Asistente:** inventariar versiones reales y referencias fijadas por plataforma, documentar diferencias de SDL_mixer/XMP/FFmpeg, cobertura 29/11 fases y huecos de CD32/audio. **Cerrado como auditoría** en [H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md); la versión Linux de SDL_mixer sigue sin SHA fijado y se trata en H2.6.
-- [ ] **H2.6 — Asistente / Miguel:** revisar la base candidata y decidir su integración como punto de partida estable; conservar la referencia original recuperable.
+- [x] **H2.6 — Asistente / Miguel:** base clásica aceptada el 22-10-2026 en la cobertura documentada, CI de `5c564b19` aprobada y validación CD32 de Miguel. Referencia recuperable `baseline/classic-h2.6-2026-10-22` → `5e6a4f38`; PR sin fusionar. [Decisión y exclusiones](H2_6_ACEPTACION_BASE_CLASICA.md).
 
 **Aceptación:** las rutas incluidas en la primera versión no tienen fallos de memoria reproducibles pendientes sin resolver o delimitar; los replays y el arranque siguen funcionando. Si existe una exclusión, debe figurar con su impacto y no presentarse la suite completa como aprobada.
 
@@ -151,7 +151,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H4. Separar presentación y simulación
 
-- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente.
+- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente. **Iniciado:** [inventario principal y secuencia de extracción](H4_1_EFECTOS_DIBUJO.md); preservación/implementación y pruebas posteriores pendientes.
 - [ ] **H4.2 — Asistente:** introducir estados de presentación coherentes y de solo lectura para cámara, sprites, terreno, paletas e interfaz.
 - [ ] **H4.3 — Asistente:** crear rutas clásica y moderna seleccionables, manteniendo inicialmente las imágenes originales.
 - [ ] **H4.4 — Asistente:** separar capas de terreno, entidades, efectos, panel y cursor; conservar orden, recortes, fundidos y visibilidad lógica.
@@ -341,3 +341,15 @@ Esta sección sustituye operativamente los pendientes históricos de dependencia
 - Se conserva la prueba manual satisfactoria que Miguel denomina «H6», incluida CD32. Versión exacta no atribuida; H6 artístico formal continúa pendiente.
 - H2.1 sigue como atribución histórica no resuelta; la carga actual llama al lector acotado. Audio físico, interacción y campaña CD32 completa siguen fuera de la cobertura automatizada.
 - **Siguiente acción:** revisar resultados e informes de estas ejecuciones, resolver fallos si aparecen y decidir H2.6 antes de iniciar H4. No se solicita repetir ahora la prueba manual.
+
+## Cierre H2.6 e inicio H4.1 — 22 de octubre de 2026
+
+Esta decisión sustituye operativamente el estado «pendiente de CI» de la revisión previa, conservada como historial.
+
+- H2.6 aceptado para iniciar la separación de presentación, con exclusiones expresas en su ficha: H2.1 histórico, cobertura CD32 de 72 fases incompleta, interacción/audio real y backends distintos.
+- Miguel confirma expresamente el motor probado con sus archivos originales CD32 y valida H2.6; no se le solicita repetirlo.
+- Windows 39735380194 y Linux 39735380183 aprobados para `5c564b19`. Informes internos comprobados; H3 de 11.361 estados preservado.
+- Base recuperable: `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; solo documentación adicional respecto al commit probado. No se moverá esa rama para incorporar H4.
+- H4.1 iniciado: además de visibilidad, se identifican retirada de entidades, cambios de arma y temporizador comercial en HUD, consumo de cursor, registros de recorte y callbacks con estado. El código del motor no se ha cambiado en este bloque.
+- Próximo cambio: separar retirada/preparación de sprites manteniendo los puntos de llamada originales; después verificar H3 sin modificar referencias. No adelantar 60 FPS ni H4.2–H4.6 como terminados.
+- PR #1 se mantiene abierto en borrador, sin fusionar.
