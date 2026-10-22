@@ -1,8 +1,8 @@
 # H4.1 — Inventario inicial de efectos del dibujo
 
 Fecha: 22 de octubre de 2026. Fuente inspeccionada: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` (motor idéntico a la candidata H2.6).
-Estado: **H4.1 iniciado; auditoría de rutas principales realizada. Extracción de efectos todavía pendiente.**
-No hay cambios de simulación, renderer, frecuencias, assets ni huellas H3 en este bloque.
+Estado: **H4.1 en curso: auditoría y primera extracción de efectos implementadas.**
+El inventario inicial no cambió el motor. La implementación posterior descrita al final extrae funciones manteniendo sus puntos de ejecución, sin cambiar frecuencias, assets ni huellas H3.
 
 ## 1. Hallazgo principal: hay dos ritmos lógicos
 
@@ -71,3 +71,46 @@ Para el refactor, mantener **sin cambios** las huellas H3 originales y añadir o
 Pruebas específicas pendientes: destrucción/reutilización entre ticks, bordes PC/Amiga y fotograma inválido, agotamiento de munición, temporizador retail 24/6, solicitud de cursor con vídeo desactivado, pausa/minimapa y transición de fase. Su ejecución 0/1/N requiere la implementación, todavía no realizada.
 
 **Cierre de este bloque:** auditoría inicial y contrato de extracción preparados. H4.1 permanece en curso hasta preservar/extraer los efectos y verificar regresión; H4.2–H4.6 no se declaran implementados.
+
+## 6. Primera extracción implementada — 22-10-2026
+
+Commit de código: `4e4d57efc408d4a4f404b5f4f2ed7844fde261c3`. Base: `3e15dde7cbdb46610f15aa4567b85dfb600ff0d0`; base clásica recuperable sin mover: `baseline/classic-h2.6-2026-10-22`.
+
+| Efecto extraído | Función nueva | Punto de ejecución conservado |
+|---|---|---|
+| Retirada diferida de entidad | Sprite_CommitPendingDestroy | Dentro del mismo bucle Sprites_Draw y lock mSpriteMtx, antes de decidir dibujar cada entidad |
+| Preparación y visibilidad lógica | Sprite_PrepareLegacyFrame | Cada llamada antigua a Sprite_Draw_Frame; actualiza mWasDrawn antes del guard DisableVideo y del blit |
+| Selección de arma por munición | GUI_Sidebar_UpdateWeaponSelection | Después del temporizador y de los iconos; antes de consumir banderas de refresco de munición |
+| Avance del temporizador comercial | Mission_Final_TimeToDie_Update | Dentro de Mission_Final_TimeToDie, antes de comprobar DisableVideo; solo cuando avanza el contador se dibuja su actualización |
+| Consumo de solicitud del cursor | Mouse_CommitCursorRequest | Después del guard de vídeo y de calcular coordenadas; antes de llamar al backend gráfico |
+
+Se mantienen las funciones coordinadoras clásicas. No se trasladan estos efectos en bloque a Phase_Cycle, ni se cambia la frecuencia de interrupción, ni se crean llamadas adicionales. Se conservan incluso las condiciones de fotograma inválido, entidad pendiente de destrucción y vídeo desactivado.
+
+### Pruebas locales sobre el código cambiado
+
+- Linux Release, GCC 13, SDL3/mixer de las referencias fijadas; FFmpeg desactivado.
+- 6/6 CTests PASS y 13 tests Python existentes PASS.
+- H3 PC Format: dos pasadas, 8 fases / 7.956 estados idénticos.
+- H3 Amiga The One: dos pasadas, 3 fases / 3.405 estados idénticos.
+- Comparación con `reference-gameplay-v1.json`: **11 fases / 11.361 estados canónicos coincidentes**, sin actualizar referencias.
+- 29 replays: PASS, 29 fases, 0 omisiones, retorno 0.
+- Contrato mWasDrawn y metadatos de sprites: PASS.
+- La primera ejecución de CTest no pudo iniciar el binario local de endian porque faltaba su permiso de ejecución. Se corrigió el permiso del artefacto recién compilado; la repetición completa pasó. No hubo modificación de fuente ni supresión de prueba.
+
+### Prueba focalizada de la misión comercial
+
+`tools/modernization/check_final_timer_equivalence.py` extrae el cuerpo original de H2.6 y los cuerpos actuales de actualización/coordinación, los compila con UBSan en un entorno mínimo y compara estado y llamadas gráficas tras cada paso.
+
+**184.320 transiciones idénticas**: combinaciones retail/no retail, CF1/no CF1, misiones/fases elegibles y no elegibles, bordes del ticker, tiempo restante y vídeo activado/desactivado. Las funciones gráficas son sustitutos que registran llamadas; no se afirma equivalencia de píxeles ni ejecución de la campaña CD32 completa.
+
+La prueba se incorpora a Linux CI con obtención explícita del commit de referencia H2.6. Windows conserva los CTests y H3 del motor completo.
+
+### Lo que esta extracción todavía no hace
+
+Las coordinadoras clásicas siguen siendo **con estado**: llamar más veces a Sprites_Draw o GUI_Sidebar_Draw aún puede modificar el juego. Sprite_PrepareLegacyFrame usa registros temporales de recorte que el backend consume; no es un comando inmutable reutilizable.
+
+Siguen pendientes encapsulación de dichos registros, estados de presentación de solo lectura, publicación entre hilos y pruebas 0/1/N. Paletas, buffers, refresco de HUD y callbacks auxiliares conservan sus rutas existentes; no se declara completada toda H4.1 ni H4.2–H4.6.
+
+Siguiente bloque: preparar comandos de dibujo independientes de los registros globales y delimitar las actualizaciones restantes, conservando la secuencia clásica y verificando de nuevo H3.
+
+**CI del cambio:** [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056), en curso al registrar esta implementación. Los resultados locales anteriores no se presentan como resultado CI.
