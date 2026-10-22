@@ -125,3 +125,40 @@ Siguiente bloque: preparar comandos de dibujo independientes de los registros gl
 - El workflow Windows generó el [paquete de demos](https://github.com/Cacheirez/openfodder/actions/runs/39772996056/artifacts/12422944078); no se exige a Miguel repetir ahora su validación manual de H2.6.
 
 **Decisión:** primera extracción aceptada dentro de la cobertura demostrada. H4.1 continúa para los registros de dibujo y efectos restantes; no se declaran dibujos adicionales seguros ni 60 FPS implementados. PR sin fusionar y baseline clásica sin modificar.
+
+## 7. Preparación y recorte por valor — 22-10-2026
+
+Revisión de código: `73de45aa12542c33e72a79fcbf2e10c0a5526d37`.
+
+`Source/Utils/SpriteDrawState.hpp` encapsula las entradas y resultados de preparación/recorte. `PrepareSpriteDraw(const SpriteDrawInput&)` y `ClipSpriteDraw(SpriteDrawState, ...)` no reciben el motor, una ventana ni un sprite mutable: reciben coordenadas, cámara, dimensiones, formato y recurso gráfico de solo lectura; devuelven posición, tamaño recortado, desplazamiento dentro del recurso, paleta y visibilidad. Los cálculos trabajan sobre valores locales, incluso al rechazar un dibujo fuera de pantalla.
+
+`Sprite_PrepareLegacyFrame` conserva la resolución del recurso y el rechazo del fotograma inválido. Después llama al cálculo puro y publica el resultado en los registros clásicos y `mWasDrawn`, exactamente antes del guard de vídeo y del blit existentes. La contabilidad de cámara de editor/bot permanece en el adaptador. El motor selecciona PC o Amiga8 como antes; Amiga16 también dispone de cálculo aislado, sin migrar sus otros llamadores. Las rutas de recorte de GUI no cambian.
+
+### Validación local
+
+- `check_sprite_draw_equivalence.py` compila los cuerpos originales PC/Amiga de `a2f63090` y los compara con la implementación nueva, bajo ASan/UBSan: **306.432 casos equivalentes** de formatos, bordes, tamaños y ventanas. Comprueba resultados aceptados/rechazados, desplazamientos, conservación de entrada y bytes gráficos, y repetición del cálculo. Añadida como compuerta de CI Linux.
+- Motor Release compilado; 6/6 CTests, 13 tests Python y contrato de visibilidad aprobados.
+- H3 PC Format: 7.956 estados; Amiga The One: 3.405. Dos pasadas por campaña y **11.361 estados coincidentes con la referencia original**, sin cambiar las huellas.
+- 29/29 replays aprobados, cero omisiones, retorno 0.
+- Incidencia del entorno local: dos intentos iniciales de H3 no pudieron ejecutar el binario generado (permiso y formato de ejecutable). Se eliminó únicamente ese artefacto y se volvió a enlazar; el ELF resultante pasó las pruebas. No se modificaron fuentes ni se suprimieron pruebas para resolverlo.
+- Incidencia de publicación: `e3a4d02` contenía una transferencia truncada de Sprite_Core.cpp. `73de45a` restaura el archivo completo. Se compararon los cuatro archivos publicados con los archivos locales probados antes de aceptar la revisión; no se toma la revisión intermedia como candidata.
+
+### Límites y siguiente paso
+
+La preparación/recorte puede repetirse sin cambiar el motor. Esto **no** demuestra todavía que llamar al dibujado clásico 0/1/N veces por tick sea seguro: el adaptador sigue publicando registros y visibilidad, y el rasterizador sigue consumiendo estado compartido. Tampoco se han introducido 60 FPS, interpolación ni gráficos nuevos.
+
+El puntero gráfico es prestado y de solo lectura; su propietario debe mantener el recurso vivo. No se debe conservar un resultado tras descargar el recurso ni publicarlo entre hilos sin resolver antes su propiedad y sincronización. No es un snapshot completo de presentación.
+
+Siguiente bloque: hacer que el rasterizador consuma explícitamente estos datos, delimitando sus escrituras al destino gráfico, antes de diseñar snapshots completos y pruebas 0/1/N. H4.1 continúa abierta. La cobertura automatizada sigue siendo de demos públicas, no una campaña comercial CD32 completa.
+
+CI de esta revisión: Linux [39817991165](https://github.com/Cacheirez/openfodder/actions/runs/39817991165) y Windows [39817991168](https://github.com/Cacheirez/openfodder/actions/runs/39817991168). **Ambos completados con éxito.**
+
+### Evidencia CI final de 73de45a
+
+- Windows: compilación, CTests, 29/29 replays (cero omisiones, retorno 0) y H3 PC/Amiga aprobados.
+- Linux: compilación, CTests, 306.432 casos de recorte y 184.320 transiciones del temporizador aprobados.
+- H3 en ambas plataformas: 7.956 estados PC + 3.405 Amiga = **11.361 estados canónicos coincidentes con el baseline original**, además de igualdad entre dos pasadas por campaña.
+- Linux ASan/UBSan, LSan y TSan: cada informe interno registra PASS, 29 fases, cero omisiones, retorno 0 y razones vacías. No aparecen diagnósticos de esos sanitizadores en los engine.log examinados.
+- ZIP de evidencia descargados, CRC e informes internos comprobados. SHA-256 Windows: `2f642a0c5180f32582e0fdf98ce3602ceadd5da0cd91cc79917e525b6e95b0f3`; Linux: `35157ec615e25c54f4bb9848a73c0c96982449aaa8d6e754df4ef464efd5356b`.
+
+**Decisión:** encapsulación de preparación/recorte aceptada dentro de la cobertura descrita. H4.1 sigue abierta para el rasterizador y los efectos restantes. PR #1 abierto en borrador, sin fusionar; baseline clásica conservada en `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.

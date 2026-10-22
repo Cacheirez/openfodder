@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.3 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 2.4 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: primera extracción de efectos implementada en `4e4d57ef`; H3 local y CI Windows/Linux conservan los 11.361 estados; 29 replays y sanitizadores Linux pasan sin hallazgos observados. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: extracción de efectos y preparación/recorte por valor implementados en `73de45a`. H3 local conserva los 11.361 estados y pasan 29 replays; CI Windows/Linux aprobada: H3 intacto y sanitizadores Linux sin hallazgos en la cobertura ejercitada. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -15,21 +15,21 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 
 ## 2. Panel de situación
 
-| Campo | Estado comprobado el 21 de octubre de 2026 |
+| Campo | Estado comprobado el 22 de octubre de 2026 |
 |---|---|
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `93c8aae6c79120071982c39380c517f2ae3142e7` (correcciones H2.3/H2.4 verificadas); HEAD documental/CI más reciente: `d269bc852c204bb28ec10ff7a33cbc7cd19a7caa` |
-| Compilación Windows observada | [Ejecución 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057): compilación, 29 replays y comprobación H3 satisfactorios |
+| Revisión de código de la propuesta | `73de45aa12542c33e72a79fcbf2e10c0a5526d37`: preparación y recorte por valor |
+| Compilación Windows observada | [39817991168](https://github.com/Cacheirez/openfodder/actions/runs/39817991168): compilación, CTests, 29 replays y H3 aprobados |
 | Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
 | Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; PRUEBAS.json verificado dentro del ZIP |
 | Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
-| Pruebas focalizadas | 8 pruebas de la herramienta de auditoría; 8 casos de borde de la lectura del mapa |
-| Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
+| Pruebas focalizadas | 306.432 casos de recorte PC/Amiga; 184.320 transiciones del temporizador comercial; pruebas anteriores conservadas |
+| Memoria | CI Linux [39817991165](https://github.com/Cacheirez/openfodder/actions/runs/39817991165): 29/29 ASan/UBSan, LSan y TSan sin hallazgos en los informes revisados; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: preparar comandos de dibujo sin registros globales compartidos y revisar efectos restantes**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
+| Tarea activa | **H4.1: adaptar el rasterizador a los datos de dibujo explícitos y revisar efectos restantes**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -368,3 +368,9 @@ Esta decisión sustituye operativamente el estado «pendiente de CI» de la revi
 Código `4e4d57ef`: primera extracción aceptada. Windows 39772996056 y Linux 39772995975 completos y satisfactorios. H3: 11.361 estados del baseline original; replays: 29/29, cero omisiones; Linux ASan/UBSan, LSan y TSan: 29/29 cada uno, sin hallazgos en los logs examinados. Prueba comercial aislada: 184.320 transiciones equivalentes. ZIP e informes internos verificados; huellas y límites en H4_1_EFECTOS_DIBUJO.md.
 
 H4.1 permanece en curso por los registros de dibujo/efectos restantes. Siguiente cambio: encapsular preparación/recorte en datos propios para avanzar hacia estados inmutables, manteniendo coordinadoras clásicas y H3 original. No aumentar todavía la frecuencia de llamadas a las funciones clásicas. Base `baseline/classic-h2.6-2026-10-22` intacta; PR en borrador, sin fusionar.
+
+## Preparación y recorte sin modificar el motor — 22 de octubre de 2026
+
+Código `73de45aa12542c33e72a79fcbf2e10c0a5526d37`: entradas y resultados propios en SpriteDrawState.hpp, cálculos puros y adaptación a los registros clásicos en el mismo punto de ejecución. 306.432 casos PC/Amiga equivalentes al código anterior, 6 CTests y 13 tests Python aprobados localmente. H3 original: 11.361 estados conservados; 29 replays aprobados sin omisiones. CI Windows 39817991168 y Linux 39817991165 aprobadas: H3 original intacto en ambas plataformas, 29/29 replays Windows y 29/29 en cada sanitizador Linux, sin diagnósticos observados. ZIP e informes internos comprobados. Detalles y límites en [H4_1_EFECTOS_DIBUJO.md, sección 7](H4_1_EFECTOS_DIBUJO.md#7-preparación-y-recorte-por-valor--22-10-2026).
+
+Siguiente trabajo: adaptar el rasterizador para consumir estos datos explícitamente. El adaptador clásico todavía escribe en el motor y los recursos son prestados; no se declara seguro dibujar el frame completo 0/1/N veces ni publicar snapshots entre hilos. H4.1 sigue abierta, PR sin fusionar y baseline clásica intacta.
