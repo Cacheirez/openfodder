@@ -790,7 +790,799 @@ int16 cFodder::Sprite_Find_In_Region(sSprite* pSprite, sSprite*& pData24, int16 
         if (pData10 > Data0)
             continue;
 
-        int16 …4930 tokens truncated…}
+        int16 Data18 = pSprite->mHeight;
+        Data0 = mSprite_Height_Top[Data4];
+        Data0 += 8;
+
+        Data0 += pData24->mHeight;
+
+        if (Data18 > Data0)
+            continue;
+        Data18 += 0x0B;
+
+        if (Data18 < pData24->mHeight)
+            continue;
+
+        if (pData24->mSpriteType != eSprite_Player)
+            goto loc_2D5FA;
+
+        if (pData24->mAnimState != eSprite_Anim_Die5)
+            continue;
+
+    loc_2D5FA:;
+        if (pSprite->mSpriteType == eSprite_Explosion2)
+            goto AnimDie3;
+
+        if (pSprite->mSpriteType == eSprite_Building_Explosion)
+            goto loc_2D62C;
+
+        if (pSprite->mSpriteType != eSprite_Explosion)
+            goto loc_2D642;
+
+        goto loc_2D62C;
+
+    AnimDie3:;
+        pData24->mAnimState = eSprite_Anim_Die3;
+        goto loc_2D636;
+
+    loc_2D62C:;
+        pData24->mAnimState = eSprite_Anim_Die1;
+
+    loc_2D636:;
+        pData24->field_64 = -1;
+        goto loc_2D6ED;
+
+    loc_2D642:;
+        if (mSprite_Can_Be_RunOver[Data4] == 2)
+            goto loc_2D659;
+
+        mSprites_Found_Count = 1;
+        goto loc_2D705;
+    loc_2D659:;
+
+        pData24->mAnimState = eSprite_Anim_Hit;
+        pData24->field_64 = -1;
+        Data0 = pSprite->mDirection;
+        Data4 = Data0;
+        Data0 += 0x368;
+        Data4 += 0x468;
+
+        pData8 = pData24->mDirection;
+        pDataC = pData8;
+        pData8 += 0x368;
+        pDataC += 0x468;
+
+        pData24->mDirectionOverride = 0;
+        if (pData8 < Data0)
+            goto loc_2D6D2;
+
+        if (pDataC > Data0)
+            goto loc_2D6D2;
+
+        pData24->mDirectionOverride = -1;
+
+    loc_2D6D2:;
+        if (pData8 < Data4)
+            goto loc_2D6ED;
+
+        if (pDataC > Data4)
+            goto loc_2D6ED;
+
+        pData24->mDirectionOverride = -1;
+
+    loc_2D6ED:;
+        mSprites_Found_Count = -1;
+        pData24->mDirection = pSprite->mDirection;
+
+    loc_2D705:;
+        if (word_3AA45)
+            break;
+    }
+
+    word_3AA45 = 0;
+    return mSprites_Found_Count;
+}
+
+void cFodder::Sprite_Aggression_Set() {
+    mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionMin = mGame_Data.mPhase_Current->mAggression.mMin;
+    mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionMax = mGame_Data.mPhase_Current->mAggression.mMax;
+    mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionAverage = mGame_Data.mPhase_Current->mAggression.getAverage();
+
+    mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionNext = mGame_Data.mPhase_Current->mAggression.getAverage();
+    mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionIncrement = 1;
+
+    for(auto& Sprite : mSprites ) {
+
+        if (Sprite.mPosX == -32768)
+            continue;
+
+        if (Sprite.mSpriteType == eSprite_Enemy_Rocket || Sprite.mSpriteType == eSprite_Enemy)
+            Sprite_Handle_Enemy_Aggression_Set(&Sprite);
+    }
+}
+
+int16 cFodder::Sprite_Next_WalkTarget_Set(sSprite* pSprite) {
+
+    int16 Data0 = mSquad_WalkTargets[pSprite->field_32][pSprite->mNextWalkTargetIndex].mX;
+    int16 Data4 = mSquad_WalkTargets[pSprite->field_32][pSprite->mNextWalkTargetIndex].mY;
+
+    // Do we have a valid walk target?
+    if (Data0 >= 0) {
+        pSprite->mTargetX = Data0;
+        pSprite->mTargetY = Data4;
+        pSprite->mNextWalkTargetIndex++;
+        pSprite->mFinishedWalking = -1;
+        return 0;
+    }
+
+    //loc_2D9C0
+    if (!pSprite->mFinishedWalking)
+        return -1;
+
+    pSprite->mFinishedWalking = 0;
+
+    return Squad_Join(pSprite);
+}
+
+void cFodder::Sprite_Frame_Modifier_Update() {
+
+    mSprite_Frame_Modifier_Update_Countdown -= 1;
+    if (mSprite_Frame_Modifier_Update_Countdown < 0) {
+        mSprite_Frame_Modifier_Update_Countdown = 3;
+
+        mSprite_Frame_1 += mSprite_Frame1_Modifier;
+        if (mSprite_Frame_1 == 0 || mSprite_Frame_1 == 2)
+            mSprite_Frame1_Modifier ^= -2;
+
+        mSprite_Frame_2 += mSprite_Frame2_Modifier;
+        if (mSprite_Frame_2 == 0 || mSprite_Frame_2 == 2)
+            mSprite_Frame2_Modifier ^= -2;
+    }
+
+    //loc_18DA7
+    mSprite_Frame3_ChangeCount -= 1;
+    if (mSprite_Frame3_ChangeCount < 0) {
+        mSprite_Frame3_ChangeCount = 1;
+
+        mSprite_Frame_3 += mSprite_Frame_3_Modifier;
+        if (mSprite_Frame_3 == 0 || mSprite_Frame_3 == 2)
+            mSprite_Frame_3_Modifier ^= -2;
+    }
+}
+
+void cFodder::Sprite_Handle_Loop() {
+    sSprite* Data20 = mSprites.data();
+
+    for (int32 Data1C = mParams->getSpritesMax() - 2; Data1C > 0; --Data1C, ++Data20) {
+
+        if (Data20->mPosX == -32768)
+            continue;
+
+        (*this.*mSprite_Function[Data20->mSpriteType])(Data20);
+    }
+}
+
+void cFodder::Sprite_Handle_Null(sSprite* pSprite) {
+
+    switch (pSprite->mSpriteType) {
+    case 4:
+        return;
+
+    default:
+        std::cout << "Sprite Function not implemented: " << pSprite->mSpriteType << "\n";
+        break;
+    }
+
+}
+
+void cFodder::Sprite_Handle_Shrub(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x8F;
+    Sprite_Handle_Exploidable(pSprite);
+}
+
+void cFodder::Sprite_Handle_Tree(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x90;
+    Sprite_Handle_Exploidable(pSprite);
+}
+
+void cFodder::Sprite_Handle_BuildingRoof(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x91;
+    Sprite_Handle_Exploidable(pSprite);
+}
+
+void cFodder::Sprite_Handle_Snowman(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x92;
+    Sprite_Handle_Exploidable(pSprite);
+}
+
+void cFodder::Sprite_Handle_Shrub2(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x93;
+    Sprite_Handle_Exploidable(pSprite);
+}
+
+void cFodder::Sprite_Handle_Waterfall(sSprite* pSprite) {
+    pSprite->mSheetIndex = 0x94;
+    pSprite->mDrawOrder = eSprite_Draw_First;
+
+    int16 Data0 = pSprite->field_12;
+    Data0 ^= 1;
+    Data0 &= 1;
+    pSprite->field_12 = Data0;
+
+    if (Data0)
+        return;
+
+    pSprite->mFrameIndex += 1;
+    if (pSprite->mFrameIndex < 3)
+        return;
+
+    pSprite->mFrameIndex = 0;
+}
+
+void cFodder::Sprite_Handle_BuildingDoor(sSprite* pSprite) {
+    int16 Data0, Data4;
+    sSprite* Data2C = 0;
+
+    if (Sprite_Handle_BuildingDoor_Explode(pSprite))
+        return;
+
+    if (mTroops_Enemy_Count >= mParams->mSpawnEnemyMax) {
+        pSprite->mSheetIndex = 0x99;
+        return;
+    }
+
+    //loc_1ACEC
+    pSprite->mDrawOrder = eSprite_Draw_First;
+    if (pSprite->field_43 < 0)
+        goto loc_1AD86;
+
+    pSprite->field_43 -= 1;
+    if (pSprite->field_43 == 0x14 || pSprite->field_43 == 0x0A) {
+
+        Sprite_Create_Enemy(pSprite, Data2C);
+        return;
+    }
+
+    if (pSprite->field_43 >= 0) {
+        pSprite->mSheetIndex = 0x7C;
+        return;
+    }
+
+    pSprite->mSheetIndex = 0x99;
+    Sound_Play(pSprite, eSound_Effect_BuildingDoor2, 0x01);
+    Data0 = tool_RandomGet() & 0x0F;
+
+    Data4 = 0x14 - mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionMax;
+    if (Data4 < 0)
+        Data4 = 0;
+
+    Data4 <<= 3;
+
+    Data4 += Data0;
+    pSprite->field_12 = Data4;
+
+loc_1AD86:;
+    pSprite->field_12 -= 1;
+    if (pSprite->field_12 >= 0)
+        return;
+
+    Data0 = tool_RandomGet() & 0x0F;
+    Data0 += 6;
+    pSprite->field_43 = static_cast<int8>(Data0);
+    pSprite->mSheetIndex = 0x7C;
+
+    if (!Sprite_Create_Enemy(pSprite, Data2C))
+        return;
+
+    pSprite->field_12 = -1;
+    pSprite->field_43 = -1;
+}
+
+void cFodder::Sprite_Handle_BuildingDoor2(sSprite* pSprite) {
+    int16 Data0, Data4;
+    sSprite* Data2C = 0;
+
+    if (Sprite_Update_Die2_Explosion_IceAware(pSprite))
+        return;
+
+    if (mTroops_Enemy_Count >= mParams->mSpawnEnemyMax) {
+        pSprite->mSheetIndex = 0x9B;
+        return;
+    }
+
+    pSprite->mDrawOrder = eSprite_Draw_First;
+    if (pSprite->field_43 < 0)
+        goto loc_1B285;
+
+    pSprite->field_43 -= 1;
+    if (pSprite->field_43 == 0x14)
+        goto loc_1B2B6;
+
+    if (pSprite->field_43 == 0x0A)
+        goto loc_1B2B6;
+
+    if (pSprite->field_43 >= 0) {
+        pSprite->mSheetIndex = 0x7C;
+        return;
+    }
+
+    pSprite->mSheetIndex = 0x9B;
+
+    Sound_Play(pSprite, eSound_Effect_BuildingDoor2, 1);
+    Data0 = tool_RandomGet() & 0x0F;
+    Data4 = 0x14;
+
+    Data4 -= mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionMax;
+    if (Data4 < 0)
+        Data0 = 0;
+
+    Data4 <<= 3;
+    Data4 += Data0;
+    pSprite->field_12 = Data4;
+
+loc_1B285:;
+    pSprite->field_12 -= 1;
+    if (pSprite->field_12 >= 0)
+        return;
+
+    Data0 = tool_RandomGet() & 0x0F;
+    Data0 += 6;
+    pSprite->field_43 = static_cast<int8>(Data0);
+    pSprite->mSheetIndex = 0x7C;
+
+loc_1B2B6:;
+
+    if (!Sprite_Create_Enemy(pSprite, Data2C)) {
+        Data2C->mPosY -= 4;
+        return;
+    }
+
+    pSprite->field_12 = 0;
+    pSprite->field_43 = -1;
+}
+
+void cFodder::Sprite_Handle_BuildingDoor3(sSprite* pSprite) {
+    int16 Data0, Data4;
+    sSprite* Data2C = 0;
+
+    if (Sprite_Update_Die2_Explosion(pSprite))
+        return;
+
+    if (mTroops_Enemy_Count >= mParams->mSpawnEnemyMax) {
+        pSprite->mSheetIndex = 0xE0;
+        return;
+    }
+
+    pSprite->mDrawOrder = eSprite_Draw_First;
+    if (pSprite->field_43 < 0)
+        goto loc_1D8DC;
+
+    pSprite->field_43 -= 1;
+    if (pSprite->field_43 == 0x14 || pSprite->field_43 == 0x0A)
+        goto loc_1D928;
+
+    if (pSprite->field_43 >= 0) {
+        pSprite->mSheetIndex = 0x7C;
+        return;
+    }
+
+    pSprite->mSheetIndex = 0xE0;
+    Sound_Play(pSprite, eSound_Effect_BuildingDoor2, 1);
+
+    Data0 = tool_RandomGet() & 0x0F;
+    Data4 = 0x14 - mGame_Data.mGamePhase_Data.mSprite_Enemy_AggressionMax;
+
+    if (Data4 < 0)
+        Data0 = 0;
+
+    Data4 <<= 3;
+    Data4 += Data0;
+    pSprite->field_12 = Data4;
+
+loc_1D8DC:;
+
+    pSprite->field_12 -= 1;
+    if (pSprite->field_12 >= 0)
+        return;
+
+    Data0 = tool_RandomGet() & 0x0F;
+    Data0 += 6;
+    pSprite->field_43 = static_cast<int8>(Data0);
+    pSprite->mSheetIndex = 0x7C;
+
+    if (!Sprite_Create_Enemy(pSprite, Data2C))
+        return;
+
+    pSprite->field_12 = -1;
+    pSprite->field_43 = -1;
+    return;
+
+loc_1D928:;
+    Sprite_Create_Enemy(pSprite, Data2C);
+}
+
+void cFodder::Sprite_Handle_BuildingDoor_Reinforced(sSprite* pSprite) {
+    if (pSprite->mAnimState != eSprite_Anim_Die3) {
+        Sprite_Handle_BuildingDoor3(pSprite);
+        return;
+    }
+
+    if (pSprite->mHeliRestartFrame >= 0x69) {
+        Sprite_Handle_BuildingDoor3(pSprite);
+        return;
+    }
+
+    pSprite->mHeliRestartFrame += 1;
+    pSprite->mAnimState = eSprite_Anim_None;
+    Sprite_Handle_BuildingDoor3(pSprite);
+}
+
+void cFodder::Sprite_Handle_Computer_1(sSprite* pSprite) {
+
+    Sprite_Handle_Computer(pSprite, 0x46);
+}
+
+void cFodder::Sprite_Handle_Computer_2(sSprite* pSprite) {
+
+    Sprite_Handle_Computer(pSprite, 0x69);
+}
+
+void cFodder::Sprite_Handle_Computer_3(sSprite* pSprite) {
+
+    Sprite_Handle_Computer(pSprite, 0xAF);
+}
+
+void cFodder::Sprite_PositionNext_AdjustByHeight(sSprite* pSprite) {
+    sSprite* Data24 = pSprite + 1;
+
+    Data24->mPosX = pSprite->mPosX + 8;
+    Data24->mPosY = pSprite->mPosY;
+
+    Data24->mPosX += (pSprite->mHeight >> 2);
+    Data24->mPosY += (pSprite->mHeight >> 2);
+    Data24->mDrawOrder = eSprite_Draw_First;
+}
+
+void cFodder::Sprite_XY_Store(sSprite* pSprite) {
+    mSprite_Reached_Target = 0;
+
+    mStoredSpriteX = packWords32(pSprite->mPosXFrac, pSprite->mPosX);
+    mStoredSpriteY = packWords32(pSprite->mPosYFrac, pSprite->mPosY);
+}
+
+void cFodder::Sprite_XY_Restore(sSprite* pSprite) {
+    mSprite_Reached_Target = -1;
+
+    pSprite->mPosX = mStoredSpriteX & 0xFFFF;
+    pSprite->mPosXFrac = mStoredSpriteX >> 16;
+
+    pSprite->mPosY = mStoredSpriteY & 0xFFFF;
+    pSprite->mPosYFrac = mStoredSpriteY >> 16;
+}
+
+void cFodder::Sprite_Draw_Row_Update(sSprite* pSprite) {
+    int16 Data4 = 0;
+
+    // Sprite still moving?
+    if (!Sprite_Reached_Target(pSprite)) {
+        Sprite_Movement_Speed_Update(pSprite);
+        Sprite_Movement_Calculate(pSprite);
+    }
+
+    Squad_Join_Check(pSprite);
+    Sprite_Reached_MapEdge(pSprite);
+
+    // Check the terrain
+    int8 PreviousTileType = pSprite->mTerrainType;
+    Sprite_Terrain_Check(pSprite, Data4);
+
+    // Not leaving water?
+    if (PreviousTileType != eTerrainFeature_Water)
+        goto loc_1F75D;
+
+    // Leaving water and into Quick sand?
+    if (pSprite->mTerrainType == eTerrainFeature_QuickSand)
+        goto loc_1F753;
+
+    // Leaving water for the edge/bank
+    if (pSprite->mTerrainType != eTerrainFeature_WaterEdge)
+        goto loc_1F75D;
+
+    pSprite->mRowsToSkip = 5;
+    goto loc_1F75D;
+
+loc_1F753:;
+    pSprite->mRowsToSkip = 3;
+
+loc_1F75D:;
+    Sprite_Handle_Player_Close_To_SquadMember(pSprite);
+}
+
+void cFodder::Sprite_Terrain_Check(sSprite* pSprite, int16& pData4) {
+    int16 Data0 = -3;   // Y
+    pData4 = 8; // X
+
+    // pData4 becomes terrain type
+    if (Map_Terrain_Get_Type_And_Walkable(pSprite, Data0, pData4))
+        goto CheckFalling;
+
+    pSprite->mTerrainType = pData4 & 0xFF;
+    pSprite->field_50 = 0;
+    pSprite->mInWater = 0;
+
+    if (pData4 == eTerrainFeature_Drop2) {
+        if (pSprite->mSpriteType == eSprite_Enemy)
+            goto loc_20251;
+
+        if (pSprite->mPersonType == eSprite_PersonType_Native)
+            goto loc_20251;
+
+        if (!pSprite->mAnimState || pSprite->mAnimState >= eSprite_Anim_Slide1) {
+            pSprite->mAnimState = eSprite_Anim_Hit3;
+            return;
+        }
+    }
+
+    //loc_20044
+    if (pData4 == eTerrainFeature_Drop) {
+
+        if (pSprite->mSpriteType == eSprite_Enemy)
+            goto loc_20251;
+
+        if (pSprite->mPersonType == eSprite_PersonType_Native)
+            goto loc_20251;
+
+        ++pSprite->mDelayCounter;
+        return;
+    }
+
+    //loc_20072
+    pSprite->mDelayCounter = 0;
+    if (pData4 == eTerrainFeature_QuickSandEdge)
+        goto loc_201CC;
+
+    if (pData4 == eTerrainFeature_Rocky)
+        goto loc_20108;
+
+    if (pData4 == eTerrainFeature_Rocky2)
+        goto loc_2014D;
+
+    if (!pSprite->mRockyHeightActive)
+        goto loc_200C0;
+
+    pSprite->mHeight -= 3;
+    if (!pSprite->mHeight)
+        goto loc_200B7;
+    if (pSprite->mHeight >= 0)
+        goto loc_200C0;
+
+    pSprite->mHeight = 0;
+loc_200B7:;
+    pSprite->mRockyHeightActive = 0;
+
+loc_200C0:;
+    if (pData4 == eTerrainFeature_QuickSand)
+        goto Soldier_InQuickSand;
+
+    if (pData4 == eTerrainFeature_WaterEdge)
+        goto Soldier_WaterEdge;
+
+    if (pData4 != eTerrainFeature_Water)
+        goto checkSinking;
+
+    // Is a Native?
+    if (pSprite->mPersonType == eSprite_PersonType_Native)
+        goto loc_20251;
+
+    // In Water
+    pSprite->mInWater = -1;
+    pSprite->field_50 = 0;
+    pSprite->mRowsToSkip = 0;
+    return;
+
+loc_20108:;
+    pSprite->mRowsToSkip = 0;
+    if (pSprite->mRockyHeightActive) {
+        pSprite->mHeight = 2;
+        return;
+    }
+    if (!pSprite->mHeight) {
+        pSprite->mRockyHeightActive = -1;
+        pSprite->mHeight = 1;
+    }
+    return;
+
+loc_2014D:;
+    pSprite->mRowsToSkip = 0;
+    if (pSprite->mRockyHeightActive) {
+        if (pSprite->mHeight >= 6)
+            return;
+
+        pSprite->mHeight += 2;
+        return;
+    }
+    //loc_2017C
+    if (pSprite->mHeight)
+        return;
+    pSprite->mRockyHeightActive = -1;
+    pSprite->mHeight = 1;
+    return;
+
+Soldier_InQuickSand:;
+    pSprite->field_50 = 3;
+    return;
+
+Soldier_WaterEdge:;
+    pSprite->field_50 = 6;
+    return;
+
+checkSinking:;
+    if (pData4 == eTerrainFeature_Sink)
+        goto HumanSinking;
+
+    pSprite->mRowsToSkip = 0;
+    return;
+
+loc_201CC:;
+    if (pSprite->mAnimState)
+        return;
+    if (!pSprite->mSpeed)
+        return;
+    if (pSprite->mRowsToSkip)
+        return;
+    if (pSprite->mHeight)
+        return;
+
+    Data0 = tool_RandomGet() & 0x3F;
+    if (Data0)
+        return;
+
+    if (pSprite->mPersonType == eSprite_PersonType_Native)
+        return;
+
+    pSprite->mAnimState = eSprite_Anim_Slide1;
+    return;
+
+HumanSinking:;
+    pSprite->mIsSinking = 1;
+    return;
+
+CheckFalling:;
+    if (pData4 == eTerrainFeature_Drop || pData4 == eTerrainFeature_Drop2) {
+        pSprite->mAnimState = eSprite_Anim_Hit2;
+        return;
+    }
+
+loc_20251:;
+    pSprite->field_43 = 1;
+    mSprite_Reached_Target = -1;
+    if (pSprite->mPersonType == eSprite_PersonType_Human)
+        goto loc_2035C;
+
+    pSprite->mPosX = mStoredSpriteX & 0xFFFF;
+
+    Data0 = -3;
+    pData4 = 8;
+    if (Map_Terrain_Get_Type_And_Walkable(pSprite, Data0, pData4))
+        goto loc_202E5;
+
+    if (pData4 == eTerrainFeature_Drop)
+        goto loc_202E5;
+
+    if (pData4 == eTerrainFeature_Drop2)
+        goto loc_202E5;
+
+    if (pSprite->mPersonType == eSprite_PersonType_Native && pData4 == eTerrainFeature_Water)
+        goto loc_202E5;
+
+    Data0 = pSprite->mDirection;
+    if (Data0 <= 0x80 || Data0 > 0x180) {
+        pSprite->mDirection = 0;
+        goto loc_20307;
+    }
+
+    pSprite->mDirection = 0x100;
+    goto loc_20307;
+
+loc_202E5:;
+    if (pSprite->mDirection > 0x100) {
+        pSprite->mDirection = 0x180;
+        goto loc_20307;
+    }
+
+    pSprite->mDirection = 0x80;
+loc_20307:;
+
+    Data0 = mInterruptTick;
+    Data0 >>= 2;
+    Data0 &= 0x3F;
+    Data0 -= 0x20;
+    Data0 &= 0x1FE;
+    pSprite->mDirection += Data0;
+    pSprite->mPosY = mStoredSpriteY;
+
+    Data0 = mInterruptTick;
+    Data0 &= 0x1F;
+    Data0 += 0x0C;
+    pSprite->field_44 = (int8)Data0;
+    return;
+
+loc_2035C:;
+
+    int16 word_3A9E6 = pSprite->mPosX;
+    pSprite->mPosX = mStoredSpriteX & 0xFFFF;
+
+    Data0 = -3;
+    pData4 = 8;
+    if (!Map_Terrain_Get_Type_And_Walkable(pSprite, Data0, pData4))
+        return;
+
+    pSprite->mPosX = word_3A9E6;
+    pSprite->mPosY = mStoredSpriteY & 0xFFFF;
+
+    Data0 = -3;
+    pData4 = 8;
+    if (!Map_Terrain_Get_Type_And_Walkable(pSprite, Data0, pData4))
+        return;
+
+    //loc_203BA
+    pSprite->mFrameIndex = mTmp_FrameNumber;
+    Sprite_XY_Restore(pSprite);
+    pSprite->mTargetX = pSprite->mPosX;
+    pSprite->mTargetY = pSprite->mPosY;
+
+    sMapTarget* Data30 = mSquad_WalkTargets[pSprite->field_32];
+    pData4 = 0;
+
+    for (;;) {
+        sMapTarget eax = *Data30++;
+
+        if (eax.asInt < 0)
+            break;
+
+        pData4++;
+    }
+
+    pSprite->mNextWalkTargetIndex = pData4;
+    pSprite->mRetargetCooldown = -1;
+}
+
+void cFodder::Sprite_Reached_MapEdge(sSprite* pSprite) {
+
+    if (pSprite->mPosY < 0 || pSprite->mPosY <= 13) {
+        pSprite->mPosY = mStoredSpriteY;
+        mSprite_Reached_Target = -1;
+    }
+
+    if (pSprite->mPosY >= mMapLoaded->getHeightPixels()) {
+        if (pSprite->mAnimState == eSprite_Anim_None || pSprite->mAnimState >= eSprite_Anim_Slide1) {
+            pSprite->mPosY = mStoredSpriteY;
+            mSprite_Reached_Target = -1;
+        }
+    }
+    //loc_204E1
+    if (pSprite->mPosX <= 0) {
+        if (mStoredSpriteX <= 0)
+            return;
+
+        goto loc_20521;
+    }
+
+    if (pSprite->mPosX + 12 < mMapLoaded->getWidthPixels())
+        return;
+
+    if (mStoredSpriteX + 16 >= mMapLoaded->getWidthPixels())
+        return;
+
+loc_20521:;
+    pSprite->mPosX = mStoredSpriteX;
+    mSprite_Reached_Target = -1;
+}
+
+int16 cFodder::Sprite_Destroy_Wrapper(sSprite* pSprite) {
+
+    return Sprite_Destroy(pSprite);
+}
 
 int16 cFodder::Sprite_Destroy(sSprite* pSprite) {
 
