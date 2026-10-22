@@ -113,4 +113,15 @@ Siguen pendientes encapsulación de dichos registros, estados de presentación d
 
 Siguiente bloque: preparar comandos de dibujo independientes de los registros globales y delimitar las actualizaciones restantes, conservando la secuencia clásica y verificando de nuevo H3.
 
-**CI del cambio:** [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056), en curso al registrar esta implementación. Los resultados locales anteriores no se presentan como resultado CI.
+**CI del cambio:** [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056), **ambos completados con éxito**, con la evidencia final siguiente.
+
+### Validación CI final del commit 4e4d57ef
+
+- Windows 39772996056: compilación y CTests satisfactorios; report.json de replays PASS, 29 fases, cero omisiones, retorno 0.
+- Linux 39772995975: compilación, CTests y prueba focalizada de **184.320 transiciones del temporizador** satisfactorios.
+- H3 en ambas plataformas: PC Format 7.956 estados + Amiga The One 3.405; **11.361 estados coincidentes con el baseline original**, además de determinismo entre dos pasadas por campaña.
+- Linux ASan/UBSan, LeakSanitizer y ThreadSanitizer: cada report.json muestra PASS, 29 fases, cero omisiones, retorno 0 y reasons vacío. Los engine.log examinados no contienen diagnósticos ASan, UBSan, LSan ni TSan.
+- Se descargaron los ZIP de evidencia, comprobaron CRC y SHA-256 y leyeron los informes internos. SHA-256 Windows: `3a0ae910de4cb3cd705d0a471986c68c937d5a9d5ae5eea5b2bfde81f2290b8b`; Linux: `4bc235b3683828d72def03206257ae5819f812d51f6950d1fe90950aa3a6061a`.
+- El workflow Windows generó el [paquete de demos](https://github.com/Cacheirez/openfodder/actions/runs/39772996056/artifacts/12422944078); no se exige a Miguel repetir ahora su validación manual de H2.6.
+
+**Decisión:** primera extracción aceptada dentro de la cobertura demostrada. H4.1 continúa para los registros de dibujo y efectos restantes; no se declaran dibujos adicionales seguros ni 60 FPS implementados. PR sin fusionar y baseline clásica sin modificar.
