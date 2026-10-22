@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.2 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
+**Versión del plan:** 2.3 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.  
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: primera extracción de efectos implementada en `4e4d57ef`; H3 local conserva los 11.361 estados y 29 replays pasan. Verificación CI del cambio en curso. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: primera extracción de efectos implementada en `4e4d57ef`; H3 local y CI Windows/Linux conservan los 11.361 estados; 29 replays y sanitizadores Linux pasan sin hallazgos observados. Sin gráficos HD ni scroll nuevo.
 
 ## 1. Objetivo y alcance
 
@@ -29,7 +29,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | Linux [39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896): 29/29 ASan/UBSan, 29/29 LeakSanitizer y 29/29 ThreadSanitizer sin avisos en las rutas ejercitadas; no cubre toda CD32, audio real ni todas las pantallas |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: verificar la primera extracción en CI y preparar comandos de dibujo sin registros globales compartidos**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
+| Tarea activa | **H4.1: preparar comandos de dibujo sin registros globales compartidos y revisar efectos restantes**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -151,7 +151,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H4. Separar presentación y simulación
 
-- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente. **Primera extracción implementada:** [efectos principales, pruebas y límites](H4_1_EFECTOS_DIBUJO.md); 11.361 estados H3 locales preservados. Faltan registros de dibujo independientes y revisión de efectos restantes; no equivale a independencia 0/1/N.
+- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente. **Primera extracción implementada:** [efectos principales, pruebas y límites](H4_1_EFECTOS_DIBUJO.md); 11.361 estados H3 preservados localmente y en CI Windows/Linux. Faltan registros de dibujo independientes y revisión de efectos restantes; no equivale a independencia 0/1/N.
 - [ ] **H4.2 — Asistente:** introducir estados de presentación coherentes y de solo lectura para cámara, sprites, terreno, paletas e interfaz.
 - [ ] **H4.3 — Asistente:** crear rutas clásica y moderna seleccionables, manteniendo inicialmente las imágenes originales.
 - [ ] **H4.4 — Asistente:** separar capas de terreno, entidades, efectos, panel y cursor; conservar orden, recortes, fundidos y visibilidad lógica.
@@ -359,6 +359,12 @@ Esta decisión sustituye operativamente el estado «pendiente de CI» de la revi
 - Código `4e4d57efc408d4a4f404b5f4f2ed7844fde261c3`: extracción de retirada diferida, visibilidad, selección de arma, temporizador comercial y solicitud del cursor. Se conservan los puntos, guardas y orden de llamada.
 - Linux local: 6 CTests, 13 tests Python, H3 de 11 fases/11.361 estados y 29 replays sin omisiones, todos PASS. No se cambia el baseline.
 - Temporizador comercial: 184.320 transiciones equivalentes al cuerpo original H2.6, con UBSan y registro de llamadas gráficas; se añade esta prueba a CI Linux. No sustituye la campaña comercial completa.
-- [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056): en curso en esta actualización.
+- [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056): ambos completados con éxito; resultados finales abajo.
 - La base clásica recuperable continúa en `5e6a4f38`; PR #1 sigue sin fusionar.
 - Próximo bloque técnico tras comprobar CI: encapsular registros de recorte/dibujo y revisar efectos restantes antes de publicar estados inmutables. Las coordinadoras clásicas siguen teniendo estado; todavía no deben invocarse para dibujar 0/1/N veces por tick.
+
+### Resultado final del bloque H4.1
+
+Código `4e4d57ef`: primera extracción aceptada. Windows 39772996056 y Linux 39772995975 completos y satisfactorios. H3: 11.361 estados del baseline original; replays: 29/29, cero omisiones; Linux ASan/UBSan, LSan y TSan: 29/29 cada uno, sin hallazgos en los logs examinados. Prueba comercial aislada: 184.320 transiciones equivalentes. ZIP e informes internos verificados; huellas y límites en H4_1_EFECTOS_DIBUJO.md.
+
+H4.1 permanece en curso por los registros de dibujo/efectos restantes. Siguiente cambio: encapsular preparación/recorte en datos propios para avanzar hacia estados inmutables, manteniendo coordinadoras clásicas y H3 original. No aumentar todavía la frecuencia de llamadas a las funciones clásicas. Base `baseline/classic-h2.6-2026-10-22` intacta; PR en borrador, sin fusionar.
