@@ -755,87 +755,19 @@ void cGraphics_Amiga::Map_Tile_Draw(cSurface* pTarget, uint16 pTile, uint16 pX, 
 	}
 }
 
+openfodder::TerrainDraw cGraphics_Amiga::CaptureVisibleTerrain() {
+    return openfodder::PrepareTerrain(*mFodder->mMap, mFodder->mMapTile_Ptr,
+        mFodder->mMapLoaded->getWidth(), g_Fodder->getWindowRows(), g_Fodder->getWindowColumns(),
+        mFodder->mMapTile_RowOffset, mFodder->mMapTile_ColumnOffset,
+        openfodder::TerrainFormat::Amiga, mTerrainAtlas.capture(0, *mBlkData));
+}
+
 void cGraphics_Amiga::MapTiles_Draw() {
-	mSurface->clearBuffer();
-	uint8* Target = mSurface->GetSurfaceBuffer();
-
-	uint8* CurrentMapPtr = mFodder->mMap->data() + mFodder->mMapTile_Ptr;
-
-	// Y
-	for (uint16 cx = 0; cx <= g_Fodder->getWindowRows() + 1; ++cx) {
-
-		uint8* TargetRow = Target;
-
-		uint16 StartY = 0;
-
-		if (cx == 0)
-			StartY = mFodder->mMapTile_RowOffset;
-
-		if (CurrentMapPtr >= mFodder->mMap->data()) {
-
-			uint8* MapRowPtr = CurrentMapPtr;
-
-			// X
-			for (uint16 cx2 = 0; cx2 <= g_Fodder->getWindowColumns() + 1; ++cx2) {
-				uint8* TargetTmp = TargetRow;
-
-				if (MapRowPtr >= mFodder->mMap->data() + mFodder->mMap->size())
-					break;
-
-				uint16 Tile = readLE<uint16>(MapRowPtr) & 0x1FF;
-				if (Tile > 0x1C0)
-					Tile = 0;
-
-				Tile <<= 7;
-
-				uint8* TilePtr = mBlkData->data() + Tile;
-				uint16 StartX = 0;
-
-				TilePtr += StartY * 2;
-
-				if (cx2 == 0)
-					StartX = mFodder->mMapTile_ColumnOffset;
-
-				// Each bitfield
-				for (uint16 BitField = 0; BitField < 4; ++BitField) {
-
-					// Each Tile Row
-					for (uint16 i = StartY; i < 16; ++i) {
-
-						if (TilePtr > mBlkData->data() + mBlkData->size())
-							continue;
-
-						uint16 RowData = readBEWord(TilePtr);
-						TilePtr += 2;
-						RowData <<= StartX;
-
-						// Each pixel of a Tile Row
-						for (uint16 x = StartX; x < 16; ++x) {
-							uint8 Bit = (RowData & 0x8000) ? 1 : 0;
-							RowData <<= 1;
-
-							if (Bit)
-								*(TargetTmp + x) |= (Bit << BitField);
-
-						}
-
-						TargetTmp += mSurface->GetWidth();
-					}
-
-					// Next Bitfield
-					TargetTmp = TargetRow;
-				}
-
-				MapRowPtr += 2;
-				TargetRow += (16 - StartX);
-			}
-		}
-
-		Target += (mSurface->GetWidth() * (16 - StartY));
-		CurrentMapPtr += (mFodder->mMapLoaded->getWidth() << 1);
-	}
-
-	mSurface->Save();
+    mSurface->clearBuffer(); // Keep saved-buffer and SDL clearing at the classic point.
+    const auto terrain = CaptureVisibleTerrain();
+    openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
+        mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
+    mSurface->Save(); // Background for the subsequent sprite pass, once as before.
 }
 
 void cGraphics_Amiga::Hill_Prepare_Overlays() {

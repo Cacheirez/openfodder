@@ -66,6 +66,7 @@ class cGraphics_PC : public cGraphics {
 	virtual void		Map_Load_Resources();
 	virtual void		Map_Tile_Draw(cSurface *pTarget, uint16 pTile, uint16 pX, uint16 pY, uint16 pOffset);
 	virtual void		MapTiles_Draw();
+    openfodder::TerrainDraw CaptureVisibleTerrain() override;
 	virtual void		MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY );
 	
 	virtual void		PaletteSetOverview();

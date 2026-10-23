@@ -286,62 +286,19 @@ void cGraphics_PC::Map_Tile_Draw( cSurface *pTarget, uint16 pTile, uint16 pX, ui
 	}
 }
 
+openfodder::TerrainDraw cGraphics_PC::CaptureVisibleTerrain() {
+    return openfodder::PrepareTerrain(*mFodder->mMap, mFodder->mMapTile_Ptr,
+        mFodder->mMapLoaded->getWidth(), g_Fodder->getWindowRows(), g_Fodder->getWindowColumns(),
+        mFodder->mMapTile_RowOffset, mFodder->mMapTile_ColumnOffset,
+        openfodder::TerrainFormat::PC, mTerrainAtlas.capture(0, *mFodder->mTile_BaseBlk),
+        mTerrainAtlas.capture(1, *mFodder->mTile_SubBlk));
+}
+
 void cGraphics_PC::MapTiles_Draw() {
-
-    uint8* Target = mSurface->GetSurfaceBuffer();
-
-    uint8* CurrentMapPtr = mFodder->mMap->data() + mFodder->mMapTile_Ptr;
-
-    // Y
-    for (uint16 cx = 0; cx <= g_Fodder->getWindowRows() + 1; ++cx) {
-        uint8* MapPtr = CurrentMapPtr;
-        uint8* TargetRow = Target;
-
-        uint16 StartY = 0;
-
-        if (cx == 0)
-            StartY = mFodder->mMapTile_RowOffset;
-
-        // X
-        for (uint16 cx2 = 0; cx2 <= g_Fodder->getWindowColumns() + 1; ++cx2) {
-            uint8* TargetTmp = TargetRow;
-
-            // Verify we are inside the actual map data
-            if (MapPtr >= mFodder->mMap->data()) {
-
-                if (MapPtr >= mFodder->mMap->data() + mFodder->mMap->size())
-                    continue;
-
-                uint16 Tile = readLE<uint16>(MapPtr) & 0x1FF;
-                if (Tile > 0x1DF)
-                    Tile = 0;
-
-                uint8* TilePtr = mTile_Gfx_Ptrs[Tile];
-                uint16 StartX = 0;
-
-                TilePtr += StartY * 0x140;
-
-                if (cx2 == 0)
-                    StartX = mFodder->mMapTile_ColumnOffset;
-
-                // Each Tile Row
-                for (uint16 i = StartY; i < 16; ++i) {
-
-                    memcpy(TargetTmp, TilePtr + StartX, 16 - StartX);
-
-                    TilePtr += 0x140;
-                    TargetTmp += mSurface->GetWidth();
-                }
-
-                MapPtr += 2;
-                TargetRow += (16 - StartX);
-            }
-        }
-
-        Target += mSurface->GetWidth() * (16 - StartY);
-        CurrentMapPtr += mFodder->mMapLoaded->getWidth() << 1;
-    }
-    mSurface->Save();
+    const auto terrain = CaptureVisibleTerrain();
+    openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
+        mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
+    mSurface->Save(); // Background for the subsequent sprite pass, once as before.
 }
 
 void cGraphics_PC::MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) {

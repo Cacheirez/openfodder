@@ -21,6 +21,7 @@
  */
 
 #include "Utils/ResolvedSpriteResource.hpp"
+#include "Utils/TerrainDraw.hpp"
 
 class cFodder;
 
@@ -206,6 +207,8 @@ public:
 
 	virtual void		Map_Tile_Draw(cSurface *pTarget, uint16 pTile, uint16 pX, uint16 pY, uint16 pOffset) = 0;
 	virtual void		MapTiles_Draw() = 0;
+    virtual openfodder::TerrainDraw CaptureVisibleTerrain() = 0;
+    openfodder::TerrainAtlasCache mTerrainAtlas;
 	virtual void		Map_Load_Resources() = 0;
 
 	virtual void		MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) = 0;

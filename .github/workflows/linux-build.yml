@@ -82,6 +82,12 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin a2f63090fc0732787df8ba56cc142e9938771d9c
           python3 tools/modernization/check_sprite_resource_equivalence.py
+      - name: H4.1 - retained visible terrain and atlas equivalence
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5
+          python3 tools/modernization/check_terrain_equivalence.py
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
