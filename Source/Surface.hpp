@@ -21,6 +21,7 @@
  */
 
 #include "Utils/SurfaceDraw.hpp"
+#include "Utils/SurfaceLayers.hpp"
 
 const size_t		 g_MaxColors = 0xFF;
 
@@ -43,6 +44,14 @@ public:
 	}
 };
 
+
+// Full indexed copy state. Save buffer and fade-adjusting flag are deliberately
+// absent: classic copyFrom does not copy them.
+struct IndexedSurfaceState {
+    openfodder::IndexedLayer layer;
+    std::array<cPalette, 255> current, next;
+    std::array<uint32, 255> effective;
+};
 
 class cSurface {
 protected:
@@ -69,6 +78,9 @@ protected:
 	
 
 public:
+    openfodder::IndexedLayer CaptureIndexedLayer() const;
+    openfodder::RGBLayer CaptureRGBLayer() const;
+    IndexedSurfaceState CaptureIndexedState() const;
     openfodder::SurfaceDraw CaptureDraw(int16 pSkipX = 16, int16 pSkipY = 16) const;
 	void			surfaceSetToPalette();
 	void			surfaceSetToPaletteNew();

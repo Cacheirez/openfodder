@@ -13,7 +13,8 @@ def main():
     root = Path(__file__).resolve().parents[2]
     old = subprocess.check_output(['git','show',BASELINE+':Source/Surface.cpp'],cwd=root,text=True)
     new = (root/'Source/Surface.cpp').read_text()
-    signatures = ['void cSurface::'+n+'(' for n in ('palette_SetToBlack','palette_SetFromNew','paletteNew_SetToBlack','paletteNew_SetDimmed','paletteSet','surfaceSetToPalette','surfaceSetToPaletteNew','Save','Restore','clearBuffer','copyFrom')]
+    signatures = ['void cSurface::'+n+'(' for n in ('palette_SetToBlack','palette_SetFromNew','paletteNew_SetToBlack','paletteNew_SetDimmed','paletteSet','surfaceSetToPalette','surfaceSetToPaletteNew','Save','Restore','clearBuffer')]
+    # copyFrom is now compared by check_surface_layers_equivalence.py.
     signatures += ['bool cSurface::palette_FadeTowardNew(', 'inline void cSurface::paletteSDLColorSet(']
     for sig in signatures:
         assert function(old,sig) == function(new,sig),sig
@@ -27,6 +28,7 @@ def main():
     palette=header[header.index('class cPalette {'):header.index('class cSurface {')]
     code=r'''
 #include "Utils/SurfaceDraw.hpp"
+#include "Utils/SurfaceLayers.hpp"
 #include <algorithm>
 #include <cassert>
 #include <cstring>
