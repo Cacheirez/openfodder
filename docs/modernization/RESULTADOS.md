@@ -1,5 +1,7 @@
 # Resultados reales de esta auditoría
 
+> Documento histórico: las fechas, pendientes y recetas siguientes describen su revisión original. Para el estado vigente y el relevo técnico, consultar [README.md](README.md) y [PLAN_TRABAJO.md](PLAN_TRABAJO.md). No aplicar parches iniciales de nuevo sobre la rama actual.
+
 20 de octubre de 2026. Entorno de ejecución: Linux x86-64, GCC 13, CMake 4.4.4. No se ha ejecutado Windows ni se ha medido una GPU o un monitor real.
 
 ## Cambios entregados

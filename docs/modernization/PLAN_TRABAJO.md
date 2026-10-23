@@ -1,9 +1,11 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.8 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.9 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
 **Estado global:** H2.6 aceptado con validación manual CD32 de Miguel y baseline recuperable. H4.1: sprites y terreno visible con recursos propios; terreno en `7eeb6f7`, 7.680 casos de equivalencia aprobados localmente y en CI. H3 original conserva 11.361 estados y pasan 29 replays. CI de terreno Windows/Linux aprobadas, incluidos los sanitizadores. Falta HUD/cursor y el estado de presentación completo; sin cambios de frecuencia ni gráficos HD.
+
+**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/7eeb6f7-reports.json).
 
 ## 1. Objetivo y alcance
 
@@ -401,3 +403,8 @@ CI Windows 39866081138 y Linux 39866081648 aprobadas: H3 original 11.361 estados
 Código `7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41`: `TerrainDraw` retiene tiles/geometría por valor y copias privadas de atlas PC/Amiga. `MapTiles_Draw` conserva limpieza y guardado en su punto clásico; rasterización repetible sin consultar el motor. 7.680 comparaciones contra los cuerpos originales cubren recortes, ambos bancos PC, planos Amiga, bordes y efectos. Pruebas de retención, mutación, destrucción y liberación aprobadas.
 
 Local: Release, 6/6 CTests, H3 11.361 estados originales y 29/29 replays. CI Windows 39919649274 y Linux 39919649308 aprobadas: H3 original 11.361 estados en ambas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, cero omisiones y sin diagnósticos. ZIP e informes internos verificados. Detalles: [H4_1_TERRENO_ESTABLE.md](H4_1_TERRENO_ESTABLE.md). H4.1 sigue abierta; el siguiente bloque es HUD/cursor, manteniendo las coordinadoras clásicas y sin construir todavía el frame completo. PR en borrador, sin fusionar; base H2.6 recuperable.
+
+
+## Continuidad documental — 23 de octubre de 2026
+
+Añadidos índice/guía de relevo, matriz de diferencias PC/Amiga comprobadas y campos pendientes de análisis, instrucciones de reproducción/recuperación y custodia de datos privados. Documentos iniciales marcados como históricos. Informes JSON de la CI de `7eeb6f7` conservados en Git; los ZIP completos siguen sujetos a caducidad y requieren archivo duradero externo. La guía identifica esta obligación pendiente y no afirma que esté completada. No cambia el motor; no se repiten pruebas ni se amplía su cobertura.

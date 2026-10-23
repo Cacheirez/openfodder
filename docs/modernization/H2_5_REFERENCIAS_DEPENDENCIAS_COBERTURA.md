@@ -1,5 +1,7 @@
 # H2.5 — Referencias, dependencias y matriz de cobertura
 
+> Documento histórico: las fechas, pendientes y recetas siguientes describen su revisión original. Para el estado vigente y el relevo técnico, consultar [README.md](README.md) y [PLAN_TRABAJO.md](PLAN_TRABAJO.md). No aplicar parches iniciales de nuevo sobre la rama actual.
+
 **Fecha del inventario:** 21 de octubre de 2026 (Europe/Madrid).  
 **Resultado:** H2.5 **cerrado como auditoría de dependencias y cobertura existente**. No se modifican el motor, las referencias H3, las dependencias ni los replays con este cierre documental. La eventual normalización de versiones entre plataformas es una **decisión/acción pendiente para H2.6**, no una compatibilidad ya demostrada.
 
