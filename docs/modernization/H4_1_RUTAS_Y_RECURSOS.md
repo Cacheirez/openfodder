@@ -97,3 +97,8 @@ El bloque de resolución/propiedad de sprites se implementa en bd15a8a8: [H4_1_R
 ## 10. HUD lateral y cursor — 23-10-2026
 
 Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094`; coordinadoras y efectos clásicos conservados. Véase [H4_1_HUD_CURSOR_ESTABLES.md](H4_1_HUD_CURSOR_ESTABLES.md). No equivale a separar cada función GUI ni las rutas RGB, fades, minimapa o rasterizadores restantes.
+
+
+## 11. Seguimiento: conversión de superficies retenida
+
+`ff15219` captura índices privados y paleta SDL efectiva por valor; cada conversión devuelve un destino RGB propio. [Contrato de paleta/destinos](H4_1_PALETA_DESTINOS.md) registra casos de paleta lógica/objetivo/aplicada divergentes, PNG excluido, Save/Restore y fades intactos, costes y límites. La composición de pausa sigue fondo → texto → merge; no se presenta una captura individual como frame completo. Próximo bloque: composiciones y destinos indexados restantes.

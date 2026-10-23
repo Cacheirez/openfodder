@@ -1,6 +1,6 @@
 # Diferencias PC/Amiga y contratos de compatibilidad
 
-Revisión: 23-10-2026, motor `c6af094c49641018b6dea6dc77cbe731a7ea0218`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
+Revisión: 23-10-2026, motor `ff15219680b289abf207fdc23fc436a9f390e649`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
 
 ## Matriz de dibujo
 
@@ -58,3 +58,8 @@ Para cada nueva ruta se debe añadir: función/commit original, campos leídos y
 ## HUD lateral y cursor — actualización 23-10-2026
 
 Código `c6af094`: [contratos, fórmulas y pruebas](H4_1_HUD_CURSOR_ESTABLES.md). El sidebar compuesto se retiene con 48 bytes por fila. PC startY solo reduce el número de filas; Amiga desplaza además fuente y destino. Ambas rutas usan dimensiones de la superficie activa incluso con destino alternativo. El cursor PC fuerza paleta 0xF0 tras el accessor; Amiga conserva la paleta efectiva PSTUFF y el layout. Se mantiene la guarda de vídeo antes de consumir solicitudes. Esta actualización cierra la captura de estas rutas; no la composición interna de toda la GUI, RGB/fades ni el frame completo.
+
+
+## Paleta efectiva y destino RGB — actualización 23-10-2026
+
+Código `ff15219`: [detalle y prueba](H4_1_PALETA_DESTINOS.md). Capturar mPaletteSDL (tabla aplicada), no deducirla de mPalette/mPaletteNew. PC carga canales por byte y Amiga expande nibbles; se mantiene la conversión RGB existente. Son 255 entradas: índice 0 no escribe y 255 produce negro. Save/Restore solo afectan a índices, no a paletas. El destino RGB tiene vector propio; las composiciones de capas y destinos indexados completos siguen pendientes. Inicialización nueva de tabla efectiva a negro antes de aplicar una paleta; se explicita el estado previamente indeterminado.

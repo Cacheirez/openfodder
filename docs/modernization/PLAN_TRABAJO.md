@@ -1,11 +1,11 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.10 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.11 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado con validación manual CD32 y base recuperable. H4.1: sprites, terreno visible, HUD lateral compuesto y cursor con recursos propios; HUD/cursor en `c6af094`, 2.304 + 288 casos aprobados localmente. H3 original conserva 11.361 estados y pasan 29 replays. CI Windows/Linux aprobada, incluidos sanitizadores. Faltan RGB/fades, destinos y rutas restantes antes del frame completo; sin cambios de cadencia ni gráficos HD.
+**Estado global:** H2.6 aceptado con validación manual CD32 y base recuperable. H4.1: sprites, terreno, HUD/cursor y ahora paleta efectiva con salida RGB propia en `ff15219`. Prueba focalizada 27.648 casos, H3 original 11.361 estados y 29 replays aprobados localmente y en CI Windows/Linux; sanitizadores aprobados. Faltan composiciones y destinos indexados restantes antes del frame completo; sin cambios de cadencia ni gráficos HD.
 
-**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/c6af094-reports.json).
+**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/ff15219-reports.json).
 
 ## 1. Objetivo y alcance
 
@@ -22,16 +22,16 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `c6af094c49641018b6dea6dc77cbe731a7ea0218`: HUD lateral y cursor con recursos propios |
-| Compilación Windows observada | [39956418210](https://github.com/Cacheirez/openfodder/actions/runs/39956418210): aprobada |
-| Pasos Windows ya comprobados | Build, 6 CTests, H3 original 11.361 estados y 29 replays aprobados |
-| Ejecutable Windows y 29 replays | 29/29 fases, cero omisiones y retorno 0; evidencia verificada |
-| Referencia local Linux | `c6af094`: H3 original 11.361 estados, 29/29 fases sin omisiones |
-| Pruebas focalizadas | 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
-| Memoria | [Linux 39956418211](https://github.com/Cacheirez/openfodder/actions/runs/39956418211): ASan/UBSan, LSan y TSan aprobados, 29/29 fases cada uno |
+| Revisión de código de la propuesta | `ff15219680b289abf207fdc23fc436a9f390e649`: paleta efectiva y destinos RGB propios |
+| Compilación Windows observada | [39995798688](https://github.com/Cacheirez/openfodder/actions/runs/39995798688): aprobada |
+| Pasos Windows ya comprobados | Build, 6 CTests y H3 original 11.361 estados aprobados |
+| Ejecutable Windows y 29 replays | 29/29 fases, cero omisiones, retorno 0; evidencia verificada |
+| Referencia local Linux | `ff15219`: H3 original 11.361 estados, 29/29 fases sin omisiones |
+| Pruebas focalizadas | 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
+| Memoria | [Linux 39995798623](https://github.com/Cacheirez/openfodder/actions/runs/39995798623): ASan/UBSan, LSan y TSan 29/29, sin diagnósticos |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: RGB/fades y destinos de presentación**. [Implementación y límites](H4_1_HUD_CURSOR_ESTABLES.md). |
+| Tarea activa | **H4.1: composiciones y destinos indexados restantes**. [Implementación y límites](H4_1_PALETA_DESTINOS.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -413,3 +413,8 @@ Añadidos índice/guía de relevo, matriz de diferencias PC/Amiga comprobadas y 
 ## HUD lateral y cursor retenidos — 23 de octubre de 2026
 
 Código `c6af094c49641018b6dea6dc77cbe731a7ea0218`: captura del sidebar compuesto y cursor con bytes privados, geometría y paleta/layout efectivos. Decisiones, composición, consumo de solicitud y registros siguen en sus puntos clásicos. Se documentan las diferencias startY/destino PC-Amiga y paleta/offset del cursor en [H4_1_HUD_CURSOR_ESTABLES.md](H4_1_HUD_CURSOR_ESTABLES.md). Local: 2.304 casos de cursor, 288 de HUD, 6 CTests, H3 original 11.361 estados y 29 replays. CI Windows 39956418210 y Linux 39956418211 aprobadas: H3 original en ambas, Windows 29/29 replays y Linux ASan/UBSan, LSan y TSan 29/29, sin diagnósticos en los registros examinados. ZIP e informes verificados y resultados compactos conservados en Git. H4.1 sigue abierta; el siguiente bloque es RGB/fades y propiedad de destinos, antes del frame completo. PR sin fusionar y base H2.6 intacta.
+
+
+## Paleta efectiva y salida RGB propia — 23 de octubre de 2026
+
+Código `ff15219680b289abf207fdc23fc436a9f390e649`: [contrato y límites](H4_1_PALETA_DESTINOS.md). Captura de índices privados y tabla SDL efectiva; conversión a vector de destino propio. Fades y Save/Restore conservan cuerpos y llamadores originales. Tabla efectiva inicializada a negro antes de su primera aplicación para evitar copiar entradas indeterminadas. No se declara propiedad de todas las composiciones ni frame completo. Local: 27.648 casos, 6 CTests, H3 original 11.361 estados y 29/29 replays aprobados. CI Windows 39995798688 y Linux 39995798623 aprobadas; H3 original en ambas, Windows 29/29 replays y Linux ASan/UBSan, LSan y TSan 29/29. Informes compactos conservados en Git.
