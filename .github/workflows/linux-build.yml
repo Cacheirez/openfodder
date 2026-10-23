@@ -88,6 +88,12 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5
           python3 tools/modernization/check_terrain_equivalence.py
+      - name: H4.1 - retained HUD and cursor equivalence
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin 7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41
+          python3 tools/modernization/check_hud_cursor_equivalence.py
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference

@@ -53,6 +53,7 @@ class cGraphics_PC : public cGraphics {
 	virtual uint8*		GetSpriteData( uint16 pSegment );
     tSharedBuffer GetSpriteResourceStorage(uint16 segment) const override;
 	virtual void		Mouse_DrawCursor();
+    openfodder::PreparedSpriteDraw Cursor_PrepareLegacyDraw() override;
 
 	virtual void		Tile_Prepare_Gfx();
 	virtual void		Load_pStuff();

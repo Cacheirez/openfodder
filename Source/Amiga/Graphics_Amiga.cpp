@@ -151,7 +151,7 @@ uint8* cGraphics_Amiga::GetSpriteData(uint16 pSegment) {
 
 }
 
-void cGraphics_Amiga::Mouse_DrawCursor() {
+openfodder::PreparedSpriteDraw cGraphics_Amiga::Cursor_PrepareLegacyDraw() {
 	const sSpriteSheet_pstuff* di = &mSpriteSheet_PStuff[mFodder->mMouseSpriteCurrent];
 
 	mFodder->mVideo_Draw_Columns = di->mColumns >> 3;
@@ -167,7 +167,12 @@ void cGraphics_Amiga::Mouse_DrawCursor() {
 	ax += d1;
 
 	mFodder->mVideo_Draw_FrameDataPtr = di->GetGraphicsPtr(ax + bx);
-	Video_Draw_8();
+	return CaptureCursorDraw();
+}
+
+void cGraphics_Amiga::Mouse_DrawCursor() {
+    const auto prepared = Cursor_PrepareLegacyDraw();
+    Video_Draw_8_Resolved(prepared);
 }
 
 bool cGraphics_Amiga::Sprite_OnScreen_Check() {

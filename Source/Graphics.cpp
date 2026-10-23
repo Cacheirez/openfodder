@@ -94,27 +94,15 @@ bool cGraphics::Sprite_OnScreen_ClipBottom() {
 	return true;
 }
 
+openfodder::SidebarDraw cGraphics::CaptureSidebarDraw(int16 startY, bool offsetSource) const {
+    return openfodder::CaptureSidebar(reinterpret_cast<const uint8*>(mFodder->mSidebar_Screen_Buffer),
+        mSurface->GetWidth(), mSurface->GetHeight(), startY, offsetSource);
+}
+
 void cGraphics::Sidebar_Copy_To_Surface_Common(int16 pStartY, cSurface* pSurface, bool pOffsetSource) {
-	uint8* buffer = mSurface->GetSurfaceBuffer();
-	if (pSurface)
-		buffer = pSurface->GetSurfaceBuffer();
-
-	uint8* si = (uint8*)mFodder->mSidebar_Screen_Buffer;
-
-	buffer += (16 * mSurface->GetWidth()) + 16;
-
-	if (pOffsetSource && pStartY) {
-		buffer += (mSurface->GetWidth() * pStartY);
-		si += (0x30 * pStartY);
-	}
-
-	for (unsigned int y = 17 + pStartY; y < mSurface->GetHeight(); ++y) {
-		for (unsigned int x = 0; x < 0x30; ++x) {
-			buffer[x] = *si++;
-		}
-
-		buffer += mSurface->GetWidth();
-	}
+    const auto draw = CaptureSidebarDraw(pStartY, pOffsetSource);
+    auto* target = pSurface ? pSurface : mSurface;
+    openfodder::RasterizeSidebar(draw, target->GetSurfaceBuffer());
 }
 
 void cGraphics::Sidebar_Copy_ScreenBuffer_Common(uint16 pRow, int16 pRows, int16 pCopyToScreen, uint32*& pBuffer,
@@ -256,4 +244,25 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
     openfodder::RasterizeSprite8(draw, layout, output);
+}
+
+// Capture after the backend's classic cursor selection. Do not call the
+// effectful GetSpriteData again or replace its legacy source register.
+openfodder::PreparedSpriteDraw cGraphics::CaptureCursorDraw() {
+    openfodder::PreparedSpriteDraw prepared;
+    const auto storage = GetSpriteResourceStorage(eGFX_PSTUFF);
+    const auto layout = GetSpriteRasterLayout();
+    const size_t offset = static_cast<size_t>(mFodder->mVideo_Draw_FrameDataPtr - storage->data());
+    prepared.resource = mFrozenSpriteResources.capture(eGFX_PSTUFF, *storage, offset,
+        layout, mFodder->mVideo_Draw_PaletteIndex);
+    auto& draw = prepared.draw;
+    draw.source = prepared.resource.source();
+    draw.x = mFodder->mVideo_Draw_PosX;
+    draw.y = mFodder->mVideo_Draw_PosY;
+    draw.columns = mFodder->mVideo_Draw_Columns;
+    draw.rows = mFodder->mVideo_Draw_Rows;
+    draw.palette = mFodder->mVideo_Draw_PaletteIndex;
+    draw.format = layout.format;
+    draw.visible = true;
+    return prepared;
 }

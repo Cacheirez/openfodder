@@ -118,7 +118,7 @@ uint8* cGraphics_PC::GetSpriteData( uint16 pSegment ) {
 	return 0;
 }
 
-void cGraphics_PC::Mouse_DrawCursor() {
+openfodder::PreparedSpriteDraw cGraphics_PC::Cursor_PrepareLegacyDraw() {
 	
 	const sSpriteSheet_pstuff* di = &mSpriteSheet_PStuff[mFodder->mMouseSpriteCurrent];
 
@@ -131,7 +131,12 @@ void cGraphics_PC::Mouse_DrawCursor() {
 	mFodder->mVideo_Draw_FrameDataPtr = di->GetGraphicsPtr(ax +bx);
 	mFodder->mVideo_Draw_PaletteIndex = 0xF0;
 	
-	Video_Draw_8();
+	return CaptureCursorDraw();
+}
+
+void cGraphics_PC::Mouse_DrawCursor() {
+    const auto prepared = Cursor_PrepareLegacyDraw();
+    Video_Draw_8_Resolved(prepared);
 }
 
 void cGraphics_PC::SetActiveSpriteSheet( eGFX_Types pSpriteType ) {

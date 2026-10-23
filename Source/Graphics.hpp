@@ -22,6 +22,7 @@
 
 #include "Utils/ResolvedSpriteResource.hpp"
 #include "Utils/TerrainDraw.hpp"
+#include "Utils/SidebarDraw.hpp"
 
 class cFodder;
 
@@ -191,6 +192,9 @@ public:
     void Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prepared,
                                cSurface* target = nullptr);
 	virtual void		Mouse_DrawCursor() = 0;
+    virtual openfodder::PreparedSpriteDraw Cursor_PrepareLegacyDraw() = 0;
+    openfodder::PreparedSpriteDraw CaptureCursorDraw();
+    openfodder::SidebarDraw CaptureSidebarDraw(int16 startY, bool offsetSource) const;
 	virtual void		Load_pStuff() = 0;
 
 	virtual void		Load_Sprite_Font() = 0;
