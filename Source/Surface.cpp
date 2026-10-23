@@ -221,38 +221,22 @@ inline void cSurface::paletteSDLColorSet( size_t id, cPalette *pPalette ) {
 /**
  * Draw the Surface Buffer to SDLSurface, using the surface palette
  */
+openfodder::SurfaceDraw cSurface::CaptureDraw(int16 pSkipX, int16 pSkipY) const {
+    // Loaded PNGs have their own SDL pixels and are outside this indexed path.
+    if (mIsLoadedImage) return {};
+    return openfodder::CaptureSurfaceDraw(mSurfaceBuffer, mSurfaceBufferSize,
+        mPaletteSDL, mSDLSurface->w, mSDLSurface->h, pSkipX, pSkipY);
+}
+
 void cSurface::draw(const int16 pSkipX, const int16 pSkipY) {
 	if (mIsLoadedImage)
 		return;
 
-	const uint8_t* bufferCurrent = mSurfaceBuffer;
-	const uint8_t* const bufferEnd = mSurfaceBuffer + mSurfaceBufferSize;
-	uint32_t* bufferTarget = reinterpret_cast<uint32_t*>(mSDLSurface->pixels);
-	const int width = mSDLSurface->w, height = mSDLSurface->h;
-
+    const auto captured = CaptureDraw(pSkipX, pSkipY);
 	clearSDLSurface(0);
-
-	// Skip 'skipY' rows of pixels
-	bufferCurrent += width * pSkipY;
-	bufferTarget += width * pSkipY;
-
-	for (int y = pSkipY; y < height; ++y) {
-		// Skip first 'skipX' pixels
-		bufferCurrent += pSkipX;
-		bufferTarget += pSkipX;
-
-		// Process remaining pixels
-		for (int x = pSkipX; x < width; ++x) {
-			if (bufferCurrent >= bufferEnd) break;
-
-			uint8_t currentPixel = *bufferCurrent++;
-			if (currentPixel) {
-				*bufferTarget = (currentPixel < g_MaxColors) ? mPaletteSDL[currentPixel] : 0;
-			}
-
-			++bufferTarget;
-		}
-	}
+    const auto target = openfodder::RasterizeSurface(captured);
+    // Preserve the classic packed traversal; SDL XRGB8888 is the destination.
+    std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32_t));
 
 	if (mTexture) {
 		SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);

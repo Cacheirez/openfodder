@@ -20,6 +20,8 @@
  *
  */
 
+#include "Utils/SurfaceDraw.hpp"
+
 const size_t		 g_MaxColors = 0xFF;
 
 class cPalette {
@@ -48,7 +50,7 @@ protected:
 	cPalette		mPalette[ g_MaxColors ];
 	cPalette		mPaletteNew[ g_MaxColors ];
 
-	uint32			mPaletteSDL[ g_MaxColors ];
+	uint32			mPaletteSDL[ g_MaxColors ]{};
 
 	uint8*			mSurfaceBuffer;								// Loaded Image (uses palette indexs)
 	uint8*			mSurfaceBufferSaved;
@@ -67,6 +69,7 @@ protected:
 	
 
 public:
+    openfodder::SurfaceDraw CaptureDraw(int16 pSkipX = 16, int16 pSkipY = 16) const;
 	void			surfaceSetToPalette();
 	void			surfaceSetToPaletteNew();
 					cSurface( size_t pWidth, size_t pHeight );
