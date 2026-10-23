@@ -92,3 +92,8 @@ El bloque de resolución/propiedad de sprites se implementa en bd15a8a8: [H4_1_R
 ## 9. Terreno visible — 23-10-2026
 
 `MapTiles_Draw` PC/Amiga consume una captura con tiles por valor y atlas privados e inmutables; conserva limpieza/guardado en el adaptador clásico. Código `7eeb6f7`; equivalencia, vida útil y resultados en [H4_1_TERRENO_ESTABLE.md](H4_1_TERRENO_ESTABLE.md). Las rutas de minimapa y tiles individuales, RGB/fades y HUD/cursor continúan pendientes de separación.
+
+
+## 10. HUD lateral y cursor — 23-10-2026
+
+Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094`; coordinadoras y efectos clásicos conservados. Véase [H4_1_HUD_CURSOR_ESTABLES.md](H4_1_HUD_CURSOR_ESTABLES.md). No equivale a separar cada función GUI ni las rutas RGB, fades, minimapa o rasterizadores restantes.

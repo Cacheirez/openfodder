@@ -1,6 +1,6 @@
 # Diferencias PC/Amiga y contratos de compatibilidad
 
-Revisión: 23-10-2026, motor `7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
+Revisión: 23-10-2026, motor `c6af094c49641018b6dea6dc77cbe731a7ea0218`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
 
 ## Matriz de dibujo
 
@@ -50,6 +50,11 @@ Los segmentos válidos Amiga seleccionan cabecera. La consulta adicional del pro
 
 ## Diferencias aún no cerradas
 
-El inventario [H4_1_RUTAS_Y_RECURSOS.md](H4_1_RUTAS_Y_RECURSOS.md) localiza GUI 8/16, HUD, cursor, 16/Alt/Offset, reclutamiento/servicio/briefing, helicóptero, minimapa, fades y callbacks. No tienen todavía una matriz exhaustiva ni todas sus pruebas independientes. Tampoco se declara cobertura completa de Amiga2/Cannon Fodder 2, editor, bot, Emscripten, audio por versión ni todas las fases comerciales CD32.
+El inventario [H4_1_RUTAS_Y_RECURSOS.md](H4_1_RUTAS_Y_RECURSOS.md) localiza GUI 8/16, HUD, cursor, 16/Alt/Offset, reclutamiento/servicio/briefing, helicóptero, minimapa, fades y callbacks. HUD lateral compuesto y cursor tienen captura y pruebas propias descritas abajo. El conjunto restante no tiene todavía una matriz exhaustiva ni todas sus pruebas independientes. Tampoco se declara cobertura completa de Amiga2/Cannon Fodder 2, editor, bot, Emscripten, audio por versión ni todas las fases comerciales CD32.
 
 Para cada nueva ruta se debe añadir: función/commit original, campos leídos y escritos, unidades/endian/layout, propietario y mutaciones, regla PC/Amiga, excepciones por versión, prueba diferencial y limitación. Una celda desconocida debe decir «pendiente de analizar», no extrapolarse desde otra ruta.
+
+
+## HUD lateral y cursor — actualización 23-10-2026
+
+Código `c6af094`: [contratos, fórmulas y pruebas](H4_1_HUD_CURSOR_ESTABLES.md). El sidebar compuesto se retiene con 48 bytes por fila. PC startY solo reduce el número de filas; Amiga desplaza además fuente y destino. Ambas rutas usan dimensiones de la superficie activa incluso con destino alternativo. El cursor PC fuerza paleta 0xF0 tras el accessor; Amiga conserva la paleta efectiva PSTUFF y el layout. Se mantiene la guarda de vídeo antes de consumir solicitudes. Esta actualización cierra la captura de estas rutas; no la composición interna de toda la GUI, RGB/fades ni el frame completo.
