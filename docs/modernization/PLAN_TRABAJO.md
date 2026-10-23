@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.6 · **Actualización:** 22 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.7 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado para la base clásica y la cobertura documentada: nueva CI Windows/Linux aprobada, H3 original preservado y prueba manual CD32 confirmada por Miguel. H2.1 queda como atribución histórica delimitada, no como fallo reproducido actual. H4.1 avanzado: rasterizador PC/Amiga con entradas explícitas en `691cb0de`; 29.160 casos equivalentes a nivel de píxel y registros. H3 local conserva los 11.361 estados y pasan 29 replays. CI Windows/Linux aprobada, con H3 original intacto y sanitizadores sin hallazgos en las rutas ejercitadas. Auditoría posterior: quedan resolución con efectos y propiedad inmutable por separar; revisar la diferencia de orden de paleta Amiga documentada en H4_1_RUTAS_Y_RECURSOS.md. Sin gráficos HD ni scroll nuevo.
+**Estado global:** H2.6 aceptado con validación manual CD32 de Miguel y baseline recuperable. H4.1: resolución de sprites con bytes privados e inmutables, paleta efectiva y layout en ff82fb60; 10.944 casos de equivalencia/propiedad aprobados localmente y en CI. H3 original conserva 11.361 estados y pasan 29 replays. CI Windows y Linux aprobadas, incluidos ASan/UBSan, LSan y TSan. Falta el estado de presentación completo; sin cambios de frecuencia ni gráficos HD.
 
 ## 1. Objetivo y alcance
 
@@ -15,24 +15,24 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 
 ## 2. Panel de situación
 
-| Campo | Estado comprobado el 22 de octubre de 2026 |
+| Campo | Estado comprobado el 23 de octubre de 2026 |
 |---|---|
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `691cb0dedd657cd99cab165cbce7ff26fa2bd537`: rasterizador con entradas explícitas |
-| Compilación Windows observada | [39820699876](https://github.com/Cacheirez/openfodder/actions/runs/39820699876): compilación, CTests, 29 replays y H3 aprobados |
-| Pasos Windows ya comprobados | Descarga de código/submódulos, Python, grabaciones, pruebas de la herramienta de auditoría y configuración: completados correctamente |
-| Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; PRUEBAS.json verificado dentro del ZIP |
-| Referencia local Linux | 29 fases demo completadas antes y después del parche de límites del mapa |
-| Pruebas focalizadas | 29.160 casos de rasterización PC/Amiga; 306.432 casos de recorte PC/Amiga; 184.320 transiciones del temporizador comercial; pruebas anteriores conservadas |
-| Memoria | CI Linux [39820699877](https://github.com/Cacheirez/openfodder/actions/runs/39820699877): 29/29 ASan/UBSan, LSan y TSan sin hallazgos en los informes revisados; no cubre toda CD32, audio real ni todas las pantallas |
+| Revisión de código de la propuesta | `ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5`: recursos de sprites retenidos y orden clásico de paleta |
+| Compilación Windows observada | [39866081138](https://github.com/Cacheirez/openfodder/actions/runs/39866081138): aprobada |
+| Pasos Windows ya comprobados | Compilación, pruebas C++, 29 replays y H3 original: aprobados |
+| Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; informe interno del ZIP de evidencia verificado |
+| Referencia local Linux | `ff82fb60`: H3 original 11.361 estados, 29/29 fases sin omisiones |
+| Pruebas focalizadas | 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
+| Memoria | [Linux 39866081648](https://github.com/Cacheirez/openfodder/actions/runs/39866081648): ASan/UBSan, LSan y TSan 29/29, sin diagnósticos; prueba focalizada con fugas aprobada |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: comprobar el orden de paleta y separar la resolución de recursos con propietario estable**. [Implementación y límites](H4_1_EFECTOS_DIBUJO.md). |
+| Tarea activa | **H4.1: terreno visible y atlas estables; recursos de sprites resueltos y verificados**. [Implementación y límites](H4_1_RECURSOS_ESTABLES.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
-El estado de Actions es una observación, no un seguimiento permanente. Antes de decidir H2.6, comprobar la ejecución del HEAD vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
+El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
 
 ## 3. Cómo seguiremos el plan en el chat
 
@@ -388,3 +388,9 @@ Revisión de `a5a5cc42` completada: [H4_1_RUTAS_Y_RECURSOS.md](H4_1_RUTAS_Y_RECU
 Hallazgo prioritario: GetSpriteData Amiga cambia paleta y cabecera. La preparación encapsulada altera el orden de paleta respecto a a2f63090 para segmentos donde el accessor la sustituye; no hay reproducción visual de misión y las pruebas anteriores no cubren esa resolución. Debe comprobarse/corregirse el contrato antes de extenderlo. Mantener shared_ptr no garantiza inmutabilidad de los bytes.
 
 Siguiente bloque: resolvedor explícito que reúna recurso propietario, offset/extensión, layout y paleta efectiva, preservando efectos y orden clásicos; prueba de resolución y retención de recursos antes de avanzar a comandos de terreno/HUD y al frame completo. H4.1 sigue abierta. Última CI del motor sigue siendo 691cb0de; esta auditoría documental no ejecuta H3 de nuevo ni amplía su cobertura. PR en borrador sin fusionar y baseline H2.6 intacta.
+
+## Resolución conjunta con propiedad estable — 23 de octubre de 2026
+
+Código `ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5`: propietario privado e inmutable, offset/extensión, layout y paleta efectiva reunidos; orden clásico de paleta Amiga restaurado. 10.944 casos comparados con preparación/accessors originales, más pruebas de mutación, recarga, destrucción y liberación del último propietario. [Implementación, evidencia y límites](H4_1_RECURSOS_ESTABLES.md).
+
+CI Windows 39866081138 y Linux 39866081648 aprobadas: H3 original 11.361 estados en ambas plataformas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, sin diagnósticos. ZIP e informes verificados. El primer intento agotó el límite de TSan; la corrección valida los bytes una vez por segmento y pasada de dibujo, preservando los efectos de cada llamada. TSan final: 104,453 s con el límite original de 600 s. La prueba focalizada con fugas pasa en CI; el entorno local impidió ejecutar LSan. H4.1 sigue abierta: falta terreno/HUD y demás rutas del frame. No aumentar todavía la frecuencia ni publicar el motor entre hilos. PR en borrador sin fusionar, base H2.6 intacta.

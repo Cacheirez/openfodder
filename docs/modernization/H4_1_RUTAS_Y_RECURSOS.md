@@ -83,3 +83,7 @@ Para sprites el núcleo repetible ya existe; falta conectar una resolución esta
 ## 7. Verificación de esta auditoría
 
 Lectura de funciones, llamadas, campos propietarios y sitios de asignación/mutación en la revisión indicada; contraste del orden de preparación con `a2f63090`. Solo documentación: no se recompila ni se atribuye una nueva ejecución H3 a este commit. Último motor validado: `691cb0de`, Windows 39820699876 y Linux 39820699877. Las limitaciones y el hallazgo de resolución anteriores se añaden a esa evidencia; H4.1 sigue abierta.
+
+## 8. Seguimiento — 23-10-2026
+
+El bloque de resolución/propiedad de sprites se implementa en bd15a8a8: [H4_1_RECURSOS_ESTABLES.md](H4_1_RECURSOS_ESTABLES.md). Restaura el orden de paleta señalado en la sección 4 y captura copia privada, layout y paleta efectiva. La CI de la nueva revisión se documenta allí. El inventario de rutas pendientes y las limitaciones de publicación del frame completo siguen vigentes.
