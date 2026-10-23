@@ -1,6 +1,6 @@
 # Diferencias PC/Amiga y contratos de compatibilidad
 
-Revisión: 23-10-2026, motor `ff15219680b289abf207fdc23fc436a9f390e649`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
+Revisión: 23-10-2026, motor `793e347cd9f118da1c9ec6a84f88caf3257b74c2`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
 
 ## Matriz de dibujo
 
@@ -63,3 +63,8 @@ Código `c6af094`: [contratos, fórmulas y pruebas](H4_1_HUD_CURSOR_ESTABLES.md)
 ## Paleta efectiva y destino RGB — actualización 23-10-2026
 
 Código `ff15219`: [detalle y prueba](H4_1_PALETA_DESTINOS.md). Capturar mPaletteSDL (tabla aplicada), no deducirla de mPalette/mPaletteNew. PC carga canales por byte y Amiga expande nibbles; se mantiene la conversión RGB existente. Son 255 entradas: índice 0 no escribe y 255 produce negro. Save/Restore solo afectan a índices, no a paletas. El destino RGB tiene vector propio; las composiciones de capas y destinos indexados completos siguen pendientes. Inicialización nueva de tabla efectiva a negro antes de aplicar una paleta; se explicita el estado previamente indeterminado.
+
+
+## Composición de capas — actualización 23-10-2026
+
+`793e347`: [capas/destinos y cobertura](H4_1_CAPAS_DESTINOS_INDEXADOS.md). Copia indexada conserva tres paletas pero no saved/adjusting; mezcla indexada omite cero sin copiar paleta; mezcla RGB omite palabra cero e incluye padding. Son núcleos comunes, con colores provenientes de los backends: no mezclar índices de capas con paletas distintas como sustituto de la mezcla RGB. Pausa y reclutamiento mantienen orden, incluido home-away solo PC. Minimapa: PC aplica paletteSet inmediata; Amiga aplica la paleta objetivo. Constructor omitido en unit testing: H3 no acredita su equivalencia visual.

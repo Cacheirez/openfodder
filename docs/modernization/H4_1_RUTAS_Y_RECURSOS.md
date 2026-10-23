@@ -102,3 +102,8 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## 11. Seguimiento: conversión de superficies retenida
 
 `ff15219` captura índices privados y paleta SDL efectiva por valor; cada conversión devuelve un destino RGB propio. [Contrato de paleta/destinos](H4_1_PALETA_DESTINOS.md) registra casos de paleta lógica/objetivo/aplicada divergentes, PNG excluido, Save/Restore y fades intactos, costes y límites. La composición de pausa sigue fondo → texto → merge; no se presenta una captura individual como frame completo. Próximo bloque: composiciones y destinos indexados restantes.
+
+
+## 12. Seguimiento: capas y destinos indexados
+
+`793e347` implementa capturas de capas, estado indexado con tres paletas y destinos independientes para copyFrom/mergeFrom/mergeSurfaceBuffer. [Informe](H4_1_CAPAS_DESTINOS_INDEXADOS.md) distingue copia opaca, transparencia por índice y por palabra RGB; mantiene orden de pausa/reclutamiento. Minimapa auditado, con exclusión de unit testing explícita. No se declara frame completo ni separación de todos los productores GUI/16/Alt/Offset/escenas.
