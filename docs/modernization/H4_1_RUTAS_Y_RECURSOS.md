@@ -87,3 +87,8 @@ Lectura de funciones, llamadas, campos propietarios y sitios de asignación/muta
 ## 8. Seguimiento — 23-10-2026
 
 El bloque de resolución/propiedad de sprites se implementa en bd15a8a8: [H4_1_RECURSOS_ESTABLES.md](H4_1_RECURSOS_ESTABLES.md). Restaura el orden de paleta señalado en la sección 4 y captura copia privada, layout y paleta efectiva. La CI de la nueva revisión se documenta allí. El inventario de rutas pendientes y las limitaciones de publicación del frame completo siguen vigentes.
+
+
+## 9. Terreno visible — 23-10-2026
+
+`MapTiles_Draw` PC/Amiga consume una captura con tiles por valor y atlas privados e inmutables; conserva limpieza/guardado en el adaptador clásico. Código `7eeb6f7`; equivalencia, vida útil y resultados en [H4_1_TERRENO_ESTABLE.md](H4_1_TERRENO_ESTABLE.md). Las rutas de minimapa y tiles individuales, RGB/fades y HUD/cursor continúan pendientes de separación.

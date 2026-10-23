@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.7 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.8 · **Actualización:** 23 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado con validación manual CD32 de Miguel y baseline recuperable. H4.1: resolución de sprites con bytes privados e inmutables, paleta efectiva y layout en ff82fb60; 10.944 casos de equivalencia/propiedad aprobados localmente y en CI. H3 original conserva 11.361 estados y pasan 29 replays. CI Windows y Linux aprobadas, incluidos ASan/UBSan, LSan y TSan. Falta el estado de presentación completo; sin cambios de frecuencia ni gráficos HD.
+**Estado global:** H2.6 aceptado con validación manual CD32 de Miguel y baseline recuperable. H4.1: sprites y terreno visible con recursos propios; terreno en `7eeb6f7`, 7.680 casos de equivalencia aprobados localmente y en CI. H3 original conserva 11.361 estados y pasan 29 replays. CI de terreno Windows/Linux aprobadas, incluidos los sanitizadores. Falta HUD/cursor y el estado de presentación completo; sin cambios de frecuencia ni gráficos HD.
 
 ## 1. Objetivo y alcance
 
@@ -20,16 +20,16 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5`: recursos de sprites retenidos y orden clásico de paleta |
-| Compilación Windows observada | [39866081138](https://github.com/Cacheirez/openfodder/actions/runs/39866081138): aprobada |
-| Pasos Windows ya comprobados | Compilación, pruebas C++, 29 replays y H3 original: aprobados |
-| Ejecutable Windows y 29 replays | 29 fases aprobadas, cero omisiones; informe interno del ZIP de evidencia verificado |
-| Referencia local Linux | `ff82fb60`: H3 original 11.361 estados, 29/29 fases sin omisiones |
-| Pruebas focalizadas | 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
-| Memoria | [Linux 39866081648](https://github.com/Cacheirez/openfodder/actions/runs/39866081648): ASan/UBSan, LSan y TSan 29/29, sin diagnósticos; prueba focalizada con fugas aprobada |
+| Revisión de código de la propuesta | `7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41`: terreno visible con tiles por valor y atlas estables |
+| Compilación Windows observada | [39919649274](https://github.com/Cacheirez/openfodder/actions/runs/39919649274): aprobada |
+| Pasos Windows ya comprobados | Compilación, pruebas C++, 29 replays y H3 original aprobados en `7eeb6f7` |
+| Ejecutable Windows y 29 replays | 29/29, cero omisiones, retorno 0; ZIP e informes internos comprobados |
+| Referencia local Linux | `7eeb6f7`: H3 original 11.361 estados, 29/29 fases sin omisiones |
+| Pruebas focalizadas | 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
+| Memoria | [Linux 39919649308](https://github.com/Cacheirez/openfodder/actions/runs/39919649308): ASan/UBSan, LSan y TSan 29/29, sin diagnósticos |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: terreno visible y atlas estables; recursos de sprites resueltos y verificados**. [Implementación y límites](H4_1_RECURSOS_ESTABLES.md). |
+| Tarea activa | **H4.1: HUD y cursor con propiedad estable; terreno visible verificado**. [Implementación y límites](H4_1_TERRENO_ESTABLE.md). |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -394,3 +394,10 @@ Siguiente bloque: resolvedor explícito que reúna recurso propietario, offset/e
 Código `ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5`: propietario privado e inmutable, offset/extensión, layout y paleta efectiva reunidos; orden clásico de paleta Amiga restaurado. 10.944 casos comparados con preparación/accessors originales, más pruebas de mutación, recarga, destrucción y liberación del último propietario. [Implementación, evidencia y límites](H4_1_RECURSOS_ESTABLES.md).
 
 CI Windows 39866081138 y Linux 39866081648 aprobadas: H3 original 11.361 estados en ambas plataformas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, sin diagnósticos. ZIP e informes verificados. El primer intento agotó el límite de TSan; la corrección valida los bytes una vez por segmento y pasada de dibujo, preservando los efectos de cada llamada. TSan final: 104,453 s con el límite original de 600 s. La prueba focalizada con fugas pasa en CI; el entorno local impidió ejecutar LSan. H4.1 sigue abierta: falta terreno/HUD y demás rutas del frame. No aumentar todavía la frecuencia ni publicar el motor entre hilos. PR en borrador sin fusionar, base H2.6 intacta.
+
+
+## Terreno visible con atlas estables — 23 de octubre de 2026
+
+Código `7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41`: `TerrainDraw` retiene tiles/geometría por valor y copias privadas de atlas PC/Amiga. `MapTiles_Draw` conserva limpieza y guardado en su punto clásico; rasterización repetible sin consultar el motor. 7.680 comparaciones contra los cuerpos originales cubren recortes, ambos bancos PC, planos Amiga, bordes y efectos. Pruebas de retención, mutación, destrucción y liberación aprobadas.
+
+Local: Release, 6/6 CTests, H3 11.361 estados originales y 29/29 replays. CI Windows 39919649274 y Linux 39919649308 aprobadas: H3 original 11.361 estados en ambas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, cero omisiones y sin diagnósticos. ZIP e informes internos verificados. Detalles: [H4_1_TERRENO_ESTABLE.md](H4_1_TERRENO_ESTABLE.md). H4.1 sigue abierta; el siguiente bloque es HUD/cursor, manteniendo las coordinadoras clásicas y sin construir todavía el frame completo. PR en borrador, sin fusionar; base H2.6 recuperable.
