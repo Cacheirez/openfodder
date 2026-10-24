@@ -47,6 +47,7 @@ class cGraphics_PC : public cGraphics {
 	uint16          mMission_Intro_DrawY;
 
 	public:
+    openfodder::IndexedProducerDraw CaptureOverviewTile(uint16 tile,uint16 x,uint16 y) const override;
 						 cGraphics_PC();
 	virtual				~cGraphics_PC();
 

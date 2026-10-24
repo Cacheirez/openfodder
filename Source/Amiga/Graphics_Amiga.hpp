@@ -57,6 +57,7 @@ protected:
 	virtual sImage		DecodeIFF(const std::string& pFilename);
 
 	public:
+    openfodder::IndexedProducerDraw CaptureOverviewTile(uint16 tile,uint16 x,uint16 y) const override;
 						cGraphics_Amiga();
 	virtual				~cGraphics_Amiga();
 

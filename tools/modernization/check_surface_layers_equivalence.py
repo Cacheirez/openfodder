@@ -13,7 +13,8 @@ def main():
     def original(path): return subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True)
     old=original('Source/Surface.cpp');new=(root/'Source/Surface.cpp').read_text()
     # Real callers preserve layer order, fade, minimap blink, callbacks and locks.
-    for path in ('Source/Fodder.cpp','Source/Recruits.cpp','Source/Map/MapRuntime.cpp','Source/Window.cpp','Source/PC/Graphics_PC.cpp','Source/Amiga/Graphics_Amiga.cpp'):
+    # Producer changes have their own original-body suite; retain scene/loop guards here.
+    for path in ('Source/Fodder.cpp','Source/Recruits.cpp','Source/Window.cpp'):
         assert (root/path).read_text()==original(path),path
     for name in ('Save','Restore','palette_FadeTowardNew','draw'):
         sig=('bool' if name=='palette_FadeTowardNew' else 'void')+' cSurface::'+name+'('

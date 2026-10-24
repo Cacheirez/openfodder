@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include "PC/SpriteData_PC.hpp"
 #include <chrono>
 #include <algorithm>
@@ -306,23 +307,12 @@ void cGraphics_PC::MapTiles_Draw() {
     mSurface->Save(); // Background for the subsequent sprite pass, once as before.
 }
 
-void cGraphics_PC::MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) {
-	uint8* Target = mFodder->mSurfaceMapOverview->GetSurfaceBuffer();
-
-	pDestX *= 16;
-
-	Target += (pDestY * 16) * mFodder->mSurfaceMapOverview->GetWidth();
-	Target += pDestX;
-	
-	uint8* TilePtr = mTile_Gfx_Ptrs[pTile];
-
-	for (uint16 i = 0; i < 16; ++i) {
-
-        memcpy(Target, TilePtr, 16);
-
-		TilePtr += 320;
-		Target += mFodder->mSurfaceMapOverview->GetWidth();
-	}
+openfodder::IndexedProducerDraw cGraphics_PC::CaptureOverviewTile(uint16 pTile,uint16 pDestX,uint16 pDestY) const {
+    return openfodder::CaptureOverviewPC(mTile_Gfx_Ptrs[pTile],pDestX,pDestY,mFodder->mSurfaceMapOverview->GetWidth());
+}
+void cGraphics_PC::MapOverview_Render_Tiles(uint16 pTile,uint16 pDestX,uint16 pDestY) {
+    const auto draw=CaptureOverviewTile(pTile,pDestX,pDestY);
+    openfodder::RasterizeIndexedProducer(draw,mFodder->mSurfaceMapOverview->GetSurfaceBuffer());
 }
 
 void cGraphics_PC::Map_Load_Resources() {
@@ -359,29 +349,19 @@ openfodder::SpriteRasterLayout cGraphics_PC::GetSpriteRasterLayout() const {
 }
 
 void cGraphics_PC::Video_Draw_16(const uint8* RowPallete) {
-	uint8*	di = mSurface->GetSurfaceBuffer();
-	uint8* 	si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += mSurface->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = mFodder->mVideo_Draw_ColumnsMax - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = mSurface->GetWidth() - mFodder->mVideo_Draw_Columns;
-
-	for (int16 dx = mFodder->mVideo_Draw_Rows; dx > 0; --dx) {
-
-		for (int16 cx = mFodder->mVideo_Draw_Columns; cx > 0; --cx) {
-			int8 al = *si;
-			if (al)
-				*di = al;
-
-			si++;
-			di++;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::PC16,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_PC::Sidebar_Copy_To_Surface( int16 pStartY, cSurface* pSurface) {
@@ -569,23 +549,11 @@ void cGraphics_PC::Load_And_Draw_Image( const std::string &pFilename, unsigned i
 	auto fileBuffer = g_Resource->fileGet(Filename);
 	uint8* srcBuffer = fileBuffer->data();
 
-	uint8 *Buffer = 0;
 
 	mSurface->clearBuffer();
 
-	for (unsigned int Plane = 0; Plane < 4; Plane++) {
-		Buffer = mSurface->GetSurfaceBuffer() + (16 * mSurface->GetWidth()) + 16;
-		
-		for (unsigned int Y = 0; Y < 200; ++Y) {
-
-			for (unsigned int X = Plane; X < 320; X += 4 ) {
-
-				Buffer[X] = *srcBuffer++;
-			}
-
-			Buffer += mSurface->GetWidth();
-		}
-	}
+    const auto draw=openfodder::CapturePCImage(srcBuffer,mSurface->GetWidth());
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 
 	if(pColors)
 		PaletteLoad( fileBuffer->data() + (fileBuffer->size() - (0x100 * 3)), pColors );
@@ -655,153 +623,14 @@ bool cGraphics_PC::Sprite_OnScreen_Check() {
 	return true;
 }
 
-void cGraphics_PC::HeliIntro_BlitMaskedAlignedX(tSharedBuffer pSource, int16 pCx)
-{
-	uint8* pDs = pSource->data();
-	uint8* pDsEnd = pSource->data() + pSource->size();
-
-	// Original works in 4-pixel groups
-	const int16 groupX = (pCx >> 2);
-	int16 ax = groupX;
-	int16 dx = ax;
-
-	ax -= 80;
-	int16 word_4285F = -ax;
-
-	const int planeShift = (pCx & 3); // <-- sub-pixel (0..3)
-
-	// first 4-pixel group for pCx
-	uint8* base = mSurface->GetSurfaceBuffer() + mMission_Intro_DrawY + (dx * 4);
-
-	++dx;
-
-	// Loop the 4 source planes, but map them to dest planes with shift
-	for (uint8 srcPlane = 0; srcPlane < 4; ++srcPlane)
-	{
-		const int dstPlane = (srcPlane + planeShift) & 3;
-		const int groupCarry = ((srcPlane + planeShift) >> 2) & 1;
-
-		uint8* destPtr = base + (groupCarry * 4) + dstPlane;
-		uint8* di = destPtr;
-
-		for (int16 bx = mMission_Intro_DrawX; bx > 0; --bx)
-		{
-			int16 cx;
-
-			for (cx = word_4285F; cx > 0; --cx)
-			{
-				if (pDs >= pDsEnd)
-					return;
-
-				uint8 al = *pDs;
-				if (al)
-					*di = al;
-
-				++pDs;
-				di += 4;
-			}
-
-			di -= mSurface->GetWidth() - 12 - 16;
-			--pDs;
-
-			for (cx = dx; cx > 0; --cx)
-			{
-				if (pDs >= pDsEnd)
-					return;
-
-				uint8 al = *pDs;
-				if (al)
-					*di = al;
-
-				++pDs;
-				di += 4;
-			}
-
-			di += mSurface->GetWidth();
-		}
-	}
+void cGraphics_PC::HeliIntro_BlitMaskedAlignedX(tSharedBuffer pSource,int16 pCx) {
+    const auto draw=openfodder::CapturePCSceneMasked(pSource->data(),pSource->size(),mSurface->GetWidth(),mMission_Intro_DrawX,mMission_Intro_DrawY,pCx);
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 }
 
-void cGraphics_PC::HeliIntroBlit_OpaqueAlignedX(tSharedBuffer pDsSi, int16 pCx)
-{
-	uint8* Ds = pDsSi->data();
-
-	// Original logic works in 4-pixel groups (80 groups for 320px wide).
-	const int16 groupX = (pCx >> 2);
-	int16 ax = groupX;
-	int16 dx = ax;
-
-	ax -= 80;
-	int16 word_4285F = -ax;
-
-	const int planeShift = (pCx & 3); // <-- the bit the old code discards
-
-	// Base points at the first 4-pixel group for pCx, Y offset unchanged.
-	uint8* base = mSurface->GetSurfaceBuffer() + mMission_Intro_DrawY + (groupX * 4);
-
-	++dx;
-
-	for (uint8 srcPlane = 0; srcPlane < 4; ++srcPlane)
-	{
-		// Map source plane (0..3) to the correct destination plane for pixel-accurate X.
-		const int dstPlane = (srcPlane + planeShift) & 3;
-
-		// If the plane rotation wraps (e.g. planeShift=3, srcPlane=2 -> 5),
-		// that plane's pixels start one 4-pixel group later.
-		const int groupCarry = ((srcPlane + planeShift) >> 2) & 1;
-
-		// we might start in the next group depending on carry.
-		uint8* destPtr = base + (groupCarry * 4) + dstPlane;
-		uint8* di = destPtr;
-
-		for (int16 bx = mMission_Intro_DrawX; bx > 0; --bx)
-		{
-			int16 cx = word_4285F;
-
-			if (cx & 1)
-			{
-				*di = *Ds++;
-				di += 4;
-			}
-
-			cx >>= 1;
-			while (cx > 0)
-			{
-				*di = *Ds++;
-				di += 4;
-
-				*di = *Ds++;
-				di += 4;
-
-				--cx;
-			}
-
-			cx = dx;
-
-			di -= mSurface->GetWidth() - 12 - 16;
-			--Ds;
-
-			if (cx & 1)
-			{
-				*di = *Ds++;
-				di += 4;
-			}
-
-			cx >>= 1;
-			while (cx > 0)
-			{
-				*di = *Ds++;
-				di += 4;
-
-				*di = *Ds++;
-				di += 4;
-
-				--cx;
-			}
-
-			di += mSurface->GetWidth();
-		}
-	}
+void cGraphics_PC::HeliIntroBlit_OpaqueAlignedX(tSharedBuffer pDsSi,int16 pCx) {
+    const auto draw=openfodder::CapturePCSceneOpaque(pDsSi->data(),pDsSi->size(),mSurface->GetWidth(),mMission_Intro_DrawX,mMission_Intro_DrawY,pCx);
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 }
 
 

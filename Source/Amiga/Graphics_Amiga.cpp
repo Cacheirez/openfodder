@@ -21,6 +21,7 @@
 */
 
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include "Amiga/SpriteData_Amiga.hpp"
 #include <chrono>
 #include <algorithm>
@@ -827,46 +828,12 @@ void cGraphics_Amiga::Hill_Prepare_Overlays() {
 	}
 }
 
-void cGraphics_Amiga::MapOverview_Render_Tiles(uint16 pTile, uint16 pDestX, uint16 pDestY) {
-	uint8* Target = mFodder->mSurfaceMapOverview->GetSurfaceBuffer();
-
-	pDestX *= 16;
-
-	Target += (pDestY * 16) * mFodder->mSurfaceMapOverview->GetWidth();
-	Target += pDestX;
-
-	pTile <<= 7;
-	uint8* TilePtr = mBlkData->data() + pTile;
-
-	// Each bitfield
-	for (uint16 BitField = 0; BitField < 4; ++BitField) {
-		uint8* TargetTmp = Target;
-
-		// Each Tile Row
-		for (uint16 i = 0; i < 16; ++i) {
-
-			if (TilePtr >= mBlkData->data() + mBlkData->size())
-				continue;
-
-			uint16 RowData = readBEWord(TilePtr);
-			TilePtr += 2;
-
-			// Each pixel of a Tile Row
-			for (uint16 x = 0; x < 16; ++x) {
-				uint8 Bit = (RowData & 0x8000) ? 1 : 0;
-				RowData <<= 1;
-
-				if (Bit)
-					*(TargetTmp + x) |= (Bit << BitField);
-
-			}
-
-			TargetTmp += mFodder->mSurfaceMapOverview->GetWidth();
-		}
-
-		// Next Bitfield
-		TargetTmp = Target;
-	}
+openfodder::IndexedProducerDraw cGraphics_Amiga::CaptureOverviewTile(uint16 pTile,uint16 pDestX,uint16 pDestY) const {
+    return openfodder::CaptureOverviewAmiga(mBlkData->data(),mBlkData->size(),pTile,pDestX,pDestY,mFodder->mSurfaceMapOverview->GetWidth());
+}
+void cGraphics_Amiga::MapOverview_Render_Tiles(uint16 pTile,uint16 pDestX,uint16 pDestY) {
+    const auto draw=CaptureOverviewTile(pTile,pDestX,pDestY);
+    openfodder::RasterizeIndexedProducer(draw,mFodder->mSurfaceMapOverview->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Map_Load_Resources() {
@@ -889,123 +856,53 @@ openfodder::SpriteRasterLayout cGraphics_Amiga::GetSpriteRasterLayout() const {
 }
 
 void cGraphics_Amiga::Video_Draw_8_Alt(const uint8* RowPalette) {
-
-	uint8* di = mSurface->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	int screenWidth = (int)mSurface->GetWidth();
-	int screenHeight = (int)mSurface->GetHeight();
-
-	// Adjust start position
-	di += screenWidth * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = screenWidth - (mFodder->mVideo_Draw_Columns * 8);
-
-	// Height
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPalette) {
-			// TODO: palette should degrade closer to top/bottom of screen 
-			//int16 bx = mFodder->mVideo_Draw_PosY + dx;
-			//Palette = 1;// RowPallete[bx];
-		}
-
-		int currentY = mFodder->mVideo_Draw_PosY + dx;
-		if (currentY >= 0 && currentY < screenHeight) {
-
-			// Width
-			for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-				int currentX = mFodder->mVideo_Draw_PosX + (cx * 8);
-				if (currentX >= 0 && currentX <= screenWidth) {
-					DrawPixels_8(si, di);
-				}
-
-				di += 8;
-				si += 1;
-			}
-		}
-		else {
-			// Skip entire row
-			si += mFodder->mVideo_Draw_Columns;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::AmigaAlt,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 
 void cGraphics_Amiga::Video_Draw_16_Offset(int16 pCx) {
-	uint8* pDs = mFodder->mVideo_Draw_FrameDataPtr;
-	uint8* di = mSurface->GetSurfaceBuffer() + 16;
-
-	int16 ax = pCx;
-
-	di += (mFodder->mVideo_Draw_PosY * mSurface->GetWidth());
-
-	int16 SourceX = 0, SourceY = 0;
-
-	for (int16 bx = 0; bx < mFodder->mVideo_Draw_Rows; ++bx) {
-		uint16 cx;
-		SourceX = 0;
-
-		for (cx = ax; cx < (mSurface->GetWidth() - 32); cx++) {
-
-			DrawPixel(pDs, di, SourceX, SourceY, cx, bx);
-
-			SourceX++;
-		}
-
-		for (cx = 0; cx < ax; cx++) {
-
-			DrawPixel(pDs, di, SourceX, SourceY, cx, bx);
-
-			SourceX++;
-		}
-
-		++SourceY;
-	}
-
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    geometry.wrap=pCx;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::AmigaOffset,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Video_Draw_16(const uint8* RowPallete) {
-
-	uint8* di = mSurface->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += mSurface->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - mFodder->mVideo_Draw_Columns;
-	mFodder->mVideo_Draw_Columns >>= 1;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = mSurface->GetWidth() - (mFodder->mVideo_Draw_Columns * 16);
-
-	// Height
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPallete) {
-			// TODO: palette should degrade closer to top/bottom of screen 
-			//int16 bx = mFodder->mVideo_Draw_PosY + dx;
-			//Palette = 1;// RowPallete[bx];
-		}
-
-		// Width
-		for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-			DrawPixels_16(si, di, Palette);
-
-			di += 16;
-			si += 2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::Amiga16,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Sidebar_Copy_To_Surface(int16 pStartY, cSurface* pSurface) {
@@ -1123,21 +1020,14 @@ void cGraphics_Amiga::Service_Draw(int16 pSpriteID, int16 pX, int16 pY) {
 
 	si += stru_A918A[pSpriteID].mOffset;
 
-	// Height
-	for (int16 dx = stru_A918A[pSpriteID].mHeight; dx > 0; --dx) {
-
-		// Width
-		for (int16 cx = 0; cx < stru_A918A[pSpriteID].mWidth; ++cx) {
-
-			DrawPixels_16(si, di, mFodder->mVideo_Draw_PaletteIndex);
-
-			di += 16;
-			si += 2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=pX+16; geometry.y=pY;
+    geometry.columns=d0; geometry.rows=stru_A918A[pSpriteID].mHeight;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    auto layout=GetSpriteRasterLayout(); layout.width=320;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::Amiga16,
+        si,geometry,layout,mSurface->GetWidth(),mSurface->GetHeight());
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Mission_Intro_Load_Resources(const eTileTypes pTileset) {

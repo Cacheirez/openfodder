@@ -21,6 +21,7 @@
  */
  
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include <cmath>
 
 cGraphics::cGraphics() {
@@ -208,10 +209,11 @@ void cGraphics::Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
     const auto layout = GetSpriteRasterLayout();
     const openfodder::SpriteRasterTarget output{target->GetSurfaceBuffer(), target->GetWidth()};
     const auto registers = openfodder::PrepareSpriteRasterRegisters(draw, layout, output.width);
+    const auto captured=openfodder::CaptureSprite8Producer(draw,layout,output.width,rowPalette);
     mFodder->mVideo_Draw_Columns = registers.columns;
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
-    openfodder::RasterizeSprite8(draw, layout, output, rowPalette);
+    openfodder::RasterizeIndexedProducer(captured,output.pixels);
 }
 
 openfodder::ResolvedSpriteResource cGraphics::ResolveSpriteResource(uint16 segment,

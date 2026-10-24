@@ -20,6 +20,7 @@
  *
  */
 
+#include "Utils/IndexedProducer.hpp"
 #include "Utils/ResolvedSpriteResource.hpp"
 #include "Utils/TerrainDraw.hpp"
 #include "Utils/SidebarDraw.hpp"
@@ -215,6 +216,7 @@ public:
     openfodder::TerrainAtlasCache mTerrainAtlas;
 	virtual void		Map_Load_Resources() = 0;
 
+	virtual openfodder::IndexedProducerDraw CaptureOverviewTile(uint16 tile,uint16 x,uint16 y) const = 0;
 	virtual void		MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) = 0;
 
 	virtual void		PaletteSetOverview() = 0;

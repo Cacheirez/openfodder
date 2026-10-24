@@ -20,6 +20,7 @@ def main():
     def old(path, signature):
         return function(subprocess.check_output(['git', 'show', BASELINE + ':' + path], cwd=root, text=True), signature)
     harness = r'''
+#include "Utils/IndexedProducer.hpp"
 #include "Utils/SpriteRaster.hpp"
 #include <array>
 #include <vector>

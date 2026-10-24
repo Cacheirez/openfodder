@@ -29,6 +29,7 @@ def main():
     assert get('Source/Graphics.cpp',sig)==get('Source/Graphics.cpp',sig,True)
     enums=(root/'Source/Version.hpp').read_text().split('enum eGFX_Types {',1)[1].split('};',1)[0]
     h=r'''
+#include "Utils/IndexedProducer.hpp"
 #include "Utils/SidebarDraw.hpp"
 #include "Utils/ResolvedSpriteResource.hpp"
 #include <iostream>
