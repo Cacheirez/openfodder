@@ -112,3 +112,8 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## 13. Seguimiento: productores GUI/minimapa/escenas
 
 `d35e267`: [informe](H4_1_PRODUCTORES_GUI_ESCENAS.md). Captura de operaciones decodificadas para las rutas GUI8/16/Alt/Offset, minimapa y productores de escenas indicados, con propiedad por valor. El constructor del minimapa tiene ahora pruebas sintéticas independientes; las decisiones de interacción siguen clásicas. Preprocesado de reclutas mantiene mutación de recursos una vez; no convertirlo en render repetible. Corrección explícita de lectura fuera de límites en seam PC 320. Próximo bloque: ensamblar por escena destinos, paletas y generaciones; frame completo/PNG/renderer/0-1-N aún no cerrados.
+
+
+## 14. Primera escena ensamblada: pausa
+
+`a133afb`: `PausePresentation` conserva fondo/texto, geometrías y paletas efectivas; `RasterizePausePresentation` devuelve destinos independientes sin consultar el motor. Fade, preparación, entrada y reanudación siguen fuera. Prueba de 144 planificaciones 0/1/5 con generaciones de recursos destruidas y dimensiones cambiadas. [Informe](H4_1_ESTADO_PAUSA.md). La subida SDL usa resultados finales; no se declara igualdad de número de subidas. Falta ensamblar y verificar frame de misión y transición misión↔pausa, además de validación GPU/PNG real/comercial.

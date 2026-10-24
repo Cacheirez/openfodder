@@ -1,6 +1,6 @@
 # Diferencias PC/Amiga y contratos de compatibilidad
 
-Revisión: 24-10-2026, motor `d35e2675ffbbc79f8bf21eb961d78c06d74abd14`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
+Revisión: 24-10-2026, motor `a133afb8188a26f51e703b7a81576cf1b9264f67`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
 
 ## Matriz de dibujo
 
@@ -73,3 +73,8 @@ Código `ff15219`: [detalle y prueba](H4_1_PALETA_DESTINOS.md). Capturar mPalett
 ## Productores GUI/minimapa/escenas — actualización 24-10-2026
 
 [Contratos y casos comprobados](H4_1_PRODUCTORES_GUI_ESCENAS.md), `d35e267`: PC16 es indexado de 8 bits; Amiga16 calcula salto antes de dividir columnas; Alt mantiene su avance de destino y borde inclusivo; Offset limita a cinco planos. Minimapa PC copia cero y Amiga OR de planos; ID Amiga mantiene conversión uint16. Se conserva el centrado por mitades separadas. Capas PC capturan rotación de cuatro planos; seam 320 tenía lectura data[-1] y se define como desplazamiento cero. GUI/accessors, callbacks y preprocesado de reclutas siguen en sus momentos originales. Minimap constructor probado sintéticamente, no por los replays.
+
+
+## Pausa ensamblada — 24-10-2026
+
+La composición común recibe las capas ya producidas por cada backend; conserva dos paletas efectivas independientes y mezcla por palabra RGB no cero. No unifica decodificación PC/Amiga. El fade sigue una vez por iteración lógica, antes de capturar; seleccionar sheets, preparar texto y reanudar siguen en sus puntos originales. Backing RGB cargado y padding se retienen con propiedad estable. Prueba de 144 planificaciones 0/1/5, con índices/RGB sintéticos y destrucción/sustitución de fuentes; no implica cobertura visual PC/Amiga/CD32 comercial ni decoder PNG real. [Contrato y límites de publicación](H4_1_ESTADO_PAUSA.md).
