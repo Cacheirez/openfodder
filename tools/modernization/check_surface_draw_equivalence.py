@@ -23,7 +23,25 @@ def main():
         if p.name=='Surface.cpp': continue
         s=p.read_text()
         if any(x in s for x in ('->Save(', '->Restore(', '->palette_FadeTowardNew(', '->surfaceSetToPaletteNew(')):
-            assert s==subprocess.check_output(['git','show',BASELINE+':'+p.relative_to(root).as_posix()],cwd=root,text=True),p
+            reference=subprocess.check_output(['git','show',BASELINE+':'+p.relative_to(root).as_posix()],cwd=root,text=True)
+            # These producer-only functions have their own original-body suite.
+            # None may contain a fade/Save/Restore caller: those remain guarded.
+            if p.name in ('Graphics_PC.cpp','Graphics_Amiga.cpp'):
+                backend='PC' if p.name=='Graphics_PC.cpp' else 'Amiga'
+                names=['Video_Draw_16','MapOverview_Render_Tiles']
+                names+=['Load_And_Draw_Image','HeliIntro_BlitMaskedAlignedX','HeliIntroBlit_OpaqueAlignedX'] if backend=='PC' else ['Video_Draw_8_Alt','Video_Draw_16_Offset','Service_Draw']
+                effects=('->Save(', '->Restore(', '->palette_FadeTowardNew(', '->surfaceSetToPaletteNew(')
+                for name in names:
+                    sig=f'void cGraphics_{backend}::{name}('
+                    a,b=function(s,sig),function(reference,sig)
+                    assert not any(e in a or e in b for e in effects),sig
+                    s=s.replace(a,'');reference=reference.replace(b,'')
+                captured=function(s,f'openfodder::IndexedProducerDraw cGraphics_{backend}::CaptureOverviewTile(')
+                assert not any(e in captured for e in effects)
+                s=s.replace(captured,'').replace('#include "Utils/IndexedProducer.hpp"','')
+                s='\n'.join(l for l in s.splitlines() if l.strip())
+                reference='\n'.join(l for l in reference.splitlines() if l.strip())
+            assert s==reference,p
     header=(root/'Source/Surface.hpp').read_text()
     palette=header[header.index('class cPalette {'):header.index('class cSurface {')]
     code=r'''
