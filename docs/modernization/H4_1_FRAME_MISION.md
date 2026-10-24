@@ -1,6 +1,6 @@
 # H4.1 — Frame de misión compuesto y transición a pausa
 
-24-10-2026. Base `bae84bf2ff48821a96bdccc7900ce67ce090c0f9`; motor anterior `a133afb8188a26f51e703b7a81576cf1b9264f67`. PR #1 en borrador, sin fusionar. Base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` intacta.
+24-10-2026. Código `049439d56126e95b56eebd183e4f42610d8b6821`. Base `bae84bf2ff48821a96bdccc7900ce67ce090c0f9`; motor anterior `a133afb8188a26f51e703b7a81576cf1b9264f67`. PR #1 en borrador, sin fusionar. Base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` intacta.
 
 ## Incremento y frontera elegida
 
@@ -53,10 +53,26 @@ python3 tools/modernization/check_pause_presentation.py
 
 Compilan C++14 con ASan/UBSan. Localmente `detect_leaks=0`; CI Linux mantiene `detect_leaks=1`. El workflow añade la suite de misión y obtiene `a133afb` para la comparación original. Las suites anteriores, huellas H3, límites y sanitizadores no se rebajan.
 
-Resultados locales iniciales: 240 escenarios/672 capturas y 144 escenarios de pausa PASS; las nueve equivalencias anteriores PASS; 13 pruebas Python, contrato de visibilidad y 1.309 descriptores de sprites PASS. Release local y 6/6 CTests PASS; H3 PC 7.956 + Amiga 3.405, dos pasadas por campaña y 11.361 estados coincidentes con el baseline original. Replays 29/29, cero omisiones, retorno 0. [Evidencia local](evidence/mission-local-2026-10-24.json). CI Windows/Linux pendiente; no se atribuye el éxito anterior al nuevo código.
+Resultados locales iniciales: 240 escenarios/672 capturas y 144 escenarios de pausa PASS; las nueve equivalencias anteriores PASS; 13 pruebas Python, contrato de visibilidad y 1.309 descriptores de sprites PASS. Release local y 6/6 CTests PASS; H3 PC 7.956 + Amiga 3.405, dos pasadas por campaña y 11.361 estados coincidentes con el baseline original. Replays 29/29, cero omisiones, retorno 0. [Evidencia local](evidence/mission-local-2026-10-24.json). CI [Windows 40095813348](https://github.com/Cacheirez/openfodder/actions/runs/40095813348) y [Linux 40095813181](https://github.com/Cacheirez/openfodder/actions/runs/40095813181) aprobadas sobre `049439d`.
 
 Coste: una copia privada indexada y una copia de backing RGB por captura, más el destino propio. La misión antes capturaba solo índices para convertir; el backing es coste adicional. El efecto de pausa recorre únicamente la cola potencialmente persistente en superficies indexadas, o la imagen entera si es RGB. No se ha medido rendimiento comparativo ni se declara optimización.
 
 ## Siguiente bloque
 
 Completar separación en capas/órdenes de misión para interpolación, cobertura de otras escenas/minimapa/cargas y pruebas del motor con presentación real; definir validación de geometría/generación en el sink antes de publicar capturas diferidas. Medir coste y validar imágenes representativas en Windows/CD32. H4.1/H4.6 siguen abiertos globalmente; no comenzar nuevas cadencias ni arte HD con este resultado parcial.
+
+## Cierre de verificación de 049439d
+
+- Windows: 6/6 CTests, H3 original 11.361 estados y 29/29 replays, cero omisiones, retorno 0 (22,312 s).
+- Linux: todas las suites focalizadas, incluidos 240 escenarios/672 capturas y 144 escenarios de pausa, con fugas activas; H3 original 11.361 estados; 6/6 CTests.
+- Motor Linux: 29/29 replays ASan/UBSan (36,184 s), LSan (36,137 s) y TSan (144,517 s), cero omisiones y sin diagnósticos en los siete engine.log examinados. Windows: cinco engine.log examinados. Los tiempos son observaciones, no un benchmark.
+- ZIP de evidencias verificados por tamaño, SHA-256 y CRC; informes internos PASS. [JSON originales, dependencias y líneas de resultado](evidence/049439d-reports.json).
+
+| Plataforma | Artefacto | SHA-256 | Caduca UTC |
+|---|---|---|---|
+| Linux | 12560388931 | `f710e921952864959a9d97b2062ea37813a234bb39caeb28ea3013652f8c5195` | 2026-11-23 13:04:33 |
+| Windows | 12560658748 | `1eb561b5f1e18cabb6b1e7387dce468ba4bf58bc19a424e6106cbe17ac294542` | 2026-11-23 13:00:22 |
+
+La publicación se realizó mediante el conector de GitHub porque Git HTTPS local no tenía credenciales de escritura. El árbol completo publicado `d8ee2225c6127abb1b7a6af299579a18b9dcd40d` coincide exactamente con el commit local probado `964b3d27`. No se sobrescribieron cambios remotos ni se usó force-push. Se conserva ese commit local en una rama auxiliar y la rama activa se sincroniza con el commit publicado. La instalación local de dependencias necesitó cache apt temporal por permisos del contenedor; no se cambió la configuración CI.
+
+El archivo JSON es evidencia compacta: no contiene ZIP/trazas/logs completos ni ejecutables. Su archivo duradero externo sigue pendiente, igual que las evidencias anteriores. La base clásica permanece en `5e6a4f3`; PR #1 abierto en borrador sin fusionar. Se acepta este incremento con los límites anteriores, sin cerrar H4 globalmente.

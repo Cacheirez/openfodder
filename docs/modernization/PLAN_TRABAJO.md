@@ -3,9 +3,9 @@
 **Versión del plan:** 2.15 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI nueva pendiente; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
+**Estado global:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI Windows/Linux aprobada; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
 
-**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/a133afb-reports.json).
+**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/049439d-reports.json).
 
 ## 1. Objetivo y alcance
 
@@ -22,16 +22,16 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `a133afb8188a26f51e703b7a81576cf1b9264f67`: estado de pausa retenido |
-| Compilación Windows observada | [40082228351](https://github.com/Cacheirez/openfodder/actions/runs/40082228351): aprobada |
+| Revisión de código de la propuesta | `049439d56126e95b56eebd183e4f42610d8b6821`: frame de misión compuesto y backing de pausa |
+| Compilación Windows observada | [40095813348](https://github.com/Cacheirez/openfodder/actions/runs/40095813348): aprobada |
 | Pasos Windows ya comprobados | Compilación, 6 CTests, contrato de visibilidad, H3 PC/Amiga y baseline original PASS |
-| Ejecutable Windows y 29 replays | Paquete demos publicado por CI; 29/29 fases, cero omisiones, 24,047 s |
-| Referencia local Linux | `a133afb`: H3 original 11.361 estados, 29/29 fases sin omisiones |
-| Pruebas focalizadas | 144 escenarios de pausa 0/1/5; 1.536 raster nuevos, 1.964 escenas, 1.024 tiles, 72 constructores; 2.944 de capas; 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
-| Memoria | [Linux 40082228491](https://github.com/Cacheirez/openfodder/actions/runs/40082228491): aprobada |
+| Ejecutable Windows y 29 replays | Paquete demos publicado por CI; 29/29 fases, cero omisiones, 22,312 s |
+| Referencia local Linux | `049439d`: H3 original 11.361 estados, 29/29 fases sin omisiones |
+| Pruebas focalizadas | 240 escenarios misión/pausa, 672 capturas retenidas; 144 escenarios de pausa 0/1/5; 1.536 raster nuevos, 1.964 escenas, 1.024 tiles, 72 constructores; 2.944 de capas; 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
+| Memoria | [Linux 40095813181](https://github.com/Cacheirez/openfodder/actions/runs/40095813181): aprobada |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: validar incremento de frame compuesto y transición misión↔pausa**. [Implementación y límites](H4_1_FRAME_MISION.md); luego capas independientes y cobertura real pendiente. |
+| Tarea activa | **H4.1: capas independientes y cobertura del motor completo tras validar frame compuesto y transición misión↔pausa**. [Implementación y límites](H4_1_FRAME_MISION.md); luego capas independientes y cobertura real pendiente. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -437,3 +437,5 @@ Código `793e347cd9f118da1c9ec6a84f88caf3257b74c2`: capturas privadas, destinos 
 ## 24-10-2026 — Frame compuesto de misión y regresión de transición
 
 [Informe](H4_1_FRAME_MISION.md): captura en el punto de conversión final para incluir escrituras del paso principal y paleta efectiva. 240 escenarios 0/1/5, 672 capturas retenidas; se encontró y extrajo el efecto de backing persistente de pausa que alteraba el padding al omitir la presentación. La suite de pausa conserva sus 144 escenarios y añade comparación de capturas contra el original. Coordinadoras reales con productores/SDL controlados; no es un cierre global H4. No se cambia cadencia, referencias H3 ni base clásica. Resultados completos en el informe.
+
+Cierre del incremento `049439d`: CI Windows/Linux aprobada, ZIP/informes verificados; H3 original 11.361 estados, 29 replays y sanitizadores sin diagnósticos. PR en borrador sin fusionar. La tarea siguiente es separación por capas, pruebas del motor completo 0/1/N, otras escenas y publicación/geometría; H4 global sigue abierto.

@@ -5,9 +5,9 @@
 ## Estado y referencias de recuperación
 
 - Repositorio: https://github.com/Cacheirez/openfodder. Rama `modernization/windows-foundation`, PR #1 en borrador y **sin fusionar**.
-- Código más reciente validado: `a133afb8188a26f51e703b7a81576cf1b9264f67`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
+- Código más reciente validado: `049439d56126e95b56eebd183e4f42610d8b6821`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
 - Base clásica recuperable: rama `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. No moverla ni reescribir su historia. Para inspeccionarla sin alterar la rama activa: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
-- H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa ya tiene estado compuesto propio y prueba 0/1/5; faltan el frame de misión, interpolación y arte HD.
+- H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa y el frame de misión ya compuesto tienen estado propio y pruebas focalizadas 0/1/5. Faltan capas movibles independientemente, 0/1/N del motor completo, interpolación y arte HD.
 - Incremento actual: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
 
 ## Orden de lectura y mapa de conocimiento
@@ -29,7 +29,7 @@
 | Copia/mezcla de capas y destinos indexados | [Capas y destinos](H4_1_CAPAS_DESTINOS_INDEXADOS.md) |
 | Productores GUI, minimapa, escenas y corrección de seam PC | [Productores retenidos](H4_1_PRODUCTORES_GUI_ESCENAS.md) |
 | Estado de pausa, planificación 0/1/5 y límites | [Informe de pausa](H4_1_ESTADO_PAUSA.md) |
-| Evidencia compacta de la última revisión | [Informes conservados](evidence/a133afb-reports.json) |
+| Evidencia compacta de la última revisión | [Informes conservados](evidence/049439d-reports.json) |
 
 ## Invariantes que condicionan cualquier implementación
 
@@ -98,8 +98,10 @@ Datos CD32: obtener de Miguel la copia privada autorizada y su manifiesto SHA-25
 
 Cada entrega debe actualizar el plan vivo, la matriz de diferencias y el informe del bloque con: commit base/final, funciones y efectos, decisión y alternativas descartadas relevantes, excepciones PC/Amiga/versión, fuentes y propietarios, límites/precondiciones, pruebas reproducibles y resultados reales, fallos encontrados y resueltos, cobertura pendiente y siguiente paso. Guardar resultados compactos en Git y evidencias voluminosas fuera del repositorio. Separar siempre «inspeccionado», «probado automáticamente», «validado manualmente» y «pendiente».
 
-Esta guía se apoya en la evidencia del motor `a133afb`; las rutas aún no auditadas se documentarán al analizarlas.
+Esta guía se apoya en la evidencia del motor `049439d`; las rutas aún no auditadas se documentarán al analizarlas.
 
 La suite `python tools/modernization/check_pause_presentation.py` compara 144 planificaciones 0/1/5 con recursos destruidos/sustituidos. Usa dobles de SDL/entrada y no demuestra por sí sola la transición completa de misión a pausa ni validación visual comercial.
 
 La nueva suite `check_mission_presentation.py` compara coordinadoras reales con productores/SDL sintéticos; la suite de pausa refuerza la comparación de capturas retenidas contra la secuencia original. El siguiente bloque conserva la separación por capas, otras escenas, publicación diferida y validación visual como pendientes.
+
+Último incremento verificado: Windows 40095813348 y Linux 40095813181 aprobados; H3 original y 29/29 replays, con ASan/UBSan, LSan y TSan Linux. [Informe y evidencias](H4_1_FRAME_MISION.md). Los ZIP nuevos caducan también el 23-11-2026; su archivo duradero externo sigue pendiente.
