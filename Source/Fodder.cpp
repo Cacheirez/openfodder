@@ -403,10 +403,14 @@ void cFodder::Phase_Paused()
         if (mSurface->isPaletteAdjusting())
             mSurface->palette_FadeTowardNew();
 
-        // Draw background with faded palette, then overlay text using its own palette.
-        mSurface->draw();
-        mSurface2->draw();
-        mSurface->mergeSurfaceBuffer(mSurface2);
+        // Capture after the original fade step. Replaying this scene cannot
+        // advance fades, consume input or select resources.
+        const openfodder::PausePresentation scene{
+            mSurface->CapturePresentation(), mSurface2->CapturePresentation()
+        };
+        const auto presented = openfodder::RasterizePausePresentation(scene);
+        mSurface->ApplyPresentation(presented.background);
+        mSurface2->ApplyPresentation(presented.text);
 
         mWindow->RenderAt(mSurface);
         mWindow->FrameEnd();

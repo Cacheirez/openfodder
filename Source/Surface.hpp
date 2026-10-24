@@ -22,6 +22,7 @@
 
 #include "Utils/SurfaceDraw.hpp"
 #include "Utils/SurfaceLayers.hpp"
+#include "Utils/PausePresentation.hpp"
 
 const size_t		 g_MaxColors = 0xFF;
 
@@ -78,6 +79,8 @@ protected:
 	
 
 public:
+    openfodder::PresentationSurface CapturePresentation() const;
+    void ApplyPresentation(const openfodder::RGBLayerTarget& target);
     openfodder::IndexedLayer CaptureIndexedLayer() const;
     openfodder::RGBLayer CaptureRGBLayer() const;
     IndexedSurfaceState CaptureIndexedState() const;

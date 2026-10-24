@@ -243,6 +243,18 @@ void cSurface::draw(const int16 pSkipX, const int16 pSkipY) {
 	}
 }
 
+openfodder::PresentationSurface cSurface::CapturePresentation() const {
+    return { CaptureDraw(), CaptureRGBLayer() };
+}
+
+void cSurface::ApplyPresentation(const openfodder::RGBLayerTarget& target) {
+    // Sink only: matching geometry/pitch is guaranteed by the captured scene.
+    // Indexed pixels, saved pixels, palettes and fade state are never written.
+    std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32));
+    if (mTexture)
+        SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);
+}
+
 openfodder::IndexedLayer cSurface::CaptureIndexedLayer() const {
     return openfodder::CaptureLayer(mSurfaceBuffer, mSurfaceBufferSize, mWidth, mHeight, mWidth);
 }

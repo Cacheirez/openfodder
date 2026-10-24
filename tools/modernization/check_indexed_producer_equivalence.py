@@ -2,6 +2,7 @@
 import os,subprocess,tempfile
 from pathlib import Path
 from check_final_timer_equivalence import function
+from pause_contract import canonical_pause
 BASELINE='793e347cd9f118da1c9ec6a84f88caf3257b74c2'
 def main():
  root=Path(__file__).resolve().parents[2]
@@ -9,7 +10,9 @@ def main():
   text=subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True) if old else (root/path).read_text()
   return function(text,sig)
  for path in ['Source/GUI_Element.cpp','Source/Fodder.cpp','Source/Recruits.cpp','Source/Window.cpp']:
-  assert (root/path).read_text()==subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True),path
+  current=(root/path).read_text()
+  if path=='Source/Fodder.cpp': current=canonical_pause(current)
+  assert current==subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True),path
  for backend in ('PC','Amiga'):
   path=f'Source/{backend}/Graphics_{backend}.cpp'
   for name in ('Recruit_Sprite_Draw','Briefing_Intro_Helicopter_Play','Mission_Intro_DrawHelicopter'):

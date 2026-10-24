@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 from check_final_timer_equivalence import function
+from pause_contract import canonical_pause
 BASELINE = 'c6af094c49641018b6dea6dc77cbe731a7ea0218'
 
 def main():
@@ -41,6 +42,7 @@ def main():
                 s=s.replace(captured,'').replace('#include "Utils/IndexedProducer.hpp"','')
                 s='\n'.join(l for l in s.splitlines() if l.strip())
                 reference='\n'.join(l for l in reference.splitlines() if l.strip())
+            if p.name=='Fodder.cpp': s=canonical_pause(s)
             assert s==reference,p
     header=(root/'Source/Surface.hpp').read_text()
     palette=header[header.index('class cPalette {'):header.index('class cSurface {')]

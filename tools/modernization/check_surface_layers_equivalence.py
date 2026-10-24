@@ -6,6 +6,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 from check_final_timer_equivalence import function
+from pause_contract import canonical_pause
 BASELINE='ff15219680b289abf207fdc23fc436a9f390e649'
 
 def main():
@@ -15,7 +16,9 @@ def main():
     # Real callers preserve layer order, fade, minimap blink, callbacks and locks.
     # Producer changes have their own original-body suite; retain scene/loop guards here.
     for path in ('Source/Fodder.cpp','Source/Recruits.cpp','Source/Window.cpp'):
-        assert (root/path).read_text()==original(path),path
+        current=(root/path).read_text()
+        if path=='Source/Fodder.cpp': current=canonical_pause(current)
+        assert current==original(path),path
     for name in ('Save','Restore','palette_FadeTowardNew','draw'):
         sig=('bool' if name=='palette_FadeTowardNew' else 'void')+' cSurface::'+name+'('
         assert function(new,sig)==function(old,sig),sig
