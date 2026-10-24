@@ -20,6 +20,11 @@
  *
  */
 
+#include "Utils/SurfaceDraw.hpp"
+#include "Utils/SurfaceLayers.hpp"
+#include "Utils/PausePresentation.hpp"
+#include "Utils/MissionPresentation.hpp"
+
 const size_t		 g_MaxColors = 0xFF;
 
 class cPalette {
@@ -42,13 +47,21 @@ public:
 };
 
 
+// Full indexed copy state. Save buffer and fade-adjusting flag are deliberately
+// absent: classic copyFrom does not copy them.
+struct IndexedSurfaceState {
+    openfodder::IndexedLayer layer;
+    std::array<cPalette, 255> current, next;
+    std::array<uint32, 255> effective;
+};
+
 class cSurface {
 protected:
     bool            mIsLoadedImage;
 	cPalette		mPalette[ g_MaxColors ];
 	cPalette		mPaletteNew[ g_MaxColors ];
 
-	uint32			mPaletteSDL[ g_MaxColors ];
+	uint32			mPaletteSDL[ g_MaxColors ]{};
 
 	uint8*			mSurfaceBuffer;								// Loaded Image (uses palette indexs)
 	uint8*			mSurfaceBufferSaved;
@@ -67,6 +80,14 @@ protected:
 	
 
 public:
+    openfodder::PresentationSurface CapturePresentation() const;
+    bool isLoadedImage() const { return mIsLoadedImage; }
+    void CommitPauseBacking(const openfodder::PausePresentation& scene);
+    void ApplyPresentation(const openfodder::RGBLayerTarget& target);
+    openfodder::IndexedLayer CaptureIndexedLayer() const;
+    openfodder::RGBLayer CaptureRGBLayer() const;
+    IndexedSurfaceState CaptureIndexedState() const;
+    openfodder::SurfaceDraw CaptureDraw(int16 pSkipX = 16, int16 pSkipY = 16) const;
 	void			surfaceSetToPalette();
 	void			surfaceSetToPaletteNew();
 					cSurface( size_t pWidth, size_t pHeight );

@@ -34,23 +34,8 @@ cResource_Amiga_File::~cResource_Amiga_File() {
 
 tSharedBuffer cResource_Amiga_File::fileGet( std::string pFilename ) {
 
-	auto File = cResources::fileGet( pFilename );
-	if (!File->size()) {
-		//std::cout << "File " << pFilename << " Not Found!\n";
-		//exit( 1 );
-		return File;
-	}
-	uint32 Header = readBEDWord( File->data() );
-
-	if (Header != 'RNC\01')
-		return File;
-
-	uint32 Size = readBEDWord( File->data() + 4 );
-
-	auto Unpacked = std::make_shared<std::vector<uint8>>();
-	Unpacked->resize( Size );
-
-	rnc_unpack (File->data(), Unpacked->data());
-
-	return Unpacked;
+	// The parent loader already validates/decompresses RNC data. A second
+	// decompression must use the same size-aware path, not an unbounded call.
+	auto File = cResources::fileGet(pFilename);
+	return fileDeRNC(File);
 }

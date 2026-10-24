@@ -21,6 +21,7 @@
 */
 
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include "Amiga/SpriteData_Amiga.hpp"
 #include <chrono>
 #include <algorithm>
@@ -151,7 +152,7 @@ uint8* cGraphics_Amiga::GetSpriteData(uint16 pSegment) {
 
 }
 
-void cGraphics_Amiga::Mouse_DrawCursor() {
+openfodder::PreparedSpriteDraw cGraphics_Amiga::Cursor_PrepareLegacyDraw() {
 	const sSpriteSheet_pstuff* di = &mSpriteSheet_PStuff[mFodder->mMouseSpriteCurrent];
 
 	mFodder->mVideo_Draw_Columns = di->mColumns >> 3;
@@ -167,7 +168,12 @@ void cGraphics_Amiga::Mouse_DrawCursor() {
 	ax += d1;
 
 	mFodder->mVideo_Draw_FrameDataPtr = di->GetGraphicsPtr(ax + bx);
-	Video_Draw_8();
+	return CaptureCursorDraw();
+}
+
+void cGraphics_Amiga::Mouse_DrawCursor() {
+    const auto prepared = Cursor_PrepareLegacyDraw();
+    Video_Draw_8_Resolved(prepared);
 }
 
 bool cGraphics_Amiga::Sprite_OnScreen_Check() {
@@ -427,35 +433,40 @@ void cGraphics_Amiga::SetCursorPalette(uint16 pIndex) {
 	mCursorPalette = pIndex;
 }
 
+void cGraphics_Amiga::SetActiveCF2SpriteSheet() {
+    mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_CF2,
+                                    mSpriteSheetTypes_InGame_Amiga_CF2_FrameCounts);
+}
+
 void cGraphics_Amiga::SetActiveSpriteSheet(eGFX_Types pSpriteType) {
 
 	switch (pSpriteType) {
 	case eGFX_IN_GAME:
 		if (mFodder->mVersionCurrent->isAmigaTheOne())
-			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_TheOne);
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga_TheOne, mSpriteSheetTypes_InGame_Amiga_TheOne_FrameCounts);
 		else
-			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga);
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_Amiga, mSpriteSheetTypes_InGame_Amiga_FrameCounts);
 
 		return;
 
 	case eGFX_FONT:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_Amiga, mSpriteSheetTypes_Font_Amiga_FrameCounts);
 		return;
 
 	case eGFX_RECRUIT:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_Amiga, mSpriteSheetTypes_Recruit_Amiga_FrameCounts);
 		return;
 
 	case eGFX_HILL:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_Amiga, mSpriteSheetTypes_Hill_Amiga_FrameCounts);
 		return;
 
 	case eGFX_BRIEFING:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_Amiga, mSpriteSheetTypes_Briefing_Amiga_FrameCounts);
 		return;
 
 	case eGFX_SERVICE:
-		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_Amiga);
+		mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_Amiga, mSpriteSheetTypes_Service_Amiga_FrameCounts);
 		return;
 
 	default:
@@ -750,87 +761,19 @@ void cGraphics_Amiga::Map_Tile_Draw(cSurface* pTarget, uint16 pTile, uint16 pX, 
 	}
 }
 
+openfodder::TerrainDraw cGraphics_Amiga::CaptureVisibleTerrain() {
+    return openfodder::PrepareTerrain(*mFodder->mMap, mFodder->mMapTile_Ptr,
+        mFodder->mMapLoaded->getWidth(), g_Fodder->getWindowRows(), g_Fodder->getWindowColumns(),
+        mFodder->mMapTile_RowOffset, mFodder->mMapTile_ColumnOffset,
+        openfodder::TerrainFormat::Amiga, mTerrainAtlas.capture(0, *mBlkData));
+}
+
 void cGraphics_Amiga::MapTiles_Draw() {
-	mSurface->clearBuffer();
-	uint8* Target = mSurface->GetSurfaceBuffer();
-
-	uint8* CurrentMapPtr = mFodder->mMap->data() + mFodder->mMapTile_Ptr;
-
-	// Y
-	for (uint16 cx = 0; cx <= g_Fodder->getWindowRows() + 1; ++cx) {
-
-		uint8* TargetRow = Target;
-
-		uint16 StartY = 0;
-
-		if (cx == 0)
-			StartY = mFodder->mMapTile_RowOffset;
-
-		if (CurrentMapPtr >= mFodder->mMap->data()) {
-
-			uint8* MapRowPtr = CurrentMapPtr;
-
-			// X
-			for (uint16 cx2 = 0; cx2 <= g_Fodder->getWindowColumns() + 1; ++cx2) {
-				uint8* TargetTmp = TargetRow;
-
-				if (MapRowPtr >= mFodder->mMap->data() + mFodder->mMap->size())
-					break;
-
-				uint16 Tile = readLE<uint16>(MapRowPtr) & 0x1FF;
-				if (Tile > 0x1C0)
-					Tile = 0;
-
-				Tile <<= 7;
-
-				uint8* TilePtr = mBlkData->data() + Tile;
-				uint16 StartX = 0;
-
-				TilePtr += StartY * 2;
-
-				if (cx2 == 0)
-					StartX = mFodder->mMapTile_ColumnOffset;
-
-				// Each bitfield
-				for (uint16 BitField = 0; BitField < 4; ++BitField) {
-
-					// Each Tile Row
-					for (uint16 i = StartY; i < 16; ++i) {
-
-						if (TilePtr > mBlkData->data() + mBlkData->size())
-							continue;
-
-						uint16 RowData = readBEWord(TilePtr);
-						TilePtr += 2;
-						RowData <<= StartX;
-
-						// Each pixel of a Tile Row
-						for (uint16 x = StartX; x < 16; ++x) {
-							uint8 Bit = (RowData & 0x8000) ? 1 : 0;
-							RowData <<= 1;
-
-							if (Bit)
-								*(TargetTmp + x) |= (Bit << BitField);
-
-						}
-
-						TargetTmp += mSurface->GetWidth();
-					}
-
-					// Next Bitfield
-					TargetTmp = TargetRow;
-				}
-
-				MapRowPtr += 2;
-				TargetRow += (16 - StartX);
-			}
-		}
-
-		Target += (mSurface->GetWidth() * (16 - StartY));
-		CurrentMapPtr += (mFodder->mMapLoaded->getWidth() << 1);
-	}
-
-	mSurface->Save();
+    mSurface->clearBuffer(); // Keep saved-buffer and SDL clearing at the classic point.
+    const auto terrain = CaptureVisibleTerrain();
+    openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
+        mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
+    mSurface->Save(); // Background for the subsequent sprite pass, once as before.
 }
 
 void cGraphics_Amiga::Hill_Prepare_Overlays() {
@@ -839,6 +782,7 @@ void cGraphics_Amiga::Hill_Prepare_Overlays() {
 	for (; a3->mSpriteType != -1; ++a3) {
 
 		auto SpriteSheet = mFodder->Sprite_Get_Sheet(a3->mSpriteType, a3->mFrame);
+        if (!SpriteSheet) continue; // No image data for invalid overlay frame.
 
 		int d0 = SpriteSheet->mColCount - 1;
 		int d1 = SpriteSheet->mRowCount - 1;
@@ -884,46 +828,12 @@ void cGraphics_Amiga::Hill_Prepare_Overlays() {
 	}
 }
 
-void cGraphics_Amiga::MapOverview_Render_Tiles(uint16 pTile, uint16 pDestX, uint16 pDestY) {
-	uint8* Target = mFodder->mSurfaceMapOverview->GetSurfaceBuffer();
-
-	pDestX *= 16;
-
-	Target += (pDestY * 16) * mFodder->mSurfaceMapOverview->GetWidth();
-	Target += pDestX;
-
-	pTile <<= 7;
-	uint8* TilePtr = mBlkData->data() + pTile;
-
-	// Each bitfield
-	for (uint16 BitField = 0; BitField < 4; ++BitField) {
-		uint8* TargetTmp = Target;
-
-		// Each Tile Row
-		for (uint16 i = 0; i < 16; ++i) {
-
-			if (TilePtr >= mBlkData->data() + mBlkData->size())
-				continue;
-
-			uint16 RowData = readBEWord(TilePtr);
-			TilePtr += 2;
-
-			// Each pixel of a Tile Row
-			for (uint16 x = 0; x < 16; ++x) {
-				uint8 Bit = (RowData & 0x8000) ? 1 : 0;
-				RowData <<= 1;
-
-				if (Bit)
-					*(TargetTmp + x) |= (Bit << BitField);
-
-			}
-
-			TargetTmp += mFodder->mSurfaceMapOverview->GetWidth();
-		}
-
-		// Next Bitfield
-		TargetTmp = Target;
-	}
+openfodder::IndexedProducerDraw cGraphics_Amiga::CaptureOverviewTile(uint16 pTile,uint16 pDestX,uint16 pDestY) const {
+    return openfodder::CaptureOverviewAmiga(mBlkData->data(),mBlkData->size(),pTile,pDestX,pDestY,mFodder->mSurfaceMapOverview->GetWidth());
+}
+void cGraphics_Amiga::MapOverview_Render_Tiles(uint16 pTile,uint16 pDestX,uint16 pDestY) {
+    const auto draw=CaptureOverviewTile(pTile,pDestX,pDestY);
+    openfodder::RasterizeIndexedProducer(draw,mFodder->mSurfaceMapOverview->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Map_Load_Resources() {
@@ -936,157 +846,63 @@ void cGraphics_Amiga::Map_Load_Resources() {
 	SetActiveSpriteSheet(eGFX_IN_GAME);
 }
 
-void cGraphics_Amiga::Video_Draw_8(cSurface* pTarget, const uint8* RowPallete) {
-	if (!pTarget)
-		pTarget = mSurface;
-
-	uint8* di = pTarget->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += pTarget->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mVideo_Draw_Columns -= 1;
-	mFodder->mVideo_Draw_Columns <<= 1;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - (mFodder->mVideo_Draw_Columns);
-	mFodder->mDraw_Dest_SkipPixelsPerRow = pTarget->GetWidth() - (mFodder->mVideo_Draw_Columns * 8);
-
-	// Height
-	for (int16 dx = mFodder->mVideo_Draw_Rows; dx > 0; --dx) {
-
-		// Width
-		for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-			DrawPixels_8(si, di);
-
-			di += 8;
-			si += 1;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+openfodder::SpriteRasterLayout cGraphics_Amiga::GetSpriteRasterLayout() const {
+    openfodder::SpriteRasterLayout layout;
+    layout.format = openfodder::SpriteDrawFormat::Amiga8;
+    layout.width = mBMHD_Current->mWidth;
+    layout.height = mBMHD_Current->mHeight;
+    layout.planes = mBMHD_Current->mPlanes;
+    return layout;
 }
 
 void cGraphics_Amiga::Video_Draw_8_Alt(const uint8* RowPalette) {
-
-	uint8* di = mSurface->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	int screenWidth = (int)mSurface->GetWidth();
-	int screenHeight = (int)mSurface->GetHeight();
-
-	// Adjust start position
-	di += screenWidth * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = screenWidth - (mFodder->mVideo_Draw_Columns * 8);
-
-	// Height
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPalette) {
-			// TODO: palette should degrade closer to top/bottom of screen 
-			//int16 bx = mFodder->mVideo_Draw_PosY + dx;
-			//Palette = 1;// RowPallete[bx];
-		}
-
-		int currentY = mFodder->mVideo_Draw_PosY + dx;
-		if (currentY >= 0 && currentY < screenHeight) {
-
-			// Width
-			for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-				int currentX = mFodder->mVideo_Draw_PosX + (cx * 8);
-				if (currentX >= 0 && currentX <= screenWidth) {
-					DrawPixels_8(si, di);
-				}
-
-				di += 8;
-				si += 1;
-			}
-		}
-		else {
-			// Skip entire row
-			si += mFodder->mVideo_Draw_Columns;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::AmigaAlt,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 
 void cGraphics_Amiga::Video_Draw_16_Offset(int16 pCx) {
-	uint8* pDs = mFodder->mVideo_Draw_FrameDataPtr;
-	uint8* di = mSurface->GetSurfaceBuffer() + 16;
-
-	int16 ax = pCx;
-
-	di += (mFodder->mVideo_Draw_PosY * mSurface->GetWidth());
-
-	int16 SourceX = 0, SourceY = 0;
-
-	for (int16 bx = 0; bx < mFodder->mVideo_Draw_Rows; ++bx) {
-		uint16 cx;
-		SourceX = 0;
-
-		for (cx = ax; cx < (mSurface->GetWidth() - 32); cx++) {
-
-			DrawPixel(pDs, di, SourceX, SourceY, cx, bx);
-
-			SourceX++;
-		}
-
-		for (cx = 0; cx < ax; cx++) {
-
-			DrawPixel(pDs, di, SourceX, SourceY, cx, bx);
-
-			SourceX++;
-		}
-
-		++SourceY;
-	}
-
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    geometry.wrap=pCx;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::AmigaOffset,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Video_Draw_16(const uint8* RowPallete) {
-
-	uint8* di = mSurface->GetSurfaceBuffer();
-	uint8* si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += mSurface->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = (mBMHD_Current->mWidth >> 3) - mFodder->mVideo_Draw_Columns;
-	mFodder->mVideo_Draw_Columns >>= 1;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = mSurface->GetWidth() - (mFodder->mVideo_Draw_Columns * 16);
-
-	// Height
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPallete) {
-			// TODO: palette should degrade closer to top/bottom of screen 
-			//int16 bx = mFodder->mVideo_Draw_PosY + dx;
-			//Palette = 1;// RowPallete[bx];
-		}
-
-		// Width
-		for (int16 cx = 0; cx < mFodder->mVideo_Draw_Columns; ++cx) {
-
-			DrawPixels_16(si, di, Palette);
-
-			di += 16;
-			si += 2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::Amiga16,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Sidebar_Copy_To_Surface(int16 pStartY, cSurface* pSurface) {
@@ -1204,21 +1020,14 @@ void cGraphics_Amiga::Service_Draw(int16 pSpriteID, int16 pX, int16 pY) {
 
 	si += stru_A918A[pSpriteID].mOffset;
 
-	// Height
-	for (int16 dx = stru_A918A[pSpriteID].mHeight; dx > 0; --dx) {
-
-		// Width
-		for (int16 cx = 0; cx < stru_A918A[pSpriteID].mWidth; ++cx) {
-
-			DrawPixels_16(si, di, mFodder->mVideo_Draw_PaletteIndex);
-
-			di += 16;
-			si += 2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=pX+16; geometry.y=pY;
+    geometry.columns=d0; geometry.rows=stru_A918A[pSpriteID].mHeight;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    auto layout=GetSpriteRasterLayout(); layout.width=320;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::Amiga16,
+        si,geometry,layout,mSurface->GetWidth(),mSurface->GetHeight());
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_Amiga::Mission_Intro_Load_Resources(const eTileTypes pTileset) {
@@ -1566,4 +1375,22 @@ void cGraphics_Amiga::Briefing_Intro_Helicopter_Play(
 	} while (mFodder->mBriefingHelicopter_NotDone || mFodder->mSurface->isPaletteAdjusting());
 
 	mFodder->mMouse_Exit_Loop = false;
+}
+
+// Ownership lookup only; legacy selection effects remain in GetSpriteData.
+tSharedBuffer cGraphics_Amiga::GetSpriteResourceStorage(uint16 segment) const {
+    switch (segment) {
+    case eGFX_IN_GAME: return mSpriteSheet_InGame1.mData;
+    case eGFX_IN_GAME2: return mSpriteSheet_InGame2.mData;
+    case eGFX_RANKFONT: return mSpriteSheet_RankFont.mData;
+    case eGFX_FONT: return mImageFonts.mData;
+    case eGFX_PSTUFF: return mImagePStuff.mData;
+    case eGFX_RECRUIT: return mImageHillBackground.mData;
+    case eGFX_HILL: return mImageHillSprites.mData;
+    case eGFX_BRIEFING: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_1: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_2: return mImageMissionIntro.mData;
+    case eGFX_BRIEFING_AMIGA_3: return mImageMissionIntro.mData;
+    default: return {};
+    }
 }

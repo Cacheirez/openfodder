@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/DirectionLUT.hpp"
 
 #ifdef WIN32
 #include <windows.h>
@@ -203,6 +204,8 @@ cFodder::cFodder(std::shared_ptr<cWindow> pWindow)
     mSurfaceMapLeft = 0;
 
     mSprite_SheetPtr = 0;
+    mSprite_FrameCounts = nullptr;
+    mSprite_SheetCount = 0;
 
     mWindow_Focus = false;
     mWindow_MouseInside = false;
@@ -240,9 +243,13 @@ int16 cFodder::Phase_Cycle()
             mStartParams->mDemoPlayback = false;
             mStartParams->mDemoRecord = true;
             mStartParams->mDemoRecordResumeCycle = 0;
-            mParams->mSleepDelta = mStartParams->mSleepDelta;
-            mParams->mDemoRecord = mStartParams->mDemoRecord;
-            mParams->mDemoPlayback = mStartParams->mDemoPlayback;
+            {
+                std::lock_guard<std::mutex> lock(mSurfaceMtx);
+                mParams->mSleepDelta = mStartParams->mSleepDelta;
+                mParams->mDemoRecord = mStartParams->mDemoRecord;
+                mParams->mDemoPlayback = mStartParams->mDemoPlayback;
+                mInterruptSleepDelta.store(mParams->mSleepDelta);
+            }
             mStartParams->mDisableVideo = false;
             mStartParams->mDisableSound = false;
             Mouse_Setup();
@@ -355,6 +362,7 @@ int16 cFodder::Phase_Cycle()
 
     if (mGame_Data.mGamePhase_Data.mIsComplete)
     {
+        GameplayTraceCapture(); // Capture terminal logical state before phase transition.
 
         if (mPhase_Aborted)
             Sprite_Handle_Player_Destroy_Unk();
@@ -382,6 +390,7 @@ int16 cFodder::Phase_Cycle()
     Sprite_HelicopterCallPad_Check();
     Mission_Final_Timer();
 
+    GameplayTraceCapture(); // After the completed logical cycle, not per rendered frame.
     return 1;
 }
 
@@ -394,10 +403,15 @@ void cFodder::Phase_Paused()
         if (mSurface->isPaletteAdjusting())
             mSurface->palette_FadeTowardNew();
 
-        // Draw background with faded palette, then overlay text using its own palette.
-        mSurface->draw();
-        mSurface2->draw();
-        mSurface->mergeSurfaceBuffer(mSurface2);
+        // Capture after the original fade step. Replaying this scene cannot
+        // advance fades, consume input or select resources.
+        const openfodder::PausePresentation scene{
+            mSurface->CapturePresentation(), mSurface2->CapturePresentation()
+        };
+        mSurface->CommitPauseBacking(scene);
+        const auto presented = openfodder::RasterizePausePresentation(scene);
+        mSurface->ApplyPresentation(presented.background);
+        mSurface2->ApplyPresentation(presented.text);
 
         mWindow->RenderAt(mSurface);
         mWindow->FrameEnd();
@@ -421,7 +435,8 @@ void cFodder::Phase_Paused()
 
 void cFodder::Phase_Prepare()
 {
-
+    // Preserve classic interrupt timing during resource/phase setup.
+    // Protect only shared-state handoffs, not the entire preparation.
     Map_Load();
     Map_Load_Sprites();
     Map_Overview_Prepare();
@@ -440,7 +455,10 @@ void cFodder::Phase_Prepare()
     MapTiles_ResetScrollState();
     Camera_Reset();
 
-    Mouse_ReadInputs();
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        Mouse_ReadInputs();
+    }
     Sprite_Frame_Modifier_Update();
 
     mSound->Stop();
@@ -455,9 +473,12 @@ void cFodder::Phase_Prepare()
     Sprite_Handle_Loop();
     Sprite_Create_Rank();
 
-    mCamera_Start_Adjust = true;
-    mCamera_StartPosition_X = mSprites[0].mPosX;
-    mCamera_StartPosition_Y = mSprites[0].mPosY;
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mCamera_Start_Adjust = true;
+        mCamera_StartPosition_X = mSprites[0].mPosX;
+        mCamera_StartPosition_Y = mSprites[0].mPosY;
+    }
 
     Music_Play_Tileset();
     word_82176 = 0;
@@ -466,8 +487,10 @@ void cFodder::Phase_Prepare()
     {
         if (mMapLoaded->getWidth() == 17)
         {
-            if (mMapLoaded->getHeight() == 12)
+            if (mMapLoaded->getHeight() == 12) {
+                std::lock_guard<std::mutex> lock(mSurfaceMtx);
                 mPhase_MapIs17x12 = -1;
+            }
         }
     }
 
@@ -489,17 +512,17 @@ void cFodder::Phase_Prepare()
     Sprite_Count_HelicopterCallPads();
     Mission_Set_Final_TimeRemaining();
 
-    mMouseSpriteNew = eSprite_pStuff_Mouse_Cursor;
-
-    mPhase_Aborted = false;
-    mPhase_Paused = false;
-    mPhase_In_Progress = true;
-    mPhase_EscapeKeyAbort = false;
-
-    mPhase_Finished = false;
-    mPhase_ShowMapOverview = 0;
-
-    Window_UpdateScreenSize();
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mMouseSpriteNew = eSprite_pStuff_Mouse_Cursor;
+        mPhase_Aborted = false;
+        mPhase_Paused = false;
+        mPhase_In_Progress = true;
+        mPhase_EscapeKeyAbort = false;
+        mPhase_Finished = false;
+        mPhase_ShowMapOverview = 0;
+        Window_UpdateScreenSize();
+    }
 
     mSurface->Save();
 }
@@ -628,6 +651,15 @@ void cFodder::Interrupt_Redraw()
 /**
  * Interrupt Simulation
  */
+void cFodder::SetInterruptSleepDelta(size_t sleepDelta)
+{
+    // The timer worker reads only the atomic cadence; the legacy parameter
+    // remains available to game code under the surface mutex.
+    std::lock_guard<std::mutex> lock(mSurfaceMtx);
+    mParams->mSleepDelta = sleepDelta;
+    mInterruptSleepDelta.store(sleepDelta);
+}
+
 void cFodder::Interrupt_Sim()
 {
     Uint32 startTick = SDL_GetTicks();
@@ -635,8 +667,9 @@ void cFodder::Interrupt_Sim()
     while (!mExit)
     {
         Uint32 currentTick = SDL_GetTicks();
+        const size_t sleepDelta = mInterruptSleepDelta.load();
 
-        if (currentTick - startTick >= g_Fodder->mParams->mSleepDelta)
+        if (currentTick - startTick >= sleepDelta)
         {
             startTick = currentTick;
 
@@ -645,7 +678,7 @@ void cFodder::Interrupt_Sim()
             // wait for video_sleep call to finish
             while (!mVideo_Done && !mExit)
             {
-                SDL_Delay(g_Fodder->mParams->mSleepDelta == 0 ? 0 : 1);
+                SDL_Delay(sleepDelta == 0 ? 0 : 1);
             }
         }
         else
@@ -2535,6 +2568,7 @@ void cFodder::Prepare(std::shared_ptr<sFodderParameters> pParams)
 {
     mParams = std::make_shared<sFodderParameters>(*pParams);
     mStartParams = std::make_shared<sFodderParameters>(*pParams);
+    mInterruptSleepDelta.store(mParams->mSleepDelta);
 
     g_ResourceMan->refresh();
 
@@ -2644,22 +2678,32 @@ void cFodder::Phase_TextSprite_Create_GameOver(sSprite *pData2C)
         Music_Play(8);
 }
 
+// Commit deferred destruction in the original draw-list order and under the
+// caller's mSpriteMtx. Do not batch this before/after the legacy sprite loop.
+bool cFodder::Sprite_CommitPendingDestroy(sSprite* sprite)
+{
+    if (!sprite->mPendingDestroy)
+        return false;
+
+    sprite->mPendingDestroy = 0;
+    sprite->mPosX = -32768;
+    mSprite_SpareUsed = 0;
+    mSprite_SpareUsed2 = 0;
+    return true;
+}
+
 void cFodder::Sprites_Draw(cSurface *pSurface)
 {
 
     std::lock_guard<std::mutex> lock(mSpriteMtx);
+    // This loop only changes sprite/register/destination state. Source images
+    // are read-only until the pass ends; validate each segment once per pass.
+    openfodder::FrozenSpriteResources::ReadOnlyBatch resources(mGraphics->mFrozenSpriteResources);
 
     for (auto &Sprite : mSprite_DrawList_Final)
     {
 
-        if (Sprite->mPendingDestroy)
-        {
-            Sprite->mPendingDestroy = 0;
-            Sprite->mPosX = -32768;
-            mSprite_SpareUsed = 0;
-            mSprite_SpareUsed2 = 0;
-        }
-        else
+        if (!Sprite_CommitPendingDestroy(Sprite))
         {
             int16 Data0 = Sprite->mSheetIndex;
             int16 Data4 = Sprite->mFrameIndex;
@@ -2817,48 +2861,16 @@ bool cFodder::Demo_Amiga_ShowMenu()
 
 int16 cFodder::Direction_Between_Points(int16 &pData0, int16 &pData4, int16 &pData8, int16 &pDataC)
 {
-    int16 Data10 = 0, Data14 = 0;
-
-    pData0 -= pData8;
-    pData4 -= pDataC;
-    if (pData0 < 0)
-        Data10 = 1;
-
-    Data10 = -Data10;
-    if (pData0 < 0)
-        pData0 = -pData0;
-
-    if (pData4 < 0)
-        Data14 = 1;
-
-    Data14 = -Data14;
-    if (pData4 < 0)
-        pData4 = -pData4;
-
-    pData8 = 9;
-    do
-    {
-        int32 eax = 1 << pData8;
-
-        if (pData0 & eax)
-            break;
-
-        if (pData4 & eax)
-            break;
-
-    } while (--pData8 >= 0);
-
-    pData8 -= 4;
-    if (pData8 >= 0)
-    {
-        pData0 >>= pData8;
-        pData4 >>= pData8;
-    }
-
-    pData4 <<= 5;
-    pData4 |= pData0;
-    // pData4 <<= 1;
-    pData4 = mMap_DirectionsBetweenPoints[pData4];
+    // Differences may exceed int16 range even when both points are valid.
+    const int32_t dx = int32_t(pData0) - int32_t(pData8);
+    const int32_t dy = int32_t(pData4) - int32_t(pDataC);
+    const int16 Data10 = dx < 0 ? -1 : 0;
+    const int16 Data14 = dy < 0 ? -1 : 0;
+    const DirectionLutSample sample = directionLutNormalize(dx, dy);
+    // Preserve the legacy reference argument values on the valid domain.
+    pData8 = static_cast<int16>(sample.shift);
+    pData0 = static_cast<int16>(sample.x);
+    pData4 = mMap_DirectionsBetweenPoints[sample.index];
     if (pData4 < 0)
         return pData4;
 
@@ -3089,10 +3101,16 @@ void cFodder::Menu_Loop(const std::function<void()> pButtonHandler)
     mGraphics->PaletteSet();
     mSurface->palette_FadeTowardNew();
 
-    mInterruptCallback = [this]()
     {
-        Mouse_DrawCursor();
-    };
+        // Interrupt_Redraw reads this callback under mSurfaceMtx.
+        // Publish the new function under the same mutex to avoid racing
+        // std::function's internal lifetime during a timer tick.
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mInterruptCallback = [this]()
+        {
+            Mouse_DrawCursor();
+        };
+    }
 
     for (;;)
     {
@@ -3103,7 +3121,10 @@ void cFodder::Menu_Loop(const std::function<void()> pButtonHandler)
             break;
     }
 
-    mInterruptCallback = nullptr;
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mInterruptCallback = nullptr;
+    }
     Image_FadeOut();
     mSurface->clearBuffer();
 }
@@ -3206,10 +3227,12 @@ void cFodder::Mission_Set_Initial_Weapon()
     mSquad_CurrentWeapon[mGUI_Loop_Squad_Current] = eWeapon_Grenade;
 }
 
-void cFodder::SetActiveSpriteSheetPtr(const sSpriteSheet **pSpriteSheet)
+void cFodder::SetActiveSpriteSheetPtr(const sSpriteSheet **pSpriteSheet,
+                                    const std::size_t* pCounts, std::size_t pSheetCount)
 {
-
     mSprite_SheetPtr = pSpriteSheet;
+    mSprite_FrameCounts = pCounts;
+    mSprite_SheetCount = pSheetCount;
 }
 
 void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink, cSurface *pSurface, const bool pSkip)
@@ -3223,7 +3246,21 @@ void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink
         pSurface = mSurface;
     }
 
-    pSurface->draw(pSkip == true ? 16 : 0, pSkip == true ? 16 : 0);
+    if (mPhase_In_Progress && !mPhase_Paused && !mPhase_ShowMapOverview &&
+        !mInterruptCallback && pSurface == mSurface && pSkip && !pShrink &&
+        !pSurface->isLoadedImage())
+    {
+        // Capture at the old conversion point, not at Interrupt_Redraw: the
+        // main cycle can still change sprites and the effective palette.
+        // All producers, Save/Restore and their logical effects stay in place.
+        const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
+        const auto presented = openfodder::RasterizeMissionPresentation(scene);
+        pSurface->ApplyPresentation(presented);
+    }
+    else
+    {
+        pSurface->draw(pSkip == true ? 16 : 0, pSkip == true ? 16 : 0);
+    }
     if (pShrink)
     {
         mWindow->RenderShrunk(pSurface);
@@ -3549,8 +3586,12 @@ void cFodder::Start()
     {
         Demo_Load();
         mGame_Data.mDemoRecorded.playback();
-        mParams = mGame_Data.mDemoRecorded.mParams;
-        mParams->mDefaultPlatform = mStartParams->mDefaultPlatform;
+        {
+            std::lock_guard<std::mutex> lock(mSurfaceMtx);
+            mParams = mGame_Data.mDemoRecorded.mParams;
+            mParams->mDefaultPlatform = mStartParams->mDefaultPlatform;
+            mInterruptSleepDelta.store(mParams->mSleepDelta);
+        }
 
         mOpenFodder_Intro_Done = false;
     }

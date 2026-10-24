@@ -111,6 +111,21 @@ endif()
 
 add_executable(openfodder ${GAMEENGINE_SOURCE} ${GAMEENGINE_HEADERS})
 
+# Pure arithmetic boundary test: no SDL or game assets needed.
+enable_testing()
+add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
+add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
+add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)
+add_executable(openfodder_endian_io_tests tools/modernization/test_endian_io.cpp)
+add_executable(openfodder_rng_tests tools/modernization/test_rng_bit_exact.cpp)
+add_executable(openfodder_signed_bits_tests tools/modernization/test_signed_bits.cpp)
+add_test(NAME signed_bits_equivalence COMMAND $<TARGET_FILE:openfodder_signed_bits_tests>)
+add_test(NAME pseudorandom_bit_exact COMMAND $<TARGET_FILE:openfodder_rng_tests>)
+add_test(NAME endian_unaligned_reads COMMAND $<TARGET_FILE:openfodder_endian_io_tests>)
+add_test(NAME squad_huffman_index_layout COMMAND $<TARGET_FILE:openfodder_index_layout_tests>)
+add_test(NAME sprite_frame_bounds COMMAND $<TARGET_FILE:openfodder_sprite_frame_tests>)
+add_test(NAME direction_lookup_bounds COMMAND $<TARGET_FILE:openfodder_direction_tests>)
+
 if(WIN32)
     target_sources(openfodder PRIVATE
         "${CMAKE_SOURCE_DIR}/Projects/OpenFodder.rc"
@@ -187,4 +202,5 @@ if(WIN32)
                 "${CMAKE_SOURCE_DIR}/Run"
             COMMENT "Copy SDL runtime DLLs to output directory")
     endif()
+    target_link_libraries(openfodder PRIVATE ws2_32)
 endif()

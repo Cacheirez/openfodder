@@ -221,100 +221,94 @@ inline void cSurface::paletteSDLColorSet( size_t id, cPalette *pPalette ) {
 /**
  * Draw the Surface Buffer to SDLSurface, using the surface palette
  */
+openfodder::SurfaceDraw cSurface::CaptureDraw(int16 pSkipX, int16 pSkipY) const {
+    // Loaded PNGs have their own SDL pixels and are outside this indexed path.
+    if (mIsLoadedImage) return {};
+    return openfodder::CaptureSurfaceDraw(mSurfaceBuffer, mSurfaceBufferSize,
+        mPaletteSDL, mSDLSurface->w, mSDLSurface->h, pSkipX, pSkipY);
+}
+
 void cSurface::draw(const int16 pSkipX, const int16 pSkipY) {
 	if (mIsLoadedImage)
 		return;
 
-	const uint8_t* bufferCurrent = mSurfaceBuffer;
-	const uint8_t* const bufferEnd = mSurfaceBuffer + mSurfaceBufferSize;
-	uint32_t* bufferTarget = reinterpret_cast<uint32_t*>(mSDLSurface->pixels);
-	const int width = mSDLSurface->w, height = mSDLSurface->h;
-
+    const auto captured = CaptureDraw(pSkipX, pSkipY);
 	clearSDLSurface(0);
-
-	// Skip 'skipY' rows of pixels
-	bufferCurrent += width * pSkipY;
-	bufferTarget += width * pSkipY;
-
-	for (int y = pSkipY; y < height; ++y) {
-		// Skip first 'skipX' pixels
-		bufferCurrent += pSkipX;
-		bufferTarget += pSkipX;
-
-		// Process remaining pixels
-		for (int x = pSkipX; x < width; ++x) {
-			if (bufferCurrent >= bufferEnd) break;
-
-			uint8_t currentPixel = *bufferCurrent++;
-			if (currentPixel) {
-				*bufferTarget = (currentPixel < g_MaxColors) ? mPaletteSDL[currentPixel] : 0;
-			}
-
-			++bufferTarget;
-		}
-	}
+    const auto target = openfodder::RasterizeSurface(captured);
+    // Preserve the classic packed traversal; SDL XRGB8888 is the destination.
+    std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32_t));
 
 	if (mTexture) {
 		SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);
 	}
 }
 
-void cSurface::copyFrom(const cSurface* pFrom) {
-	
-	memcpy(mSurfaceBuffer, pFrom->mSurfaceBuffer, mSurfaceBufferSize);
+openfodder::PresentationSurface cSurface::CapturePresentation() const {
+    return { CaptureDraw(), CaptureRGBLayer() };
+}
 
-	for (size_t cx = 0; cx < g_MaxColors; ++cx) {
-		mPalette[cx] = pFrom->mPalette[cx];
-		mPaletteNew[cx] = pFrom->mPaletteNew[cx];
-		mPaletteSDL[cx] = pFrom->mPaletteSDL[cx];
-	}
+void cSurface::CommitPauseBacking(const openfodder::PausePresentation& scene) {
+    // Called once by the producer before optional presentation. The captured
+    // background must belong to this surface with matching geometry/pitch.
+    openfodder::CommitPauseBacking(scene, static_cast<uint32_t*>(mSDLSurface->pixels));
+}
+
+void cSurface::ApplyPresentation(const openfodder::RGBLayerTarget& target) {
+    // Sink only: matching geometry/pitch is guaranteed by the captured scene.
+    // Indexed pixels, saved pixels, palettes and fade state are never written.
+    std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32));
+    if (mTexture)
+        SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);
+}
+
+openfodder::IndexedLayer cSurface::CaptureIndexedLayer() const {
+    return openfodder::CaptureLayer(mSurfaceBuffer, mSurfaceBufferSize, mWidth, mHeight, mWidth);
+}
+
+openfodder::RGBLayer cSurface::CaptureRGBLayer() const {
+    // The legacy merge consumes complete uint32 words, including pitch padding.
+    // Its supported callers use 32-bit surfaces with a pitch divisible by four.
+    return openfodder::CaptureLayer(static_cast<const uint32*>(mSDLSurface->pixels),
+        size_t(mSDLSurface->h) * mSDLSurface->pitch / sizeof(uint32),
+        mSDLSurface->w, mSDLSurface->h, mSDLSurface->pitch / sizeof(uint32));
+}
+
+IndexedSurfaceState cSurface::CaptureIndexedState() const {
+    IndexedSurfaceState state;
+    state.layer = CaptureIndexedLayer();
+    for (size_t i = 0; i < g_MaxColors; ++i) {
+        state.current[i] = mPalette[i];
+        state.next[i] = mPaletteNew[i];
+        state.effective[i] = mPaletteSDL[i];
+    }
+    return state;
+}
+
+void cSurface::copyFrom(const cSurface* pFrom) {
+    const auto source = pFrom->CaptureIndexedState();
+    auto target = openfodder::MakeLayerTarget(CaptureIndexedLayer());
+    // As before, valid callers provide at least the destination's byte count.
+    openfodder::CompositeLayer(target, source.layer, false);
+    std::memcpy(mSurfaceBuffer, target.pixels.data(), mSurfaceBufferSize);
+    for (size_t cx = 0; cx < g_MaxColors; ++cx) {
+        mPalette[cx] = source.current[cx];
+        mPaletteNew[cx] = source.next[cx];
+        mPaletteSDL[cx] = source.effective[cx];
+    }
 }
 
 void cSurface::mergeFrom(const cSurface* pFrom) {
-	const uint8* source = pFrom->GetSurfaceBuffer();
-	const size_t sourceSize = pFrom->GetSurfaceBufferSize();
-	const size_t copySize = std::min(mSurfaceBufferSize, sourceSize);
-
-	for (size_t i = 0; i < copySize; ++i) {
-		const uint8 value = source[i];
-		if (value) {
-			mSurfaceBuffer[i] = value;
-		}
-	}
+    const auto source = pFrom->CaptureIndexedLayer();
+    auto target = openfodder::MakeLayerTarget(CaptureIndexedLayer());
+    openfodder::CompositeLayer(target, source, true);
+    std::memcpy(mSurfaceBuffer, target.pixels.data(), mSurfaceBufferSize);
 }
 
-
-/**
- * Merge another SDLsurface onto our rendered surface
- */
-void cSurface::mergeSurfaceBuffer( const cSurface* pFrom ) {
-    auto SourceSurface = pFrom->GetSurface();
-
-    const uint32 *bufferCurrent = ((uint32*)SourceSurface->pixels);
-    const uint32 *bufferCurrentMax = (uint32*)(((uint8*)SourceSurface->pixels) + (SourceSurface->h * SourceSurface->pitch));
-
-    uint32 *bufferTarget = (uint32*)mSDLSurface->pixels;
-    uint32 *bufferTargetMax = (uint32*)(((uint8*)mSDLSurface->pixels) + (mSDLSurface->h * mSDLSurface->pitch));
-
-    // Loop until we reach the destination end
-    while (bufferTarget < bufferTargetMax) {
-
-        // Break out if we pass the source end
-        if (bufferCurrent >= bufferCurrentMax)
-            break;
-
-        // Non zero value to draw
-        if (*bufferCurrent) {
-
-            // Value in palette range?
-            *bufferTarget = *bufferCurrent;
-        }
-
-        // Next Source/Destination
-        ++bufferCurrent;
-        ++bufferTarget;
-    }
-
+void cSurface::mergeSurfaceBuffer(const cSurface* pFrom) {
+    const auto source = pFrom->CaptureRGBLayer();
+    auto target = openfodder::MakeLayerTarget(CaptureRGBLayer());
+    openfodder::CompositeLayer(target, source, true);
+    std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32));
     if (mTexture)
         SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);
 }

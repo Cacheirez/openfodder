@@ -58,7 +58,8 @@ tSharedBuffer cResources::fileDeRNC(tSharedBuffer pBuffer) {
 	auto Unpacked = std::make_shared<std::vector<uint8>>();
 	Unpacked->resize(Size);
 
-	long Result = rnc_unpack(pBuffer->data(), Unpacked->data());
+	long Result = rnc_unpack_bounded(pBuffer->data(), pBuffer->size(),
+                                     Unpacked->data(), Unpacked->size());
 	if (Result != static_cast<long>(Size))
 		return InvalidRNC();
 
