@@ -10,7 +10,9 @@
 - H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa y el frame de misión ya compuesto tienen estado propio y pruebas focalizadas 0/1/5. Faltan capas movibles independientemente, 0/1/N del motor completo, interpolación y arte HD.
 - Frame anterior: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
 
-- Incremento actual: [identidad y geometría de destinos](H4_1_DESTINOS_PRESENTACION.md), 97 casos válidos y 627 rechazos sin escritura. CI Windows/Linux, H3 original y 29/29 replays aprobados. Incluye inspección de los destinos reales para preparar capas independientes sin mezclar mSurfaceFinal con mSurface.
+- Incremento validado anterior: [identidad y geometría de destinos](H4_1_DESTINOS_PRESENTACION.md), 97 casos válidos y 627 rechazos sin escritura. CI Windows/Linux, H3 original y 29/29 replays aprobados. Incluye inspección de los destinos reales para preparar capas independientes sin mezclar mSurfaceFinal con mSurface.
+
+- Incremento actual: [compositor de capas de misión](H4_1_CAPAS_MISION.md), 192 escenarios/384 salidas retenidas PASS local. Todavía no conectado a productores reales; la misión jugable mantiene la captura compuesta validada. CI pendiente del nuevo incremento.
 
 ## Orden de lectura y mapa de conocimiento
 

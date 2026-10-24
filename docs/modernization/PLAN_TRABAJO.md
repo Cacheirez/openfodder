@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.17 · **Actualización:** 25 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.18 · **Actualización:** 25 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado del incremento actual:** validación de identidad/geometría de destinos implementada y validada en CI Windows/Linux sobre `40d67a0`; 97 aceptaciones y 627 rechazos; [informe](H4_1_DESTINOS_PRESENTACION.md).
+**Estado del incremento actual:** compositor de capas de misión con destinos explícitos implementado; 192 escenarios/384 salidas retenidas PASS local. Registro en productores del motor todavía pendiente; [alcance y conexión pendiente](H4_1_CAPAS_MISION.md). CI del incremento pendiente.
 
 **Último estado verificado del motor:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI Windows/Linux aprobada; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
 

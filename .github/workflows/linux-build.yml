@@ -130,6 +130,10 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin 049439d56126e95b56eebd183e4f42610d8b6821
           python3 tools/modernization/check_presentation_destination.py
+      - name: H4.1 - ordered mission layers with independent destinations
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: python3 tools/modernization/check_mission_layers.py
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
