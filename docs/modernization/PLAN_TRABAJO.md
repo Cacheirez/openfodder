@@ -1,9 +1,9 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.14 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.15 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado con validación manual CD32 y base recuperable. H4.1 ensambla la pausa con recursos propios en `a133afb`: 144 escenarios 0/1/5, fade, reanudación y sustitución/destrucción de recursos aprobados localmente. H3 original 11.361 estados y 29 replays aprobados. CI Windows/Linux aprobada; H3 original y 29/29 replays preservados, sanitizadores Linux sin diagnósticos. Falta extender el estado de presentación al frame de misión y probar transición misión↔pausa; sin cambios de cadencia ni arte HD.
+**Estado global:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI nueva pendiente; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
 
 **Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/a133afb-reports.json).
 
@@ -31,7 +31,7 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 | Memoria | [Linux 40082228491](https://github.com/Cacheirez/openfodder/actions/runs/40082228491): aprobada |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: ensamblar frame de misión y probar 0/1/N y transición misión↔pausa**. [Implementación y límites](H4_1_ESTADO_PAUSA.md). |
+| Tarea activa | **H4.1: validar incremento de frame compuesto y transición misión↔pausa**. [Implementación y límites](H4_1_FRAME_MISION.md); luego capas independientes y cobertura real pendiente. |
 | Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
 
 El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
@@ -433,3 +433,7 @@ Código `793e347cd9f118da1c9ec6a84f88caf3257b74c2`: capturas privadas, destinos 
 ## 24-10-2026 — Primera escena de presentación: pausa
 
 `a133afb`: fondo y texto con geometría, índices/paletas y backing RGB propios; rasterización sin acceso al motor. Se conserva el orden de fade, eventos y reanudación. 144 escenarios 0/1/5 comparan bucle original/actual con cambio de dimensiones y destrucción de recursos. [Informe, costes y límites](H4_1_ESTADO_PAUSA.md). Local H3 original y 29 replays PASS; CI Windows/Linux aprobada; H3 original y 29/29 replays preservados, sanitizadores Linux sin diagnósticos. No es el cierre global H4.1.
+
+## 24-10-2026 — Frame compuesto de misión y regresión de transición
+
+[Informe](H4_1_FRAME_MISION.md): captura en el punto de conversión final para incluir escrituras del paso principal y paleta efectiva. 240 escenarios 0/1/5, 672 capturas retenidas; se encontró y extrajo el efecto de backing persistente de pausa que alteraba el padding al omitir la presentación. La suite de pausa conserva sus 144 escenarios y añade comparación de capturas contra el original. Coordinadoras reales con productores/SDL controlados; no es un cierre global H4. No se cambia cadencia, referencias H3 ni base clásica. Resultados completos en el informe.

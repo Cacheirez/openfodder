@@ -6,8 +6,7 @@ from pathlib import Path
 from check_final_timer_equivalence import function
 from pause_contract import OLD, NEW, canonical_pause
 BASELINE='d35e2675ffbbc79f8bf21eb961d78c06d74abd14'
-def main():
- root=Path(__file__).resolve().parents[2]
+def build_code(root):
  source=(root/'Source/Surface.cpp').read_text()
  fodder=(root/'Source/Fodder.cpp').read_text()
  original=subprocess.check_output(['git','show',BASELINE+':Source/Fodder.cpp'],cwd=root,text=True)
@@ -37,7 +36,7 @@ cSurface::cSurface(size_t w,size_t h){
 }
 cSurface::~cSurface(){delete[] mSurfaceBuffer;delete[] mSurfaceBufferSaved;delete[] static_cast<uint32*>(mSDLSurface->pixels);delete mSDLSurface;}
 '''
- for sig in ['void cSurface::'+n+'(' for n in ['draw','clearSDLSurface','surfaceSetToPalette','surfaceSetToPaletteNew','palette_SetFromNew','paletteNew_SetDimmed','Save','Restore','ApplyPresentation','mergeSurfaceBuffer']]+['bool cSurface::palette_FadeTowardNew(','inline void cSurface::paletteSDLColorSet(','openfodder::SurfaceDraw cSurface::CaptureDraw(','openfodder::RGBLayer cSurface::CaptureRGBLayer(','openfodder::PresentationSurface cSurface::CapturePresentation(']:
+ for sig in ['void cSurface::'+n+'(' for n in ['draw','clearSDLSurface','surfaceSetToPalette','surfaceSetToPaletteNew','palette_SetFromNew','paletteNew_SetDimmed','Save','Restore','ApplyPresentation','CommitPauseBacking','mergeSurfaceBuffer']]+['bool cSurface::palette_FadeTowardNew(','inline void cSurface::paletteSDLColorSet(','openfodder::SurfaceDraw cSurface::CaptureDraw(','openfodder::RGBLayer cSurface::CaptureRGBLayer(','openfodder::PresentationSurface cSurface::CapturePresentation(']:
   code+=function(source,sig)+'\n'
  code+=r'''
 void fill(cSurface& s,int seed,bool loaded){
@@ -99,7 +98,7 @@ struct cFodder{
         mWindow->FrameEnd();''')
  code+=scheduled
  code+=r'''
-struct Result{std::vector<std::vector<uint32>> trace,frames;std::vector<uint32> state;int prepares,sprites,palette,tiles,sidebar;};
+struct Result{std::vector<std::vector<uint32>> trace,frames;std::vector<uint32> state;int prepares,sprites,palette,tiles,sidebar;std::vector<std::vector<uint32>> retainedPixels;};
 Result run(int w,int h,int mode,int repeats,int variant){
  Window window;Graphics graphics;cFodder f;
  f.mSurface=new cSurface(w,h);f.mSurface2=new cSurface(w,h);f.mWindow=&window;f.mGraphics=&graphics;f.mode=mode;f.repeats=repeats;
@@ -109,7 +108,7 @@ Result run(int w,int h,int mode,int repeats,int variant){
  auto second=logical(*f.mSurface2);r.state.insert(r.state.end(),second.begin(),second.end());r.state.push_back(f.mPhase_Aborted);
  delete f.mSurface;delete f.mSurface2;
  // Every generation survives destruction, copy and reuse; output is independent.
- for(size_t i=0;i<f.retained.size();++i){auto copy=f.retained[i];const auto expected=openfodder::RasterizePausePresentation(copy);for(int n=0;n<3;++n){auto out=openfodder::RasterizePausePresentation(copy);assert(out.background.pixels==expected.background.pixels);assert(out.text.pixels==expected.text.pixels);out.background.pixels[0]^=123;}}
+ for(size_t i=0;i<f.retained.size();++i){auto copy=f.retained[i];for(const auto* layer:{&copy.background,&copy.text}){const auto raster=openfodder::RasterizePresentationSurface(*layer);for(size_t j=0;j<raster.pixels.size();++j)assert(openfodder::PresentationPixelAt(*layer,j)==raster.pixels[j]);}const auto expected=openfodder::RasterizePausePresentation(copy);r.retainedPixels.push_back(expected.background.pixels);for(int n=0;n<3;++n){auto out=openfodder::RasterizePausePresentation(copy);assert(out.background.pixels==expected.background.pixels);assert(out.text.pixels==expected.text.pixels);out.background.pixels[0]^=123;}}
  return r;
 }
 int main(){size_t cases=0;
@@ -119,6 +118,7 @@ int main(){size_t cases=0;
   for(int n:{0,1,5}){auto r=run(w,h,mode,n,2);
    assert(r.trace==old.trace&&r.state==old.state);assert(r.prepares==1&&r.sprites==1&&r.palette==1&&r.tiles==1&&r.sidebar==1);
    assert(r.frames.size()==old.frames.size()*n);
+   assert(r.retainedPixels==old.frames);
    for(size_t i=0;i<old.frames.size();++i)for(int k=0;k<n;++k)assert(r.frames[i*n+k]==old.frames[i]);
    ++cases;
   }
@@ -126,6 +126,11 @@ int main(){size_t cases=0;
  std::cout<<"PASS: "<<cases<<" pause schedules; actual legacy/current loops, 0/1/5 presentations, fades, resume, resource replacement/destruction, retained generations and independent outputs\n";
 }
 '''
+ return code
+
+def main():
+ root=Path(__file__).resolve().parents[2]
+ code=build_code(root)
  with tempfile.TemporaryDirectory(prefix='pause-equivalence-') as td:
   src=Path(td)/'test.cpp';exe=Path(td)/'test';src.write_text(code)
   subprocess.run(['g++','-std=c++14','-O1','-g','-fsanitize=address,undefined','-fno-sanitize-recover=all','-I',str(root/'Source'),str(src),'-o',str(exe)],check=True)

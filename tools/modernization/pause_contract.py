@@ -8,9 +8,13 @@ NEW = '''        // Capture after the original fade step. Replaying this scene c
         const openfodder::PausePresentation scene{
             mSurface->CapturePresentation(), mSurface2->CapturePresentation()
         };
+        mSurface->CommitPauseBacking(scene);
         const auto presented = openfodder::RasterizePausePresentation(scene);
         mSurface->ApplyPresentation(presented.background);
         mSurface2->ApplyPresentation(presented.text);'''
+from mission_contract import canonical_mission
+
 def canonical_pause(source):
+    source = canonical_mission(source)
     assert source.count(NEW) == 1, 'Pause presentation block changed; update its equivalence test'
     return source.replace(NEW, OLD)

@@ -8,7 +8,7 @@
 - Código más reciente validado: `a133afb8188a26f51e703b7a81576cf1b9264f67`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
 - Base clásica recuperable: rama `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. No moverla ni reescribir su historia. Para inspeccionarla sin alterar la rama activa: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 - H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa ya tiene estado compuesto propio y prueba 0/1/5; faltan el frame de misión, interpolación y arte HD.
-- Próximo bloque: ensamblar el frame de misión y comprobar 0/1/N y transición misión↔pausa. No cambiar cadencia hasta completar y probar el estado de presentación 0/1/N.
+- Incremento actual: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
 
 ## Orden de lectura y mapa de conocimiento
 
@@ -101,3 +101,5 @@ Cada entrega debe actualizar el plan vivo, la matriz de diferencias y el informe
 Esta guía se apoya en la evidencia del motor `a133afb`; las rutas aún no auditadas se documentarán al analizarlas.
 
 La suite `python tools/modernization/check_pause_presentation.py` compara 144 planificaciones 0/1/5 con recursos destruidos/sustituidos. Usa dobles de SDL/entrada y no demuestra por sí sola la transición completa de misión a pausa ni validación visual comercial.
+
+La nueva suite `check_mission_presentation.py` compara coordinadoras reales con productores/SDL sintéticos; la suite de pausa refuerza la comparación de capturas retenidas contra la secuencia original. El siguiente bloque conserva la separación por capas, otras escenas, publicación diferida y validación visual como pendientes.

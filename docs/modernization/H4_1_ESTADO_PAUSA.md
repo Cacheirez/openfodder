@@ -78,3 +78,7 @@ El archivo compacto no incluye trazas/logs completos ni ejecutables; el archivo 
 Se copian índices y backing RGB de ambas capas en cada captura, más las salidas de cada rasterización. Es una separación de propiedad y efectos, no una optimización; no se ha medido la reducción/aumento de coste. Compactar o almacenar solamente padding en la ruta indexada será una optimización posterior con pruebas equivalentes.
 
 Siguiente bloque: ensamblar una captura completa del frame de misión (terreno, sprites, HUD y cursor), tomando la pausa como primer contrato probado. Añadir pruebas 0/1/N del motor en esa ruta, con cambios de recursos y transición misión↔pausa. Todavía no cerrar H4.1 global, introducir interpolación/HD ni cambiar cadencias. Falta validar publicación SDL/GPU, PNG real y escenas comerciales visualmente.
+
+## Seguimiento 24-10-2026 — misión y transición
+
+[Frame compuesto de misión](H4_1_FRAME_MISION.md): índices finales, paleta efectiva y backing propios tras los productores específicos PC/Amiga; no se normalizan sus formatos ni se cambia su orden. La prueba integrada detecta feedback del padding RGB al volver de pausa con cero presentaciones. `CommitPauseBacking` conserva ese efecto una vez por iteración de producción, fuera del raster repetible. 240 escenarios/672 capturas con dobles; pausa reforzada (144 escenarios). Capas independientes, GPU/PNG real y cobertura comercial siguen pendientes; consultar el informe para resultados y límites.

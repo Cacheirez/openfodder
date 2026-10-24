@@ -247,6 +247,12 @@ openfodder::PresentationSurface cSurface::CapturePresentation() const {
     return { CaptureDraw(), CaptureRGBLayer() };
 }
 
+void cSurface::CommitPauseBacking(const openfodder::PausePresentation& scene) {
+    // Called once by the producer before optional presentation. The captured
+    // background must belong to this surface with matching geometry/pitch.
+    openfodder::CommitPauseBacking(scene, static_cast<uint32_t*>(mSDLSurface->pixels));
+}
+
 void cSurface::ApplyPresentation(const openfodder::RGBLayerTarget& target) {
     // Sink only: matching geometry/pitch is guaranteed by the captured scene.
     // Indexed pixels, saved pixels, palettes and fade state are never written.

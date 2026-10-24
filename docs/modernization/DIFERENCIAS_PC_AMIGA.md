@@ -78,3 +78,7 @@ Código `ff15219`: [detalle y prueba](H4_1_PALETA_DESTINOS.md). Capturar mPalett
 ## Pausa ensamblada — 24-10-2026
 
 La composición común recibe las capas ya producidas por cada backend; conserva dos paletas efectivas independientes y mezcla por palabra RGB no cero. No unifica decodificación PC/Amiga. El fade sigue una vez por iteración lógica, antes de capturar; seleccionar sheets, preparar texto y reanudar siguen en sus puntos originales. Backing RGB cargado y padding se retienen con propiedad estable. Prueba de 144 planificaciones 0/1/5, con índices/RGB sintéticos y destrucción/sustitución de fuentes; no implica cobertura visual PC/Amiga/CD32 comercial ni decoder PNG real. [Contrato y límites de publicación](H4_1_ESTADO_PAUSA.md).
+
+## Seguimiento 24-10-2026 — misión y transición
+
+[Frame compuesto de misión](H4_1_FRAME_MISION.md): índices finales, paleta efectiva y backing propios tras los productores específicos PC/Amiga; no se normalizan sus formatos ni se cambia su orden. La prueba integrada detecta feedback del padding RGB al volver de pausa con cero presentaciones. `CommitPauseBacking` conserva ese efecto una vez por iteración de producción, fuera del raster repetible. 240 escenarios/672 capturas con dobles; pausa reforzada (144 escenarios). Capas independientes, GPU/PNG real y cobertura comercial siguen pendientes; consultar el informe para resultados y límites.

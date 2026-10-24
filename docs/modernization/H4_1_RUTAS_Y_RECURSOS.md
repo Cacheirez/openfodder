@@ -117,3 +117,7 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## 14. Primera escena ensamblada: pausa
 
 `a133afb`: `PausePresentation` conserva fondo/texto, geometrías y paletas efectivas; `RasterizePausePresentation` devuelve destinos independientes sin consultar el motor. Fade, preparación, entrada y reanudación siguen fuera. Prueba de 144 planificaciones 0/1/5 con generaciones de recursos destruidas y dimensiones cambiadas. [Informe](H4_1_ESTADO_PAUSA.md). La subida SDL usa resultados finales; no se declara igualdad de número de subidas. Falta ensamblar y verificar frame de misión y transición misión↔pausa, además de validación GPU/PNG real/comercial.
+
+## Seguimiento 24-10-2026 — misión y transición
+
+[Frame compuesto de misión](H4_1_FRAME_MISION.md): índices finales, paleta efectiva y backing propios tras los productores específicos PC/Amiga; no se normalizan sus formatos ni se cambia su orden. La prueba integrada detecta feedback del padding RGB al volver de pausa con cero presentaciones. `CommitPauseBacking` conserva ese efecto una vez por iteración de producción, fuera del raster repetible. 240 escenarios/672 capturas con dobles; pausa reforzada (144 escenarios). Capas independientes, GPU/PNG real y cobertura comercial siguen pendientes; consultar el informe para resultados y límites.
