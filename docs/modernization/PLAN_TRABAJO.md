@@ -1,13 +1,13 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.16 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.17 · **Actualización:** 25 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado del incremento actual:** validación de identidad/geometría de destinos implementada, regresión/CI en curso; [informe](H4_1_DESTINOS_PRESENTACION.md).
+**Estado del incremento actual:** validación de identidad/geometría de destinos implementada y validada en CI Windows/Linux sobre `40d67a0`; 97 aceptaciones y 627 rechazos; [informe](H4_1_DESTINOS_PRESENTACION.md).
 
 **Último estado verificado del motor:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI Windows/Linux aprobada; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
 
-**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/049439d-reports.json).
+**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/40d67a0-reports.json).
 
 ## 1. Objetivo y alcance
 
@@ -19,18 +19,18 @@ La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muest
 
 ## 2. Panel de situación
 
-| Campo | Estado comprobado el 24 de octubre de 2026 |
+| Campo | Estado comprobado el 25 de octubre de 2026 |
 |---|---|
 | Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
 | Rama de trabajo | `modernization/windows-foundation` |
 | Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `049439d56126e95b56eebd183e4f42610d8b6821`: frame de misión compuesto y backing de pausa |
-| Compilación Windows observada | [40095813348](https://github.com/Cacheirez/openfodder/actions/runs/40095813348): aprobada |
+| Revisión de código de la propuesta | `40d67a0c0c1d12e246d9da22ff53434ed9930846`: identidad/geometría de destinos, sobre frame compuesto y backing de pausa |
+| Compilación Windows observada | [40120465262](https://github.com/Cacheirez/openfodder/actions/runs/40120465262): aprobada |
 | Pasos Windows ya comprobados | Compilación, 6 CTests, contrato de visibilidad, H3 PC/Amiga y baseline original PASS |
-| Ejecutable Windows y 29 replays | Paquete demos publicado por CI; 29/29 fases, cero omisiones, 22,312 s |
+| Ejecutable Windows y 29 replays | Paquete demos publicado por CI; 29/29 fases, cero omisiones, 23,938 s |
 | Referencia local Linux | `049439d`: H3 original 11.361 estados, 29/29 fases sin omisiones |
-| Pruebas focalizadas | 240 escenarios misión/pausa, 672 capturas retenidas; 144 escenarios de pausa 0/1/5; 1.536 raster nuevos, 1.964 escenas, 1.024 tiles, 72 constructores; 2.944 de capas; 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
-| Memoria | [Linux 40095813181](https://github.com/Cacheirez/openfodder/actions/runs/40095813181): aprobada |
+| Pruebas focalizadas | 97 destinos aceptados y 627 rechazados; 240 escenarios misión/pausa, 672 capturas retenidas; 144 escenarios de pausa 0/1/5; 1.536 raster nuevos, 1.964 escenas, 1.024 tiles, 72 constructores; 2.944 de capas; 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
+| Memoria | [Linux 40120465254](https://github.com/Cacheirez/openfodder/actions/runs/40120465254): aprobada |
 | Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
 | Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
 | Tarea activa | **H4.1: capas independientes y cobertura del motor completo tras validar frame compuesto y transición misión↔pausa**. [Implementación y límites](H4_1_FRAME_MISION.md); luego capas independientes y cobertura real pendiente. |

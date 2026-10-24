@@ -50,9 +50,9 @@ python3 tools/modernization/check_pause_presentation.py
 python3 tools/modernization/check_mission_presentation.py
 ```
 
-Local: 97 aceptaciones/627 rechazos, 144 escenarios de pausa, 240 de misión/672 capturas y todas las equivalencias anteriores PASS con ASan/UBSan, detect_leaks=0. También 13 pruebas Python, contrato de visibilidad y 1.309 descriptores de sprites PASS. [Evidencia local](evidence/destination-local-2026-10-24.json). Compilación completa/H3/replays CI pendientes al escribir esta primera revisión; no se atribuye al nuevo motor la validación H3 anterior.
+Local: 97 aceptaciones/627 rechazos, 144 escenarios de pausa, 240 de misión/672 capturas y todas las equivalencias anteriores PASS con ASan/UBSan, detect_leaks=0. También 13 pruebas Python, contrato de visibilidad y 1.309 descriptores de sprites PASS. [Evidencia local](evidence/destination-local-2026-10-24.json). CI del motor `40d67a0c0c1d12e246d9da22ff53434ed9930846` aprobada y verificada el 25-10-2026: [Linux 40120465254](https://github.com/Cacheirez/openfodder/actions/runs/40120465254) y [Windows 40120465262](https://github.com/Cacheirez/openfodder/actions/runs/40120465262). Ambas compilan y pasan 6 CTests y H3 original: 11.361 estados de 11 fases. Windows: 29/29 fases, cero omisiones, 23,938 s. Linux: 29/29 con ASan/UBSan (20,747 s), LSan (20,949 s) y TSan (74,123 s), sin hallazgos. Todas las equivalencias focalizadas pasan, incluida identidad 97/627 con detect_leaks=1.
 
-El entorno local de esta sesión conserva el checkout pero perdió CMake y las dependencias SDL temporales. No se presenta el binario conservado de la sesión anterior como una compilación del nuevo código. La compilación completa y H3/replays de este incremento se verificarán en CI Windows/Linux.
+El entorno local de esta sesión conserva el checkout pero perdió CMake y las dependencias SDL temporales. No se presenta el binario conservado de la sesión anterior como una compilación del nuevo código. La compilación completa y H3/replays de este incremento se han verificado en CI Windows/Linux.
 
 ## Coste, diferencias y continuación
 
@@ -61,3 +61,23 @@ Una pequeña asignación de identidad por construcción/reemplazo de almacenamie
 El contrato es común a PC/Amiga después de sus productores específicos. No cambia formatos indexados, planos, recortes ni orden de paletas. Tampoco se cambia la mezcla de pausa por palabra RGB no cero ni la preservación del backing.
 
 Siguiente: separar las órdenes/capas de misión conservando las escrituras de ambos ritmos clásicos; ampliar pruebas del motor con vídeo real y cobertura de otras escenas/cargas/minimapa. La política de publicación asíncrona, el decoder PNG real, GPU y validación visual comercial siguen pendientes. H4 global continúa abierto.
+
+## Inspección para la separación posterior de capas (no implementada)
+
+La lectura de `Fodder.cpp`, `Graphics.cpp` y `Sprite_Core.cpp` distingue destinos que un compositor futuro no debe mezclar:
+
+| Productor/coordinadora | Destino real y efecto |
+|---|---|
+| Interrupt_Redraw, pasada ordinaria | MapTiles_Draw → Sprites_Draw sin destino explícito → sidebar sobre mSurface → cursor; mGraphics selecciona la superficie activa |
+| Mission_Sprites_Handle, paso principal | Sprites_Draw(mSurfaceFinal): destino separado, creado con otro new cSurface. Sus efectos lógicos/visibilidad siguen siendo obligatorios, pero esos píxeles no se deben añadir automáticamente a mSurface |
+| Phase_Loop_Interrupt | Puede dibujar/consumir cursor antes del terreno; posteriormente Interrupt_Redraw puede llamar otra vez al cursor. No suprimir la primera llamada por deducir que sus píxeles serán cubiertos |
+| Phase_Cycle | Puede avanzar la paleta efectiva de mSurface después de la producción de interrupción; la captura final debe conservar ese momento |
+| Video_Sleep | Presenta y luego restaura el fondo indexado; el futuro registro de órdenes debe representar también Restore, sin repetir sus efectos lógicos |
+
+`mSurfaceFinal` aparece como miembro, asignación separada, destino de Mission_Sprites_Handle y Restore comentado; la búsqueda no encuentra una composición posterior de ese buffer en mSurface. La frase anterior «escrituras del paso principal» no debe interpretarse como que los sprites de mSurfaceFinal se presentan sobre mSurface. El harness anterior introduce escrituras tardías sintéticas para proteger el punto de captura: no acredita que todas esas escrituras ocurran en la misión real. Esta precisión es inspección estática, no una nueva prueba del motor.
+
+Para capas movibles habrá que retener las **operaciones de escritura** y sus destinos, no calcular máscaras solo por diferencias entre imágenes: un sprite puede escribir el mismo índice que ya tenía el terreno y aun así cubrirlo. Esa cobertura se perdería al inferir la capa por igualdad de bytes. Se deberán conservar orden, transparencias, fuente inicial y Save/Restore por destino, y contrastar el resultado con la captura compuesta actual. La identidad implementada permite distinguir los destinos; no implementa todavía ese registro de órdenes.
+
+## Evidencia CI conservada
+
+[Informes compactos y metadatos](evidence/40d67a0-reports.json): ambos ZIP descargados, tamaño/SHA-256 e integridad comprobados, todos los report.json PASS y registros engine.log sin diagnósticos de sanitizadores. Los archivos completos y trazas siguen en Actions, caducan el 23-11-2026; no se afirma archivo externo permanente.

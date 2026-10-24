@@ -1,14 +1,16 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 24-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md); los informes fechados son evidencia histórica y no sustituyen su estado actual.
+Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md); los informes fechados son evidencia histórica y no sustituyen su estado actual.
 
 ## Estado y referencias de recuperación
 
 - Repositorio: https://github.com/Cacheirez/openfodder. Rama `modernization/windows-foundation`, PR #1 en borrador y **sin fusionar**.
-- Código más reciente validado: `049439d56126e95b56eebd183e4f42610d8b6821`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
+- Código más reciente validado: `40d67a0c0c1d12e246d9da22ff53434ed9930846`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
 - Base clásica recuperable: rama `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. No moverla ni reescribir su historia. Para inspeccionarla sin alterar la rama activa: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 - H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa y el frame de misión ya compuesto tienen estado propio y pruebas focalizadas 0/1/5. Faltan capas movibles independientemente, 0/1/N del motor completo, interpolación y arte HD.
-- Incremento actual: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
+- Frame anterior: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
+
+- Incremento actual: [identidad y geometría de destinos](H4_1_DESTINOS_PRESENTACION.md), 97 casos válidos y 627 rechazos sin escritura. CI Windows/Linux, H3 original y 29/29 replays aprobados. Incluye inspección de los destinos reales para preparar capas independientes sin mezclar mSurfaceFinal con mSurface.
 
 ## Orden de lectura y mapa de conocimiento
 
@@ -29,7 +31,7 @@
 | Copia/mezcla de capas y destinos indexados | [Capas y destinos](H4_1_CAPAS_DESTINOS_INDEXADOS.md) |
 | Productores GUI, minimapa, escenas y corrección de seam PC | [Productores retenidos](H4_1_PRODUCTORES_GUI_ESCENAS.md) |
 | Estado de pausa, planificación 0/1/5 y límites | [Informe de pausa](H4_1_ESTADO_PAUSA.md) |
-| Evidencia compacta de la última revisión | [Informes conservados](evidence/049439d-reports.json) |
+| Evidencia compacta de la última revisión | [Informes conservados](evidence/40d67a0-reports.json) |
 
 ## Invariantes que condicionan cualquier implementación
 
@@ -53,7 +55,7 @@ git clone https://github.com/OpenFodder/tests.git Run/Tests
 git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
 ```
 
-Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `a133afb` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
+Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `40d67a0` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
 
 Pins: Run `070a6086c62164e859fc3274b75b5f536fa9d902`, Scripts `dad04730860bcdd1189aa8562860e379b0f5d783`, tests SHA anterior; SDL release-3.4.0, SDL_mixer `3045b35335113e5e5ba258858cb403d8803bfbeb`. Linux registra SHA efectivos en los artefactos. Las imágenes de Actions/paquetes del sistema no están congeladas: no se promete binario reproducible bit a bit. H2.5 describe un mixer Linux flotante **histórico**, corregido en H2.6.
 
