@@ -244,21 +244,40 @@ void cSurface::draw(const int16 pSkipX, const int16 pSkipY) {
 }
 
 openfodder::PresentationSurface cSurface::CapturePresentation() const {
-    return { CaptureDraw(), CaptureRGBLayer() };
+    return { CaptureDraw(), CaptureRGBLayer(), mPresentationDestination };
 }
 
-void cSurface::CommitPauseBacking(const openfodder::PausePresentation& scene) {
-    // Called once by the producer before optional presentation. The captured
-    // background must belong to this surface with matching geometry/pitch.
+bool cSurface::PresentationDestinationMatches(const openfodder::PresentationDestinationId& identity,
+    size_t width, size_t height, size_t stride, size_t count) const {
+    if (!identity || identity != mPresentationDestination || !mSDLSurface ||
+        !mSDLSurface->pixels || mSDLSurface->w <= 0 || mSDLSurface->h <= 0 ||
+        mSDLSurface->pitch <= 0 || mSDLSurface->pitch % sizeof(uint32_t) != 0 ||
+        SDL_BYTESPERPIXEL(mSDLSurface->format) != sizeof(uint32_t)) return false;
+    const size_t actualStride = size_t(mSDLSurface->pitch) / sizeof(uint32_t);
+    if (width != size_t(mSDLSurface->w) || height != size_t(mSDLSurface->h) ||
+        stride != actualStride || stride < width) return false;
+    // Division avoids overflow on malformed target extents, including 32-bit hosts.
+    return count / height == stride && count % height == 0;
+}
+
+bool cSurface::CommitPauseBacking(const openfodder::PausePresentation& scene) {
+    // Once per producer iteration, independently of optional presentation.
+    const auto& source = scene.background;
+    if (!source.backing.pixels || !PresentationDestinationMatches(source.destination,
+        source.backing.width, source.backing.height, source.backing.stride,
+        source.backing.pixels->size())) return false;
     openfodder::CommitPauseBacking(scene, static_cast<uint32_t*>(mSDLSurface->pixels));
+    return true;
 }
 
-void cSurface::ApplyPresentation(const openfodder::RGBLayerTarget& target) {
-    // Sink only: matching geometry/pitch is guaranteed by the captured scene.
+bool cSurface::ApplyPresentation(const openfodder::PresentationTarget& target) {
+    if (!PresentationDestinationMatches(target.destination, target.width, target.height,
+        target.stride, target.pixels.size())) return false;
     // Indexed pixels, saved pixels, palettes and fade state are never written.
     std::memcpy(mSDLSurface->pixels, target.pixels.data(), target.pixels.size() * sizeof(uint32));
     if (mTexture)
         SDL_UpdateTexture(mTexture, NULL, mSDLSurface->pixels, mSDLSurface->pitch);
+    return true;
 }
 
 openfodder::IndexedLayer cSurface::CaptureIndexedLayer() const {
@@ -353,6 +372,7 @@ bool cSurface::LoadPng(const std::string& pFile) {
         return false;
     SDL_DestroySurface(mSDLSurface);
     mSDLSurface = Surface;
+    mPresentationDestination = std::make_shared<const openfodder::PresentationDestination>();
 
     mIsLoadedImage = true;
     mWidth = mSDLSurface->w;

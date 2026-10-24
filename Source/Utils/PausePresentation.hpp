@@ -4,15 +4,24 @@
 #include "SurfaceLayers.hpp"
 
 namespace openfodder {
+// A lifetime identity only. It owns no surface, SDL object or engine state.
+// Retained frames keep old identities alive, so allocator address reuse cannot
+// make them accidentally match a replacement destination.
+struct PresentationDestination {};
+using PresentationDestinationId = std::shared_ptr<const PresentationDestination>;
 struct PresentationSurface {
     SurfaceDraw indexed;
     RGBLayer backing; // Also preserves legacy pitch padding; PNG uses only this.
+    PresentationDestinationId destination;
+};
+struct PresentationTarget : RGBLayerTarget {
+    PresentationDestinationId destination;
 };
 struct PausePresentation {
     PresentationSurface background, text;
 };
 struct PausePresentationTarget {
-    RGBLayerTarget background, text;
+    PresentationTarget background, text;
 };
 // RGB bytes that survive the next indexed conversion are producer state:
 // loaded images, or tail pitch padding outside the packed conversion. Pausing
@@ -43,8 +52,10 @@ inline void CommitPauseBacking(const PausePresentation& scene, uint32_t* backgro
         if (value) background[i] = value;
     }
 }
-inline RGBLayerTarget RasterizePresentationSurface(const PresentationSurface& source) {
-    auto target = MakeLayerTarget(source.backing);
+inline PresentationTarget RasterizePresentationSurface(const PresentationSurface& source) {
+    PresentationTarget target;
+    static_cast<RGBLayerTarget&>(target) = MakeLayerTarget(source.backing);
+    target.destination = source.destination;
     if (source.indexed.indices) {
         // SDL_FillSurfaceRect clears visible rows, not pitch padding. The classic
         // draw then copies packed width*height words, even with padded pitch.

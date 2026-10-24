@@ -1,9 +1,11 @@
 # Plan de trabajo vivo — OpenFodder modernizado para Windows
 
-**Versión del plan:** 2.15 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
+**Versión del plan:** 2.16 · **Actualización:** 24 de octubre de 2026, Europe/Madrid.
 **Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
 **Responsable de validación de usuario:** Miguel.  
-**Estado global:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI Windows/Linux aprobada; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
+**Estado del incremento actual:** validación de identidad/geometría de destinos implementada, regresión/CI en curso; [informe](H4_1_DESTINOS_PRESENTACION.md).
+
+**Último estado verificado del motor:** H2.6 aceptado y base clásica intacta. Nuevo incremento H4: frame de misión ya compuesto con recursos propios y prueba integrada de coordinadoras misión↔pausa 0/1/5. 240 escenarios y 672 capturas retenidas; backing persistente de pausa conservado independientemente de la presentación. [Alcance y resultados](H4_1_FRAME_MISION.md). Release local, 6 CTests, H3 original 11.361 estados y 29/29 replays PASS; CI Windows/Linux aprobada; no confundir estas pruebas con capas independientes, GPU o replay completo 0/1/N. H4 sigue abierto.
 
 **Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/049439d-reports.json).
 
@@ -439,3 +441,7 @@ Código `793e347cd9f118da1c9ec6a84f88caf3257b74c2`: capturas privadas, destinos 
 [Informe](H4_1_FRAME_MISION.md): captura en el punto de conversión final para incluir escrituras del paso principal y paleta efectiva. 240 escenarios 0/1/5, 672 capturas retenidas; se encontró y extrajo el efecto de backing persistente de pausa que alteraba el padding al omitir la presentación. La suite de pausa conserva sus 144 escenarios y añade comparación de capturas contra el original. Coordinadoras reales con productores/SDL controlados; no es un cierre global H4. No se cambia cadencia, referencias H3 ni base clásica. Resultados completos en el informe.
 
 Cierre del incremento `049439d`: CI Windows/Linux aprobada, ZIP/informes verificados; H3 original 11.361 estados, 29 replays y sanitizadores sin diagnósticos. PR en borrador sin fusionar. La tarea siguiente es separación por capas, pruebas del motor completo 0/1/N, otras escenas y publicación/geometría; H4 global sigue abierto.
+
+## Seguimiento — destinos de presentación
+
+[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.

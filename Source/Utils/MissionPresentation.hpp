@@ -9,7 +9,7 @@ namespace openfodder {
 struct MissionPresentation {
     PresentationSurface composed;
 };
-inline RGBLayerTarget RasterizeMissionPresentation(const MissionPresentation& scene) {
+inline PresentationTarget RasterizeMissionPresentation(const MissionPresentation& scene) {
     return RasterizePresentationSurface(scene.composed);
 }
 } // namespace openfodder

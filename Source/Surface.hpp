@@ -57,6 +57,10 @@ struct IndexedSurfaceState {
 
 class cSurface {
 protected:
+    openfodder::PresentationDestinationId mPresentationDestination =
+        std::make_shared<const openfodder::PresentationDestination>();
+    bool PresentationDestinationMatches(const openfodder::PresentationDestinationId& identity,
+        size_t width, size_t height, size_t stride, size_t count) const;
     bool            mIsLoadedImage;
 	cPalette		mPalette[ g_MaxColors ];
 	cPalette		mPaletteNew[ g_MaxColors ];
@@ -82,8 +86,8 @@ protected:
 public:
     openfodder::PresentationSurface CapturePresentation() const;
     bool isLoadedImage() const { return mIsLoadedImage; }
-    void CommitPauseBacking(const openfodder::PausePresentation& scene);
-    void ApplyPresentation(const openfodder::RGBLayerTarget& target);
+    bool CommitPauseBacking(const openfodder::PausePresentation& scene);
+    bool ApplyPresentation(const openfodder::PresentationTarget& target);
     openfodder::IndexedLayer CaptureIndexedLayer() const;
     openfodder::RGBLayer CaptureRGBLayer() const;
     IndexedSurfaceState CaptureIndexedState() const;

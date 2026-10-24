@@ -121,3 +121,7 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## Seguimiento 24-10-2026 — misión y transición
 
 [Frame compuesto de misión](H4_1_FRAME_MISION.md): índices finales, paleta efectiva y backing propios tras los productores específicos PC/Amiga; no se normalizan sus formatos ni se cambia su orden. La prueba integrada detecta feedback del padding RGB al volver de pausa con cero presentaciones. `CommitPauseBacking` conserva ese efecto una vez por iteración de producción, fuera del raster repetible. 240 escenarios/672 capturas con dobles; pausa reforzada (144 escenarios). Capas independientes, GPU/PNG real y cobertura comercial siguen pendientes; consultar el informe para resultados y límites.
+
+## Seguimiento — destinos de presentación
+
+[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.

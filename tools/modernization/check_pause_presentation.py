@@ -22,6 +22,7 @@ def build_code(root):
 using uint8=uint8_t;using int8=int8_t;using int16=int16_t;using uint32=uint32_t;
 struct cDimension;struct SDL_Texture{};struct SDL_PixelFormatDetails{};
 struct SDL_Surface{int w,h,pitch,format;void* pixels;};
+int SDL_BYTESPERPIXEL(int format){return format==1?4:3;}
 const SDL_PixelFormatDetails* SDL_GetPixelFormatDetails(int){static SDL_PixelFormatDetails f;return &f;}
 uint32 SDL_MapRGB(const SDL_PixelFormatDetails*,void*,uint8 r,uint8 g,uint8 b){return 0xFF000000u|(uint32(r)<<16)|(uint32(g)<<8)|b;}
 void SDL_UpdateTexture(SDL_Texture*,void*,void*,int){}
@@ -36,7 +37,7 @@ cSurface::cSurface(size_t w,size_t h){
 }
 cSurface::~cSurface(){delete[] mSurfaceBuffer;delete[] mSurfaceBufferSaved;delete[] static_cast<uint32*>(mSDLSurface->pixels);delete mSDLSurface;}
 '''
- for sig in ['void cSurface::'+n+'(' for n in ['draw','clearSDLSurface','surfaceSetToPalette','surfaceSetToPaletteNew','palette_SetFromNew','paletteNew_SetDimmed','Save','Restore','ApplyPresentation','CommitPauseBacking','mergeSurfaceBuffer']]+['bool cSurface::palette_FadeTowardNew(','inline void cSurface::paletteSDLColorSet(','openfodder::SurfaceDraw cSurface::CaptureDraw(','openfodder::RGBLayer cSurface::CaptureRGBLayer(','openfodder::PresentationSurface cSurface::CapturePresentation(']:
+ for sig in ['void cSurface::'+n+'(' for n in ['draw','clearSDLSurface','surfaceSetToPalette','surfaceSetToPaletteNew','palette_SetFromNew','paletteNew_SetDimmed','Save','Restore','mergeSurfaceBuffer']]+['bool cSurface::ApplyPresentation(','bool cSurface::CommitPauseBacking(','bool cSurface::PresentationDestinationMatches(','bool cSurface::palette_FadeTowardNew(','inline void cSurface::paletteSDLColorSet(','openfodder::SurfaceDraw cSurface::CaptureDraw(','openfodder::RGBLayer cSurface::CaptureRGBLayer(','openfodder::PresentationSurface cSurface::CapturePresentation(']:
   code+=function(source,sig)+'\n'
  code+=r'''
 void fill(cSurface& s,int seed,bool loaded){

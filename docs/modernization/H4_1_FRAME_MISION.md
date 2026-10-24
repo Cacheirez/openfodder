@@ -76,3 +76,7 @@ Completar separación en capas/órdenes de misión para interpolación, cobertur
 La publicación se realizó mediante el conector de GitHub porque Git HTTPS local no tenía credenciales de escritura. El árbol completo publicado `d8ee2225c6127abb1b7a6af299579a18b9dcd40d` coincide exactamente con el commit local probado `964b3d27`. No se sobrescribieron cambios remotos ni se usó force-push. Se conserva ese commit local en una rama auxiliar y la rama activa se sincroniza con el commit publicado. La instalación local de dependencias necesitó cache apt temporal por permisos del contenedor; no se cambió la configuración CI.
 
 El archivo JSON es evidencia compacta: no contiene ZIP/trazas/logs completos ni ejecutables. Su archivo duradero externo sigue pendiente, igual que las evidencias anteriores. La base clásica permanece en `5e6a4f3`; PR #1 abierto en borrador sin fusionar. Se acepta este incremento con los límites anteriores, sin cerrar H4 globalmente.
+
+## Seguimiento — destinos de presentación
+
+[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.

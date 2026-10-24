@@ -105,3 +105,7 @@ La suite `python tools/modernization/check_pause_presentation.py` compara 144 pl
 La nueva suite `check_mission_presentation.py` compara coordinadoras reales con productores/SDL sintéticos; la suite de pausa refuerza la comparación de capturas retenidas contra la secuencia original. El siguiente bloque conserva la separación por capas, otras escenas, publicación diferida y validación visual como pendientes.
 
 Último incremento verificado: Windows 40095813348 y Linux 40095813181 aprobados; H3 original y 29/29 replays, con ASan/UBSan, LSan y TSan Linux. [Informe y evidencias](H4_1_FRAME_MISION.md). Los ZIP nuevos caducan también el 23-11-2026; su archivo duradero externo sigue pendiente.
+
+## Seguimiento — destinos de presentación
+
+[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.
