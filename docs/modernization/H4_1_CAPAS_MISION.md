@@ -33,3 +33,9 @@ Se añade un paso obligatorio de CI Linux con `detect_leaks=1`. El resultado loc
 5. Ampliar los dobles de coordinadoras para verificar el registro real y ejecutar H3/replays/CI. Después ampliar vídeo real y otras escenas.
 
 No se añaden cadencias, hilos, interpolación ni arte HD. El compositor copia destinos y fondos guardados y almacena órdenes decodificadas; aún no se ha medido ni optimizado su coste. La integración deberá limitar memoria y vida del registro entre presentaciones, incluyendo N=0.
+
+## CI verificada
+
+Revisión `ba2ef207a65fba5a1996f42cbb5517405750f122`: [Linux 40140490722](https://github.com/Cacheirez/openfodder/actions/runs/40140490722) y [Windows 40140490643](https://github.com/Cacheirez/openfodder/actions/runs/40140490643) aprobadas. Compilación, 6 CTests, todas las equivalencias anteriores, nuevo compositor 192/384, H3 original 11.361 estados y 29/29 fases sin omisiones PASS; ASan/UBSan, LSan y TSan sin hallazgos. La prueba nueva se compila en Linux; la compilación Windows sigue validando el motor existente, que aún no incluye este header.
+
+[Evidencia conservada](evidence/ba2ef207-reports.json): metadatos, comprobaciones de jobs e informes originales. Descargados ambos ZIP, comprobados tamaño/SHA-256 e integridad; 9 report.json PASS y 12 engine.log sin diagnósticos de sanitizadores. Los ZIP/trazas completos caducan el 23-11-2026 UTC; no se afirma conservación externa permanente.

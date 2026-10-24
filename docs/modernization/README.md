@@ -12,7 +12,7 @@
 
 - Incremento validado anterior: [identidad y geometría de destinos](H4_1_DESTINOS_PRESENTACION.md), 97 casos válidos y 627 rechazos sin escritura. CI Windows/Linux, H3 original y 29/29 replays aprobados. Incluye inspección de los destinos reales para preparar capas independientes sin mezclar mSurfaceFinal con mSurface.
 
-- Incremento actual: [compositor de capas de misión](H4_1_CAPAS_MISION.md), 192 escenarios/384 salidas retenidas PASS local. Todavía no conectado a productores reales; la misión jugable mantiene la captura compuesta validada. CI pendiente del nuevo incremento.
+- Incremento actual: [compositor de capas de misión](H4_1_CAPAS_MISION.md), 192 escenarios/384 salidas retenidas PASS local. Todavía no conectado a productores reales; la misión jugable mantiene la captura compuesta validada. CI Windows/Linux aprobada en `ba2ef207`; [evidencia](evidence/ba2ef207-reports.json).
 
 ## Orden de lectura y mapa de conocimiento
 
