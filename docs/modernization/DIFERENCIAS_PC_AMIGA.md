@@ -1,6 +1,6 @@
 # Diferencias PC/Amiga y contratos de compatibilidad
 
-Revisión: 23-10-2026, motor `793e347cd9f118da1c9ec6a84f88caf3257b74c2`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
+Revisión: 24-10-2026, motor `d35e2675ffbbc79f8bf21eb961d78c06d74abd14`. Registro de diferencias **comprobadas en las rutas analizadas**, no catálogo exhaustivo de todas las versiones del juego. PC/Amiga identifica el formato/backend de los datos; ambos se ejecutan en el anfitrión Windows o Linux. CD32 es la fuente comercial prioritaria, no un tercer sistema operativo del motor.
 
 ## Matriz de dibujo
 
@@ -68,3 +68,8 @@ Código `ff15219`: [detalle y prueba](H4_1_PALETA_DESTINOS.md). Capturar mPalett
 ## Composición de capas — actualización 23-10-2026
 
 `793e347`: [capas/destinos y cobertura](H4_1_CAPAS_DESTINOS_INDEXADOS.md). Copia indexada conserva tres paletas pero no saved/adjusting; mezcla indexada omite cero sin copiar paleta; mezcla RGB omite palabra cero e incluye padding. Son núcleos comunes, con colores provenientes de los backends: no mezclar índices de capas con paletas distintas como sustituto de la mezcla RGB. Pausa y reclutamiento mantienen orden, incluido home-away solo PC. Minimapa: PC aplica paletteSet inmediata; Amiga aplica la paleta objetivo. Constructor omitido en unit testing: H3 no acredita su equivalencia visual.
+
+
+## Productores GUI/minimapa/escenas — actualización 24-10-2026
+
+[Contratos y casos comprobados](H4_1_PRODUCTORES_GUI_ESCENAS.md), `d35e267`: PC16 es indexado de 8 bits; Amiga16 calcula salto antes de dividir columnas; Alt mantiene su avance de destino y borde inclusivo; Offset limita a cinco planos. Minimapa PC copia cero y Amiga OR de planos; ID Amiga mantiene conversión uint16. Se conserva el centrado por mitades separadas. Capas PC capturan rotación de cuatro planos; seam 320 tenía lectura data[-1] y se define como desplazamiento cero. GUI/accessors, callbacks y preprocesado de reclutas siguen en sus momentos originales. Minimap constructor probado sintéticamente, no por los replays.
