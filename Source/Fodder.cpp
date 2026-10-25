@@ -396,6 +396,7 @@ int16 cFodder::Phase_Cycle()
 
 void cFodder::Phase_Paused()
 {
+    mSurface->BeginMissionAudit(mSurfaceFinal, false);
     Draw_Phase_Paused();
 
     while (mPhase_Paused)
@@ -621,6 +622,8 @@ void cFodder::Interrupt_Redraw()
     {
         std::lock_guard<std::mutex> lock(mSurfaceMtx);
 
+        mSurface->BeginMissionAudit(mSurfaceFinal, mPhase_In_Progress && !mPhase_Paused &&
+            !mPhase_ShowMapOverview && !mInterruptCallback && !mStartParams->mDisableVideo);
         if (mParams->mDemoPlayback || mParams->mDemoRecord)
             mGame_Data.mDemoRecorded.Tick();
 
@@ -643,6 +646,7 @@ void cFodder::Interrupt_Redraw()
                 Mouse_DrawCursor();
             }
         }
+        mSurface->VerifyMissionAudit(mSurfaceFinal);
         mVideo_Done = false;
         mVideo_Ticked = true;
     }
@@ -3253,6 +3257,7 @@ void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink
         // Capture at the old conversion point, not at Interrupt_Redraw: the
         // main cycle can still change sprites and the effective palette.
         // All producers, Save/Restore and their logical effects stay in place.
+        pSurface->VerifyMissionAudit(mSurfaceFinal);
         const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
         const auto presented = openfodder::RasterizeMissionPresentation(scene);
         pSurface->ApplyPresentation(presented);

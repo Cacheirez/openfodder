@@ -302,6 +302,7 @@ openfodder::TerrainDraw cGraphics_PC::CaptureVisibleTerrain() {
 
 void cGraphics_PC::MapTiles_Draw() {
     const auto terrain = CaptureVisibleTerrain();
+    mSurface->RecordMissionTerrain(terrain);
     openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
         mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
     mSurface->Save(); // Background for the subsequent sprite pass, once as before.

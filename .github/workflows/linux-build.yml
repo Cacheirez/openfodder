@@ -134,6 +134,30 @@ jobs:
         env:
           ASAN_OPTIONS: detect_leaks=1
         run: python3 tools/modernization/check_mission_layers.py
+      - name: H4.1 - real mission producer recording and missing-write detection
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin fb44314e6baedd17691e7ac9c9ac9fedab495994
+          python3 tools/modernization/check_mission_recording.py
+      - name: H4.1 - software video replays with mission layer audit
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          OPENFODDER_AUDIT_MISSION_LAYERS: '1'
+        run: |
+          python3 tools/modernization/audit_replays.py --exe build/openfodder --data Run --out reports/h4-recording-pc --campaign "PC Format" --video --timeout 600
+          python3 tools/modernization/audit_replays.py --exe build/openfodder --data Run --out reports/h4-recording-amiga --campaign "Amiga The One" --video --timeout 600
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          for campaign, count in (('pc', 8), ('amiga', 3)):
+              text = Path(f'reports/h4-recording-{campaign}/engine.log').read_text(errors='replace')
+              assert 'MISSION_LAYER_AUDIT: verified real producer interval' in text, campaign
+              report = json.loads(Path(f'reports/h4-recording-{campaign}/report.json').read_text())
+              assert report['phases_passed'] == count and report['skipped'] == 0 and report['video_enabled'], campaign
+          PY
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
@@ -185,6 +209,7 @@ jobs:
           name: OpenFodder-Linux-H3-evidence
           path: |
             reports/h3-linux-*/
+            reports/h4-recording-*/
             reports/h2-rnc/report.json
             reports/h2-engine-asan/
             reports/h2-leaksan/

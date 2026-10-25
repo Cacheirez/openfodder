@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 from check_final_timer_equivalence import function
 from pause_contract import canonical_pause
+from audit_contract import without_audit
 BASELINE = 'c6af094c49641018b6dea6dc77cbe731a7ea0218'
 
 def main():
@@ -22,7 +23,7 @@ def main():
     # All callers still place fade/Save/Restore at the same points.
     for p in (root/'Source').rglob('*.cpp'):
         if p.name=='Surface.cpp': continue
-        s=p.read_text()
+        s=without_audit(p.read_text())
         if any(x in s for x in ('->Save(', '->Restore(', '->palette_FadeTowardNew(', '->surfaceSetToPaletteNew(')):
             reference=subprocess.check_output(['git','show',BASELINE+':'+p.relative_to(root).as_posix()],cwd=root,text=True)
             # These producer-only functions have their own original-body suite.

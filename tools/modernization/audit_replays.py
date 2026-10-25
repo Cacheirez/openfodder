@@ -63,6 +63,7 @@ def main():
     parser.add_argument("--data", required=True, type=Path, help="Working directory containing Data, Campaigns and Tests")
     parser.add_argument("--out", required=True, type=Path, help="New report directory (must not exist)")
     parser.add_argument("--campaign")
+    parser.add_argument("--video", action="store_true", help="Exercise real video producers (SDL software/dummy supported)")
     parser.add_argument("--timeout", type=float, default=180)
     parser.add_argument("--baseline", type=Path)
     parser.add_argument("--allow-skips", action="store_true")
@@ -74,7 +75,9 @@ def main():
         parser.error("--timeout must be positive")
     baseline = json.loads(args.baseline.read_text(encoding="utf-8")) if args.baseline else None
     args.out.mkdir(parents=True, exist_ok=False)
-    cmd = [str(exe), "--appveyor", "--unit-test-headless"]
+    cmd = [str(exe), "--appveyor", "--unit-test" if args.video else "--unit-test-headless"]
+    if args.video:
+        cmd.append("--nosound")
     if args.campaign:
         cmd.extend(["--campaign", args.campaign])
     started = time.monotonic()
@@ -89,7 +92,7 @@ def main():
             log.write(str(exc).encode("utf-8"))
             returncode = -1
     report = parse_log((args.out / "engine.log").read_text(encoding="utf-8", errors="replace"))
-    report.update(command=cmd, campaign=args.campaign, returncode=returncode,
+    report.update(command=cmd, campaign=args.campaign, returncode=returncode, video_enabled=args.video,
                   timed_out=timed_out, seconds=round(time.monotonic()-started, 3),
                   executable_sha256=hashlib.sha256(exe.read_bytes()).hexdigest(),
                   coverage="partial" if report["skipped"] else "available campaigns only")

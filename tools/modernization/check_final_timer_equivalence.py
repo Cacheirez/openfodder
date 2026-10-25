@@ -12,7 +12,11 @@ import tempfile
 
 BASELINE = "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8"
 
-def function(source, signature):
+from audit_contract import without_audit
+
+def function(source, signature, preserve_audit=False):
+    if not preserve_audit:
+        source = without_audit(source)
     start = source.index(signature)
     opening = source.index("{", start)
     depth = 0

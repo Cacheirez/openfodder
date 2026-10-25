@@ -333,6 +333,7 @@ void cSurface::mergeSurfaceBuffer(const cSurface* pFrom) {
 }
 
 void cSurface::clearBuffer(size_t pColor) {
+    RecordMissionSurface(openfodder::MissionLayerOperation::Clear, uint8(pColor));
 
 	memset(mSurfaceBuffer, (int) pColor, mSurfaceBufferSize);
 	memset(mSurfaceBufferSaved, (int) pColor, mSurfaceBufferSize);
@@ -390,11 +391,13 @@ bool cSurface::LoadPng(const std::string& pFile) {
 }
 
 void cSurface::Save() {
+    RecordMissionSurface(openfodder::MissionLayerOperation::Save);
 
 	memcpy( mSurfaceBufferSaved, mSurfaceBuffer, mSurfaceBufferSize );
 }
 
 void cSurface::Restore() {
+    RecordMissionSurface(openfodder::MissionLayerOperation::Restore);
 	
 	memcpy( mSurfaceBuffer, mSurfaceBufferSaved, mSurfaceBufferSize );
 }

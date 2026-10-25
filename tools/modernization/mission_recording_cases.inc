@@ -1,0 +1,49 @@
+int main(){
+ size_t count=0,frames=0;
+ for(bool amiga:{false,true})for(int padding:{0,3})for(int n:{0,1,5})for(int seed:{1,7}){
+  pad=padding;cSurface a(80,64),b(80,64);fill(a,seed,false);fill(b,seed+5,false);
+  Params params;Window window;cGraphics_PC pc;cGraphics_Amiga ag;
+  cGraphics* graphics=amiga?static_cast<cGraphics*>(&ag):static_cast<cGraphics*>(&pc);
+  cFodder engine;engine.mSurface=&a;engine.mSurfaceFinal=&b;engine.mGraphics=graphics;
+  engine.mWindow=&window;engine.mParams=engine.mStartParams=&params;g_Fodder=&engine;
+  graphics->mFodder=&engine;graphics->mSurface=&a;
+  graphics->layout.format=amiga?openfodder::SpriteDrawFormat::Amiga8:openfodder::SpriteDrawFormat::PC;
+  graphics->layout.width=320;graphics->layout.height=32;graphics->layout.planes=4;
+  engine.mMap=std::make_shared<std::vector<uint8>>(8*8*2,0);
+  engine.mTile_BaseBlk=std::make_shared<std::vector<uint8>>(320*256,0x31);
+  engine.mTile_SubBlk=std::make_shared<std::vector<uint8>>(320*256,0x21);
+  ag.mBlkData=std::make_shared<std::vector<uint8>>(512*128,0xAA);
+  std::vector<uint16> sidebar(48*64/2,0x4949);engine.mSidebar_Screen_Buffer=sidebar.data();
+  engine.Interrupt_Redraw(); // actual coordinator, early cursor, terrain/Save, sprite, HUD, cursor
+  assert(a.MissionAuditActive()&&b.MissionAuditActive());
+  engine.Sprites_Draw(&b); // late main-cycle sprites must stay in the secondary destination
+  a.paletteNew_SetDimmed(32);a.palette_FadeTowardNew();
+  auto scene=a.VerifyMissionAudit(&b);assert(scene.destinations.size()==2);
+  assert(scene.layers.front().role==openfodder::MissionLayerRole::Cursor);
+  assert(scene.layers.back().destination==b.mPresentationDestination);
+  auto expected=openfodder::RasterizePresentationSurface(a.CapturePresentation());
+  const auto logicalBefore=logical(a);const int effects=engine.effects,requests=engine.requests;
+  for(int i=0;i<n;++i){engine.Video_SurfaceRender();++frames;}
+  assert(logical(a)==logicalBefore&&engine.effects==effects&&engine.requests==requests);
+  std::fill(engine.sprite.begin(),engine.sprite.end(),0);engine.sprite.clear();engine.sprite.shrink_to_fit();
+  engine.mTile_BaseBlk.reset();engine.mTile_SubBlk.reset();ag.mBlkData.reset();sidebar.clear();
+  assert(openfodder::RasterizeMissionLayers(scene,a.mPresentationDestination).pixels==expected.pixels);
+  a.Restore();a.VerifyMissionAudit(&b); // real Restore registered, including zero presentations
+  // Deliberate untracked write must be detected, not patched from a pixel diff.
+  a.GetSurfaceBuffer()[40*80+70]^=1;bool rejected=false;
+  try{a.VerifyMissionAudit(&b);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+  a.GetSurfaceBuffer()[40*80+70]^=1;
+  auto prior=a.mMissionAudit;
+  a.BeginMissionAudit(&b,true);assert(a.mMissionAudit!=prior&&a.mMissionAudit->scene.layers.empty());
+  a.clearBuffer(17);a.Restore();a.VerifyMissionAudit(&b);
+  // Pause/unsupported scenes discard the diagnostic interval; re-entry takes fresh state.
+  a.BeginMissionAudit(&b,false);assert(!a.MissionAuditActive()&&!b.MissionAuditActive());
+  fill(a,seed+10,false);a.BeginMissionAudit(&b,true);a.VerifyMissionAudit(&b);
+  // Even same-sized replacement has a new identity and must not satisfy the old interval.
+  cSurface replacement(80,64);fill(replacement,99,false);rejected=false;
+  try{a.VerifyMissionAudit(&replacement);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+  ++count;
+ }
+ std::cout<<"PASS: "<<count<<" actual PC/Amiga producer recording schedules, "<<frames
+          <<" classic presentations; 0/1/5, two destinations, early/late cursor, late sprites/palette, resource release, Clear/Save/Restore, reset and missing-write detection\n";
+}

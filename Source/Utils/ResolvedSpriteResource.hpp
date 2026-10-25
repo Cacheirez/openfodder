@@ -75,5 +75,6 @@ public:
 struct PreparedSpriteDraw {
     ResolvedSpriteResource resource;
     SpriteDrawState draw;
+    bool isCursor = false; // Presentation provenance only; never a sorting key.
 };
 } // namespace openfodder

@@ -24,6 +24,11 @@
 #include "Utils/SurfaceLayers.hpp"
 #include "Utils/PausePresentation.hpp"
 #include "Utils/MissionPresentation.hpp"
+#include "Utils/MissionLayers.hpp"
+#include <cstdlib>
+#include <mutex>
+#include <atomic>
+#include <cstdio>
 
 const size_t		 g_MaxColors = 0xFF;
 
@@ -57,6 +62,11 @@ struct IndexedSurfaceState {
 
 class cSurface {
 protected:
+    struct MissionAuditRecording {
+        std::mutex mutex;
+        openfodder::MissionLayerSequence scene;
+    };
+    std::shared_ptr<MissionAuditRecording> mMissionAudit;
     openfodder::PresentationDestinationId mPresentationDestination =
         std::make_shared<const openfodder::PresentationDestination>();
     bool PresentationDestinationMatches(const openfodder::PresentationDestinationId& identity,
@@ -84,6 +94,97 @@ protected:
 	
 
 public:
+    // Diagnostic shadow recording only; the classic path remains authoritative.
+    bool MissionAuditActive() const { return bool(std::atomic_load(&mMissionAudit)); }
+    void RecordMissionLayer(openfodder::MissionLayer layer) {
+        const auto recording = std::atomic_load(&mMissionAudit);
+        if (!recording) return;
+        layer.destination = mPresentationDestination;
+        std::lock_guard<std::mutex> lock(recording->mutex);
+        recording->scene.layers.push_back(std::move(layer));
+    }
+    void RecordMissionPixels(const openfodder::IndexedProducerDraw& pixels,
+                             openfodder::MissionLayerRole role = openfodder::MissionLayerRole::Sprite) {
+        if (!MissionAuditActive()) return;
+        openfodder::MissionLayer layer; layer.role = role;
+        layer.pixels = pixels; RecordMissionLayer(std::move(layer));
+    }
+    void RecordMissionTerrain(const openfodder::TerrainDraw& terrain) {
+        if (!MissionAuditActive()) return;
+        openfodder::MissionLayer layer; layer.role = openfodder::MissionLayerRole::Terrain;
+        layer.operation = openfodder::MissionLayerOperation::Terrain;
+        layer.terrain = terrain; RecordMissionLayer(std::move(layer));
+    }
+    void RecordMissionSidebar(const openfodder::SidebarDraw& sidebar) {
+        if (!MissionAuditActive()) return;
+        openfodder::MissionLayer layer; layer.role = openfodder::MissionLayerRole::Sidebar;
+        layer.operation = openfodder::MissionLayerOperation::Sidebar;
+        layer.sidebar = sidebar; RecordMissionLayer(std::move(layer));
+    }
+    void RecordMissionSurface(openfodder::MissionLayerOperation operation, uint8 color = 0) {
+        if (!MissionAuditActive()) return;
+        openfodder::MissionLayer layer; layer.operation = operation; layer.clearIndex = color;
+        RecordMissionLayer(std::move(layer));
+    }
+    void BeginMissionAudit(cSurface* other, bool eligible) {
+        // Reset at every producer iteration, including zero presentations and pause.
+        std::atomic_store(&mMissionAudit, std::shared_ptr<MissionAuditRecording>{});
+        if (other && other != this)
+            std::atomic_store(&other->mMissionAudit, std::shared_ptr<MissionAuditRecording>{});
+        const char* enabled = std::getenv("OPENFODDER_AUDIT_MISSION_LAYERS");
+        if (!eligible || !enabled || std::string(enabled) != "1" || isLoadedImage()) return;
+        const auto recording = std::make_shared<MissionAuditRecording>();
+        auto attach = [&](cSurface* surface) {
+            if (!surface || surface->isLoadedImage()) return;
+            recording->scene.destinations.push_back({surface->CapturePresentation(),
+                openfodder::CaptureLayer(surface->mSurfaceBufferSaved, surface->mSurfaceBufferSize,
+                    surface->mWidth, surface->mHeight, surface->mWidth)});
+        };
+        attach(this);
+        if (other != this) attach(other);
+        std::atomic_store(&mMissionAudit, recording);
+        if (other && other != this && !other->isLoadedImage())
+            std::atomic_store(&other->mMissionAudit, recording);
+    }
+    openfodder::MissionLayerSequence VerifyMissionAudit(const cSurface* other) const {
+        const auto recording = std::atomic_load(&mMissionAudit);
+        if (!recording) return {};
+        openfodder::MissionLayerSequence scene;
+        {
+            std::lock_guard<std::mutex> lock(recording->mutex);
+            scene = recording->scene;
+        }
+        std::vector<const cSurface*> actual;
+        for (auto& source : scene.destinations) {
+            const cSurface* surface = source.initial.destination == mPresentationDestination ? this : other;
+            if (!surface || source.initial.destination != surface->mPresentationDestination)
+                throw std::runtime_error("mission audit: destination replaced during recording");
+            const auto current = surface->CaptureDraw();
+            if (!current.indices || current.width != source.initial.indexed.width ||
+                current.height != source.initial.indexed.height)
+                throw std::runtime_error("mission audit: incompatible indexed destination");
+            // Palette is sampled at the real conversion point, after late fades.
+            source.initial.indexed.colors = current.colors;
+            actual.push_back(surface);
+        }
+        const auto composed = openfodder::ComposeMissionLayers(scene);
+        for (size_t i = 0; i < actual.size(); ++i) {
+            const auto* surface = actual[i];
+            if (*composed.surfaces[i].indexed.indices != *surface->CaptureDraw().indices ||
+                !std::equal(composed.saved[i].pixels->begin(), composed.saved[i].pixels->end(),
+                            surface->mSurfaceBufferSaved))
+                throw std::runtime_error("mission audit: unrecorded or reordered indexed write");
+            const auto expected = openfodder::RasterizePresentationSurface(surface->CapturePresentation());
+            const auto replay = openfodder::RasterizePresentationSurface(composed.surfaces[i]);
+            if (expected.destination != replay.destination || expected.width != replay.width ||
+                expected.height != replay.height || expected.stride != replay.stride || expected.pixels != replay.pixels)
+                throw std::runtime_error("mission audit: composed frame differs from classic frame");
+        }
+        static std::atomic<bool> announced{false};
+        if (!announced.exchange(true))
+            std::fprintf(stderr, "MISSION_LAYER_AUDIT: verified real producer interval\n");
+        return scene;
+    }
     openfodder::PresentationSurface CapturePresentation() const;
     bool isLoadedImage() const { return mIsLoadedImage; }
     bool CommitPauseBacking(const openfodder::PausePresentation& scene);

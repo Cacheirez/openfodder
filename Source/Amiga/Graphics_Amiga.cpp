@@ -771,6 +771,7 @@ openfodder::TerrainDraw cGraphics_Amiga::CaptureVisibleTerrain() {
 void cGraphics_Amiga::MapTiles_Draw() {
     mSurface->clearBuffer(); // Keep saved-buffer and SDL clearing at the classic point.
     const auto terrain = CaptureVisibleTerrain();
+    mSurface->RecordMissionTerrain(terrain);
     openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
         mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
     mSurface->Save(); // Background for the subsequent sprite pass, once as before.

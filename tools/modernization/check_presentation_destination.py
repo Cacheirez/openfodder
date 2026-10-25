@@ -8,11 +8,12 @@ import subprocess
 import tempfile
 from check_final_timer_equivalence import function
 from check_pause_presentation import build_code
+from audit_contract import without_audit
 BASELINE = '049439d56126e95b56eebd183e4f42610d8b6821'
 
 def main():
     root=Path(__file__).resolve().parents[2]
-    surface=(root/'Source/Surface.cpp').read_text()
+    surface=without_audit((root/'Source/Surface.cpp').read_text())
     original=subprocess.check_output(['git','show',BASELINE+':Source/Surface.cpp'],cwd=root,text=True)
     # All original surface operations remain identical except these four
     # presentation methods and a fresh identity after successful replacement.

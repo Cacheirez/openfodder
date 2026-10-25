@@ -103,6 +103,7 @@ openfodder::SidebarDraw cGraphics::CaptureSidebarDraw(int16 startY, bool offsetS
 void cGraphics::Sidebar_Copy_To_Surface_Common(int16 pStartY, cSurface* pSurface, bool pOffsetSource) {
     const auto draw = CaptureSidebarDraw(pStartY, pOffsetSource);
     auto* target = pSurface ? pSurface : mSurface;
+    target->RecordMissionSidebar(draw);
     openfodder::RasterizeSidebar(draw, target->GetSurfaceBuffer());
 }
 
@@ -213,6 +214,7 @@ void cGraphics::Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
     mFodder->mVideo_Draw_Columns = registers.columns;
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    target->RecordMissionPixels(captured);
     openfodder::RasterizeIndexedProducer(captured,output.pixels);
 }
 
@@ -245,6 +247,9 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
     mFodder->mVideo_Draw_Columns = registers.columns;
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    if (target->MissionAuditActive())
+        target->RecordMissionPixels(openfodder::CaptureSprite8Producer(draw, layout, output.width),
+            prepared.isCursor ? openfodder::MissionLayerRole::Cursor : openfodder::MissionLayerRole::Sprite);
     openfodder::RasterizeSprite8(draw, layout, output);
 }
 
@@ -252,6 +257,7 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
 // effectful GetSpriteData again or replace its legacy source register.
 openfodder::PreparedSpriteDraw cGraphics::CaptureCursorDraw() {
     openfodder::PreparedSpriteDraw prepared;
+    prepared.isCursor = true;
     const auto storage = GetSpriteResourceStorage(eGFX_PSTUFF);
     const auto layout = GetSpriteRasterLayout();
     const size_t offset = static_cast<size_t>(mFodder->mVideo_Draw_FrameDataPtr - storage->data());

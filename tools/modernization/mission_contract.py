@@ -15,6 +15,9 @@ NEW = '''    if (mPhase_In_Progress && !mPhase_Paused && !mPhase_ShowMapOverview
     {
         pSurface->draw(pSkip == true ? 16 : 0, pSkip == true ? 16 : 0);
     }'''
+from audit_contract import without_audit
+
 def canonical_mission(source):
+    source = without_audit(source)
     assert source.count(NEW) == 1, 'Mission block changed; update its differential test'
     return source.replace(NEW, OLD)
