@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.20 consolidada; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La siguiente entrega es publicación opcional desde órdenes con contraste, seguida de validación del motor 0/1/N y transiciones; los informes fechados son evidencia histórica y no sustituyen su estado actual.
+Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.22; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; falta cerrar la validación Linux/TSan de `acfc099a` antes de 0/1/N del motor completo y transiciones; los informes fechados son evidencia histórica y no sustituyen su estado actual.
 
 ## Estado y referencias de recuperación
 
@@ -14,9 +14,9 @@
 
 - Compositor previo: [compositor de capas de misión](H4_1_CAPAS_MISION.md), 192 escenarios/384 salidas retenidas PASS local. En esa revisión aún no estaba conectado a productores reales; la continuación siguiente aporta esa conexión diagnóstica. CI Windows/Linux aprobada en `ba2ef207`; [evidencia](evidence/ba2ef207-reports.json).
 
-- Incremento actual: [registro de productores reales y contraste](H4_1_REGISTRO_PRODUCTORES.md), modo diagnóstico optativo. Publicación clásica conservada; 24 escenarios de integración 0/1/5 PASS local. CI Windows/Linux aprobada; replay con registro y vídeo software: 8 fases PC y 3 Amiga, cero omisiones.
+- Incremento anterior: [registro de productores reales y contraste](H4_1_REGISTRO_PRODUCTORES.md), modo diagnóstico optativo. Publicación clásica conservada; 24 escenarios de integración 0/1/5 PASS local. CI Windows/Linux aprobada; replay con registro y vídeo software: 8 fases PC y 3 Amiga, cero omisiones.
 
-- Incremento en validación: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste; pendiente de resultados CI propios. No confundir con el motor anterior ya validado.
+- Incremento en validación: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste. `1e1f93d3` pasó publicación normal/ASan con H3, pero TSan activo agotó 1.200 s. `acfc099a` acota esa prueba explícitamente y endurece el control: Windows aprobado, Linux pendiente. No atribuirle aceptación global antes de su resultado.
 
 ## Orden de lectura y mapa de conocimiento
 

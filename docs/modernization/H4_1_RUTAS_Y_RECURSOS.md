@@ -129,3 +129,8 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## Seguimiento 25-10-2026 — registro real de misión
 
 [Registro de productores y contraste](H4_1_REGISTRO_PRODUCTORES.md): terreno PC/Amiga, sprites/cursor, sidebar y Clear/Save/Restore registran sus órdenes en modo diagnóstico. Se conserva la limpieza específica de Amiga y la decodificación propia de cada backend. Una secuencia común mantiene destinos independientes para mSurface y mSurfaceFinal, incluyendo el cursor temprano/tardío y la paleta final. Se compara con los índices, fondo guardado y RGB clásicos sin sustituir la publicación. Otros destinos, PNG, minimapa y escrituras no instrumentadas siguen fuera del alcance; las divergencias sobre destinos auditados se notifican. Consultar pruebas y CI del informe.
+
+
+## Seguimiento 25-10-2026 — publicación opcional desde órdenes
+
+[H4.3](H4_3_PUBLICACION_ORDENES.md), motor `1e1f93d3`: `OPENFODDER_PRESENT_MISSION_LAYERS=1` publica el resultado verificado del registro. Mantiene las decodificaciones PC/Amiga, paleta tardía, orden real, dos destinos y oráculo clásico. La opción está desactivada por defecto y activa obligatoriamente el contraste. Si falta un intervalo compatible, vuelve al clásico; una divergencia de un intervalo elegible sigue siendo un error. La fixture ya invoca los productores preparado y resuelto, con 0/1/5 en ambos modos. Consultar el informe para el estado CI: este seguimiento no declara 0/1/N del motor completo, pausa interactiva ni GPU validados.

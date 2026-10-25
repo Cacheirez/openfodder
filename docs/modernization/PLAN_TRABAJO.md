@@ -1,8 +1,8 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.21 · Revisión: 25 de octubre de 2026.**
+**Versión 2.22 · Revisión: 25 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.3, publicación opcional implementada con contraste; validación CI del incremento pendiente. Después: programación 0/1/N del motor completo. [Informe](H4_3_PUBLICACION_ORDENES.md).**
+**Tarea activa: H4.3, publicación opcional implementada con contraste; publicación real y ASan/UBSan/LSan aprobados en `1e1f93d3`; TSan activo agotó el tiempo. Revisión `acfc099a` con alcance TSan explícito y control reforzado: Windows aprobado, Linux pendiente. Primero cerrar esa validación; después: programación 0/1/N del motor completo. [Informe](H4_3_PUBLICACION_ORDENES.md).**
 
 ## 1. Dictamen de la revisión
 
@@ -39,12 +39,13 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| HEAD consultado antes de esta revisión documental | `046a8a4f07b34f0c373152226ca942c2dfe717d4` |
-| Último motor validado | `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4` |
+| Motor candidato actual | `acfc099a43d02d55bf44426b6c05a2f0330cf889`; Windows aprobado, Linux pendiente |
+| Último motor con aceptación global previa | `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4` |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
 | CI Windows del motor | [40178254139](https://github.com/Cacheirez/openfodder/actions/runs/40178254139), éxito |
 | CI Linux del motor | [40178254127](https://github.com/Cacheirez/openfodder/actions/runs/40178254127), éxito |
-| Nueva publicación / interpolación / arte | Pendientes; la publicación jugable actual sigue siendo clásica |
+| Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; aceptación global pendiente de Linux/TSan activo. Clásico por defecto |
+| Interpolación / arte | Pendientes |
 
 | Evidencia conservada | Qué acredita | Límite |
 |---|---|---|
@@ -55,8 +56,10 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 | Destinos | 97 casos aceptados y 627 rechazos sin escritura | Identidad de almacenamiento y geometría; no garantiza frescura temporal del frame |
 | Compositor de capas | 192 escenarios, 384 salidas retenidas; destinos y orden conservados | Reconstrucción de operaciones; no entidades ya interpolables |
 | Registro de productores | 24 escenarios / 48 presentaciones, planes 0/1/5; contraste de índices, fondo guardado y RGB | El adaptador preparado se compila, pero esa fixture no lo invoca; sí invoca el resuelto |
-| Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | Cadencia actual, sin validación GPU ni publicación desde órdenes ni 0/1/N del motor completo |
+| Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | Cadencia actual, sin validación GPU ni 0/1/N del motor completo; publicación nueva descrita debajo |
 | Prueba manual de Miguel | Base clásica, demo y CD32 aceptadas; controles, audio, pausa, F11 y Alt+Tab correctos | No se atribuye al motor b34373b0 ni prueba las 72 fases CD32 |
+
+Validación nueva: [H4.3 y su límite TSan](H4_3_PUBLICACION_ORDENES.md), [intento 1e1f93d3](evidence/1e1f93d3-reports.json) y [estado acfc099a](evidence/acfc099a-reports.json). La prueba activa TSan de dos fases está pendiente y no equivale a las 11 fases normales ni a la campaña completa.
 
 Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de misión](H4_1_FRAME_MISION.md), [destinos](H4_1_DESTINOS_PRESENTACION.md), [capas](H4_1_CAPAS_MISION.md), [aceptación clásica](H2_6_ACEPTACION_BASE_CLASICA.md) e [informes compactos de b34373b0](evidence/b34373b0-reports.json). Para los núcleos previos —recorte, raster, recursos, terreno, HUD, cursor, paleta y escenas— consultar el [índice técnico](README.md).
 
@@ -141,10 +144,10 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 - [ ] **H4.1 — Asistente:** completar la separación/preservación de efectos del dibujo en sus coordinadoras lógicas. **Hecho:** extracción de núcleos, recursos propios, pausa y frame compuesto, productores registrados y contraste diagnóstico. **Falta:** demostrar independencia del motor completo y cubrir coordinaciones/transiciones restantes. No repetir el inventario inicial como si no existiera.
 - [ ] **H4.2 — Asistente:** estados coherentes de solo lectura para cámara, sprites, terreno, paletas e interfaz. **Hecho:** capturas propias y destinos validados. **Falta:** contrato de frame elegible y fresco, vida útil acotada, coherencia temporal y datos semánticos para H5. La identidad del almacenamiento no es una versión de contenido ni una fecha del frame.
-- [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, en validación:** publicar opcionalmente desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
+- [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, aceptación parcial:** publicación opcional desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
 - [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
 - [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
-- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas 0/1/5 y contraste real PC/Amiga a cadencia actual. **Falta:** motor completo con nueva publicación, mutación/sustitución/liberación de recursos, misión↔pausa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Ampliar la prueba del productor preparado además del resuelto y verificar que una omisión deliberada sigue siendo detectada.
+- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas 0/1/5 y contraste real PC/Amiga a cadencia actual. **Falta:** programación 0/1/N del motor completo con nueva publicación, mutación/sustitución/liberación de recursos, misión↔pausa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
 
 **Aceptación global:** presentar más, menos o ninguna vez no altera reglas, RNG ni efectos lógicos; frames y recursos son coherentes; las rutas soportadas tienen equivalencia comprobada y las restantes mantienen el clásico explícitamente. No declarar cerrado H4 por una imagen idéntica o un replay sin fallos.
 
@@ -223,9 +226,9 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 **Definición de objetivo conseguido:** presentación renovada en todo el alcance acordado de Cannon Fodder 1, cámara y movimiento suaves, reglas conservadas según las pruebas, paquete Windows reproducible y validación de juego real de Miguel. Una base que compila o una sola misión HD no cumplen por sí solas esta definición.
 
-## 6. Siguiente incremento: publicación opcional desde órdenes
+## 6. Publicación opcional: implementación y puertas pendientes
 
-**Sí: sigue siendo el próximo paso técnico correcto.** Permite comprobar la ruta que después necesitará H5 sin introducir simultáneamente interpolación o arte nuevo. Lo dividiremos en entregas comprobables; no se promete resolver todas las puertas en un único commit.
+**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows está aprobado; Linux sigue pendiente. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). No avanzar a la programación 0/1/N del motor completo hasta cerrar esta validación. Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
 
 ### 6.1 Implementación mínima y contraste
 
@@ -255,7 +258,7 @@ Completar el contrato semántico de H4.2/H4.4 para cámara y entidades, preserva
 
 ## 7. Tareas transversales incorporadas
 
-- [ ] **C1 — Evidencias duraderas:** conservar ZIP completos, logs y trazas que sustentan aceptaciones, con SHA-256 y relación commit/entorno, en almacenamiento persistente apropiado. Los informes compactos de b34373b0 ya están en Git; los ZIP de esa revisión caducan el **24-11-2026** y hay evidencias anteriores que caducan antes. Esta revisión no declara archivados esos ZIP ni programa una tarea automática.
+- [ ] **C1 — Evidencias duraderas:** conservar ZIP completos, logs y trazas que sustentan aceptaciones, con SHA-256 y relación commit/entorno, en almacenamiento persistente apropiado. Los informes compactos de b34373b0 ya están en Git; los ZIP de esa revisión caducan el **24-11-2026** y hay evidencias anteriores que caducan antes. Los dos ZIP de `b34373b0` ya están archivados con [manifiesto](evidence/b34373b0-archive.json); también se conserva el intento `1e1f93d3`, incluido su TSan fallido. Pendientes referencias anteriores y próximas revisiones; no se programa actividad automática.
 - [ ] **C2 — Reproducción:** mantener SHAs efectivos de dependencias/datos públicos, configuración, comandos y paquete probado en cada aceptación. No basta fijar una rama flotante ni prometer compilación bit a bit idéntica. No actualizar dependencias ajenas a la tarea sin motivo.
 - [ ] **C3 — Cobertura explícita:** mantener matriz de rutas clásica/nueva, PC/Amiga, escenarios, frecuencia, plataforma y validación automática/manual. Separar demos, CD32 privado, audio físico y GPU. Añadir cobertura comercial progresiva cuando haya grabaciones válidas; no convertir 72 omisiones por falta de replays en 72 aprobaciones.
 
