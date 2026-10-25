@@ -1,11 +1,11 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.22; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; falta cerrar la validación Linux/TSan de `acfc099a` antes de 0/1/N del motor completo y transiciones; los informes fechados son evidencia histórica y no sustituyen su estado actual.
+Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.23; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; `acfc099a` está aprobado en Windows/Linux con TSan activo acotado. El siguiente incremento es [programación 0/1/5 de misión](H4_6_PLANIFICACION_MISION.md), probado localmente y pendiente de CI propia; los informes fechados son evidencia histórica y no sustituyen su estado actual.
 
 ## Estado y referencias de recuperación
 
 - Repositorio: https://github.com/Cacheirez/openfodder. Rama `modernization/windows-foundation`, PR #1 en borrador y **sin fusionar**.
-- Código más reciente validado: `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4`. Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
+- Código más reciente validado: `acfc099a43d02d55bf44426b6c05a2f0330cf889` (publicación opcional, TSan activo acotado). Los commits documentales posteriores no cambian ese motor. Verificar HEAD/PR al retomar; no asumir que esta fecha es la última.
 - Base clásica recuperable: rama `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. No moverla ni reescribir su historia. Para inspeccionarla sin alterar la rama activa: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 - H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa y el frame de misión ya compuesto tienen estado propio y pruebas focalizadas 0/1/5. Faltan capas movibles independientemente, 0/1/N del motor completo, interpolación y arte HD.
 - Frame anterior: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
@@ -16,7 +16,7 @@
 
 - Incremento anterior: [registro de productores reales y contraste](H4_1_REGISTRO_PRODUCTORES.md), modo diagnóstico optativo. Publicación clásica conservada; 24 escenarios de integración 0/1/5 PASS local. CI Windows/Linux aprobada; replay con registro y vídeo software: 8 fases PC y 3 Amiga, cero omisiones.
 
-- Incremento en validación: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste. `1e1f93d3` pasó publicación normal/ASan con H3, pero TSan activo agotó 1.200 s. `acfc099a` acota esa prueba explícitamente y endurece el control: Windows aprobado, Linux pendiente. No atribuirle aceptación global antes de su resultado.
+- Incremento validado: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste. `1e1f93d3` pasó publicación normal/ASan con H3, pero TSan activo agotó 1.200 s. `acfc099a` acota esa prueba explícitamente y endurece el control: Windows/Linux aprobados en su alcance; el scheduler H4.6 tiene validación propia pendiente.
 
 ## Orden de lectura y mapa de conocimiento
 
@@ -117,3 +117,5 @@ La nueva suite `check_mission_presentation.py` compara coordinadoras reales con 
 ## Seguimiento — destinos de presentación
 
 [Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.
+
+Validación actual: `acfc099a` aprobado; el informe H4.3 conserva el fallo histórico y su resolución. La programación H4.6 no programa aún el bucle interactivo de pausa ni todas las escenas.

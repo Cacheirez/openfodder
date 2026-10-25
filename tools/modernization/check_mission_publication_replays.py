@@ -1,5 +1,6 @@
 """Real software-video publication, mandatory contrast and original H3 states.
-Runs PC/Amiga demos at the existing cadence, not a whole-engine 0/1/N scheduler.
+Runs PC/Amiga demos with optional 0/1/5 mission presentations per engine call.
+Other scenes and interactive pause are outside this scheduling scope.
 GPL-3.0-or-later.
 """
 import argparse
@@ -25,6 +26,7 @@ def main():
     p.add_argument('--exe', type=Path, required=True)
     p.add_argument('--data', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--presentations', type=int, choices=(0, 1, 5), help='Test-only mission presentation count; production cadence stays unchanged')
     p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
@@ -33,7 +35,7 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
-                'publication': True, 'contrast': True, 'cadence': 'classic',
+                'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
@@ -52,6 +54,9 @@ def main():
                        OPENFODDER_TRACE_DIR=str(trace),
                        OPENFODDER_TRACE_REPLAY_SHA256=fixture_hash,
                        OPENFODDER_TRACE_SETTINGS_SHA256=settings_hash)
+            env.pop('OPENFODDER_TEST_MISSION_PRESENTATIONS', None)
+            if args.presentations is not None:
+                env['OPENFODDER_TEST_MISSION_PRESENTATIONS'] = str(args.presentations)
             subprocess.run([sys.executable, str(root/'tools/modernization/audit_replays.py'),
                             '--exe', str(args.exe.resolve()), '--data', str(args.data.resolve()),
                             '--out', str(out/slug), '--campaign', campaign, '--video',
@@ -63,10 +68,18 @@ def main():
                 raise RuntimeError('Sanitizer findings in ' + campaign + ': ' + findings[0])
             if report['phases_passed'] != phases or report['skipped']:
                 raise RuntimeError('Incomplete campaign: ' + campaign)
-            for marker in ('MISSION_LAYER_AUDIT: verified real producer interval',
-                           'MISSION_LAYER_PRESENT: published verified orders'):
+            markers = ['MISSION_LAYER_AUDIT: verified real producer interval']
+            published = 'MISSION_LAYER_PRESENT: published verified orders'
+            if args.presentations == 0:
+                if published in log:
+                    raise RuntimeError('Unexpected mission publication in zero schedule: ' + campaign)
+            else:
+                markers.append(published)
+            if args.presentations is not None:
+                markers.append(f'MISSION_LAYER_SCHEDULE: {args.presentations} presentations per mission call')
+            for marker in markers:
                 if marker not in log:
-                    raise RuntimeError('Inactive publication/contrast: ' + campaign)
+                    raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})

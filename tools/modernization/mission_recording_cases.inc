@@ -1,5 +1,7 @@
 int main(){
  size_t count=0,frames=0;
+ const int repeats=cSurface::MissionPresentationRepeats(true);
+ assert(cSurface::MissionPresentationRepeats(false)==1);
  const bool publishing=cSurface::MissionPublicationEnabled();
  for(bool amiga:{false,true})for(int padding:{0,3})for(int n:{0,1,5})for(int seed:{1,7}){
   pad=padding;cSurface a(80,64),b(80,64);fill(a,seed,false);fill(b,seed+5,false);
@@ -29,7 +31,9 @@ int main(){
   assert(scene.layers.back().destination==b.mPresentationDestination);
   auto expected=openfodder::RasterizePresentationSurface(a.CapturePresentation());
   const auto logicalBefore=logical(a);const int effects=engine.effects,requests=engine.requests;
-  for(int i=0;i<n;++i){engine.Video_SurfaceRender();++frames;assert(window.pixels.back()==expected.pixels);}
+  for(int i=0;i<n;++i){engine.Video_SurfaceRender();frames+=repeats;if(repeats)assert(window.pixels.back()==expected.pixels);}
+  assert(window.frames==n*repeats);
+  for(const auto& pixels:window.pixels)assert(pixels==expected.pixels);
   assert(logical(a)==logicalBefore&&engine.effects==effects&&engine.requests==requests);
   std::fill(engine.sprite.begin(),engine.sprite.end(),0);engine.sprite.clear();engine.sprite.shrink_to_fit();
   engine.mTile_BaseBlk.reset();engine.mTile_SubBlk.reset();ag.mBlkData.reset();sidebar.clear();
@@ -37,7 +41,7 @@ int main(){
   a.Restore();a.VerifyMissionAudit(&b); // real Restore registered, including zero presentations
   // Deliberate untracked write must be detected, not patched from a pixel diff.
   a.GetSurfaceBuffer()[40*80+70]^=1;bool rejected=false;
-  try{if(publishing)a.PresentRecordedMission(&b);else a.VerifyMissionAudit(&b);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+  try{if(publishing)engine.Video_SurfaceRender();else a.VerifyMissionAudit(&b);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
   a.GetSurfaceBuffer()[40*80+70]^=1;
   auto prior=a.mMissionAudit;
   a.BeginMissionAudit(&b,true);assert(a.mMissionAudit!=prior&&a.mMissionAudit->scene.layers.empty());
@@ -53,13 +57,25 @@ int main(){
    assert(!a.MissionAuditActive()&&!replacement.MissionAuditActive()&&logical(a)==before);
    // No capture: the real coordinator publishes classic and does not create an interval.
    engine.Video_SurfaceRender();assert(!a.MissionAuditActive());
-   assert(window.pixels.back()==openfodder::RasterizePresentationSurface(a.CapturePresentation()).pixels);
+   if(repeats)assert(window.pixels.back()==openfodder::RasterizePresentationSurface(a.CapturePresentation()).pixels);
    // Restart after a transition, then publish without an intervening producer mutation.
    a.BeginMissionAudit(&b,true);assert(a.PresentRecordedMission(&b));
    assert(logical(a)==before);
   }
+  // Diagnostic scheduling must not affect unsupported scenes or normal play.
+  for(int guard=0;guard<5;++guard){
+   const int before=window.frames;
+   if(guard==0)engine.mPhase_Paused=true;
+   if(guard==1)engine.mPhase_ShowMapOverview=true;
+   if(guard==2)engine.mPhase_In_Progress=false;
+   if(guard==3)params.mUnitTesting=false;
+   engine.Video_SurfaceRender(false,false,nullptr,guard!=4);
+   assert(window.frames==before+1);
+   engine.mPhase_Paused=false;engine.mPhase_ShowMapOverview=false;
+   engine.mPhase_In_Progress=true;params.mUnitTesting=true;
+  }
   ++count;
  }
- std::cout<<"PASS: "<<count<<" actual PC/Amiga producer recording schedules, "<<frames
+ std::cout<<"PASS: "<<count<<" actual PC/Amiga producer scenarios, repeats="<<repeats<<", "<<frames
           <<(publishing?" recorded presentations;":" classic presentations;")<<" 0/1/5, two destinations, early/late cursor, late sprites/palette, resource release, Clear/Save/Restore, reset and missing-write detection\n";
 }

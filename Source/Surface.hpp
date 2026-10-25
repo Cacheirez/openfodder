@@ -99,6 +99,19 @@ public:
         const char* enabled = std::getenv("OPENFODDER_PRESENT_MISSION_LAYERS");
         return enabled && std::string(enabled) == "1";
     }
+    static int MissionPresentationRepeats(bool unitTesting) {
+        if (!unitTesting || !MissionPublicationEnabled()) return 1;
+        const char* value = std::getenv("OPENFODDER_TEST_MISSION_PRESENTATIONS");
+        if (!value) return 1;
+        const std::string option(value);
+        if (option != "0" && option != "1" && option != "5")
+            throw std::invalid_argument("mission presentation test count must be 0, 1 or 5");
+        const int repeats = option[0] - '0';
+        static std::atomic<bool> announced{false};
+        if (!announced.exchange(true))
+            std::fprintf(stderr, "MISSION_LAYER_SCHEDULE: %d presentations per mission call\n", repeats);
+        return repeats;
+    }
     bool MissionAuditActive() const { return bool(std::atomic_load(&mMissionAudit)); }
     void RecordMissionLayer(openfodder::MissionLayer layer) {
         const auto recording = std::atomic_load(&mMissionAudit);

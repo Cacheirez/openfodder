@@ -1,8 +1,8 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.22 · Revisión: 25 de octubre de 2026.**
+**Versión 2.23 · Revisión: 25 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.3, publicación opcional implementada con contraste; publicación real y ASan/UBSan/LSan aprobados en `1e1f93d3`; TSan activo agotó el tiempo. Revisión `acfc099a` con alcance TSan explícito y control reforzado: Windows aprobado, Linux pendiente. Primero cerrar esa validación; después: programación 0/1/N del motor completo. [Informe](H4_3_PUBLICACION_ORDENES.md).**
+**Tarea activa: H4.6, programación 0/1/5 en la ruta real de misión, implementada y probada localmente; CI propia pendiente. Publicación opcional acfc099a aceptada en su alcance Windows/Linux. [Informe](H4_6_PLANIFICACION_MISION.md).**
 
 ## 1. Dictamen de la revisión
 
@@ -39,23 +39,23 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato actual | `acfc099a43d02d55bf44426b6c05a2f0330cf889`; Windows aprobado, Linux pendiente |
-| Último motor con aceptación global previa | `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4` |
+| Motor candidato actual | `acfc099a43d02d55bf44426b6c05a2f0330cf889`; Windows/Linux aprobados; TSan activo limitado a dos fases |
+| Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows del motor | [40178254139](https://github.com/Cacheirez/openfodder/actions/runs/40178254139), éxito |
-| CI Linux del motor | [40178254127](https://github.com/Cacheirez/openfodder/actions/runs/40178254127), éxito |
-| Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; aceptación global pendiente de Linux/TSan activo. Clásico por defecto |
+| CI Windows del motor | [40225314591](https://github.com/Cacheirez/openfodder/actions/runs/40225314591), éxito |
+| CI Linux del motor | [40225314495](https://github.com/Cacheirez/openfodder/actions/runs/40225314495), éxito |
+| Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Pendientes |
 
 | Evidencia conservada | Qué acredita | Límite |
 |---|---|---|
 | H3 original | 11.361 estados: 7.956 PC y 3.405 Amiga, conservados en Windows/Linux | 11 fases, no toda CD32 ni todos los estados posibles |
 | Replays habituales | 29/29 fases, cero omisiones; 6 CTests y controles de CI aprobados | Completar no demuestra por sí solo igualdad visual o interacción real |
-| ASan/UBSan, LSan, TSan del motor | 29/29 fases por ejecución Linux, sin hallazgos en la evidencia de b34373b0 | Rutas habituales sin ventana; no acredita el motor completo con el registro/publicador nuevo activo |
+| ASan/UBSan, LSan, TSan del motor | 29/29 fases habituales; publicación activa 11 fases ASan/UBSan/LSan y 2 fases TSan, sin hallazgos en acfc099a | TSan activo limitado a 301 estados; no cubre todas las escenas ni el nuevo scheduler 0/1/5 |
 | Frame de misión y pausa | 240 escenarios 0/1/5, 672 capturas retenidas; pausa aislada: 144 escenarios | Pruebas focalizadas con dobles, no motor completo interactivo |
 | Destinos | 97 casos aceptados y 627 rechazos sin escritura | Identidad de almacenamiento y geometría; no garantiza frescura temporal del frame |
 | Compositor de capas | 192 escenarios, 384 salidas retenidas; destinos y orden conservados | Reconstrucción de operaciones; no entidades ya interpolables |
-| Registro de productores | 24 escenarios / 48 presentaciones, planes 0/1/5; contraste de índices, fondo guardado y RGB | El adaptador preparado se compila, pero esa fixture no lo invoca; sí invoca el resuelto |
+| Registro de productores | 24 escenarios / 48 presentaciones, planes 0/1/5; contraste de índices, fondo guardado y RGB | La fixture actual invoca los adaptadores preparado y resuelto; recursos y SDL siguen siendo dobles |
 | Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | Cadencia actual, sin validación GPU ni 0/1/N del motor completo; publicación nueva descrita debajo |
 | Prueba manual de Miguel | Base clásica, demo y CD32 aceptadas; controles, audio, pausa, F11 y Alt+Tab correctos | No se atribuye al motor b34373b0 ni prueba las 72 fases CD32 |
 
@@ -228,7 +228,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 ## 6. Publicación opcional: implementación y puertas pendientes
 
-**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows está aprobado; Linux sigue pendiente. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). No avanzar a la programación 0/1/N del motor completo hasta cerrar esta validación. Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
+**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows y Linux están aprobados; TSan activo cubre dos fases explícitas. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). La validación acfc099a ya está cerrada en su alcance. La programación 0/1/5 de misión está implementada y su CI propia pendiente; consultar [H4.6](H4_6_PLANIFICACION_MISION.md). Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
 
 ### 6.1 Implementación mínima y contraste
 

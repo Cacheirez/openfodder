@@ -5,7 +5,7 @@
 using uint16=uint16_t;using int32=int32_t;using int64=int64_t;
 using Buffer=std::shared_ptr<std::vector<uint8>>;
 struct Map { size_t getWidth()const{return 8;} } map;
-struct Params {bool mDemoPlayback=false,mDemoRecord=false,mDisableVideo=false;};
+struct Params {bool mUnitTesting=true;bool mDemoPlayback=false,mDemoRecord=false,mDisableVideo=false;};
 struct Recording {int ticks=0;void Tick(){++ticks;}};
 struct Game {Recording mDemoRecorded;};
 struct Window {int frames=0;std::vector<std::vector<uint32>> pixels;void RenderAt(cSurface* s){pixels.push_back(*s->CaptureRGBLayer().pixels);}void RenderShrunk(cSurface*){}void FrameEnd(){++frames;}};

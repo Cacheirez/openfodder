@@ -3250,34 +3250,43 @@ void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink
         pSurface = mSurface;
     }
 
-    if (mPhase_In_Progress && !mPhase_Paused && !mPhase_ShowMapOverview &&
+    const bool missionPresentation = mPhase_In_Progress && !mPhase_Paused && !mPhase_ShowMapOverview &&
         !mInterruptCallback && pSurface == mSurface && pSkip && !pShrink &&
-        !pSurface->isLoadedImage())
+        !pSurface->isLoadedImage();
+    const int presentations = missionPresentation
+        ? cSurface::MissionPresentationRepeats(mStartParams->mUnitTesting) : 1;
+    // Omission skips conversion/upload/SDL presentation, never production or events.
+    // The oracle must still run at the late-palette point for a zero-frame test.
+    if (presentations == 0) pSurface->VerifyMissionAudit(mSurfaceFinal);
+    for (int presentation = 0; presentation < presentations; ++presentation)
     {
-        // Capture at the old conversion point, not at Interrupt_Redraw: the
-        // main cycle can still change sprites and the effective palette.
-        // All producers, Save/Restore and their logical effects stay in place.
-        if (!pSurface->PresentRecordedMission(mSurfaceFinal))
+        if (missionPresentation)
         {
-            pSurface->VerifyMissionAudit(mSurfaceFinal);
-            const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
-            const auto presented = openfodder::RasterizeMissionPresentation(scene);
-            pSurface->ApplyPresentation(presented);
+            // Capture at the old conversion point, not at Interrupt_Redraw: the
+            // main cycle can still change sprites and the effective palette.
+            // All producers, Save/Restore and their logical effects stay in place.
+            if (!pSurface->PresentRecordedMission(mSurfaceFinal))
+            {
+                pSurface->VerifyMissionAudit(mSurfaceFinal);
+                const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
+                const auto presented = openfodder::RasterizeMissionPresentation(scene);
+                pSurface->ApplyPresentation(presented);
+            }
         }
+        else
+        {
+            pSurface->draw(pSkip == true ? 16 : 0, pSkip == true ? 16 : 0);
+        }
+        if (pShrink)
+        {
+            mWindow->RenderShrunk(pSurface);
+        }
+        else
+        {
+            mWindow->RenderAt(pSurface);
+        }
+        mWindow->FrameEnd();
     }
-    else
-    {
-        pSurface->draw(pSkip == true ? 16 : 0, pSkip == true ? 16 : 0);
-    }
-    if (pShrink)
-    {
-        mWindow->RenderShrunk(pSurface);
-    }
-    else
-    {
-        mWindow->RenderAt(pSurface);
-    }
-    mWindow->FrameEnd();
 
     // if(pRestoreSurface)
     //     mSurfaceFinal->Restore();

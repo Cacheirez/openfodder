@@ -74,3 +74,9 @@ Los ZIP completos de Windows y Linux de `b34373b0` están conservados en `OPENFO
 ## Revisión en curso
 
 `acfc099a43d02d55bf44426b6c05a2f0330cf889`: [Linux 40225314495](https://github.com/Cacheirez/openfodder/actions/runs/40225314495), [Windows 40225314591](https://github.com/Cacheirez/openfodder/actions/runs/40225314591). Windows aprobado e inspeccionado: 6 CTests, 29 fases sin omisiones, H3 original de 11.361 estados. Linux sigue pendiente, observado aún en instalación de dependencias; no se hereda un aprobado global del intento anterior. [Evidencia](evidence/acfc099a-reports.json). Cambios frente a `1e1f93d3`: control de sanitizadores y alcance explícito de la prueba, sin cambios en el compositor ni en la publicación.
+
+## Cierre de la validación de acfc099a
+
+Linux 40225314495 y Windows 40225314591 aprobados. Archivo Linux comprobado por SHA-256 e integridad; todos los informes PASS y logs sin diagnósticos de sanitizador. Publicación normal: PC 34,761 s/8 fases y Amiga 31,707 s/3 fases; publicación ASan/UBSan/LSan: 398,944 s y 198,676 s, con 11.361 estados originales. TSan activo acotado: PC m1p1 30,817 s, Amiga m1p1 37,479 s, 301 estados originales. Los 29 replays headless TSan siguen aprobados. [Evidencia completa resumida](evidence/acfc099a-reports.json). Esta decisión sustituye el estado pendiente anterior, sin borrar el intento fallido 1e1f93d3.
+
+Se acepta el incremento opcional en este alcance y se continúa con [programación 0/1/5 de misión](H4_6_PLANIFICACION_MISION.md). No es cierre global de H4 ni validación de TSan sobre toda la campaña con vídeo.

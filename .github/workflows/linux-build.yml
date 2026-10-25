@@ -164,6 +164,15 @@ jobs:
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
         run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-publication
+      - name: H4.6 - real engine zero and five mission presentations with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          for count in 0 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-schedule-$count --presentations "$count"
+          done
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
@@ -233,6 +242,7 @@ jobs:
             reports/h3-linux-*/
             reports/h4-recording-*/
             reports/h4-publication*/
+            reports/h4-schedule-*/
             reports/h2-rnc/report.json
             reports/h2-engine-asan/
             reports/h2-leaksan/
