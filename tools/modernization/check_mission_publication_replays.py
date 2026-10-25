@@ -6,10 +6,18 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
 from verify_gameplay_determinism import sha_manifest
+
+
+def sanitizer_findings(log):
+    # UBSan can report an error and still return zero unless configured to halt.
+    # Never treat replay completion or equal gameplay hashes as a clean memory run.
+    pattern = r"runtime error:|(?:ERROR|WARNING|SUMMARY):\s*(?:AddressSanitizer|LeakSanitizer|ThreadSanitizer)|AddressSanitizer:DEADLYSIGNAL"
+    return [line for line in log.splitlines() if re.search(pattern, line, re.I)]
 
 
 def main():
@@ -45,6 +53,9 @@ def main():
                             '--timeout', str(args.timeout)], env=env, check=True)
             report = json.loads((out/slug/'report.json').read_text())
             log = (out/slug/'engine.log').read_text(errors='replace')
+            findings = sanitizer_findings(log)
+            if findings:
+                raise RuntimeError('Sanitizer findings in ' + campaign + ': ' + findings[0])
             if report['phases_passed'] != phases or report['skipped']:
                 raise RuntimeError('Incomplete campaign: ' + campaign)
             for marker in ('MISSION_LAYER_AUDIT: verified real producer interval',
