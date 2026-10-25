@@ -94,7 +94,11 @@ protected:
 	
 
 public:
-    // Diagnostic shadow recording only; the classic path remains authoritative.
+    // Optional retained publication always keeps the classic producer oracle.
+    static bool MissionPublicationEnabled() {
+        const char* enabled = std::getenv("OPENFODDER_PRESENT_MISSION_LAYERS");
+        return enabled && std::string(enabled) == "1";
+    }
     bool MissionAuditActive() const { return bool(std::atomic_load(&mMissionAudit)); }
     void RecordMissionLayer(openfodder::MissionLayer layer) {
         const auto recording = std::atomic_load(&mMissionAudit);
@@ -132,7 +136,8 @@ public:
         if (other && other != this)
             std::atomic_store(&other->mMissionAudit, std::shared_ptr<MissionAuditRecording>{});
         const char* enabled = std::getenv("OPENFODDER_AUDIT_MISSION_LAYERS");
-        if (!eligible || !enabled || std::string(enabled) != "1" || isLoadedImage()) return;
+        if (!eligible || isLoadedImage() ||
+            (!MissionPublicationEnabled() && (!enabled || std::string(enabled) != "1"))) return;
         const auto recording = std::make_shared<MissionAuditRecording>();
         auto attach = [&](cSurface* surface) {
             if (!surface || surface->isLoadedImage()) return;
@@ -146,7 +151,8 @@ public:
         if (other && other != this && !other->isLoadedImage())
             std::atomic_store(&other->mMissionAudit, recording);
     }
-    openfodder::MissionLayerSequence VerifyMissionAudit(const cSurface* other) const {
+    openfodder::MissionLayerSequence VerifyMissionAudit(const cSurface* other,
+        openfodder::PresentationTarget* publication = nullptr) const {
         const auto recording = std::atomic_load(&mMissionAudit);
         if (!recording) return {};
         openfodder::MissionLayerSequence scene;
@@ -175,15 +181,52 @@ public:
                             surface->mSurfaceBufferSaved))
                 throw std::runtime_error("mission audit: unrecorded or reordered indexed write");
             const auto expected = openfodder::RasterizePresentationSurface(surface->CapturePresentation());
-            const auto replay = openfodder::RasterizePresentationSurface(composed.surfaces[i]);
+            auto replay = openfodder::RasterizePresentationSurface(composed.surfaces[i]);
             if (expected.destination != replay.destination || expected.width != replay.width ||
                 expected.height != replay.height || expected.stride != replay.stride || expected.pixels != replay.pixels)
                 throw std::runtime_error("mission audit: composed frame differs from classic frame");
+            // Publish precisely the pixels just checked, not a new classic capture.
+            if (publication && surface == this) *publication = std::move(replay);
         }
         static std::atomic<bool> announced{false};
         if (!announced.exchange(true))
             std::fprintf(stderr, "MISSION_LAYER_AUDIT: verified real producer interval\n");
         return scene;
+    }
+    bool PresentRecordedMission(cSurface* other) {
+        if (!MissionPublicationEnabled()) return false;
+        const auto recording = std::atomic_load(&mMissionAudit);
+        bool compatible = bool(recording);
+        if (recording) {
+            std::lock_guard<std::mutex> lock(recording->mutex);
+            for (const auto& source : recording->scene.destinations) {
+                const auto& initial = source.initial;
+                const cSurface* surface = initial.destination == mPresentationDestination ? this : other;
+                if (!surface || surface->isLoadedImage() || !initial.backing.pixels ||
+                    !surface->PresentationDestinationMatches(initial.destination,
+                        initial.backing.width, initial.backing.height, initial.backing.stride,
+                        initial.backing.pixels->size()) ||
+                    surface->mWidth != initial.indexed.width ||
+                    surface->mHeight != initial.indexed.height)
+                    compatible = false;
+            }
+        }
+        if (!compatible) {
+            // Discard both aliases before the classic fallback, including same-size replacement.
+            BeginMissionAudit(other, false);
+            static std::atomic<bool> announced{false};
+            if (!announced.exchange(true))
+                std::fprintf(stderr, "MISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\n");
+            return false;
+        }
+        openfodder::PresentationTarget target;
+        VerifyMissionAudit(other, &target); // Divergences must propagate; never hide them in fallback.
+        if (!ApplyPresentation(target))
+            throw std::runtime_error("mission publication: destination changed after verification");
+        static std::atomic<bool> announced{false};
+        if (!announced.exchange(true))
+            std::fprintf(stderr, "MISSION_LAYER_PRESENT: published verified orders\n");
+        return true;
     }
     openfodder::PresentationSurface CapturePresentation() const;
     bool isLoadedImage() const { return mIsLoadedImage; }

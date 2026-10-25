@@ -16,6 +16,8 @@
 
 - Incremento actual: [registro de productores reales y contraste](H4_1_REGISTRO_PRODUCTORES.md), modo diagnóstico optativo. Publicación clásica conservada; 24 escenarios de integración 0/1/5 PASS local. CI Windows/Linux aprobada; replay con registro y vídeo software: 8 fases PC y 3 Amiga, cero omisiones.
 
+- Incremento en validación: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste; pendiente de resultados CI propios. No confundir con el motor anterior ya validado.
+
 ## Orden de lectura y mapa de conocimiento
 
 | Necesidad | Documento o fuente |

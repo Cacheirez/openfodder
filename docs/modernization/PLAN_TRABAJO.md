@@ -1,8 +1,8 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.20 · Revisión: 25 de octubre de 2026.**
+**Versión 2.21 · Revisión: 25 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea siguiente: H4.3, presentación opcional desde órdenes registradas, conservando el contraste clásico. Esta revisión actualiza documentación; no implementa esa ruta.**
+**Tarea activa: H4.3, publicación opcional implementada con contraste; validación CI del incremento pendiente. Después: programación 0/1/N del motor completo. [Informe](H4_3_PUBLICACION_ORDENES.md).**
 
 ## 1. Dictamen de la revisión
 
@@ -141,7 +141,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 - [ ] **H4.1 — Asistente:** completar la separación/preservación de efectos del dibujo en sus coordinadoras lógicas. **Hecho:** extracción de núcleos, recursos propios, pausa y frame compuesto, productores registrados y contraste diagnóstico. **Falta:** demostrar independencia del motor completo y cubrir coordinaciones/transiciones restantes. No repetir el inventario inicial como si no existiera.
 - [ ] **H4.2 — Asistente:** estados coherentes de solo lectura para cámara, sprites, terreno, paletas e interfaz. **Hecho:** capturas propias y destinos validados. **Falta:** contrato de frame elegible y fresco, vida útil acotada, coherencia temporal y datos semánticos para H5. La identidad del almacenamiento no es una versión de contenido ni una fecha del frame.
-- [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Siguiente:** publicar opcionalmente desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
+- [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, en validación:** publicar opcionalmente desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
 - [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
 - [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
 - [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas 0/1/5 y contraste real PC/Amiga a cadencia actual. **Falta:** motor completo con nueva publicación, mutación/sustitución/liberación de recursos, misión↔pausa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Ampliar la prueba del productor preparado además del resuelto y verificar que una omisión deliberada sigue siendo detectada.

@@ -34,5 +34,6 @@ def main():
  with tempfile.TemporaryDirectory(prefix='mission-recording-') as td:
   src=Path(td)/'test.cpp';exe=Path(td)/'test';src.write_text(code)
   subprocess.run(['g++','-std=c++14','-O1','-g','-fsanitize=address,undefined','-fno-sanitize-recover=all','-pthread','-I',str(root/'Source'),str(src),'-o',str(exe)],check=True)
-  subprocess.run([str(exe)],check=True,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1','ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
+  for publication in ('0','1'):
+   subprocess.run([str(exe)],check=True,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1' if publication=='0' else '0','OPENFODDER_PRESENT_MISSION_LAYERS':publication,'ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
 if __name__=='__main__':main()

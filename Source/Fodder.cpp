@@ -3257,10 +3257,13 @@ void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink
         // Capture at the old conversion point, not at Interrupt_Redraw: the
         // main cycle can still change sprites and the effective palette.
         // All producers, Save/Restore and their logical effects stay in place.
-        pSurface->VerifyMissionAudit(mSurfaceFinal);
-        const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
-        const auto presented = openfodder::RasterizeMissionPresentation(scene);
-        pSurface->ApplyPresentation(presented);
+        if (!pSurface->PresentRecordedMission(mSurfaceFinal))
+        {
+            pSurface->VerifyMissionAudit(mSurfaceFinal);
+            const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};
+            const auto presented = openfodder::RasterizeMissionPresentation(scene);
+            pSurface->ApplyPresentation(presented);
+        }
     }
     else
     {

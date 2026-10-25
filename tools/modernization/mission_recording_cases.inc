@@ -1,5 +1,6 @@
 int main(){
  size_t count=0,frames=0;
+ const bool publishing=cSurface::MissionPublicationEnabled();
  for(bool amiga:{false,true})for(int padding:{0,3})for(int n:{0,1,5})for(int seed:{1,7}){
   pad=padding;cSurface a(80,64),b(80,64);fill(a,seed,false);fill(b,seed+5,false);
   Params params;Window window;cGraphics_PC pc;cGraphics_Amiga ag;
@@ -16,6 +17,11 @@ int main(){
   std::vector<uint16> sidebar(48*64/2,0x4949);engine.mSidebar_Screen_Buffer=sidebar.data();
   engine.Interrupt_Redraw(); // actual coordinator, early cursor, terrain/Save, sprite, HUD, cursor
   assert(a.MissionAuditActive()&&b.MissionAuditActive());
+  // Exercise the actual prepared hook as well as the resolved producer.
+  openfodder::SpriteDrawState prepared;prepared.format=graphics->layout.format;
+  prepared.source=engine.sprite.data();prepared.x=32;prepared.y=32;prepared.rows=2;
+  prepared.columns=amiga?1:4;prepared.palette=0x30;
+  graphics->Video_Draw_8_Prepared(prepared,&a,nullptr);
   engine.Sprites_Draw(&b); // late main-cycle sprites must stay in the secondary destination
   a.paletteNew_SetDimmed(32);a.palette_FadeTowardNew();
   auto scene=a.VerifyMissionAudit(&b);assert(scene.destinations.size()==2);
@@ -23,7 +29,7 @@ int main(){
   assert(scene.layers.back().destination==b.mPresentationDestination);
   auto expected=openfodder::RasterizePresentationSurface(a.CapturePresentation());
   const auto logicalBefore=logical(a);const int effects=engine.effects,requests=engine.requests;
-  for(int i=0;i<n;++i){engine.Video_SurfaceRender();++frames;}
+  for(int i=0;i<n;++i){engine.Video_SurfaceRender();++frames;assert(window.pixels.back()==expected.pixels);}
   assert(logical(a)==logicalBefore&&engine.effects==effects&&engine.requests==requests);
   std::fill(engine.sprite.begin(),engine.sprite.end(),0);engine.sprite.clear();engine.sprite.shrink_to_fit();
   engine.mTile_BaseBlk.reset();engine.mTile_SubBlk.reset();ag.mBlkData.reset();sidebar.clear();
@@ -31,7 +37,7 @@ int main(){
   a.Restore();a.VerifyMissionAudit(&b); // real Restore registered, including zero presentations
   // Deliberate untracked write must be detected, not patched from a pixel diff.
   a.GetSurfaceBuffer()[40*80+70]^=1;bool rejected=false;
-  try{a.VerifyMissionAudit(&b);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+  try{if(publishing)a.PresentRecordedMission(&b);else a.VerifyMissionAudit(&b);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
   a.GetSurfaceBuffer()[40*80+70]^=1;
   auto prior=a.mMissionAudit;
   a.BeginMissionAudit(&b,true);assert(a.mMissionAudit!=prior&&a.mMissionAudit->scene.layers.empty());
@@ -42,8 +48,18 @@ int main(){
   // Even same-sized replacement has a new identity and must not satisfy the old interval.
   cSurface replacement(80,64);fill(replacement,99,false);rejected=false;
   try{a.VerifyMissionAudit(&replacement);}catch(const std::runtime_error&){rejected=true;}assert(rejected);
+  if(publishing){
+   auto before=logical(a);assert(!a.PresentRecordedMission(&replacement));
+   assert(!a.MissionAuditActive()&&!replacement.MissionAuditActive()&&logical(a)==before);
+   // No capture: the real coordinator publishes classic and does not create an interval.
+   engine.Video_SurfaceRender();assert(!a.MissionAuditActive());
+   assert(window.pixels.back()==openfodder::RasterizePresentationSurface(a.CapturePresentation()).pixels);
+   // Restart after a transition, then publish without an intervening producer mutation.
+   a.BeginMissionAudit(&b,true);assert(a.PresentRecordedMission(&b));
+   assert(logical(a)==before);
+  }
   ++count;
  }
  std::cout<<"PASS: "<<count<<" actual PC/Amiga producer recording schedules, "<<frames
-          <<" classic presentations; 0/1/5, two destinations, early/late cursor, late sprites/palette, resource release, Clear/Save/Restore, reset and missing-write detection\n";
+          <<(publishing?" recorded presentations;":" classic presentations;")<<" 0/1/5, two destinations, early/late cursor, late sprites/palette, resource release, Clear/Save/Restore, reset and missing-write detection\n";
 }

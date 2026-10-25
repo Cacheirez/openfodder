@@ -19,7 +19,11 @@ HOOKS = ['    target->RecordMissionSidebar(draw);\n',
  '    prepared.isCursor = true;\n',
  '    mSurface->BeginMissionAudit(mSurfaceFinal, false);\n']
 
+PUBLICATION = '        if (!pSurface->PresentRecordedMission(mSurfaceFinal))\n        {\n            pSurface->VerifyMissionAudit(mSurfaceFinal);\n            const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};\n            const auto presented = openfodder::RasterizeMissionPresentation(scene);\n            pSurface->ApplyPresentation(presented);\n        }'
+CLASSIC_PUBLICATION = '        const openfodder::MissionPresentation scene{pSurface->CapturePresentation()};\n        const auto presented = openfodder::RasterizeMissionPresentation(scene);\n        pSurface->ApplyPresentation(presented);'
+
 def without_audit(source):
+    source = source.replace(PUBLICATION, CLASSIC_PUBLICATION)
     for hook in HOOKS:
         source = source.replace(hook, "")
     return source

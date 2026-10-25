@@ -158,6 +158,12 @@ jobs:
               report = json.loads(Path(f'reports/h4-recording-{campaign}/report.json').read_text())
               assert report['phases_passed'] == count and report['skipped'] == 0 and report['video_enabled'], campaign
           PY
+      - name: H4.3 - recorded publication and original H3 states
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-publication
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
@@ -193,6 +199,14 @@ jobs:
           SDL_AUDIODRIVER: dummy
         run: |
           python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-leaksan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H4.3 - active publication with ASan UBSan and LSan
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-publication-asan
       - name: H2.4 - ThreadSanitizer diagnostic on all public demos
         env:
           SDL_VIDEODRIVER: dummy
@@ -202,6 +216,13 @@ jobs:
           cmake -S . -B build-h2-tsan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread'
           cmake --build build-h2-tsan --parallel 2
           python3 tools/modernization/audit_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h2-threadsan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H4.3 - active publication with ThreadSanitizer
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-publication-tsan
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -210,6 +231,7 @@ jobs:
           path: |
             reports/h3-linux-*/
             reports/h4-recording-*/
+            reports/h4-publication*/
             reports/h2-rnc/report.json
             reports/h2-engine-asan/
             reports/h2-leaksan/
