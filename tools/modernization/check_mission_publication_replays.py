@@ -25,6 +25,7 @@ def main():
     p.add_argument('--exe', type=Path, required=True)
     p.add_argument('--data', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
     root = Path(__file__).resolve().parents[2]
@@ -32,18 +33,22 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
-                'publication': True, 'contrast': True, 'cadence': 'classic'}
+                'publication': True, 'contrast': True, 'cadence': 'classic',
+                'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
                'fixture_count': count, 'campaigns': []}
     traces = []
     try:
         for slug, campaign, phases in [('pc', 'PC Format', 8), ('amiga', 'Amiga The One', 3)]:
+            if args.first_phase:
+                phases = 1
             trace = out / (slug + '-traces')
             trace.mkdir()
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
+                       OPENFODDER_TEST_FIRST_PHASE='1' if args.first_phase else '0',
                        OPENFODDER_TRACE_DIR=str(trace),
                        OPENFODDER_TRACE_REPLAY_SHA256=fixture_hash,
                        OPENFODDER_TRACE_SETTINGS_SHA256=settings_hash)
@@ -65,10 +70,25 @@ def main():
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
+        baseline = root/'tools/modernization/reference-gameplay-v1.json'
+        expected_states = 11361
+        if args.first_phase:
+            # Select immutable existing hashes; never generate new expected states.
+            reference = json.loads(baseline.read_text())
+            names = {'PC_Format_m1_p1.jsonl', 'Amiga_The_One_m1_p1.jsonl'}
+            reference['phases'] = [p for p in reference['phases'] if p['file'] in names]
+            if {p['file'] for p in reference['phases']} != names:
+                raise RuntimeError('Missing first-phase reference')
+            reference['total_phases'] = 2
+            expected_states = sum(p['samples'] for p in reference['phases'])
+            reference['total_samples'] = expected_states
+            results['baseline_source_sha256'] = hashlib.sha256(baseline.read_bytes()).hexdigest()
+            baseline = out/'baseline-selection.json'
+            baseline.write_text(json.dumps(reference, indent=2)+'\n')
         subprocess.run([sys.executable, str(root/'tools/modernization/check_gameplay_baseline.py'),
-                        '--baseline', str(root/'tools/modernization/reference-gameplay-v1.json'),
+                        '--baseline', str(baseline),
                         '--traces', *traces], check=True)
-        results.update(verdict='PASS', canonical_states=11361)
+        results.update(verdict='PASS', canonical_states=expected_states)
     except (subprocess.CalledProcessError, RuntimeError, OSError, ValueError) as exc:
         results['failure'] = str(exc)
     (out/'report.json').write_text(json.dumps(results, indent=2)+'\n')

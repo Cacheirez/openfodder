@@ -22,6 +22,7 @@
 
 #include "stdafx.hpp"
 #include <chrono>
+#include <cstdlib>
 
 cUnitTesting::cUnitTesting() {
 
@@ -94,6 +95,10 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
 		g_Fodder->SetInterruptSleepDelta(0);
 	}
 
+    // Explicit bounded diagnostic scope; normal test suites still run every phase.
+    const char* firstPhase = std::getenv("OPENFODDER_TEST_FIRST_PHASE");
+    const bool firstPhaseOnly = firstPhase && std::string(firstPhase) == "1" &&
+        !g_Fodder->mStartParams->mDemoRecord;
     while (g_Fodder->mGame_Data.mMission_Current) {
         EngineSetup();
         setDemoName();
@@ -191,6 +196,10 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
 
         g_Fodder->mGame_Data = g_Fodder->mGame_Data_Backup;
         g_Fodder->mGame_Data.Phase_Next();
+        if (firstPhaseOnly) {
+            g_Debugger->Notice("DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed");
+            break;
+        }
     }
 
     return true;
