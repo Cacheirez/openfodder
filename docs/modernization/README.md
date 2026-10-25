@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md); los informes fechados son evidencia histórica y no sustituyen su estado actual.
+Última revisión: 25-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.20 consolidada; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La siguiente entrega es publicación opcional desde órdenes con contraste, seguida de validación del motor 0/1/N y transiciones; los informes fechados son evidencia histórica y no sustituyen su estado actual.
 
 ## Estado y referencias de recuperación
 

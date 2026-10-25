@@ -1,92 +1,86 @@
-# Plan de trabajo vivo — OpenFodder modernizado para Windows
+# Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión del plan:** 2.19 · **Actualización:** 25 de octubre de 2026, Europe/Madrid.
-**Responsable técnico:** asistente, con ejecución y verificación en cada sesión del chat.  
-**Responsable de validación de usuario:** Miguel.  
-**Estado del incremento actual:** registro conectado a productores reales en modo diagnóstico; comparación con superficies clásicas y pruebas 0/1/5 PASS local. Compilación/replay con vídeo CI aprobados en `b34373b0`; [informe](H4_1_REGISTRO_PRODUCTORES.md).
+**Versión 2.20 · Revisión: 25 de octubre de 2026.**
+Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
+**Tarea siguiente: H4.3, presentación opcional desde órdenes registradas, conservando el contraste clásico. Esta revisión actualiza documentación; no implementa esa ruta.**
 
-**Último estado verificado del motor:** H2.6 aceptado y base clásica intacta. En `b34373b0`, H4 conecta el registro diagnóstico a productores reales y contrasta índices, fondo guardado y RGB con el frame clásico. Replay con vídeo software: 8 fases PC Format y 3 Amiga The One, sin omisiones. CI Windows/Linux, 6 CTests, H3 original 11.361 estados y 29/29 replays habituales PASS; sanitizadores sin hallazgos. Se mantienen las pruebas 0/1/5 de pausa, misión y capas. [Alcance y resultados](H4_1_REGISTRO_PRODUCTORES.md). La publicación jugable sigue siendo clásica; GPU, publicación desde órdenes y replay completo 0/1/N siguen pendientes. H4 permanece abierto.
+## 1. Dictamen de la revisión
 
-**Entrada para nuevos equipos:** [guía de relevo](README.md), [matriz PC/Amiga](DIFERENCIAS_PC_AMIGA.md) e [informes conservados en Git](evidence/b34373b0-reports.json).
+El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto; no estamos todavía en la fase de gráficos nuevos.**
 
-## 1. Objetivo y alcance
+Cambios respecto al plan anterior:
 
-Modernizar Cannon Fodder para Windows conservando su jugabilidad: controles, reglas, tiempos, dificultad, colisiones, comportamiento de enemigos y objetivos. Renovaremos personajes, vehículos, edificios, terreno, elementos, efectos e interfaz, y haremos más suave el desplazamiento de cámara y entidades.
+- Consolidar el estado vigente y trasladar las notas de sesiones anteriores al [histórico v2.19](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md). Se conservan todos los IDs H0–H10, los fallos históricos y sus resoluciones.
+- Reconocer como hechos el frame compuesto de misión, la transición a pausa en pruebas focalizadas, las capas ordenadas y el registro de productores. No repetir esas extracciones; ampliar su integración y cobertura.
+- Concretar H4.3: activación opcional, frame válido, política de retorno al clásico, detección de divergencias y destinos independientes.
+- Ampliar la aceptación de H4.6 con 0/1/N en el motor completo y sanitizadores con la nueva ruta activa. Los replays actuales con vídeo no prueban todavía esa independencia.
+- Adelantar la medición de H5.1 a H4 y explicitar la información semántica que necesitará la interpolación: identidad de entidad, generación, posición, cámara y tiempos coherentes.
+- Dar por confirmada CD32 como campaña principal en H8.1. Su cobertura automática completa sigue pendiente.
+- Añadir tareas transversales de conservación de evidencias y reproducción. Los informes compactos están en Git; los ZIP completos de Actions caducan.
 
-La base será OpenFodder, C++ y SDL3. La primera meta será una misión de muestra completa y jugable con presentación moderna; después extenderemos ese resultado al alcance acordado del primer Cannon Fodder. La modernización completa de Cannon Fodder 2 queda fuera de la primera versión, aunque no debemos romper deliberadamente su funcionamiento existente.
+**No se necesita ahora:** reescribir el motor, actualizar SDL por iniciativa propia, crear otro hilo de renderizado, producir arte en masa, ampliar el campo de visión ni volver a aceptar H2.6. La escala gráfica 4× es una hipótesis que evaluaremos, no un requisito cerrado. Tampoco se exige terminar todas las pantallas del juego antes de probar un piloto acotado, siempre que las demás conserven su ruta clásica y las transiciones estén verificadas.
 
-**Este documento es el seguimiento operativo.** El análisis técnico se conserva en [PLAN_MODERNIZACION_ES.md](PLAN_MODERNIZACION_ES.md), los resultados iniciales en [RESULTADOS.md](RESULTADOS.md) y la prueba de usuario en [PRIMER_ARRANQUE_WINDOWS.md](PRIMER_ARRANQUE_WINDOWS.md).
+## 2. Objetivo, alcance y reglas
 
-## 2. Panel de situación
+Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y movimiento suaves, presentación renovada de personajes, vehículos, edificios, terreno, efectos e interfaz. Mantener reglas, controles, dificultad, colisiones, tiempos, RNG y todas las correcciones ya incorporadas. Primero una misión completa de muestra; después el alcance acordado de Cannon Fodder 1, con CD32 como campaña principal. Cannon Fodder 2 no se moderniza en esta primera entrega, pero se conserva su compatibilidad existente.
 
-| Campo | Estado comprobado el 25 de octubre de 2026 |
+1. Mantener el modo clásico y la base recuperable; no mover ni reescribir su rama.
+2. No aumentar la frecuencia lógica para conseguir más imágenes por segundo. Preservar visibilidad lógica y `mWasDrawn`, orden de actualizaciones y efectos de coordinadoras.
+3. Conservar inicialmente el campo visible y las coordenadas lógicas. Los recursos nuevos no alteran colisiones, armas ni límites de entidades.
+4. Presentar desde datos coherentes y propios, sin consumir RNG ni ejecutar otra vez efectos del juego. Los efectos cosméticos tendrán presupuesto y aleatoriedad separados.
+5. Mantener las referencias H3 originales; una divergencia no se resuelve regenerando sus huellas para obtener verde.
+6. Conservar los datos comerciales, partidas y credenciales fuera de Git y de los paquetes públicos.
+7. Distinguir compilación, replays, igualdad lógica, igualdad de imagen, sanitizadores y prueba manual. Ninguna de ellas sustituye a todas las demás.
+8. **PR #1 abierto, en borrador y sin fusionar.** La aceptación futura de una entrega no autoriza por sí sola a fusionarlo.
+
+## 3. Estado comprobado y alcance de la evidencia
+
+| Elemento | Estado a esta revisión |
 |---|---|
-| Repositorio | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder) |
-| Rama de trabajo | `modernization/windows-foundation` |
-| Propuesta de cambios | [PR #1, borrador sin fusionar](https://github.com/Cacheirez/openfodder/pull/1) |
-| Revisión de código de la propuesta | `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4`: registro real diagnóstico y contraste del frame |
-| Compilación Windows observada | [40178254139](https://github.com/Cacheirez/openfodder/actions/runs/40178254139): aprobada |
-| Pasos Windows ya comprobados | Compilación, 6 CTests, contrato de visibilidad, H3 PC/Amiga y baseline original PASS |
-| Ejecutable Windows y 29 replays | Paquete demos publicado por CI; 29/29 fases, cero omisiones, 24,344 s |
-| Referencia local Linux | `049439d`: H3 original 11.361 estados, 29/29 fases sin omisiones |
-| Pruebas focalizadas | 24 escenarios de registro real/48 presentaciones; 97 destinos aceptados y 627 rechazados; 240 escenarios misión/pausa, 672 capturas retenidas; 144 escenarios de pausa 0/1/5; 1.536 raster nuevos, 1.964 escenas, 1.024 tiles, 72 constructores; 2.944 de capas; 27.648 de paleta/superficie; 2.304 cursor y 288 HUD; 7.680 casos de terreno; 10.944 casos de resolución/propiedad; 29.160 de rasterización; 306.432 de recorte; 184.320 transiciones del temporizador |
-| Memoria | [Linux 40178254127](https://github.com/Cacheirez/openfodder/actions/runs/40178254127): aprobada |
-| Prueba manual Windows | Confirmada por Miguel: demo y campaña CD32 jugables; controles, sonido, pausa, F11 y Alt+Tab correctos |
-| Gráficos nuevos / scroll nuevo | Pendientes; ningún cambio en la simulación clásica |
-| Tarea activa | **H4.1: registro conectado y contrastado; siguiente: publicación opcional desde órdenes y 0/1/N del motor completo**. [Implementación y límites](H4_1_REGISTRO_PRODUCTORES.md). |
-| Siguiente intervención de Miguel | Conservar la carpeta probada; sin nueva instalación necesaria ahora |
+| Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
+| PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
+| HEAD consultado antes de esta revisión documental | `046a8a4f07b34f0c373152226ca942c2dfe717d4` |
+| Último motor validado | `b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4` |
+| Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
+| CI Windows del motor | [40178254139](https://github.com/Cacheirez/openfodder/actions/runs/40178254139), éxito |
+| CI Linux del motor | [40178254127](https://github.com/Cacheirez/openfodder/actions/runs/40178254127), éxito |
+| Nueva publicación / interpolación / arte | Pendientes; la publicación jugable actual sigue siendo clásica |
 
-El estado de Actions es una observación, no un seguimiento permanente. Antes de aceptar un cambio del motor, comprobar las ejecuciones de su revisión de código vigente. Los commits exclusivos de documentación no sustituyen ni invalidan automáticamente la prueba de la revisión de código precedente.
+| Evidencia conservada | Qué acredita | Límite |
+|---|---|---|
+| H3 original | 11.361 estados: 7.956 PC y 3.405 Amiga, conservados en Windows/Linux | 11 fases, no toda CD32 ni todos los estados posibles |
+| Replays habituales | 29/29 fases, cero omisiones; 6 CTests y controles de CI aprobados | Completar no demuestra por sí solo igualdad visual o interacción real |
+| ASan/UBSan, LSan, TSan del motor | 29/29 fases por ejecución Linux, sin hallazgos en la evidencia de b34373b0 | Rutas habituales sin ventana; no acredita el motor completo con el registro/publicador nuevo activo |
+| Frame de misión y pausa | 240 escenarios 0/1/5, 672 capturas retenidas; pausa aislada: 144 escenarios | Pruebas focalizadas con dobles, no motor completo interactivo |
+| Destinos | 97 casos aceptados y 627 rechazos sin escritura | Identidad de almacenamiento y geometría; no garantiza frescura temporal del frame |
+| Compositor de capas | 192 escenarios, 384 salidas retenidas; destinos y orden conservados | Reconstrucción de operaciones; no entidades ya interpolables |
+| Registro de productores | 24 escenarios / 48 presentaciones, planes 0/1/5; contraste de índices, fondo guardado y RGB | El adaptador preparado se compila, pero esa fixture no lo invoca; sí invoca el resuelto |
+| Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | Cadencia actual, sin validación GPU ni publicación desde órdenes ni 0/1/N del motor completo |
+| Prueba manual de Miguel | Base clásica, demo y CD32 aceptadas; controles, audio, pausa, F11 y Alt+Tab correctos | No se atribuye al motor b34373b0 ni prueba las 72 fases CD32 |
 
-## 3. Cómo seguiremos el plan en el chat
+Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de misión](H4_1_FRAME_MISION.md), [destinos](H4_1_DESTINOS_PRESENTACION.md), [capas](H4_1_CAPAS_MISION.md), [aceptación clásica](H2_6_ACEPTACION_BASE_CLASICA.md) e [informes compactos de b34373b0](evidence/b34373b0-reports.json). Para los núcleos previos —recorte, raster, recursos, terreno, HUD, cursor, paleta y escenas— consultar el [índice técnico](README.md).
 
-- `[x]` significa completado con evidencia disponible. `[ ]` significa pendiente, aunque haya trabajo iniciado.
-- Cada tarea tiene un ID estable, como **H3.2**. Usaremos esos IDs al conversar y en los cambios del proyecto.
-- Al empezar una sesión leeremos la última versión de este archivo en GitHub, el estado de la rama/PR y las pruebas relevantes. No dependeremos solo de la memoria del chat.
-- Trabajaremos en una tarea activa o en un lote pequeño que tenga sentido verificar junto.
-- Al terminar actualizaremos este mismo archivo: casillas, panel de situación, evidencia, bloqueos, decisiones y siguiente acción. No crearemos un plan distinto por sesión.
-- Si una prueba falla, el hito sigue abierto. Registraremos el primer fallo y lo resolveremos o delimitaremos explícitamente antes de avanzar.
-- Si falta una decisión artística, puedo seguir con las tareas técnicas independientes. Pediré decisiones concretas, con ejemplos, cuando afecten al resultado.
-- La documentación se actualizará separada del código cuando sea posible, evitando reconstrucciones innecesarias por simples cambios de estado.
-- Los trabajos se realizan durante las sesiones; este plan no crea avisos, tareas programadas ni actividad autónoma entre mensajes.
+## 4. Ruta y dependencias
 
-**Mensaje suficiente para retomar:** «Seguimos con el plan de OpenFodder; revisa la tarea activa y continúa». Si has hecho una prueba, añade la versión y lo que observaste.
+| Hito | Estado real | Dependencia / próxima entrega |
+|---|---|---|
+| H0 · Auditoría y preparación | Completado en alcance inicial | Conservar referencias |
+| H1 · Windows comprobable | Completado | No repetir aceptación sin un cambio que lo justifique |
+| H2 · Estabilización | Base aceptada; H2.1 histórico delimitado | Mantener regresiones y exclusiones |
+| H3 · Misma jugabilidad | H3.1–H3.6 completadas en demos | Barrera permanente para H4–H10 |
+| H4 · Presentación separada | Avanzado, parcial | Publicación opcional → motor 0/1/N y transiciones → estados aptos para interpolación |
+| H5 · Cámara y movimiento suaves | Pendiente; adelantar medición H5.1 | Piloto H4 validado con gráficos originales |
+| H6 · Arte y recursos | Pendiente | Conceptos independientes; integración depende del contrato de presentación |
+| H7 · Primera misión moderna | Pendiente | H5 y muestra H6 aprobados, fase inventariada |
+| H8 · Cobertura de CF1/CD32 | Edición confirmada, producción pendiente | H7 y matriz de recursos/escenarios |
+| H9 · Pulido Windows | Pendiente | Regresión continua; cierre tras H8 |
+| H10 · Entrega | Pendiente | H9 y aceptación explícita del alcance/publicación |
 
-**Formato de cierre de cada sesión:** tarea trabajada → cambio realizado → pruebas y resultados → límite o bloqueo → siguiente paso. Siempre en español y explicando los conceptos nuevos antes de utilizarlos.
+Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las puertas H4, aunque otras pantallas sigan clásicas. Esto **no cierra H4 global**. Los conceptos H6 pueden prepararse antes; no conviene producir cientos de recursos hasta probar una muestra dentro del juego. Revisaremos esfuerzo y calendario tras el piloto H4, H5 y H7, sin inventar porcentajes de avance.
 
-## 4. Reglas que protegerán el proyecto
+## 5. Tareas completas, parciales y pendientes
 
-1. Conservar una referencia clásica reproducible y una forma de desactivar las mejoras visuales.
-2. No aumentar la velocidad de la simulación para conseguir más imágenes por segundo.
-3. No ampliar inicialmente el mundo visible: la visibilidad y el campo de visión pueden influir en comportamiento y dificultad.
-4. No alterar colisiones, alcance de armas, velocidad de soldados, temporizadores ni límites de entidades como consecuencia de un recurso gráfico nuevo.
-5. Hacer el renderizado adicional de solo lectura. Auditar antes los efectos del dibujo clásico, incluido `mWasDrawn`.
-6. Separar la aleatoriedad y el presupuesto de los efectos cosméticos de los del juego.
-7. Introducir cambios pequeños y reversibles, con evidencia suficiente. No fusionar automáticamente un borrador por tener un indicador verde.
-8. Mantener datos comerciales, partidas y credenciales fuera del repositorio y de los paquetes públicos. Las primeras pruebas usan las demos suministradas por el proyecto.
-9. Distinguir «compila», «completa replays», «pasa el detector de memoria» y «se juega correctamente en Windows». Son validaciones diferentes.
-
-## 5. Ruta de hitos
-
-| Hito | Entrega | Depende de | Estado |
-|---|---|---|---|
-| H0 | Auditoría, referencia y repositorio | — | Completado para el alcance inicial |
-| H1 | Primera compilación Windows y arranque verificado | H0 | Completado |
-| H2 | Base estabilizada y defectos conocidos delimitados | H1; investigación local puede avanzar antes | Base aceptada en H2.6; H2.1 histórico delimitado y cobertura limitada |
-| H3 | Comparación reproducible de jugabilidad | H2 | H3.1–H3.6 completadas en el alcance demo, con pruebas de integración pendientes de H4 |
-| H4 | Dibujo separado de la simulación | H3 | H4.1 iniciado: inventario; extracción e independencia pendientes |
-| H5 | Cámara y movimiento suaves con gráficos originales | H4 | Pendiente |
-| H6 | Dirección artística y recursos de muestra | H1; diseño independiente de H2–H5 | Pendiente |
-| H7 | Misión completa con gráficos modernos | H5 y H6 | Pendiente |
-| H8 | Cobertura gráfica del alcance de Cannon Fodder 1 | H7 y datos necesarios disponibles | Pendiente |
-| H9 | Pulido, regresión y rendimiento Windows | H8; mediciones desde H5 | Pendiente |
-| H10 | Versión candidata y paquete final | H9 | Pendiente |
-
-No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimación se revisará al cerrar H2, H5 y H7. No se considerará acabado el proyecto al completar solo la misión de muestra.
-
-**Actualización de control (21-10-2026):** prueba de los 29 replays Linux con ThreadSanitizer y LeakSanitizer validada mediante `report.json` y `engine.log` dentro del ZIP de evidencias; ambos detectores mostraron **cero hallazgos, 29 fases aprobadas, cero omisiones y retorno 0**. La comprobación de LSan ya es obligatoria en CI; TSan todavía conserva `continue-on-error: true`, por lo que debe revisarse el informe hasta endurecer su puerta. La cobertura real de audio SDL, ventanas interactivas y 72 fases CD32 no está demostrada. Se conserva H3 como barrera de regresión.
-
-**Matriz de referencias y cobertura:** [H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). La auditoría H2.5 ha terminado; las versiones flotantes y diferencias de reproducción son riesgos registrados, no defectos de jugabilidad probados.
+`[x]` significa completado en el alcance descrito; `[ ]` significa pendiente o parcial, con su progreso explicado. Se mantienen los IDs. Salvo indicación contraria, ejecuta el asistente; Miguel decide estilo y valida juego real.
 
 ## H0. Auditoría y preparación — completado
 
@@ -116,26 +110,16 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Si falla:** conservar el registro del intento y el primer error; no encadenar instrucciones de instalación al azar ni modificar la jugabilidad para forzar un resultado verde.
 
-## H2. Estabilización de la base
+## H2. Estabilización de la base — aceptada con exclusiones
 
-**H2.5 cerrado (21-10-2026):** [inventario de referencias, versiones y cobertura](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). C++14, OpenFodder 1.5.4, SDL3 3.4.0; SDL3_mixer 3.1.0 fijado por commit en Windows, 3.3.0 observado pero sin SHA en Linux; FFmpeg y XMP configurados de forma distinta. Completan 29/29 fases públicas en ambas plataformas, pero H3 registra solo 11 fases/11.361 estados, LSan/TSan solo Linux headless y no hay cobertura total CD32. El cierre documental **no cierra H2.6**.
+- [ ] **H2.1 — Asistente:** atribuir el recurso mínimo del fallo RNC histórico. Deuda documental delimitada, aceptada en H2.6; no hay un fallo reproducido pendiente de la ruta actual en la cobertura ejecutada. Retomar si aparece un caso pertinente, sin bloquear H4 por repetir la investigación histórica.
+- [x] **H2.2 — Asistente:** lector RNC acotado y pruebas de truncamientos/límites. Público: 88 recursos válidos y 1.047 variantes inválidas; CD32 privado: 41 y 488, respectivamente.
+- [x] **H2.3 — Asistente:** ASan/UBSan y LeakSanitizer sin hallazgos en 29 replays públicos. Campaña completa y todas las rutas interactivas siguen fuera de esa garantía.
+- [x] **H2.4 — Asistente:** correcciones de música/callback/temporización/transiciones; TSan sin hallazgos en 29 replays y H3 inalterado. No equivale a una auditoría universal de hilos ni de presentación nueva.
+- [x] **H2.5 — Asistente:** inventario de dependencias y cobertura. La discrepancia histórica de mixer se trató en H2.6: SHA fijado en ambas plataformas; TSan obligatorio. No implica equivalencia acústica entre backends ni reproducibilidad binaria absoluta.
+- [x] **H2.6 — Asistente / Miguel:** aceptación del 22-10-2026, CI y prueba manual CD32; base clásica recuperable y PR sin fusionar.
 
-**Resultado más reciente (21-10-2026):** las 29 fases públicas pasan ASan/UBSan, LeakSanitizer y ThreadSanitizer en [Linux 39641851896](https://github.com/Cacheirez/openfodder/actions/runs/39641851896); también [Windows 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057) pasa compilación, 29 replays y referencia H3. Las pérdidas de `scandir()` y objetos Duktape `cPosition`, y las carreras de temporización/callback/preparación de fase se corrigieron sin rebaselinar H3. Este resultado **complementa y reemplaza operativamente** los diagnósticos históricos de 23/17 avisos que aparecen más abajo. La cobertura solo abarca rutas ejecutadas. Informe detallado: [H2_LEAK_THREAD_DIAGNOSTICOS.md](H2_LEAK_THREAD_DIAGNOSTICOS.md).
-
-
-**Actualización 21-10-2026:** [H2_ESTABILIZACION_2026-10-21.md](H2_ESTABILIZACION_2026-10-21.md). H2.2 dispone de lector RNC acotado: 88 recursos RNC y 1.047 casos inválidos probados con ASan/UBSan en Linux, 29 replays Windows y equivalencia de 11.361 estados previos/posteriores al cambio en ambas plataformas. **H2.3: corregidos los bloqueos de tablas de direcciones y fotogramas; la nueva ejecución ASan Linux llega a 29 fases, pero hay 23 avisos UBSan pendientes. Consultar [informe de protección de fotogramas](H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md).** La atribución del recurso mínimo del fallo original (H2.1), ASan del motor completo (H2.3), sincronización integral (H2.4) y aceptación H2.6 quedan abiertos.
-
-
-- [ ] **H2.1 — Asistente:** aislar el acceso fuera de límites en `Source/Amiga/dernc.cpp`, con un recurso mínimo que lo reproduzca y longitudes de entrada/salida identificadas.
-- [x] **H2.2 — Asistente:** corregir la causa y probar truncamientos/límites del descompresor; no ocultar el fallo desactivando el detector ni añadiendo relleno sin justificar.
-- [x] **H2.3 — Asistente:** ejecutar ASan/UBSan y LeakSanitizer sobre los 29 replays públicos con cero hallazgos. **Alcance demo cerrado; campañas privadas y flujos interactivos no cubiertos.**
-- [x] **H2.4 — Asistente:** proteger música Amiga, callback, temporización y transiciones de fase; confirmar ThreadSanitizer sin carreras en 29/29 replays públicos y H3 inalterado. **Auditoría demo terminada; todavía no implica cobertura general de audio real, ventanas, menús ni H4.**
-- [x] **H2.5 — Asistente:** inventariar versiones reales y referencias fijadas por plataforma, documentar diferencias de SDL_mixer/XMP/FFmpeg, cobertura 29/11 fases y huecos de CD32/audio. **Cerrado como auditoría** en [H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md); la versión Linux de SDL_mixer sigue sin SHA fijado y se trata en H2.6.
-- [x] **H2.6 — Asistente / Miguel:** base clásica aceptada el 22-10-2026 en la cobertura documentada, CI de `5c564b19` aprobada y validación CD32 de Miguel. Referencia recuperable `baseline/classic-h2.6-2026-10-22` → `5e6a4f38`; PR sin fusionar. [Decisión y exclusiones](H2_6_ACEPTACION_BASE_CLASICA.md).
-
-**Aceptación:** las rutas incluidas en la primera versión no tienen fallos de memoria reproducibles pendientes sin resolver o delimitar; los replays y el arranque siguen funcionando. Si existe una exclusión, debe figurar con su impacto y no presentarse la suite completa como aprobada.
-
-**Límite actual:** LeakSanitizer no pudo operar en el entorno local inicial; las pruebas posteriores desactivaron solo la detección de fugas. Añadir una comprobación de fugas donde sea viable, sin confundir su ausencia con un resultado favorable.
+**Evidencia y exclusiones:** [aceptación H2.6](H2_6_ACEPTACION_BASE_CLASICA.md). Los avisos UBSan antiguos, el mixer Linux sin fijar y los sanitizadores no bloqueantes pertenecen al histórico; no se mantienen como bloqueos vigentes. Las fugas se comprueban en CI aunque el entorno local no permita ejecutar LSan. No atribuir la prueba manual a un commit exacto que no se registró.
 
 ## H3. Proteger la misma jugabilidad
 
@@ -153,20 +137,20 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Aceptación:** la herramienta detecta un cambio relevante y la referencia se reproduce bajo condiciones fijadas. Los cambios posteriores deben mantener los campos lógicos acordados o explicar y resolver cualquier divergencia.
 
-## H4. Separar presentación y simulación
+## H4. Separar presentación y simulación — parcial
 
-- [ ] **H4.1 — Asistente:** documentar qué funciones de dibujo modifican estado, y trasladar o preservar esos efectos en el paso lógico correspondiente. **Primera extracción implementada:** [efectos principales, pruebas y límites](H4_1_EFECTOS_DIBUJO.md); 11.361 estados H3 preservados localmente y en CI Windows/Linux. La pausa ya tiene estado propio y prueba 0/1/5; faltan ensamblado y pruebas del frame de misión/transiciones. No equivale a independencia global 0/1/N.
-- [ ] **H4.2 — Asistente:** introducir estados de presentación coherentes y de solo lectura para cámara, sprites, terreno, paletas e interfaz.
-- [ ] **H4.3 — Asistente:** crear rutas clásica y moderna seleccionables, manteniendo inicialmente las imágenes originales.
-- [ ] **H4.4 — Asistente:** separar capas de terreno, entidades, efectos, panel y cursor; conservar orden, recortes, fundidos y visibilidad lógica.
-- [ ] **H4.5 — Asistente:** asegurar el uso correcto del hilo de ventana/SDL y la entrega de estados entre hilos, sin leer estructuras parcialmente actualizadas.
-- [ ] **H4.6 — Asistente:** ejecutar dibujo cero, una y varias veces entre pasos lógicos y comparar las trazas; probar cargas, cambios de fase, minimapa y pausa.
+- [ ] **H4.1 — Asistente:** completar la separación/preservación de efectos del dibujo en sus coordinadoras lógicas. **Hecho:** extracción de núcleos, recursos propios, pausa y frame compuesto, productores registrados y contraste diagnóstico. **Falta:** demostrar independencia del motor completo y cubrir coordinaciones/transiciones restantes. No repetir el inventario inicial como si no existiera.
+- [ ] **H4.2 — Asistente:** estados coherentes de solo lectura para cámara, sprites, terreno, paletas e interfaz. **Hecho:** capturas propias y destinos validados. **Falta:** contrato de frame elegible y fresco, vida útil acotada, coherencia temporal y datos semánticos para H5. La identidad del almacenamiento no es una versión de contenido ni una fecha del frame.
+- [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Siguiente:** publicar opcionalmente desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
+- [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
+- [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
+- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas 0/1/5 y contraste real PC/Amiga a cadencia actual. **Falta:** motor completo con nueva publicación, mutación/sustitución/liberación de recursos, misión↔pausa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Ampliar la prueba del productor preparado además del resuelto y verificar que una omisión deliberada sigue siendo detectada.
 
-**Aceptación:** dibujar más veces no altera las reglas ni consume aleatoriedad del motor; la imagen clásica sigue siendo una referencia utilizable. No introducir todavía arte nuevo que dificulte comparar resultados.
+**Aceptación global:** presentar más, menos o ninguna vez no altera reglas, RNG ni efectos lógicos; frames y recursos son coherentes; las rutas soportadas tienen equivalencia comprobada y las restantes mantienen el clásico explícitamente. No declarar cerrado H4 por una imagen idéntica o un replay sin fallos.
 
 ## H5. Scroll y movimiento suaves
 
-- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos.
+- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos. **Se adelanta su inicio a H4:** comparar clásico, registro/contraste y publicación nueva en las mismas escenas y condiciones; CPU, tiempos p95/p99, memoria, copias y subidas a GPU cuando esa ruta exista. Pendiente de medición, sin presupuesto inventado.
 - [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
@@ -191,7 +175,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H7. Primera misión moderna completa
 
-**Escenario inicial propuesto:** una fase pequeña de jungla de Cannon Fodder 1 disponible como demo —por ejemplo Amiga The One—, a confirmar al cerrar H1. Usar datos Amiga no impide ejecutar el juego en Windows.
+**Escenario inicial propuesto:** una fase pequeña de jungla de Cannon Fodder 1 disponible como demo —por ejemplo Amiga The One—, a concretar antes de H7.1 y de producir sus recursos. Usar datos Amiga no impide ejecutar el juego en Windows.
 
 - [ ] **H7.1 — Asistente:** inventariar todos los recursos realmente utilizados por la fase elegida y fijar su grabación de referencia.
 - [ ] **H7.2 — Asistente:** sustituir suelo, caminos, agua, vegetación y obstáculos que aparezcan en esa fase.
@@ -206,7 +190,7 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 ## H8. Extender el resultado a Cannon Fodder 1
 
-- [ ] **H8.1 — Asistente / Miguel:** confirmar la edición y campaña principal que se quiere cubrir. Para la campaña comercial completa harán falta los datos correspondientes disponibles legítimamente para las pruebas, sin publicarlos en GitHub.
+- [x] **H8.1 — Asistente / Miguel:** edición/campaña principal confirmada: Cannon Fodder 1 CD32, con datos originales recibidos y comprobados privadamente. Esto no acredita cobertura ni replays de sus 72 fases. Mantener esos datos fuera de GitHub.
 - [ ] **H8.2 — Asistente:** generar un inventario real de recursos y variantes de esa edición: biomas, tropas, civiles, vehículos, edificios, armas, interfaz y pantallas auxiliares.
 - [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan.
 - [ ] **H8.4 — Asistente:** completar escenarios por lotes coherentes y verificar uniones, destrucción, animaciones y colores de cada lote.
@@ -239,209 +223,73 @@ No fijamos fechas de entrega sin medir H4 y el esfuerzo artístico. La estimaci�
 
 **Definición de objetivo conseguido:** presentación renovada en todo el alcance acordado de Cannon Fodder 1, cámara y movimiento suaves, reglas conservadas según las pruebas, paquete Windows reproducible y validación de juego real de Miguel. Una base que compila o una sola misión HD no cumplen por sí solas esta definición.
 
-## 6. Decisiones pendientes
+## 6. Siguiente incremento: publicación opcional desde órdenes
 
-| ID | Decisión | Propuesta inicial | Momento necesario |
-|---|---|---|---|
-| D1 | Estilo gráfico | 2D ilustrado fiel a siluetas y perspectiva | H6.2 |
-| D2 | Edición/campaña principal | Cannon Fodder 1; demos primero | H7.1 y H8.1 |
-| D3 | Campo de visión y panorámico | Conservar área lógica; adaptar presentación sin revelar más mapa | H4–H5 |
-| D4 | Monitor y objetivo de refresco | 60 Hz primero; 120/144 si procede | H5.7 |
-| D5 | Cobertura de pantallas auxiliares | Inventariar y acordar, sin olvidarlas al cerrar alcance | H8.2 |
+**Sí: sigue siendo el próximo paso técnico correcto.** Permite comprobar la ruta que después necesitará H5 sin introducir simultáneamente interpolación o arte nuevo. Lo dividiremos en entregas comprobables; no se promete resolver todas las puertas en un único commit.
 
-Ninguna decisión artística es necesaria para resolver ahora la compilación Windows.
+### 6.1 Implementación mínima y contraste
 
-## 7. Riesgos y bloqueos conocidos
+1. Definir qué frame y destinos son elegibles: captura completa, geometría/identidad compatibles, paleta efectiva, escena y generación vigentes. Conservar por separado `mSurface` y `mSurfaceFinal`; no publicar el segundo como si fuera el primero.
+2. Componer desde órdenes propias y activar la publicación mediante una opción desactivada por defecto. Mantener las coordinadoras y efectos lógicos una sola vez y en sus momentos originales.
+3. Conservar el resultado clásico como referencia independiente y comparar índices, fondo guardado y RGB, incluidos padding y escrituras que no cambian el color aparente. Una divergencia en un frame elegible debe fallar en pruebas/diagnóstico estricto, sin quedar escondida por el retorno al clásico.
+4. Si no hay captura elegible o la escena todavía no está soportada, usar el clásico con motivo observable. Ante sustitución/liberación de destinos, invalidar el frame sin escribir sobre almacenamiento incorrecto; acordar explícitamente la política de presentación durante la transición. No reutilizar silenciosamente una captura de otra fase.
+5. Mantener pausa y su fondo persistente con el contrato ya extraído. Probar misión→pausa→misión, paleta tardía, cursor temprano/tardío, superficies de distinto tamaño y recursos modificados o reemplazados con las mismas dimensiones.
 
-| ID | Riesgo o bloqueo | Tratamiento |
+### 6.2 Puertas de validación
+
+| Puerta | Condición para aceptar |
+|---|---|
+| Equivalencia de presentación | Clásico y compositor coinciden en destinos, índices, fondo guardado y RGB; se detecta una divergencia introducida deliberadamente |
+| 0/1/N | Motor completo probado con 0, 1 y varias presentaciones —inicialmente N=5— sin alterar trazas lógicas, RNG ni efectos; documentar cómo se programa esa frecuencia |
+| Recursos y transiciones | Capturas retenidas siguen siendo propias; destinos obsoletos se rechazan; pausa/carga/fase no reutilizan estados incorrectos |
+| Regresión | H3 original intacto, replays públicos sin omisiones y pruebas focalizadas mantenidas; comparar también estados entre políticas de presentación, no solo finalización |
+| Memoria y concurrencia | ASan/UBSan, LSan y TSan con la ruta nueva activa en escenarios representativos; registrar exclusiones, sin atribuirle los resultados del recorrido headless habitual |
+| Rendimiento | Medición H5.1 comparable con registro apagado, auditoría activa y publicación nueva; limitar retención/copias y resolver regresiones demostradas |
+| Windows real | Compilar/empaquetar y comprobar ventana/GPU, pausa, F11, Alt+Tab, cursor y audio con la opción activa; vídeo software Linux no sustituye esta prueba |
+
+Las primeras entregas pueden conservar la opción experimental y desactivada mientras se amplía cobertura. No activar por defecto ni declarar independencia global antes de completar estas puertas. La prueba manual se solicitará cuando exista un paquete concreto; no hace falta reinstalar nada por esta revisión documental.
+
+### 6.3 Después de esa publicación
+
+Completar el contrato semántico de H4.2/H4.4 para cámara y entidades, preservando el orden real; probar generaciones y discontinuidades. Con un piloto validado, iniciar H5 con gráficos originales. Elegir una fase pequeña, inventariarla y aprobar una muestra H6 antes de pasar a producción H7. Extender después por lotes H8 y cerrar validación/entrega H9–H10.
+
+## 7. Tareas transversales incorporadas
+
+- [ ] **C1 — Evidencias duraderas:** conservar ZIP completos, logs y trazas que sustentan aceptaciones, con SHA-256 y relación commit/entorno, en almacenamiento persistente apropiado. Los informes compactos de b34373b0 ya están en Git; los ZIP de esa revisión caducan el **24-11-2026** y hay evidencias anteriores que caducan antes. Esta revisión no declara archivados esos ZIP ni programa una tarea automática.
+- [ ] **C2 — Reproducción:** mantener SHAs efectivos de dependencias/datos públicos, configuración, comandos y paquete probado en cada aceptación. No basta fijar una rama flotante ni prometer compilación bit a bit idéntica. No actualizar dependencias ajenas a la tarea sin motivo.
+- [ ] **C3 — Cobertura explícita:** mantener matriz de rutas clásica/nueva, PC/Amiga, escenarios, frecuencia, plataforma y validación automática/manual. Separar demos, CD32 privado, audio físico y GPU. Añadir cobertura comercial progresiva cuando haya grabaciones válidas; no convertir 72 omisiones por falta de replays en 72 aprobaciones.
+
+C1–C3 son obligaciones continuas con entregas verificables; no sustituyen ni renumeran H0–H10.
+
+## 8. Decisiones y riesgos vigentes
+
+| ID | Decisión | Situación / momento |
 |---|---|---|
-| R1 | Lectura fuera de límites en descompresión RNC | H2.1–H2.3; fallo reproducido, no cerrado |
-| R2 | Dibujo con efectos sobre la lógica | H3.6 y H4; preservar visibilidad lógica y secuencia de actualizaciones |
-| R3 | Interpolación con retraso y desajuste al apuntar | Medir y probar transformación de coordenadas en H5.5 |
-| R4 | Diferencias entre plataformas o ejecuciones | Establecer determinismo antes de usar hashes como garantía |
-| R5 | Arte inconsistente o incompleto | Muestra dentro del juego antes de producción masiva; matriz de recursos |
-| R6 | Ampliar la vista cambia dificultad/comportamiento | Mantener área lógica original en la primera versión |
-| R7 | Cobertura de pruebas de campaña completa | Datos CD32 recibidos y verificados; faltan replays de sus 72 fases |
-| R8 | CI verde interpretada como validación total | Separar pruebas lógicas, memoria, gráficos, audio y prueba manual |
+| D1 | Estilo gráfico | Pendiente de muestras comparables y elección de Miguel en H6.2 |
+| D2 | Edición y fase piloto | CD32 confirmada como campaña principal; concretar fase demo pequeña antes de H7.1 |
+| D3 | Campo de visión | Conservar área lógica original; cualquier ampliación será una decisión posterior explícita |
+| D4 | Refresco y equipo | 60 Hz primero; recoger monitor/configuración para H5.7, 120/144 Hz después si procede |
+| D5 | Pantallas auxiliares | Inventariar en H8.2 y acordar su cobertura; una excepción clásica debe quedar explícita |
 
-## 8. Registro de evidencias
+No hay una decisión artística que bloquee el siguiente incremento H4.
 
-| Evidencia | Resultado confirmado | No demuestra |
+| ID | Riesgo actual | Tratamiento |
 |---|---|---|
-| Auditoría Linux inicial | 29 fases completadas antes/después del parche | Toda la campaña comercial, identidad por tick o Windows |
-| Herramienta de auditoría | 8 pruebas superadas | Jugabilidad completa |
-| Casos de borde de mapa | 8 casos sobre el cuerpo real con ASan/UBSan | Ausencia de fallos en otros componentes |
-| ASan completo tras parche | 11 fases antes del fallo RNC | Suite de memoria aprobada |
-| ASan, PC Format | 8 fases completadas | Todas las rutas Amiga; estas 8 ya forman parte de las 29 |
-| Actions Windows, ejecución 39489706846 | Compilación aprobada; ZIP inspeccionado; PRUEBAS.json PASS, 29 fases, cero omisiones | Prueba visual/audio en el PC de Miguel o ausencia de fallos de memoria |
-| H3 en Windows, ejecución 39593037606 | 11 fases, 11.361 muestras de estado iguales en dos pasadas por campaña; 29 replays anteriores PASS; comparador detecta divergencias en bajas y `mWasDrawn` | Cobertura de toda CD32 o independencia de renderizado |
-| H3 en Linux, ejecución 39593037449 | 11 fases, 11.361 muestras; identidad byte a byte de run1/run2; comparación cruzada Windows/Linux exacta en estados tras normalizar saltos de línea | Ausencia de problemas de memoria o igualdad de estados no registrados |
-| Huellas canónicas de H3 | `tools/modernization/reference-gameplay-v1.json`, 11 huellas SHA256 lógicas, asociadas a commits y datos | Validez indefinida para futuras versiones sin rebaselinar |
-| Lector RNC acotado + 60 fixtures locales | ASan/UBSan PASS, 714 variantes inválidas rechazadas | ASan integral y CD32 |
-| Lector RNC acotado Linux CI 39599528660 | 88 recursos RNC válidos; 1.047 variantes inválidas; ASan/UBSan PASS; H3 PASS | Ausencia de errores en todos los componentes |
-| RNC + H3 Windows CI 39599528686 | 29 fases PASS, H3 PASS; mismo estado lógico anterior en 11.361 muestras | Campaña CD32 completa y ASan integral |
-| Datos CD32 recibidos el 21 de octubre | CRC ZIP correcto; 266/266 archivos requeridos con MD5 coincidente; 72 pares MAP/SPT | Campaña completada jugando: intento local omitió 72 fases por falta de replays |
-| Prueba manual de Miguel, 21 de octubre | Demo funcional; campaña Cannon Fodder reconocida tras añadir Amiga_CD y jugable; responde afirmativamente a todas las comprobaciones solicitadas | No acredita completar las 72 fases, sesiones largas ni ausencia de defectos de memoria |
-
-Añadir evidencia futura con: tarea, commit, entorno, prueba, resultado y enlace al registro. No borrar resultados fallidos históricos cuando se corrija un problema.
-
-**Seguimiento H2.3, alineación y aritmética definida (21-10-2026):** [H2_3_UBSAN_CLEAN_2026-10-21.md](H2_3_UBSAN_CLEAN_2026-10-21.md). Cambio en `readLE`, RNG y cálculos de cámara/sprites/mapa/vehículos. Las 29 fases disponibles pasan ASan/UBSan **sin avisos**, y las 11.361 muestras de H3 siguen idénticas en Linux/Windows. Nuevo control CI obligatorio de cero fallos de sanitizador, sin `continue-on-error`. Pendientes: LeakSanitizer, CD32 completo, H2.1 y H2.4.
-
-**Seguimiento H2.3, índices de sprites y Huffman (21-10-2026):** [H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md](H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md). Linux: 29/29 fases con ASan, **0 errores fatales, 0 índices UBSan** (antes 6); 17 avisos UBSan adicionales pendientes. Windows: compilación, 29 replays y baseline H3 PASS. La primera tentativa con arrays físicos mayores rompió la decodificación y se revirtió; el resultado final preserva el mapeo de tablas heredado. Se incorpora un nuevo gate de CI para impedir que reaparezcan índices fuera de rango.
-
-**Seguimiento H2.3, protección de fotogramas (21-10-2026):** [H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md](H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md). Nuevas longitudes de animación de origen: 15 tablas (1.309 entradas) y protección de tipo/fotograma. La compilación Linux, pruebas de límites, auditoría RNC y baseline H3 (11.361 estados) pasan; **la prueba completa ASan Linux termina 29/29 fases, sin fatal**, pero UBSan informa 23 condiciones indefinidas (6 índices, 15 desplazamientos y 2 accesos desalineados). Este resultado **no** cierra H2.3. Windows CI está en cola a la fecha de esta revisión.
-
-**Seguimiento H2.3, corrección de direcciones (21-10-2026):** [H2_3_CORRECCION_DIRECCIONES_2026-10-21.md](H2_3_CORRECCION_DIRECCIONES_2026-10-21.md). La tabla 32×32 ya se consulta con un índice físicamente válido. 1.063.217 casos de aritmética de índices superan las pruebas aisladas; Linux (CTests y RNC) y Windows (compilación, CTests y 29 replays) conservan el baseline H3 de 11.361 estados. La suite ASan del motor completo vuelve a registrar **FAIL tras 11 fases**, ahora por una lectura en `Sprite_Draw_Frame` (`Source/Sprites/Sprite_Core.cpp:85`) de datos de animación Amiga. El primer error anterior de direcciones no vuelve a aparecer en este registro. `continue-on-error: true` en H2.3 hace que el workflow no falle; consultar siempre su `report.json`.
-
-**Diagnóstico adicional H2.3 (21-10-2026):** [H2_3_DIAGNOSTICO_ASAN_2026-10-21.md](H2_3_DIAGNOSTICO_ASAN_2026-10-21.md). El workflow Linux aparece verde, pero la etapa ASan del motor completo está en `continue-on-error` y su propio informe registra `FAIL`. No aceptar H2.3 hasta corregir y repetir la suite.
-
-## 9. Bitácora y siguiente sesión
-
-| Fecha | Trabajo | Resultado / siguiente acción |
-|---|---|---|
-| 2026-10-20 | Auditoría inicial, parche de límites y pruebas Linux | Referencia preparada; RNC pendiente |
-| 2026-10-20 | Conexión GitHub, rama y PR #1 | Automatización Windows iniciada |
-| 2026-10-20 | Creación de este plan v1.0 | Tarea activa H1.1; consultar resultado Windows y actuar según el primer fallo o éxito |
-| 2026-10-21 | H3.1–H3.5: emisor, comparador, 2 pasadas por campaña en Windows/Linux | 11.361 muestras idénticas por plataforma y entre plataformas; H3.6 auditada posteriormente; detalles en H3_VALIDACION_2026-10-21.md |
-| 2026-10-21 | H3.6 cerrada; H2.2 lector acotado y pruebas | RNC validado Linux/Windows; H2.1/H2.3/H2.4 pendientes; ver H2_ESTABILIZACION_2026-10-21.md |
-| 2026-10-21 | H2.3: índice seguro de tabla de direcciones, regresión y ASan/UBSan | Direcciones verificadas; siguiente fallo ASan en Sprite_Core.cpp:85. H2.3 sigue abierta; ver H2_3_CORRECCION_DIRECCIONES_2026-10-21.md |
-| 2026-10-21 | H2.3: metadatos de tamaños de sprites + acceso acotado | Linux: 29 fases ASan sin fatal; UBSan 23 avisos pendientes. Windows CI pendiente en aquel corte; detalles H2_3_PROTECCION_FOTOGRAMAS_2026-10-21.md |
-| 2026-10-21 | H2.3: índice plano de seguidores y tablas Huffman segmentadas, 1.077 tests de límites | Linux y Windows: 29 fases, H3 11.361 estados intactos, 6 avisos de índice eliminados; 17 UBSan no relacionados pendientes; informe H2_3_INDICES_SPRITES_HUFFMAN_2026-10-21.md |
-| 2026-10-21 | H2.3: endian seguro, RNG idéntico y corrección de desplazamientos negativos | 29/29 fases, 0 ASan y 0 UBSan Linux, baseline H3 inalterado Linux y Windows; 262.144 RNG, 262.144 endian y 196.706 test de bits; compuerta CI estricta. H2.3 cobertura global pendiente. |
-| 2026-10-21 | H2.3/H2.4: LSan/TSan y mutex de audio/transición | Linux 39641851896: 29/29 ASan/UBSan, 29/29 LSan y 29/29 TSan, cero avisos; Windows 39641852057 y H3 11.361 muestras PASS. Siguiente paso H2.5 y decisión H2.6. |
-| 2026-10-21 | H2.5: inventario CMake, toolchains, SDL3/SDL3_mixer, Run/Scripts/tests y matriz de cobertura | Auditoría terminada; SDL3_mixer Linux sin revisión fija; 29 fases CI vs 11 trazadas; FFmpeg/XMP y audio real/CD32 fuera de equivalencia. H2.6 pasa a ser tarea activa. |
-
-**Checklist para retomar (versión 1.8):**
-
-1. Confirmar HEAD de PR #1 y los últimos resultados de Windows/Linux; el PR debe seguir en borrador.
-2. **H2.5 COMPLETADO:** consultar [matriz técnica](H2_5_REFERENCIAS_DEPENDENCIAS_COBERTURA.md). La discrepancia y revisión flotante de SDL3_mixer en Linux son riesgo concreto a decidir/corregir en H2.6.
-3. Endurecer ThreadSanitizer en CI al comprobar la batería 29/29; mantener las pruebas H3 como puerta obligatoria.
-4. **H2.1:** documentar la limitación del caso mínimo RNC original, o delimitar explícitamente el riesgo residual del API heredada antes de aceptar H2.6.
-5. **H2.6:** producir la ficha de aceptación de base clásica con evidencias, límites y una decisión expresa antes de iniciar H4.
-
-**Primera acción del siguiente bloque:** H2.6, ficha de aceptación con las limitaciones H2.5 (especialmente congelación de SDL3_mixer Linux) y decisión sobre RNC H2.1. H4 no está iniciado. No subir recursos CD32 privados a GitHub.
-
-### Actualización del 21 de octubre de 2026
-
-- H1.1–H1.3 completados. Artefacto: https://github.com/Cacheirez/openfodder/actions/runs/39489706846/artifacts/12294654792 . SHA256: `caf4eeaedd1ae857295230a099ecdcb78d99b4749a7a6ceca1a76d6896f22207`.
-- VERSION.txt del paquete: `4e7afb99abeda79de044fbf196b667711c4a4687`, revisión de integración usada por Actions para el PR; la rama de origen usa `1c0b42368c5ae44fb462933bde3db520560e231c`.
-- Inspeccionados ejecutable, SDL3.dll, SDL3_mixer.dll, scripts, campañas, siete directorios demo, licencias, lanzador e informe. Sin datos comerciales ni partidas en el ZIP.
-- Datos comerciales CD32 incorporados solamente al entorno local privado de pruebas. H8.1 tiene los datos disponibles; la cobertura completa sigue pendiente.
-- Prueba de Miguel completada: confirma demo funcional y campaña CD32 reconocida y jugable, con todas las comprobaciones solicitadas satisfactorias. No comunica errores. H1.4–H1.6 cerrados por este reporte; no se exige una captura adicional.
-- Se conserva el paquete indicado como referencia de la prueba por continuidad de las instrucciones; Miguel no ha enviado una lectura independiente de VERSION.txt. Duración y demo exacta no detalladas.
-- H2.1 pasa a ser la tarea activa. El fallo RNC sigue pendiente aunque no se haya manifestado en esta prueba manual.
-
-
-## Revisión vigente — 22 de octubre de 2026
-
-Esta sección sustituye operativamente los pendientes históricos de dependencia flotante/TSan no bloqueante del texto anterior; se conserva el historial.
-
-- Rama al retomar: `df99c678`; PR #1 abierto, borrador, sin fusionar.
-- **H2.6 avanzado, todavía abierto:** [ficha de aceptación](H2_6_ACEPTACION_BASE_CLASICA.md).
-- Cambio CI `5c564b1943e30a2504452e8ad51832a687b8988a`: SDL3_mixer Linux fijado a la revisión Windows, SHA efectivos archivados, TSan obligatorio y Ubuntu 24.04 explícito. Sin cambios del motor ni de H3.
-- Nuevas ejecuciones [Linux 39735380183](https://github.com/Cacheirez/openfodder/actions/runs/39735380183) y [Windows 39735380194](https://github.com/Cacheirez/openfodder/actions/runs/39735380194): **en curso al registrar esta actualización**, no aprobadas todavía.
-- Local: 13 tests Python PASS; YAML válido y diff limpio.
-- ZIP privado CD32: CRC correcto, 276 archivos, 72 pares MAP/SPT; lector RNC real probado con ASan/UBSan: **41 recursos válidos y 488 variantes inválidas rechazadas**, retorno 0, sin avisos. No es una ejecución del motor completo ni de las 72 fases. Recursos originales intactos y fuera de GitHub.
-- Se conserva la prueba manual satisfactoria que Miguel denomina «H6», incluida CD32. Versión exacta no atribuida; H6 artístico formal continúa pendiente.
-- H2.1 sigue como atribución histórica no resuelta; la carga actual llama al lector acotado. Audio físico, interacción y campaña CD32 completa siguen fuera de la cobertura automatizada.
-- **Siguiente acción:** revisar resultados e informes de estas ejecuciones, resolver fallos si aparecen y decidir H2.6 antes de iniciar H4. No se solicita repetir ahora la prueba manual.
-
-## Cierre H2.6 e inicio H4.1 — 22 de octubre de 2026
-
-Esta decisión sustituye operativamente el estado «pendiente de CI» de la revisión previa, conservada como historial.
-
-- H2.6 aceptado para iniciar la separación de presentación, con exclusiones expresas en su ficha: H2.1 histórico, cobertura CD32 de 72 fases incompleta, interacción/audio real y backends distintos.
-- Miguel confirma expresamente el motor probado con sus archivos originales CD32 y valida H2.6; no se le solicita repetirlo.
-- Windows 39735380194 y Linux 39735380183 aprobados para `5c564b19`. Informes internos comprobados; H3 de 11.361 estados preservado.
-- Base recuperable: `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; solo documentación adicional respecto al commit probado. No se moverá esa rama para incorporar H4.
-- H4.1 iniciado: además de visibilidad, se identifican retirada de entidades, cambios de arma y temporizador comercial en HUD, consumo de cursor, registros de recorte y callbacks con estado. El código del motor no se ha cambiado en este bloque.
-- Próximo cambio: separar retirada/preparación de sprites manteniendo los puntos de llamada originales; después verificar H3 sin modificar referencias. No adelantar 60 FPS ni H4.2–H4.6 como terminados.
-- PR #1 se mantiene abierto en borrador, sin fusionar.
-
-## Implementación H4.1 — 22 de octubre de 2026
-
-- Código `4e4d57efc408d4a4f404b5f4f2ed7844fde261c3`: extracción de retirada diferida, visibilidad, selección de arma, temporizador comercial y solicitud del cursor. Se conservan los puntos, guardas y orden de llamada.
-- Linux local: 6 CTests, 13 tests Python, H3 de 11 fases/11.361 estados y 29 replays sin omisiones, todos PASS. No se cambia el baseline.
-- Temporizador comercial: 184.320 transiciones equivalentes al cuerpo original H2.6, con UBSan y registro de llamadas gráficas; se añade esta prueba a CI Linux. No sustituye la campaña comercial completa.
-- [Linux 39772995975](https://github.com/Cacheirez/openfodder/actions/runs/39772995975) y [Windows 39772996056](https://github.com/Cacheirez/openfodder/actions/runs/39772996056): ambos completados con éxito; resultados finales abajo.
-- La base clásica recuperable continúa en `5e6a4f38`; PR #1 sigue sin fusionar.
-- Próximo bloque técnico tras comprobar CI: encapsular registros de recorte/dibujo y revisar efectos restantes antes de publicar estados inmutables. Las coordinadoras clásicas siguen teniendo estado; todavía no deben invocarse para dibujar 0/1/N veces por tick.
-
-### Resultado final del bloque H4.1
-
-Código `4e4d57ef`: primera extracción aceptada. Windows 39772996056 y Linux 39772995975 completos y satisfactorios. H3: 11.361 estados del baseline original; replays: 29/29, cero omisiones; Linux ASan/UBSan, LSan y TSan: 29/29 cada uno, sin hallazgos en los logs examinados. Prueba comercial aislada: 184.320 transiciones equivalentes. ZIP e informes internos verificados; huellas y límites en H4_1_EFECTOS_DIBUJO.md.
-
-H4.1 permanece en curso por los registros de dibujo/efectos restantes. Siguiente cambio: encapsular preparación/recorte en datos propios para avanzar hacia estados inmutables, manteniendo coordinadoras clásicas y H3 original. No aumentar todavía la frecuencia de llamadas a las funciones clásicas. Base `baseline/classic-h2.6-2026-10-22` intacta; PR en borrador, sin fusionar.
-
-## Preparación y recorte sin modificar el motor — 22 de octubre de 2026
-
-Código `73de45aa12542c33e72a79fcbf2e10c0a5526d37`: entradas y resultados propios en SpriteDrawState.hpp, cálculos puros y adaptación a los registros clásicos en el mismo punto de ejecución. 306.432 casos PC/Amiga equivalentes al código anterior, 6 CTests y 13 tests Python aprobados localmente. H3 original: 11.361 estados conservados; 29 replays aprobados sin omisiones. CI Windows 39817991168 y Linux 39817991165 aprobadas: H3 original intacto en ambas plataformas, 29/29 replays Windows y 29/29 en cada sanitizador Linux, sin diagnósticos observados. ZIP e informes internos comprobados. Detalles y límites en [H4_1_EFECTOS_DIBUJO.md, sección 7](H4_1_EFECTOS_DIBUJO.md#7-preparación-y-recorte-por-valor--22-10-2026).
-
-Siguiente trabajo: adaptar el rasterizador para consumir estos datos explícitamente. El adaptador clásico todavía escribe en el motor y los recursos son prestados; no se declara seguro dibujar el frame completo 0/1/N veces ni publicar snapshots entre hilos. H4.1 sigue abierta, PR sin fusionar y baseline clásica intacta.
-
-## Rasterizador con entradas explícitas — 22 de octubre de 2026
-
-Código `691cb0dedd657cd99cab165cbce7ff26fa2bd537`: núcleo RasterizeSprite8 PC/Amiga que escribe únicamente píxeles en el destino. La ruta de sprites transmite directamente la preparación; los adaptadores conservan las tres escrituras clásicas previas al dibujo. Prueba focalizada: 29.160 casos de igualdad de píxeles/registros, transparencia, paletas y repetición; ejecutada bajo ASan/UBSan e incorporada a CI Linux. H3 local original intacto (11.361 estados), 29/29 replays sin omisiones, 6 CTests y 13 tests Python aprobados.
-
-CI Windows 39820699876 y Linux 39820699877 aprobadas. H3 original intacto en ambas plataformas; 29/29 replays Windows y 29/29 en cada sanitizador Linux, cero omisiones y sin diagnósticos observados. Prueba de 29.160 casos de píxeles/registros aprobada en CI. ZIP e informes internos verificados. Detalles en [H4_1_EFECTOS_DIBUJO.md](H4_1_EFECTOS_DIBUJO.md), sección 8. H4.1 sigue abierta: quedan otras rutas de dibujo, vida útil de recursos y pruebas 0/1/N del frame completo. El siguiente bloque es inventariar esas rutas/recursos antes de construir el estado de presentación. No modificar la frecuencia de llamada de los adaptadores clásicos. PR sin fusionar y baseline clásica conservada.
-
-## Auditoría de rutas y recursos — 22 de octubre de 2026
-
-Revisión de `a5a5cc42` completada: [H4_1_RUTAS_Y_RECURSOS.md](H4_1_RUTAS_Y_RECURSOS.md). Inventario de terreno, GUI/HUD, cursor, rasterizadores restantes, escenas, superficies/paletas y callbacks; propietarios, mutaciones y fronteras de cambio de fase/versión identificados. No se modifica el motor ni se construye todavía el estado completo.
-
-Hallazgo prioritario: GetSpriteData Amiga cambia paleta y cabecera. La preparación encapsulada altera el orden de paleta respecto a a2f63090 para segmentos donde el accessor la sustituye; no hay reproducción visual de misión y las pruebas anteriores no cubren esa resolución. Debe comprobarse/corregirse el contrato antes de extenderlo. Mantener shared_ptr no garantiza inmutabilidad de los bytes.
-
-Siguiente bloque: resolvedor explícito que reúna recurso propietario, offset/extensión, layout y paleta efectiva, preservando efectos y orden clásicos; prueba de resolución y retención de recursos antes de avanzar a comandos de terreno/HUD y al frame completo. H4.1 sigue abierta. Última CI del motor sigue siendo 691cb0de; esta auditoría documental no ejecuta H3 de nuevo ni amplía su cobertura. PR en borrador sin fusionar y baseline H2.6 intacta.
-
-## Resolución conjunta con propiedad estable — 23 de octubre de 2026
-
-Código `ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5`: propietario privado e inmutable, offset/extensión, layout y paleta efectiva reunidos; orden clásico de paleta Amiga restaurado. 10.944 casos comparados con preparación/accessors originales, más pruebas de mutación, recarga, destrucción y liberación del último propietario. [Implementación, evidencia y límites](H4_1_RECURSOS_ESTABLES.md).
-
-CI Windows 39866081138 y Linux 39866081648 aprobadas: H3 original 11.361 estados en ambas plataformas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, sin diagnósticos. ZIP e informes verificados. El primer intento agotó el límite de TSan; la corrección valida los bytes una vez por segmento y pasada de dibujo, preservando los efectos de cada llamada. TSan final: 104,453 s con el límite original de 600 s. La prueba focalizada con fugas pasa en CI; el entorno local impidió ejecutar LSan. H4.1 sigue abierta: falta terreno/HUD y demás rutas del frame. No aumentar todavía la frecuencia ni publicar el motor entre hilos. PR en borrador sin fusionar, base H2.6 intacta.
-
-
-## Terreno visible con atlas estables — 23 de octubre de 2026
-
-Código `7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41`: `TerrainDraw` retiene tiles/geometría por valor y copias privadas de atlas PC/Amiga. `MapTiles_Draw` conserva limpieza y guardado en su punto clásico; rasterización repetible sin consultar el motor. 7.680 comparaciones contra los cuerpos originales cubren recortes, ambos bancos PC, planos Amiga, bordes y efectos. Pruebas de retención, mutación, destrucción y liberación aprobadas.
-
-Local: Release, 6/6 CTests, H3 11.361 estados originales y 29/29 replays. CI Windows 39919649274 y Linux 39919649308 aprobadas: H3 original 11.361 estados en ambas; Windows 29/29 replays; Linux ASan/UBSan, LSan y TSan 29/29, cero omisiones y sin diagnósticos. ZIP e informes internos verificados. Detalles: [H4_1_TERRENO_ESTABLE.md](H4_1_TERRENO_ESTABLE.md). H4.1 sigue abierta; el siguiente bloque es HUD/cursor, manteniendo las coordinadoras clásicas y sin construir todavía el frame completo. PR en borrador, sin fusionar; base H2.6 recuperable.
-
-
-## Continuidad documental — 23 de octubre de 2026
-
-Añadidos índice/guía de relevo, matriz de diferencias PC/Amiga comprobadas y campos pendientes de análisis, instrucciones de reproducción/recuperación y custodia de datos privados. Documentos iniciales marcados como históricos. Informes JSON de la CI de `7eeb6f7` conservados en Git; los ZIP completos siguen sujetos a caducidad y requieren archivo duradero externo. La guía identifica esta obligación pendiente y no afirma que esté completada. No cambia el motor; no se repiten pruebas ni se amplía su cobertura.
-
-
-## HUD lateral y cursor retenidos — 23 de octubre de 2026
-
-Código `c6af094c49641018b6dea6dc77cbe731a7ea0218`: captura del sidebar compuesto y cursor con bytes privados, geometría y paleta/layout efectivos. Decisiones, composición, consumo de solicitud y registros siguen en sus puntos clásicos. Se documentan las diferencias startY/destino PC-Amiga y paleta/offset del cursor en [H4_1_HUD_CURSOR_ESTABLES.md](H4_1_HUD_CURSOR_ESTABLES.md). Local: 2.304 casos de cursor, 288 de HUD, 6 CTests, H3 original 11.361 estados y 29 replays. CI Windows 39956418210 y Linux 39956418211 aprobadas: H3 original en ambas, Windows 29/29 replays y Linux ASan/UBSan, LSan y TSan 29/29, sin diagnósticos en los registros examinados. ZIP e informes verificados y resultados compactos conservados en Git. H4.1 sigue abierta; el siguiente bloque es RGB/fades y propiedad de destinos, antes del frame completo. PR sin fusionar y base H2.6 intacta.
-
-
-## Paleta efectiva y salida RGB propia — 23 de octubre de 2026
-
-Código `ff15219680b289abf207fdc23fc436a9f390e649`: [contrato y límites](H4_1_PALETA_DESTINOS.md). Captura de índices privados y tabla SDL efectiva; conversión a vector de destino propio. Fades y Save/Restore conservan cuerpos y llamadores originales. Tabla efectiva inicializada a negro antes de su primera aplicación para evitar copiar entradas indeterminadas. No se declara propiedad de todas las composiciones ni frame completo. Local: 27.648 casos, 6 CTests, H3 original 11.361 estados y 29/29 replays aprobados. CI Windows 39995798688 y Linux 39995798623 aprobadas; H3 original en ambas, Windows 29/29 replays y Linux ASan/UBSan, LSan y TSan 29/29. Informes compactos conservados en Git.
-
-
-## Capas y destinos indexados — 23 de octubre de 2026
-
-Código `793e347cd9f118da1c9ec6a84f88caf3257b74c2`: capturas privadas, destinos independientes y operaciones de copia/mezcla indexada/RGB. Conserva los tres contratos y el orden en pausa/reclutamiento, sin mover fades, Save/Restore, callbacks ni bloqueos. Auditoría del minimapa documenta que se omite en unit testing. [Informe y límites](H4_1_CAPAS_DESTINOS_INDEXADOS.md). Local: 2.944 casos nuevos, 27.648 de superficie, 6 CTests, H3 original y 29 replays aprobados. CI Windows 40003012479 y Linux 40003012470 aprobadas: H3 original en ambas, Windows 29/29 replays y Linux ASan/UBSan, LSan y TSan 29/29. Evidencia compacta conservada en Git y ZIP verificados.
-
-
-## Productores GUI/minimapa/escenas — 24 de octubre de 2026
-
-`d35e2675ffbbc79f8bf21eb961d78c06d74abd14`: operaciones de píxel propias para GUI8, PC16, Amiga16/Alt/Offset, tiles/constructor de minimapa, capas de helicóptero PC, Service Amiga y carga de imágenes PC. Se conservan coordinadoras/accessors/registros; preprocesado de reclutas sigue siendo un efecto de producción de recursos, no se repite al presentar. Detectada por ASan lectura original data[-1] en seam PC 320: normalizado a cero y probado contra esa referencia válida, sin atribuir equivalencia a UB. [Informe detallado](H4_1_PRODUCTORES_GUI_ESCENAS.md). Local: 1.536 + 1.964 + 1.024 + 72 casos nuevos, suites previas, 6 CTests, H3 original y 29 replays aprobados. CI Windows/Linux aprobada; H3 original intacto en ambas plataformas y 29/29 replays con los sanitizadores Linux.
-
-
-## 24-10-2026 — Primera escena de presentación: pausa
-
-`a133afb`: fondo y texto con geometría, índices/paletas y backing RGB propios; rasterización sin acceso al motor. Se conserva el orden de fade, eventos y reanudación. 144 escenarios 0/1/5 comparan bucle original/actual con cambio de dimensiones y destrucción de recursos. [Informe, costes y límites](H4_1_ESTADO_PAUSA.md). Local H3 original y 29 replays PASS; CI Windows/Linux aprobada; H3 original y 29/29 replays preservados, sanitizadores Linux sin diagnósticos. No es el cierre global H4.1.
-
-## 24-10-2026 — Frame compuesto de misión y regresión de transición
-
-[Informe](H4_1_FRAME_MISION.md): captura en el punto de conversión final para incluir escrituras del paso principal y paleta efectiva. 240 escenarios 0/1/5, 672 capturas retenidas; se encontró y extrajo el efecto de backing persistente de pausa que alteraba el padding al omitir la presentación. La suite de pausa conserva sus 144 escenarios y añade comparación de capturas contra el original. Coordinadoras reales con productores/SDL controlados; no es un cierre global H4. No se cambia cadencia, referencias H3 ni base clásica. Resultados completos en el informe.
-
-Cierre del incremento `049439d`: CI Windows/Linux aprobada, ZIP/informes verificados; H3 original 11.361 estados, 29 replays y sanitizadores sin diagnósticos. PR en borrador sin fusionar. La tarea siguiente es separación por capas, pruebas del motor completo 0/1/N, otras escenas y publicación/geometría; H4 global sigue abierto.
-
-## Seguimiento — destinos de presentación
-
-[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.
+| R1 | Caso mínimo RNC histórico sin atribuir | Exclusión aceptada H2.6; lector actual acotado probado. Reabrir si aparece evidencia nueva pertinente |
+| R2 | Dibujo aún ligado a efectos lógicos | H4.1/H4.6: preservar coordinadoras y comparar trazas con 0/1/N |
+| R3 | Interpolación con retraso o puntería desajustada | H5.4/H5.5: discontinuidades, transformación del ratón y prueba real |
+| R4 | Diferencias entre plataformas o configuraciones | Mismas referencias y condiciones documentadas; no tolerancias arbitrarias |
+| R5 | Arte incoherente o producción innecesaria | Muestra jugable y manifiesto antes de producción masiva |
+| R6 | Vista ampliada que modifica la dificultad | Mantener campo lógico original |
+| R7 | Falta de cobertura comercial completa | C3 y H8: CD32 disponible no equivale a 72 fases verificadas |
+| R8 | Confundir CI verde con validación total | Matriz de evidencia, sanitizadores activos y Windows real |
+| R9 | Capturas obsoletas o retención/copias excesivas | Contrato temporal, invalidación y medición H4/H5.1 |
+| R10 | Pérdida de evidencias por caducidad | C1: archivo permanente y manifiesto de integridad |
+
+## 9. Continuidad y criterio de cierre
+
+Al retomar: leer este plan y el [relevo técnico](README.md), comprobar HEAD/PR y las pruebas de la revisión vigente; trabajar en un incremento pequeño; registrar código, pruebas, límites y siguiente paso. Los commits documentales no cambian el motor validado. No repetir pruebas costosas por cambios solo documentales, ni reutilizar un verde antiguo para aceptar código nuevo.
+
+El [plan v2.19 íntegro](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) conserva la bitácora anterior. Sus «siguientes pasos» son históricos; el siguiente vigente es la sección 6 de este documento. El [diseño inicial](PLAN_MODERNIZACION_ES.md) conserva razones y propuestas, subordinadas al estado verificado aquí.
+
+El proyecto terminará cuando el alcance acordado de Cannon Fodder 1 tenga presentación renovada coherente, cámara y movimiento suaves, jugabilidad conservada según la cobertura documentada, paquete Windows reproducible y validación real de Miguel. Una base estable, un compositor equivalente o una sola misión moderna son hitos intermedios. El PR permanecerá sin fusionar conforme a la instrucción vigente.
