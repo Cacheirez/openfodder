@@ -86,3 +86,7 @@ La composición común recibe las capas ya producidas por cada backend; conserva
 ## Seguimiento — destinos de presentación
 
 [Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.
+
+## Seguimiento 25-10-2026 — registro real de misión
+
+[Registro de productores y contraste](H4_1_REGISTRO_PRODUCTORES.md): terreno PC/Amiga, sprites/cursor, sidebar y Clear/Save/Restore registran sus órdenes en modo diagnóstico. Se conserva la limpieza específica de Amiga y la decodificación propia de cada backend. Una secuencia común mantiene destinos independientes para mSurface y mSurfaceFinal, incluyendo el cursor temprano/tardío y la paleta final. Se compara con los índices, fondo guardado y RGB clásicos sin sustituir la publicación. Otros destinos, PNG, minimapa y escrituras no instrumentadas siguen fuera del alcance; las divergencias sobre destinos auditados se notifican. Consultar pruebas y CI del informe.
