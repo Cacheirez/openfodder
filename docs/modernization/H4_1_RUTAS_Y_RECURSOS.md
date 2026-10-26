@@ -139,3 +139,5 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## Seguimiento H4.6 — 26-10-2026
 
 `bd2b3d2`: Windows/Linux PASS. En vídeo software Linux, 8 fases PC y 3 Amiga conservan los 11.361 estados H3 originales con 0/1/5 presentaciones de misión. Pausa sigue a su cadencia original. La nueva fixture conjunta ejecuta los cuerpos reales de misión y pausa y sustituye superficies, sprites, atlas y panel: 192 transiciones PASS local ASan/UBSan; CI propia pendiente. Entrada/SDL/carga siguen simulados. [Alcance y evidencia](H4_6_PLANIFICACION_MISION.md).
+
+Siguiente ampliación: [sonda de pausa por SDL en el motor completo](H4_6_PAUSA_MOTOR.md), dos fases PC/Amiga y 301 estados originales; matriz local 0/1/5 PASS, CI y anomalía inicial de registros pendientes. No extiende aún la programación a la pausa ni acredita sustitución de recursos en el motor completo.

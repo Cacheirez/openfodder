@@ -21,6 +21,14 @@ def sanitizer_findings(log):
     return [line for line in log.splitlines() if re.search(pattern, line, re.I)]
 
 
+def verify_pause_probe(log, phases):
+    completed = re.findall(r'^MISSION_PAUSE_PROBE: completed (.+)$', log, re.M)
+    resumed = re.findall(r'^MISSION_PAUSE_PROBE: resumed (.+)$', log, re.M)
+    if len(completed) != 2 * phases or len(set(completed)) != len(completed) or resumed != completed:
+        raise RuntimeError('Incomplete SDL pause/resume probe')
+    return len(completed)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--exe', type=Path, required=True)
@@ -28,6 +36,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--presentations', type=int, choices=(0, 1, 5), help='Test-only mission presentation count; production cadence stays unchanged')
     p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
+    p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
     root = Path(__file__).resolve().parents[2]
@@ -36,6 +45,7 @@ def main():
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
+                'pause_probe': args.pause_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
@@ -51,6 +61,7 @@ def main():
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
                        OPENFODDER_TEST_FIRST_PHASE='1' if args.first_phase else '0',
+                       OPENFODDER_TEST_MISSION_PAUSE='1' if args.pause_probe else '0',
                        OPENFODDER_TRACE_DIR=str(trace),
                        OPENFODDER_TRACE_REPLAY_SHA256=fixture_hash,
                        OPENFODDER_TRACE_SETTINGS_SHA256=settings_hash)
@@ -80,7 +91,9 @@ def main():
             for marker in markers:
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
+            pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
+                                        'pause_transitions': pauses,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
         baseline = root/'tools/modernization/reference-gameplay-v1.json'

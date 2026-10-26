@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 26-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.24; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; `acfc099a` está aprobado en Windows/Linux con TSan activo acotado. La [programación 0/1/5 de misión](H4_6_PLANIFICACION_MISION.md) está validada en bd2b3d2. La nueva prueba conjunta de misión/pausa y sustitución de recursos pasa localmente; su CI está pendiente; los informes fechados son evidencia histórica y no sustituyen su estado actual.
+Última revisión: 26-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.25; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; `acfc099a` está aprobado en Windows/Linux con TSan activo acotado. La [programación 0/1/5 de misión](H4_6_PLANIFICACION_MISION.md) está validada en bd2b3d2. La fixture conjunta de misión/pausa y sustitución de recursos pasa localmente. La siguiente [sonda SDL del motor completo](H4_6_PAUSA_MOTOR.md) está implementada: matriz 0/1/5 local PASS acotada; CI propia y anomalía inicial pendientes; los informes fechados son evidencia histórica y no sustituyen su estado actual.
 
 ## Estado y referencias de recuperación
 

@@ -1,7 +1,8 @@
 """Exact diagnostic-only hooks removed by legacy isolated fixtures.
 check_mission_recording.py executes them and guards all original producer bodies.
 """
-HOOKS = ['    target->RecordMissionSidebar(draw);\n',
+HOOKS = ['                cUnitTesting::ProbeMissionPause();\n',
+ '    target->RecordMissionSidebar(draw);\n',
  '    target->RecordMissionPixels(captured);\n',
  '    if (target->MissionAuditActive())\n'
  '        target->RecordMissionPixels(openfodder::CaptureSprite8Producer(draw, layout, '

@@ -173,6 +173,15 @@ jobs:
           for count in 0 5; do
             python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-schedule-$count --presentations "$count"
           done
+      - name: H4.6 - bounded SDL pause and resumed mission with zero one five presentations
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          for count in 0 1 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-pause-$count --presentations "$count" --pause-probe --first-phase
+          done
       - name: H2 - bounded RNC fixtures under ASan and UBSan
         run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
       - name: H3 - Linux PC Format gameplay reference
@@ -217,6 +226,15 @@ jobs:
           LSAN_OPTIONS: exitcode=23
           UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
         run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-publication-asan
+      - name: H4.6 - bounded SDL pause with ASan UBSan and LSan
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-pause-asan --presentations 1 --pause-probe --first-phase
       - name: H2.4 - ThreadSanitizer diagnostic on all public demos
         env:
           SDL_VIDEODRIVER: dummy
@@ -233,6 +251,13 @@ jobs:
           SDL_AUDIODRIVER: dummy
           TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
         run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-publication-tsan --first-phase
+      - name: H4.6 - bounded SDL pause with ThreadSanitizer
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-pause-tsan --presentations 1 --pause-probe --first-phase
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -243,6 +268,7 @@ jobs:
             reports/h4-recording-*/
             reports/h4-publication*/
             reports/h4-schedule-*/
+            reports/h4-pause-*/
             reports/h2-rnc/report.json
             reports/h2-engine-asan/
             reports/h2-leaksan/

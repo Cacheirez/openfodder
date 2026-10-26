@@ -35,4 +35,6 @@ public:
 
     cUnitTesting();
     bool Start();
+    // Called under the existing replay surface lock; disabled in normal play.
+    static void ProbeMissionPause();
 };

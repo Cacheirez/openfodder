@@ -555,6 +555,7 @@ int16 cFodder::Phase_Loop()
 
                 mWindow->Cycle();
                 eventsProcess();
+                cUnitTesting::ProbeMissionPause();
             }
 
 #ifdef EMSCRIPTEN

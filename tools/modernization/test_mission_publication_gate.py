@@ -1,9 +1,17 @@
 """A completed replay with a recoverable sanitizer warning must still fail."""
 import unittest
-from check_mission_publication_replays import sanitizer_findings
+from check_mission_publication_replays import sanitizer_findings, verify_pause_probe
 
 
 class PublicationGateTests(unittest.TestCase):
+    def test_pause_probe_requires_unique_complete_pairs(self):
+        a='MISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\n'
+        b=a.replace(':8', ':16')
+        self.assertEqual(verify_pause_probe(a+b, 1), 2)
+        for log in ('', a, a+a, a+b.replace('resumed', 'missing')):
+            with self.subTest(log=log), self.assertRaises(RuntimeError):
+                verify_pause_probe(log, 1)
+
     def test_successful_completion_does_not_hide_recoverable_findings(self):
         for finding in ('source.cpp:42: runtime error: signed integer overflow',
                         'WARNING: ThreadSanitizer: data race',
