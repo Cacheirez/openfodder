@@ -235,5 +235,6 @@
     "No source pixels, coordinates or commercial data included",
     "Partial family review; other entities and terrain remain pending",
     "Function presence and source hashes require human review; not a proof of behavior"
-  ]
+  ],
+  "hash_normalization": "CRLF-to-LF only"
 }

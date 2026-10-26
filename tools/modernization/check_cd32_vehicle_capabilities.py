@@ -14,10 +14,12 @@ CENSUS = 'docs/modernization/evidence/cd32-sprite-census.json'
 
 
 def validate(review, census, read):
-    if review['schema'] != 1 or review['evidence'] != 'static_review_only':
+    if (review['schema'] != 1 or review['evidence'] != 'static_review_only'
+            or review['hash_normalization'] != 'CRLF-to-LF only'):
         raise ValueError('Unsupported review scope')
     for source in review['sources']:
-        data = read(source['path'])
+        # Git's Windows checkout may use CRLF. Keep every other byte significant.
+        data = read(source['path']).replace(b'\r\n', b'\n')
         if hashlib.sha256(data).hexdigest() != source['sha256']:
             raise ValueError('Source changed; review required: ' + source['path'])
         for symbol in source['functions']:
@@ -53,8 +55,8 @@ def validate(review, census, read):
 
 
 def main():
-    review = json.loads((ROOT / MANIFEST).read_text())
-    census = json.loads((ROOT / CENSUS).read_text())
+    review = json.loads((ROOT / MANIFEST).read_text(encoding='utf-8'))
+    census = json.loads((ROOT / CENSUS).read_text(encoding='utf-8'))
     sources, scenarios, components = validate(review, census, lambda p: (ROOT / p).read_bytes())
     print(f'PASS static references: {sources} sources, {scenarios} scenarios, {components} components; runtime pending')
 

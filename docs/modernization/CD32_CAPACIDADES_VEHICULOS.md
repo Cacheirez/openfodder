@@ -102,3 +102,8 @@ Siguiente incremento: instrumentar el piloto semántico mínimo del soldado y su
 Resultado local: **25 pruebas Python PASS**, incluidas seis del manifiesto (cinco negativas); comprobador PASS sobre 12 fuentes, siete escenarios y tres componentes. Comprobación de metadata gráfica existente: 1.309 entradas PC/Amiga PASS. `git diff --check` sin incidencias. Estos resultados no son replays ni una compilación nueva.
 
 Al iniciar: HEAD d42b052e; PR abierto/draft/no merged; base clásica5e6a4f38 confirmada por API. Windows40279655995 success. Linux40279655989 in_progress en ASan/UBSan tras superar H3 y misión/pausa; sin conclusión global en esa consulta. Los fallos históricos y la incidencia de escritura local permanecen registrados en sus informes.
+
+
+### Corrección de portabilidad del comprobador
+
+Windows run40317433141 (commit d12cbba9) falló antes de compilar: las cinco pruebas que necesitaban fuentes válidas rechazaron Sprite_Helicopter.cpp por hash diferente. Los checkouts CRLF reproducen el fallo; la huella de revisión ahora normaliza **solo CRLF→LF**, manteniendo significativos el resto de bytes y los saltos adicionales. Los SHA de referencia y H3 no se regeneran. JSON se lee explícitamente como UTF-8. Dos pruebas añadidas aceptan el mismo contenido CRLF y rechazan un cambio real de hoja0x8B→0x8C incluso con CRLF. Resultado local: 27 pruebas PASS; nueva CI pendiente. Se conserva el fallo Windows como evidencia histórica, no como fallo del motor.

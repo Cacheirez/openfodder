@@ -8,8 +8,8 @@ from check_cd32_vehicle_capabilities import ROOT, MANIFEST, CENSUS, validate
 
 class VehicleReviewTests(unittest.TestCase):
     def setUp(self):
-        self.review = json.loads((ROOT / MANIFEST).read_text())
-        self.census = json.loads((ROOT / CENSUS).read_text())
+        self.review = json.loads((ROOT / MANIFEST).read_text(encoding='utf-8'))
+        self.census = json.loads((ROOT / CENSUS).read_text(encoding='utf-8'))
 
     def check(self, read=None):
         return validate(self.review, self.census, read or (lambda p: (ROOT / p).read_bytes()))
@@ -21,6 +21,19 @@ class VehicleReviewTests(unittest.TestCase):
         path = self.review['sources'][0]['path']
         with self.assertRaisesRegex(ValueError, 'Source changed'):
             self.check(lambda p: (ROOT / p).read_bytes() + (b'\n' if p == path else b''))
+
+    def test_windows_crlf_checkout(self):
+        def crlf(path):
+            return (ROOT / path).read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')
+        self.assertEqual(self.check(crlf)[1:], (7, 3))
+
+    def test_real_change_in_crlf_is_rejected(self):
+        path = self.review['sources'][0]['path']
+        def changed(p):
+            data = (ROOT / p).read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')
+            return data.replace(b'0x8B', b'0x8C') if p == path else data
+        with self.assertRaisesRegex(ValueError, 'Source changed'):
+            self.check(changed)
 
     def test_absent_type_is_not_covered(self):
         self.review['scenarios'][0]['types'].append(101)
