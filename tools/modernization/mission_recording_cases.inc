@@ -36,6 +36,32 @@ int main(){
    hasSoldier=true;assert(layer.soldier.soldier.interval && !layer.soldier.draw.source);
   }
   assert(hasSoldier);
+  if (a.mMissionAudit->replacePose) {
+   const auto replaced = openfodder::ComposeMissionLayers(scene, true);
+   assert(replaced.poseReplacements > 0);
+   const auto original = openfodder::ComposeMissionLayers(scene);
+   // Corrupt a matching replacement in the secondary target, with no later
+   // opaque operation to hide it: mandatory contrast must fail, never fallback.
+   auto& recorded = a.mMissionAudit->scene.layers.back();
+   const auto savedPose = recorded.pose;
+   auto corrupt = std::make_shared<openfodder::SoldierPose>(
+       *openfodder::CaptureOriginalSoldierPose(recorded.soldier));
+   std::fill(corrupt->indices.begin(), corrupt->indices.end(), 99);
+   recorded.pose = corrupt;
+   bool mismatchRejected=false;
+   try { a.VerifyMissionAudit(&b); } catch (const std::runtime_error&) { mismatchRejected=true; }
+   recorded.pose = savedPose;
+   assert(mismatchRejected);
+   for (size_t i=0;i<original.surfaces.size();++i)
+    assert(*replaced.surfaces[i].indexed.indices == *original.surfaces[i].indexed.indices);
+   // An incompatible optional pose falls back per command, not per whole frame.
+   auto missing = scene;
+   for(auto& layer:missing.layers) layer.pose.reset();
+   const auto fallback = openfodder::ComposeMissionLayers(missing, true);
+   assert(fallback.poseReplacements==0 && fallback.poseFallbacks>0);
+   for(size_t i=0;i<original.surfaces.size();++i)
+    assert(*fallback.surfaces[i].indexed.indices == *original.surfaces[i].indexed.indices);
+  }
   auto expected=openfodder::RasterizePresentationSurface(a.CapturePresentation());
   // The semantic geometry actually drives the image; metadata is not decorative.
   auto changedScene=scene;bool changed=false;

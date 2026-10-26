@@ -65,6 +65,16 @@ jobs:
             python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out "reports/h4-soldier-$count" --soldier-probe --presentations $count --pause-probe --first-phase
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
+      - name: H4.4 - individual original pose and bounded pause
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          foreach ($count in 0, 1, 5) {
+            python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out "reports/h4-pose-$count" --pose-probe --presentations $count --pause-probe --first-phase
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build

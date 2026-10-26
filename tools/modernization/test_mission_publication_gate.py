@@ -1,9 +1,17 @@
 """A completed replay with a recoverable sanitizer warning must still fail."""
 import unittest
-from check_mission_publication_replays import sanitizer_findings, verify_pause_probe, verify_soldier_probe
+from check_mission_publication_replays import sanitizer_findings, verify_pause_probe, verify_soldier_probe, verify_pose_probe
 
 
 class PublicationGateTests(unittest.TestCase):
+    def test_pose_probe_requires_real_replacements_in_each_scene(self):
+        a = 'SOLDIER_POSE: verified replacement scene=13\n'
+        b = a.replace('13', '42')
+        self.assertEqual(verify_pose_probe(a+b, 2), 2)
+        for log in ('', a, a+a, a+b.replace('replacement', 'fallback')):
+            with self.assertRaises(RuntimeError):
+                verify_pose_probe(log, 2)
+
     def test_soldier_probe_requires_each_scene(self):
         a='SOLDIER_SEMANTIC: verified original resource in mission composition scene=13\n'
         b=a.replace('13', '42')

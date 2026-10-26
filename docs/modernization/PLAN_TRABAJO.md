@@ -1,12 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.29 · Revisión: 26 de octubre de 2026.**
+**Versión 2.30 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.2/H4.4, [piloto semántico del soldado](H4_2_SOLDADO_SEMANTICO.md) implementado y probado en fixtures; CI del motor nuevo pendiente. Después, sustitución de una pose con retorno al original. H8.3 conserva matriz parcial de vehículos y capturas CD32 pendientes.**
+**Tarea activa: H4.4, [sustitución individual de pose](H4_4_POSE_INDIVIDUAL.md) implementada y probada localmente, con retorno por comando al clásico; CI pendiente. H4.2 del padre d28d99f9 aprobado en Windows, Linux pendiente. Después, muestra visual H6.1 con anclaje explícito. H8.3 mantiene capturas CD32 pendientes.**
+
+## Incremento 2.30 — sustitución individual de pose
+
+Selección de una pose original, imagen indexada inmutable, sustitución en el orden de capas original y retorno al clásico ante clave/recorte/recurso incompatibles. Contraste obligatorio también de la ruta sustituida; una divergencia no se oculta como fallback. 46 casos focalizados, ocho configuraciones de productores/pausa con 384 transiciones y29 pruebas Python PASS. CI nueva pendiente; no es arte nuevo ni interpolación. [Contrato, reproducción y evidencia](H4_4_POSE_INDIVIDUAL.md).
 
 ## Incremento 2.29 — soldado semántico
 
-Captura opcional del primer Player junto al productor real: identidad/escena/generación, posición/cámara, anclajes y recurso original retenido. El compositor reproduce desde esa captura con contraste obligatorio; se rechazan geometrías inconsistentes. Pruebas focalizadas y28 pruebas Python PASS. CI anterior d1d30f12 Windows/Linux aprobada; CI del motor nuevo pendiente. No es interpolación ni arte integrado. [Implementación, reproducción y límites](H4_2_SOLDADO_SEMANTICO.md).
+Captura opcional del primer Player junto al productor real: identidad/escena/generación, posición/cámara, anclajes y recurso original retenido. El compositor reproduce desde esa captura con contraste obligatorio; se rechazan geometrías inconsistentes. Pruebas focalizadas y28 pruebas Python PASS. CI anterior d1d30f12 Windows/Linux aprobada; CI de d28d99f9 Windows aprobada, Linux pendiente. No es interpolación ni arte integrado. [Implementación, reproducción y límites](H4_2_SOLDADO_SEMANTICO.md).
 
 ## Incremento 2.28 — capacidades de vehículos
 
@@ -51,11 +55,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato actual | `9aaaf448bf5383f8441f1a26f1df2fe4cb611bbb`; Windows/Linux aprobados; misión 0/1/5 y pausa SDL acotada |
+| Motor candidato | Incremento de pose sobre `d28d99f9`, CI nueva pendiente. Padre aprobado en Windows; Linux pendiente |
 | Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows del motor | [40250030288](https://github.com/Cacheirez/openfodder/actions/runs/40250030288), éxito |
-| CI Linux del motor | [40250030293](https://github.com/Cacheirez/openfodder/actions/runs/40250030293), éxito |
+| CI Windows del padre d28d99f9 | [40374586200](https://github.com/Cacheirez/openfodder/actions/runs/40374586200), éxito |
+| CI Linux del padre d28d99f9 | [40374585563](https://github.com/Cacheirez/openfodder/actions/runs/40374585563), pendiente |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Pendientes |
 

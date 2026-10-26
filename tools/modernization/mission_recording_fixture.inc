@@ -55,6 +55,7 @@ struct cFodder {
  void draw(cSurface* target,bool cursor){
   openfodder::PreparedSpriteDraw p;p.resource.layout=mGraphics->layout;
   p.draw.source=sprite.data();p.draw.format=mGraphics->layout.format;
+  p.draw.visible=true;
   p.draw.x=cursor?24:16;p.draw.y=cursor?24:16;p.draw.rows=4;
   p.draw.columns=p.draw.format==openfodder::SpriteDrawFormat::PC?8:2;
   p.draw.palette=cursor?0xF0:0x20;p.isCursor=cursor;

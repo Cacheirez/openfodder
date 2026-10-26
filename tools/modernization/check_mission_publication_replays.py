@@ -36,6 +36,13 @@ def verify_soldier_probe(log, phases):
     return len(scenes)
 
 
+def verify_pose_probe(log, phases):
+    scenes = re.findall(r'^SOLDIER_POSE: verified replacement scene=(\d+)$', log, re.M)
+    if len(scenes) != phases or len(set(scenes)) != phases:
+        raise RuntimeError('Incomplete soldier pose replacement coverage')
+    return len(scenes)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--exe', type=Path, required=True)
@@ -45,15 +52,17 @@ def main():
     p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
     p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
     p.add_argument('--soldier-probe', action='store_true', help='Require semantic soldier reproduction with original resources')
+    p.add_argument('--pose-probe', action='store_true', help='Replace one original indexed pose and require per-scene evidence; implies soldier capture')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
+    args.soldier_probe = args.soldier_probe or args.pose_probe
     root = Path(__file__).resolve().parents[2]
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
-                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe,
+                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
@@ -68,6 +77,7 @@ def main():
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
+                       OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',
                        OPENFODDER_CAPTURE_SOLDIER='1' if args.soldier_probe else '0',
                        OPENFODDER_TEST_FIRST_PHASE='1' if args.first_phase else '0',
                        OPENFODDER_TEST_MISSION_PAUSE='1' if args.pause_probe else '0',
@@ -103,9 +113,10 @@ def main():
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
             soldier_scenes = verify_soldier_probe(log, phases) if args.soldier_probe else 0
+            pose_scenes = verify_pose_probe(log, phases) if args.pose_probe else 0
             pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
-                                        'pause_transitions': pauses, 'soldier_scenes': soldier_scenes,
+                                        'pause_transitions': pauses, 'soldier_scenes': soldier_scenes, 'pose_scenes': pose_scenes,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
         baseline = root/'tools/modernization/reference-gameplay-v1.json'

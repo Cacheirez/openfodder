@@ -5,6 +5,7 @@
 #include "TerrainDraw.hpp"
 #include "SidebarDraw.hpp"
 #include "ResolvedSpriteResource.hpp"
+#include "SoldierPose.hpp"
 #include <stdexcept>
 
 namespace openfodder {
@@ -18,6 +19,7 @@ struct MissionLayer {
     MissionLayerOperation operation = MissionLayerOperation::Pixels;
     IndexedProducerDraw pixels;
     PreparedSpriteDraw soldier;
+    std::shared_ptr<const SoldierPose> pose;
     TerrainDraw terrain;
     SidebarDraw sidebar;
     uint8_t clearIndex = 0;
@@ -33,13 +35,14 @@ struct MissionLayerSequence {
     std::vector<MissionLayer> layers; // global production order, including other targets
 };
 struct MissionLayerComposition {
+    size_t poseReplacements = 0, poseFallbacks = 0;
     std::vector<PresentationSurface> surfaces;
     std::vector<IndexedLayer> saved;
 };
 // Inputs obey the same clipped geometry/extents contracts as the retained
 // kernels. Identity is checked before invoking any kernel. Outputs are private;
 // no engine Save/Restore, registers, visibility, resource selection or SDL calls.
-inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& scene) {
+inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& scene, bool replacePose = false) {
     std::vector<std::vector<uint8_t>> indices, saved;
     MissionLayerComposition result;
     for (const auto& source : scene.destinations) {
@@ -82,6 +85,12 @@ inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& 
                 draw.sourceOffset != classic.sourceOffset || draw.palette != classic.palette ||
                 draw.format != classic.format)
                 throw std::invalid_argument("semantic soldier geometry differs from classic preparation");
+            if (replacePose && TryRasterizeSoldierPose(layer.pose, prepared, target.data(),
+                    result.surfaces[slot].indexed.width, result.surfaces[slot].indexed.height)) {
+                ++result.poseReplacements;
+                break;
+            }
+            if (replacePose) ++result.poseFallbacks;
             RasterizeSprite8(draw, prepared.resource.layout,
                 {target.data(), result.surfaces[slot].indexed.width});
             break;

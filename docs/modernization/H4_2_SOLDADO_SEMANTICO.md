@@ -40,4 +40,4 @@ Los seriales son identidad local de presentación, no IDs persistentes entre pro
 
 ## Continuación
 
-Verificar CI del incremento y conservar sus resultados. Después, sustitución acotada de una pose con retorno al recurso original, pruebas de anclaje y conceptos H6.1; helicóptero como primer compuesto. Interpolación, contrato temporal completo, catálogo CD32, GPU y validación manual siguen pendientes. H4 global no queda cerrado.
+Actualización: CI Windows de d28d99f9 aprobada (40374586200); Linux pendiente (40374585563). La [sustitución acotada de pose](H4_4_POSE_INDIVIDUAL.md) ya está implementada con pruebas locales de anclaje y retorno al clásico; su CI sigue pendiente. Después, conceptos H6.1; helicóptero como primer compuesto. Interpolación, contrato temporal completo, catálogo CD32, GPU y validación manual siguen pendientes. H4 global no queda cerrado.

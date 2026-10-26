@@ -35,8 +35,8 @@ def main():
   src=Path(td)/'test.cpp';exe=Path(td)/'test';src.write_text(code)
   subprocess.run(['g++','-std=c++14','-O1','-g','-fsanitize=address,undefined','-fno-sanitize-recover=all','-pthread','-I',str(root/'Source'),str(src),'-o',str(exe)],check=True)
   digests=[]
-  for publication, schedule in [('0','5'),('1','0'),('1','1'),('1','5')]:
-   result=subprocess.run([str(exe)],check=True,text=True,stdout=subprocess.PIPE,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1' if publication=='0' else '0','OPENFODDER_PRESENT_MISSION_LAYERS':publication,'OPENFODDER_TEST_MISSION_PRESENTATIONS':schedule,'ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
+  for pose, publication, schedule in [(pose,pub,n) for pose in ('0','1') for pub,n in [('0','5'),('1','0'),('1','1'),('1','5')]]:
+   result=subprocess.run([str(exe)],check=True,text=True,stdout=subprocess.PIPE,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1' if publication=='0' else '0','OPENFODDER_PRESENT_MISSION_LAYERS':publication,'OPENFODDER_REPLACE_SOLDIER_POSE':pose,'OPENFODDER_TEST_MISSION_PRESENTATIONS':schedule,'ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
    print(result.stdout,end='')
    matches=re.findall(r'^TRANSITIONS: 48 digest=(\d+)$',result.stdout,re.M)
    assert len(matches)==1,'Missing joined mission/pause evidence'

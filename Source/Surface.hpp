@@ -66,6 +66,8 @@ protected:
         uint64_t interval = openfodder::NextPresentationSerial();
         std::mutex mutex;
         openfodder::MissionLayerSequence scene;
+        std::shared_ptr<const openfodder::SoldierPose> pose;
+        bool replacePose = false;
     };
     std::shared_ptr<MissionAuditRecording> mMissionAudit;
     openfodder::PresentationDestinationId mPresentationDestination =
@@ -139,6 +141,13 @@ public:
         // No borrowed draw pointer is needed by the semantic consumer.
         layer.soldier.draw.source = nullptr;
         std::lock_guard<std::mutex> lock(recording->mutex);
+        if (recording->replacePose) {
+            if (recording->pose && recording->pose->origin.soldier.scene != prepared.soldier.scene)
+                recording->pose.reset();
+            if (!recording->pose)
+                recording->pose = openfodder::CaptureOriginalSoldierPose(layer.soldier);
+            layer.pose = recording->pose;
+        }
         recording->scene.layers.push_back(std::move(layer));
     }
     void RecordMissionTerrain(const openfodder::TerrainDraw& terrain) {
@@ -159,6 +168,7 @@ public:
         RecordMissionLayer(std::move(layer));
     }
     void BeginMissionAudit(cSurface* other, bool eligible) {
+        const auto previous = std::atomic_load(&mMissionAudit);
         // Reset at every producer iteration, including zero presentations and pause.
         std::atomic_store(&mMissionAudit, std::shared_ptr<MissionAuditRecording>{});
         if (other && other != this)
@@ -167,6 +177,12 @@ public:
         if (!eligible || isLoadedImage() ||
             (!MissionPublicationEnabled() && (!enabled || std::string(enabled) != "1"))) return;
         const auto recording = std::make_shared<MissionAuditRecording>();
+        const char* poseOption = std::getenv("OPENFODDER_REPLACE_SOLDIER_POSE");
+        recording->replacePose = poseOption && std::string(poseOption) == "1";
+        if (recording->replacePose && previous) {
+            std::lock_guard<std::mutex> lock(previous->mutex);
+            recording->pose = previous->pose;
+        }
         auto attach = [&](cSurface* surface) {
             if (!surface || surface->isLoadedImage()) return;
             recording->scene.destinations.push_back({surface->CapturePresentation(),
@@ -224,6 +240,31 @@ public:
                 std::fprintf(stderr, "SOLDIER_SEMANTIC: verified original resource in mission composition scene=%llu\n",
                     static_cast<unsigned long long>(identity));
             break;
+        }
+        if (recording->replacePose) {
+            const auto substituted = openfodder::ComposeMissionLayers(scene, true);
+            // This pilot uses original artwork: both paths MUST remain identical.
+            // A defect is never disguised as a missing-asset fallback.
+            for (size_t i = 0; i < actual.size(); ++i) {
+                if (*substituted.surfaces[i].indexed.indices != *composed.surfaces[i].indexed.indices ||
+                    *substituted.saved[i].pixels != *composed.saved[i].pixels)
+                    throw std::runtime_error("soldier pose: replacement differs from original");
+                auto replay = openfodder::RasterizePresentationSurface(substituted.surfaces[i]);
+                if (replay.pixels != openfodder::RasterizePresentationSurface(composed.surfaces[i]).pixels)
+                    throw std::runtime_error("soldier pose: replacement RGB differs from original");
+                if (publication && actual[i] == this) *publication = std::move(replay);
+            }
+            if (substituted.poseReplacements) {
+                for (const auto& layer : scene.layers) {
+                    if (!layer.pose) continue;
+                    static std::atomic<uint64_t> poseScene{0};
+                    const auto identity = layer.pose->origin.soldier.scene;
+                    if (poseScene.exchange(identity) != identity)
+                        std::fprintf(stderr, "SOLDIER_POSE: verified replacement scene=%llu\n",
+                            static_cast<unsigned long long>(identity));
+                    break;
+                }
+            }
         }
         static std::atomic<bool> announced{false};
         if (!announced.exchange(true))
