@@ -1,12 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.30 · Revisión: 26 de octubre de 2026.**
+**Versión 2.31 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.4, [sustitución individual de pose](H4_4_POSE_INDIVIDUAL.md) implementada y probada localmente, con retorno por comando al clásico; CI pendiente. H4.2 del padre d28d99f9 aprobado en Windows, Linux pendiente. Después, muestra visual H6.1 con anclaje explícito. H8.3 mantiene capturas CD32 pendientes.**
+**Tarea activa: validación del piloto 46c180be completada en Windows/Linux, incluidos sanitizadores; revisar la [primera muestra H6.1 B01](H6_1_MUESTRA_B01.md). H4 sigue parcial; H6.2 pendiente de elección de Miguel.**
+
+## Incremento 2.31 — revisión de CI y primera muestra visual
+
+Windows y Linux de 46c180be aprobados, incluidos ASan/UBSan/LSan y los recorridos TSan declarados. Se cierra la validación automática de este incremento, no H4 global ni la aceptación manual GPU/CD32. [Evidencia conservada](H4_4_VALIDACION_46c180be.json). Primera muestra H6.1 B01 generada y refinada: soldado y jungla en 2D ilustrado limpio, con reducción orientativa. No integrada ni aprobada como estilo final; faltan variantes comparables y escala real. [Muestra, revisión y prompts](H6_1_MUESTRA_B01.md).
 
 ## Incremento 2.30 — sustitución individual de pose
 
-Selección de una pose original, imagen indexada inmutable, sustitución en el orden de capas original y retorno al clásico ante clave/recorte/recurso incompatibles. Contraste obligatorio también de la ruta sustituida; una divergencia no se oculta como fallback. 46 casos focalizados, ocho configuraciones de productores/pausa con 384 transiciones y29 pruebas Python PASS. CI nueva pendiente; no es arte nuevo ni interpolación. [Contrato, reproducción y evidencia](H4_4_POSE_INDIVIDUAL.md).
+Selección de una pose original, imagen indexada inmutable, sustitución en el orden de capas original y retorno al clásico ante clave/recorte/recurso incompatibles. Contraste obligatorio también de la ruta sustituida; una divergencia no se oculta como fallback. 46 casos focalizados, ocho configuraciones de productores/pausa con 384 transiciones y29 pruebas Python PASS. Windows y Linux 46c180be aprobados. No es arte nuevo ni interpolación. [Contrato, reproducción y evidencia](H4_4_POSE_INDIVIDUAL.md).
 
 ## Incremento 2.29 — soldado semántico
 
@@ -55,11 +59,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato | Incremento de pose sobre `d28d99f9`, CI nueva pendiente. Padre aprobado en Windows; Linux pendiente |
+| Motor candidato | `46c180be3f456175834917646b04815a166c2d75`; Windows/Linux aprobados; este incremento posterior solo modifica documentación |
 | Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows del padre d28d99f9 | [40374586200](https://github.com/Cacheirez/openfodder/actions/runs/40374586200), éxito |
-| CI Linux del padre d28d99f9 | [40374585563](https://github.com/Cacheirez/openfodder/actions/runs/40374585563), pendiente |
+| CI Windows 46c180be | [40377396759](https://github.com/Cacheirez/openfodder/actions/runs/40377396759), éxito |
+| CI Linux 46c180be | [40377396760](https://github.com/Cacheirez/openfodder/actions/runs/40377396760), éxito, incluidos los diagnósticos de memoria y concurrencia declarados |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Pendientes |
 
@@ -159,9 +163,9 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 ## H4. Separar presentación y simulación — parcial
 
 - [ ] **H4.1 — Asistente:** completar la separación/preservación de efectos del dibujo en sus coordinadoras lógicas. **Hecho:** extracción de núcleos, recursos propios, pausa y frame compuesto, productores registrados y contraste diagnóstico. **Falta:** demostrar independencia del motor completo y cubrir coordinaciones/transiciones restantes. No repetir el inventario inicial como si no existiera.
-- [ ] **H4.2 — Asistente:** estados coherentes de solo lectura para cámara, sprites, terreno, paletas e interfaz. **Hecho:** capturas propias y destinos validados. **Falta:** contrato de frame elegible y fresco, vida útil acotada, coherencia temporal y datos semánticos para H5. La identidad del almacenamiento no es una versión de contenido ni una fecha del frame.
+- [ ] **H4.2 — Asistente:** estados coherentes de solo lectura para cámara, sprites, terreno, paletas e interfaz. **Hecho:** capturas propias, destinos validados y piloto de un soldado con escena/slot/generación, posición/cámara y recurso original retenido. **Falta:** generalizar el contrato temporal, vida útil acotada y datos semánticos para H5 al resto de entidades y escenas. La identidad del almacenamiento no es una versión de contenido ni una fecha del frame.
 - [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, aceptación parcial:** publicación opcional desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
-- [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
+- [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Piloto añadido:** identidad/generación, posición/cámara y sustitución de una pose original con retorno por comando al clásico. **Falta:** generalizar ese modelo y sus tiempos para mover entidades y cámara independientemente; aún no hay interpolación.
 - [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
 - [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas y ruta de misión del motor completo 0/1/5 con H3 original (bd2b3d2). Nueva prueba conjunta de los cuerpos reales de misión/pausa: 192 transiciones con recursos sustituidos, PASS local y CI en 9aaaf448. **Validado en CI:** sonda SDL acotada del motor completo, dos fases/301 estados con 0/1/5 (véase H4_6_PAUSA_MOTOR.md). **Falta:** pausas largas/eventos, sustitución de recursos en interacción completa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
 
@@ -184,7 +188,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 ## H6. Dirección artística y cadena de recursos
 
-- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Preparación hecha:** [brief y tres direcciones](H6_PILOTO_VISUAL.md). Puede empezar sin esperar al cierre global de H4; muestras aún pendientes.
+- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [brief y tres direcciones](H6_PILOTO_VISUAL.md) y [primera muestra B01](H6_1_MUESTRA_B01.md) presentados. Faltan A/C comparables y comprobación a escala real. B01 no está integrada ni aprobada.
 - [ ] **H6.2 — Miguel:** elegir la dirección visual. Propuesta inicial: 2D ilustrado, perspectiva original, siluetas claras y colores legibles; pendiente de aprobación visual.
 - [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
 - [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.
