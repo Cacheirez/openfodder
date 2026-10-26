@@ -1,6 +1,6 @@
 # Piloto visual — alcance de trabajo
 
-26-10-2026. H6.1 parcial: [primera muestra B01 presentada](H6_1_MUESTRA_B01.md), 2D ilustrado limpio, revisada para reducir ruido del terreno. Todavía no hay conceptos aprobados ni recursos HD integrados. Faltan A/C comparables y comprobación a escala real.
+26-10-2026. H6.1 parcial: [primera muestra B01 presentada](H6_1_MUESTRA_B01.md), 2D ilustrado limpio, revisada para reducir ruido del terreno. Todavía no hay conceptos aprobados ni recursos HD integrados. Actualización 27-10: [A01 y C01 generadas a partir de B01](H6_1_COMPARATIVA_ABC.md); comparación presentada. Falta elección y comprobación a escala real.
 
 ## Decisión de secuencia
 

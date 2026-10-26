@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.31 · Revisión: 27 de octubre de 2026.**
+**Versión 2.32 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validación del piloto 46c180be completada en Windows/Linux, incluidos sanitizadores; revisar la [primera muestra H6.1 B01](H6_1_MUESTRA_B01.md). H4 sigue parcial; H6.2 pendiente de elección de Miguel.**
+**Tarea activa: validación del piloto 46c180be completada en Windows/Linux, incluidos sanitizadores; elegir entre [A01, B01 y C01](H6_1_COMPARATIVA_ABC.md), ya presentadas. H4 sigue parcial; H6.2 pendiente de elección de Miguel.**
+
+## Incremento 2.32 — comparación visual A/B/C
+
+Presentadas las tres direcciones: píxel refinado, 2D ilustrado limpio y pintado moderado. Recomendación de trabajo: B01; elección H6.2 pendiente de Miguel. Son conceptos con pequeñas variaciones de geometría y miniaturas orientativas, no recursos integrados. Falta comprobación a escala real. [Comparación y prompts](H6_1_COMPARATIVA_ABC.md). Código del motor sin cambios.
 
 ## Incremento 2.31 — revisión de CI y primera muestra visual
 
@@ -188,7 +192,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 ## H6. Dirección artística y cadena de recursos
 
-- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [brief y tres direcciones](H6_PILOTO_VISUAL.md) y [primera muestra B01](H6_1_MUESTRA_B01.md) presentados. Faltan A/C comparables y comprobación a escala real. B01 no está integrada ni aprobada.
+- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [tres direcciones A01/B01/C01 presentadas](H6_1_COMPARATIVA_ABC.md), con pose/escenario similares. Falta comprobar a escala real la dirección elegida. Ninguna está integrada ni aprobada.
 - [ ] **H6.2 — Miguel:** elegir la dirección visual. Propuesta inicial: 2D ilustrado, perspectiva original, siluetas claras y colores legibles; pendiente de aprobación visual.
 - [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
 - [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.

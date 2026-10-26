@@ -19,7 +19,7 @@ La imagen se conserva como imagen generada en la conversación; este documento c
 
 ## Estado del plan
 
-H6.1 está parcialmente realizado: primera dirección B presentada. Faltan las variantes A (píxel refinado) y C (pintado moderado), comparables en pose y encuadre, y una prueba controlada a escala del juego. H6.2 sigue pendiente: Miguel elige tras revisar las muestras. No se ha tomado una elección de estilo en su nombre.
+H6.1 está parcialmente realizado: primera dirección B presentada. Actualización 27-10: [A01 y C01 ya presentadas](H6_1_COMPARATIVA_ABC.md), con pose y encuadre aproximados a B01. Falta una prueba controlada a escala del juego. H6.2 sigue pendiente: Miguel elige tras revisar las muestras. No se ha tomado una elección de estilo en su nombre.
 
 El piloto de sustitución actual utiliza exclusivamente gráficos originales y exige igualdad visual. Integrar arte nuevo requerirá un contrato distinto para las diferencias visuales autorizadas, conservando H3, posición/anclaje y fallback clásico. No se debe desactivar el contraste global para insertar esta lámina.
 
