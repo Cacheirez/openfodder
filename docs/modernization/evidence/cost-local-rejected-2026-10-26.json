@@ -1,0 +1,138 @@
+{
+  "cost-pilot-2026-10-26": {
+    "report": {
+      "verdict": "FAIL",
+      "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd",
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "host": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "rounds": 3,
+      "metric": "whole child process wall seconds, including startup, trace I/O and teardown",
+      "scope": "PC/Amiga first phases; software SDL; no sound; one mission presentation",
+      "limitations": [
+        "Shared host, not a controlled Windows/GPU benchmark",
+        "No per-frame p95/p99, CPU attribution, memory or upload counts",
+        "Small sample; timings are observations, not acceptance thresholds"
+      ],
+      "runs": [
+        {
+          "round": -1,
+          "warmup": true,
+          "mode": "classic",
+          "seconds": {
+            "pc": 0.817,
+            "amiga": 1.273
+          },
+          "canonical_states": 301
+        }
+      ],
+      "summary": {},
+      "failure": "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3', '/workspace/scratch/bb233acd400e/openfodder/tools/modernization/check_gameplay_baseline.py', '--baseline', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-2026-10-26/baseline-selection.json', '--traces', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-2026-10-26/trace--1-audit-pc', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-2026-10-26/trace--1-audit-amiga']' returned non-zero exit status 1."
+    },
+    "incomplete_traces": [
+      {
+        "file": "trace--1-audit-pc/PC_Format_m1_p1.jsonl",
+        "sha256": "260e45898cddfffbc8425a231102627a7c26e0e5219fb76d5e11eb542e6925fa",
+        "complete_states": 136,
+        "prefix_equals_classic": true,
+        "error": "Expecting value: line 1 column 1980 (char 1979)",
+        "tail": "frame\":1,\"pending_destroy\":0,\"weapon_fire_timer\":0,\"weapon_cooldown\":0,\"action_cooldown\":0,\"ai_aggression\":0,\"target_x\":"
+      }
+    ]
+  },
+  "cost-pilot-repeat-2026-10-26": {
+    "report": {
+      "verdict": "FAIL",
+      "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd",
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "host": "Linux-6.18.55-x86_64-with-glibc2.39",
+      "machine": "x86_64",
+      "rounds": 3,
+      "metric": "whole child process wall seconds, including startup, trace I/O and teardown",
+      "scope": "PC/Amiga first phases; software SDL; no sound; one mission presentation",
+      "limitations": [
+        "Shared host, not a controlled Windows/GPU benchmark",
+        "No per-frame p95/p99, CPU attribution, memory or upload counts",
+        "Small sample; timings are observations, not acceptance thresholds"
+      ],
+      "runs": [
+        {
+          "round": -1,
+          "warmup": true,
+          "mode": "classic",
+          "seconds": {
+            "pc": 0.817,
+            "amiga": 1.076
+          },
+          "canonical_states": 301
+        },
+        {
+          "round": -1,
+          "warmup": true,
+          "mode": "audit",
+          "seconds": {
+            "pc": 2.275,
+            "amiga": 3.329
+          },
+          "canonical_states": 301
+        },
+        {
+          "round": -1,
+          "warmup": true,
+          "mode": "publication",
+          "seconds": {
+            "pc": 2.071,
+            "amiga": 3.074
+          },
+          "canonical_states": 301
+        },
+        {
+          "round": 0,
+          "warmup": false,
+          "mode": "classic",
+          "seconds": {
+            "pc": 0.72,
+            "amiga": 1.018
+          },
+          "canonical_states": 301
+        },
+        {
+          "round": 0,
+          "warmup": false,
+          "mode": "audit",
+          "seconds": {
+            "pc": 2.224,
+            "amiga": 3.329
+          },
+          "canonical_states": 301
+        },
+        {
+          "round": 0,
+          "warmup": false,
+          "mode": "publication",
+          "seconds": {
+            "pc": 2.023,
+            "amiga": 3.126
+          },
+          "canonical_states": 301
+        }
+      ],
+      "summary": {},
+      "failure": "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3', '/workspace/scratch/bb233acd400e/openfodder/tools/modernization/check_gameplay_baseline.py', '--baseline', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-repeat-2026-10-26/baseline-selection.json', '--traces', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-repeat-2026-10-26/trace-1-audit-pc', '/workspace/scratch/bb233acd400e/openfodder/reports/cost-pilot-repeat-2026-10-26/trace-1-audit-amiga']' returned non-zero exit status 1."
+    },
+    "incomplete_traces": [
+      {
+        "file": "trace-1-audit-pc/PC_Format_m1_p1.jsonl",
+        "sha256": "27a0c767b1a8300a4ea5cfcfe6c724d4b509844f34c372c7037495ec3c18a592",
+        "complete_states": 143,
+        "prefix_equals_classic": true,
+        "error": "Expecting value: line 1 column 1586 (char 1585)",
+        "tail": "ooldown\":0,\"action_cooldown\":0,\"ai_aggression\":0,\"target_x\":265,\"target_y\":71,\"was_drawn\":1,\"in_water\":0,\"terrain_type\":"
+      }
+    ]
+  }
+}

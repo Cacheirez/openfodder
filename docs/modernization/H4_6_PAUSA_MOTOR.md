@@ -30,3 +30,10 @@ CI añadida: matriz normal 0/1/5, ASan/UBSan/LSan y TSan a una presentación, si
 El primer ejecutable local produjo una ejecución Amiga con código cero, una sola transición registrada y sin avisos de finalización: el gate la rechazó correctamente. Sus 149 estados trazados sí coincidían con el control. No se ha reproducido tras recompilar ni en la matriz posterior; no se atribuye una causa ni se declara corregida. Se conserva ese FAIL junto con los PASS posteriores en [evidencia local](evidence/pause-probe-local-2026-10-26.json). La aceptación de esta ampliación queda pendiente de CI y de resolver o delimitar esta anomalía de observabilidad.
 
 Siguiente: revisar resultados de CI y la anomalía inicial; después ampliar duración/eventos de pausa y escenas. La sustitución/destrucción de recursos sigue acreditada por la fixture conjunta, no por esta sonda SDL.
+
+
+## Resultado de CI — revisión del 26-10-2026
+
+`9aaaf448`: [Windows 40250030288](https://github.com/Cacheirez/openfodder/actions/runs/40250030288) y [Linux 40250030293](https://github.com/Cacheirez/openfodder/actions/runs/40250030293) aprobados. Inspeccionados los pasos y el log Linux: matriz de pausa 0/1/5, ASan/UBSan/LSan y TSan a una presentación, todos con 301 estados originales; pruebas de 11 fases conservadas. [Resumen de CI](evidence/9aaaf448-ci-summary.json). No se reproduce en esta CI la anomalía local inicial; su causa sigue abierta y no se declara corregida. Esta aceptación es del alcance acotado, no de H4 completo.
+
+Se avanza ahora con H5.1 y el [piloto visual](H6_PILOTO_VISUAL.md), manteniendo las validaciones como puertas de cada integración.

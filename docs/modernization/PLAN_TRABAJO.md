@@ -1,12 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.25 · Revisión: 26 de octubre de 2026.**
+**Versión 2.26 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.6, programación 0/1/5 de misión validada en bd2b3d2 Windows/Linux. Sonda SDL de misión↔pausa en motor completo: implementada; matriz 0/1/5 local PASS en dos fases/301 estados. CI propia y anomalía inicial pendientes; [alcance](H4_6_PAUSA_MOTOR.md). [Informe](H4_6_PLANIFICACION_MISION.md).**
+**Tarea activa: H5.1, medición inicial de coste, y preparación del piloto H4.2/H4.4–H6.1. CI de 9aaaf448 aprobada en Windows/Linux; pausa acotada validada en su alcance. Anomalía local de registros abierta, sin evidencia de corrección. [Piloto visual](H6_PILOTO_VISUAL.md).**
 
 ## 1. Dictamen de la revisión
 
-El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto; no estamos todavía en la fase de gráficos nuevos.**
+El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto. El diseño conceptual H6.1 puede empezar ya; la integración necesita el contrato semántico mínimo, no cerrar todas las escenas.**
 
 Cambios respecto al plan anterior:
 
@@ -19,6 +19,10 @@ Cambios respecto al plan anterior:
 - Añadir tareas transversales de conservación de evidencias y reproducción. Los informes compactos están en Git; los ZIP completos de Actions caducan.
 
 **No se necesita ahora:** reescribir el motor, actualizar SDL por iniciativa propia, crear otro hilo de renderizado, producir arte en masa, ampliar el campo de visión ni volver a aceptar H2.6. La escala gráfica 4× es una hipótesis que evaluaremos, no un requisito cerrado. Tampoco se exige terminar todas las pantallas del juego antes de probar un piloto acotado, siempre que las demás conserven su ruta clásica y las transiciones estén verificadas.
+
+### Ajuste de secuencia del 26-10-2026
+
+La CI de la sonda de pausa está aprobada en Windows/Linux. Se deja la anomalía local de observabilidad como incidencia acotada: no se borra, pero no bloquea preparar conceptos visuales ni una captura semántica experimental. Evitar ampliar indefinidamente las baterías de escenas antes de mostrar un piloto. Siguiente trabajo técnico: medir coste, capturar cámara/identidad/posición de un sprite y reproducirlo con el recurso original; en paralelo de planificación (sin delegación), preparar tres conceptos comparables. Véase [alcance del piloto](H6_PILOTO_VISUAL.md).
 
 ## 2. Objetivo, alcance y reglas
 
@@ -39,11 +43,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato actual | `bd2b3d2db30cda4d7a810a7a62c769469f101637`; Windows/Linux aprobados; misión 0/1/5 y TSan activo limitado a dos fases |
+| Motor candidato actual | `9aaaf448bf5383f8441f1a26f1df2fe4cb611bbb`; Windows/Linux aprobados; misión 0/1/5 y pausa SDL acotada |
 | Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows del motor | [40229859350](https://github.com/Cacheirez/openfodder/actions/runs/40229859350), éxito |
-| CI Linux del motor | [40229859389](https://github.com/Cacheirez/openfodder/actions/runs/40229859389), éxito |
+| CI Windows del motor | [40250030288](https://github.com/Cacheirez/openfodder/actions/runs/40250030288), éxito |
+| CI Linux del motor | [40250030293](https://github.com/Cacheirez/openfodder/actions/runs/40250030293), éxito |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Pendientes |
 
@@ -147,13 +151,13 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, aceptación parcial:** publicación opcional desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
 - [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
 - [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
-- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas y ruta de misión del motor completo 0/1/5 con H3 original (bd2b3d2). Nueva prueba conjunta de los cuerpos reales de misión/pausa: 192 transiciones con recursos sustituidos, PASS local y CI pendiente. **En validación:** sonda SDL acotada del motor completo, dos fases/301 estados con 0/1/5 (véase H4_6_PAUSA_MOTOR.md). **Falta:** pausas largas/eventos, sustitución de recursos en interacción completa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
+- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas y ruta de misión del motor completo 0/1/5 con H3 original (bd2b3d2). Nueva prueba conjunta de los cuerpos reales de misión/pausa: 192 transiciones con recursos sustituidos, PASS local y CI en 9aaaf448. **Validado en CI:** sonda SDL acotada del motor completo, dos fases/301 estados con 0/1/5 (véase H4_6_PAUSA_MOTOR.md). **Falta:** pausas largas/eventos, sustitución de recursos en interacción completa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
 
 **Aceptación global:** presentar más, menos o ninguna vez no altera reglas, RNG ni efectos lógicos; frames y recursos son coherentes; las rutas soportadas tienen equivalencia comprobada y las restantes mantienen el clásico explícitamente. No declarar cerrado H4 por una imagen idéntica o un replay sin fallos.
 
 ## H5. Scroll y movimiento suaves
 
-- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos. **Se adelanta su inicio a H4:** comparar clásico, registro/contraste y publicación nueva en las mismas escenas y condiciones; CPU, tiempos p95/p99, memoria, copias y subidas a GPU cuando esa ruta exista. Pendiente de medición, sin presupuesto inventado.
+- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos. **Se adelanta su inicio a H4:** comparar clásico, registro/contraste y publicación nueva en las mismas escenas y condiciones; CPU, tiempos p95/p99, memoria, copias y subidas a GPU cuando esa ruta exista. Herramienta inicial `measure_presentation_cost.py`: compara clásico, auditoría y publicación, calentamiento y orden rotatorio, con H3 obligatorio. [Primera medición](H5_1_MEDICION_INICIAL.md): 24 fases PASS con H3, resultados en tmpfs; dos intentos locales rechazados y conservados. Mide tiempo del proceso completo; p95/p99 por frame, CPU, memoria y GPU siguen pendientes. No inventar un presupuesto ni confundirlo con FPS.
 - [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
@@ -166,7 +170,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 ## H6. Dirección artística y cadena de recursos
 
-- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos.
+- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Preparación hecha:** [brief y tres direcciones](H6_PILOTO_VISUAL.md). Puede empezar sin esperar al cierre global de H4; muestras aún pendientes.
 - [ ] **H6.2 — Miguel:** elegir la dirección visual. Propuesta inicial: 2D ilustrado, perspectiva original, siluetas claras y colores legibles; pendiente de aprobación visual.
 - [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
 - [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.
