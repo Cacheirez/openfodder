@@ -148,3 +148,7 @@ python3 tools/modernization/inventory_cf1_sprites.py \
 | 108 | Computer_1 | 1 | 1 | mapm70 |
 | 109 | Computer_2 | 1 | 1 | mapm71 |
 | 110 | Computer_3 | 1 | 1 | mapm72 |
+
+## Continuación de capacidades
+
+[Primer incremento de vehículos](CD32_CAPACIDADES_VEHICULOS.md): revisión estática de condiciones, estados, auxiliares y recursos; siete escenarios seleccionados, ejecución pendiente. El JSON del censo permanece intacto como evidencia de presencia inicial.

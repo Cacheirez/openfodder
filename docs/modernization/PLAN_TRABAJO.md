@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.27 · Revisión: 26 de octubre de 2026.**
+**Versión 2.28 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H8.3 y H4.2/H4.4, catálogo CD32 que fundamente la captura semántica. Censo estático de 72 fases completado; clasificación de capacidades, entidades dinámicas y variantes gráficas pendientes. [Informe](CD32_CENSO_SPRITES.md). El piloto visual sigue abierto, sin extrapolar el catálogo de las demos.**
+**Tarea activa: H8.3 y H4.2/H4.4, catálogo CD32 que fundamente la captura semántica. Censo estático de 72 fases completado; primer incremento de capacidades de helicópteros/vehículos documentado y contrastado con fuentes. Siguiente: piloto semántico mínimo del soldado, seguido del helicóptero compuesto; otras familias y capturas en ejecución pendientes. [Informe](CD32_CENSO_SPRITES.md). El piloto visual sigue abierto, sin extrapolar el catálogo de las demos.**
+
+## Incremento 2.28 — capacidades de vehículos
+
+[Matriz fundamentada](CD32_CAPACIDADES_VEHICULOS.md): entrada/ocupación/salida, llamada y vuelo, daño condicional, auxiliares y transformaciones dinámicas. Siete escenarios CD32 seleccionados sobre cinco entornos; todos pendientes de ejecución. Manifiesto con fuentes fijadas y comprobador de relaciones/metadata, sin simulación alternativa. Motor, H3 y base clásica intactos. El contrato semántico está propuesto, no implementado; el siguiente incremento reproduce un soldado original sin esperar a catalogar todas las familias.
 
 ## 1. Dictamen de la revisión
 
@@ -201,7 +205,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 - [x] **H8.1 — Asistente / Miguel:** edición/campaña principal confirmada: Cannon Fodder 1 CD32, con datos originales recibidos y comprobados privadamente. Esto no acredita cobertura ni replays de sus 72 fases. Mantener esos datos fuera de GitHub.
 - [ ] **H8.2 — Asistente:** generar un inventario real de recursos y variantes de esa edición: biomas, tropas, civiles, vehículos, edificios, armas, interfaz y pantallas auxiliares.
-- [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan. **Avance:** censo CD32 de 72 fases/24 misiones, 72 IDs SPT incluyendo Null, cinco conjuntos de entorno; manejadores localizados. [Censo](CD32_CENSO_SPRITES.md). **Pendiente:** capacidades condicionales, entidades creadas dinámicamente, tiles y variantes/estados; no confundir presencia estática con prueba jugable.
+- [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan. **Avance:** censo CD32 de 72 fases/24 misiones, 72 IDs SPT incluyendo Null, cinco conjuntos de entorno; manejadores localizados. [Censo](CD32_CENSO_SPRITES.md). **Avance 2.28:** [capacidades de vehículos](CD32_CAPACIDADES_VEHICULOS.md), grafo parcial dinámico y escenarios con recursos contrastados. **Pendiente:** otras familias, ejecución/captura de esos estados, tiles y variantes; no confundir presencia estática con prueba jugable.
 - [ ] **H8.4 — Asistente:** completar escenarios por lotes coherentes y verificar uniones, destrucción, animaciones y colores de cada lote.
 - [ ] **H8.5 — Asistente:** completar vehículos, civiles, elementos especiales y efectos que no aparezcan en la primera fase.
 - [ ] **H8.6 — Asistente:** cubrir menús, briefing, reclutas, servicio, mapa y textos incluidos en el alcance; conservar variantes clásicas donde se acuerde explícitamente.
