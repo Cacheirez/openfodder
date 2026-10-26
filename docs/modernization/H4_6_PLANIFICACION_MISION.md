@@ -35,6 +35,15 @@ Repetir con `--presentations 1` y `5`, usando directorios nuevos. Los reports y 
 
 ## Estado y trabajo restante
 
-Local: fixture activa PASS bajo ASan/UBSan; pruebas históricas de misión y pausa PASS; 15 pruebas Python PASS. Compilación y replays de este incremento en CI: pendientes hasta inspeccionar sus resultados.
+Local: fixture activa PASS bajo ASan/UBSan; pruebas históricas de misión y pausa PASS; 15 pruebas Python PASS. Motor `bd2b3d2`: CI Windows [40229859350](https://github.com/Cacheirez/openfodder/actions/runs/40229859350) y Linux [40229859389](https://github.com/Cacheirez/openfodder/actions/runs/40229859389) PASS, inspeccionadas el 26-10-2026. Las políticas 0/1/5 conservan los 11.361 estados H3 originales en 11 fases. Publicación activa ASan/UBSan/LSan: 11 fases; TSan: dos fases/301 estados. [Informes y hashes](evidence/bd2b3d2-reports.json). Los ZIP completos se conservan también en `OPENFODDER_EVIDENCIAS_bd2b3d2.zip`, fuera de la caducidad de Actions.
 
 H4 permanece abierto. Siguiente: ampliar misión↔pausa con la ruta de órdenes y la programación real, recursos/superficies sustituidos y entradas/salidas de escenas. La batería de pausa histórica usa dobles: no equivale a una pausa interactiva real del motor. También siguen pendientes coste/retención medidos, Windows/GPU manual y estados semánticos de cámara/entidades para interpolación. No activar la opción por defecto.
+
+
+## Ampliación del 26-10-2026: bucle de pausa unido a misión
+
+La fixture de registro ahora ejecuta también el cuerpo real de `Phase_Paused`, sin normalizar sus hooks. Cada una de las 24 combinaciones PC/Amiga, padding, llamadas y semillas recorre dos transiciones misión→pausa→misión. En cada pausa se sustituyen y destruyen las tres superficies, primero con igual geometría y después cambiando su ancho, junto con sprites, atlas y panel. Se retiene el frame anterior y se comprueba que sigue siendo reproducible; al regresar, el intervalo nuevo usa los destinos y recursos actuales.
+
+Se verifican tres presentaciones/eventos de pausa por transición, un único restablecimiento de paleta y redibujado final, invalidación del registro durante pausa, reapertura al volver y conteo 0/1/5 al presentar la misión reanudada. La huella de índices, backing, paletas y efectos coincide entre clásico y los tres modos opcionales: `15155017350506417091`, 48 transiciones por configuración, 192 en total. PASS local bajo ASan/UBSan; CI de esta ampliación pendiente. Esta huella compara variantes de la fixture, no sustituye a H3 ni se añade como golden del juego.
+
+No cambia código del motor. `Draw_Phase_Paused`, entrada, selección de recursos y SDL siguen siendo dobles; no se afirma haber probado una pausa interactiva completa, GPU o una nueva cadencia dentro de pausa. El próximo incremento debe cubrir esa interacción en el motor completo antes de extender el scheduler a más escenas.

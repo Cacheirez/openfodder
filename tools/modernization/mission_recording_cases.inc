@@ -1,5 +1,7 @@
 int main(){
- size_t count=0,frames=0;
+ size_t count=0,frames=0,transitions=0;
+ uint64_t transitionDigest=1469598103934665603ull;
+ auto digest=[&](uint32 value){transitionDigest^=value;transitionDigest*=1099511628211ull;};
  const int repeats=cSurface::MissionPresentationRepeats(true);
  assert(cSurface::MissionPresentationRepeats(false)==1);
  const bool publishing=cSurface::MissionPublicationEnabled();
@@ -74,8 +76,62 @@ int main(){
    engine.mPhase_Paused=false;engine.mPhase_ShowMapOverview=false;
    engine.mPhase_In_Progress=true;params.mUnitTesting=true;
   }
+  // Join the actual pause loop to the actual mission coordinators. SDL, input
+  // and loading remain doubles; both same-size and resized replacements die
+  // during pause, while the pre-pause command frame must remain usable.
+  std::unique_ptr<cSurface> main(new cSurface(80,64)),final(new cSurface(80,64)),text(new cSurface(80,64));
+  auto attach=[&](){engine.mSurface=main.get();engine.mSurfaceFinal=final.get();engine.mSurface2=text.get();graphics->mSurface=main.get();};
+  auto resources=[&](int tag){
+   engine.sprite.assign(65536,uint8(tag));
+   engine.mTile_BaseBlk=std::make_shared<std::vector<uint8>>(320*256,uint8(tag+1));
+   engine.mTile_SubBlk=std::make_shared<std::vector<uint8>>(320*256,uint8(tag+2));
+   ag.mBlkData=std::make_shared<std::vector<uint8>>(512*128,uint8(tag+3));
+   sidebar.assign(48*main->GetHeight()/2,uint16(tag*257));engine.mSidebar_Screen_Buffer=sidebar.data();
+  };
+  fill(*main,seed,false);fill(*final,seed+2,false);fill(*text,seed+3,true);attach();resources(19);
+  for(int transition=0;transition<2;++transition){
+   engine.Interrupt_Redraw();
+   const auto retained=main->VerifyMissionAudit(final.get());
+   const auto retainedDestination=main->mPresentationDestination;
+   const auto retainedPixels=openfodder::RasterizeMissionLayers(retained,retainedDestination).pixels;
+   engine.Video_SurfaceRender();
+   int eventsBefore=engine.pauseEvents,cyclesBefore=window.cycles,framesBefore=window.frames;
+   int effectsBefore=engine.effects,requestsBefore=engine.requests,paletteBefore=graphics->paletteSets;
+   engine.mPhase_Paused=true;engine.mPhase_Aborted=true;
+   engine.pauseEvent=[&](){
+    assert(!main->MissionAuditActive()&&!final->MissionAuditActive());
+    int tick=engine.pauseEvents-eventsBefore;
+    if(tick==1||tick==2){
+     size_t width=tick==1?main->GetWidth():main->GetWidth()+16;
+     main.reset(new cSurface(width,64));final.reset(new cSurface(width,64));text.reset(new cSurface(width,64));
+     fill(*main,seed+tick+transition,false);fill(*final,seed+tick+9,false);fill(*text,seed+tick+13,true);
+     attach();resources(31+tick+transition);
+     assert(main->mPresentationDestination!=retainedDestination);
+    }
+    assert(openfodder::RasterizeMissionLayers(retained,retainedDestination).pixels==retainedPixels);
+    if(tick==3)engine.mPhase_Paused=false;
+   };
+   engine.Phase_Paused();
+   assert(window.frames==framesBefore+3&&window.cycles==cyclesBefore+3);
+   assert(engine.pauseEvents==eventsBefore+3&&!engine.mPhase_Aborted);
+   assert(graphics->paletteSets==paletteBefore+1&&engine.effects==effectsBefore+1&&engine.requests==requestsBefore);
+   assert(!main->MissionAuditActive()&&!final->MissionAuditActive());
+   engine.Interrupt_Redraw(); // A new interval owns only the current destinations/resources.
+   const auto resumed=main->VerifyMissionAudit(final.get());
+   const auto resumedPixels=openfodder::RasterizeMissionLayers(resumed,main->mPresentationDestination).pixels;
+   framesBefore=window.frames;effectsBefore=engine.effects;requestsBefore=engine.requests;
+   engine.Video_SurfaceRender();
+   assert(window.frames==framesBefore+repeats&&engine.effects==effectsBefore&&engine.requests==requestsBefore);
+   if(repeats)assert(window.pixels.back()==resumedPixels);
+   for(auto s:{main.get(),final.get(),text.get()})for(auto value:logical(*s))digest(value);
+   digest(engine.effects);digest(engine.requests);digest(engine.pauseEvents);digest(engine.pausePrepares);
+   assert(openfodder::RasterizeMissionLayers(retained,retainedDestination).pixels==retainedPixels);
+   ++transitions;
+  }
+  engine.pauseEvent=nullptr;
   ++count;
  }
  std::cout<<"PASS: "<<count<<" actual PC/Amiga producer scenarios, repeats="<<repeats<<", "<<frames
           <<(publishing?" recorded presentations;":" classic presentations;")<<" 0/1/5, two destinations, early/late cursor, late sprites/palette, resource release, Clear/Save/Restore, reset and missing-write detection\n";
+ std::cout<<"TRANSITIONS: "<<transitions<<" digest="<<transitionDigest<<"\n";
 }

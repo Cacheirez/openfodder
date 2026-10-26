@@ -1,8 +1,8 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.23 · Revisión: 25 de octubre de 2026.**
+**Versión 2.24 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H4.6, programación 0/1/5 en la ruta real de misión, implementada y probada localmente; CI propia pendiente. Publicación opcional acfc099a aceptada en su alcance Windows/Linux. [Informe](H4_6_PLANIFICACION_MISION.md).**
+**Tarea activa: H4.6, programación 0/1/5 de misión validada en bd2b3d2 Windows/Linux. Nueva prueba unida misión↔pausa con sustitución de recursos: PASS local; CI propia pendiente. [Informe](H4_6_PLANIFICACION_MISION.md).**
 
 ## 1. Dictamen de la revisión
 
@@ -13,7 +13,7 @@ Cambios respecto al plan anterior:
 - Consolidar el estado vigente y trasladar las notas de sesiones anteriores al [histórico v2.19](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md). Se conservan todos los IDs H0–H10, los fallos históricos y sus resoluciones.
 - Reconocer como hechos el frame compuesto de misión, la transición a pausa en pruebas focalizadas, las capas ordenadas y el registro de productores. No repetir esas extracciones; ampliar su integración y cobertura.
 - Concretar H4.3: activación opcional, frame válido, política de retorno al clásico, detección de divergencias y destinos independientes.
-- Ampliar la aceptación de H4.6 con 0/1/N en el motor completo y sanitizadores con la nueva ruta activa. Los replays actuales con vídeo no prueban todavía esa independencia.
+- Ampliar la aceptación de H4.6 con 0/1/N en el motor completo y sanitizadores con la nueva ruta activa. La ruta de misión ya conserva H3 con 0/1/5; falta ampliar transiciones y escenas.
 - Adelantar la medición de H5.1 a H4 y explicitar la información semántica que necesitará la interpolación: identidad de entidad, generación, posición, cámara y tiempos coherentes.
 - Dar por confirmada CD32 como campaña principal en H8.1. Su cobertura automática completa sigue pendiente.
 - Añadir tareas transversales de conservación de evidencias y reproducción. Los informes compactos están en Git; los ZIP completos de Actions caducan.
@@ -39,11 +39,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato actual | `acfc099a43d02d55bf44426b6c05a2f0330cf889`; Windows/Linux aprobados; TSan activo limitado a dos fases |
+| Motor candidato actual | `bd2b3d2db30cda4d7a810a7a62c769469f101637`; Windows/Linux aprobados; misión 0/1/5 y TSan activo limitado a dos fases |
 | Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows del motor | [40225314591](https://github.com/Cacheirez/openfodder/actions/runs/40225314591), éxito |
-| CI Linux del motor | [40225314495](https://github.com/Cacheirez/openfodder/actions/runs/40225314495), éxito |
+| CI Windows del motor | [40229859350](https://github.com/Cacheirez/openfodder/actions/runs/40229859350), éxito |
+| CI Linux del motor | [40229859389](https://github.com/Cacheirez/openfodder/actions/runs/40229859389), éxito |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Pendientes |
 
@@ -51,15 +51,15 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|---|
 | H3 original | 11.361 estados: 7.956 PC y 3.405 Amiga, conservados en Windows/Linux | 11 fases, no toda CD32 ni todos los estados posibles |
 | Replays habituales | 29/29 fases, cero omisiones; 6 CTests y controles de CI aprobados | Completar no demuestra por sí solo igualdad visual o interacción real |
-| ASan/UBSan, LSan, TSan del motor | 29/29 fases habituales; publicación activa 11 fases ASan/UBSan/LSan y 2 fases TSan, sin hallazgos en acfc099a | TSan activo limitado a 301 estados; no cubre todas las escenas ni el nuevo scheduler 0/1/5 |
+| ASan/UBSan, LSan, TSan del motor | 29/29 fases habituales; publicación activa 11 fases ASan/UBSan/LSan y 2 fases TSan, sin hallazgos en bd2b3d2 | TSan activo limitado a 301 estados; no cubre todas las escenas ni el nuevo scheduler 0/1/5 |
 | Frame de misión y pausa | 240 escenarios 0/1/5, 672 capturas retenidas; pausa aislada: 144 escenarios | Pruebas focalizadas con dobles, no motor completo interactivo |
 | Destinos | 97 casos aceptados y 627 rechazos sin escritura | Identidad de almacenamiento y geometría; no garantiza frescura temporal del frame |
 | Compositor de capas | 192 escenarios, 384 salidas retenidas; destinos y orden conservados | Reconstrucción de operaciones; no entidades ya interpolables |
 | Registro de productores | 24 escenarios / 48 presentaciones, planes 0/1/5; contraste de índices, fondo guardado y RGB | La fixture actual invoca los adaptadores preparado y resuelto; recursos y SDL siguen siendo dobles |
-| Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | Cadencia actual, sin validación GPU ni 0/1/N del motor completo; publicación nueva descrita debajo |
+| Registro activo en motor real | Vídeo SDL software Linux: PC Format 8 fases y Amiga The One 3; cero omisiones y marcador de contraste comprobado | 0/1/5 en la ruta real de misión: 11.361 estados por política; sin validación GPU ni pausa interactiva |
 | Prueba manual de Miguel | Base clásica, demo y CD32 aceptadas; controles, audio, pausa, F11 y Alt+Tab correctos | No se atribuye al motor b34373b0 ni prueba las 72 fases CD32 |
 
-Validación nueva: [H4.3 y su límite TSan](H4_3_PUBLICACION_ORDENES.md), [intento 1e1f93d3](evidence/1e1f93d3-reports.json) y [estado acfc099a](evidence/acfc099a-reports.json). La prueba activa TSan de dos fases está pendiente y no equivale a las 11 fases normales ni a la campaña completa.
+Validación nueva: [H4.3 y su límite TSan](H4_3_PUBLICACION_ORDENES.md), [intento 1e1f93d3](evidence/1e1f93d3-reports.json) y [estado acfc099a](evidence/acfc099a-reports.json). La prueba activa TSan de dos fases está aprobada y no equivale a las 11 fases normales ni a la campaña completa. [H4.6 y evidencia bd2b3d2](H4_6_PLANIFICACION_MISION.md) añaden programación real 0/1/5 de misión.
 
 Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de misión](H4_1_FRAME_MISION.md), [destinos](H4_1_DESTINOS_PRESENTACION.md), [capas](H4_1_CAPAS_MISION.md), [aceptación clásica](H2_6_ACEPTACION_BASE_CLASICA.md) e [informes compactos de b34373b0](evidence/b34373b0-reports.json). Para los núcleos previos —recorte, raster, recursos, terreno, HUD, cursor, paleta y escenas— consultar el [índice técnico](README.md).
 
@@ -147,7 +147,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H4.3 — Asistente:** rutas clásica y nueva seleccionables usando imágenes originales. **Hecho:** compositor privado y auditoría opcional `OPENFODDER_AUDIT_MISSION_LAYERS=1`. **Implementado, aceptación parcial:** publicación opcional desde órdenes; conservar referencia clásica, contraste y retorno definido ante ruta no disponible. No activar por defecto hasta superar las puertas de la sección 6.
 - [ ] **H4.4 — Asistente:** separar terreno, entidades/efectos, panel y cursor conservando orden, recortes, paleta y visibilidad. **Hecho:** registro ordenado de operaciones reales, incluidos Clear/Save/Restore, destinos independientes y momentos de cursor. **Falta:** identidad/generación, posiciones, pivotes y tiempos necesarios para mover entidades y cámara independientemente. Las escrituras de píxeles registradas por sí solas no proporcionan ese modelo.
 - [ ] **H4.5 — Asistente:** comprobar propiedad de datos y uso del hilo de ventana/SDL al publicar. **Hecho:** protección del estado nuevo del registro. **Falta:** verificar el flujo activo completo, coherencia y recursos bajo sanitizadores; esto no prueba que los buffers clásicos sean seguros para acceso concurrente. Conservar inicialmente los hilos existentes; añadir colas o hilos solo si una necesidad medida lo justifica.
-- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas 0/1/5 y contraste real PC/Amiga a cadencia actual. **Falta:** programación 0/1/N del motor completo con nueva publicación, mutación/sustitución/liberación de recursos, misión↔pausa, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
+- [ ] **H4.6 — Asistente:** comparar estados lógicos con 0/1/N presentaciones entre pasos lógicos. **Hecho:** baterías focalizadas y ruta de misión del motor completo 0/1/5 con H3 original (bd2b3d2). Nueva prueba conjunta de los cuerpos reales de misión/pausa: 192 transiciones con recursos sustituidos, PASS local y CI pendiente. **Falta:** interacción misión↔pausa del motor completo, carga/cambio de fase, minimapa y entradas/salidas de escenas. Productor preparado y resuelto ya invocados en la fixture; omisión deliberada detectada. Ampliar la cobertura del motor y de las transiciones.
 
 **Aceptación global:** presentar más, menos o ninguna vez no altera reglas, RNG ni efectos lógicos; frames y recursos son coherentes; las rutas soportadas tienen equivalencia comprobada y las restantes mantienen el clásico explícitamente. No declarar cerrado H4 por una imagen idéntica o un replay sin fallos.
 
@@ -228,7 +228,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 ## 6. Publicación opcional: implementación y puertas pendientes
 
-**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows y Linux están aprobados; TSan activo cubre dos fases explícitas. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). La validación acfc099a ya está cerrada en su alcance. La programación 0/1/5 de misión está implementada y su CI propia pendiente; consultar [H4.6](H4_6_PLANIFICACION_MISION.md). Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
+**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows y Linux están aprobados; TSan activo cubre dos fases explícitas. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). La validación acfc099a ya está cerrada en su alcance. La programación 0/1/5 de misión está validada en bd2b3d2; la ampliación conjunta misión↔pausa tiene PASS local y CI propia pendiente; consultar [H4.6](H4_6_PLANIFICACION_MISION.md). Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
 
 ### 6.1 Implementación mínima y contraste
 

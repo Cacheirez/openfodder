@@ -1,7 +1,7 @@
 """Actual producer adapters and coordinator hooks under shadow recording.
 Synthetic resources, simulation and SDL. Not a real-video engine replay.
 """
-import os, subprocess, tempfile
+import os, re, subprocess, tempfile
 from pathlib import Path
 from audit_contract import without_audit, HOOKS
 from check_final_timer_equivalence import function
@@ -28,12 +28,18 @@ def main():
  for backend in ('PC','Amiga'):
   p=f'Source/{backend}/Graphics_{backend}.cpp'
   for sig in (f'openfodder::TerrainDraw cGraphics_{backend}::CaptureVisibleTerrain(',f'void cGraphics_{backend}::MapTiles_Draw('): code+=raw(p,sig)+'\n'
- for name in ('Interrupt_Redraw','Video_SurfaceRender'):
+ for name in ('Interrupt_Redraw','Video_SurfaceRender','Phase_Paused'):
   code+=raw('Source/Fodder.cpp','void cFodder::'+name+'(')+'\n'
  code+=(root/'tools/modernization/mission_recording_cases.inc').read_text()
  with tempfile.TemporaryDirectory(prefix='mission-recording-') as td:
   src=Path(td)/'test.cpp';exe=Path(td)/'test';src.write_text(code)
   subprocess.run(['g++','-std=c++14','-O1','-g','-fsanitize=address,undefined','-fno-sanitize-recover=all','-pthread','-I',str(root/'Source'),str(src),'-o',str(exe)],check=True)
+  digests=[]
   for publication, schedule in [('0','5'),('1','0'),('1','1'),('1','5')]:
-   subprocess.run([str(exe)],check=True,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1' if publication=='0' else '0','OPENFODDER_PRESENT_MISSION_LAYERS':publication,'OPENFODDER_TEST_MISSION_PRESENTATIONS':schedule,'ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
+   result=subprocess.run([str(exe)],check=True,text=True,stdout=subprocess.PIPE,env={**os.environ,'OPENFODDER_AUDIT_MISSION_LAYERS':'1' if publication=='0' else '0','OPENFODDER_PRESENT_MISSION_LAYERS':publication,'OPENFODDER_TEST_MISSION_PRESENTATIONS':schedule,'ASAN_OPTIONS':os.environ.get('ASAN_OPTIONS','detect_leaks=0')})
+   print(result.stdout,end='')
+   matches=re.findall(r'^TRANSITIONS: 48 digest=(\d+)$',result.stdout,re.M)
+   assert len(matches)==1,'Missing joined mission/pause evidence'
+   digests.append(matches[0])
+  assert len(set(digests))==1,'Mission/pause logical state depends on presentation count'
 if __name__=='__main__':main()

@@ -134,3 +134,8 @@ Captura del sidebar compuesto y del cursor con recursos propietarios en `c6af094
 ## Seguimiento 25-10-2026 — publicación opcional desde órdenes
 
 [H4.3](H4_3_PUBLICACION_ORDENES.md), motor `1e1f93d3`: `OPENFODDER_PRESENT_MISSION_LAYERS=1` publica el resultado verificado del registro. Mantiene las decodificaciones PC/Amiga, paleta tardía, orden real, dos destinos y oráculo clásico. La opción está desactivada por defecto y activa obligatoriamente el contraste. Si falta un intervalo compatible, vuelve al clásico; una divergencia de un intervalo elegible sigue siendo un error. La fixture ya invoca los productores preparado y resuelto, con 0/1/5 en ambos modos. Consultar el informe para el estado CI: este seguimiento no declara 0/1/N del motor completo, pausa interactiva ni GPU validados.
+
+
+## Seguimiento H4.6 — 26-10-2026
+
+`bd2b3d2`: Windows/Linux PASS. En vídeo software Linux, 8 fases PC y 3 Amiga conservan los 11.361 estados H3 originales con 0/1/5 presentaciones de misión. Pausa sigue a su cadencia original. La nueva fixture conjunta ejecuta los cuerpos reales de misión y pausa y sustituye superficies, sprites, atlas y panel: 192 transiciones PASS local ASan/UBSan; CI propia pendiente. Entrada/SDL/carga siguen simulados. [Alcance y evidencia](H4_6_PLANIFICACION_MISION.md).

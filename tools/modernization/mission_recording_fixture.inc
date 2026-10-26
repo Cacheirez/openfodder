@@ -8,7 +8,7 @@ struct Map { size_t getWidth()const{return 8;} } map;
 struct Params {bool mUnitTesting=true;bool mDemoPlayback=false,mDemoRecord=false,mDisableVideo=false;};
 struct Recording {int ticks=0;void Tick(){++ticks;}};
 struct Game {Recording mDemoRecorded;};
-struct Window {int frames=0;std::vector<std::vector<uint32>> pixels;void RenderAt(cSurface* s){pixels.push_back(*s->CaptureRGBLayer().pixels);}void RenderShrunk(cSurface*){}void FrameEnd(){++frames;}};
+struct Window {int frames=0,cycles=0;std::vector<std::vector<uint32>> pixels;void RenderAt(cSurface* s){pixels.push_back(*s->CaptureRGBLayer().pixels);}void RenderShrunk(cSurface*){}void FrameEnd(){++frames;}void Cycle(){++cycles;}};
 struct cFodder;
 struct cGraphics {
  cFodder* mFodder; cSurface* mSurface;
@@ -18,7 +18,9 @@ struct cGraphics {
  virtual void MapTiles_Draw()=0;
  openfodder::SidebarDraw CaptureSidebarDraw(int16,bool)const;
  void Sidebar_Copy_To_Surface_Common(int16,cSurface*,bool);
- void Sidebar_Copy_To_Surface(int16 y,cSurface* s){Sidebar_Copy_To_Surface_Common(y,s,false);}
+ int paletteSets=0;
+ void PaletteSet(){++paletteSets;}
+ void Sidebar_Copy_To_Surface(int16 y=0,cSurface* s=nullptr){Sidebar_Copy_To_Surface_Common(y,s,false);}
  void Video_Draw_8_Prepared(const openfodder::SpriteDrawState&,cSurface*,const uint8*);
  void Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw&,cSurface* =nullptr);
 };
@@ -32,9 +34,15 @@ struct cGraphics_Amiga:cGraphics {
  openfodder::TerrainDraw CaptureVisibleTerrain();void MapTiles_Draw()override;
 };
 struct cFodder {
- cSurface *mSurface,*mSurfaceFinal; cGraphics* mGraphics;Window* mWindow;
+ cSurface *mSurface,*mSurfaceFinal,*mSurface2=nullptr; cGraphics* mGraphics;Window* mWindow;
  Params *mParams,*mStartParams;Game mGame_Data;std::mutex mSurfaceMtx;
  bool mPhase_In_Progress=true,mPhase_Paused=false,mPhase_ShowMapOverview=false;
+ bool mPhase_Aborted=true;
+ int pausePrepares=0,pauseEvents=0;
+ std::function<void()> pauseEvent;
+ void Draw_Phase_Paused(){++pausePrepares;mSurface->paletteNew_SetDimmed(64);}
+ void eventsProcess(){++pauseEvents;if(pauseEvent)pauseEvent();}
+ void Phase_Paused();
  bool mVideo_Done=false,mVideo_Ticked=false;
  std::function<void()> mInterruptCallback;
  Buffer mMap,mTile_BaseBlk,mTile_SubBlk;Map* mMapLoaded=&map;
