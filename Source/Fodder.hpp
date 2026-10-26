@@ -113,6 +113,8 @@ public:
     
 	cPseudorand				mRandom;
     sSprite                 mSprite_Spare;
+    uint64_t mPresentationScene = 0;
+    void CaptureSoldierSemantic(sSprite*, int16, int16, const openfodder::SpriteDrawInput&, openfodder::PreparedSpriteDraw&);
     std::vector<sSprite>    mSprites;
 
     const sSpriteSheet**    mSprite_SheetPtr;

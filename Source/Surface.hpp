@@ -63,6 +63,7 @@ struct IndexedSurfaceState {
 class cSurface {
 protected:
     struct MissionAuditRecording {
+        uint64_t interval = openfodder::NextPresentationSerial();
         std::mutex mutex;
         openfodder::MissionLayerSequence scene;
     };
@@ -125,6 +126,20 @@ public:
         if (!MissionAuditActive()) return;
         openfodder::MissionLayer layer; layer.role = role;
         layer.pixels = pixels; RecordMissionLayer(std::move(layer));
+    }
+    void RecordMissionSoldier(const openfodder::PreparedSpriteDraw& prepared) {
+        const auto recording = std::atomic_load(&mMissionAudit);
+        if (!recording) return;
+        openfodder::MissionLayer layer;
+        layer.destination = mPresentationDestination;
+        layer.role = openfodder::MissionLayerRole::Sprite;
+        layer.operation = openfodder::MissionLayerOperation::Soldier;
+        layer.soldier = prepared;
+        layer.soldier.soldier.interval = recording->interval;
+        // No borrowed draw pointer is needed by the semantic consumer.
+        layer.soldier.draw.source = nullptr;
+        std::lock_guard<std::mutex> lock(recording->mutex);
+        recording->scene.layers.push_back(std::move(layer));
     }
     void RecordMissionTerrain(const openfodder::TerrainDraw& terrain) {
         if (!MissionAuditActive()) return;
@@ -200,6 +215,15 @@ public:
                 throw std::runtime_error("mission audit: composed frame differs from classic frame");
             // Publish precisely the pixels just checked, not a new classic capture.
             if (publication && surface == this) *publication = std::move(replay);
+        }
+        for (const auto& layer : scene.layers) {
+            if (layer.operation != openfodder::MissionLayerOperation::Soldier) continue;
+            static std::atomic<uint64_t> soldierScene{0};
+            const auto identity = layer.soldier.soldier.scene;
+            if (soldierScene.exchange(identity) != identity)
+                std::fprintf(stderr, "SOLDIER_SEMANTIC: verified original resource in mission composition scene=%llu\n",
+                    static_cast<unsigned long long>(identity));
+            break;
         }
         static std::atomic<bool> announced{false};
         if (!announced.exchange(true))

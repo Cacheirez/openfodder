@@ -30,7 +30,7 @@
     },
     {
       "path": "Source/Sprites/Sprite_Core.cpp",
-      "sha256": "b507e7a51436004615e78ad1e1357e2c4d05461394301a2720d6e70ab3fcbc7d",
+      "sha256": "7795d54333543a2d54e3eefab335f54d0acc61bddbc528886ef738f0046b57c7",
       "functions": [
         "Sprite_Destroy",
         "Sprite_Get_Free_Max42",
@@ -71,14 +71,14 @@
     },
     {
       "path": "Source/Sprites.cpp",
-      "sha256": "887b8ab2c6873560a8e3c4c8318f8d58714ed00dd413868f18751afdea7cb35a",
+      "sha256": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",
       "functions": [
         "Sprite_Table_Setup"
       ]
     },
     {
       "path": "Source/Sprites.hpp",
-      "sha256": "5dd699b86a18f41eeb27b028e30eb5fdf4d9f14a47f4f3b7a31dfae0615d3f93",
+      "sha256": "2a6369404bcddd376f629303bdab21a45d4f4e3b0d0e79bd2d63fb90e6a34d1c",
       "functions": []
     },
     {
@@ -236,5 +236,6 @@
     "Partial family review; other entities and terrain remain pending",
     "Function presence and source hashes require human review; not a proof of behavior"
   ],
-  "hash_normalization": "CRLF-to-LF only"
+  "hash_normalization": "CRLF-to-LF only",
+  "followup_review": "H4 soldier pilot: presentation generation in sSprite/Clear and scene/capture hooks in Sprite_Core; vehicle behavior unchanged. Original review remains based on source_commit."
 }

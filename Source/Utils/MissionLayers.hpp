@@ -4,18 +4,20 @@
 #include "IndexedProducer.hpp"
 #include "TerrainDraw.hpp"
 #include "SidebarDraw.hpp"
+#include "ResolvedSpriteResource.hpp"
 #include <stdexcept>
 
 namespace openfodder {
 // Names describe provenance, never sorting priority. In particular an early
 // cursor command must not be moved after terrain just because it is a cursor.
 enum class MissionLayerRole { Terrain, Sprite, Sidebar, Cursor, Surface };
-enum class MissionLayerOperation { Pixels, Terrain, Sidebar, Clear, Save, Restore };
+enum class MissionLayerOperation { Pixels, Terrain, Sidebar, Clear, Save, Restore, Soldier };
 struct MissionLayer {
     PresentationDestinationId destination;
     MissionLayerRole role = MissionLayerRole::Surface;
     MissionLayerOperation operation = MissionLayerOperation::Pixels;
     IndexedProducerDraw pixels;
+    PreparedSpriteDraw soldier;
     TerrainDraw terrain;
     SidebarDraw sidebar;
     uint8_t clearIndex = 0;
@@ -64,6 +66,26 @@ inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& 
             throw std::invalid_argument("unknown mission layer destination");
         auto& target = indices[slot];
         switch (layer.operation) {
+        case MissionLayerOperation::Soldier:
+        {
+            const auto& prepared = layer.soldier;
+            const auto& state = prepared.soldier;
+            if (!state.valid || !state.scene || !state.generation || !state.interval ||
+                state.geometry.source || !prepared.resource)
+                throw std::invalid_argument("invalid semantic soldier snapshot");
+            auto input = state.geometry;
+            input.source = prepared.resource.source();
+            const auto draw = PrepareSpriteDraw(input);
+            const auto& classic = prepared.draw;
+            if (!draw.visible || draw.x != classic.x || draw.y != classic.y ||
+                draw.columns != classic.columns || draw.rows != classic.rows ||
+                draw.sourceOffset != classic.sourceOffset || draw.palette != classic.palette ||
+                draw.format != classic.format)
+                throw std::invalid_argument("semantic soldier geometry differs from classic preparation");
+            RasterizeSprite8(draw, prepared.resource.layout,
+                {target.data(), result.surfaces[slot].indexed.width});
+            break;
+        }
         case MissionLayerOperation::Pixels:
             RasterizeIndexedProducer(layer.pixels, target.data()); break;
         case MissionLayerOperation::Terrain:

@@ -29,6 +29,13 @@ def verify_pause_probe(log, phases):
     return len(completed)
 
 
+def verify_soldier_probe(log, phases):
+    scenes = re.findall(r'^SOLDIER_SEMANTIC: verified original resource in mission composition scene=(\d+)$', log, re.M)
+    if len(scenes) != phases or len(set(scenes)) != phases:
+        raise RuntimeError('Incomplete semantic soldier scene coverage')
+    return len(scenes)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--exe', type=Path, required=True)
@@ -37,6 +44,7 @@ def main():
     p.add_argument('--presentations', type=int, choices=(0, 1, 5), help='Test-only mission presentation count; production cadence stays unchanged')
     p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
     p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
+    p.add_argument('--soldier-probe', action='store_true', help='Require semantic soldier reproduction with original resources')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
     root = Path(__file__).resolve().parents[2]
@@ -45,7 +53,7 @@ def main():
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
-                'pause_probe': args.pause_probe,
+                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
@@ -60,6 +68,7 @@ def main():
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
+                       OPENFODDER_CAPTURE_SOLDIER='1' if args.soldier_probe else '0',
                        OPENFODDER_TEST_FIRST_PHASE='1' if args.first_phase else '0',
                        OPENFODDER_TEST_MISSION_PAUSE='1' if args.pause_probe else '0',
                        OPENFODDER_TRACE_DIR=str(trace),
@@ -80,6 +89,8 @@ def main():
             if report['phases_passed'] != phases or report['skipped']:
                 raise RuntimeError('Incomplete campaign: ' + campaign)
             markers = ['MISSION_LAYER_AUDIT: verified real producer interval']
+            if args.soldier_probe:
+                markers.append('SOLDIER_SEMANTIC: verified original resource in mission composition')
             published = 'MISSION_LAYER_PRESENT: published verified orders'
             if args.presentations == 0:
                 if published in log:
@@ -91,9 +102,10 @@ def main():
             for marker in markers:
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
+            soldier_scenes = verify_soldier_probe(log, phases) if args.soldier_probe else 0
             pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
-                                        'pause_transitions': pauses,
+                                        'pause_transitions': pauses, 'soldier_scenes': soldier_scenes,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
         baseline = root/'tools/modernization/reference-gameplay-v1.json'

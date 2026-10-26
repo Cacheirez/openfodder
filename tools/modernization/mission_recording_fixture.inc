@@ -58,6 +58,15 @@ struct cFodder {
   p.draw.x=cursor?24:16;p.draw.y=cursor?24:16;p.draw.rows=4;
   p.draw.columns=p.draw.format==openfodder::SpriteDrawFormat::PC?8:2;
   p.draw.palette=cursor?0xF0:0x20;p.isCursor=cursor;
+  if(!cursor) {
+   p.resource.bytes=std::make_shared<const std::vector<uint8>>(sprite);
+   p.draw.source=p.resource.source();
+   auto& v=p.soldier;v.valid=true;v.scene=1;v.generation=2;
+   v.geometry.spriteX=p.draw.x-64;v.geometry.spriteY=p.draw.y+p.draw.rows-16;
+   v.geometry.rows=p.draw.rows;v.geometry.columns=p.draw.columns;
+   v.geometry.palette=p.draw.palette;v.geometry.format=p.draw.format;
+   v.geometry.viewWidth=48;v.geometry.viewHeight=32;
+  }
   mGraphics->Video_Draw_8_Resolved(p,target);
  }
  void Sprites_Draw(cSurface* s=nullptr){++effects;draw(s,false);}

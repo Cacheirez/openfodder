@@ -31,7 +31,23 @@ int main(){
   auto scene=a.VerifyMissionAudit(&b);assert(scene.destinations.size()==2);
   assert(scene.layers.front().role==openfodder::MissionLayerRole::Cursor);
   assert(scene.layers.back().destination==b.mPresentationDestination);
+  bool hasSoldier=false;
+  for(const auto& layer:scene.layers) if(layer.operation==openfodder::MissionLayerOperation::Soldier) {
+   hasSoldier=true;assert(layer.soldier.soldier.interval && !layer.soldier.draw.source);
+  }
+  assert(hasSoldier);
   auto expected=openfodder::RasterizePresentationSurface(a.CapturePresentation());
+  // The semantic geometry actually drives the image; metadata is not decorative.
+  auto changedScene=scene;bool changed=false;
+  for(auto& layer:changedScene.layers) if(layer.operation==openfodder::MissionLayerOperation::Soldier && layer.destination==a.mPresentationDestination) {
+   layer.soldier.soldier.geometry.spriteX+=4;changed=true;break;
+  }
+  bool geometryRejected=false;try{openfodder::ComposeMissionLayers(changedScene);}catch(const std::invalid_argument&){geometryRejected=true;}
+  assert(changed && geometryRejected);
+  auto invalidScene=scene;
+  for(auto& layer:invalidScene.layers) if(layer.operation==openfodder::MissionLayerOperation::Soldier) {layer.soldier.soldier.generation=0;break;}
+  bool invalidRejected=false;try{openfodder::ComposeMissionLayers(invalidScene);}catch(const std::invalid_argument&){invalidRejected=true;}
+  assert(invalidRejected);
   const auto logicalBefore=logical(a);const int effects=engine.effects,requests=engine.requests;
   for(int i=0;i<n;++i){engine.Video_SurfaceRender();frames+=repeats;if(repeats)assert(window.pixels.back()==expected.pixels);}
   assert(window.frames==n*repeats);

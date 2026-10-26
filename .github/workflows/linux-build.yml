@@ -140,6 +140,7 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin fb44314e6baedd17691e7ac9c9ac9fedab495994
           python3 tools/modernization/check_mission_recording.py
+          python3 tools/modernization/check_soldier_semantic.py
       - name: H4.1 - software video replays with mission layer audit
         env:
           SDL_VIDEODRIVER: dummy
@@ -164,6 +165,16 @@ jobs:
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
         run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-publication
+      - name: H4.2 - semantic soldier with original resources and H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-soldier-full --soldier-probe
+          for count in 0 1 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-soldier-pause-$count --soldier-probe --presentations "$count" --pause-probe --first-phase
+          done
       - name: H4.6 - real engine zero and five mission presentations with original H3
         env:
           SDL_VIDEODRIVER: dummy
@@ -234,7 +245,7 @@ jobs:
           ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
           LSAN_OPTIONS: exitcode=23
           UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
-        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-pause-asan --presentations 1 --pause-probe --first-phase
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-pause-asan --presentations 1 --pause-probe --first-phase --soldier-probe
       - name: H2.4 - ThreadSanitizer diagnostic on all public demos
         env:
           SDL_VIDEODRIVER: dummy
@@ -257,7 +268,7 @@ jobs:
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
           TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
-        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-pause-tsan --presentations 1 --pause-probe --first-phase
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-pause-tsan --presentations 1 --pause-probe --first-phase --soldier-probe
       - name: Upload H3 Linux reference evidence
         if: always()
         uses: actions/upload-artifact@v4

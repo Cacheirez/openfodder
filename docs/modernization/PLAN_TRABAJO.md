@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.28 · Revisión: 26 de octubre de 2026.**
+**Versión 2.29 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H8.3 y H4.2/H4.4, catálogo CD32 que fundamente la captura semántica. Censo estático de 72 fases completado; primer incremento de capacidades de helicópteros/vehículos documentado y contrastado con fuentes. Siguiente: piloto semántico mínimo del soldado, seguido del helicóptero compuesto; otras familias y capturas en ejecución pendientes. [Informe](CD32_CENSO_SPRITES.md). El piloto visual sigue abierto, sin extrapolar el catálogo de las demos.**
+**Tarea activa: H4.2/H4.4, [piloto semántico del soldado](H4_2_SOLDADO_SEMANTICO.md) implementado y probado en fixtures; CI del motor nuevo pendiente. Después, sustitución de una pose con retorno al original. H8.3 conserva matriz parcial de vehículos y capturas CD32 pendientes.**
+
+## Incremento 2.29 — soldado semántico
+
+Captura opcional del primer Player junto al productor real: identidad/escena/generación, posición/cámara, anclajes y recurso original retenido. El compositor reproduce desde esa captura con contraste obligatorio; se rechazan geometrías inconsistentes. Pruebas focalizadas y28 pruebas Python PASS. CI anterior d1d30f12 Windows/Linux aprobada; CI del motor nuevo pendiente. No es interpolación ni arte integrado. [Implementación, reproducción y límites](H4_2_SOLDADO_SEMANTICO.md).
 
 ## Incremento 2.28 — capacidades de vehículos
 

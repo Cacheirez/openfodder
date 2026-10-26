@@ -26,6 +26,7 @@
 #include "Utils/SpriteDrawState.hpp"
 
 void cFodder::Sprite_Clear_All() {
+    mPresentationScene = openfodder::NextPresentationSerial();
 	mSprites.resize(mParams->mSpritesMax);
 	Squad_Set_Squad_Leader();
 
@@ -130,6 +131,7 @@ bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 p
     input.format = prepared.resource.layout.format;
     auto& draw = prepared.draw;
     draw = openfodder::PrepareSpriteDraw(input);
+    CaptureSoldierSemantic(pDi, pSpriteType, pFrame, input, prepared);
 
     // Only the compatibility adapter publishes legacy registers. The pure
     // preparation above can be repeated without writing engine/sprite state.
@@ -2405,4 +2407,31 @@ void cFodder::Sprite_Update_Direction_Anim(sSprite* pSprite) {
     pSprite->mSheetIndex = *Data28;
     pSprite->field_3E = pSprite->mDirection;
     pSprite->mFrameIndex = 0;
+}
+
+// One authored player soldier only. Capture after preparation, never in a consumer.
+void cFodder::CaptureSoldierSemantic(sSprite* sprite, int16 sheet, int16 frame,
+        const openfodder::SpriteDrawInput& input, openfodder::PreparedSpriteDraw& prepared) {
+    const char* enabled = std::getenv("OPENFODDER_CAPTURE_SOLDIER");
+    if (!enabled || std::string(enabled) != "1" || !mPhase_In_Progress || mPhase_Paused ||
+        mPhase_ShowMapOverview || !prepared.draw.visible || sprite->mSpriteType != eSprite_Player ||
+        sprite->mInVehicle || sprite->mPendingDestroy || !mPresentationScene) return;
+    for (size_t slot = 0; slot < mSprites.size(); ++slot) {
+        const auto& candidate = mSprites[slot];
+        if (candidate.mPosX == -32768 || candidate.mPosX == -1 || candidate.mSpriteType != eSprite_Player)
+            continue;
+        if (&candidate != sprite) return; // Only the first present player slot is the pilot.
+        auto& state = prepared.soldier;
+        state.valid = true; state.scene = mPresentationScene;
+        state.slot = slot; state.generation = sprite->mPresentationGeneration;
+        state.tick = mMission_EngineTicks; state.cameraX = mCameraX; state.cameraY = mCameraY;
+        state.xFraction = sprite->mPosXFrac; state.yFraction = sprite->mPosYFrac;
+        state.heightFraction = sprite->mHeightFrac; state.type = sprite->mSpriteType;
+        state.sheet = sheet; state.frame = frame; state.animation = sprite->mAnimState;
+        state.direction = sprite->mDirection;
+        state.geometry = input; state.geometry.source = nullptr;
+        const auto metadata = Sprite_Get_Sheet(sheet, frame);
+        state.segment = metadata->mLoadSegment;
+        return;
+    }
 }

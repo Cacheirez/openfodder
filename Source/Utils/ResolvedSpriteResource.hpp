@@ -1,6 +1,7 @@
 // GPL-3.0-or-later. Retain immutable sprite bytes with their effective layout/palette.
 #pragma once
 #include "SpriteRaster.hpp"
+#include "SoldierSemantic.hpp"
 #include <algorithm>
 #include <map>
 #include <memory>
@@ -75,6 +76,7 @@ public:
 struct PreparedSpriteDraw {
     ResolvedSpriteResource resource;
     SpriteDrawState draw;
+    SoldierSemantic soldier;
     bool isCursor = false; // Presentation provenance only; never a sorting key.
 };
 } // namespace openfodder

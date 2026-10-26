@@ -247,7 +247,9 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
     mFodder->mVideo_Draw_Columns = registers.columns;
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
-    if (target->MissionAuditActive())
+    if (target->MissionAuditActive() && prepared.soldier.valid)
+        target->RecordMissionSoldier(prepared);
+    else if (target->MissionAuditActive())
         target->RecordMissionPixels(openfodder::CaptureSprite8Producer(draw, layout, output.width),
             prepared.isCursor ? openfodder::MissionLayerRole::Cursor : openfodder::MissionLayerRole::Sprite);
     openfodder::RasterizeSprite8(draw, layout, output);

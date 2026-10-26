@@ -55,6 +55,16 @@ jobs:
         run: python tools/modernization/verify_gameplay_determinism.py --exe Run/openfodder.exe --data Run --campaign "Amiga The One" --out reports/h3-amiga --timeout 600
       - name: H3 - compare with pinned pre-stabilization gameplay baseline
         run: python tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-pc/run1/traces reports/h3-amiga/run1/traces
+      - name: H4.2 - semantic soldier original graphics and bounded pause
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          foreach ($count in 0, 1, 5) {
+            python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out "reports/h4-soldier-$count" --soldier-probe --presentations $count --pause-probe --first-phase
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build
