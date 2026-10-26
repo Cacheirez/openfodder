@@ -33,3 +33,7 @@ Separar cuerpo y sombra solo si el contrato de recursos lo soporta; fijar anclaj
 3. Escena jugable acotada con sustitución individual y retorno al original; comprobar pausa/reanudación y selección. Solo entonces ampliar animaciones, vehículos, edificios y terreno.
 
 Estas entregas son criterios de avance, no una estimación de días. H5.1 comienza con una medida comparativa del proceso completo; aún faltan tiempos por frame, CPU/memoria y Windows/GPU. No presentar los tiempos de CI ni de replays acelerados como FPS del juego.
+
+## Alcance de catálogo aclarado
+
+El [censo CD32](CD32_CENSO_SPRITES.md) cubre todas las fases iniciales. Antes de producción, clasificar tipos y estados de las fases avanzadas; añadir el helicóptero ocupable como prueba compuesta tras el soldado. No inferir que todos los gráficos o capacidades están representados por los replays de demos.

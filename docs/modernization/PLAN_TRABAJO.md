@@ -1,8 +1,8 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.26 · Revisión: 26 de octubre de 2026.**
+**Versión 2.27 · Revisión: 26 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: H5.1, medición inicial de coste, y preparación del piloto H4.2/H4.4–H6.1. CI de 9aaaf448 aprobada en Windows/Linux; pausa acotada validada en su alcance. Anomalía local de registros abierta, sin evidencia de corrección. [Piloto visual](H6_PILOTO_VISUAL.md).**
+**Tarea activa: H8.3 y H4.2/H4.4, catálogo CD32 que fundamente la captura semántica. Censo estático de 72 fases completado; clasificación de capacidades, entidades dinámicas y variantes gráficas pendientes. [Informe](CD32_CENSO_SPRITES.md). El piloto visual sigue abierto, sin extrapolar el catálogo de las demos.**
 
 ## 1. Dictamen de la revisión
 
@@ -168,6 +168,8 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 **Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
 
+Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las fases + recursos y estados. El helicóptero controlable será el primer caso compuesto después del soldado; preservar cuerpo/hélice/sombra/ocupantes y altura. El diseño conceptual puede continuar, pero el catálogo de producción no se limita a las demos.
+
 ## H6. Dirección artística y cadena de recursos
 
 - [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Preparación hecha:** [brief y tres direcciones](H6_PILOTO_VISUAL.md). Puede empezar sin esperar al cierre global de H4; muestras aún pendientes.
@@ -199,7 +201,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 - [x] **H8.1 — Asistente / Miguel:** edición/campaña principal confirmada: Cannon Fodder 1 CD32, con datos originales recibidos y comprobados privadamente. Esto no acredita cobertura ni replays de sus 72 fases. Mantener esos datos fuera de GitHub.
 - [ ] **H8.2 — Asistente:** generar un inventario real de recursos y variantes de esa edición: biomas, tropas, civiles, vehículos, edificios, armas, interfaz y pantallas auxiliares.
-- [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan.
+- [ ] **H8.3 — Asistente:** crear una matriz de cobertura por conjunto de recursos, con estados pendiente/provisional/final y escenarios que los ejercitan. **Avance:** censo CD32 de 72 fases/24 misiones, 72 IDs SPT incluyendo Null, cinco conjuntos de entorno; manejadores localizados. [Censo](CD32_CENSO_SPRITES.md). **Pendiente:** capacidades condicionales, entidades creadas dinámicamente, tiles y variantes/estados; no confundir presencia estática con prueba jugable.
 - [ ] **H8.4 — Asistente:** completar escenarios por lotes coherentes y verificar uniones, destrucción, animaciones y colores de cada lote.
 - [ ] **H8.5 — Asistente:** completar vehículos, civiles, elementos especiales y efectos que no aparezcan en la primera fase.
 - [ ] **H8.6 — Asistente:** cubrir menús, briefing, reclutas, servicio, mapa y textos incluidos en el alcance; conservar variantes clásicas donde se acuerde explícitamente.
