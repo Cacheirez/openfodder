@@ -78,7 +78,7 @@ class ContractTests(unittest.TestCase):
     def test_matrix_inverse_and_containment(self):
         combinations = 0
         for output in MODES + [(1001,777),(1919,1079)]:
-            for dpi in [F(1),F(5,4),F(3,2),F(7,4),F(2)]:
+            for dpi in [F(1),F(5,4),F(3,2),F(7,4),F(2),F(3)]:
                 # Rounding produces distinct effective X/Y ratios.
                 window = tuple(max(1,int(F(v)/dpi)) for v in output)
                 for logical in [(320,200),(320,225),(320,260)]:
@@ -97,7 +97,7 @@ class ContractTests(unittest.TestCase):
                     self.assertFalse(inside((x+w,y+h/2),t.rect))
                     self.assertFalse(inside((x+w/2,y+h),t.rect))
                     combinations += 1
-        self.assertEqual(combinations,300)
+        self.assertEqual(combinations,360)
 
     def test_bands_hud_and_fractional_camera(self):
         t=Transform((1280,720),(1920,1080),(320,200),(F(5,6),F(1)))

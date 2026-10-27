@@ -124,7 +124,7 @@ int main(){
     {1280,960},{1400,1050},{1600,1200},{1920,1440},{2048,1536},{2880,2160},
     {1280,720},{1600,900},{1920,1080},{2560,1440},{3200,1800},{3840,2160},
     {1366,768},{2560,1920},{1001,777}}) {
-  for(int dpi : {100,125,150,175,200})for(int h : {200,225}) {
+  for(int dpi : {100,125,150,175,200,300})for(int h : {200,225}) {
    pw=size.mWidth;ph=size.mHeight;ww=pw*100/dpi;wh=ph*100/dpi;
    win.mScreenSize.mHeight=h;
    win.InvalidateScreenTransform();
@@ -150,7 +150,29 @@ int main(){
    ++fitCases;
   }
  }
- assert(fitCases==190);
+ assert(fitCases==228);
+
+ // User report: UHD desktop at 300%. Sweep into/out of both bands with no
+ // click, using actual Mouse adapter. In-band position retention is explicit;
+ // the first in-image sample must update immediately (no delayed recapture).
+ pw=3840;ph=2160;ww=1280;wh=720;
+ for(int h : {200,225}) {
+  win.mScreenSize.mHeight=h;win.RenderAt(&image,true);win.FrameEnd();
+  fodder.mMouse_EventLastButtonsPressed=0;
+  for(int direction : {-1,1})for(int i=0;i<ww;++i) {
+   const int cx=direction>0?i:ww-1-i;
+   const int16 beforeX=fodder.mInputMouseX,beforeY=fodder.mInputMouseY;
+   const auto result=win.MapMissionMouse(cx,wh/2,x,y);
+   fodder.mMouse_EventLastPosition={cx,wh/2};fodder.HandleAlternate();
+   if(result==R::Mapped) {
+    assert(fodder.mInputMouseX==x && fodder.mInputMouseY==y);
+   } else {
+    assert(result==R::Blocked);
+    assert(fodder.mInputMouseX==beforeX && fodder.mInputMouseY==beforeY);
+   }
+   assert(fodder.mMouseButtonStatus==0);
+  }
+ }
  // New bands also suppress a held press on re-entry.
  pw=ww=1920;ph=wh=1080;win.mScreenSize.mHeight=200;
  win.RenderAt(&image,true);win.FrameEnd();
@@ -181,7 +203,7 @@ int main(){
  win.mWindowMode=false;assert(win.MapMissionMouse(100,100,x,y)==R::Classic);win.mWindowMode=true;
  fodder.params.mMouseLocked=true;assert(win.MapMissionMouse(100,100,x,y)==R::Classic);fodder.params.mMouseLocked=false;
  unsetenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(100,100,x,y)==R::Classic);
- puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 190 fit cases up to UHD, DPI, bands, held press, fallback and lifecycle");
+ puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 228 fit cases up to UHD, DPI, bands, held press, fallback and lifecycle");
 }
 '''
     return code

@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.40 · Revisión: 27 de octubre de 2026.**
+**Versión 2.41 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar físicamente el ajuste de misión en Windows con el nuevo paquete. CI 45de47a4 cerrada en Windows/Linux y ZIP verificado. No ampliar otras escenas antes de revisar esa prueba. H5.5/H5.9 siguen parciales.**
+**Tarea activa: resolver la pausa percibida del cursor en bordes, especialmente el izquierdo, comunicada por Miguel en 3840×2160 al 300 %. Resto de la prueba favorable; no ampliar escenas todavía.**
+
+## Incremento 2.41 — incidencia manual y cobertura DPI 300 %
+
+[Reporte, análisis y límites](H5_9_INCIDENCIA_BORDES_300.md). Ampliadas las pruebas a 228 combinaciones reales con dobles SDL y 360 racionales, aprobadas localmente. Barrido UHD/300 % reproduce retención del cursor en bandas y actualización inmediata en la primera muestra interior. Falta precisar dónde observa Miguel la pausa antes de atribuirle esa causa. No se cambia el motor ni se declara arreglado. CI anterior Windows/Linux aprobada; nueva ejecución de tests pendiente. PR sin fusionar.
+
 
 ## Incremento 2.40 — cierre de CI y entrega del ajuste Windows
 
