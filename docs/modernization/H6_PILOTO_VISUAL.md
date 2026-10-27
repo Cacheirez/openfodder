@@ -37,3 +37,7 @@ Estas entregas son criterios de avance, no una estimación de días. H5.1 comien
 ## Alcance de catálogo aclarado
 
 El [censo CD32](CD32_CENSO_SPRITES.md) cubre todas las fases iniciales. Antes de producción, clasificar tipos y estados de las fases avanzadas; añadir el helicóptero ocupable como prueba compuesta tras el soldado. No inferir que todos los gráficos o capacidades están representados por los replays de demos.
+
+## Actualización de alcance — 27-10-2026
+
+Miguel elige C — Pintado moderado. La recomendación B anterior queda como antecedente, no como decisión vigente. Antes de fijar densidad gráfica se aplicará el [plan 4:3/16:9 hasta 4K UHD](RESOLUCIONES_PC_HASTA_4K.md): fuentes maestras HD, pruebas de terreno/soldado a distintas densidades, interfaz independiente y compositor moderno con resolución suficiente. 4× no es un techo; el piloto nativo 16×14 no acredita calidad HD. No producir variantes manuales para cada resolución de monitor.

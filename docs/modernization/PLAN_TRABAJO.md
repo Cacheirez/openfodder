@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.33 · Revisión: 27 de octubre de 2026.**
+**Versión 2.34 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: [pose C01 transparente y anclaje original](H6_3_POSE_C01.md) implementada en piloto opcional, CI nueva pendiente. Miguel elige C — Pintado moderado: H6.2 cerrado. H6.3 parcial; faltan valoración en juego y escala HD.**
+**Tarea activa: adaptar la planificación a [4:3 y 16:9 hasta 4K UHD](RESOLUCIONES_PC_HASTA_4K.md), antes de fijar densidad de arte o ampliar recursos. Alcance definido; implementación y matriz de validación pendientes. El piloto C01 conserva su CI pendiente de revisión; estilo C elegido y H6.2 cerrado.**
+
+## Incremento 2.34 — resoluciones PC hasta 4K
+
+Requisito de Miguel incorporado: ventanas y pantalla completa en resoluciones habituales 4:3 y 16:9, hasta 3840×2160. Matriz mínima explícita, tamaños intermedios por detección de monitor, DPI, interfaz, cursor, recuperación de modos y composición HD. Encuadre clásico disponible; viewport panorámico nativo condicionado a independencia de visibilidad lógica y revisión de la información táctica adicional. No se fija 4× como techo del arte. Solo planificación, no soporte ya implementado. [Especificación y aceptación](RESOLUCIONES_PC_HASTA_4K.md).
 
 ## Incremento 2.33 — pose C01 RGBA
 
@@ -42,7 +46,7 @@ Cambios respecto al plan anterior:
 - Dar por confirmada CD32 como campaña principal en H8.1. Su cobertura automática completa sigue pendiente.
 - Añadir tareas transversales de conservación de evidencias y reproducción. Los informes compactos están en Git; los ZIP completos de Actions caducan.
 
-**No se necesita ahora:** reescribir el motor, actualizar SDL por iniciativa propia, crear otro hilo de renderizado, producir arte en masa, ampliar el campo de visión ni volver a aceptar H2.6. La escala gráfica 4× es una hipótesis que evaluaremos, no un requisito cerrado. Tampoco se exige terminar todas las pantallas del juego antes de probar un piloto acotado, siempre que las demás conserven su ruta clásica y las transiciones estén verificadas.
+**No se necesita ahora:** reescribir el motor, actualizar SDL por iniciativa propia, crear otro hilo de renderizado, producir arte en masa ni volver a aceptar H2.6. La ampliación panorámica del viewport queda planificada en H5.10 y requiere aislar primero la visibilidad lógica; no se incorpora al piloto C01 actual. La escala gráfica 4× es una hipótesis que evaluaremos, no un requisito cerrado. Tampoco se exige terminar todas las pantallas del juego antes de probar un piloto acotado, siempre que las demás conserven su ruta clásica y las transiciones estén verificadas.
 
 ### Ajuste de secuencia del 26-10-2026
 
@@ -50,11 +54,11 @@ La CI de la sonda de pausa está aprobada en Windows/Linux. Se deja la anomalía
 
 ## 2. Objetivo, alcance y reglas
 
-Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y movimiento suaves, presentación renovada de personajes, vehículos, edificios, terreno, efectos e interfaz. Mantener reglas, controles, dificultad, colisiones, tiempos, RNG y todas las correcciones ya incorporadas. Primero una misión completa de muestra; después el alcance acordado de Cannon Fodder 1, con CD32 como campaña principal. Cannon Fodder 2 no se moderniza en esta primera entrega, pero se conserva su compatibilidad existente.
+Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y movimiento suaves, presentación renovada de personajes, vehículos, edificios, terreno, efectos e interfaz. Mantener reglas, controles, dificultad, colisiones, tiempos, RNG y todas las correcciones ya incorporadas. Presentación PC en 4:3 y 16:9 hasta 3840×2160, según la [matriz de resoluciones](RESOLUCIONES_PC_HASTA_4K.md), con modo clásico preservado. Primero una misión completa de muestra; después el alcance acordado de Cannon Fodder 1, con CD32 como campaña principal. Cannon Fodder 2 no se moderniza en esta primera entrega, pero se conserva su compatibilidad existente.
 
 1. Mantener el modo clásico y la base recuperable; no mover ni reescribir su rama.
 2. No aumentar la frecuencia lógica para conseguir más imágenes por segundo. Preservar visibilidad lógica y `mWasDrawn`, orden de actualizaciones y efectos de coordinadoras.
-3. Conservar inicialmente el campo visible y las coordenadas lógicas. Los recursos nuevos no alteran colisiones, armas ni límites de entidades.
+3. Conservar las coordenadas lógicas y el encuadre clásico como referencia. La presentación panorámica nativa H5.10 tendrá contrato explícito y no modificará visibilidad lógica, colisiones, armas ni límites de entidades. Cambiar resolución no autoriza estirar ni recortar el juego.
 4. Presentar desde datos coherentes y propios, sin consumir RNG ni ejecutar otra vez efectos del juego. Los efectos cosméticos tendrán presupuesto y aleatoriedad separados.
 5. Mantener las referencias H3 originales; una divergencia no se resuelve regenerando sus huellas para obtener verde.
 6. Conservar los datos comerciales, partidas y credenciales fuera de Git y de los paquetes públicos.
@@ -186,9 +190,12 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
 - [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar.
-- [ ] **H5.6 — Asistente:** añadir opciones de presentación —clásico/moderno, sincronización y límite de FPS cuando proceda— sin que cambien la velocidad de juego.
+- [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego.
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
+
+- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200 % y transformaciones de entrada verificadas.
+- [ ] **H5.10 — Asistente / Miguel:** viewport e interfaz modernos nativos 4:3/16:9, sin estirar la imagen clásica. Separar visibilidad de dibujo y lógica antes de mostrar más mapa; conservar encuadre clásico y revisar explícitamente la información táctica del panorámico.
 
 **Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
 
@@ -198,8 +205,8 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 - [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [tres direcciones A01/B01/C01 presentadas](H6_1_COMPARATIVA_ABC.md), con pose/escenario similares. Falta comprobar a escala real la dirección elegida. Ninguna está integrada ni aprobada.
 - [x] **H6.2 — Miguel:** dirección elegida: **C — Pintado moderado**, por su toque Nintendo. A descartado; B no elegido. La aprobación del estilo no equivale a aceptar el recurso integrado.
-- [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
-- [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.
+- [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Evaluar 2×/4× y densidades mayores cuando lo requiera UHD, sin multiplicar el tamaño lógico. Conservar maestros HD y derivar variantes automáticamente; fijar densidad tras probar 720p/1080p/1440p/4K con terreno y sprites juntos.
+- [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites. Añadir densidad, variantes, márgenes para filtrado y límites de textura; no crear un atlas manual por resolución de monitor.
 - [ ] **H6.5 — Asistente:** preparar carga, validación y sustitución individual de recursos, con retorno automático al original cuando falte uno nuevo.
 - [ ] **H6.6 — Asistente:** validar transparencias, márgenes, unión de tiles, pivotes, ciclos de animación y consistencia entre direcciones.
 - [ ] **H6.7 — Asistente:** registrar procedencia y condiciones de uso de cada recurso; separar recursos propios de los originales.
@@ -218,6 +225,8 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 - [ ] **H7.6 — Asistente:** renovar lo imprescindible de panel, selección, cursor y textos, sin perder información ni alterar zonas de clic.
 - [ ] **H7.7 — Asistente:** verificar recortes por agua, superposiciones, anclajes y congruencia entre aspecto y colisiones; comparar replays y rendimiento.
 - [ ] **H7.8 — Miguel:** jugar la fase y valorar legibilidad, estilo y respuesta. Registrar cambios solicitados por separado de errores funcionales.
+
+- [ ] **H7.9 — Asistente / Miguel:** validar la primera misión moderna en 4:3 y 16:9, incluidos los extremos de la matriz y una salida UHD, con interfaz legible y anclajes correctos.
 
 **Aceptación:** una fase se puede completar de principio a fin con cámara suave y presentación nueva coherente; sus recursos necesarios están cubiertos y la jugabilidad verificada. No basta una captura atractiva ni una demostración aislada de scroll.
 
@@ -238,8 +247,8 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 - [ ] **H9.1 — Asistente:** ejecutar las referencias lógicas disponibles con ambas rutas de presentación y los límites de FPS soportados.
 - [ ] **H9.2 — Asistente:** revisar errores de memoria, cargas y liberación de texturas, cambios de fase y sesiones largas en los entornos disponibles.
-- [ ] **H9.3 — Asistente / Miguel:** probar ventana/pantalla completa, pausa, Alt+Tab, ratón, minimapa, guardado/carga y escalado Windows 100/125/150 % cuando sea viable.
-- [ ] **H9.4 — Asistente / Miguel:** medir rendimiento en el PC de Miguel, registrar resolución/Hz/configuración y corregir cuellos de botella demostrados.
+- [ ] **H9.3 — Asistente / Miguel:** verificar toda la matriz de resoluciones mediante render automatizado y registrar aparte pruebas Windows/GPU reales; ventana/pantalla completa, redimensionado, monitor, pausa, Alt+Tab, ratón, minimapa, guardado/carga y DPI 100/125/150/175/200 %. Probar retorno de configuración inválida.
+- [ ] **H9.4 — Asistente / Miguel:** medir rendimiento y memoria en el PC de Miguel a 720p/1080p/1440p/UHD y 4:3 representativos. Objetivo inicial 60 Hz hasta UHD sujeto a medición p95/p99; 120/144 Hz donde sea viable. Registrar GPU/DPI/calidad y corregir cuellos de botella demostrados.
 - [ ] **H9.5 — Asistente:** verificar persistencia de opciones, mensajes comprensibles y recuperación ante recurso faltante o inválido.
 - [ ] **H9.6 — Asistente / Miguel:** realizar una sesión de juego suficientemente larga para cubrir varias fases y transiciones; anotar duración y cobertura real.
 
