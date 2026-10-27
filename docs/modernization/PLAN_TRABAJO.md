@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.36 · Revisión: 27 de octubre de 2026.**
+**Versión 2.37 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar la [primera integración de pantalla/ratón en misión](H5_5_TRANSFORMACION_MISION.md). CI del motor C01 anterior cerrada en Windows/Linux. Nuevo adaptador opcional compilado y replay H5.5 aprobado en Windows/Linux; ajuste de puerta HUD publicado tras fallo histórico, cierre global nuevo y prueba manual pendientes. Densidad HD sin fijar.**
+**Tarea activa: cerrar CI global y [validación interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) antes de ampliar multirresolución. Windows 4e8e211 completo aprobado; Linux falla en la identidad histórica de Window.cpp. Corregidas conjuntamente las puertas de capas y GUI/minimapa, sin cambiar el motor; nueva CI y observación manual pendientes.**
+
+## Incremento 2.37 — cierre automático y paquete Windows de validación
+
+[Estado 4e8e211](H5_5_VALIDACION_4e8e211.json): Windows completo PASS; Linux supera HUD y falla después en la identidad histórica de Window.cpp. Las dos puertas afectadas ahora exigen hashes exactos de la versión clásica y del adaptador revisado, cuya conducta prueba la fixture real. No se altera Source ni H3. Corregida además la dependencia de un commit no descargado en la fixture nueva: usa la referencia de ratón ya descargada por CI. Local: 2.944 casos de capas, 1.536 raster, 1.964 escenas, 1.024 tiles, 72 minimapas y 544.000 coordenadas, PASS ASan/UBSan sin LSan local. Paquete Windows añade lanzadores H5/clásico y [guía manual](VALIDAR_RATON_WINDOWS_H5.md); observación de Miguel pendiente.
 
 ## Incremento 2.36 — integración de pantalla en misión
 

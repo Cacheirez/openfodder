@@ -66,6 +66,14 @@ Los replays usan entradas canónicas grabadas: no simulan clics físicos de usua
 
 Corrección acotada: `screen_mouse_contract.py` permite retirar **solo el bloque literal aprobado** del nuevo adaptador para comparar el resto del fichero con el original. La puerta conserva la igualdad de todas las demás decisiones/operaciones del cursor y de `GUI_Element.cpp`; la fixture nueva usa la misma normalización y prueba el adaptador real. No se cambia el motor para resolver ese fallo. En la prueba HUD local se desactiva LSan por la limitación `/proc`/ptrace ya conocida; no se atribuye cobertura local de fugas.
 
+## Revisión 2.37
+
+Windows `4e8e211` completo PASS. Linux supera la puerta HUD, pero otra puerta de capas exige que Window.cpp entero no haya cambiado; GUI/minimapa contiene el mismo supuesto. [Estado registrado](H5_5_VALIDACION_4e8e211.json). Ambas se corrigen juntas: `screen_window_contract.py` exige hashes exactos del fichero clásico y del adaptador revisado; no omite cambios arbitrarios. La fixture funcional verifica también esa versión y ejercita sus métodos. Las referencias H3 no se regeneran.
+
+La fixture de pantalla usa ahora el commit de Mouse.cpp que el workflow ya descarga para HUD y la referencia Window que descarga para capas; no depende de un commit ausente en un checkout superficial. El motor permanece idéntico al ya compilado y probado en Windows.
+
+Local, ASan/UBSan con LSan desactivado: 2.944 casos de capas; 1.536 raster, 1.964 escenas, 1.024 tiles y 72 minimapas; 544.000 coordenadas y ciclo de publicación/entrada. Se preparan dos lanzadores y la [prueba interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) dentro del paquete de demos. Esa prueba requiere observación de Miguel; no hay escritorio Windows interactivo accesible desde esta sesión. No marcar aceptación manual por disponer del ZIP.
+
 ## Siguiente paso
 
 Revisar la nueva CI y validar en Windows dibujo/ratón, pausa, cambios de foco y tamaño. Después sustituir la política de destino heredada por el ajuste multirresolución del contrato, con opciones y recuperación. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.

@@ -37,6 +37,10 @@ def stage(root, output, report):
         shutil.copy2(path, output / path.name)
     shutil.copy2(run / 'README.md', output / 'DATOS_DEMOS.md')
     shutil.copy2(root / 'docs/modernization/PRIMER_ARRANQUE_WINDOWS.md', output / 'LEEME.md')
+    shutil.copy2(root / 'docs/modernization/VALIDAR_RATON_WINDOWS_H5.md', output / 'VALIDAR_RATON_H5.md')
+    for name in ('PROBAR_RATON_H5.cmd', 'COMPARAR_RATON_CLASICO.cmd'):
+        text = (root / 'tools/modernization/windows' / name).read_text(encoding='ascii')
+        (output / name).write_bytes(text.replace('\r\n', '\n').replace('\n', '\r\n').encode('ascii'))
     shutil.copy2(report, output / 'PRUEBAS.json')
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     (output / 'VERSION.txt').write_text(commit+'\n', encoding='utf-8')

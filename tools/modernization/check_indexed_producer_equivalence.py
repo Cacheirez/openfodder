@@ -3,6 +3,7 @@ import os,subprocess,tempfile
 from pathlib import Path
 from check_final_timer_equivalence import function
 from pause_contract import canonical_pause
+from screen_window_contract import verify_window_integration
 BASELINE='793e347cd9f118da1c9ec6a84f88caf3257b74c2'
 def main():
  root=Path(__file__).resolve().parents[2]
@@ -12,7 +13,9 @@ def main():
  for path in ['Source/GUI_Element.cpp','Source/Fodder.cpp','Source/Recruits.cpp','Source/Window.cpp']:
   current=(root/path).read_text()
   if path=='Source/Fodder.cpp': current=canonical_pause(current)
-  assert current==subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True),path
+  original=subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True)
+  if path=='Source/Window.cpp': verify_window_integration(current,original)
+  else: assert current==original,path
  for backend in ('PC','Amiga'):
   path=f'Source/{backend}/Graphics_{backend}.cpp'
   for name in ('Recruit_Sprite_Draw','Briefing_Intro_Helicopter_Play','Mission_Intro_DrawHelicopter'):

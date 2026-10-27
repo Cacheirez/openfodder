@@ -5,14 +5,17 @@ from pathlib import Path
 import os, subprocess, tempfile
 from check_final_timer_equivalence import function
 from screen_mouse_contract import without_screen_mouse
+from screen_window_contract import verify_window_integration
 
 ROOT=Path(__file__).resolve().parents[2]
 
 
 def build():
     window=(ROOT/'Source/Window.cpp').read_text()
+    classic_window=subprocess.check_output(['git','show','ff15219680b289abf207fdc23fc436a9f390e649:Source/Window.cpp'],cwd=ROOT,text=True)
+    verify_window_integration(window,classic_window)
     mouse=(ROOT/'Source/Mouse.cpp').read_text()
-    old=subprocess.check_output(['git','show','4052235a0792861de13949aa8e4039ae23312668:Source/Mouse.cpp'],cwd=ROOT,text=True)
+    old=subprocess.check_output(['git','show','7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41:Source/Mouse.cpp'],cwd=ROOT,text=True)
     signature='if (mStartParams->mMouseAlternative)'
     block=function(mouse,signature)
     assert without_screen_mouse(mouse)==old, 'Other mouse effects changed'
