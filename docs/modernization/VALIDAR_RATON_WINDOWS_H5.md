@@ -2,6 +2,8 @@
 
 Pendiente de ejecución por Miguel. La CI Windows y el replay automático no sustituyen esta comprobación con pantalla y ratón físicos. No ampliar el ajuste multirresolución antes de revisar el resultado.
 
+Paquete concreto aprobado y verificado: [Windows 40523807564 / OpenFodder-Windows-x64-demos](https://github.com/Cacheirez/openfodder/actions/runs/40523807564/artifacts/12743312861). Su `VERSION.txt` es `13461eb7e0f5491b1d107deee4489f2a1e78d6d4`, commit temporal de CI con el mismo árbol que c8c54ab; el PR sigue sin fusionar. Esta guía ya va incluida en ese ZIP.
+
 ## Preparación
 
 1. Descargar `OpenFodder-Windows-x64-demos` de una ejecución Windows **completada en verde** cuyo commit figure en el informe de validación. Es el ZIP de **Artifacts**, no el ZIP del código de la rama.

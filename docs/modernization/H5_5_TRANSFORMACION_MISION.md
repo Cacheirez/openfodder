@@ -74,6 +74,14 @@ La fixture de pantalla usa ahora el commit de Mouse.cpp que el workflow ya desca
 
 Local, ASan/UBSan con LSan desactivado: 2.944 casos de capas; 1.536 raster, 1.964 escenas, 1.024 tiles y 72 minimapas; 544.000 coordenadas y ciclo de publicación/entrada. Se preparan dos lanzadores y la [prueba interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) dentro del paquete de demos. Esa prueba requiere observación de Miguel; no hay escritorio Windows interactivo accesible desde esta sesión. No marcar aceptación manual por disponer del ZIP.
 
+## Cierre automático 2.37
+
+`c8c54ab` aprobado completamente en Windows (40523807564) y Linux (40523793992), incluidos los recorridos de ASan/UBSan/LSan/TSan declarados. Las dos correcciones históricas de guards están resueltas. [Evidencia completa](H5_5_CIERRE_CI_c8c54ab.json).
+
+[Paquete Windows comprobado](https://github.com/Cacheirez/openfodder/actions/runs/40523807564/artifacts/12743312861): SHA-256 verificado, 276 entradas, guía y dos lanzadores CRLF con entorno local, informe de 29 fases y cero omisiones. `VERSION.txt` contiene `13461eb7e0f5491b1d107deee4489f2a1e78d6d4`, el commit temporal probado por GitHub para el PR; su árbol es idéntico al de c8c54ab. **No significa que el PR esté fusionado.**
+
+Este cierre es automático. El replay usa entrada canónica, la fixture de ratón usa dobles SDL y todavía falta observar selección, órdenes, panel, pausa y cambios de foco/tamaño en un Windows físico. No hay escritorio Windows interactivo disponible en esta sesión; no se atribuye al asistente esa observación.
+
 ## Siguiente paso
 
-Revisar la nueva CI y validar en Windows dibujo/ratón, pausa, cambios de foco y tamaño. Después sustituir la política de destino heredada por el ajuste multirresolución del contrato, con opciones y recuperación. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.
+Miguel: ejecutar la [prueba interactiva](VALIDAR_RATON_WINDOWS_H5.md) con el paquete aprobado y devolver demo, resolución/DPI y resultados. No ampliar el ajuste multirresolución antes de revisar esa comprobación. Validar dibujo/ratón, pausa, cambios de foco y tamaño. Después sustituir la política de destino heredada por el ajuste multirresolución del contrato, con opciones y recuperación. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.

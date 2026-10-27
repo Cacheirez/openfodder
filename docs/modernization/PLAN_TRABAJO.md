@@ -2,9 +2,11 @@
 
 **Versión 2.37 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: cerrar CI global y [validación interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) antes de ampliar multirresolución. Windows 4e8e211 completo aprobado; Linux falla en la identidad histórica de Window.cpp. Corregidas conjuntamente las puertas de capas y GUI/minimapa, sin cambiar el motor; nueva CI y observación manual pendientes.**
+**Tarea activa: [validación interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) antes de ampliar multirresolución. CI del código c8c54ab cerrada en Windows/Linux, incluidos los recorridos de sanitizadores declarados. Paquete verificado; comprobación física de Miguel pendiente. Esta revisión registra evidencia y no cambia el motor.**
 
 ## Incremento 2.37 — cierre automático y paquete Windows de validación
+
+**Cierre automático:** `c8c54ab99bd4438e324108d07c08a516ba993ad4` aprobado en [Windows 40523807564](https://github.com/Cacheirez/openfodder/actions/runs/40523807564) y [Linux 40523793992](https://github.com/Cacheirez/openfodder/actions/runs/40523793992). [Evidencia completa y verificación del ZIP](H5_5_CIERRE_CI_c8c54ab.json). Las incidencias históricas de los guards descritas abajo están resueltas. Pendiente únicamente la aceptación interactiva de este incremento; H5.5/H5.9 globales siguen abiertos.
 
 [Estado 4e8e211](H5_5_VALIDACION_4e8e211.json): Windows completo PASS; Linux supera HUD y falla después en la identidad histórica de Window.cpp. Las dos puertas afectadas ahora exigen hashes exactos de la versión clásica y del adaptador revisado, cuya conducta prueba la fixture real. No se altera Source ni H3. Corregida además la dependencia de un commit no descargado en la fixture nueva: usa la referencia de ratón ya descargada por CI. Local: 2.944 casos de capas, 1.536 raster, 1.964 escenas, 1.024 tiles, 72 minimapas y 544.000 coordenadas, PASS ASan/UBSan sin LSan local. Paquete Windows añade lanzadores H5/clásico y [guía manual](VALIDAR_RATON_WINDOWS_H5.md); observación de Miguel pendiente.
 
