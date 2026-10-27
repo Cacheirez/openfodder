@@ -81,6 +81,7 @@ def main():
     if args.screen_probe:
         settings['flags'] += ['--window', '--alternate-mouse']
         settings['screen_probe'] = True
+        settings['screen_fit'] = True
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
                'fixture_count': count, 'campaigns': []}
@@ -94,6 +95,7 @@ def main():
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_MISSION_SCREEN_TRANSFORM='1' if args.screen_probe else '0',
+                       OPENFODDER_MISSION_SCREEN_FIT='1' if args.screen_probe else '0',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
                        OPENFODDER_SOLDIER_ART='1' if args.art_probe else '0',
                        OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',

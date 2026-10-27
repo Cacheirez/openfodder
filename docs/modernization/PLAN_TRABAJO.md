@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.38 · Revisión: 27 de octubre de 2026.**
+**Versión 2.39 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: preparar el ajuste multirresolución del destino de dibujo, conservando encuadre, proporciones y retorno clásico. CI c8c54ab aprobada en Windows/Linux y aceptación manual general recibida de Miguel. No se atribuye cobertura a resoluciones, DPI o casos individuales no comunicados. Esta revisión es documental.**
+**Tarea activa: validar la CI del ajuste multirresolución opcional en misión y después su interacción Windows. Ajuste a salida física con proporciones originales, bandas e inversa compartida; retorno clásico conservado. H5.5/H5.9 siguen parciales.**
+
+## Incremento 2.39 — ajuste de misión a ventanas hasta UHD
+
+[Implementación y pruebas](H5_9_AJUSTE_VENTANAS.md). Nuevo lanzador `PROBAR_RESOLUCIONES_H5.cmd`, ventana redimensionable y densidad de salida física. Se conserva el encuadre y aspecto de píxel aceptado, sin mostrar más mapa ni fijar densidad de arte. Pruebas locales del método real con 190 combinaciones de tamaño/backend/DPI, además de 544.000 coordenadas clásicas. CI nueva pendiente; aceptación manual anterior no se extrapola al ajuste. Base clásica, C01 y H3 conservados, PR sin fusionar.
+
 
 ## Incremento 2.38 — aceptación manual general en Windows
 

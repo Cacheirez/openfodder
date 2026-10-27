@@ -1,8 +1,8 @@
 # Validación interactiva Windows — pantalla y ratón H5.5
 
-Pendiente de ejecución por Miguel. La CI Windows y el replay automático no sustituyen esta comprobación con pantalla y ratón físicos. No ampliar el ajuste multirresolución antes de revisar el resultado.
+El piloto de correspondencia original fue aceptado por Miguel el 27-10-2026. El nuevo ajuste multirresolución requiere una comprobación específica cuando su CI termine; no se considera probado por esa aceptación anterior.
 
-Paquete concreto aprobado y verificado: [Windows 40523807564 / OpenFodder-Windows-x64-demos](https://github.com/Cacheirez/openfodder/actions/runs/40523807564/artifacts/12743312861). Su `VERSION.txt` es `13461eb7e0f5491b1d107deee4489f2a1e78d6d4`, commit temporal de CI con el mismo árbol que c8c54ab; el PR sigue sin fusionar. Esta guía ya va incluida en ese ZIP.
+Paquete histórico del piloto anterior (no contiene el nuevo ajuste): [Windows 40523807564 / OpenFodder-Windows-x64-demos](https://github.com/Cacheirez/openfodder/actions/runs/40523807564/artifacts/12743312861). Su `VERSION.txt` es `13461eb7e0f5491b1d107deee4489f2a1e78d6d4`, commit temporal de CI con el mismo árbol que c8c54ab; el PR sigue sin fusionar. Esta guía ya va incluida en ese ZIP.
 
 ## Preparación
 
@@ -53,3 +53,11 @@ Si hay un problema, adjuntar `H5_RATON.log` y, si se comparó, `H5_RATON_CLASICO
 ## Límites de aceptación
 
 Esta prueba cubre interacción de las demos y el equipo indicado. No cierra CD32 completo, ratón relativo, interpolación de cámara, panorámico, otras escenas o toda la matriz 4K. El requisito de conservar base clásica y mejoras sigue vigente; el PR permanece sin fusionar.
+
+## Nuevo ajuste opcional de ventanas — incremento 2.39
+
+Usar un paquete posterior a esta integración, con CI aprobada y **PROBAR_RESOLUCIONES_H5.cmd** incluido. Arrastrar bordes o maximizar la ventana durante la misión; probar formas 4:3 y 16:9, el centro, los bordes y el panel. La imagen crece uniformemente y se centra con bandas. Las proporciones son las ya aceptadas en ventana: PC 320:200 y Amiga 320:225; no se aplica una corrección artística nueva a 4:3. Una ventana 16:9 no muestra más mapa.
+
+Repetir pulsación en bandas y entrada sin soltar, pausa/reanudación, Alt+Tab y reducción/ampliación. Pausa, menús, fullscreen y ratón bloqueado/relativo conservan presentación y entrada clásicas; puede verse un cambio de tamaño al entrar en esas escenas. F11 no valida el ajuste nuevo. **COMPARAR_RATON_CLASICO.cmd** vuelve al render clásico al reiniciar, y **PROBAR_RATON_H5.cmd** conserva el piloto anterior sin ajuste. No hace falta cambiar la resolución ni el DPI de Windows; anotar los utilizados. El tamaño 4K se comprueba automáticamente en geometría; no se atribuye una prueba física 4K al usuario.
+
+Log del nuevo lanzador: `H5_RESOLUCIONES.log`. Conservar también `VERSION.txt`. No hay todavía selector de resolución ni aceptación global H5.9.

@@ -88,4 +88,4 @@ Miguel comunica: «funciona perfectamente, no noto diferencias con respecto a Op
 
 ## Siguiente paso
 
-Preparar el ajuste del destino físico manteniendo encuadre y proporciones clásicos, con la misma transformación inversa para ratón y rechazo de bandas. Introducirlo opcionalmente y conservar retorno al clásico. Probar la matriz 4:3/16:9 hasta 4K y DPI antes de declarar soporte completo. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.
+El [incremento 2.39](H5_9_AJUSTE_VENTANAS.md) implementa el ajuste opcional del destino físico manteniendo encuadre y proporciones clásicos, la inversa de ratón y el rechazo de bandas. Matriz de geometría local aprobada; cerrar su nueva CI y validar el lanzador Windows antes de declarar soporte completo. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.

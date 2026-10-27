@@ -63,7 +63,13 @@ bool cWindow::InitWindow( const std::string& pWindowTitle ) {
 	
     ToggleFullscreen();
 
-	mWindow = SDL_CreateWindow(pWindowTitle.c_str(), GetWindowSize().mWidth, GetWindowSize().mHeight, 0);
+    const char* screenFlag=std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
+    const char* fitFlag=std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+    const bool fitWindow=screenFlag && std::string(screenFlag)=="1" &&
+        fitFlag && std::string(fitFlag)=="1" &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked;
+    mWindow = SDL_CreateWindow(pWindowTitle.c_str(), GetWindowSize().mWidth, GetWindowSize().mHeight,
+        fitWindow ? SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY : 0);
 	if (!mWindow) {
         g_Debugger->Error("Failed to create window");
 		exit( 1 );
@@ -456,10 +462,11 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
 		}
 	}
 
+    const SDL_FRect classicDestination=Dest;
     openfodder::ScreenTransform transform;
     const char* flag = std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
-    // First integration: unchanged classic draw rectangle, windowed absolute
-    // mouse only. Other scenes/modes keep their existing presentation and input.
+    // Optional fit uses the physical output and the same presented inverse.
+    // Other scenes/modes keep their existing presentation and input.
     if (pMission && flag && std::string(flag)=="1" && mWindowMode &&
         g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked)
     {
@@ -472,17 +479,29 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
             SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
             viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
             SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
-            logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED)
+            logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED) {
+            const char* fit=std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+            if(fit && std::string(fit)=="1" && ww>0 && wh>0 && pw>0 && ph>0) {
+                const auto rect=openfodder::ScreenTransform::FitSource(pw,ph,
+                    {Src.x,Src.y,Src.w,Src.h});
+                // Quantize once to SDL's actual draw precision before retaining the inverse.
+                if(openfodder::ScreenTransform::RectValid(rect))
+                    Dest={float(rect.x),float(rect.y),float(rect.w),float(rect.h)};
+            }
             transform=openfodder::ScreenTransform::FromDraw(ww,wh,pw,ph,
                 {Src.x,Src.y,Src.w,Src.h},{Dest.x,Dest.y,Dest.w,Dest.h});
+        }
     }
+    if(!transform.valid) Dest=classicDestination; // Draw and input always fall back together.
     if (transform.valid) {
         // Source origin is storage padding, not a second camera translation.
         const auto origin=transform.StorageToOutput({Src.x,Src.y});
         const auto end=transform.CanvasToOutput({Src.w,Src.h});
-        if (origin.x!=Dest.x || origin.y!=Dest.y || end.x!=Dest.x+Dest.w || end.y!=Dest.y+Dest.h)
-            throw std::runtime_error("screen transform differs from classic draw rectangle");
-        Dest={float(origin.x),float(origin.y),float(end.x-origin.x),float(end.y-origin.y)};
+        if (origin.x!=Dest.x || origin.y!=Dest.y ||
+            std::abs(end.x-(double(Dest.x)+Dest.w))>1e-8 ||
+            std::abs(end.y-(double(Dest.y)+Dest.h))>1e-8)
+            throw std::runtime_error("screen transform differs from draw rectangle");
+        // Dest is already the SDL-precision rectangle retained by FromDraw.
     }
     const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
     std::lock_guard<std::mutex> lock(mScreenTransformMutex);

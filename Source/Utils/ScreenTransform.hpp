@@ -12,6 +12,13 @@ struct ScreenTransform {
         return std::isfinite(r.x) && std::isfinite(r.y) &&
             std::isfinite(r.w) && std::isfinite(r.h) && r.w>0 && r.h>0;
     }
+    // Preserve the accepted windowed pixel proportions (no new aspect correction).
+    static ScreenRect FitSource(int pw,int ph,ScreenRect src) {
+        if(pw<=0 || ph<=0 || !RectValid(src)) return {};
+        const double scale=std::fmin(double(pw)/src.w,double(ph)/src.h);
+        const double w=src.w*scale,h=src.h*scale;
+        return {(pw-w)/2,(ph-h)/2,w,h};
+    }
     static ScreenTransform FromDraw(int ww,int wh,int pw,int ph,
                                     ScreenRect src,ScreenRect dst) {
         ScreenTransform t;

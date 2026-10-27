@@ -116,10 +116,60 @@ int main(){
  win.InvalidateScreenTransform();assert(win.MapMissionMouse(100,100,x,y)==R::Blocked);
  win.RenderAt(&image,true);presentOK=false;win.FrameEnd();assert(win.MapMissionMouse(100,100,x,y)==R::Blocked);presentOK=true;
  drawOK=false;win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(100,100,x,y)==R::Blocked);drawOK=true;
+
+ // Fit: independent expected rect and inverse, all target modes and DPI ratios.
+ setenv("OPENFODDER_MISSION_SCREEN_FIT","1",1);
+ int fitCases=0;
+ for(auto size : {cDimension{640,480},{800,600},{1024,768},{1152,864},
+    {1280,960},{1400,1050},{1600,1200},{1920,1440},{2048,1536},{2880,2160},
+    {1280,720},{1600,900},{1920,1080},{2560,1440},{3200,1800},{3840,2160},
+    {1366,768},{2560,1920},{1001,777}}) {
+  for(int dpi : {100,125,150,175,200})for(int h : {200,225}) {
+   pw=size.mWidth;ph=size.mHeight;ww=pw*100/dpi;wh=ph*100/dpi;
+   win.mScreenSize.mHeight=h;
+   win.InvalidateScreenTransform();
+   assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);
+   win.RenderAt(&image,true);win.FrameEnd();
+   assert(win.mPresentedScreenTransform.valid);
+   const double scale=std::min(double(pw)/320,double(ph)/h);
+   assert(std::abs(drawnDestination.w-320*scale)<0.001);
+   assert(std::abs(drawnDestination.h-h*scale)<0.001);
+   assert(std::abs(drawnDestination.x-(pw-320*scale)/2)<0.001);
+   assert(std::abs(drawnDestination.y-(ph-h*scale)/2)<0.001);
+   for(int cy=0;cy<wh;cy+=7)for(int cx=0;cx<ww;cx+=7) {
+    const double ox=double(cx)*pw/ww,oy=double(cy)*ph/wh;
+    const auto d=drawnDestination;
+    const bool inside=ox>=d.x && oy>=d.y && ox<double(d.x)+d.w && oy<double(d.y)+d.h;
+    const auto result=win.MapMissionMouse(cx,cy,x,y);
+    assert(result==(inside?R::Mapped:R::Blocked));
+    if(inside) {
+     assert(x==int(std::floor((ox-d.x)*320/d.w))-32);
+     assert(y==int(std::floor((oy-d.y)*h/d.h))+4);
+    }
+   }
+   ++fitCases;
+  }
+ }
+ assert(fitCases==190);
+ // New bands also suppress a held press on re-entry.
+ pw=ww=1920;ph=wh=1080;win.mScreenSize.mHeight=200;
+ win.RenderAt(&image,true);win.FrameEnd();
+ fodder.mMouse_EventLastPosition={0,540};fodder.mMouse_EventLastButtonsPressed=1;
+ fodder.HandleAlternate();assert(fodder.mMouseButtonStatus==0);
+ fodder.mMouse_EventLastPosition={960,540};fodder.HandleAlternate();
+ assert(fodder.mMouseButtonStatus==0 && fodder.mInputMouseX==128 && fodder.mInputMouseY==104);
+ fodder.mMouse_EventLastButtonsPressed=0;fodder.HandleAlternate();
+ fodder.mMouse_EventLastButtonsPressed=1;fodder.HandleAlternate();assert(fodder.mMouseButtonStatus==1);
+ unsetenv("OPENFODDER_MISSION_SCREEN_FIT");
+ win.RenderAt(&image,true);win.FrameEnd();
+ assert(drawnDestination.x==0 && drawnDestination.w==640 && drawnDestination.h==400);
+ ww=320;wh=200;pw=640;ph=400;
+ setenv("OPENFODDER_MISSION_SCREEN_FIT","1",1);
  // Unsupported SDL state falls back as a pair: original draw and classic mouse.
  for(int mode=0;mode<5;++mode){
    target=mode==0;clip=mode==1;logical=mode==2;rendererScale=mode==3?2:1;viewportX=mode==4?1:0;
    win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(100,100,x,y)==R::Classic);
+   assert(drawnDestination.x==0 && drawnDestination.w==640 && drawnDestination.h==400);
  }
  target=clip=logical=false;rendererScale=1;viewportX=0;
  win.RenderAt(&image,true);win.FrameEnd();fodder.mWindow_Focus=false;
@@ -131,7 +181,7 @@ int main(){
  win.mWindowMode=false;assert(win.MapMissionMouse(100,100,x,y)==R::Classic);win.mWindowMode=true;
  fodder.params.mMouseLocked=true;assert(win.MapMissionMouse(100,100,x,y)==R::Classic);fodder.params.mMouseLocked=false;
  unsetenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(100,100,x,y)==R::Classic);
- puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; DPI, bands, held press, fallback and lifecycle");
+ puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 190 fit cases up to UHD, DPI, bands, held press, fallback and lifecycle");
 }
 '''
     return code
