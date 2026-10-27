@@ -92,9 +92,11 @@ void cFodder::Mouse_Cursor_Handle() {
         int16 mappedX=0,mappedY=0;
         const auto mapping=mWindow->MapMissionMouse(mMouse_EventLastPosition.mX,
             mMouse_EventLastPosition.mY,mappedX,mappedY);
+        mWindow->SetMissionCursorInBand(mapping==openfodder::ScreenMouseResult::Band);
         if(mapping!=openfodder::ScreenMouseResult::Classic) {
             if(!mMouse_EventLastButtonsPressed)blockedPress=false;
-            if(mapping==openfodder::ScreenMouseResult::Blocked) {
+            if(mapping==openfodder::ScreenMouseResult::Blocked ||
+                mapping==openfodder::ScreenMouseResult::Band) {
                 if(mMouse_EventLastButtonsPressed)blockedPress=true;
                 mMouseButtonStatus=0;
                 return; // Keep prior cursor; never turn a band click into a map order.

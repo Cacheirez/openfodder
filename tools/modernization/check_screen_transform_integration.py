@@ -27,6 +27,7 @@ def build():
 #include <cstdio>
 #include <string>
 #include <mutex>
+#include <atomic>
 #include <stdexcept>
 #include "Utils/ScreenTransform.hpp"
 using int16=int16_t;
@@ -46,6 +47,9 @@ bool SDL_RenderClipEnabled(SDL_Renderer*){return clip;}
 bool SDL_GetRenderLogicalPresentation(SDL_Renderer*,int*w,int*h,SDL_RendererLogicalPresentation*m){*w=*h=0;*m=logical?SDL_LOGICAL_PRESENTATION_LETTERBOX:SDL_LOGICAL_PRESENTATION_DISABLED;return true;}
 bool SDL_RenderTexture(SDL_Renderer*,SDL_Texture*,SDL_FRect*s,SDL_FRect*d){drawnSource=*s;drawnDestination=*d;++draws;return drawOK;}
 bool SDL_RenderPresent(SDL_Renderer*){return presentOK;}
+bool systemCursor=false;
+bool SDL_ShowCursor(){systemCursor=true;return true;}
+bool SDL_HideCursor(){systemCursor=false;return true;}
 void SDL_SetRenderDrawColor(SDL_Renderer*,int,int,int,int){}void SDL_RenderClear(SDL_Renderer*){}
 SDL_DisplayID SDL_GetDisplayForWindow(SDL_Window*){return 1;}SDL_DisplayID SDL_GetPrimaryDisplay(){return 1;}
 const SDL_DisplayMode* SDL_GetCurrentDisplayMode(SDL_DisplayID){static SDL_DisplayMode m;return &m;}
@@ -56,11 +60,14 @@ struct cWindow{
  cDimension mScreenSize;std::mutex mScreenTransformMutex;
  openfodder::ScreenTransform mPendingScreenTransform,mPresentedScreenTransform;
  bool mPendingScreenClassic=false,mPresentedScreenClassic=false;
+ std::atomic<bool> mMissionCursorInBand{false};bool mSystemMissionCursorShown=false;
+ void SetMissionCursorInBand(bool v){mMissionCursorInBand.store(v);}
+ bool IsMissionCursorInBand() const;
  cDimension GetWindowSize(){return {640,mScreenSize.mHeight*2};}
  void RenderAt(cSurface*,bool=false);void RenderShrunk(cSurface*);void FrameEnd();void InvalidateScreenTransform();
  openfodder::ScreenMouseResult MapMissionMouse(int,int,int16&,int16&);
 };
-struct Params{bool mUnitTesting=true,mMouseAlternative=true,mMouseLocked=false,mIntegerScaling=false;};
+struct Params{bool mUnitTesting=true,mMouseAlternative=true,mMouseLocked=false,mIntegerScaling=false,mDemoPlayback=false;};
 struct cFodder{
  Params params;Params*mParams=&params,*mStartParams=&params;cWindow*mWindow=nullptr;
  bool mPhase_In_Progress=true,mPhase_Paused=false,mPhase_ShowMapOverview=false,mInterruptCallback=false,mWindow_Focus=true;
@@ -72,7 +79,7 @@ const int16 MOUSE_POSITION_X_ADJUST=-32,MOUSE_POSITION_Y_ADJUST=4;
 '''
     code=prefix
     for sig in ['void cWindow::RenderAt(', 'void cWindow::RenderShrunk(', 'void cWindow::FrameEnd(',
-                'void cWindow::InvalidateScreenTransform(', 'openfodder::ScreenMouseResult cWindow::MapMissionMouse(']:
+                'bool cWindow::IsMissionCursorInBand(', 'void cWindow::InvalidateScreenTransform(', 'openfodder::ScreenMouseResult cWindow::MapMissionMouse(']:
         code+=function(window,sig)+'\n'
     code+='void cFodder::HandleAlternate(){const cDimension scale{2,2};mMouseButtonStatus=mMouse_EventLastButtonsPressed;'+block+'}\n'
     code+=r'''
@@ -141,7 +148,7 @@ int main(){
     const auto d=drawnDestination;
     const bool inside=ox>=d.x && oy>=d.y && ox<double(d.x)+d.w && oy<double(d.y)+d.h;
     const auto result=win.MapMissionMouse(cx,cy,x,y);
-    assert(result==(inside?R::Mapped:R::Blocked));
+    assert(result==(inside?R::Mapped:R::Band));
     if(inside) {
      assert(x==int(std::floor((ox-d.x)*320/d.w))-32);
      assert(y==int(std::floor((oy-d.y)*h/d.h))+4);
@@ -167,12 +174,21 @@ int main(){
    if(result==R::Mapped) {
     assert(fodder.mInputMouseX==x && fodder.mInputMouseY==y);
    } else {
-    assert(result==R::Blocked);
+    assert(result==R::Band);
     assert(fodder.mInputMouseX==beforeX && fodder.mInputMouseY==beforeY);
    }
    assert(fodder.mMouseButtonStatus==0);
+   assert(win.IsMissionCursorInBand()==(result==R::Band));
+   win.RenderAt(&image,true);win.FrameEnd();
+   assert(systemCursor==(result==R::Band));
   }
  }
+ // Suppression is presentation-only; scope changes restore the native cursor policy.
+ win.SetMissionCursorInBand(true);
+ fodder.mPhase_Paused=true;assert(!win.IsMissionCursorInBand());fodder.mPhase_Paused=false;
+ fodder.params.mDemoPlayback=true;assert(!win.IsMissionCursorInBand());fodder.params.mDemoPlayback=false;
+ win.RenderAt(&image,false);win.FrameEnd();assert(!systemCursor);
+ win.SetMissionCursorInBand(false);
  // New bands also suppress a held press on re-entry.
  pw=ww=1920;ph=wh=1080;win.mScreenSize.mHeight=200;
  win.RenderAt(&image,true);win.FrameEnd();

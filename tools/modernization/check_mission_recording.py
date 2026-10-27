@@ -14,6 +14,13 @@ def main():
  current={p:(root/p).read_text() for p in paths}
  for p,s in current.items():
   original=subprocess.check_output(['git','show',BASELINE+':'+p],cwd=root,text=True)
+  if p=='Source/Graphics.cpp':
+   # Only the two reviewed presentation hooks differ; functional cursor tests
+   # verify pixels are suppressed without changing legacy register effects.
+   for hook in ('    if (prepared.isCursor && prepared.suppressCursorPixels) return;\n',
+                '    prepared.suppressCursorPixels = mFodder->mWindow->IsMissionCursorInBand();\n'):
+    assert s.count(hook)==1, 'Cursor band hook changed; review HUD tests'
+    s=s.replace(hook,'')
   assert without_audit(s)==original, 'Non-diagnostic producer change: '+p
  for hook in HOOKS: assert any(hook in without_soldier_hook(s) for s in current.values()), 'Unused canonical hook'
  raw=lambda p,sig:function(current[p],sig,preserve_audit=True)

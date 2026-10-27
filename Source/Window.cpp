@@ -354,6 +354,12 @@ void cWindow::FrameEnd() {
         mPresentedScreenTransform=presented ? mPendingScreenTransform : openfodder::ScreenTransform{};
         mPresentedScreenClassic=presented && mPendingScreenClassic;
         mPendingScreenTransform={};mPendingScreenClassic=false;
+        // OS cursor follows the pointer through letterbox bands; presentation only.
+        const bool systemCursor=mPresentedScreenTransform.valid && IsMissionCursorInBand();
+        if(systemCursor!=mSystemMissionCursorShown) {
+            if(systemCursor) SDL_ShowCursor(); else SDL_HideCursor();
+            mSystemMissionCursorShown=systemCursor;
+        }
         if(mPresentedScreenTransform.valid && g_Fodder->mStartParams->mUnitTesting) {
             const auto& t=mPresentedScreenTransform;
             for(const auto& point : {openfodder::ScreenPoint{0.5,0.5},
@@ -738,11 +744,23 @@ openfodder::ScreenMouseResult cWindow::MapMissionMouse(int x,int y,int16& mapped
        ww!=t.windowW || wh!=t.windowH || pw!=t.outputW || ph!=t.outputH)
         return ScreenMouseResult::Blocked;
     openfodder::ScreenPoint canvas;
-    if(!t.WindowToCanvas({double(x),double(y)},canvas))return ScreenMouseResult::Blocked;
+    if(!t.WindowToCanvas({double(x),double(y)},canvas)) {
+        const char* fit=std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+        return fit && std::string(fit)=="1" ? ScreenMouseResult::Band : ScreenMouseResult::Blocked;
+    }
     // Same legacy cursor domain as Mouse.cpp. Downstream HUD/camera/hotspot
     // adjustments stay in their original functions; do not apply them twice.
     const double mx=std::floor(canvas.x)-32,my=std::floor(canvas.y)+4;
     if(mx<-32768 || mx>32767 || my<-32768 || my>32767)return ScreenMouseResult::Blocked;
     mappedX=static_cast<int16>(mx);mappedY=static_cast<int16>(my);
     return ScreenMouseResult::Mapped;
+}
+
+// Used by cursor capture on the simulation thread: no SDL operations here.
+bool cWindow::IsMissionCursorInBand() const {
+    return mMissionCursorInBand.load() && mWindowMode &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked &&
+        !g_Fodder->mParams->mDemoPlayback && g_Fodder->mPhase_In_Progress &&
+        !g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview &&
+        !g_Fodder->mInterruptCallback;
 }

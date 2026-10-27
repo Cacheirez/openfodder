@@ -247,6 +247,7 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
     mFodder->mVideo_Draw_Columns = registers.columns;
     mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
     mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    if (prepared.isCursor && prepared.suppressCursorPixels) return;
     if (target->MissionAuditActive() && prepared.soldier.valid)
         target->RecordMissionSoldier(prepared);
     else if (target->MissionAuditActive())
@@ -260,6 +261,7 @@ void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prep
 openfodder::PreparedSpriteDraw cGraphics::CaptureCursorDraw() {
     openfodder::PreparedSpriteDraw prepared;
     prepared.isCursor = true;
+    prepared.suppressCursorPixels = mFodder->mWindow->IsMissionCursorInBand();
     const auto storage = GetSpriteResourceStorage(eGFX_PSTUFF);
     const auto layout = GetSpriteRasterLayout();
     const size_t offset = static_cast<size_t>(mFodder->mVideo_Draw_FrameDataPtr - storage->data());

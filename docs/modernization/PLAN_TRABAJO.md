@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.41 · Revisión: 27 de octubre de 2026.**
+**Versión 2.42 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: resolver la pausa percibida del cursor en bordes, especialmente el izquierdo, comunicada por Miguel en 3840×2160 al 300 %. Resto de la prueba favorable; no ampliar escenas todavía.**
+**Tarea activa: cerrar CI de la corrección de cursor en bandas y repetir la prueba maximizada UHD/300 %. Implementada transición al puntero Windows en bandas, conservando efectos del cursor y bloqueo de órdenes. No ampliar otras escenas.**
+
+## Incremento 2.42 — cursor continuo al cruzar bandas
+
+[Aclaración y corrección](H5_9_INCIDENCIA_BORDES_300.md). Miguel confirma que solo ocurre maximizado al tocar los límites laterales de la imagen. Se muestra el puntero Windows en bandas y se ocultan únicamente los píxeles del cursor retenido; las decisiones y registros clásicos se conservan. Pruebas locales de geometría/entrada, cursor/HUD, recursos y productores PASS ASan/UBSan. Nueva CI y validación física pendientes. Base clásica, H3, C01 y mejoras conservadas; PR sin fusionar.
+
 
 ## Incremento 2.41 — incidencia manual y cobertura DPI 300 %
 

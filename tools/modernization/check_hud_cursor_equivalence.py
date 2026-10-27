@@ -16,7 +16,7 @@ def main():
     root=Path(__file__).resolve().parents[2]
     def get(path,signature,old=False):
         s=subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True) if old else (root/path).read_text()
-        return function(s,signature)
+        return function(s,signature,preserve_audit=signature=='openfodder::PreparedSpriteDraw cGraphics::CaptureCursorDraw(')
     # Decisions/composition and cursor request timing are intentionally unchanged.
     for path in ['Source/Mouse.cpp','Source/GUI_Element.cpp']:
         current=(root/path).read_text()
@@ -52,7 +52,10 @@ struct cSurface{
  uint8* GetSurfaceBuffer(){return pixels.data();}size_t GetWidth()const{return width;}size_t GetHeight()const{return height;}
 };
 struct cGraphics;
+struct Window{bool band=false;bool IsMissionCursorInBand()const{return band;}};
+Window cursorWindow;
 struct Engine{
+ Window* mWindow=&cursorWindow;
  cGraphics* mGraphics=nullptr;Version* mVersionCurrent;Params* mParams;
  int16 mMouseSpriteCurrent=0,mMouseSpriteNew=-1,mMouseX=0,mMouseY=0,mMouseX_Offset=0,mMouseY_Offset=0;
  int16 mVideo_Draw_Columns=7,mVideo_Draw_Rows=11,mVideo_Draw_PosX=13,mVideo_Draw_PosY=15;
@@ -119,6 +122,21 @@ int main(){
    if(!same(before,after)||oldTarget.pixels!=newTarget.pixels){std::cerr<<"cursor mismatch\n";return 1;}
    ++cursors;
   }
+ }
+
+ // Band cursor: all legacy selection/register effects run, but no stale pixels.
+ for(auto* gfx:{static_cast<cGraphics*>(&pc),static_cast<cGraphics*>(&amiga)}) {
+  p.mDisableVideo=false;e.mGraphics=gfx;e.mMouseSpriteCurrent=0;e.mMouseSpriteNew=1;
+  e.mMouseX=20;e.mMouseY=30;Engine visible=e,hidden=e;
+  cSurface normal,blank;const auto untouched=blank.pixels;
+  gfx->legacy=false;cursorWindow.band=false;gfx->mFodder=&visible;g_Fodder=&visible;
+  gfx->mSurface=&normal;visible.Mouse_DrawCursor();
+  cursorWindow.band=true;gfx->mFodder=&hidden;g_Fodder=&hidden;
+  gfx->mSurface=&blank;hidden.Mouse_DrawCursor();
+  if(!same(visible,hidden)||blank.pixels!=untouched||normal.pixels==untouched){std::cerr<<"band cursor: registers="<<same(visible,hidden)<<" blank="<<(blank.pixels==untouched)<<" visible="<<(normal.pixels!=untouched)<<"\n";return 20;}
+  auto captured=gfx->Cursor_PrepareLegacyDraw();
+  if(!captured.isCursor||!captured.suppressCursorPixels)return 11;
+  cursorWindow.band=false;
  }
  // Actual shared HUD copy: active-surface geometry is retained even with a
  // destination whose advertised dimensions differ. No engine fields change.

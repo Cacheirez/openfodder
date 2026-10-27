@@ -74,6 +74,7 @@ public:
 // Copying/moving this object retains the bytes referenced by draw.source.
 // This covers a sprite command, not a complete frame or publication protocol.
 struct PreparedSpriteDraw {
+    bool suppressCursorPixels = false; // Presentation only; retain legacy register effects.
     ResolvedSpriteResource resource;
     SpriteDrawState draw;
     SoldierSemantic soldier;

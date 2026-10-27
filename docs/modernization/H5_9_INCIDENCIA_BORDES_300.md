@@ -19,3 +19,13 @@ Hipótesis principal: al cruzar una banda, el cursor dibujado se queda en su úl
 Miguel: precisar si la pausa aparece al entrar en la banda negra/salir de la ventana o todavía dentro de la imagen jugable. Según esa observación, revisar la presentación del cursor fuera del área o instrumentar la ruta interior. Mantener bloqueadas las órdenes originadas en bandas. No ampliar escenas hasta resolver y volver a validar la incidencia.
 
 Este incremento añade pruebas y documentación; no modifica motor, referencias H3, arte ni base clásica. CI del motor 45de47a4 sigue cerrada; los tests ampliados requieren su nueva ejecución CI. PR abierto y sin fusionar.
+
+## Aclaración y corrección — incremento 2.42
+
+Miguel precisa que solo ocurre al maximizar, al tocar los límites izquierdo y derecho de la imagen del juego; en ventana sin maximizar no ocurre. Esto acota la incidencia a la transición entre imagen y bandas del ajuste. La aceptación física de la corrección sigue pendiente.
+
+Corrección implementada: distinguir `Band` de una geometría inválida. En bandas, mostrar el puntero del sistema y suprimir únicamente los píxeles del cursor del juego, manteniendo sus decisiones, selección, preparación y registros originales. Al reentrar, recuperar el cursor del juego sin temporizador de recaptura. La visibilidad del sistema se actualiza en FrameEnd, en el hilo de presentación; el estado compartido de banda es atómico. Pausa, demos grabadas, fullscreen y otros modos conservan su alcance clásico. Los clics en bandas siguen bloqueados, incluida la pulsación mantenida al reentrar.
+
+Pruebas locales PASS con ASan/UBSan (LSan local desactivado): 544.000 coordenadas y 228 combinaciones; barrido lateral UHD/300 % en ambos sentidos con visibilidad del sistema; 2.304 casos de cursor y 288 HUD, más comprobación PC/Amiga de que ocultar píxeles conserva todos los registros; 10.944 casos de preparación/recursos; 192 escenarios de productores, 384 transiciones con digest original `15155017350506417091`. La captura del cursor se prueba sin eliminar su marca de procedencia; el guard de productores admite solo las dos líneas nuevas verificadas funcionalmente.
+
+Nueva CI pendiente al publicar. No reutilizar el paquete 45de47a4 como si contuviera este arreglo. Tras CI verde, repetir maximización y cruces laterales al 300 %, confirmando que aparece el puntero Windows en la banda y vuelve el cursor del juego dentro. No ampliar escenas hasta esa comprobación.

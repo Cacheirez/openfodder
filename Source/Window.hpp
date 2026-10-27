@@ -22,6 +22,7 @@
 
 #include "Utils/ScreenTransform.hpp"
 #include <mutex>
+#include <atomic>
 
 class cWindow {
 	
@@ -33,6 +34,8 @@ class cWindow {
         std::mutex mScreenTransformMutex;
         openfodder::ScreenTransform mPendingScreenTransform, mPresentedScreenTransform;
         bool mPendingScreenClassic=false, mPresentedScreenClassic=false;
+        std::atomic<bool> mMissionCursorInBand{false};
+        bool mSystemMissionCursorShown=false;
 
 		cDimension			mOriginalResolution;
 
@@ -57,6 +60,8 @@ class cWindow {
 
 		bool				CanChangeToMultiplier( const int pNewMultiplier );
 
+        void SetMissionCursorInBand(bool outside) { mMissionCursorInBand.store(outside); }
+        bool IsMissionCursorInBand() const;
         void InvalidateScreenTransform();
         openfodder::ScreenMouseResult MapMissionMouse(int x, int y, int16& mappedX, int16& mappedY);
         bool                Cycle();

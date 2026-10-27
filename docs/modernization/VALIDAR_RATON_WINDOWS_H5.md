@@ -61,3 +61,7 @@ Esta prueba cubre interacción de las demos y el equipo indicado. No cierra CD32
 Repetir pulsación en bandas y entrada sin soltar, pausa/reanudación, Alt+Tab y reducción/ampliación. Pausa, menús, fullscreen y ratón bloqueado/relativo conservan presentación y entrada clásicas; puede verse un cambio de tamaño al entrar en esas escenas. F11 no valida el ajuste nuevo. **COMPARAR_RATON_CLASICO.cmd** vuelve al render clásico al reiniciar, y **PROBAR_RATON_H5.cmd** conserva el piloto anterior sin ajuste. No hace falta cambiar la resolución ni el DPI de Windows; anotar los utilizados. El tamaño 4K se comprueba automáticamente en geometría; no se atribuye una prueba física 4K al usuario.
 
 Log del nuevo lanzador: `H5_RESOLUCIONES.log`. Conservar también `VERSION.txt`. No hay todavía selector de resolución ni aceptación global H5.9.
+
+## Reprueba de bordes — corrección 2.42
+
+El ZIP de 45de47a4 enlazado arriba precede a esta corrección. Esperar un paquete aprobado que incluya 2.42. Ejecutar `PROBAR_RESOLUCIONES_H5.cmd`, maximizar con la configuración habitual 3840×2160/300 % y cruzar despacio los límites izquierdo y derecho de la imagen. En la banda debe verse el puntero Windows moviéndose; dentro vuelve el cursor del juego. No debe quedar dibujado un cursor inmóvil. Probar también una pulsación iniciada en la banda y mantenida al entrar: no debe dar órdenes hasta soltar y volver a pulsar. Comprobar después restaurar la ventana, pausa/reanudación y Alt+Tab. Esta prueba está pendiente; no se declara resuelta por las fixtures.

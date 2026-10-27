@@ -49,5 +49,5 @@ struct ScreenTransform {
         return {physical.x*windowW/outputW,physical.y*windowH/outputH};
     }
 };
-enum class ScreenMouseResult { Classic, Blocked, Mapped };
+enum class ScreenMouseResult { Classic, Blocked, Band, Mapped };
 }
