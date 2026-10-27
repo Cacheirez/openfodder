@@ -142,6 +142,7 @@ jobs:
           python3 tools/modernization/check_mission_recording.py
           python3 tools/modernization/check_soldier_semantic.py
           python3 tools/modernization/check_soldier_pose.py
+          python3 tools/modernization/check_soldier_art.py
       - name: H4.1 - software video replays with mission layer audit
         env:
           SDL_VIDEODRIVER: dummy
@@ -186,6 +187,12 @@ jobs:
           for count in 0 1 5; do
             python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-pose-pause-$count --pose-probe --presentations "$count" --pause-probe --first-phase
           done
+      - name: H6.3 - C01 RGBA selected pose with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-art-full --art-probe
       - name: H4.6 - real engine zero and five mission presentations with original H3
         env:
           SDL_VIDEODRIVER: dummy
@@ -290,6 +297,7 @@ jobs:
             reports/h4-recording-*/
             reports/h4-publication*/
             reports/h4-pose*/
+            reports/h6-art*/
             reports/h4-schedule-*/
             reports/h4-pause-*/
             reports/h2-rnc/report.json

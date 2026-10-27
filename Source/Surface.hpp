@@ -25,6 +25,7 @@
 #include "Utils/PausePresentation.hpp"
 #include "Utils/MissionPresentation.hpp"
 #include "Utils/MissionLayers.hpp"
+#include "Utils/SoldierArt.hpp"
 #include <cstdlib>
 #include <mutex>
 #include <atomic>
@@ -68,6 +69,7 @@ protected:
         openfodder::MissionLayerSequence scene;
         std::shared_ptr<const openfodder::SoldierPose> pose;
         bool replacePose = false;
+        bool soldierArt = false;
     };
     std::shared_ptr<MissionAuditRecording> mMissionAudit;
     openfodder::PresentationDestinationId mPresentationDestination =
@@ -177,6 +179,8 @@ public:
         if (!eligible || isLoadedImage() ||
             (!MissionPublicationEnabled() && (!enabled || std::string(enabled) != "1"))) return;
         const auto recording = std::make_shared<MissionAuditRecording>();
+        const char* artOption = std::getenv("OPENFODDER_SOLDIER_ART");
+        recording->soldierArt = artOption && std::string(artOption) == "1";
         const char* poseOption = std::getenv("OPENFODDER_REPLACE_SOLDIER_POSE");
         recording->replacePose = poseOption && std::string(poseOption) == "1";
         if (recording->replacePose && previous) {
@@ -264,6 +268,21 @@ public:
                             static_cast<unsigned long long>(identity));
                     break;
                 }
+            }
+        }
+        if (recording->soldierArt) {
+            // Entire classic scene has already passed its unchanged oracle above.
+            // Fade/unsupported composition falls back; art never modifies indices.
+            bool nonBlack=false;
+            for (const auto& source : scene.destinations)
+                if (source.initial.destination==mPresentationDestination)
+                    for (auto color : source.initial.indexed.colors) nonBlack |= (color & 0xFFFFFFu)!=0;
+            const auto art=openfodder::ComposeSoldierArt(scene,mPresentationDestination,!mPaletteAdjusting && nonBlack);
+            if (art.replaced) {
+                if (publication) *publication=art.target;
+                static std::atomic<uint64_t> artScene{0};
+                if (artScene.exchange(art.scene)!=art.scene)
+                    std::fprintf(stderr,"SOLDIER_ART: verified bounded RGBA replacement scene=%llu\n",static_cast<unsigned long long>(art.scene));
             }
         }
         static std::atomic<bool> announced{false};

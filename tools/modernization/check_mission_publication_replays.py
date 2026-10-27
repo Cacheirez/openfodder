@@ -43,6 +43,18 @@ def verify_pose_probe(log, phases):
     return len(scenes)
 
 
+def art_probe_scenes(log):
+    scenes = re.findall(r'^SOLDIER_ART: verified bounded RGBA replacement scene=(\d+)$', log, re.M)
+    if len(scenes) != len(set(scenes)):
+        raise RuntimeError('Duplicate art scene coverage')
+    return len(scenes)
+
+
+def require_art_coverage(campaigns):
+    if sum(c['art_scenes'] for c in campaigns) == 0:
+        raise RuntimeError('Art pilot never replaced its selected pose')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--exe', type=Path, required=True)
@@ -53,16 +65,17 @@ def main():
     p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
     p.add_argument('--soldier-probe', action='store_true', help='Require semantic soldier reproduction with original resources')
     p.add_argument('--pose-probe', action='store_true', help='Replace one original indexed pose and require per-scene evidence; implies soldier capture')
+    p.add_argument('--art-probe', action='store_true', help='C01 RGBA pilot; require at least one actual selected-pose replacement across the declared campaigns')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
-    args.soldier_probe = args.soldier_probe or args.pose_probe
+    args.soldier_probe = args.soldier_probe or args.pose_probe or args.art_probe
     root = Path(__file__).resolve().parents[2]
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
-                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe,
+                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe, 'art_probe': args.art_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
@@ -77,6 +90,7 @@ def main():
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
+                       OPENFODDER_SOLDIER_ART='1' if args.art_probe else '0',
                        OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',
                        OPENFODDER_CAPTURE_SOLDIER='1' if args.soldier_probe else '0',
                        OPENFODDER_TEST_FIRST_PHASE='1' if args.first_phase else '0',
@@ -116,9 +130,11 @@ def main():
             pose_scenes = verify_pose_probe(log, phases) if args.pose_probe else 0
             pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
-                                        'pause_transitions': pauses, 'soldier_scenes': soldier_scenes, 'pose_scenes': pose_scenes,
+                                        'pause_transitions': pauses, 'soldier_scenes': soldier_scenes, 'pose_scenes': pose_scenes, 'art_scenes': art_probe_scenes(log) if args.art_probe else 0,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
+        if args.art_probe:
+            require_art_coverage(results['campaigns'])
         baseline = root/'tools/modernization/reference-gameplay-v1.json'
         expected_states = 11361
         if args.first_phase:

@@ -75,6 +75,12 @@ jobs:
             python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out "reports/h4-pose-$count" --pose-probe --presentations $count --pause-probe --first-phase
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
+      - name: H6.3 - C01 RGBA selected pose with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-art-full --art-probe
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build

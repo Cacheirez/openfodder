@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.32 · Revisión: 27 de octubre de 2026.**
+**Versión 2.33 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validación del piloto 46c180be completada en Windows/Linux, incluidos sanitizadores; elegir entre [A01, B01 y C01](H6_1_COMPARATIVA_ABC.md), ya presentadas. H4 sigue parcial; H6.2 pendiente de elección de Miguel.**
+**Tarea activa: [pose C01 transparente y anclaje original](H6_3_POSE_C01.md) implementada en piloto opcional, CI nueva pendiente. Miguel elige C — Pintado moderado: H6.2 cerrado. H6.3 parcial; faltan valoración en juego y escala HD.**
+
+## Incremento 2.33 — pose C01 RGBA
+
+Elección C confirmada por Miguel. Recurso transparente generado, cuadro nativo 16×14 y anclaje contrastado con tablas PC/Amiga. Sustitución de hoja 7/frame 0, contraste clásico intacto y diferencias RGB autorizadas solo dentro del cuerpo. Fallback ante solapamientos, recortes, fundidos y estados no cubiertos. Pruebas locales y puerta de cobertura; CI del motor nuevo pendiente. [Contrato y límites](H6_3_POSE_C01.md).
 
 ## Incremento 2.32 — comparación visual A/B/C
 
@@ -193,7 +197,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 ## H6. Dirección artística y cadena de recursos
 
 - [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [tres direcciones A01/B01/C01 presentadas](H6_1_COMPARATIVA_ABC.md), con pose/escenario similares. Falta comprobar a escala real la dirección elegida. Ninguna está integrada ni aprobada.
-- [ ] **H6.2 — Miguel:** elegir la dirección visual. Propuesta inicial: 2D ilustrado, perspectiva original, siluetas claras y colores legibles; pendiente de aprobación visual.
+- [x] **H6.2 — Miguel:** dirección elegida: **C — Pintado moderado**, por su toque Nintendo. A descartado; B no elegido. La aprobación del estilo no equivale a aceptar el recurso integrado.
 - [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Empezar evaluando recursos 4× sin multiplicar el tamaño lógico del mundo.
 - [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites.
 - [ ] **H6.5 — Asistente:** preparar carga, validación y sustitución individual de recursos, con retorno automático al original cuando falte uno nuevo.

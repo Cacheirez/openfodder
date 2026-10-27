@@ -1,6 +1,6 @@
 # H6.1 — comparación A01 / B01 / C01
 
-27-10-2026. Tres propuestas conceptuales presentadas en el chat. Ninguna está integrada ni aprobada como dirección final. Imágenes generadas con imagegen; A01 y C01 usan la lámina B01 refinada como referencia. Sin imágenes comerciales de entrada.
+27-10-2026. Tres propuestas conceptuales presentadas en el chat. Actualización: Miguel ha elegido C — Pintado moderado, con diferencia; A descartado. H6.2 cerrado. La integración sigue siendo experimental. Imágenes generadas con imagegen; A01 y C01 usan la lámina B01 refinada como referencia. Sin imágenes comerciales de entrada.
 
 | Propuesta | Lo observado | Ventaja propuesta | Riesgo a comprobar |
 |---|---|---|---|
@@ -14,7 +14,7 @@ Recomendación del asistente: B01 como punto de partida, por el equilibrio obser
 
 Las tres láminas mantienen aproximadamente pose, cámara, distribución y colores de referencia, pero no son imágenes idénticas salvo por el estilo: hay pequeñas variaciones de contorno y detalle. Las miniaturas son orientativas generadas, no reducciones instrumentadas ni capturas del motor. No comparar su atractivo ampliado como si demostrara legibilidad en juego.
 
-Se han presentado las tres direcciones acordadas. H6.1 continúa parcial hasta comprobar a escala real la dirección que se elija. H6.2 queda pendiente de Miguel; no se adopta automáticamente la recomendación. H4 conserva su estado y el código validado 46c180be; este incremento solo registra trabajo visual.
+Se han presentado las tres direcciones acordadas. H6.1 continúa parcial hasta comprobar a escala real la dirección que se elija. La recomendación inicial B del asistente queda superada por la elección explícita C de Miguel. H4 conserva su estado y el código validado 46c180be; este incremento solo registra trabajo visual.
 
 ## Condiciones del siguiente paso
 

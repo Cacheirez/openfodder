@@ -1,9 +1,17 @@
 """A completed replay with a recoverable sanitizer warning must still fail."""
 import unittest
-from check_mission_publication_replays import sanitizer_findings, verify_pause_probe, verify_soldier_probe, verify_pose_probe
+from check_mission_publication_replays import sanitizer_findings, verify_pause_probe, verify_soldier_probe, verify_pose_probe, art_probe_scenes, require_art_coverage
 
 
 class PublicationGateTests(unittest.TestCase):
+    def test_art_probe_cannot_pass_on_fallback_alone(self):
+        self.assertEqual(art_probe_scenes(''), 0)
+        marker = 'SOLDIER_ART: verified bounded RGBA replacement scene=9\n'
+        self.assertEqual(art_probe_scenes(marker), 1)
+        with self.assertRaises(RuntimeError): art_probe_scenes(marker+marker)
+        with self.assertRaises(RuntimeError): require_art_coverage([{'art_scenes':0}])
+        require_art_coverage([{'art_scenes':0}, {'art_scenes':1}])
+
     def test_pose_probe_requires_real_replacements_in_each_scene(self):
         a = 'SOLDIER_POSE: verified replacement scene=13\n'
         b = a.replace('13', '42')
