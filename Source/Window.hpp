@@ -20,6 +20,9 @@
  *
  */
 
+#include "Utils/ScreenTransform.hpp"
+#include <mutex>
+
 class cWindow {
 	
 	protected:
@@ -27,6 +30,9 @@ class cWindow {
 		SDL_Renderer*		mRenderer;
 
         std::vector<cEvent> mEvents;
+        std::mutex mScreenTransformMutex;
+        openfodder::ScreenTransform mPendingScreenTransform, mPresentedScreenTransform;
+        bool mPendingScreenClassic=false, mPresentedScreenClassic=false;
 
 		cDimension			mOriginalResolution;
 
@@ -51,6 +57,8 @@ class cWindow {
 
 		bool				CanChangeToMultiplier( const int pNewMultiplier );
 
+        void InvalidateScreenTransform();
+        openfodder::ScreenMouseResult MapMissionMouse(int x, int y, int16& mappedX, int16& mappedY);
         bool                Cycle();
 
         std::vector<cEvent>* EventGet();
@@ -61,7 +69,7 @@ class cWindow {
 			
 		virtual void		PositionWindow();
 
-		virtual void		RenderAt( cSurface* pImage );
+		virtual void		RenderAt( cSurface* pImage, bool pMission = false );
 		virtual void		RenderShrunk( cSurface* pImage );
 
 		void				WindowIncrease();

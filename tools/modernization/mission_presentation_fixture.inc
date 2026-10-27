@@ -7,7 +7,7 @@ struct Window {
  int ends=0,cycles=0; size_t first=0;
  std::vector<std::vector<std::vector<uint32>>> groups;
  std::vector<std::vector<uint32>> pending;
- void RenderAt(cSurface* s){pending.push_back(*s->CaptureRGBLayer().pixels);}
+ void RenderAt(cSurface* s,bool=false){pending.push_back(*s->CaptureRGBLayer().pixels);}
  void RenderShrunk(cSurface* s){RenderAt(s);}
  void FrameEnd(){groups.push_back(pending);pending.clear();++ends;}
  void Cycle(){++cycles;}

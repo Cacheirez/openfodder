@@ -32,6 +32,7 @@ def without_soldier_hook(source):
     return source
 
 def without_audit(source):
+    source = source.replace("mWindow->RenderAt(pSurface, missionPresentation);", "mWindow->RenderAt(pSurface);")
     source = without_soldier_hook(source)
     source = source.replace(SCHEDULED_RENDER, SINGLE_RENDER)
     source = source.replace(PUBLICATION, CLASSIC_PUBLICATION)

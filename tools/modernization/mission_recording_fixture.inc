@@ -8,7 +8,7 @@ struct Map { size_t getWidth()const{return 8;} } map;
 struct Params {bool mUnitTesting=true;bool mDemoPlayback=false,mDemoRecord=false,mDisableVideo=false;};
 struct Recording {int ticks=0;void Tick(){++ticks;}};
 struct Game {Recording mDemoRecorded;};
-struct Window {int frames=0,cycles=0;std::vector<std::vector<uint32>> pixels;void RenderAt(cSurface* s){pixels.push_back(*s->CaptureRGBLayer().pixels);}void RenderShrunk(cSurface*){}void FrameEnd(){++frames;}void Cycle(){++cycles;}};
+struct Window {int frames=0,cycles=0;std::vector<std::vector<uint32>> pixels;void RenderAt(cSurface* s,bool=false){pixels.push_back(*s->CaptureRGBLayer().pixels);}void RenderShrunk(cSurface*){}void FrameEnd(){++frames;}void Cycle(){++cycles;}};
 struct cFodder;
 struct cGraphics {
  cFodder* mFodder; cSurface* mSurface;

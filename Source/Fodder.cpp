@@ -3284,7 +3284,7 @@ void cFodder::Video_SurfaceRender(const bool pRestoreSurface, const bool pShrink
         }
         else
         {
-            mWindow->RenderAt(pSurface);
+            mWindow->RenderAt(pSurface, missionPresentation);
         }
         mWindow->FrameEnd();
     }

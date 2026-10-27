@@ -63,6 +63,7 @@ def main():
     parser.add_argument("--data", required=True, type=Path, help="Working directory containing Data, Campaigns and Tests")
     parser.add_argument("--out", required=True, type=Path, help="New report directory (must not exist)")
     parser.add_argument("--campaign")
+    parser.add_argument("--screen-probe", action="store_true", help="Windowed absolute mouse for screen transform integration")
     parser.add_argument("--video", action="store_true", help="Exercise real video producers (SDL software/dummy supported)")
     parser.add_argument("--timeout", type=float, default=180)
     parser.add_argument("--baseline", type=Path)
@@ -78,6 +79,9 @@ def main():
     cmd = [str(exe), "--appveyor", "--unit-test" if args.video else "--unit-test-headless"]
     if args.video:
         cmd.append("--nosound")
+    if args.screen_probe:
+        if not args.video: parser.error("--screen-probe requires --video")
+        cmd.extend(["--window", "--alternate-mouse"])
     if args.campaign:
         cmd.extend(["--campaign", args.campaign])
     started = time.monotonic()

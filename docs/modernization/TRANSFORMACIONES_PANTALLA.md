@@ -1,6 +1,6 @@
 # Contrato de transformaciones de pantalla
 
-27-10-2026 · Plan 2.35 · H5.5/H5.9 parciales. Especificación y modelo matemático verificable; **todavía no conectado a SDL, al ratón ni al render del juego**. No cierra soporte 4K, interpolación ni panorámico. Continúan el clásico, C01 y todas las mejoras anteriores.
+27-10-2026 · Contrato inicial 2.35; avance 2.36 · H5.5/H5.9 parciales. Especificación y modelo matemático verificable; [primera conexión opcional a misión](H5_5_TRANSFORMACION_MISION.md) implementada para el rectángulo clásico y ratón absoluto. El resto del contrato sigue pendiente. No cierra soporte 4K, interpolación ni panorámico. Continúan el clásico, C01 y todas las mejoras anteriores.
 
 ## Qué hay actualmente
 
@@ -89,4 +89,4 @@ En la ruta clásica de ratón hay ajustes (-32,+4), cámara entera y otros offse
 
 `python3 tools/modernization/check_screen_transform_contract.py` ejecuta un modelo de referencia racional sin SDL: matriz de 18 resoluciones del plan, tamaños impares, DPI/ratios no uniformes, ida/vuelta, bandas, separación HUD/mapa, cámara fraccionaria, anclajes a distintas densidades y destinos internos alternativos. No acredita GPU, apariencia ni código C++ de producción.
 
-Siguiente incremento: implementar el valor C++ del snapshot y el adaptador de una escena de misión, contrastar su rectángulo con `RenderAt` y caracterizar los ajustes de entrada clásicos antes de conectar la inversa. Mantener `RenderShrunk` y demás escenas en su ruta actual hasta disponer de su propio contrato. Después verificar ratón absoluto/relativo y cambios de tamaño con SDL, H3 y pruebas Windows. Solo entonces comparar pose/terreno HD para elegir densidad.
+Avance 2.36: valor C++ y adaptador de misión implementados opcionalmente, rectángulo contrastado con `RenderAt` e inversa absoluta conectada con ajustes clásicos. Pendiente su validación de CI/manual y extender el ajuste de destino al contrato multirresolución. Mantener `RenderShrunk` y demás escenas en su ruta actual hasta disponer de su propio contrato. Después verificar ratón absoluto/relativo y cambios de tamaño con SDL, H3 y pruebas Windows. Solo entonces comparar pose/terreno HD para elegir densidad.

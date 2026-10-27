@@ -49,6 +49,12 @@ jobs:
         run: cmake --build build-win --config Release --parallel 4
       - name: H2.3 - direction lookup boundary tests
         run: ctest --test-dir build-win -C Release --output-on-failure
+      - name: H5.5 - presented mission transform and inverse with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h5-screen-transform --screen-probe --first-phase
       - name: Replay all available demos and compare completion outcomes
         run: python tools/modernization/audit_replays.py --exe Run/openfodder.exe --data Run --out reports/windows --timeout 600 --baseline tools/modernization/reference-completion.json
       - name: H3 - compare two real PC Format gameplay traces

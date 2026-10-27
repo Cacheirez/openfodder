@@ -22,6 +22,8 @@
 
 #include "stdafx.hpp"
 #include <sstream>
+#include <cstdlib>
+#include <cstdio>
 
 cWindow::cWindow() {
 
@@ -150,7 +152,13 @@ void cWindow::EventCheck() {
 		cEvent Event;
 
 		switch (SysEvent.type) {
+        case SDL_EVENT_WINDOW_RESIZED:
+        case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+        case SDL_EVENT_WINDOW_DISPLAY_CHANGED:
+            InvalidateScreenTransform();
+            break;
 		case SDL_EVENT_WINDOW_FOCUS_LOST:
+            InvalidateScreenTransform();
 			Event.mType = eEvent_Focus;
 			Event.mHasFocus = false;
 			mHasFocus = false;
@@ -334,7 +342,29 @@ bool cWindow::CanChangeToMultiplier( const int pNewMultiplier ) {
 
 void cWindow::FrameEnd() {
     #ifndef EMSCRIPTEN
-	SDL_RenderPresent( mRenderer );
+    const bool presented=SDL_RenderPresent(mRenderer);
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        mPresentedScreenTransform=presented ? mPendingScreenTransform : openfodder::ScreenTransform{};
+        mPresentedScreenClassic=presented && mPendingScreenClassic;
+        mPendingScreenTransform={};mPendingScreenClassic=false;
+        if(mPresentedScreenTransform.valid && g_Fodder->mStartParams->mUnitTesting) {
+            const auto& t=mPresentedScreenTransform;
+            for(const auto& point : {openfodder::ScreenPoint{0.5,0.5},
+                    openfodder::ScreenPoint{t.source.w/2,t.source.h/2},
+                    openfodder::ScreenPoint{t.source.w-0.5,t.source.h-0.5}}) {
+                openfodder::ScreenPoint roundtrip;
+                if(!t.WindowToCanvas(t.CanvasToWindow(point),roundtrip) ||
+                   std::abs(roundtrip.x-point.x)>1e-8 || std::abs(roundtrip.y-point.y)>1e-8)
+                    throw std::runtime_error("presented screen mouse inverse mismatch");
+            }
+            static bool reported=false;
+            if(!reported) {
+                std::fprintf(stderr,"SCREEN_TRANSFORM: presented mission and verified mouse inverse\n");
+                reported=true;
+            }
+        }
+    }
     
 	SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
 	SDL_RenderClear( mRenderer );
@@ -385,7 +415,12 @@ void cWindow::WindowDecrease() {
 	SetWindowSize( mScaler - 1 );
 }
 
-void cWindow::RenderAt( cSurface* pImage ) {
+void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        mPendingScreenTransform = {};
+        mPendingScreenClassic = false;
+    }
 	SDL_FRect Src, Dest;
 
 	Src.w = (float)mScreenSize.mWidth;
@@ -421,10 +456,42 @@ void cWindow::RenderAt( cSurface* pImage ) {
 		}
 	}
 
-	SDL_RenderTexture( mRenderer, pImage->GetTexture(), &Src, &Dest );
+    openfodder::ScreenTransform transform;
+    const char* flag = std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
+    // First integration: unchanged classic draw rectangle, windowed absolute
+    // mouse only. Other scenes/modes keep their existing presentation and input.
+    if (pMission && flag && std::string(flag)=="1" && mWindowMode &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked)
+    {
+        int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
+        float sx=0,sy=0;
+        SDL_Rect viewport{};
+        SDL_RendererLogicalPresentation logicalMode=SDL_LOGICAL_PRESENTATION_DISABLED;
+        if (SDL_GetWindowSize(mWindow,&ww,&wh) && SDL_GetRenderOutputSize(mRenderer,&pw,&ph) &&
+            !SDL_GetRenderTarget(mRenderer) && SDL_GetRenderScale(mRenderer,&sx,&sy) && sx==1 && sy==1 &&
+            SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
+            viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
+            SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
+            logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED)
+            transform=openfodder::ScreenTransform::FromDraw(ww,wh,pw,ph,
+                {Src.x,Src.y,Src.w,Src.h},{Dest.x,Dest.y,Dest.w,Dest.h});
+    }
+    if (transform.valid) {
+        // Source origin is storage padding, not a second camera translation.
+        const auto origin=transform.StorageToOutput({Src.x,Src.y});
+        const auto end=transform.CanvasToOutput({Src.w,Src.h});
+        if (origin.x!=Dest.x || origin.y!=Dest.y || end.x!=Dest.x+Dest.w || end.y!=Dest.y+Dest.h)
+            throw std::runtime_error("screen transform differs from classic draw rectangle");
+        Dest={float(origin.x),float(origin.y),float(end.x-origin.x),float(end.y-origin.y)};
+    }
+    const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    mPendingScreenTransform = drawn ? transform : openfodder::ScreenTransform{};
+    mPendingScreenClassic = drawn && !transform.valid;
 }
 
 void cWindow::RenderShrunk( cSurface* pImage ) {
+    InvalidateScreenTransform();
 	SDL_FRect Src, Dest;
 	Src.w = (float)pImage->GetWidth();
 	Src.h = (float)pImage->GetHeight();
@@ -618,4 +685,45 @@ bool cWindowNull::InitWindow(const std::string& pWindowTitle) {
 
 
     return true;
+}
+
+void cWindow::InvalidateScreenTransform() {
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    mPendingScreenTransform={};mPresentedScreenTransform={};
+    mPendingScreenClassic=false;mPresentedScreenClassic=false;
+}
+
+openfodder::ScreenMouseResult cWindow::MapMissionMouse(int x,int y,int16& mappedX,int16& mappedY) {
+    using openfodder::ScreenMouseResult;
+#ifdef EMSCRIPTEN
+    return ScreenMouseResult::Classic; // Browser presentation lifecycle is a separate adapter.
+#endif
+    const char* flag=std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
+    if (!flag || std::string(flag)!="1" || !mWindowMode ||
+        !g_Fodder->mStartParams->mMouseAlternative || g_Fodder->mParams->mMouseLocked ||
+        !g_Fodder->mPhase_In_Progress || g_Fodder->mPhase_Paused ||
+        g_Fodder->mPhase_ShowMapOverview || g_Fodder->mInterruptCallback)
+        return ScreenMouseResult::Classic;
+    if(!g_Fodder->mWindow_Focus)return ScreenMouseResult::Blocked;
+    openfodder::ScreenTransform t;
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        if(mPresentedScreenClassic)return ScreenMouseResult::Classic;
+        t=mPresentedScreenTransform;
+    }
+    // Unsupported renderer configuration retains classic input; an invalidated
+    // snapshot must not reuse the geometry of a previous window/scene.
+    if(!t.valid)return ScreenMouseResult::Blocked;
+    int ww=0,wh=0,pw=0,ph=0;
+    if(!SDL_GetWindowSize(mWindow,&ww,&wh) || !SDL_GetRenderOutputSize(mRenderer,&pw,&ph) ||
+       ww!=t.windowW || wh!=t.windowH || pw!=t.outputW || ph!=t.outputH)
+        return ScreenMouseResult::Blocked;
+    openfodder::ScreenPoint canvas;
+    if(!t.WindowToCanvas({double(x),double(y)},canvas))return ScreenMouseResult::Blocked;
+    // Same legacy cursor domain as Mouse.cpp. Downstream HUD/camera/hotspot
+    // adjustments stay in their original functions; do not apply them twice.
+    const double mx=std::floor(canvas.x)-32,my=std::floor(canvas.y)+4;
+    if(mx<-32768 || mx>32767 || my<-32768 || my>32767)return ScreenMouseResult::Blocked;
+    mappedX=static_cast<int16>(mx);mappedY=static_cast<int16>(my);
+    return ScreenMouseResult::Mapped;
 }

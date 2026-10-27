@@ -65,6 +65,7 @@ def main():
     p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
     p.add_argument('--soldier-probe', action='store_true', help='Require semantic soldier reproduction with original resources')
     p.add_argument('--pose-probe', action='store_true', help='Replace one original indexed pose and require per-scene evidence; implies soldier capture')
+    p.add_argument('--screen-probe', action='store_true', help='Require presented mission transform and inverse; replay input remains canonical')
     p.add_argument('--art-probe', action='store_true', help='C01 RGBA pilot; require at least one actual selected-pose replacement across the declared campaigns')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
@@ -77,6 +78,9 @@ def main():
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
                 'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe, 'art_probe': args.art_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
+    if args.screen_probe:
+        settings['flags'] += ['--window', '--alternate-mouse']
+        settings['screen_probe'] = True
     settings_hash = hashlib.sha256(json.dumps(settings, sort_keys=True).encode()).hexdigest()
     results = {'verdict': 'FAIL', 'settings': settings, 'fixtures_sha256': fixture_hash,
                'fixture_count': count, 'campaigns': []}
@@ -89,6 +93,7 @@ def main():
             trace.mkdir()
             traces.append(str(trace))
             env = dict(os.environ, OPENFODDER_PRESENT_MISSION_LAYERS='1',
+                       OPENFODDER_MISSION_SCREEN_TRANSFORM='1' if args.screen_probe else '0',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
                        OPENFODDER_SOLDIER_ART='1' if args.art_probe else '0',
                        OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',
@@ -104,7 +109,7 @@ def main():
             subprocess.run([sys.executable, str(root/'tools/modernization/audit_replays.py'),
                             '--exe', str(args.exe.resolve()), '--data', str(args.data.resolve()),
                             '--out', str(out/slug), '--campaign', campaign, '--video',
-                            '--timeout', str(args.timeout)], env=env, check=True)
+                            '--timeout', str(args.timeout)] + (['--screen-probe'] if args.screen_probe else []), env=env, check=True)
             report = json.loads((out/slug/'report.json').read_text())
             log = (out/slug/'engine.log').read_text(errors='replace')
             findings = sanitizer_findings(log)
@@ -123,6 +128,8 @@ def main():
                 markers.append(published)
             if args.presentations is not None:
                 markers.append(f'MISSION_LAYER_SCHEDULE: {args.presentations} presentations per mission call')
+            if args.screen_probe:
+                markers.append('SCREEN_TRANSFORM: presented mission and verified mouse inverse')
             for marker in markers:
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
