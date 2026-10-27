@@ -60,6 +60,8 @@ Responder a redimensionado, maximización, Alt+Tab, minimización, cambio de mon
 
 Secuencia: definir transformaciones y política de encuadre → soporte de destinos/opciones → prueba de una pose y fragmento de terreno a varias densidades → compositor HD y viewport nativo → atlas/producción por lotes. Confirmar por separado la CI pendiente del piloto C01; su recurso 16×14 no cierra este requisito.
 
+Avance 2.35: [transformaciones definidas y modelo matemático verificado](TRANSFORMACIONES_PANTALLA.md). El adaptador SDL y la validación física siguen pendientes.
+
 ## Criterios de aceptación
 
 - Todos los tamaños enumerados y varios intermedios/impares producen frames válidos, sin estiramientos accidentales, cortes de HUD, costuras, accesos fuera de límites ni anclajes que cambien con la resolución.

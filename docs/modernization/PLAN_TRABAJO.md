@@ -1,8 +1,12 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.34 · Revisión: 27 de octubre de 2026.**
+**Versión 2.35 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: adaptar la planificación a [4:3 y 16:9 hasta 4K UHD](RESOLUCIONES_PC_HASTA_4K.md), antes de fijar densidad de arte o ampliar recursos. Alcance definido; implementación y matriz de validación pendientes. El piloto C01 conserva su CI pendiente de revisión; estilo C elegido y H6.2 cerrado.**
+**Tarea activa: integrar el contrato de [transformaciones de pantalla](TRANSFORMACIONES_PANTALLA.md) antes de fijar densidad HD. Modelo matemático validado localmente; adaptador SDL/entrada aún pendiente. C01: Windows aprobado; paso artístico Linux aprobado, flujo Linux completo en curso al revisar. Estilo C elegido; H6.2 cerrado.**
+
+## Incremento 2.35 — CI C01 y transformaciones
+
+[CI del motor 1bcf69c](H6_3_CI_1bcf69c.json): Windows completo PASS, 11 fases y 11.361 estados H3 originales; sustitución artística en 7 escenas PC y 2 Amiga. Paso C01 Linux PASS; flujo completo Linux aún en ejecución al registrar la evidencia. [Contrato de pantalla](TRANSFORMACIONES_PANTALLA.md): canvas, recorte, aspecto, destino físico, ventana/DPI, cámara, ratón inverso, bandas/HUD y anclajes independientes de densidad. Modelo racional: cinco pruebas locales, 300 combinaciones de geometría, añadido a CI. No modifica el motor ni conecta aún SDL; H5.5/H5.9 siguen parciales.
 
 ## Incremento 2.34 — resoluciones PC hasta 4K
 
@@ -189,7 +193,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
-- [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar.
+- [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar. **Avance 2.35:** [contrato y modelo verificable](TRANSFORMACIONES_PANTALLA.md), con inversa, bandas, HUD, cámara y anclajes; falta adaptador real y equivalencia con ajustes clásicos.
 - [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego.
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.

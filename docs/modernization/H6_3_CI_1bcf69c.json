@@ -1,0 +1,345 @@
+{
+  "schema": 1,
+  "observed_at": "2026-10-27T07:19:45.675Z",
+  "commit": "1bcf69c21a38f26cac14f5092dc7ef087dfdbfa5",
+  "windows": {
+    "run_id": 40463857888,
+    "job_id": 122054488065,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/Cacheirez/openfodder/actions/runs/40463857888",
+    "art_probe": {
+      "verdict": "PASS",
+      "coverage": "11 reference phases",
+      "canonical_states": 11361,
+      "campaigns": [
+        {
+          "name": "PC Format",
+          "phases": 8,
+          "art_scenes": 7
+        },
+        {
+          "name": "Amiga The One",
+          "phases": 3,
+          "art_scenes": 2
+        }
+      ],
+      "executable_sha256": "7ddb48e1186b2e30abd9d8b4fafb71053b33c4212ac916e5f59df0af8c1bc7bb"
+    }
+  },
+  "linux": {
+    "run_id": 40463857883,
+    "url": "https://github.com/Cacheirez/openfodder/actions/runs/40463857883",
+    "jobs": [
+      {
+        "id": 122054487514,
+        "name": "build",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_id": 40463857883,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Install build tools",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Build SDL3",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Build SDL3_mixer",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "H2.3 - verify actual sprite frame metadata",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Configure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Build",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "H2.3 - direction lookup boundary tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Prepare pinned gameplay fixtures",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "H3.6 - verify the legacy visibility contract",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "H4.1 - retail final timer equivalence with accepted classic base",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "H4.1 - value-only sprite preparation and clipping equivalence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "H4.1 - explicit sprite raster pixels and register equivalence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "H4.1 - retained sprite resources and original palette resolution",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "H4.1 - retained visible terrain and atlas equivalence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "H4.1 - retained HUD and cursor equivalence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "H4.1 - retained effective RGB palette and owned destinations",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "H4.1 - owned indexed destinations and ordered layer composition",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "H4.1 - GUI raster, scene and minimap producers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "H4.1 - retained pause scene and zero/one/many presentations",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          },
+          {
+            "name": "H4.1 - complete composed mission and mission-pause scheduling",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "H4.1 - presentation destination identity and geometry",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "H4.1 - ordered mission layers with independent destinations",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "H4.1 - real mission producer recording and missing-write detection",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          },
+          {
+            "name": "H4.1 - software video replays with mission layer audit",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 26
+          },
+          {
+            "name": "H4.3 - recorded publication and original H3 states",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 27
+          },
+          {
+            "name": "H4.2 - semantic soldier with original resources and H3",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 28
+          },
+          {
+            "name": "H4.4 - one original pose replacement and classic fallback",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 29
+          },
+          {
+            "name": "H6.3 - C01 RGBA selected pose with original H3",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 30
+          },
+          {
+            "name": "H4.6 - real engine zero and five mission presentations with original H3",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 31
+          },
+          {
+            "name": "H4.6 - bounded SDL pause and resumed mission with zero one five presentations",
+            "status": "in_progress",
+            "conclusion": null,
+            "number": 32
+          },
+          {
+            "name": "H2 - bounded RNC fixtures under ASan and UBSan",
+            "status": "pending",
+            "conclusion": null,
+            "number": 33
+          },
+          {
+            "name": "H3 - Linux PC Format gameplay reference",
+            "status": "pending",
+            "conclusion": null,
+            "number": 34
+          },
+          {
+            "name": "H3 - Linux Amiga The One gameplay reference",
+            "status": "pending",
+            "conclusion": null,
+            "number": 35
+          },
+          {
+            "name": "H3 - compare with pinned pre-stabilization gameplay baseline",
+            "status": "pending",
+            "conclusion": null,
+            "number": 36
+          },
+          {
+            "name": "H2.3 - full game-engine ASan and UBSan diagnostic",
+            "status": "pending",
+            "conclusion": null,
+            "number": 37
+          },
+          {
+            "name": "H2.3 - enforce zero ASan and UBSan findings",
+            "status": "pending",
+            "conclusion": null,
+            "number": 38
+          },
+          {
+            "name": "H2.3 - LeakSanitizer on all 29 public demos",
+            "status": "pending",
+            "conclusion": null,
+            "number": 39
+          },
+          {
+            "name": "H4.3 - active publication with ASan UBSan and LSan",
+            "status": "pending",
+            "conclusion": null,
+            "number": 40
+          },
+          {
+            "name": "H4.6 - bounded SDL pause with ASan UBSan and LSan",
+            "status": "pending",
+            "conclusion": null,
+            "number": 41
+          },
+          {
+            "name": "H2.4 - ThreadSanitizer diagnostic on all public demos",
+            "status": "pending",
+            "conclusion": null,
+            "number": 42
+          },
+          {
+            "name": "H4.3 - first PC and Amiga phases with active publication and ThreadSanitizer",
+            "status": "pending",
+            "conclusion": null,
+            "number": 43
+          },
+          {
+            "name": "H4.6 - bounded SDL pause with ThreadSanitizer",
+            "status": "pending",
+            "conclusion": null,
+            "number": 44
+          },
+          {
+            "name": "Upload H3 Linux reference evidence",
+            "status": "pending",
+            "conclusion": null,
+            "number": 45
+          },
+          {
+            "name": "Package",
+            "status": "pending",
+            "conclusion": null,
+            "number": 46
+          },
+          {
+            "name": "Upload artifact",
+            "status": "pending",
+            "conclusion": null,
+            "number": 47
+          },
+          {
+            "name": "Discord notification",
+            "status": "pending",
+            "conclusion": null,
+            "number": 48
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "pending",
+            "conclusion": null,
+            "number": 96
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Snapshot: Linux full workflow still running at observation.",
+    "Windows art_scenes are per-scene coverage, not universal per-frame or CD32 coverage.",
+    "No new HD, GPU/manual or full C01 sanitizer acceptance implied."
+  ]
+}

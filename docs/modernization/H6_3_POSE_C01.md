@@ -1,6 +1,6 @@
 # H6.3 — primera pose C01 transparente y prueba de anclaje
 
-27-10-2026. Miguel elige C — Pintado moderado, con preferencia explícita sobre A/B. H6.2 queda cerrado. H6.3 sigue parcial: implementación experimental, CI nueva y valoración visual en juego pendientes. Motor clásico por defecto, PR sin fusionar.
+27-10-2026. Miguel elige C — Pintado moderado, con preferencia explícita sobre A/B. H6.2 queda cerrado. H6.3 sigue parcial: implementación experimental, Windows aprobado y paso artístico Linux aprobado; flujo Linux completo y valoración visual en juego pendientes al registrar la revisión. Motor clásico por defecto, PR sin fusionar.
 
 ## Recurso y correspondencia
 
@@ -27,7 +27,7 @@ Otros retornos: recorte, tamaño o anclaje incompatible, animación especial, re
 - Fixture de los métodos reales Begin/Record/Verify/Present de Surface, con SDL y recursos originales sintéticos: ASan/UBSan, PC/Amiga, cámara desplazada, pitch con padding, transparencia, huella lógica 0/1/5, pausa/invalidez, recurso retenido y rechazo de escrituras ajenas. Incluye 64 casos de retorno y comprobación de igualdad fuera del cuadro.
 - Reproducción determinista del header RGBA a partir del PNG, y verificación de metadata original.
 - Puerta Python exige al menos una sustitución efectiva en el recorrido declarado. Cada informe cuenta escenas realmente sustituidas por campaña. **No se exige ni se atribuye cobertura por fase:** una pose concreta puede no aparecer o estar siempre tapada.
-- Runner `--art-probe` añadido al motor completo Windows/Linux con las once fases H3 originales. Esta CI nueva está pendiente; no se atribuye el verde del motor previo 46c180be a este cambio.
+- Runner `--art-probe` añadido al motor completo Windows/Linux con las once fases H3 originales. En 1bcf69c, Windows completo y paso C01 Linux aprobados. Windows verifica 11.361 estados H3, con sustitución en 7 escenas PC y 2 Amiga. Flujo completo Linux aún en curso al revisar: [evidencia fechada](H6_3_CI_1bcf69c.json).
 - Se conservan todas las rutas y pruebas anteriores. Sin aceptación manual Windows/GPU, sin prueba completa CD32 y sin validación HD. LSan/TSan nuevos para la ruta artística no se declaran aprobados: la fixture local usa ASan/UBSan con detect_leaks=0.
 
 ```bash
@@ -37,4 +37,4 @@ python3 tools/modernization/check_mission_publication_replays.py \
   --exe build/openfodder --data Run --out reports/h6-art-full --art-probe
 ```
 
-Siguiente: confirmar CI y revisar una captura del motor a tamaño real. Después fijar escala visual y ampliar el compositor RGB para oclusiones, en lugar de ampliar ahora las animaciones.
+Siguiente: cerrar el resultado global Linux e integrar el [contrato de pantalla](TRANSFORMACIONES_PANTALLA.md), ya definido y comprobado matemáticamente. Revisar después una captura del motor a tamaño real y densidades HD con el compositor adecuado; no ampliar todavía las animaciones.
