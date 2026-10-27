@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.39 · Revisión: 27 de octubre de 2026.**
+**Versión 2.40 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar la CI del ajuste multirresolución opcional en misión y después su interacción Windows. Ajuste a salida física con proporciones originales, bandas e inversa compartida; retorno clásico conservado. H5.5/H5.9 siguen parciales.**
+**Tarea activa: validar físicamente el ajuste de misión en Windows con el nuevo paquete. CI 45de47a4 cerrada en Windows/Linux y ZIP verificado. No ampliar otras escenas antes de revisar esa prueba. H5.5/H5.9 siguen parciales.**
+
+## Incremento 2.40 — cierre de CI y entrega del ajuste Windows
+
+Código `45de47a4` aprobado completamente en Windows 40542788013 y Linux 40542787684, incluidos los recorridos de sanitizadores declarados. [Evidencia y verificación del paquete](H5_9_CIERRE_CI_45de47a4.json). ZIP: 277 entradas, tres lanzadores CRLF, guía y 29 fases aprobadas sin omisiones. [Descarga para Miguel](https://github.com/Cacheirez/openfodder/actions/runs/40542788013/artifacts/12753080638): ejecutar `PROBAR_RESOLUCIONES_H5.cmd` y comprobar redimensionamiento, bandas, selección y órdenes. Aceptación física del nuevo ajuste pendiente; no se extrapola la aceptación del piloto anterior. Esta revisión solo documenta resultados; conserva código, arte, referencias H3 y PR sin fusionar.
+
 
 ## Incremento 2.39 — ajuste de misión a ventanas hasta UHD
 
