@@ -82,6 +82,10 @@ Local, ASan/UBSan con LSan desactivado: 2.944 casos de capas; 1.536 raster, 1.96
 
 Este cierre es automático. El replay usa entrada canónica, la fixture de ratón usa dobles SDL y todavía falta observar selección, órdenes, panel, pausa y cambios de foco/tamaño en un Windows físico. No hay escritorio Windows interactivo disponible en esta sesión; no se atribuye al asistente esa observación.
 
+## Aceptación manual posterior — 27-10-2026
+
+Miguel comunica: «funciona perfectamente, no noto diferencias con respecto a Open Fodder original.» Se acepta el piloto en el alcance general observado. El estado manual pendiente anterior corresponde al momento de cierre automático; queda actualizado por esta respuesta. No se han comunicado demo, VERSION.txt, resolución/DPI ni resultados separados por caso. [Registro y límites](H5_5_ACEPTACION_MANUAL_WINDOWS.md).
+
 ## Siguiente paso
 
-Miguel: ejecutar la [prueba interactiva](VALIDAR_RATON_WINDOWS_H5.md) con el paquete aprobado y devolver demo, resolución/DPI y resultados. No ampliar el ajuste multirresolución antes de revisar esa comprobación. Validar dibujo/ratón, pausa, cambios de foco y tamaño. Después sustituir la política de destino heredada por el ajuste multirresolución del contrato, con opciones y recuperación. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.
+Preparar el ajuste del destino físico manteniendo encuadre y proporciones clásicos, con la misma transformación inversa para ratón y rechazo de bandas. Introducirlo opcionalmente y conservar retorno al clásico. Probar la matriz 4:3/16:9 hasta 4K y DPI antes de declarar soporte completo. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.

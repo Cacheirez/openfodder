@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.37 · Revisión: 27 de octubre de 2026.**
+**Versión 2.38 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: [validación interactiva Windows](VALIDAR_RATON_WINDOWS_H5.md) antes de ampliar multirresolución. CI del código c8c54ab cerrada en Windows/Linux, incluidos los recorridos de sanitizadores declarados. Paquete verificado; comprobación física de Miguel pendiente. Esta revisión registra evidencia y no cambia el motor.**
+**Tarea activa: preparar el ajuste multirresolución del destino de dibujo, conservando encuadre, proporciones y retorno clásico. CI c8c54ab aprobada en Windows/Linux y aceptación manual general recibida de Miguel. No se atribuye cobertura a resoluciones, DPI o casos individuales no comunicados. Esta revisión es documental.**
+
+## Incremento 2.38 — aceptación manual general en Windows
+
+Miguel confirma el 27-10-2026: «funciona perfectamente, no noto diferencias con respecto a Open Fodder original.» Se registra como aceptación general del piloto presentado, sin incidencias observadas. [Alcance y siguiente incremento](H5_5_ACEPTACION_MANUAL_WINDOWS.md). No se solicitará repetir la prueba general; la matriz de resoluciones/DPI y casos no desglosados se comprobará al ampliar el ajuste. H5.5/H5.9 siguen parciales, arte C y base clásica conservados; PR abierto y sin fusionar.
+
 
 ## Incremento 2.37 — cierre automático y paquete Windows de validación
 
@@ -203,7 +208,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
-- [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar. **Avance 2.35:** [contrato y modelo verificable](TRANSFORMACIONES_PANTALLA.md), con inversa, bandas, HUD, cámara y anclajes; **Avance 2.36:** [adaptador de misión](H5_5_TRANSFORMACION_MISION.md) opcional, dibujo y ratón absoluto compartidos; equivalencia local con offsets clásicos comprobada. Pendientes CI nueva, ratón físico/relativo, cámara interpolada y otros modos/escenas.
+- [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar. **Avance 2.35:** [contrato y modelo verificable](TRANSFORMACIONES_PANTALLA.md), con inversa, bandas, HUD, cámara y anclajes; **Avance 2.36:** [adaptador de misión](H5_5_TRANSFORMACION_MISION.md) opcional, dibujo y ratón absoluto compartidos; equivalencia local con offsets clásicos comprobada. **Avance 2.38:** CI Windows/Linux cerrada y aceptación manual general de Miguel recibida. Pendientes matriz detallada de resolución/DPI, ratón relativo, cámara interpolada y otros modos/escenas.
 - [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego.
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
