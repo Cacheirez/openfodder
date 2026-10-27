@@ -9,6 +9,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 from check_final_timer_equivalence import function
+from screen_mouse_contract import without_screen_mouse
 BASELINE='7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41'
 
 def main():
@@ -18,7 +19,9 @@ def main():
         return function(s,signature)
     # Decisions/composition and cursor request timing are intentionally unchanged.
     for path in ['Source/Mouse.cpp','Source/GUI_Element.cpp']:
-        assert (root/path).read_text()==subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True),path
+        current=(root/path).read_text()
+        if path=='Source/Mouse.cpp': current=without_screen_mouse(current)
+        assert current==subprocess.check_output(['git','show',BASELINE+':'+path],cwd=root,text=True),path
     for backend in ('PC','Amiga'):
         p=f'Source/{backend}/Graphics_{backend}.cpp'
         assert get(p,f'uint8* cGraphics_{backend}::GetSpriteData(')==get(p,f'uint8* cGraphics_{backend}::GetSpriteData(',True)

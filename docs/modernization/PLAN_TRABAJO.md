@@ -2,11 +2,11 @@
 
 **Versión 2.36 · Revisión: 27 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar la [primera integración de pantalla/ratón en misión](H5_5_TRANSFORMACION_MISION.md). CI del motor C01 anterior cerrada en Windows/Linux. Nuevo adaptador opcional implementado y pruebas locales aprobadas; su CI y prueba manual pendientes. Densidad HD sin fijar.**
+**Tarea activa: validar la [primera integración de pantalla/ratón en misión](H5_5_TRANSFORMACION_MISION.md). CI del motor C01 anterior cerrada en Windows/Linux. Nuevo adaptador opcional compilado y replay H5.5 aprobado en Windows/Linux; ajuste de puerta HUD publicado tras fallo histórico, cierre global nuevo y prueba manual pendientes. Densidad HD sin fijar.**
 
 ## Incremento 2.36 — integración de pantalla en misión
 
-CI global C01 1bcf69c cerrada: Windows/Linux completos aprobados, evidencia `closure` en [informe](H6_3_CI_1bcf69c.json). [Integración opcional](H5_5_TRANSFORMACION_MISION.md): snapshot del rectángulo realmente dibujado y publicado, inversa para ratón absoluto, offsets clásicos, invalidación y retorno. 544.000 coordenadas PC/Amiga contrastadas con métodos reales y dobles SDL; regresiones conservadas. Sonda de replay SDL añadida a Windows/Linux, pendiente de su CI. No cambia el encuadre ni introduce HD/panorámico.
+CI global C01 1bcf69c cerrada: Windows/Linux completos aprobados, evidencia `closure` en [informe](H6_3_CI_1bcf69c.json). [Integración opcional](H5_5_TRANSFORMACION_MISION.md): snapshot del rectángulo realmente dibujado y publicado, inversa para ratón absoluto, offsets clásicos, invalidación y retorno. 544.000 coordenadas PC/Amiga contrastadas con métodos reales y dobles SDL; regresiones conservadas. Sonda de replay SDL y compilación aprobadas en Windows/Linux (fb4a997); Linux falla después en una puerta histórica de identidad completa de Mouse.cpp. Se corrige para admitir solo el nuevo adaptador literal y mantener el resto protegido; cierre global nuevo pendiente. No cambia el encuadre ni introduce HD/panorámico.
 
 ## Incremento 2.35 — CI C01 y transformaciones
 

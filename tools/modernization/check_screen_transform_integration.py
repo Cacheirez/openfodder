@@ -4,6 +4,7 @@ No real GPU/input claim. GPL-3.0-or-later.
 from pathlib import Path
 import os, subprocess, tempfile
 from check_final_timer_equivalence import function
+from screen_mouse_contract import without_screen_mouse
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -14,7 +15,7 @@ def build():
     old=subprocess.check_output(['git','show','4052235a0792861de13949aa8e4039ae23312668:Source/Mouse.cpp'],cwd=ROOT,text=True)
     signature='if (mStartParams->mMouseAlternative)'
     block=function(mouse,signature)
-    assert mouse.replace(block,function(old,signature))==old, 'Other mouse effects changed'
+    assert without_screen_mouse(mouse)==old, 'Other mouse effects changed'
     prefix=r'''
 #include <cassert>
 #include <cmath>

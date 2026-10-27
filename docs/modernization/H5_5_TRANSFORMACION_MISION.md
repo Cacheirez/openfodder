@@ -60,6 +60,12 @@ Añadido a CI: fixture bajo ASan/UBSan en Linux y replay con `--screen-probe --f
 
 Los replays usan entradas canónicas grabadas: no simulan clics físicos de usuario. La cobertura de clics reales sigue siendo la fixture con dobles y la prueba manual pendiente. No declarar verde el nuevo motor a partir del cierre de C01.
 
+## Primera CI del adaptador y corrección de la puerta HUD
+
+`fb4a997`: compilación y replay activo H5.5 aprobados en **Windows y Linux**. Linux conserva los 301 estados H3 de las primeras fases PC/Amiga. [Evidencia parcial](H5_5_CI_fb4a997.json). No es un cierre global: Linux falla después en una comprobación histórica que exigía identidad completa de `Mouse.cpp`; Windows seguía ejecutándose al registrar el informe.
+
+Corrección acotada: `screen_mouse_contract.py` permite retirar **solo el bloque literal aprobado** del nuevo adaptador para comparar el resto del fichero con el original. La puerta conserva la igualdad de todas las demás decisiones/operaciones del cursor y de `GUI_Element.cpp`; la fixture nueva usa la misma normalización y prueba el adaptador real. No se cambia el motor para resolver ese fallo. En la prueba HUD local se desactiva LSan por la limitación `/proc`/ptrace ya conocida; no se atribuye cobertura local de fugas.
+
 ## Siguiente paso
 
 Revisar la nueva CI y validar en Windows dibujo/ratón, pausa, cambios de foco y tamaño. Después sustituir la política de destino heredada por el ajuste multirresolución del contrato, con opciones y recuperación. Incorporar ratón relativo/warp y las escenas restantes antes de aceptar H5.5/H5.9. Densidad HD aún sin fijar.
