@@ -1,5 +1,7 @@
 # Validación interactiva Windows — pantalla y ratón H5.5
 
+**Guía vigente 28-10:** [paquete e18b05b verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551), CI Windows/Linux PASS. Ejecutar PROBAR_ESCENAS_H5.cmd para el [recorrido común](H5_9_INVENTARIO_ESCENAS.md) y PROBAR_OPCIONES_H5.cmd para persistencia/KEEP/REVERT. El piloto inicial, bordes, mapa, pausa y briefing/reclutamiento anteriores ya fueron aceptados. Las secciones siguientes conservan las pruebas históricas y sus incrementos; no usar sus ZIP antiguos para probar Heroes/F11 común. [Estado de aceptación](CONTINUIDAD.md).
+
 El piloto de correspondencia original fue aceptado por Miguel el 27-10-2026. El nuevo ajuste multirresolución requiere una comprobación específica cuando su CI termine; no se considera probado por esa aceptación anterior.
 
 Paquete histórico del piloto anterior (no contiene el nuevo ajuste): [Windows 40523807564 / OpenFodder-Windows-x64-demos](https://github.com/Cacheirez/openfodder/actions/runs/40523807564/artifacts/12743312861). Su `VERSION.txt` es `13461eb7e0f5491b1d107deee4489f2a1e78d6d4`, commit temporal de CI con el mismo árbol que c8c54ab; el PR sigue sin fusionar. Esta guía ya va incluida en ese ZIP.

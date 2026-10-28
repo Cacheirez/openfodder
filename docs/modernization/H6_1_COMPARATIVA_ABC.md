@@ -8,7 +8,7 @@
 | B01 — 2D ilustrado limpio | Superficies más uniformes y suelo menos texturado | Equilibrio entre renovación y claridad | Puede parecer demasiado suave o de juguete; revisar proporciones del casco |
 | C01 — Pintado moderado | Pinceladas en casco, suelo y vegetación; volumen más orgánico | Más calidez y carácter pictórico | El detalle puede perderse al reducir o competir con los actores |
 
-## Dictamen de revisión
+## Dictamen de revisión inicial (superado por la elección C)
 
 Recomendación del asistente: B01 como punto de partida, por el equilibrio observado entre claridad y renovación. A01 es la alternativa si Miguel prioriza continuidad retro. C01 es preferible si el acabado pictórico resulta prioritario, condicionado a conservar legibilidad. Son juicios visuales, no mediciones ni resultados de rendimiento.
 
@@ -18,7 +18,7 @@ Se han presentado las tres direcciones acordadas. H6.1 continúa parcial hasta c
 
 ## Condiciones del siguiente paso
 
-Tras elegir una dirección, preparar un único recurso con transparencia, anclaje y proporciones medidos contra el original. Probarlo sobre fondos claros/oscuros y en un encuadre real, con sombra separada cuando corresponda. Conservar fallback clásico y H3; la integración de arte distinto necesita un contrato explícito de diferencias visuales autorizadas.
+La dirección C ya fue elegida y la pose descrita en H6_3_POSE_C01.md ya está implementada. El criterio aplicado fue preparar un único recurso con transparencia, anclaje y proporciones medidos contra el original. Probarlo sobre fondos claros/oscuros y en un encuadre real, con sombra separada cuando corresponda. Conservar fallback clásico y H3; la integración de arte distinto necesita un contrato explícito de diferencias visuales autorizadas.
 
 ## Prompt A01
 
@@ -34,4 +34,4 @@ Use case: style-transfer. Create candidate C01 by changing ONLY the art renderin
 Rendering: modest hand-painted gouache-like 2D game artwork, gently varied surface tones, broad controlled brushstrokes, soft but readable volume, slightly organic edge transitions. This must be visibly more tactile and painted than clean illustrated B01, but remain low-noise and legible when small, no photorealism, no cinematic lighting, no 3D render. Keep compact helmet, body and rifle silhouette. Jungle uses broad painterly leaf and ground shapes rather than many tiny speckles; the floor remains quiet. Same muted olive/khaki/dark charcoal color hierarchy. No thick outline, no extra props, no background expansion, no UI. Keep page typography smooth and professional. Do not invent scale measurements or claim actual game size. This is a comparative visual concept, not production art.
 ```
 
-B01 y sus prompts: [primera muestra](H6_1_MUESTRA_B01.md). Las imágenes se conservan en la conversación como conceptos generados, sin añadirse al paquete ejecutable.
+B01 y sus prompts: [primera muestra](H6_1_MUESTRA_B01.md). Los cuatro PNG originales se conservan en la [galería del repositorio](../../assets/modernization/concepts/README.md), con SHA-256 y sin recodificar; no se añaden al paquete ejecutable.

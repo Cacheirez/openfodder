@@ -1,8 +1,15 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.52 · Revisión: 28 de octubre de 2026.**
+**Versión 2.53 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: verificar la política FIT común para todas las rutas de escenas en ventana/F11, incluido Heroes in Victory, con inversa GUI y retorno clásico. Briefing/reclutamiento maximizados aceptados por Miguel; opciones y ampliación común pendientes de prueba física. Comparación 8×/12× después.**
+**Tarea activa: relevo auditado y bocetos originales archivados; a continuación, aceptación física del paquete e18b05b (escenas comunes/Heroes/F11 y opciones). CI Windows/Linux cerrada. Comparación C 8×/12× después de esa aceptación.**
+
+Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.53 — auditoría documental y conservación de bocetos
+
+Corregidos índice de relevo, tabla del motor vigente y avances H5/H6 que seguían anclados a revisiones anteriores. [Auditoría e inventario documental](AUDITORIA_CONTINUIDAD_2026-10-28.md). Archivados en Git los cuatro PNG originales B inicial/B refinada/A/C, sin recodificar, con manifiesto SHA-256 y [galería](../../assets/modernization/concepts/README.md). Fuente transparente C01 contrastada con su manifiesto y original recuperado. No se genera arte nuevo ni se altera el motor. [Estado autónomo](CONTINUIDAD.md) recoge aceptaciones manuales, límites, flags, siguiente incremento y formato obligatorio de mensajes. Logs/trazas/binarios caducables y datos comerciales privados conservan sus exclusiones explícitas.
+
 
 ## Incremento 2.52 — CI y paquete de escenas verificados
 
@@ -126,7 +133,7 @@ Captura opcional del primer Player junto al productor real: identidad/escena/gen
 
 ## 1. Dictamen de la revisión
 
-El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto. El diseño conceptual H6.1 puede empezar ya; la integración necesita el contrato semántico mínimo, no cerrar todas las escenas.**
+El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto. Los conceptos H6.1 ya existen, C está elegida y su pose mínima está integrada experimentalmente. La siguiente decisión artística es densidad 8×/12× tras validar presentación/opciones.**
 
 Cambios respecto al plan anterior:
 
@@ -163,18 +170,18 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato | `46c180be3f456175834917646b04815a166c2d75`; Windows/Linux aprobados; este incremento posterior solo modifica documentación |
-| Último motor con aceptación global previa | `acfc099a43d02d55bf44426b6c05a2f0330cf889` (alcance descrito en H4.3) |
+| Motor candidato verificado | `e18b05bd46c35bf471863985e732b2b89f8513c7`; revisiones posteriores solo documentales y de archivo de conceptos |
+| Aceptación manual | Parcial por incrementos; [registro vigente](CONTINUIDAD.md). No hay aceptación manual global de e18b05b |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows 46c180be | [40377396759](https://github.com/Cacheirez/openfodder/actions/runs/40377396759), éxito |
-| CI Linux 46c180be | [40377396760](https://github.com/Cacheirez/openfodder/actions/runs/40377396760), éxito, incluidos los diagnósticos de memoria y concurrencia declarados |
+| CI Windows e18b05b | [40760804335](https://github.com/Cacheirez/openfodder/actions/runs/40760804335), éxito |
+| CI Linux e18b05b | [40760804513](https://github.com/Cacheirez/openfodder/actions/runs/40760804513), éxito, incluidos los diagnósticos declarados |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
-| Interpolación / arte | Pendientes |
+| Interpolación / arte | Interpolación pendiente; C elegida y pose C01 experimental; densidad HD pendiente |
 
 | Evidencia conservada | Qué acredita | Límite |
 |---|---|---|
 | H3 original | 11.361 estados: 7.956 PC y 3.405 Amiga, conservados en Windows/Linux | 11 fases, no toda CD32 ni todos los estados posibles |
-| Replays habituales | 29/29 fases, cero omisiones; 6 CTests y controles de CI aprobados | Completar no demuestra por sí solo igualdad visual o interacción real |
+| Replays habituales | 29/29 fases, cero omisiones; 7 CTests Windows y controles de CI aprobados | Completar no demuestra por sí solo igualdad visual o interacción real |
 | ASan/UBSan, LSan, TSan del motor | 29/29 fases habituales; publicación activa 11 fases ASan/UBSan/LSan y 2 fases TSan, sin hallazgos en bd2b3d2 | TSan activo limitado a 301 estados; no cubre todas las escenas ni el nuevo scheduler 0/1/5 |
 | Frame de misión y pausa | 240 escenarios 0/1/5, 672 capturas retenidas; pausa aislada: 144 escenarios | Pruebas focalizadas con dobles, no motor completo interactivo |
 | Destinos | 97 casos aceptados y 627 rechazos sin escritura | Identidad de almacenamiento y geometría; no garantiza frescura temporal del frame |
@@ -196,8 +203,8 @@ Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de m
 | H2 · Estabilización | Base aceptada; H2.1 histórico delimitado | Mantener regresiones y exclusiones |
 | H3 · Misma jugabilidad | H3.1–H3.6 completadas en demos | Barrera permanente para H4–H10 |
 | H4 · Presentación separada | Avanzado, parcial | Publicación opcional → motor 0/1/N y transiciones → estados aptos para interpolación |
-| H5 · Cámara y movimiento suaves | Pendiente; adelantar medición H5.1 | Piloto H4 validado con gráficos originales |
-| H6 · Arte y recursos | Pendiente | Conceptos independientes; integración depende del contrato de presentación |
+| H5 · Cámara y movimiento suaves | Parcial: medición inicial, transformaciones/FIT y opciones mínimas implementados | Aceptar ajuste común/opciones; interpolación pendiente |
+| H6 · Arte y recursos | C elegida, bocetos archivados y pose integrada experimentalmente | Comparación 8×/12× y compositor HD pendientes |
 | H7 · Primera misión moderna | Pendiente | H5 y muestra H6 aprobados, fase inventariada |
 | H8 · Cobertura de CF1/CD32 | Edición confirmada, producción pendiente | H7 y matriz de recursos/escenarios |
 | H9 · Pulido Windows | Pendiente | Regresión continua; cierre tras H8 |
@@ -282,11 +289,11 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
 - [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar. **Avance 2.35:** [contrato y modelo verificable](TRANSFORMACIONES_PANTALLA.md), con inversa, bandas, HUD, cámara y anclajes; **Avance 2.36:** [adaptador de misión](H5_5_TRANSFORMACION_MISION.md) opcional, dibujo y ratón absoluto compartidos; equivalencia local con offsets clásicos comprobada. **Avance 2.38:** CI Windows/Linux cerrada y aceptación manual general de Miguel recibida. Pendientes matriz detallada de resolución/DPI, ratón relativo, cámara interpolada y otros modos/escenas.
-- [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego.
+- [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego. **Avance 2.49–2.52:** CLASSIC/FIT y transacción SAVE/KEEP/REVERT implementados, CI cerrada; aceptación manual pendiente. Monitor/modos/FPS/interfaz independiente siguen pendientes.
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
 
-- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200/300 % y transformaciones de entrada verificadas.
+- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200/300 % y transformaciones de entrada verificadas. **Avance 2.51–2.52:** política FIT común para todas las rutas de escenas y F11; pruebas hasta UHD/300 % y CI aprobadas, prueba física común pendiente.
 - [ ] **H5.10 — Asistente / Miguel:** viewport e interfaz modernos nativos 4:3/16:9, sin estirar la imagen clásica. Separar visibilidad de dibujo y lógica antes de mostrar más mapa; conservar encuadre clásico y revisar explícitamente la información táctica del panorámico.
 
 **Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
@@ -295,13 +302,13 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 ## H6. Dirección artística y cadena de recursos
 
-- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [tres direcciones A01/B01/C01 presentadas](H6_1_COMPARATIVA_ABC.md), con pose/escenario similares. Falta comprobar a escala real la dirección elegida. Ninguna está integrada ni aprobada.
+- [ ] **H6.1 — Asistente:** presentar unas pocas muestras comparables del mismo soldado y fragmento de escenario, claramente identificadas como conceptos. **Parcial:** [tres direcciones A01/B01/C01 presentadas](H6_1_COMPARATIVA_ABC.md), con pose/escenario similares. Falta comprobar a escala real la dirección elegida. Las láminas no son recursos integrados; C sí está aprobada como dirección y tiene una pose experimental aparte.
 - [x] **H6.2 — Miguel:** dirección elegida: **C — Pintado moderado**, por su toque Nintendo. A descartado; B no elegido. La aprobación del estilo no equivale a aceptar el recurso integrado.
 - [ ] **H6.3 — Asistente:** definir resolución de recursos, paleta, proporciones, contornos, sombras y nivel de detalle. Evaluar 2×/4× y densidades mayores cuando lo requiera UHD, sin multiplicar el tamaño lógico. Conservar maestros HD y derivar variantes automáticamente; fijar densidad tras probar 720p/1080p/1440p/4K con terreno y sprites juntos.
 - [ ] **H6.4 — Asistente:** definir el manifiesto de atlas: ID, región, escala, anclaje de pies, dirección y fotograma. Atlas significa una imagen que agrupa varios sprites. Añadir densidad, variantes, márgenes para filtrado y límites de textura; no crear un atlas manual por resolución de monitor.
-- [ ] **H6.5 — Asistente:** preparar carga, validación y sustitución individual de recursos, con retorno automático al original cuando falte uno nuevo.
+- [ ] **H6.5 — Asistente:** preparar carga, validación y sustitución individual de recursos, con retorno automático al original cuando falte uno nuevo. **Parcial:** pose C01 incorporada en compilación, sustitución acotada y fallback comprobados; cargador/atlas HD generales pendientes.
 - [ ] **H6.6 — Asistente:** validar transparencias, márgenes, unión de tiles, pivotes, ciclos de animación y consistencia entre direcciones.
-- [ ] **H6.7 — Asistente:** registrar procedencia y condiciones de uso de cada recurso; separar recursos propios de los originales.
+- [ ] **H6.7 — Asistente:** registrar procedencia y condiciones de uso de cada recurso; separar recursos propios de los originales. **Hecho para el piloto:** manifiestos, prompts, hashes y PNG originales C01 y A/B/C en assets/modernization; mantenerlo para futuros recursos.
 
 **Aceptación:** muestra aprobada y recursos reproducibles que el motor pueda cargar correctamente. No producir cientos de imágenes antes de comprobar cómo funcionan juntas dentro del juego.
 
@@ -339,7 +346,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 - [ ] **H9.1 — Asistente:** ejecutar las referencias lógicas disponibles con ambas rutas de presentación y los límites de FPS soportados.
 - [ ] **H9.2 — Asistente:** revisar errores de memoria, cargas y liberación de texturas, cambios de fase y sesiones largas en los entornos disponibles.
-- [ ] **H9.3 — Asistente / Miguel:** verificar toda la matriz de resoluciones mediante render automatizado y registrar aparte pruebas Windows/GPU reales; ventana/pantalla completa, redimensionado, monitor, pausa, Alt+Tab, ratón, minimapa, guardado/carga y DPI 100/125/150/175/200 %. Probar retorno de configuración inválida.
+- [ ] **H9.3 — Asistente / Miguel:** verificar toda la matriz de resoluciones mediante render automatizado y registrar aparte pruebas Windows/GPU reales; ventana/pantalla completa, redimensionado, monitor, pausa, Alt+Tab, ratón, minimapa, guardado/carga y DPI 100/125/150/175/200/300 %. Probar retorno de configuración inválida.
 - [ ] **H9.4 — Asistente / Miguel:** medir rendimiento y memoria en el PC de Miguel a 720p/1080p/1440p/UHD y 4:3 representativos. Objetivo inicial 60 Hz hasta UHD sujeto a medición p95/p99; 120/144 Hz donde sea viable. Registrar GPU/DPI/calidad y corregir cuellos de botella demostrados.
 - [ ] **H9.5 — Asistente:** verificar persistencia de opciones, mensajes comprensibles y recuperación ante recurso faltante o inválido.
 - [ ] **H9.6 — Asistente / Miguel:** realizar una sesión de juego suficientemente larga para cubrir varias fases y transiciones; anotar duración y cobertura real.
@@ -359,7 +366,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 
 ## 6. Publicación opcional: implementación y puertas pendientes
 
-**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows y Linux están aprobados; TSan activo cubre dos fases explícitas. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). La validación acfc099a ya está cerrada en su alcance. La programación 0/1/5 de misión está validada en bd2b3d2; la ampliación conjunta misión↔pausa tiene PASS local y CI propia pendiente; consultar [H4.6](H4_6_PLANIFICACION_MISION.md). Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
+**La publicación opcional ya está implementada.** `1e1f93d3` pasó 11 fases con H3 original tanto en ejecución normal como con ASan/UBSan/LSan, pero TSan activo agotó el tiempo. `acfc099a` refuerza el control de avisos y acota TSan a dos fases explícitas. Windows y Linux están aprobados; TSan activo cubre dos fases explícitas. [Resultados y diagnóstico](H4_3_PUBLICACION_ORDENES.md). La validación acfc099a ya está cerrada en su alcance. La programación 0/1/5 de misión está validada en bd2b3d2; la ampliación conjunta misión↔pausa y la sonda acotada tienen CI aprobada en su alcance; consultar [H4.6](H4_6_PLANIFICACION_MISION.md). Las condiciones siguientes siguen siendo las puertas de aceptación de H4, no una lista de trabajo ya completado.
 
 ### 6.1 Implementación mínima y contraste
 
@@ -403,9 +410,9 @@ C1–C3 son obligaciones continuas con entregas verificables; no sustituyen ni r
 | D2 | Edición y fase piloto | CD32 confirmada como campaña principal; concretar fase demo pequeña antes de H7.1 |
 | D3 | Campo de visión | Conservar área lógica original; cualquier ampliación será una decisión posterior explícita |
 | D4 | Refresco y equipo | 60 Hz primero; recoger monitor/configuración para H5.7, 120/144 Hz después si procede |
-| D5 | Pantallas auxiliares | Inventariar en H8.2 y acordar su cobertura; una excepción clásica debe quedar explícita |
+| D5 | Pantallas auxiliares | Inventario H5.9 y FIT común implementados; aceptación física común y arte moderno aún pendientes |
 
-No hay una decisión artística que bloquee el siguiente incremento H4.
+La elección C está cerrada; la densidad 8×/12× se decidirá después de aceptar presentación/opciones.
 
 | ID | Riesgo actual | Tratamiento |
 |---|---|---|
@@ -424,6 +431,6 @@ No hay una decisión artística que bloquee el siguiente incremento H4.
 
 Al retomar: leer este plan y el [relevo técnico](README.md), comprobar HEAD/PR y las pruebas de la revisión vigente; trabajar en un incremento pequeño; registrar código, pruebas, límites y siguiente paso. Los commits documentales no cambian el motor validado. No repetir pruebas costosas por cambios solo documentales, ni reutilizar un verde antiguo para aceptar código nuevo.
 
-El [plan v2.19 íntegro](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) conserva la bitácora anterior. Sus «siguientes pasos» son históricos; el siguiente vigente es la sección 6 de este documento. El [diseño inicial](PLAN_MODERNIZACION_ES.md) conserva razones y propuestas, subordinadas al estado verificado aquí.
+El [plan v2.19 íntegro](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) conserva la bitácora anterior. Sus «siguientes pasos» son históricos; el siguiente vigente está en la tarea activa y en CONTINUIDAD.md; la sección 6 conserva las puertas globales de H4. El [diseño inicial](PLAN_MODERNIZACION_ES.md) conserva razones y propuestas, subordinadas al estado verificado aquí.
 
 El proyecto terminará cuando el alcance acordado de Cannon Fodder 1 tenga presentación renovada coherente, cámara y movimiento suaves, jugabilidad conservada según la cobertura documentada, paquete Windows reproducible y validación real de Miguel. Una base estable, un compositor equivalente o una sola misión moderna son hitos intermedios. El PR permanecerá sin fusionar conforme a la instrucción vigente.

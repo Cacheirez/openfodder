@@ -37,4 +37,4 @@ python3 tools/modernization/check_mission_publication_replays.py \
   --exe build/openfodder --data Run --out reports/h6-art-full --art-probe
 ```
 
-Siguiente: validar la [integración opcional de pantalla/ratón](H5_5_TRANSFORMACION_MISION.md), ya implementada y comprobada localmente. Revisar después una captura del motor a tamaño real y densidades HD con el compositor adecuado; no ampliar todavía las animaciones.
+Siguiente: la presentación común e18b05b ya tiene CI Windows/Linux aprobada; falta aceptación física de escenas/opciones. Después comparar 8×/12× y revisar a tamaño real con un compositor HD adecuado; no ampliar todavía animaciones. Véase [estado operativo](CONTINUIDAD.md).

@@ -1,6 +1,6 @@
 # Presentación PC multirresolución — 4:3 y 16:9 hasta 4K
 
-27-10-2026. Requisito solicitado por Miguel. Documento de alcance y aceptación: **pendiente de implementación y validación**. No modifica el motor ni acredita soporte actual. Se conservan modo clásico, base aceptada, mejoras anteriores, referencias H3 y PR sin fusionar.
+27-10-2026. Requisito solicitado por Miguel. Documento de alcance y aceptación. **Actualización 28-10: implementación parcial** de FIT común en ventana/F11 y opciones mínimas, CI aprobada; aceptación física común y resto de la matriz pendientes. Véanse [inventario vigente](H5_9_INVENTARIO_ESCENAS.md) y [continuidad](CONTINUIDAD.md). No acredita soporte universal ni compositor HD. Se conservan modo clásico, base aceptada, mejoras anteriores, referencias H3 y PR sin fusionar.
 
 ## Objetivo y límites
 

@@ -6,7 +6,7 @@
 
 Una lámina con el soldado ampliado, el mismo motivo en un fragmento de jungla y una reducción orientativa. Se ha generado con la herramienta integrada imagegen, sin usar recursos comerciales como entrada. La primera versión resultó demasiado texturada; la segunda simplifica el suelo y las masas de vegetación para reducir el ruido visual. La segunda versión es la muestra B01 de revisión.
 
-La imagen se conserva como imagen generada en la conversación; este documento conserva el brief, los prompts y el dictamen. No se añade al paquete ejecutable ni se referencia como recurso del juego.
+Las dos versiones originales se conservan en la [galería Git](../../assets/modernization/concepts/README.md), con hashes en su manifiesto; este documento conserva el brief, los prompts y el dictamen. No se añade al paquete ejecutable ni se referencia como recurso del juego.
 
 ## Lectura de la muestra
 
@@ -19,7 +19,7 @@ La imagen se conserva como imagen generada en la conversación; este documento c
 
 ## Estado del plan
 
-H6.1 está parcialmente realizado: primera dirección B presentada. Actualización 27-10: [A01 y C01 ya presentadas](H6_1_COMPARATIVA_ABC.md), con pose y encuadre aproximados a B01. Falta una prueba controlada a escala del juego. H6.2 sigue pendiente: Miguel elige tras revisar las muestras. No se ha tomado una elección de estilo en su nombre.
+H6.1 está parcialmente realizado: primera dirección B presentada. Actualización 27-10: [A01 y C01 ya presentadas](H6_1_COMPARATIVA_ABC.md), con pose y encuadre aproximados a B01. Falta una prueba controlada a escala del juego. H6.2 está cerrado: Miguel eligió C — Pintado moderado. B no fue elegida.
 
 El piloto de sustitución actual utiliza exclusivamente gráficos originales y exige igualdad visual. Integrar arte nuevo requerirá un contrato distinto para las diferencias visuales autorizadas, conservando H3, posición/anclaje y fallback clásico. No se debe desactivar el contraste global para insertar esta lámina.
 
@@ -46,4 +46,4 @@ Refine this exact game concept sheet. Keep all Spanish text, layout, character i
 
 ## Siguiente paso
 
-Revisar la dirección B con Miguel y completar la comparativa acordada. Después, preparar un único recurso con transparencia y anclaje medidos contra el original, sin ampliar todavía el catálogo de animación o vehículos.
+La comparativa y elección ya están completas. La pose C01 transparente ya existe. Continuar según CONTINUIDAD.md: validar presentación/opciones y después comparar densidad 8×/12× de C, sin ampliar todavía animaciones o vehículos.

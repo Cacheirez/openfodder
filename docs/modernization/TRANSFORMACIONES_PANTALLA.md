@@ -2,7 +2,9 @@
 
 27-10-2026 · Contrato inicial 2.35; avance 2.36 · H5.5/H5.9 parciales. Especificación y modelo matemático verificable; [primera conexión opcional a misión](H5_5_TRANSFORMACION_MISION.md) implementada para el rectángulo clásico y ratón absoluto. El resto del contrato sigue pendiente. No cierra soporte 4K, interpolación ni panorámico. Continúan el clásico, C01 y todas las mejoras anteriores.
 
-## Qué hay actualmente
+**Actualización 28-10:** e18b05b conecta dibujo e inversa en todas las rutas FIT de ventana/F11; [inventario y límites](H5_9_INVENTARIO_ESCENAS.md). CI Windows/Linux aprobada; prueba física común pendiente. La descripción clásica siguiente explica el problema de partida, no el estado actual del adaptador.
+
+## Punto de partida clásico (histórico, anterior a FIT común)
 
 - `Source/Window.cpp`, `RenderAt`: recorta la fuente desde (16,16), con tamaño `mScreenSize`. En ventana usa resolución original × multiplicador. En pantalla completa sin escala entera calcula ancho a partir de alto × 4/3 y centra usando el modo del monitor. No hay una transformación compartida con entrada.
 - `RenderShrunk` usa toda la fuente desde (0,0); no se le puede aplicar automáticamente el recorte de misión.

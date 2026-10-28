@@ -1,55 +1,27 @@
 # Relevo técnico — empezar aquí
 
-Última revisión: 27-10-2026. Este índice organiza el conocimiento para continuar **sin depender del chat**. La fuente operativa es [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.37; el [plan anterior completo](PLAN_TRABAJO_HISTORICO_HASTA_2_19.md) queda como histórico. La publicación opcional desde órdenes está implementada; `acfc099a` está aprobado en Windows/Linux con TSan activo acotado. La [programación 0/1/5 de misión](H4_6_PLANIFICACION_MISION.md) está validada en bd2b3d2. La fixture conjunta de misión/pausa y sustitución de recursos pasa localmente. La siguiente [sonda SDL del motor completo](H4_6_PAUSA_MOTOR.md) está implementada: matriz 0/1/5 local PASS acotada; CI Windows/Linux aprobada; anomalía local inicial pendiente; los informes fechados son evidencia histórica y no sustituyen su estado actual.
+**Estado vigente: 28-10-2026 · plan 2.53.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
-Incremento vigente: [pantalla/ratón integrados en misión](H5_5_TRANSFORMACION_MISION.md), opcional y con retorno clásico. Contraste local de 544.000 coordenadas PC/Amiga; Código c8c54ab aprobado completamente en Windows/Linux; [evidencia del cierre y paquete verificado](H5_5_CIERRE_CI_c8c54ab.json). La prueba física del ratón sigue pendiente. [Guía interactiva](VALIDAR_RATON_WINDOWS_H5.md) preparada. Densidad HD sin fijar.
+## Leer en este orden
 
-Nuevo requisito de presentación: [resoluciones PC 4:3/16:9 hasta 4K UHD](RESOLUCIONES_PC_HASTA_4K.md). Matriz y aceptación definidas; implementación pendiente. Este alcance precede a la fijación de densidad de recursos.
+1. [Estado de continuidad y siguiente incremento](CONTINUIDAD.md).
+2. [Plan vivo completo](PLAN_TRABAJO.md), especialmente tarea activa y H4–H10. Sus incrementos fechados son bitácora, no estados pendientes acumulativos.
+3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](H5_9_VALIDACION_e18b05b.json).
+4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
+5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
-Incremento anterior: [sustitución individual de pose](H4_4_POSE_INDIVIDUAL.md), con retorno al clásico, gráficos originales y contraste obligatorio. Pruebas locales y CI Windows/Linux de 46c180be aprobadas, incluidos los sanitizadores declarados. [Evidencia del cierre automático del piloto](H4_4_VALIDACION_46c180be.json); H4 global sigue abierto. Captura anterior: [soldado semántico](H4_2_SOLDADO_SEMANTICO.md), Windows d28d99f9 aprobado, Linux pendiente.
+## Referencias vigentes
 
-Comparativa visual: [H6.1 A01/B01/C01](H6_1_COMPARATIVA_ABC.md), tres conceptos presentados, no integrados. Miguel ha elegido C — Pintado moderado; H6.2 cerrado. [Primera pose RGBA con anclaje original](H6_3_POSE_C01.md) implementada: Windows y Linux completos aprobados. [Evidencia fechada](H6_3_CI_1bcf69c.json). Valoración visual en juego pendiente.
+- Repositorio: https://github.com/Cacheirez/openfodder; rama `modernization/windows-foundation`; [PR #1](https://github.com/Cacheirez/openfodder/pull/1) abierto, borrador y **sin fusionar**.
+- Último motor verificado: `e18b05bd46c35bf471863985e732b2b89f8513c7`. Las revisiones siguientes de documentación no cambian ese motor. No confundir HEAD, motor y merge temporal de pruebas.
+- Windows [40760804335](https://github.com/Cacheirez/openfodder/actions/runs/40760804335) y Linux [40760804513](https://github.com/Cacheirez/openfodder/actions/runs/40760804513): PASS completo. [Paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551).
+- FIT común en ventana/maximizada/F11, con ratón alternativo desbloqueado. Geometría lógica y campo visible conservados. CLASSIC sigue disponible y es el valor por defecto.
+- Pendiente: aceptación física de este ajuste común, Heroes in Victory y opciones. Después comparar C a 8×/12×. No volver a elegir A/B/C: Miguel eligió C.
+- Base clásica: `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; no mover ni reescribir. Inspección aislada: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 
-Incremento de catálogo anterior: [capacidades de helicópteros y vehículos](CD32_CAPACIDADES_VEHICULOS.md), revisión estática parcial y escenarios verificables. Captura mínima del soldado ya implementada; después del piloto visual, helicóptero compuesto. No esperar al catálogo exhaustivo.
+## Cómo interpretar los informes
 
-Contexto de catálogo: [censo CD32 y contrato de tipos/capacidades](CD32_CENSO_SPRITES.md); continuar después con  [medición inicial H5.1](H5_1_MEDICION_INICIAL.md) y [piloto visual H6](H6_PILOTO_VISUAL.md). Diseñar conceptos no exige cerrar todas las escenas; integrar sprites nuevos exige antes su contrato semántico.
-
-## Estado y referencias de recuperación
-
-- Repositorio: https://github.com/Cacheirez/openfodder. Rama `modernization/windows-foundation`, PR #1 en borrador y **sin fusionar**.
-- Último código con validación automática completa registrada en ambos sistemas: `c8c54ab99bd4438e324108d07c08a516ba993ad4` (mismo motor que fb4a997, con guards corregidos y paquete de prueba). Las revisiones posteriores que solo documenten este cierre no cambian ese motor. Aceptación manual de H5.5 pendiente; no ampliarla por inferencia.
-- Base clásica recuperable: rama `baseline/classic-h2.6-2026-10-22`, commit `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. No moverla ni reescribir su historia. Para inspeccionarla sin alterar la rama activa: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
-- H2.6 aceptada por pruebas automáticas y validación manual de Miguel con CD32. H4.1 está en curso: efectos separados, geometría/recorte por valor, raster PC/Amiga8, recursos propios de sprites, terreno visible, HUD lateral compuesto, cursor, conversión con paleta efectiva y copias/mezclas con destinos indexados/RGB propios y productores GUI/minimapa/escenas retenidos. La pausa y el frame de misión ya compuesto tienen estado propio y pruebas focalizadas 0/1/5. Faltan capas movibles independientemente, transiciones interactivas del motor completo, interpolación y arte HD. La ruta de misión ya tiene 0/1/5 con H3 original.
-- Frame anterior: [frame de misión compuesto y transición a pausa](H4_1_FRAME_MISION.md). 240 escenarios 0/1/5 y 672 capturas retenidas con dobles; efecto de backing persistente de pausa separado. No equivale todavía a capas independientes ni pruebas 0/1/N del motor completo. Consultar resultados del informe antes de aceptar la revisión.
-
-- Incremento validado anterior: [identidad y geometría de destinos](H4_1_DESTINOS_PRESENTACION.md), 97 casos válidos y 627 rechazos sin escritura. CI Windows/Linux, H3 original y 29/29 replays aprobados. Incluye inspección de los destinos reales para preparar capas independientes sin mezclar mSurfaceFinal con mSurface.
-
-- Compositor previo: [compositor de capas de misión](H4_1_CAPAS_MISION.md), 192 escenarios/384 salidas retenidas PASS local. En esa revisión aún no estaba conectado a productores reales; la continuación siguiente aporta esa conexión diagnóstica. CI Windows/Linux aprobada en `ba2ef207`; [evidencia](evidence/ba2ef207-reports.json).
-
-- Incremento anterior: [registro de productores reales y contraste](H4_1_REGISTRO_PRODUCTORES.md), modo diagnóstico optativo. Publicación clásica conservada; 24 escenarios de integración 0/1/5 PASS local. CI Windows/Linux aprobada; replay con registro y vídeo software: 8 fases PC y 3 Amiga, cero omisiones.
-
-- Incremento validado: [publicación opcional desde órdenes](H4_3_PUBLICACION_ORDENES.md). La opción activa obligatoriamente el contraste. `1e1f93d3` pasó publicación normal/ASan con H3, pero TSan activo agotó 1.200 s. `acfc099a` acota esa prueba explícitamente y endurece el control: Windows/Linux aprobados en su alcance; el scheduler H4.6 está validado en bd2b3d2; la nueva prueba conjunta misión/pausa tiene CI pendiente.
-
-## Orden de lectura y mapa de conocimiento
-
-| Necesidad | Documento o fuente |
-|---|---|
-| Objetivo, alcance y tarea activa | [Plan vivo](PLAN_TRABAJO.md) |
-| Diseño inicial y razones de arquitectura | [Plan de modernización](PLAN_MODERNIZACION_ES.md); sus pasos de arranque son históricos |
-| Diferencias verificadas PC/Amiga y lagunas | [Matriz de contratos](DIFERENCIAS_PC_AMIGA.md) |
-| Base aceptada y prueba CD32 | [Aceptación H2.6](H2_6_ACEPTACION_BASE_CLASICA.md) |
-| Errores de memoria, enteros, RNC, audio/hilos | Informes H2_* de esta carpeta, especialmente [UBSan](H2_3_UBSAN_CLEAN_2026-10-21.md) y [LSan/TSan](H2_LEAK_THREAD_DIAGNOSTICOS.md) |
-| Simulación y visibilidad lógica | [H3](H3_VALIDACION_2026-10-21.md), [contrato mWasDrawn](H3_6_CONTRATO_VISIBILIDAD.md), Source/GameplayTrace.cpp |
-| Efectos de dibujo y extracción de núcleos | [Efectos H4.1](H4_1_EFECTOS_DIBUJO.md) |
-| Rutas aún acopladas y mutaciones de recursos | [Inventario H4.1](H4_1_RUTAS_Y_RECURSOS.md), con sus seguimientos finales |
-| Recursos de sprites y fallo/corrección de rendimiento | [Recursos estables](H4_1_RECURSOS_ESTABLES.md) |
-| Tiles/atlas, fórmulas y efectos de fondo | [Terreno estable](H4_1_TERRENO_ESTABLE.md) |
-| HUD lateral/cursor, decisiones y momentos originales | [HUD y cursor estables](H4_1_HUD_CURSOR_ESTABLES.md) |
-| Paleta efectiva, destinos RGB y efectos de superficie | [Paleta y destinos](H4_1_PALETA_DESTINOS.md) |
-| Copia/mezcla de capas y destinos indexados | [Capas y destinos](H4_1_CAPAS_DESTINOS_INDEXADOS.md) |
-| Productores GUI, minimapa, escenas y corrección de seam PC | [Productores retenidos](H4_1_PRODUCTORES_GUI_ESCENAS.md) |
-| Estado de pausa, planificación 0/1/5 y límites | [Informe de pausa](H4_1_ESTADO_PAUSA.md) |
-| Evidencia compacta de la última revisión | [Informes conservados](evidence/b34373b0-reports.json) |
+Los informes H2/H3/H4 y los incrementos fechados describen la implementación y evidencia de su revisión. Un «pendiente» histórico puede estar resuelto en CONTINUIDAD/plan/evidencia posterior. No borrar fallos históricos ni reabrirlos sin evidencia nueva. Las casillas abiertas pueden ser hitos parcialmente implementados: leer su avance. No declarar H4/H5/H6 completos por un piloto.
 
 ## Invariantes que condicionan cualquier implementación
 
@@ -73,7 +45,7 @@ git clone https://github.com/OpenFodder/tests.git Run/Tests
 git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
 ```
 
-Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `b34373b0` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
+Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `e18b05bd46c35bf471863985e732b2b89f8513c7` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
 
 Pins: Run `070a6086c62164e859fc3274b75b5f536fa9d902`, Scripts `dad04730860bcdd1189aa8562860e379b0f5d783`, tests SHA anterior; SDL release-3.4.0, SDL_mixer `3045b35335113e5e5ba258858cb403d8803bfbeb`. Linux registra SHA efectivos en los artefactos. Las imágenes de Actions/paquetes del sistema no están congeladas: no se promete binario reproducible bit a bit. H2.5 describe un mixer Linux flotante **histórico**, corregido en H2.6.
 
@@ -106,28 +78,12 @@ Esperado: 29/29 fases públicas, cero omisiones, retorno 0; H3 7.956 estados PC 
 
 En Linux ejecutar también los diez scripts `check_final_timer_equivalence.py`, `check_sprite_draw_equivalence.py`, `check_sprite_raster_equivalence.py`, `check_sprite_resource_equivalence.py`, `check_terrain_equivalence.py`, `check_hud_cursor_equivalence.py`, `check_surface_draw_equivalence.py`, `check_surface_layers_equivalence.py`, `check_indexed_producer_equivalence.py` y `check_pause_presentation.py` de tools/modernization. Esperado respectivamente: 184.320, 306.432, 29.160, 10.944, 7.680, (2.304 cursor + 288 HUD), 27.648 de superficie, 2.944 de capas, (1.536 raster + 1.964 escenas + 1.024 tiles + 72 constructores) y 144 planificaciones de pausa. Usan GCC y fuentes originales de Git. El workflow añade pruebas Python/contratos y compilaciones del motor ASan/UBSan, LSan y TSan; reproducir sus flags y variables, no solo un build Release. No ignorar un timeout o un fallo de infraestructura como si fuese PASS.
 
-## Custodia y continuidad de la evidencia
+## Custodia y límites del relevo
 
-Los artefactos de evidencia de la última CI caducan el **23-11-2026**. Sus enlaces y SHA-256 constan en el informe de pausa; los JSON de resultados y SHA de dependencias se conservan ahora en `evidence/a133afb-reports.json`. Este archivo no contiene trazas completas, logs completos ni ejecutables y no permite reconstruir los ZIP a partir de sus hashes.
+Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo y comparación visual 8×/12× todavía no existen.
 
-Antes del relevo, el custodio debe archivar los ZIP de Linux/Windows de las ejecuciones 40082228491/40082228351, el paquete Windows y el código/historia/submódulos en almacenamiento duradero de la organización. Si ya caducaron, repetir pruebas sobre el commit exacto y registrar una nueva procedencia; no atribuir el resultado nuevo al artefacto desaparecido. Los enlaces Actions por sí solos no son archivo permanente.
+Los JSON de validación y resúmenes están en Git; **los logs/trazas completos y los binarios de Actions no están archivados todos de forma permanente en GitHub**. El paquete y evidencia Windows de e18b05b caducan el 27-11-2026. Si desaparecen, reconstruir/probar el commit exacto con los workflows y registrar nuevos hashes; un hash no reconstruye el ZIP ni garantiza binarios idénticos. No hace falta disponer de los ZIP antiguos para editar y reconstruir el proyecto. C1 conserva la deuda de archivo completo.
 
-Datos CD32: obtener de Miguel la copia privada autorizada y su manifiesto SHA-256. Los originales y manifiestos privados no están en GitHub; no depender de rutas temporales del asistente ni publicar esos archivos. Verificación privada previa: 276 archivos, 72 MAP, 72 SPT; RNC probado aisladamente, no 72 fases automatizadas. La versión exacta del binario probado manualmente no se registró mediante VERSION.txt: es una limitación conocida. Si no se conserva la copia privada, la parte CD32 del relevo está pendiente; las demos públicas siguen siendo reproducibles.
+CD32: los datos originales privados no están en GitHub y no deben publicarse. Las demos públicas y sus grabaciones fijadas permiten continuar las pruebas automatizadas. La inspección previa de 72 fases CD32 no equivale a 72 replays aprobados. Pedir los datos privados únicamente si una tarea concreta los requiere; no bloquear el desarrollo público por su ausencia.
 
-## Criterio de cierre de futuros bloques
-
-Cada entrega debe actualizar el plan vivo, la matriz de diferencias y el informe del bloque con: commit base/final, funciones y efectos, decisión y alternativas descartadas relevantes, excepciones PC/Amiga/versión, fuentes y propietarios, límites/precondiciones, pruebas reproducibles y resultados reales, fallos encontrados y resueltos, cobertura pendiente y siguiente paso. Guardar resultados compactos en Git y evidencias voluminosas fuera del repositorio. Separar siempre «inspeccionado», «probado automáticamente», «validado manualmente» y «pendiente».
-
-Esta guía se apoya en la evidencia del motor `049439d`; las rutas aún no auditadas se documentarán al analizarlas.
-
-La suite `python tools/modernization/check_pause_presentation.py` compara 144 planificaciones 0/1/5 con recursos destruidos/sustituidos. Usa dobles de SDL/entrada y no demuestra por sí sola la transición completa de misión a pausa ni validación visual comercial.
-
-La nueva suite `check_mission_presentation.py` compara coordinadoras reales con productores/SDL sintéticos; la suite de pausa refuerza la comparación de capturas retenidas contra la secuencia original. El siguiente bloque conserva la separación por capas, otras escenas, publicación diferida y validación visual como pendientes.
-
-Último incremento verificado: Windows 40095813348 y Linux 40095813181 aprobados; H3 original y 29/29 replays, con ASan/UBSan, LSan y TSan Linux. [Informe y evidencias](H4_1_FRAME_MISION.md). Los ZIP nuevos caducan también el 23-11-2026; su archivo duradero externo sigue pendiente.
-
-## Seguimiento — destinos de presentación
-
-[Identidad y geometría del destino](H4_1_DESTINOS_PRESENTACION.md): publicación rechaza superficies sustituidas, identidades distintas, tamaños/strides/extensiones incompatibles y formatos fuera del contrato de palabras RGB. Capturas antiguas siguen rasterizándose; un destino nuevo de igual tamaño no hereda su identidad. Se conserva cadencia y producción clásica. Consultar el informe para pruebas y estado de CI; separación de capas y publicación asíncrona siguen pendientes.
-
-Validación actual: `acfc099a` aprobado; el informe H4.3 conserva el fallo histórico y su resolución. La programación H4.6 no programa aún el bucle interactivo de pausa ni todas las escenas.
+En cada incremento actualizar CONTINUIDAD, plan y evidencia afectada. Registrar motor probado, CI, paquete/hash, aceptación manual exacta, límites y siguiente paso. Conservar los originales artísticos nuevos en Git con manifiesto y galería. Los mensajes al usuario terminan siempre con **Hecho**, **Situación del plan** y **Próximos pasos**.

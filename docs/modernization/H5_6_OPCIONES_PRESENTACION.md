@@ -1,6 +1,6 @@
 # H5.6 — opciones de presentación y confirmación
 
-Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la pausa perfectamente». Windows y Linux de ese paquete PASS. La CI de este incremento es nueva y sigue pendiente al publicar.
+Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la pausa perfectamente». Windows y Linux de ese paquete PASS. La CI propia de e18b05b está cerrada en Windows/Linux; [evidencia y paquete verificado](H5_9_VALIDACION_e18b05b.json). Aceptación manual de opciones pendiente.
 
 ## Comportamiento implementado
 
@@ -14,7 +14,7 @@ INI: `presentation=classic|fit` en `[openfodder]`, ausente/desconocido → clás
 
 La densidad de píxel de la ventana se solicita en su creación cuando FIT está activo. Tras guardar FIT por primera vez, reiniciar permite crear la ventana con esa propiedad; cambiarla en vivo no recrea el renderer ni las texturas.
 
-## Briefing y reclutamiento
+## Briefing y reclutamiento — alcance inicial 2.49, ampliado en 2.51
 
 Las capturas de Miguel muestran briefing textual y colina de reclutamiento. Se reconocen mediante sus flags existentes y las superficies exactas (mSurface / mSurfaceRecruit). Se reutilizan el recorte original y el rectángulo de dibujo físico. Se publica la inversa solo después de presentar, con identidad de escena para rechazar coordenadas de otra pantalla. Se mantiene la entrega del cursor del sistema en bandas y se suprimen clics sostenidos desde ellas. Las pantallas de cargar/guardar con otra superficie, imágenes externas, vídeo y demás escenas no se incluyen automáticamente.
 
@@ -26,7 +26,7 @@ Las capturas de Miguel muestran briefing textual y colina de reclutamiento. Se r
 - Métodos reales de render/present/mouse: 544.000 coordenadas clásicas, 228 ajustes de misión, 216 mapas, 72 transiciones de pausa y 144 ajustes briefing/reclutamiento. Prueba también preferencia INI sin flags, puntos de botones y cambio de escena.
 - Regresiones locales: 144 programaciones de pausa, 2.944 casos de capas; 1.536 raster, 1.964 escenas, 1.024 tiles y 72 minimapas.
 
-Son dobles SDL y pruebas de código, no prueba física de GPU/ratón. Las demos que saltan briefing/reclutamiento no prueban automáticamente esas pantallas en ejecución real. Sigue pendiente verificar el paquete nuevo y probar en Windows UHD/300 % las pantallas reportadas y el menú.
+Son dobles SDL y pruebas de código, no prueba física de GPU/ratón. Las demos que saltan briefing/reclutamiento no prueban automáticamente esas pantallas en ejecución real. Paquete e18b05b verificado. Briefing/reclutamiento anteriores aceptados; falta probar el ajuste común y el menú en Windows UHD/300 %.
 
 ## Siguiente
 

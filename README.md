@@ -1,3 +1,5 @@
+> Desarrollo de modernización en la rama `modernization/windows-foundation`: [relevo y estado vigente](docs/modernization/README.md), [bocetos originales](assets/modernization/concepts/README.md) y [prompt para otro hilo](docs/modernization/PROMPT_NUEVO_HILO.md). PR #1 en borrador, sin fusionar.
+
 # Open Fodder
 [![windows-build](https://github.com/OpenFodder/openfodder/actions/workflows/windows-build.yml/badge.svg)](https://github.com/OpenFodder/openfodder/actions/workflows/windows-build.yml)
 [![linux-build](https://github.com/OpenFodder/openfodder/actions/workflows/linux-build.yml/badge.svg)](https://github.com/OpenFodder/openfodder/actions/workflows/linux-build.yml)
