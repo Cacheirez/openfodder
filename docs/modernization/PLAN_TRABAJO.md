@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.44 · Revisión: 28 de octubre de 2026.**
+**Versión 2.45 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: resolver el escalado del mapa general tras precisar ventana maximizada frente a fullscreen F11. Bordes del cursor aceptados por Miguel; rediseño artístico del cursor incluido expresamente.**
+**Tarea activa: validar CI de la corrección del mapa general en ventana maximizada y después comprobarla en Windows. F11 confirmado correcto por Miguel y conservado. Bordes del cursor aceptados; rediseño artístico del cursor incluido.**
+
+## Incremento 2.45 — mapa centrado y ajustado a la ventana
+
+[Aclaración, implementación y límites](H5_9_MAPA_GENERAL_Y_ACEPTACION_BORDES.md). Corrección limitada a la superficie del mapa general activo en el modo opcional de ajuste en ventana. Usa salida física, conserva aspecto clásico y fuente completa; F11 y demás rutas intactos. Fixture real: 216 casos de overview hasta UHD/300 %, exclusiones y retorno a misión, además de las regresiones de cursor existentes. CI y aceptación física nuevas pendientes; las demos de release no validan automáticamente la overview. Base clásica, mejoras y PR sin fusionar conservados.
+
 
 ## Incremento 2.44 — bordes aceptados, mapa pendiente y cursor artístico
 

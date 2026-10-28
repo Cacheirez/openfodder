@@ -542,6 +542,30 @@ void cWindow::RenderShrunk( cSurface* pImage ) {
 		}
 	}
 
+    // Only the overview in the optional fitted window. Keep F11 and other
+    // shrink presentations unchanged, including the legacy overview aspect.
+    const char* screen=std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
+    const char* fit=std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+    if(mWindowMode && g_Fodder->mPhase_In_Progress && g_Fodder->mPhase_ShowMapOverview &&
+       pImage==g_Fodder->mSurfaceMapOverview &&
+       screen && std::string(screen)=="1" && fit && std::string(fit)=="1" &&
+       g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked) {
+        int pw=0,ph=0,lw=0,lh=0;
+        float sx=0,sy=0;
+        SDL_Rect viewport{};
+        SDL_RendererLogicalPresentation logicalMode=SDL_LOGICAL_PRESENTATION_DISABLED;
+        if(SDL_GetRenderOutputSize(mRenderer,&pw,&ph) && pw>0 && ph>0 &&
+           !SDL_GetRenderTarget(mRenderer) && SDL_GetRenderScale(mRenderer,&sx,&sy) && sx==1 && sy==1 &&
+           SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
+           viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
+           SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
+           logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED) {
+            const auto rect=openfodder::ScreenTransform::FitSource(pw,ph,{0,0,Dest.w,Dest.h});
+            if(openfodder::ScreenTransform::RectValid(rect))
+                Dest={float(rect.x),float(rect.y),float(rect.w),float(rect.h)};
+        }
+    }
+
 	SDL_RenderTexture( mRenderer, pImage->GetTexture(), &Src, &Dest);
 }
 
