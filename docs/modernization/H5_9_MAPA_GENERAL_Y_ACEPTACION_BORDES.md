@@ -27,3 +27,7 @@ CI nueva y aceptación física pendientes al publicar. La overview está deshabi
 ## Paquete verificado — incremento 2.46
 
 Windows 40634973004 completo PASS para 6e98fda. ZIP descargado y comprobado: hash, versión/árbol, integridad, tres lanzadores y guía. [Evidencia](H5_9_VALIDACION_6e98fda.json). El commit temporal 7c596ea tiene árbol idéntico al código de rama y no fusiona el PR. Linux supera las pruebas específicas del mapa pero continúa su CI global al registrar. Pendiente observación física en el equipo de Miguel: mapa maximizado → cierre con clic → selección y órdenes en misión, con contraste F11. No se atribuye esa observación a la CI ni al asistente.
+
+## Aceptación manual y cierre Linux — 28-10-2026
+
+Miguel confirma: «perfecto, el mapa se queda centrado, se cierra y vuelve a misión. Todo funciona bien». Se acepta la secuencia observada del mapa en la configuración comunicada. Linux 40634973034 ha terminado completo PASS, al igual que Windows 40634973004. Evidencia actualizada en H5_9_VALIDACION_6e98fda.json. Incidencias de mapa y bordes cerradas en su alcance; no se requiere repetirlas para una revisión documental. Siguiente incremento: mantener el ajuste de misión durante pausa/reanudación, conservando simulación y ruta clásica.

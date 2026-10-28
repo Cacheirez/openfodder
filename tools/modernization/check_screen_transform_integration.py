@@ -54,7 +54,7 @@ void SDL_SetRenderDrawColor(SDL_Renderer*,int,int,int,int){}void SDL_RenderClear
 SDL_DisplayID SDL_GetDisplayForWindow(SDL_Window*){return 1;}SDL_DisplayID SDL_GetPrimaryDisplay(){return 1;}
 const SDL_DisplayMode* SDL_GetCurrentDisplayMode(SDL_DisplayID){static SDL_DisplayMode m;return &m;}
 struct cDimension{int mWidth=320,mHeight=200;int getWidth()const{return mWidth;}int getHeight()const{return mHeight;}};
-struct cSurface{int width=352,height=232;SDL_Texture* GetTexture(){return nullptr;}int GetWidth(){return width;}int GetHeight(){return height;}};
+struct cSurface{bool loaded=false;bool isLoadedImage()const{return loaded;}int width=352,height=232;SDL_Texture* GetTexture(){return nullptr;}int GetWidth(){return width;}int GetHeight(){return height;}};
 struct cWindow{
  SDL_Window*mWindow=nullptr;SDL_Renderer*mRenderer=nullptr;bool mWindowMode=true;
  cDimension mScreenSize;std::mutex mScreenTransformMutex;
@@ -70,7 +70,7 @@ struct cWindow{
 struct Params{bool mUnitTesting=true,mMouseAlternative=true,mMouseLocked=false,mIntegerScaling=false,mDemoPlayback=false;};
 struct cFodder{
  Params params;Params*mParams=&params,*mStartParams=&params;cWindow*mWindow=nullptr;
- cSurface* mSurfaceMapOverview=nullptr;
+ cSurface* mSurfaceMapOverview=nullptr; cSurface* mSurface=nullptr;
  bool mPhase_In_Progress=true,mPhase_Paused=false,mPhase_ShowMapOverview=false,mInterruptCallback=false,mWindow_Focus=true;
  struct {int mX=0,mY=0;}mMouse_EventLastPosition;
  int16 mInputMouseX=0,mInputMouseY=0;int mMouse_EventLastButtonsPressed=0,mMouseButtonStatus=0;
@@ -272,7 +272,60 @@ int main(){
  win.RenderAt(&image,true);win.FrameEnd();
  assert(win.mPresentedScreenTransform.valid);
  assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Mapped && x==128 && y==104);
- puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 228 mission fit + 216 overview cases up to UHD, DPI, bands, held press, fallback and lifecycle");
+
+ // Pause keeps the fitted mission rectangle, including resize/DPI changes.
+ // Resume cannot consume coordinates from a paused/old presentation.
+ fodder.mSurface=&image;int pauseCases=0;
+ for(auto output : {cDimension{640,480},{1280,720},{1920,1080},{2560,1440},
+                    {3840,2160},{1001,777}})
+ for(int dpi : {100,125,150,175,200,300})for(int h : {200,225}) {
+  pw=output.mWidth;ph=output.mHeight;ww=pw*100/dpi;wh=ph*100/dpi;
+  win.mScreenSize.mHeight=h;fodder.mPhase_Paused=false;
+  win.RenderAt(&image,true);win.FrameEnd();const auto mission=drawnDestination;
+  fodder.mPhase_Paused=true;win.RenderAt(&image);win.FrameEnd();
+  assert(drawnDestination.x==mission.x && drawnDestination.y==mission.y &&
+         drawnDestination.w==mission.w && drawnDestination.h==mission.h);
+  assert(!win.mPresentedScreenTransform.valid && !win.mPresentedScreenClassic);
+  assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Classic); // paused input scope
+  ++pw; ++ww;win.InvalidateScreenTransform();win.RenderAt(&image);win.FrameEnd();
+  const double scale=std::min(double(pw)/320,double(ph)/h);
+  assert(std::abs(drawnDestination.w-320*scale)<0.001);
+  assert(std::abs(drawnDestination.x-(pw-320*scale)/2)<0.001);
+  fodder.mPhase_Paused=false;
+  assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);
+  win.RenderAt(&image,true);assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);
+  win.FrameEnd();assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Mapped);
+  ++pauseCases;
+ }
+ assert(pauseCases==72);
+ pw=3840;ph=2160;ww=1280;wh=720;win.mScreenSize.mHeight=200;
+ fodder.mPhase_Paused=true;
+ for(int mode=0;mode<9;++mode) {
+  fodder.mPhase_In_Progress=mode!=0;fodder.mPhase_ShowMapOverview=mode==1;
+  fodder.mInterruptCallback=mode==2;image.loaded=mode==3;
+  fodder.params.mMouseAlternative=mode!=4;fodder.params.mMouseLocked=mode==5;
+  setenv("OPENFODDER_MISSION_SCREEN_FIT",mode==6?"0":"1",1);
+  setenv("OPENFODDER_MISSION_SCREEN_TRANSFORM",mode==7?"0":"1",1);
+  win.RenderAt(mode==8?&overview:&image);win.FrameEnd();
+  assert(drawnDestination.x==0 && drawnDestination.y==0 && drawnDestination.w==640 && drawnDestination.h==400);
+ }
+ fodder.mPhase_In_Progress=true;fodder.mPhase_ShowMapOverview=false;
+ fodder.mInterruptCallback=false;image.loaded=false;
+ fodder.params.mMouseAlternative=true;fodder.params.mMouseLocked=false;
+ win.mWindowMode=false;fodder.params.mIntegerScaling=true;win.RenderAt(&image);win.FrameEnd();
+ assert(drawnDestination.x==640 && drawnDestination.y==340 && drawnDestination.w==640 && drawnDestination.h==400);
+ win.mWindowMode=true;fodder.params.mIntegerScaling=false;
+ for(int mode=0;mode<6;++mode) {
+  target=mode==0;clip=mode==1;logical=mode==2;rendererScale=mode==3?2:1;viewportX=mode==4?1:0;sizeOK=mode!=5;
+  win.RenderAt(&image);win.FrameEnd();
+  assert(drawnDestination.x==0 && drawnDestination.w==640 && drawnDestination.h==400);
+ }
+ target=clip=logical=false;rendererScale=1;viewportX=0;sizeOK=true;
+ drawOK=false;win.RenderAt(&image);win.FrameEnd();fodder.mPhase_Paused=false;
+ assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);drawOK=true;
+ fodder.mPhase_Paused=true;win.RenderAt(&image);presentOK=false;win.FrameEnd();fodder.mPhase_Paused=false;
+ assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);presentOK=true;
+ puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 228 mission fit + 216 overview + 72 pause transitions up to UHD, DPI, bands, held press, fallback and lifecycle");
 }
 '''
     return code

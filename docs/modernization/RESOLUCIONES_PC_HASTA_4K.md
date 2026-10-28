@@ -43,7 +43,7 @@ Selector de monitor, resolución y modo ventana/pantalla completa sin bordes; pa
 
 Aplicar cambios con confirmación temporizada (15 segundos) y retorno a la configuración anterior si no se confirma, falla el modo o se pierde la pantalla. Persistir opciones únicamente tras éxito; arranque recuperable si el monitor guardado ya no existe.
 
-Responder a redimensionado, maximización, Alt+Tab, minimización, cambio de monitor y cambio de DPI. Distinguir tamaño de ventana en coordenadas de ventana y tamaño real en píxeles. Probar escalado de Windows 100/125/150/175/200 %. Recalcular viewport, cursor y ratón sin desplazamientos, saltos de anclaje ni reutilización de destinos obsoletos.
+Responder a redimensionado, maximización, Alt+Tab, minimización, cambio de monitor y cambio de DPI. Distinguir tamaño de ventana en coordenadas de ventana y tamaño real en píxeles. Probar escalado de Windows 100/125/150/175/200/300 %. Recalcular viewport, cursor y ratón sin desplazamientos, saltos de anclaje ni reutilización de destinos obsoletos.
 
 ## Tareas y orden
 
@@ -60,7 +60,7 @@ Responder a redimensionado, maximización, Alt+Tab, minimización, cambio de mon
 
 Secuencia: definir transformaciones y política de encuadre → soporte de destinos/opciones → prueba de una pose y fragmento de terreno a varias densidades → compositor HD y viewport nativo → atlas/producción por lotes. Confirmar por separado la CI pendiente del piloto C01; su recurso 16×14 no cierra este requisito.
 
-Avance 2.35: [transformaciones definidas y modelo matemático verificado](TRANSFORMACIONES_PANTALLA.md). El adaptador SDL y la validación física siguen pendientes.
+Avance 2.47: transformaciones, misión en ventana, bandas/cursor y mapa general implementados; CI y aceptación física de esas rutas registradas en el plan. Prueba manual comunicada en UHD/300 %. Pausa ajustada implementada con CI propia pendiente. Opciones, otras escenas, entrada relativa y soporte global siguen pendientes; no se considera implementado todo este documento.
 
 ## Criterios de aceptación
 

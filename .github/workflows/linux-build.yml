@@ -64,12 +64,12 @@ jobs:
           git submodule update --init --recursive
           git clone https://github.com/OpenFodder/tests.git Run/Tests
           git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
-      - name: H5.5 - presented mission transform and inverse with original H3
+      - name: H5.5 - fitted mission pause and resumed inverse with original H3
         env:
           SDL_VIDEODRIVER: dummy
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
-        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h5-screen-transform --screen-probe --first-phase
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h5-screen-transform --screen-probe --pause-probe --first-phase
       - name: H3.6 - verify the legacy visibility contract
         run: python3 tools/modernization/check_visibility_contract.py
       - name: H4.1 - retail final timer equivalence with accepted classic base

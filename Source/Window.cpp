@@ -471,9 +471,15 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
     const SDL_FRect classicDestination=Dest;
     openfodder::ScreenTransform transform;
     const char* flag = std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");
-    // Optional fit uses the physical output and the same presented inverse.
-    // Other scenes/modes keep their existing presentation and input.
-    if (pMission && flag && std::string(flag)=="1" && mWindowMode &&
+    const char* fitFlag=std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+    // The existing pause loop presents the main mission surface with the
+    // default pMission=false. Fit that scene without publishing world input.
+    const bool fitPause=!pMission && fitFlag && std::string(fitFlag)=="1" &&
+        pImage==g_Fodder->mSurface && g_Fodder->mPhase_In_Progress &&
+        g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview &&
+        !g_Fodder->mInterruptCallback && !pImage->isLoadedImage();
+    // Mission and its pause share geometry; other scenes keep the classic path.
+    if ((pMission || fitPause) && flag && std::string(flag)=="1" && mWindowMode &&
         g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked)
     {
         int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
@@ -510,8 +516,17 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
         // Dest is already the SDL-precision rectangle retained by FromDraw.
     }
     const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
+    if(drawn && fitPause && transform.valid && g_Fodder->mStartParams->mUnitTesting) {
+        static bool reportedPause=false;
+        if(!reportedPause) {
+            std::fprintf(stderr,"SCREEN_TRANSFORM: fitted pause without mission input\n");
+            reportedPause=true;
+        }
+    }
     std::lock_guard<std::mutex> lock(mScreenTransformMutex);
-    mPendingScreenTransform = drawn ? transform : openfodder::ScreenTransform{};
+    // A fitted pause never publishes a world-input snapshot. On resume input
+    // stays blocked until a fresh mission frame has actually been presented.
+    mPendingScreenTransform = drawn && pMission ? transform : openfodder::ScreenTransform{};
     mPendingScreenClassic = drawn && !transform.valid;
 }
 

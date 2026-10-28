@@ -2,7 +2,7 @@
   "code_commit": "6e98fda5430a3204783b5bb81b6d9808372502df",
   "observed_at": "2026-10-28T05:12:38.451Z",
   "windows_verdict": "PASS",
-  "linux_verdict": "IN_PROGRESS",
+  "linux_verdict": "PASS",
   "runs": [
     {
       "id": 40634973004,
@@ -176,15 +176,15 @@
     {
       "id": 40634973034,
       "head_sha": "6e98fda5430a3204783b5bb81b6d9808372502df",
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "url": "https://github.com/Cacheirez/openfodder/actions/runs/40634973034",
       "jobs": [
         {
           "id": 122639735058,
           "name": "build",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "run_id": 40634973034,
           "logs_url": null,
           "steps": [
@@ -382,123 +382,129 @@
             },
             {
               "name": "H6.3 - C01 RGBA selected pose with original H3",
-              "status": "in_progress",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 33
             },
             {
               "name": "H4.6 - real engine zero and five mission presentations with original H3",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 34
             },
             {
               "name": "H4.6 - bounded SDL pause and resumed mission with zero one five presentations",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 35
             },
             {
               "name": "H2 - bounded RNC fixtures under ASan and UBSan",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 36
             },
             {
               "name": "H3 - Linux PC Format gameplay reference",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 37
             },
             {
               "name": "H3 - Linux Amiga The One gameplay reference",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 38
             },
             {
               "name": "H3 - compare with pinned pre-stabilization gameplay baseline",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 39
             },
             {
               "name": "H2.3 - full game-engine ASan and UBSan diagnostic",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 40
             },
             {
               "name": "H2.3 - enforce zero ASan and UBSan findings",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 41
             },
             {
               "name": "H2.3 - LeakSanitizer on all 29 public demos",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 42
             },
             {
               "name": "H4.3 - active publication with ASan UBSan and LSan",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 43
             },
             {
               "name": "H4.6 - bounded SDL pause with ASan UBSan and LSan",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 44
             },
             {
               "name": "H2.4 - ThreadSanitizer diagnostic on all public demos",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 45
             },
             {
               "name": "H4.3 - first PC and Amiga phases with active publication and ThreadSanitizer",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 46
             },
             {
               "name": "H4.6 - bounded SDL pause with ThreadSanitizer",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 47
             },
             {
               "name": "Upload H3 Linux reference evidence",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 48
             },
             {
               "name": "Package",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 49
             },
             {
               "name": "Upload artifact",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 50
             },
             {
               "name": "Discord notification",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "skipped",
               "number": 51
             },
             {
               "name": "Post Run actions/checkout@v4",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 102
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 103
             }
           ]
         }
@@ -520,7 +526,7 @@
     "skipped": 0
   },
   "manual_windows": {
-    "verdict": "PENDING",
+    "verdict": "PASS_USER_REPORTED",
     "desktop": "3840x2160",
     "scale": "300%",
     "sequence": [
@@ -530,11 +536,15 @@
       "close with click",
       "select and command soldiers",
       "compare F11"
-    ]
+    ],
+    "reported_at": "2026-10-28",
+    "quote": "perfecto, el mapa se queda centrado, se cierra y vuelve a misión. Todo funciona bien.",
+    "scope": "Reported overview centering, closing and return to mission on the previously described UHD/300% setup; no extrapolation to other scenes or editions."
   },
   "scope": [
     "No physical Windows observation by assistant.",
     "Overview is disabled in non-custom release demos; demo replay success does not prove overview interaction.",
-    "Linux actual-method overview fixture passed; global Linux run remains in progress at observation."
-  ]
+    "Linux actual-method overview fixture and full workflow passed; see closure_observed_at."
+  ],
+  "closure_observed_at": "2026-10-28T09:53:43.418Z"
 }

@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.46 · Revisión: 28 de octubre de 2026.**
+**Versión 2.47 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: comprobar en Windows mapa maximizado → cierre → regreso a misión con el paquete verificado 6e98fda. Windows completo PASS; Linux supera la fixture específica y sigue su CI global. F11 y bordes del cursor conservados.**
+**Tarea activa: validar la pausa con el ajuste de misión en ventana y su regreso seguro al ratón. Mapa general y bordes aceptados por Miguel; CI del mapa cerrada en Windows/Linux. Nueva CI de pausa pendiente.**
+
+## Incremento 2.47 — mapa aceptado y pausa ajustada
+
+Miguel confirma mapa centrado, cierre y regreso a misión correctos; Linux 40634973034 completo PASS. [Evidencia de cierre](H5_9_VALIDACION_6e98fda.json). Se continúa H5.5/H5.9 con [pausa ajustada](H5_9_PAUSA_AJUSTADA.md): mantiene el destino de misión, admite resize/DPI y no reutiliza coordenadas pausadas al reanudar. 72 transiciones locales nuevas y regresiones de pausa/cursores/mapa/capas PASS; sonda CI ampliada a pausa real y H3. Validación del nuevo código pendiente. Después de aceptar pausa, avanzar a opciones mínimas H5.6 y evaluación de densidad del arte C; no ampliar escenas indefinidamente. Base clásica, mejoras y PR sin fusionar conservados.
+
 
 ## Incremento 2.46 — paquete del mapa verificado
 
@@ -253,7 +258,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
 
-- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200 % y transformaciones de entrada verificadas.
+- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200/300 % y transformaciones de entrada verificadas.
 - [ ] **H5.10 — Asistente / Miguel:** viewport e interfaz modernos nativos 4:3/16:9, sin estirar la imagen clásica. Separar visibilidad de dibujo y lógica antes de mostrar más mapa; conservar encuadre clásico y revisar explícitamente la información táctica del panorámico.
 
 **Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
@@ -366,7 +371,7 @@ C1–C3 son obligaciones continuas con entregas verificables; no sustituyen ni r
 
 | ID | Decisión | Situación / momento |
 |---|---|---|
-| D1 | Estilo gráfico | Pendiente de muestras comparables y elección de Miguel en H6.2 |
+| D1 | Estilo gráfico | C — Pintado moderado elegido en H6.2; densidad HD e integración general pendientes, incluido cursor |
 | D2 | Edición y fase piloto | CD32 confirmada como campaña principal; concretar fase demo pequeña antes de H7.1 |
 | D3 | Campo de visión | Conservar área lógica original; cualquier ampliación será una decisión posterior explícita |
 | D4 | Refresco y equipo | 60 Hz primero; recoger monitor/configuración para H5.7, 120/144 Hz después si procede |

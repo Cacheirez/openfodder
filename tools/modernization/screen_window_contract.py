@@ -5,7 +5,7 @@ GPL-3.0-or-later.
 """
 import hashlib
 CLASSIC = 'ba86d285726380e33855d5de583d9cae6f51ea9d7a2ca281e64c488e31ba1208'
-INTEGRATED = '16cf71daf29a1b5abfc1e199258c3b47cab34a2c5863ba9421d8187693560d4b'
+INTEGRATED = '33f5dd69d085d5440a9037224915b4ae5b981959a4d53217d1f62df04f5e9b7e'
 
 def verify_window_integration(current, original):
     digest=lambda s:hashlib.sha256(s.encode()).hexdigest()

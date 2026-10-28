@@ -132,6 +132,8 @@ def main():
                 markers.append(f'MISSION_LAYER_SCHEDULE: {args.presentations} presentations per mission call')
             if args.screen_probe:
                 markers.append('SCREEN_TRANSFORM: presented mission and verified mouse inverse')
+                if args.pause_probe:
+                    markers.append('SCREEN_TRANSFORM: fitted pause without mission input')
             for marker in markers:
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
