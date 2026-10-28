@@ -29,3 +29,7 @@ Corrección implementada: distinguir `Band` de una geometría inválida. En band
 Pruebas locales PASS con ASan/UBSan (LSan local desactivado): 544.000 coordenadas y 228 combinaciones; barrido lateral UHD/300 % en ambos sentidos con visibilidad del sistema; 2.304 casos de cursor y 288 HUD, más comprobación PC/Amiga de que ocultar píxeles conserva todos los registros; 10.944 casos de preparación/recursos; 192 escenarios de productores, 384 transiciones con digest original `15155017350506417091`. La captura del cursor se prueba sin eliminar su marca de procedencia; el guard de productores admite solo las dos líneas nuevas verificadas funcionalmente.
 
 Nueva CI pendiente al publicar. No reutilizar el paquete 45de47a4 como si contuviera este arreglo. Tras CI verde, repetir maximización y cruces laterales al 300 %, confirmando que aparece el puntero Windows en la banda y vuelve el cursor del juego dentro. No ampliar escenas hasta esa comprobación.
+
+## Cierre automático y entrega — 28-10-2026
+
+Windows 40588401900 y Linux 40588409211 aprobados completamente para 1447abb. [Evidencia y paquete](H5_9_VALIDACION_1447abb.json). ZIP descargado e inspeccionado en la sesión anterior; hash contrastado y VERSION.txt idéntico al commit corregido. Disponibilidad confirmada de nuevo. La guía enlaza el artefacto corregido. Queda repetir la prueba maximizada de ambos bordes al 300 % en el equipo de Miguel; no se declara resuelta físicamente la incidencia hasta esa observación. PR abierto y sin fusionar.

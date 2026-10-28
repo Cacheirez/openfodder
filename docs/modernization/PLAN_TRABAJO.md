@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.42 · Revisión: 27 de octubre de 2026.**
+**Versión 2.43 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: cerrar CI de la corrección de cursor en bandas y repetir la prueba maximizada UHD/300 %. Implementada transición al puntero Windows en bandas, conservando efectos del cursor y bloqueo de órdenes. No ampliar otras escenas.**
+**Tarea activa: repetir la prueba maximizada UHD/300 % con el paquete corregido 1447abb. CI Windows/Linux completa PASS y ZIP verificado. No ampliar escenas hasta revisar esa observación física.**
+
+## Incremento 2.43 — cierre de CI y paquete corregido verificado
+
+[Evidencia de 1447abb](H5_9_VALIDACION_1447abb.json): Windows 40588401900 y Linux 40588409211 completos PASS, incluidos los recorridos de sanitizadores declarados. [ZIP corregido](https://github.com/Cacheirez/openfodder/actions/runs/40588401900/artifacts/12774266903): VERSION.txt idéntico al commit, SHA-256 contrastado, 277 entradas, tres lanzadores y guía; 29 fases aprobadas sin omisiones. Extraer en carpeta nueva y ejecutar `PROBAR_RESOLUCIONES_H5.cmd`. Pendiente repetir maximización y cruces de ambos bordes al 300 % en el Windows de Miguel. Revisión documental: base clásica, mejoras, H3 y PR sin fusionar conservados.
+
 
 ## Incremento 2.42 — cursor continuo al cruzar bandas
 
