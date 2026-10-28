@@ -28,9 +28,10 @@
   },
   "linux": {
     "run": 40667967516,
-    "verdict": "IN_PROGRESS",
-    "last_observed_step": "H4.6 - bounded SDL pause with ThreadSanitizer",
-    "early_fitted_pause_probe": "PASS"
+    "job": 122747216453,
+    "verdict": "PASS",
+    "early_fitted_pause_probe": "PASS",
+    "global_completed": true
   },
   "manual_windows": {
     "verdict": "PENDING",

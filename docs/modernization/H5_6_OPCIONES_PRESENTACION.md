@@ -1,6 +1,6 @@
 # H5.6 — primer incremento de opciones de presentación
 
-Preparación del 28-10-2026. Implementación pendiente de aceptar visualmente la pausa de 63c4d6f y cerrar Linux global.
+Preparación del 28-10-2026. Implementación pendiente de aceptar visualmente la pausa de 63c4d6f ; CI global Windows/Linux cerrada PASS.
 
 ## Punto de partida
 

@@ -2,11 +2,11 @@
 
 **Versión 2.48 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar la pausa con el ajuste de misión en ventana y su regreso seguro al ratón. Mapa general y bordes aceptados por Miguel; CI del mapa cerrada en Windows/Linux. Windows de pausa PASS y ZIP verificado; Linux global en curso. Pendiente prueba visual de pausa.**
+**Tarea activa: validar la pausa con el ajuste de misión en ventana y su regreso seguro al ratón. Mapa general y bordes aceptados por Miguel; CI del mapa cerrada en Windows/Linux. Windows de pausa PASS y ZIP verificado; Linux global PASS. Pendiente prueba visual de pausa.**
 
 ## Incremento 2.48 — paquete de pausa verificado y opciones preparadas
 
-[Evidencia de pausa](H5_9_VALIDACION_63c4d6f.json): Windows 40667967583 PASS, ZIP 12807892335 verificado por SHA256, 277 entradas, guía actualizada, 29 fases y sonda de pausa PC/Amiga con 301 estados H3. VERSION.txt identifica el merge temporal de prueba con árbol idéntico a 63c4d6f. Linux global continúa en su prueba de pausa ThreadSanitizer al registrar; no se cierra por anticipado. Pendiente maximizar → P → restaurar/maximizar → P → órdenes en Windows UHD/300 %. [Primer corte de opciones H5.6](H5_6_OPCIONES_PRESENTACION.md) preparado, implementación tras validar pausa; densidad artística sin fijar. Revisión documental, sin cambios de motor.
+[Evidencia de pausa](H5_9_VALIDACION_63c4d6f.json): Windows 40667967583 PASS, ZIP 12807892335 verificado por SHA256, 277 entradas, guía actualizada, 29 fases y sonda de pausa PC/Amiga con 301 estados H3. VERSION.txt identifica el merge temporal de prueba con árbol idéntico a 63c4d6f. Linux global 40667967516 también completado PASS, incluida pausa ThreadSanitizer. Pendiente maximizar → P → restaurar/maximizar → P → órdenes en Windows UHD/300 %. [Primer corte de opciones H5.6](H5_6_OPCIONES_PRESENTACION.md) preparado, implementación tras validar pausa; densidad artística sin fijar. Revisión documental, sin cambios de motor.
 
 ## Incremento 2.47 — mapa aceptado y pausa ajustada
 
