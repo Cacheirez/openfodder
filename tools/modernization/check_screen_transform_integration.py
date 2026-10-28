@@ -30,6 +30,7 @@ def build():
 #include <atomic>
 #include <stdexcept>
 #include "Utils/ScreenTransform.hpp"
+#include "Utils/PresentationOptions.hpp"
 using int16=int16_t;
 struct SDL_Window{};struct SDL_Renderer{};struct SDL_Texture{};
 struct SDL_FRect{float x,y,w,h;};struct SDL_Rect{int x,y,w,h;};
@@ -60,16 +61,23 @@ struct cWindow{
  cDimension mScreenSize;std::mutex mScreenTransformMutex;
  openfodder::ScreenTransform mPendingScreenTransform,mPresentedScreenTransform;
  bool mPendingScreenClassic=false,mPresentedScreenClassic=false;
+ unsigned mPendingScreenScene=0,mPresentedScreenScene=0;
  std::atomic<bool> mMissionCursorInBand{false};bool mSystemMissionCursorShown=false;
  void SetMissionCursorInBand(bool v){mMissionCursorInBand.store(v);}
- bool IsMissionCursorInBand() const;
+ bool IsMissionCursorInBand() const;unsigned FittedInputScene() const;
  cDimension GetWindowSize(){return {640,mScreenSize.mHeight*2};}
  void RenderAt(cSurface*,bool=false);void RenderShrunk(cSurface*);void FrameEnd();void InvalidateScreenTransform();
  openfodder::ScreenMouseResult MapMissionMouse(int,int,int16&,int16&);
 };
-struct Params{bool mUnitTesting=true,mMouseAlternative=true,mMouseLocked=false,mIntegerScaling=false,mDemoPlayback=false;};
+struct Params{
+ bool mFitPresentation=false;
+ bool ScreenTransformEnabled() const{return openfodder::PresentationFlag(std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM"),mFitPresentation);}
+ bool ScreenFitEnabled() const{return openfodder::PresentationFlag(std::getenv("OPENFODDER_MISSION_SCREEN_FIT"),mFitPresentation);}
+ bool mUnitTesting=true,mMouseAlternative=true,mMouseLocked=false,mIntegerScaling=false,mDemoPlayback=false;};
 struct cFodder{
  Params params;Params*mParams=&params,*mStartParams=&params;cWindow*mWindow=nullptr;
+ bool mBriefing_Screen_Active=false,mRecruit_Screen_Active=false;
+ cSurface* mSurfaceRecruit=nullptr;
  cSurface* mSurfaceMapOverview=nullptr; cSurface* mSurface=nullptr;
  bool mPhase_In_Progress=true,mPhase_Paused=false,mPhase_ShowMapOverview=false,mInterruptCallback=false,mWindow_Focus=true;
  struct {int mX=0,mY=0;}mMouse_EventLastPosition;
@@ -80,7 +88,7 @@ const int16 MOUSE_POSITION_X_ADJUST=-32,MOUSE_POSITION_Y_ADJUST=4;
 '''
     code=prefix
     for sig in ['void cWindow::RenderAt(', 'void cWindow::RenderShrunk(', 'void cWindow::FrameEnd(',
-                'bool cWindow::IsMissionCursorInBand(', 'void cWindow::InvalidateScreenTransform(', 'openfodder::ScreenMouseResult cWindow::MapMissionMouse(']:
+                'bool cWindow::IsMissionCursorInBand(', 'unsigned cWindow::FittedInputScene(', 'void cWindow::InvalidateScreenTransform(', 'openfodder::ScreenMouseResult cWindow::MapMissionMouse(']:
         code+=function(window,sig)+'\n'
     code+='void cFodder::HandleAlternate(){const cDimension scale{2,2};mMouseButtonStatus=mMouse_EventLastButtonsPressed;'+block+'}\n'
     code+=r'''
@@ -325,6 +333,48 @@ int main(){
  assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);drawOK=true;
  fodder.mPhase_Paused=true;win.RenderAt(&image);presentOK=false;win.FrameEnd();fodder.mPhase_Paused=false;
  assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);presentOK=true;
+ // Persisted preference follows exactly the same draw/inverse path without launcher flags.
+ unsetenv("OPENFODDER_MISSION_SCREEN_TRANSFORM");unsetenv("OPENFODDER_MISSION_SCREEN_FIT");
+ fodder.params.mFitPresentation=true;fodder.params.mMouseAlternative=true;fodder.params.mMouseLocked=false;
+ fodder.mPhase_Paused=false;fodder.mPhase_ShowMapOverview=false;fodder.mInterruptCallback=false;
+ win.mWindowMode=true;ww=1280;wh=720;pw=3840;ph=2160;
+ win.InvalidateScreenTransform();assert(win.MapMissionMouse(640,360,x,y)==R::Blocked);
+ win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(640,360,x,y)==R::Mapped);
+ assert(drawnDestination.w>3000 && drawnDestination.w<3840); // PC/Amiga aspect, never stretched
+ fodder.params.mFitPresentation=false;win.InvalidateScreenTransform();
+ win.RenderAt(&image,true);win.FrameEnd();assert(win.MapMissionMouse(640,360,x,y)==R::Classic);
+ // Briefing/recruitment: same inverse, explicit surface, scene transition and GUI hotspots.
+ fodder.params.mFitPresentation=true;fodder.mPhase_In_Progress=false;
+ fodder.mSurface=&image;fodder.mSurfaceRecruit=&image;
+ int introCases=0;
+ for(int scene:{2,3})for(int h:{200,225})for(int dpi:{100,125,150,175,200,300})
+ for(auto output:{std::pair<int,int>{640,480},{1280,720},{1920,1080},{2560,1440},{3840,2160},{1001,777}}){
+   fodder.mBriefing_Screen_Active=scene==2;fodder.mRecruit_Screen_Active=scene==3;
+   fodder.mInterruptCallback=scene==3;win.mScreenSize.mHeight=h;
+   pw=output.first;ph=output.second;ww=pw*100/dpi;wh=ph*100/dpi;
+   win.InvalidateScreenTransform();win.RenderAt(&image);assert(!win.mPresentedScreenTransform.valid);
+   win.FrameEnd();assert(win.mPresentedScreenScene==unsigned(scene));
+   const auto t=win.mPresentedScreenTransform;assert(t.valid);
+   assert(std::abs(t.destination.w/t.destination.h-320.0/h)<1e-5);
+   // Recruitment load/save/sidebar targets span left, right and lower edges.
+   for(auto point:{openfodder::ScreenPoint{8,12},{312,12},{16,150},{160,100},{300,190}}){
+     const auto w=t.CanvasToWindow(point);
+     assert(win.MapMissionMouse(int(w.x),int(w.y),x,y)==R::Mapped);
+     openfodder::ScreenPoint actual;assert(t.WindowToCanvas({double(int(w.x)),double(int(w.y))},actual));
+     assert(x==int(std::floor(actual.x))-32 && y==int(std::floor(actual.y))+4);
+   }
+   // A different scene cannot consume the last scene's inverse.
+   fodder.mPhase_In_Progress=true;fodder.mInterruptCallback=false;
+   assert(win.MapMissionMouse(ww/2,wh/2,x,y)==R::Blocked);
+   fodder.mPhase_In_Progress=false;fodder.mInterruptCallback=scene==3;
+   ++introCases;
+ }
+ // Other surfaces/dialogs and F11 retain the original destination/input together.
+ cSurface unrelated;win.RenderAt(&unrelated);win.FrameEnd();assert(win.mPresentedScreenClassic);
+ assert(win.MapMissionMouse(10,10,x,y)==R::Classic);
+ win.mWindowMode=false;win.RenderAt(&image);win.FrameEnd();assert(!win.mPresentedScreenTransform.valid);
+ assert(win.MapMissionMouse(10,10,x,y)==R::Classic);
+ printf("PASS: %d briefing/recruitment fit cases with GUI coordinates and scene identity\n",introCases);
  puts("PASS: actual render/present/mouse methods; 544000 PC/Amiga coordinates; 228 mission fit + 216 overview + 72 pause transitions up to UHD, DPI, bands, held press, fallback and lifecycle");
 }
 '''

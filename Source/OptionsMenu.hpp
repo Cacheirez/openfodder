@@ -108,6 +108,7 @@ private:
         OPT_SKIP_BRIEFING,
         OPT_SKIP_SERVICE,
         OPT_SKIP_RECRUIT,
+        OPT_PRESENTATION,
     };
 
 
@@ -117,6 +118,9 @@ private:
     void BuildPageItems();
     void ChangePage(int pageIndex);
     void RestoreSnapshot();
+    void SaveOrPreview();
+    void Confirm();
+    bool PresentationChanged() const;
 
     // Value accessors (from sFodderParameters on cFodder)
     int  GetInt(int optId) const;
@@ -158,7 +162,11 @@ private:
     std::vector<sOptItem> mItems;
     std::vector<int> mPageItems;
     int16_t mCurrentPage = 0;
-    sFodderParameters mSnapshot;
+    sFodderParameters mSnapshot, mDraft, mRuntimeSnapshot;
+    cWindow::PresentationState mWindowSnapshot, mPreviewState;
+    bool mPreviewApplied = false;
+    openfodder::PresentationConfirmation mConfirmation;
+    std::string mStatus;
     bool mSnapshotValid = false;
 
     // Keep drawn strings alive for GUI draw calls (c_str pointers)

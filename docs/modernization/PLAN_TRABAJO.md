@@ -1,8 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.48 · Revisión: 28 de octubre de 2026.**
+**Versión 2.49 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar la pausa con el ajuste de misión en ventana y su regreso seguro al ratón. Mapa general y bordes aceptados por Miguel; CI del mapa cerrada en Windows/Linux. Windows de pausa PASS y ZIP verificado; Linux global PASS. Pendiente prueba visual de pausa.**
+**Tarea activa: cerrar CI de opciones de presentación y ajuste de briefing/reclutamiento. Pausa aceptada manualmente por Miguel; mapa y bordes ya aceptados. Evaluación técnica inicial de densidad preparada, sin decisión artística definitiva.**
+
+## Incremento 2.49 — pausa aceptada, opciones y pantallas previas
+
+Miguel confirma «funciona la pausa perfectamente» y aporta capturas de briefing y reclutamiento que no se ajustan al maximizar. Se extiende el ajuste solo a esas parejas escena/superficie, con inversa de ratón de la imagen presentada e identidad de escena; diálogos y F11 conservan ruta clásica. Se evita desmaximizar una ventana ajustada cuando cambia la resolución lógica.
+
+[Opciones H5.6](H5_6_OPCIONES_PRESENTACION.md): edición diferida, CLASSIC/FIT, confirmación de 15 segundos, cancelación/restauración y guardado mediante archivo temporal. Nuevo lanzador sin overrides de presentación. Pruebas locales de métodos reales y SDL simulado PASS; 144 casos de intro, regresiones de misión/pausa/mapa y capas PASS. Nueva CI pendiente; no atribuirle el verde del paquete de pausa 63c4d6f. [Densidad: evaluación inicial](H6_DENSIDAD_EVALUACION.md), sin nueva producción de arte. Base clásica, C01, todas las mejoras y H3 conservados; PR en borrador sin fusionar.
 
 ## Incremento 2.48 — paquete de pausa verificado y opciones preparadas
 

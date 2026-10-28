@@ -20,6 +20,9 @@
  *
  */
 
+#include "Utils/PresentationOptions.hpp"
+#include <cstdlib>
+
 namespace cxxopts {
 	class Options;
 }
@@ -39,6 +42,7 @@ public:
 	bool mMouseLocked;			// Mouse is locked to window
 	float mMouseSpeed;          // Mouse speed scale (SDL relative speed scale)
 
+	bool mFitPresentation;      // Optional fitted mission/pause/overview presentation
 	bool mWindowMode;           // Start in a window
 	bool mIntegerScaling;       // Use integer scaling in fullscreen mode
 	size_t mWindowScale;		// Start with window scaled at
@@ -117,6 +121,7 @@ public:
 		mMouseLocked = false;
 		mMouseSpeed = 1.5f;
 
+		mFitPresentation = false;
 		mWindowMode = false;
 		mIntegerScaling = true;
 		mWindowScale = 0;
@@ -158,6 +163,12 @@ public:
 		return ProcessCLI(argc, argv);
 	}
 
+    bool ScreenTransformEnabled() const {
+        return openfodder::PresentationFlag(std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM"), mFitPresentation);
+    }
+    bool ScreenFitEnabled() const {
+        return openfodder::PresentationFlag(std::getenv("OPENFODDER_MISSION_SCREEN_FIT"), mFitPresentation);
+    }
 	bool SaveIni();
 
 	bool isOriginalSpriteMax() const { return mSpritesMax == 45; }

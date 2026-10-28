@@ -113,6 +113,22 @@ add_executable(openfodder ${GAMEENGINE_SOURCE} ${GAMEENGINE_HEADERS})
 
 # Pure arithmetic boundary test: no SDL or game assets needed.
 enable_testing()
+find_package(Python3 COMPONENTS Interpreter QUIET)
+if(Python3_Interpreter_FOUND)
+    set(_presentation_fixture "${CMAKE_CURRENT_BINARY_DIR}/presentation_options_fixture.cpp")
+    add_custom_command(OUTPUT "${_presentation_fixture}"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_presentation_options.py"
+                --emit "${_presentation_fixture}"
+        DEPENDS tools/modernization/check_presentation_options.py
+                tools/modernization/check_final_timer_equivalence.py
+                Source/OptionsMenu.cpp Source/OptionsMenu.hpp Source/Parameters.cpp
+                Source/Parameters.hpp Source/Window.cpp Source/Window.hpp
+                Source/Utils/PresentationOptions.hpp Source/Utils/ini.hpp
+        VERBATIM)
+    add_executable(openfodder_presentation_tests "${_presentation_fixture}")
+    target_include_directories(openfodder_presentation_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+    add_test(NAME presentation_options_transaction COMMAND $<TARGET_FILE:openfodder_presentation_tests>)
+endif()
 add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
 add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
 add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)

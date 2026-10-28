@@ -34,10 +34,12 @@
     "global_completed": true
   },
   "manual_windows": {
-    "verdict": "PENDING",
+    "verdict": "PASS_USER_REPORTED",
     "sequence": "Maximizar → P → restaurar/maximizar durante pausa → P → selección y órdenes",
     "target": "3840x2160, escala Windows 300%",
-    "limitation": "No native Windows desktop tested by assistant; map acceptance does not validate new pause code"
+    "limitation": "Aceptación manual de Miguel para pausa en su Windows UHD/300 %. No implica aceptación de opciones o ajuste de briefing/reclutamiento posteriores.",
+    "date": "2026-10-28",
+    "quote": "funciona la pausa perfectamente."
   },
   "pr": {
     "number": 1,

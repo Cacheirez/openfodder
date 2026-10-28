@@ -1,23 +1,35 @@
-# H5.6 — primer incremento de opciones de presentación
+# H5.6 — opciones de presentación y confirmación
 
-Preparación del 28-10-2026. Implementación pendiente de aceptar visualmente la pausa de 63c4d6f ; CI global Windows/Linux cerrada PASS.
+Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la pausa perfectamente». Windows y Linux de ese paquete PASS. La CI de este incremento es nueva y sigue pendiente al publicar.
 
-## Punto de partida
+## Comportamiento implementado
 
-OptionsMenu.cpp ya ofrece Window mode, Window scale e Integer scaling, con snapshot para cancelar; Parameters.cpp guarda opciones en INI. Window.cpp contiene el cambio de modo y ToggleVSync. Se ampliará esa estructura, evitando un segundo menú y sin alterar simulación o referencias H3.
+El menú existente ofrece Presentation: CLASSIC / FIT. Es presentación, independiente del arte C01. Clásico sigue siendo el valor predeterminado. FIT ajusta misión, pausa, mapa general y ahora briefing/reclutamiento, con aspecto original y bandas. Requiere ventana y ratón alternativo desbloqueado; el menú lo indica. F11 mantiene el camino clásico.
 
-## Primer corte implementable
+Los cambios del menú se editan en una copia. SAVE prueba cambios de presentación o modo de ratón y pide KEEP/REVERT durante 15 segundos de reloj monotónico; Escape o expiración restauran. El candidato no se escribe antes de KEEP. Se rechaza confirmar si la ventana ha cambiado mientras se probaba (por ejemplo, F11 o resize). DEFAULTS también queda pendiente de SAVE. Cambiar plataforma se aplica al cerrar tras guardar, evitando modificar gráficos a mitad de una prueba de ventana.
 
-- Separar presentación «Clásica» y «Ajustada a ventana» de la selección artística. Ajustada no significa arte HD: conserva los gráficos originales, aspecto y bandas existentes.
-- Persistir la preferencia, con Clásica como valor predeterminado y recuperación ante valor ausente o inválido. Mantener los lanzadores de prueba como overrides explícitos.
-- Mostrar las condiciones actuales del ajuste: ventana, ratón absoluto desbloqueado y escenas admitidas. Mantener retorno coherente de dibujo y entrada al clásico ante incompatibilidad.
-- Integrar aplicar/cancelar con el snapshot del menú. Para cambios de modo o tamaño, probar temporalmente, confirmar en 15 segundos y restaurar si se cancela, expira o falla SDL. Persistir solo tras confirmación. El contador usa tiempo real, independiente de ticks de simulación.
-- Probar carga antigua, preferencias inválidas, cancelación, expiración, fallo de aplicación y correspondencia dibujo/ratón tras cambiar y restaurar. Comparar con H3 original y conservar F11.
+La transacción captura estado real de ventana (modo, tamaño, posición, maximización, resizable, escalas internas y ratón relativo), comprueba respuestas SDL y el estado resultante después de sincronizar. Invalida las coordenadas publicadas al aplicar/restaurar. Ante un fallo restaura; si también falla la restauración, muestra RESTORE FAILED, conserva el snapshot para reintentar e impide guardar. Los métodos históricos de F11 no se sustituyen.
 
-## Cortes posteriores de H5.6
+INI: `presentation=classic|fit` en `[openfodder]`, ausente/desconocido → clásico. Se preservan secciones desconocidas. Guardado a `openfodder.ini.pending` y reemplazo mediante SDL_RenamePath, comprobando errores de escritura; un fallo no trunca el último archivo confirmado. No es una garantía ante corte de alimentación. Flags SCREEN_TRANSFORM/FIT existentes siguen siendo overrides explícitos (incluido 0); no se modifican desde el menú. PROBAR_OPCIONES_H5.cmd limpia esos dos overrides y respeta las preferencias del INI sin forzar ventana/ratón. El lanzador anterior de resoluciones continúa aislando el ajuste.
 
-Enumeración de monitores/modos admitidos; resolución de ventana y pantalla sin bordes; exclusiva solo tras validación específica. Después, escala de interfaz, sincronización y límite de FPS separados de la velocidad del juego. No anunciar todas estas opciones como implementadas por el primer corte.
+La densidad de píxel de la ventana se solicita en su creación cuando FIT está activo. Tras guardar FIT por primera vez, reiniciar permite crear la ventana con esa propiedad; cambiarla en vivo no recrea el renderer ni las texturas.
 
-## Salida hacia arte
+## Briefing y reclutamiento
 
-Con presentación y retorno validados, evaluar densidad maestra del arte C (incluido cursor y hotspot), comparando nitidez y memoria hasta 4K. No producir una colección de sprites por resolución de monitor ni fijar aún 2x/4x. Base clásica, mejoras y C01 se conservan. PR abierto en borrador y sin fusionar.
+Las capturas de Miguel muestran briefing textual y colina de reclutamiento. Se reconocen mediante sus flags existentes y las superficies exactas (mSurface / mSurfaceRecruit). Se reutilizan el recorte original y el rectángulo de dibujo físico. Se publica la inversa solo después de presentar, con identidad de escena para rechazar coordenadas de otra pantalla. Se mantiene la entrega del cursor del sistema en bandas y se suprimen clics sostenidos desde ellas. Las pantallas de cargar/guardar con otra superficie, imágenes externas, vídeo y demás escenas no se incluyen automáticamente.
+
+## Validación
+
+- Compilación sintáctica de los tres .cpp modificados contra cabeceras SDL 3.4.0, sin mixer local.
+- Métodos reales de menú, INI y ventana extraídos, ASan/UBSan: edición/defaults sin escritura, INI antiguo/inválido/round trip/overrides, 14999/15000 ms y wraparound, KEEP tardío, cancelar/Escape, fallo de cada solicitud SDL, solicitud denegada, fallo de guardado, fallo y reintento de restauración, cambio externo, fullscreen/maximizado y posición.
+- La misma fixture se compila mediante CMake/CTest en Windows/Linux cuando Python está disponible (en ambas CI); las aserciones permanecen activas también en Release.
+- Métodos reales de render/present/mouse: 544.000 coordenadas clásicas, 228 ajustes de misión, 216 mapas, 72 transiciones de pausa y 144 ajustes briefing/reclutamiento. Prueba también preferencia INI sin flags, puntos de botones y cambio de escena.
+- Regresiones locales: 144 programaciones de pausa, 2.944 casos de capas; 1.536 raster, 1.964 escenas, 1.024 tiles y 72 minimapas.
+
+Son dobles SDL y pruebas de código, no prueba física de GPU/ratón. Las demos que saltan briefing/reclutamiento no prueban automáticamente esas pantallas en ejecución real. Sigue pendiente verificar el paquete nuevo y probar en Windows UHD/300 % las pantallas reportadas y el menú.
+
+## Siguiente
+
+Validar el paquete nuevo: opciones (guardar, dejar caducar, cancelar, reiniciar) y reclutamiento/briefing maximizado → misión. Después comparar muestras C a densidad suficiente, incluido cursor. Monitores, modos enumerados, exclusiva, interfaz independiente, sincronización y límite de FPS siguen pendientes de cortes posteriores H5.6; no se anuncian como implementados.
+
+Referencias de API: [SDL_SyncWindow](https://wiki.libsdl.org/SDL3/SDL_SyncWindow), [SDL_SetWindowFullscreen](https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreen), [SDL_RenamePath](https://wiki.libsdl.org/SDL3/SDL_RenamePath).

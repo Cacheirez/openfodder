@@ -73,3 +73,15 @@ El paquete 1447abb enlazado arriba contiene el arreglo de bordes, pero no este a
 ## Pausa ajustada — incremento 2.47
 
 Mapa y bordes aceptados por Miguel; no se pide repetir toda su validación. El paquete 6e98fda no contiene el nuevo ajuste de pausa. Cuando esté disponible el paquete nuevo aprobado, usar PROBAR_RESOLUCIONES_H5.cmd, maximizar, pulsar P y comprobar que la imagen pausada conserva tamaño/centrado. Restaurar/maximizar mientras está pausado, reanudar con P y probar selección/órdenes y bordes. Mantener 3840×2160/300 % habitual. F11 debe conservar su ruta clásica. Registrar VERSION.txt y cualquier cambio de posición o clic inesperado; la prueba física queda pendiente.
+
+## Opciones y pantallas previas — incremento 2.49
+
+Miguel ha aceptado la pausa del paquete 63c4d6f. Ese ZIP **no contiene** las opciones ni el nuevo ajuste de briefing/reclutamiento. Usar el paquete del incremento 2.49 solo después de verificar su CI.
+
+1. Extraer en carpeta nueva. Para opciones, ejecutar `PROBAR_OPCIONES_H5.cmd`; no usar el lanzador de resoluciones para evaluar persistencia, porque fuerza los flags.
+2. En OPTIONS → VID, seleccionar Presentation FIT y Window mode ON. En IN, Alternate mouse ON y Mouse locked OFF. SAVE abre KEEP/REVERT con 15 segundos.
+3. Primero dejar caducar y comprobar que vuelve a la configuración anterior sin guardarla. Repetir con REVERT/Escape. Después confirmar con KEEP y reiniciar para comprobar persistencia y crear la ventana con alta densidad de píxel.
+4. Para el defecto reportado: maximizar reclutamiento, comprobar imagen centrada, LOAD/SAVE y selección; entrar en briefing y continuar a misión. Comprobar cursor y clics al regresar. Hacerlo con los mismos datos/edición de las capturas: las demos pueden saltar estas pantallas.
+5. Cambiar a CLASSIC, confirmar y comprobar el retorno. F11 conserva el modo clásico existente. No hace falta repetir toda la aceptación anterior de mapa y pausa salvo que aparezca una regresión.
+
+Si aparece SAVE FAILED, se conserva el INI confirmado. Si aparece RESTORE FAILED, no se guarda el candidato y el menú conserva el estado anterior para reintentar la restauración. Enviar el log H5_OPCIONES.log junto con el paso exacto.

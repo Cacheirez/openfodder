@@ -34,6 +34,7 @@ class cWindow {
         std::mutex mScreenTransformMutex;
         openfodder::ScreenTransform mPendingScreenTransform, mPresentedScreenTransform;
         bool mPendingScreenClassic=false, mPresentedScreenClassic=false;
+        unsigned mPendingScreenScene=0, mPresentedScreenScene=0;
         std::atomic<bool> mMissionCursorInBand{false};
         bool mSystemMissionCursorShown=false;
 
@@ -55,6 +56,13 @@ class cWindow {
 							cWindow();
 		virtual				~cWindow();
 
+        struct PresentationState {
+            int x=0, y=0, w=0, h=0, scaler=1, previousScaler=1;
+            bool fullscreen=false, maximized=false, resizable=false, relative=false;
+        };
+        bool CapturePresentation(PresentationState& state) const;
+        bool ApplyPresentation(const PresentationState& state);
+        bool PreviewPresentation(bool windowed, int scale, bool resizable, bool relative);
 		void		        CalculateWindowSize();
 		int16				CalculateFullscreenSize();
 
@@ -62,6 +70,7 @@ class cWindow {
 
         void SetMissionCursorInBand(bool outside) { mMissionCursorInBand.store(outside); }
         bool IsMissionCursorInBand() const;
+        unsigned FittedInputScene() const;
         void InvalidateScreenTransform();
         openfodder::ScreenMouseResult MapMissionMouse(int x, int y, int16& mappedX, int16& mappedY);
         bool                Cycle();
