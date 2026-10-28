@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.45 · Revisión: 28 de octubre de 2026.**
+**Versión 2.46 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar CI de la corrección del mapa general en ventana maximizada y después comprobarla en Windows. F11 confirmado correcto por Miguel y conservado. Bordes del cursor aceptados; rediseño artístico del cursor incluido.**
+**Tarea activa: comprobar en Windows mapa maximizado → cierre → regreso a misión con el paquete verificado 6e98fda. Windows completo PASS; Linux supera la fixture específica y sigue su CI global. F11 y bordes del cursor conservados.**
+
+## Incremento 2.46 — paquete del mapa verificado
+
+[Estado y evidencia](H5_9_VALIDACION_6e98fda.json). Windows 40634973004 completo PASS. [ZIP verificado](https://github.com/Cacheirez/openfodder/actions/runs/40634973004/artifacts/12793692851): hash contrastado, 277 entradas, tres lanzadores, guía y 29 fases aprobadas sin omisiones. VERSION.txt 7c596ea identifica el commit temporal de prueba del PR, con árbol idéntico a 6e98fda; no implica fusión. Validación física del mapa pendiente en la edición que permite abrirlo; las demos de release no bastan. Linux global sigue en curso al registrar. Esta revisión es documental; no amplía escenas ni cambia código, H3 o arte.
+
 
 ## Incremento 2.45 — mapa centrado y ajustado a la ventana
 
