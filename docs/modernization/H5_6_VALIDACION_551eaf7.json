@@ -36,7 +36,14 @@
     "verdict": "PENDING",
     "scope": "New presentation options and maximized briefing/recruitment, then return to mission",
     "context": "User Windows 3840x2160 at 300 percent",
-    "limitation": "Assistant cannot perform physical Windows/GPU/mouse test. Pauses of 63c4d6f accepted by user, not new options or scenes."
+    "limitation": "Assistant cannot perform physical Windows/GPU/mouse test. Pauses of 63c4d6f accepted by user, not new options or scenes.",
+    "introduced_scenes": {
+      "verdict": "PASS_USER_REPORTED",
+      "date": "2026-10-28",
+      "quote": "solucionado el problema de las dos ventanas que se quedaban sin ampliar al maximizar",
+      "scope": "briefing y reclutamiento en ventana maximizada; opciones todavía no confirmadas",
+      "new_issue": "Heroes in Victory no se amplía; se solicita política común de todas las escenas y F11"
+    }
   },
   "pr": {
     "number": 1,

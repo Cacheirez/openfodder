@@ -4,11 +4,11 @@ Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la
 
 ## Comportamiento implementado
 
-El menú existente ofrece Presentation: CLASSIC / FIT. Es presentación, independiente del arte C01. Clásico sigue siendo el valor predeterminado. FIT ajusta misión, pausa, mapa general y ahora briefing/reclutamiento, con aspecto original y bandas. Requiere ventana y ratón alternativo desbloqueado; el menú lo indica. F11 mantiene el camino clásico.
+El menú existente ofrece Presentation: CLASSIC / FIT. Es presentación, independiente del arte C01. Clásico sigue siendo el valor predeterminado. Desde 2.51, FIT ajusta todas las rutas de escenas de [este inventario](H5_9_INVENTARIO_ESCENAS.md), con aspecto lógico original y bandas, tanto en ventana como en F11. Requiere ratón alternativo desbloqueado; el menú lo indica. CLASSIC conserva el camino original.
 
 Los cambios del menú se editan en una copia. SAVE prueba cambios de presentación o modo de ratón y pide KEEP/REVERT durante 15 segundos de reloj monotónico; Escape o expiración restauran. El candidato no se escribe antes de KEEP. Se rechaza confirmar si la ventana ha cambiado mientras se probaba (por ejemplo, F11 o resize). DEFAULTS también queda pendiente de SAVE. Cambiar plataforma se aplica al cerrar tras guardar, evitando modificar gráficos a mitad de una prueba de ventana.
 
-La transacción captura estado real de ventana (modo, tamaño, posición, maximización, resizable, escalas internas y ratón relativo), comprueba respuestas SDL y el estado resultante después de sincronizar. Invalida las coordenadas publicadas al aplicar/restaurar. Ante un fallo restaura; si también falla la restauración, muestra RESTORE FAILED, conserva el snapshot para reintentar e impide guardar. Los métodos históricos de F11 no se sustituyen.
+La transacción captura estado real de ventana (modo, tamaño, posición, maximización, resizable, escalas internas y ratón relativo), comprueba respuestas SDL y el estado resultante después de sincronizar. Invalida las coordenadas publicadas al aplicar/restaurar. Ante un fallo restaura; si también falla la restauración, muestra RESTORE FAILED, conserva el snapshot para reintentar e impide guardar. F11 conserva el cambio de modo SDL y ahora invalida coordenadas anteriores; en FIT la presentación usa el mismo criterio que en ventana.
 
 INI: `presentation=classic|fit` en `[openfodder]`, ausente/desconocido → clásico. Se preservan secciones desconocidas. Guardado a `openfodder.ini.pending` y reemplazo mediante SDL_RenamePath, comprobando errores de escritura; un fallo no trunca el último archivo confirmado. No es una garantía ante corte de alimentación. Flags SCREEN_TRANSFORM/FIT existentes siguen siendo overrides explícitos (incluido 0); no se modifican desde el menú. PROBAR_OPCIONES_H5.cmd limpia esos dos overrides y respeta las preferencias del INI sin forzar ventana/ratón. El lanzador anterior de resoluciones continúa aislando el ajuste.
 
@@ -37,3 +37,7 @@ Referencias de API: [SDL_SyncWindow](https://wiki.libsdl.org/SDL3/SDL_SyncWindow
 ## Verificación posterior — revisión 2.50
 
 Windows 40713267240 completo PASS; el paquete verificado contiene la corrección de ambas escenas. [Evidencia y descarga](H5_6_VALIDACION_551eaf7.json). Linux falló en un control que todavía exigía igualdad de todo OptionsMenu.cpp con la versión anterior a H5.6. Se actualiza mediante huellas exactas y verificación de las dos llamadas explícitas a fade, sin cambiar motor ni H3. 27.648 casos de superficie y transacciones de opciones PASS localmente. Cierre de la nueva CI global y prueba física de Windows pendientes; el paquete Windows 551eaf7 sigue siendo válido para probar estas funciones.
+
+## Ampliación 2.51
+
+La selección limitada de briefing/reclutamiento descrita arriba es histórica. Se sustituye por una política común en RenderAt/RenderShrunk; servicio (incluido Heroes in Victory), diálogos, opciones, créditos e imágenes también entran en FIT. Su implementación y límites de prueba se detallan en el inventario de escenas. El paquete 551eaf7 no contiene esta ampliación.

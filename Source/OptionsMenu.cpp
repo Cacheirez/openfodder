@@ -543,7 +543,7 @@ void cOptionsMenu::Draw() {
     if (mCurrentPage==0) {
         const bool overridden=std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM") || std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
         const char* hint=overridden ? "LAUNCHER OVERRIDES PRESENTATION" :
-            "FIT: WINDOW + FREE ALT MOUSE";
+            "FIT: FREE ALTERNATE MOUSE";
         g_Fodder->String_Print_Small_LeftInBox(hint,32,288,158);
     }
     // Bottom actions (fixed to bottom of the screen)

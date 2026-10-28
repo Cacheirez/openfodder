@@ -85,3 +85,7 @@ Miguel ha aceptado la pausa del paquete 63c4d6f. Ese ZIP **no contiene** las opc
 5. Cambiar a CLASSIC, confirmar y comprobar el retorno. F11 conserva el modo clásico existente. No hace falta repetir toda la aceptación anterior de mapa y pausa salvo que aparezca una regresión.
 
 Si aparece SAVE FAILED, se conserva el INI confirmado. Si aparece RESTORE FAILED, no se guarda el candidato y el menú conserva el estado anterior para reintentar la restauración. Enviar el log H5_OPCIONES.log junto con el paso exacto.
+
+## Todas las escenas y F11 — incremento 2.51
+
+Briefing/reclutamiento maximizados del ZIP 551eaf7 aceptados por Miguel. Ese ZIP aún no incluye el ajuste de Heroes in Victory ni la política común. Con el paquete nuevo verificado, usar PROBAR_ESCENAS_H5.cmd para el recorrido sin saltar intros. Ver [inventario y prueba por recorrido](H5_9_INVENTARIO_ESCENAS.md). En FIT, F11 ahora usa las mismas proporciones y centrado que la ventana; CLASSIC conserva el comportamiento original. Opciones/persistencia se prueban con PROBAR_OPCIONES_H5.cmd. No dar por validados finales, vídeos o ediciones no recorridos.

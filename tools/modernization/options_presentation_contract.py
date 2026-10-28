@@ -7,7 +7,7 @@ import hashlib
 from check_final_timer_equivalence import function
 
 CLASSIC = '592f2e31a2a97c3f6921246b27c5b7df48116bfc708dd278e47c0aa77913f212'
-INTEGRATED = '229c486e6e7da879d617415951d6cb69f7540c68d3441e8ebab6c98d07e5f325'
+INTEGRATED = '3594f407ddcef6d9b2509f5cf1e7b4576d000bf13d09871a0b98c6a4bafe7a03'
 EFFECTS = ('->Save(', '->Restore(', '->palette_FadeTowardNew(', '->surfaceSetToPaletteNew(')
 
 def verify_options_presentation(current, original):

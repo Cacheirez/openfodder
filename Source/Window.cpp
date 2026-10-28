@@ -479,10 +479,9 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
         g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview &&
         !g_Fodder->mInterruptCallback && !pImage->isLoadedImage();
     const unsigned inputScene=FittedInputScene();
-    const bool fitBriefing=fitFlag && inputScene==2 && pImage==g_Fodder->mSurface && !pImage->isLoadedImage();
-    const bool fitRecruit=fitFlag && inputScene==3 && pImage==g_Fodder->mSurfaceRecruit && !pImage->isLoadedImage();
-    // Explicit scene/surface pairs only; dialogs, loaded images and F11 stay classic.
-    if ((pMission || fitPause || fitBriefing || fitRecruit) && flag && mWindowMode &&
+    // FIT is a presentation policy for every RenderAt scene, not a list of
+    // named screens. Preserve each source crop and share its inverse with GUI.
+    if ((pMission || fitFlag) && flag && (mWindowMode || fitFlag) &&
         g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked)
     {
         int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
@@ -529,8 +528,9 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
     std::lock_guard<std::mutex> lock(mScreenTransformMutex);
     // A fitted pause never publishes a world-input snapshot. On resume input
     // stays blocked until a fresh mission frame has actually been presented.
-    mPendingScreenTransform = drawn && (pMission || fitBriefing || fitRecruit) ? transform : openfodder::ScreenTransform{};
-    mPendingScreenScene = drawn ? (pMission ? 1 : fitBriefing ? 2 : fitRecruit ? 3 : 0) : 0;
+    const bool inputAllowed=inputScene!=0 && (inputScene!=1 || pMission);
+    mPendingScreenTransform = drawn && inputAllowed ? transform : openfodder::ScreenTransform{};
+    mPendingScreenScene = drawn && inputAllowed ? inputScene : 0;
     mPendingScreenClassic = drawn && !transform.valid;
 }
 
@@ -561,31 +561,42 @@ void cWindow::RenderShrunk( cSurface* pImage ) {
 		}
 	}
 
-    // Only the overview in the optional fitted window. Keep F11 and other
-    // shrink presentations unchanged, including the legacy overview aspect.
+    const SDL_FRect classicDestination=Dest;
+    openfodder::ScreenTransform transform;
     const bool screen=g_Fodder->mStartParams->ScreenTransformEnabled();
     const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
-    if(mWindowMode && g_Fodder->mPhase_In_Progress && g_Fodder->mPhase_ShowMapOverview &&
-       pImage==g_Fodder->mSurfaceMapOverview &&
-       screen && fit &&
-       g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked) {
-        int pw=0,ph=0,lw=0,lh=0;
+    if(screen && fit && g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked) {
+        int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
         float sx=0,sy=0;
         SDL_Rect viewport{};
         SDL_RendererLogicalPresentation logicalMode=SDL_LOGICAL_PRESENTATION_DISABLED;
-        if(SDL_GetRenderOutputSize(mRenderer,&pw,&ph) && pw>0 && ph>0 &&
+        if(SDL_GetWindowSize(mWindow,&ww,&wh) && SDL_GetRenderOutputSize(mRenderer,&pw,&ph) && pw>0 && ph>0 &&
            !SDL_GetRenderTarget(mRenderer) && SDL_GetRenderScale(mRenderer,&sx,&sy) && sx==1 && sy==1 &&
            SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
            viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
            SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
            logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED) {
+            // Shrink presentations retain their classic logical aspect (the
+            // square overview is intentionally shown in the legacy screen aspect).
             const auto rect=openfodder::ScreenTransform::FitSource(pw,ph,{0,0,Dest.w,Dest.h});
             if(openfodder::ScreenTransform::RectValid(rect))
                 Dest={float(rect.x),float(rect.y),float(rect.w),float(rect.h)};
+            // GUI overlays are in screen coordinates, not PNG/map texel coordinates.
+            transform=openfodder::ScreenTransform::FromDraw(ww,wh,pw,ph,
+                {0,0,double(mScreenSize.mWidth),double(mScreenSize.mHeight)},
+                {Dest.x,Dest.y,Dest.w,Dest.h});
         }
     }
+    if(!transform.valid) Dest=classicDestination;
+    const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
+    const unsigned inputScene=FittedInputScene();
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    // Never publish a world inverse from an overview or a shrink presentation.
+    const bool inputAllowed=inputScene>1;
+    mPendingScreenTransform=drawn && inputAllowed ? transform : openfodder::ScreenTransform{};
+    mPendingScreenScene=drawn && inputAllowed ? inputScene : 0;
+    mPendingScreenClassic=drawn && !transform.valid;
 
-	SDL_RenderTexture( mRenderer, pImage->GetTexture(), &Src, &Dest);
 }
 
 bool cWindow::isFullscreen() const {
@@ -619,6 +630,7 @@ bool cWindow::isGrabbed() const {
 }
 
 void cWindow::ToggleFullscreen() {
+    InvalidateScreenTransform();
 
 	if (mWindowMode) {
 
@@ -775,7 +787,7 @@ openfodder::ScreenMouseResult cWindow::MapMissionMouse(int x,int y,int16& mapped
     return ScreenMouseResult::Classic; // Browser presentation lifecycle is a separate adapter.
 #endif
     const bool flag=g_Fodder->mStartParams->ScreenTransformEnabled();
-    if (!flag || !mWindowMode ||
+    if (!flag || (!mWindowMode && !g_Fodder->mStartParams->ScreenFitEnabled()) ||
         !g_Fodder->mStartParams->mMouseAlternative || g_Fodder->mParams->mMouseLocked ||
         !FittedInputScene())
         return ScreenMouseResult::Classic;
@@ -809,20 +821,31 @@ openfodder::ScreenMouseResult cWindow::MapMissionMouse(int x,int y,int16& mapped
 
 // Used by cursor capture on the simulation thread: no SDL operations here.
 unsigned cWindow::FittedInputScene() const {
+    const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
     if (g_Fodder->mPhase_In_Progress) {
-        return !g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview &&
-            !g_Fodder->mInterruptCallback ? 1 : 0;
+        if(g_Fodder->mPhase_ShowMapOverview || (g_Fodder->mPhase_Paused && !g_Fodder->mInterruptCallback)) return 0;
+        if(!g_Fodder->mInterruptCallback) return 1;
+        return fit ? 4 : 0; // In-mission dialog: GUI coordinates, never world input.
     }
-    if (!g_Fodder->mStartParams->ScreenFitEnabled()) return 0;
+    if (!fit) return 0;
     if (g_Fodder->mBriefing_Screen_Active && !g_Fodder->mInterruptCallback) return 2;
     if (g_Fodder->mRecruit_Screen_Active && g_Fodder->mInterruptCallback) return 3;
-    return 0;
+    return 4; // Service, intro, selection, save/load, options, credits, endings.
 }
 
 bool cWindow::IsMissionCursorInBand() const {
-    return mMissionCursorInBand.load() && mWindowMode &&
+    return mMissionCursorInBand.load() && (mWindowMode || g_Fodder->mStartParams->ScreenFitEnabled()) &&
         g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked &&
         !g_Fodder->mParams->mDemoPlayback && FittedInputScene()!=0;
+}
+
+// Video has no logical GUI hitboxes; keep raw click-to-skip and discard an
+// earlier menu/world inverse before the external texture is presented.
+void cWindow::BeginVideoPresentation() {
+    InvalidateScreenTransform();
+    SetMissionCursorInBand(false);
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    mPendingScreenClassic=true;
 }
 
 // Options-only transaction. F11 and the classic sizing functions are unchanged.

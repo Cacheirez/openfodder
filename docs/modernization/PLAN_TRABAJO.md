@@ -1,8 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.50 · Revisión: 28 de octubre de 2026.**
+**Versión 2.51 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: validar en Windows el paquete verificado de opciones y briefing/reclutamiento; cerrar Linux global tras actualizar el control exacto del menú. Windows 551eaf7 completo PASS; pausa anterior aceptada. Comparación visual de densidad posterior a esta aceptación.**
+**Tarea activa: verificar la política FIT común para todas las rutas de escenas en ventana/F11, incluido Heroes in Victory, con inversa GUI y retorno clásico. Briefing/reclutamiento maximizados aceptados por Miguel; opciones y ampliación común pendientes de prueba física. Comparación 8×/12× después.**
+
+## Incremento 2.51 — inventario de escenas y FIT común en ventana/F11
+
+Miguel acepta las dos ventanas previas y comunica Heroes in Victory sin ajustar. [Inventario completo y criterio](H5_9_INVENTARIO_ESCENAS.md): política central en RenderAt/RenderShrunk para no excluir servicio, menús, cargar/guardar, opciones, créditos, intros o finales. FIT ahora conserva el aspecto también en F11; CLASSIC permanece original. Vídeo conserva aspecto propio y clic para saltar; ya no hereda una inversa GUI anterior. Nuevo lanzador PROBAR_ESCENAS_H5.cmd sin --skipintro.
+
+864 combinaciones nuevas de GUI/F11/imágenes y auditoría de todas las rutas SDL PASS local; regresiones de misión, mapa, pausa, briefing/reclutamiento, superficies y opciones PASS. Windows y Linux de 263f897 completos PASS (runs 40717230013 y 40717229801); Linux incluye diagnósticos ASan/UBSan/LSan y TSan declarados. Esta ampliación necesita su propia CI y prueba visual. No confundir el paquete anterior con uno que contenga Heroes/F11 común. Base clásica, mejoras, C01, H3 y PR en borrador sin fusionar conservados.
 
 ## Incremento 2.50 — paquete Windows verificado y control Linux ajustado
 

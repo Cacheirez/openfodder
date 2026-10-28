@@ -72,6 +72,7 @@ class cWindow {
         bool IsMissionCursorInBand() const;
         unsigned FittedInputScene() const;
         void InvalidateScreenTransform();
+        void BeginVideoPresentation();
         openfodder::ScreenMouseResult MapMissionMouse(int x, int y, int16& mappedX, int16& mappedY);
         bool                Cycle();
 
