@@ -1,0 +1,47 @@
+{
+  "code_commit": "551eaf76321309282941c88487d0ab66b593992b",
+  "date": "2026-10-28",
+  "windows": {
+    "run": 40713267240,
+    "job": 122903979100,
+    "verdict": "PASS",
+    "ctest_passed": 7,
+    "presentation_options_transaction": "PASS",
+    "artifact": 12828685981,
+    "artifact_url": "https://github.com/Cacheirez/openfodder/actions/runs/40713267240/artifacts/12828685981",
+    "zip_sha256": "ce895248f639e03711341b2b31b88970b9bb65ee0389e7ea994006c317065fff",
+    "executable_sha256": "ce74845aefcb898c0b08691514b4858bcf5ba51fbd835f6be238cfebfbe0ff6f",
+    "entries": 278,
+    "version": "0e6faefa6aeffd25d5533fbc64a7b4844f54ef78",
+    "version_note": "Temporary PR test merge with identical tree to code commit; PR remains unmerged",
+    "tree": "d0b83774c2eaac857f0519ece6eb07c508f5bf3f",
+    "phases_passed": 29,
+    "skipped": 0,
+    "guide": "2.49",
+    "options_launcher": "verified: clears screen overrides; preserves INI preferences",
+    "resolution_launcher": "verified: forces transform/fit for isolated scene test"
+  },
+  "linux": {
+    "run": 40713267277,
+    "job": 122903978743,
+    "verdict": "FAIL",
+    "failed_step": "H4.1 - retained effective RGB palette and owned destinations",
+    "cause": "Whole OptionsMenu.cpp equality with pre-H5.6 menu in check_surface_draw_equivalence.py",
+    "scope": "Build, CTest and early fitted pause/H3 passed; later global checks skipped",
+    "fix": "Exact classic/integrated menu fingerprints plus verification of both explicit fade call sites, scoped only to OptionsMenu.cpp. No engine or H3 changes.",
+    "local_validation": "PASS: 27648 surface cases; menu mutation rejection; presentation transaction fixture",
+    "new_global_ci": "PENDING"
+  },
+  "manual_windows": {
+    "verdict": "PENDING",
+    "scope": "New presentation options and maximized briefing/recruitment, then return to mission",
+    "context": "User Windows 3840x2160 at 300 percent",
+    "limitation": "Assistant cannot perform physical Windows/GPU/mouse test. Pauses of 63c4d6f accepted by user, not new options or scenes."
+  },
+  "pr": {
+    "number": 1,
+    "state": "open",
+    "draft": true,
+    "merged": false
+  }
+}

@@ -33,3 +33,7 @@ Son dobles SDL y pruebas de código, no prueba física de GPU/ratón. Las demos 
 Validar el paquete nuevo: opciones (guardar, dejar caducar, cancelar, reiniciar) y reclutamiento/briefing maximizado → misión. Después comparar muestras C a densidad suficiente, incluido cursor. Monitores, modos enumerados, exclusiva, interfaz independiente, sincronización y límite de FPS siguen pendientes de cortes posteriores H5.6; no se anuncian como implementados.
 
 Referencias de API: [SDL_SyncWindow](https://wiki.libsdl.org/SDL3/SDL_SyncWindow), [SDL_SetWindowFullscreen](https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreen), [SDL_RenamePath](https://wiki.libsdl.org/SDL3/SDL_RenamePath).
+
+## Verificación posterior — revisión 2.50
+
+Windows 40713267240 completo PASS; el paquete verificado contiene la corrección de ambas escenas. [Evidencia y descarga](H5_6_VALIDACION_551eaf7.json). Linux falló en un control que todavía exigía igualdad de todo OptionsMenu.cpp con la versión anterior a H5.6. Se actualiza mediante huellas exactas y verificación de las dos llamadas explícitas a fade, sin cambiar motor ni H3. 27.648 casos de superficie y transacciones de opciones PASS localmente. Cierre de la nueva CI global y prueba física de Windows pendientes; el paquete Windows 551eaf7 sigue siendo válido para probar estas funciones.

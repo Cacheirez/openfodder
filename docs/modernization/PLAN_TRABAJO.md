@@ -1,8 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.49 · Revisión: 28 de octubre de 2026.**
+**Versión 2.50 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: cerrar CI de opciones de presentación y ajuste de briefing/reclutamiento. Pausa aceptada manualmente por Miguel; mapa y bordes ya aceptados. Evaluación técnica inicial de densidad preparada, sin decisión artística definitiva.**
+**Tarea activa: validar en Windows el paquete verificado de opciones y briefing/reclutamiento; cerrar Linux global tras actualizar el control exacto del menú. Windows 551eaf7 completo PASS; pausa anterior aceptada. Comparación visual de densidad posterior a esta aceptación.**
+
+## Incremento 2.50 — paquete Windows verificado y control Linux ajustado
+
+[Evidencia](H5_6_VALIDACION_551eaf7.json). Windows 40713267240 completo PASS, siete CTest incluida la transacción de opciones, ZIP 12828685981 verificado por SHA256, ejecutable coincidente con PRUEBAS.json, 29 fases sin omisiones, 278 entradas y guía 2.49. Incluye las correcciones de briefing/reclutamiento y ambos lanzadores. VERSION.txt es el merge temporal de prueba del PR, con árbol idéntico a 551eaf7; no implica fusión.
+
+Linux 40713267277 falla en una igualdad de archivo completo del menú contra la base anterior a H5.6. Se incorpora una excepción exacta por huellas de ambas versiones, verificando también las dos llamadas directas a fade en su método y condiciones; el resto de comparaciones permanece intacto. No cambia el motor, las referencias H3 ni el contenido jugable del ZIP. Prueba local del control corregido: 27.648 casos de superficie PASS; rechaza mutaciones no revisadas. Nueva CI global pendiente. Prueba física de opciones e introducciones en Windows pendiente de Miguel; densidad visual después.
 
 ## Incremento 2.49 — pausa aceptada, opciones y pantallas previas
 
