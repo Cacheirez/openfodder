@@ -1,8 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.51 · Revisión: 28 de octubre de 2026.**
+**Versión 2.52 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: verificar la política FIT común para todas las rutas de escenas en ventana/F11, incluido Heroes in Victory, con inversa GUI y retorno clásico. Briefing/reclutamiento maximizados aceptados por Miguel; opciones y ampliación común pendientes de prueba física. Comparación 8×/12× después.**
+
+## Incremento 2.52 — CI y paquete de escenas verificados
+
+[Evidencia e18b05b](H5_9_VALIDACION_e18b05b.json): Windows 40760804335 y Linux 40760804513 completos PASS, incluidos los diagnósticos declarados y las regresiones H3/C01. Siete CTest Windows, incluida transacción de opciones; 29 fases sin omisiones. [ZIP 12849036551](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551) verificado por SHA256 y hash del ejecutable, 279 entradas, nuevo PROBAR_ESCENAS_H5.cmd y PROBAR_OPCIONES_H5.cmd. VERSION identifica el merge temporal de prueba b87c5e1, con árbol idéntico a e18b05b; el PR sigue sin fusionar.
+
+Pendiente prueba física de escenas comunes, Heroes in Victory y opciones en Windows UHD/300 %. Recorrido: introducciones → reclutamiento/briefing → misión → pausa/mapa → servicio/ascensos → siguiente misión, alternando maximizar/F11; después persistencia, KEEP/REVERT y retorno CLASSIC. No marcar finales o ediciones no visitadas como aceptados. Comparación 8×/12× tras esta aceptación. Este incremento solo registra evidencia y guía; no cambia motor ni paquete.
 
 ## Incremento 2.51 — inventario de escenas y FIT común en ventana/F11
 

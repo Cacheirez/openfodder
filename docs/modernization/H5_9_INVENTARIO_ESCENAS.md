@@ -44,7 +44,7 @@ Métodos reales con dobles SDL, ASan/UBSan: 864 combinaciones GUI común, con/si
 
 Se mantienen 544.000 coordenadas clásicas, 228 casos de misión, 216 mapas, 72 transiciones de pausa y 144 de briefing/reclutamiento; las expectativas de F11/FIT y otras superficies se amplían deliberadamente. Regresiones locales: 27.648 superficies (paleta/Save/Restore), transacción real de opciones, 1.536 raster/1.964 escenas/1.024 tiles/72 minimapas. Compilación sintáctica de Window/Options contra SDL 3.4.0.
 
-Cobertura de rutas y geometría no significa validación visual de todas las ediciones: disponibilidad de pantallas depende de datos, demos, bajas/ascensos y final de campaña. No se ha ejecutado un escritorio Windows por el asistente. CI nueva y prueba visual del paquete nuevo pendientes al publicar. La comparación 8×/12× va después de comprobar este recorrido y las opciones.
+Cobertura de rutas y geometría no significa validación visual de todas las ediciones: disponibilidad de pantallas depende de datos, demos, bajas/ascensos y final de campaña. No se ha ejecutado un escritorio Windows por el asistente. CI de e18b05b cerrada PASS en Windows/Linux; [paquete verificado](H5_9_VALIDACION_e18b05b.json). Prueba visual del paquete nuevo pendiente. La comparación 8×/12× va después de comprobar este recorrido y las opciones.
 
 ## Prueba en Windows
 
