@@ -33,3 +33,7 @@ Nueva CI pendiente al publicar. No reutilizar el paquete 45de47a4 como si contuv
 ## Cierre automático y entrega — 28-10-2026
 
 Windows 40588401900 y Linux 40588409211 aprobados completamente para 1447abb. [Evidencia y paquete](H5_9_VALIDACION_1447abb.json). ZIP descargado e inspeccionado en la sesión anterior; hash contrastado y VERSION.txt idéntico al commit corregido. Disponibilidad confirmada de nuevo. La guía enlaza el artefacto corregido. Queda repetir la prueba maximizada de ambos bordes al 300 % en el equipo de Miguel; no se declara resuelta físicamente la incidencia hasta esa observación. PR abierto y sin fusionar.
+
+## Aceptación física — 28-10-2026
+
+Miguel confirma: «Ya está corregido el problema, probados con éxito los puntos 4 y 5». Se cierra la incidencia de cruce lateral del cursor y pulsación desde bandas en el alcance probado. [Nueva incidencia del mapa y requisito de cursor artístico](H5_9_MAPA_GENERAL_Y_ACEPTACION_BORDES.md). No extrapolar esta aceptación al mapa general, fullscreen u otras escenas.

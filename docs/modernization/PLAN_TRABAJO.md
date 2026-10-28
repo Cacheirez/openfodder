@@ -1,8 +1,13 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.43 · Revisión: 28 de octubre de 2026.**
+**Versión 2.44 · Revisión: 28 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: repetir la prueba maximizada UHD/300 % con el paquete corregido 1447abb. CI Windows/Linux completa PASS y ZIP verificado. No ampliar escenas hasta revisar esa observación física.**
+**Tarea activa: resolver el escalado del mapa general tras precisar ventana maximizada frente a fullscreen F11. Bordes del cursor aceptados por Miguel; rediseño artístico del cursor incluido expresamente.**
+
+## Incremento 2.44 — bordes aceptados, mapa pendiente y cursor artístico
+
+Miguel confirma corregida la incidencia y aprobados los puntos 4 y 5. [Registro y nueva incidencia](H5_9_MAPA_GENERAL_Y_ACEPTACION_BORDES.md): el mapa aparece pequeño arriba a la izquierda al abrirlo a pantalla completa. Localizada la ruta RenderShrunk, que conserva tamaño heredado y origen (0,0) en ventana; falta confirmar el modo de pantalla concreto. El cursor se incluye en H6/H7 con estados, punto activo y legibilidad a distintas escalas. Sin cambios de motor en esta revisión. Base clásica, mejoras y PR sin fusionar conservados.
+
 
 ## Incremento 2.43 — cierre de CI y paquete corregido verificado
 
@@ -266,7 +271,7 @@ Antes de ampliar la captura semántica, cruzar tipos de motor + SPT de todas las
 - [ ] **H7.3 — Asistente:** completar soldados y enemigos con todas las direcciones y estados usados: desplazamiento, disparo, daño y muerte.
 - [ ] **H7.4 — Asistente:** completar edificios, objetos interactivos, proyectiles, explosiones y las variantes destruidas necesarias.
 - [ ] **H7.5 — Asistente:** incorporar sombras y efectos cosméticos sin gastar plazas de sprites ni aleatoriedad de la simulación.
-- [ ] **H7.6 — Asistente:** renovar lo imprescindible de panel, selección, cursor y textos, sin perder información ni alterar zonas de clic.
+- [ ] **H7.6 — Asistente:** rediseñar panel, selección, cursor y textos, sin perder información ni alterar zonas de clic. **Requisito explícito de Miguel (2.44):** cursor artístico completo en dirección C, con variantes/estados, punto activo conservado, contraste, tamaño visual adaptado a resolución/DPI y retorno al original; no se limita a renovar personajes, objetos y fondos.
 - [ ] **H7.7 — Asistente:** verificar recortes por agua, superposiciones, anclajes y congruencia entre aspecto y colisiones; comparar replays y rendimiento.
 - [ ] **H7.8 — Miguel:** jugar la fase y valorar legibilidad, estilo y respuesta. Registrar cambios solicitados por separado de errores funcionales.
 
