@@ -1,10 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.54 · Revisión: 29 de octubre de 2026.**
+**Versión 2.55 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: corregir y verificar la repetición de clics en opciones. Escenas e18b05b aceptadas por Miguel; opciones pendientes de nuevo paquete y reprueba. Comparación C 8×/12× después.**
+**Tarea activa: avanzar tareas independientes de la validación manual por instrucción de Miguel. Corrección de opciones a1c8856 en CI; escenas aceptadas. Visor técnico C01 8×/12× preparado, sin fijar densidad ni cambiar el motor.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.55 — preparación independiente de densidades
+
+Miguel autoriza continuar sin esperar a su validación de opciones. [Visor autónomo C01](../../assets/modernization/density-review/README.md): mismo maestro, promedio premultiplicado, recorte/caja/anclaje y tamaño físico para 8×/12×; salidas 4:3/16:9, PC/Amiga, DPR compensado y ampliación de inspección separada. No genera nuevos dibujos ni toca Source. Equivalencia exacta 1× con header nativo y 96 combinaciones geométricas PASS. Builder verifica SHA del original y genera HTML autónomo reproducible. Nueva CI específica comprueba modelo, bundle y navegador/capturas; pendiente al publicar. La instalación local de Chromium no pudo completarse por descarga incompleta, por lo que no se afirma inspección visual local.
+
+Esto adelanta preparación y evaluación técnica; no elige densidad ni da por aceptadas opciones. Opciones a1c8856 requieren su paquete y prueba manual. Después de revisar resultados del comparador, decidir densidad y diseñar composición HD antes de animaciones masivas; el motor sigue componiendo C01 a 16×14.
 
 ## Incremento 2.54 — escenas aceptadas y clic único en opciones
 

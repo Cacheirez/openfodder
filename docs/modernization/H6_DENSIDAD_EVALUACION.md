@@ -1,6 +1,6 @@
 # H6 — evaluación inicial de densidad del arte C
 
-28-10-2026. Evaluación geométrica, no aceptación visual ni decisión definitiva. C — Pintado moderado se conserva; el cursor también forma parte del rediseño. Antes de producir animaciones, validar el paquete de opciones y las pantallas previas a misión.
+28-10-2026. Evaluación geométrica, no aceptación visual ni decisión definitiva. C — Pintado moderado se conserva; el cursor también forma parte del rediseño. No producir animaciones todavía. Actualización 29-10: Miguel autoriza avanzar en tareas independientes mientras prueba opciones; escenas aceptadas. Preparación técnica y comparación instrumental permitidas, elección visual pendiente.
 
 La geometría lógica permanece 320×200 PC / 320×225 Amiga. El ajuste usa `min(ancho físico/320, alto físico/alto lógico)`. La escala Windows del 300 % no se vuelve a multiplicar: el renderer ya informa píxeles físicos. Los recursos se eligen por densidad, no por cada resolución de monitor; un maestro puede generar niveles de detalle compartidos por fondos y sprites. La resolución nativa de dibujo y la ventana son conceptos distintos.
 
@@ -32,3 +32,9 @@ Conclusión técnica provisional: 2×/4× no garantizan conservar detalle pintad
 C01 actual se reduce a 16×14 y se compone en la superficie nativa. Aumentar solo el PNG no producirá detalle HD: hace falta un destino de presentación de mayor resolución conservando geometría, orden, recorte y anclajes lógicos. Mantener el retorno clásico por recurso no disponible o no compatible. El cursor requiere su propio hotspot, estados y comprobación sobre fondos claros/oscuros, sin cambiar la precisión del ratón.
 
 Próxima comparación visual: misma pose, mismo encuadre y escala lógica, tres salidas físicas; revisar silueta, rostro/rifle, bordes alfa, pies/sombra, oclusión y estabilidad al moverse. Para fondos, comenzar por un recorte/tile de referencia a densidad equivalente, no redibujar todavía todos los mapas. No se han generado nuevas imágenes en esta evaluación.
+
+## Avance 2.55 — comparación técnica autónoma
+
+[Visor 8×/12× y reproducción](../../assets/modernization/density-review/README.md). Carga el original sin modificarlo y prepara ambas densidades en memoria con el promedio premultiplicado del piloto. Modelo 1× contrastado exactamente con los 224 píxeles del header nativo; 96 combinaciones de salida/plataforma/DPR y pruebas alfa/anclaje aprobadas localmente. HTML autónomo generado de forma reproducible; no requiere instalar herramientas para abrirlo.
+
+CI independiente añade prueba de navegador y capturas, pendiente al publicar. La instalación local de Chromium falló al recibir un archivo de descarga incompleto; no se declara inspección visual local. La selección definitiva de densidad y la valoración visual son de Miguel; avanzar esta herramienta no las sustituye. Fondos neutros de prueba, no jungla de producción. Mantener arte original y cuadro lógico; ninguna modificación de Source ni del piloto integrado.

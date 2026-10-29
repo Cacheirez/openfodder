@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C01 · Comparación técnica 8× / 12×</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101b19;color:#e8eee6;font:16px/1.55 system-ui,sans-serif}main{max-width:1100px;margin:auto;padding:32px 24px}h1{font-size:clamp(25px,4vw,40px);line-height:1.15;margin:8px 0 16px}h2{font-size:20px;margin:0}p{max-width:850px;color:#bdcbc2}.eyebrow{color:#b7d881;font-size:13px;letter-spacing:.12em;text-transform:uppercase}a{color:#c9e59c}label{display:flex;flex-direction:column;gap:5px;font-size:13px}select,button{background:#23332c;color:#eef5e9;border:1px solid #62725c;border-radius:6px;padding:10px;font:inherit}button{cursor:pointer}.controls{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{background:#1b2923;border:1px solid #405141;border-radius:10px;overflow:hidden}.card header{padding:18px 20px;border-bottom:1px solid #405141}.caption{font-size:13px;color:#b4c3b6}.view{padding:20px;min-height:200px;display:flex;justify-content:center;align-items:center;overflow:auto}.inspect{background:#14201a;min-height:250px}canvas{flex:none;display:block}.notice{border-left:3px solid #b7d881;padding:10px 16px;background:#1b2923}#status{color:#d9e7a9}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:10px;text-align:left;border-bottom:1px solid #405141}footer{margin-top:26px;font-size:13px;color:#bdcbc2}@media(max-width:660px){.cards{grid-template-columns:1fr}main{padding:20px 12px}}
+</style>
+<main>
+<div class="eyebrow">H6 · Herramienta de revisión · Estilo C elegido</div>
+<h1>Una pose. Dos densidades.</h1>
+<p>Compara detalle a igual tamaño lógico y físico. Ambas vistas proceden del mismo PNG C01, con el mismo recorte, transparencia y anclaje. Esto es una simulación de presentación, no una captura del juego ni una decisión artística final.</p>
+<div class="controls">
+<label>Salida física del juego<select id="resolution"><option value="1280,720">1280 × 720 · 16:9</option><option value="1920,1080">1920 × 1080 · 16:9</option><option value="2560,1440">2560 × 1440 · 16:9</option><option value="3840,2160" selected>3840 × 2160 · 4K UHD</option><option value="640,480">640 × 480 · 4:3</option><option value="1280,960">1280 × 960 · 4:3</option><option value="1920,1440">1920 × 1440 · 4:3</option><option value="2880,2160">2880 × 2160 · 4:3</option></select></label>
+<label>Geometría clásica<select id="platform"><option value="200">PC · 320 × 200</option><option value="225">Amiga · 320 × 225</option></select></label>
+<label>Fondo de inspección<select id="background"><option value="ground">Suelo neutro</option><option value="light">Claro</option><option value="dark">Oscuro</option><option value="checker">Cuadrícula alfa</option></select></label>
+<label>Vista ampliada<select id="zoom"><option value="2">2×</option><option value="4" selected>4×</option></select></label>
+<label>Guías<select id="guides"><option value="on">Cuadro y pies</option><option value="off">Sin guías</option></select></label>
+</div>
+<p id="status" role="status">Cargando el C01 original…</p>
+<div class="cards">
+<section class="card"><header><h2>8× · 128 × 112</h2><div class="caption">57.344 bytes RGBA por pose</div></header><div class="view"><canvas id="real8" aria-label="Densidad 8 a tamaño físico"></canvas></div><div class="caption" style="padding:0 20px 12px">Tamaño físico calculado · no ampliado para llenar la tarjeta</div><div class="view inspect"><canvas id="zoom8" aria-label="Inspección ampliada de densidad 8"></canvas></div></section>
+<section class="card"><header><h2>12× · 192 × 168</h2><div class="caption">129.024 bytes RGBA por pose · 2,25× memoria de 8×</div></header><div class="view"><canvas id="real12" aria-label="Densidad 12 a tamaño físico"></canvas></div><div class="caption" style="padding:0 20px 12px">Tamaño físico calculado · no ampliado para llenar la tarjeta</div><div class="view inspect"><canvas id="zoom12" aria-label="Inspección ampliada de densidad 12"></canvas></div></section>
+</div>
+<p id="geometry"></p>
+<div class="notice">La vista superior compensa el <code>devicePixelRatio</code> del navegador: no vuelve a multiplicar el tamaño por el 300 % de Windows. Una captura reducida o el reescalado del escritorio remoto puede cambiar el tamaño observado. El navegador y SDL pueden filtrar de forma distinta.</div>
+<h2 style="margin-top:26px">Qué revisar después</h2>
+<table><tr><th>Detalle</th><th>Criterio</th></tr><tr><td>Casco, cara y rifle</td><td>Legibles en la vista superior, no solo al ampliar.</td></tr><tr><td>Transparencia</td><td>Sin halo claro u oscuro sobre distintos fondos.</td></tr><tr><td>Pies y tamaño</td><td>Mismo anclaje y misma huella en ambas densidades.</td></tr><tr><td>Coste</td><td>12× ocupa 2,25 veces más por pose; no estima memoria del juego completo.</td></tr></table>
+<footer>Sin sombra nueva, animación, oclusión ni terreno de producción. La caja de contenido mantiene la aproximación del piloto nativo; las proporciones todavía pueden revisarse. El juego continúa componiendo C01 en 16×14. Este visor no activa arte HD en el motor.<br><a href="../../../assets/modernization/concepts/README.md">Bocetos originales</a> · <a href="../../../docs/modernization/H6_DENSIDAD_EVALUACION.md">Contrato y evaluación</a></footer>
+</main>
+<script src="model.js"></script><script src="preview.js"></script>
+</html>

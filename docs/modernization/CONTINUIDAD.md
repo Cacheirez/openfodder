@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-29-10-2026 · plan 2.54. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.55. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -41,12 +41,16 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 
 No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin motivo. El asistente no dispone de escritorio Windows físico; CI Windows no es interacción humana.
 
+## Autorización de avance independiente (29-10)
+
+Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. Su CI de navegador es independiente de la CI del motor.
+
 ## Próximo incremento, en orden
 
 1. Escenas aceptadas por Miguel. No pedir repetir el recorrido completo por esta corrección acotada al menú.
 2. Verificar CI y paquete del incremento 2.54; el ZIP e18b05b no contiene la corrección de clics. Después probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.
 3. Con el paquete corregido y PROBAR_OPCIONES_H5.cmd, confirmar SAVE/KEEP mediante clics separados, REVERT/caducidad 15 s y persistencia al reiniciar. Explicar los términos en español; no asumir que Miguel conoce los nombres técnicos del menú.
-4. Tras aceptación, comparar **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
+4. En paralelo al seguimiento del menú, verificar el visor técnico **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales; después solicitar decisión visual cuando Miguel retome las pruebas. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
 
 ## Decisiones visuales y custodia
 
