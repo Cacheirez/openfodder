@@ -28,3 +28,5 @@ La comprobación requiere C++14, Node.js y Python estándar, sin npm para el mod
 - El motor aún compone la pose en 16×14: esta herramienta no activa HD ni resuelve su composición. La integración posterior debe conservar orden, clipping, cámara, anclajes y fallback clásico.
 
 [Originales y decisión C](../concepts/README.md) · [Evaluación y siguiente trabajo](../../../docs/modernization/H6_DENSIDAD_EVALUACION.md).
+
+Primera validación completa: [CI 40800565963](https://github.com/Cacheirez/openfodder/actions/runs/40800565963), [evidencia](../../../docs/modernization/H6_DENSIDAD_VALIDACION_f842b3d.json). Capturas inspeccionadas; ajuste posterior de zoom inicial/scroll cubierto por una nueva aserción. Comprobar la CI del HEAD antes de atribuirle ese resultado.

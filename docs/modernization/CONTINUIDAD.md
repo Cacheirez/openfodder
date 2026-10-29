@@ -43,7 +43,7 @@ No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin
 
 ## Autorización de avance independiente (29-10)
 
-Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. Su CI de navegador es independiente de la CI del motor.
+Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. Su primera CI de navegador 40800565963 está aprobada; [evidencia](H6_DENSIDAD_VALIDACION_f842b3d.json). Ajuste posterior de encuadre/scroll del visor requiere su CI propia. Windows a1c8856 fue cancelado por la siguiente publicación (política cancel-in-progress); comprobar CI de la rama actual para el paquete corregido, sin confundir cancelación con fallo. La CI del visor es independiente de la CI del motor.
 
 ## Próximo incremento, en orden
 

@@ -27,6 +27,11 @@ const {pathToFileURL}=require('url');
     const different=await page.evaluate(()=>document.getElementById('real8').toDataURL()!==document.getElementById('real12').toDataURL());
     assert(different,'Different densities must actually render different detail at UHD');
    }
+   // An oversized inspection canvas must scroll from its left edge, not be
+   // centered into an unreachable negative overflow region.
+   await page.selectOption('#zoom','4');
+   const visibleLeft=await page.evaluate(()=>{const c=document.getElementById('zoom8');return c.getBoundingClientRect().left>=c.parentElement.getBoundingClientRect().left;});
+   assert(visibleLeft);await page.selectOption('#zoom','2');
    await page.selectOption('#background','light');
    await page.screenshot({path:path.join(out,`C01-dpr${dpr}.png`),fullPage:true});
    assert.deepEqual(errors,[]);await page.close();
