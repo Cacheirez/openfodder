@@ -40,4 +40,4 @@ Regresión nativa: 64 casos existentes de C01 con adaptadores reales conservados
 
 ## Siguiente
 
-Resolver el cierre de Save con evidencia de la ruta real, después integrar opcionalmente el destino HD en una publicación de misión conservando el contraste clásico y la identidad temporal. Ampliar oclusiones solo con un contrato de escrituras verificable; no superponer a ciegas una textura al final. Medir costes antes de fijar 12×. Cursor, atlas de animaciones y terrenos siguen pendientes.
+Validar físicamente la corrección de Save (causa reproducida/corregida en 2.59), después integrar opcionalmente el destino HD en una publicación de misión conservando el contraste clásico y la identidad temporal. Ampliar oclusiones solo con un contrato de escrituras verificable; no superponer a ciegas una textura al final. Medir costes antes de fijar 12×. Cursor, atlas de animaciones y terrenos siguen pendientes.

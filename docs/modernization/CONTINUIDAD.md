@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-29-10-2026 · plan 2.58. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.59. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -18,7 +18,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; nuevo cierre en Save, diagnóstico abierto y resto de H5.6 pendientes |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; nuevo cierre en Save reproducido/corregido; aceptación física pendiente y resto de H5.6 pendientes |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Última validación y paquete
@@ -39,7 +39,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | «funciona la pausa perfectamente» | Incremento 63c4d6f |
 | «solucionado el problema de las dos ventanas… al maximizar» | Briefing y reclutamiento de 551eaf7 |
 | «Probar escenas está ok» | Aceptación general del recorrido propuesto con e18b05b, incluido el arreglo común; no acredita finales/ediciones no visitados |
-| Alternancia corregida, Save cierra antes de KEEP/REVERT | Confirmación manual 29-10; [nuevo fallo abierto](H5_6_INCIDENCIA_SAVE.md) |
+| Alternancia corregida, Save cierra antes de KEEP/REVERT | Confirmación manual 29-10; [fallo reproducido y corregido](H5_6_INCIDENCIA_SAVE.md) |
 | Ambas densidades se ven bien, algo mejor la alta | Comparador revisado; preferencia por calidad condicionada a memoria/rendimiento, no decisión final |
 
 No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin motivo. El asistente no dispone de escritorio Windows físico; CI Windows no es interacción humana.
@@ -54,14 +54,14 @@ Miguel pide continuar con puntos que no necesiten su validación, antes de revis
 
 Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos revisados, algo mejor la alta; prefiere calidad si memoria/rendimiento lo permiten. No repetir A/B/C ni el comparador completo. Falta medir coste en el motor antes de cerrar densidad.
 
-Miguel confirma alternancia correcta; **Save cierra tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Incidencia](H5_6_INCIDENCIA_SAVE.md) abierta: no reproducida por la fixture SDL simulada. Instrumentación optativa añadida, no reparación. El próximo paquete permitirá recoger el último paso en H5_OPCIONES.log. No usar el paquete anterior para obtener marcas que aún no contenía.
+Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Falta aceptación física. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: cerrar CI y verificar paquete de este incremento; localizar y corregir Save con evidencia real; integrar opcionalmente destino HD en misión después de validar el contrato y medir costes. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: cerrar CI y verificar paquete de este incremento; validar en Windows la corrección de Save; integrar opcionalmente destino HD en misión después de validar el contrato y medir costes. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
 1. Cuando haya paquete propio verificado, reproducir solo Save con el lanzador y conservar el log si cierra; indicar opciones cambiadas.
-2. Tras corregir ese fallo, completar KEEP/REVERT, caducidad 15 s y persistencia.
+2. Con el paquete corregido, completar KEEP/REVERT, caducidad 15 s y persistencia.
 3. Densidad final condicionada a coste medido; revisión del comparador ya recibida. Integración HD y cursor aún pendientes de prueba visual específica.
 
 ## Decisiones visuales y custodia

@@ -448,7 +448,8 @@ void cOptionsMenu::Draw() {
 
     if (mConfirmation.pending) {
         if (!mTracePreviewDrawn) OptionsTrace("confirmation draw begin");
-        const std::string question="KEEP CHANGES? " + std::to_string(mConfirmation.Seconds(now_ms_u32()));
+        // Briefing font has only 37 glyphs; question mark maps to absent frame 54.
+        const std::string question="KEEP CHANGES " + std::to_string(mConfirmation.Seconds(now_ms_u32()));
         g_Fodder->String_Print_Small_LeftInBox(question,32,288,64);
         g_Fodder->String_Print_Small_LeftInBox("REVERTS AFTER 15 SECONDS",32,288,88);
         g_Fodder->GUI_Button_Draw_SmallBoxAt("KEEP",48,144,120,0xB2,0xB3,eTextAlign::Centre);

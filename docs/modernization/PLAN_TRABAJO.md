@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.58 · Revisión: 29 de octubre de 2026.**
+**Versión 2.59 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: contrato y piloto HD C01 aislado 8×/12× implementados, sin conexión SDL. Alternancia de opciones aceptada por Miguel; cierre al pulsar Save antes de KEEP/REVERT pendiente de reproducir y corregir. Preferencia por mayor densidad condicionada al coste; no hay decisión final.**
+**Tarea activa: piloto HD C01 aislado 8×/12× implementado. Cierre Save reproducido en el glifo de confirmación y corregido; nueva prueba real de texto PC/Amiga. Pendientes CI/paquete propios y aceptación Windows. Densidad final condicionada a coste medido.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.59 — causa de Save reproducida y corregida
+
+[Diagnóstico](H5_6_INCIDENCIA_SAVE.md): `?` se transforma en frame 54, pero las fuentes Briefing PC/Amiga solo tienen 37. `Sprite_Get_Sheet` devuelve nullptr y GUI_Draw_Frame_8 lo desreferencia. Fixture nueva de funciones reales y tablas reales reproduce fallo UBSan antes del cambio; después pasa con `KEEP CHANGES 15`, durante cuenta atrás 0..15 y botones. Integrada en CTest y Linux ASan/UBSan. Regresiones de transacción y fades conservadas. No se modifican fuentes, tablas o raster, ni se atribuye prueba física Windows. Se conserva el registro diagnóstico por si el entorno muestra otra causa. CI/paquete propios pendientes, PR sigue borrador.
 
 ## Incremento 2.58 — composición HD aislada y nueva incidencia Save
 

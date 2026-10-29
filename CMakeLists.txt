@@ -128,6 +128,20 @@ if(Python3_Interpreter_FOUND)
     add_executable(openfodder_presentation_tests "${_presentation_fixture}")
     target_include_directories(openfodder_presentation_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
     add_test(NAME presentation_options_transaction COMMAND $<TARGET_FILE:openfodder_presentation_tests>)
+    set(_font_fixture "${CMAKE_CURRENT_BINARY_DIR}/options_font_fixture.cpp")
+    add_custom_command(OUTPUT "${_font_fixture}"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_options_font.py"
+                --emit "${_font_fixture}"
+        DEPENDS tools/modernization/check_options_font.py
+                tools/modernization/check_final_timer_equivalence.py
+                tools/modernization/check_sprite_table_lengths.py
+                Source/OptionsMenu.cpp Source/String.cpp Source/GUI_Element.cpp
+                Source/Sprites/Sprite_Core.cpp Source/FontData.cpp
+                Source/PC/SpriteData_PC.hpp Source/Amiga/SpriteData_Amiga.hpp
+        VERBATIM)
+    add_executable(openfodder_options_font_tests "${_font_fixture}")
+    target_include_directories(openfodder_options_font_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+    add_test(NAME options_confirmation_font COMMAND $<TARGET_FILE:openfodder_options_font_tests>)
 endif()
 # Isolated HD pose pilot: generates derivatives from the preserved original PNG.
 add_executable(openfodder_art_builder tools/modernization/build_soldier_art.cpp)
