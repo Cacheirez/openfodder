@@ -1,10 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.56 · Revisión: 29 de octubre de 2026.**
+**Versión 2.57 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: avanzar tareas independientes de la validación manual por instrucción de Miguel. Corrección de opciones y visor C01 8×/12× con CI cerrada en 30ba0ec; paquete corregido verificado. Escenas aceptadas, opciones y elección de densidad pendientes de Miguel.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.57 — relevo a un nuevo hilo
+
+Revisión de continuidad solicitada por Miguel. [Cierre del relevo](RELEVO_2026-10-29.md): CI 30ba0ec reconfirmada, originales visuales contrastados con sus manifiestos, enlaces locales y JSON revisados. Se corrige la receta que aún apuntaba al motor e18b05b. README, estado, plan y prompt sincronizados; informes históricos conservados como evidencia fechada.
+
+Siguiente tarea autónoma explícita: contrato y piloto aislado de composición HD de una pose C01, parametrizado 8×/12×, conservando orden, destinos, oclusión, recorte, anclaje y fallback. No se ha implementado todavía. Opciones y elección de densidad siguen pendientes de Miguel, sin bloquear esta preparación. Cambio solo documental: no altera motor, recursos, H3 ni paquete validado.
 
 ## Incremento 2.56 — cierre automático de opciones y visor
 

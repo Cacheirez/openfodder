@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-29-10-2026 · plan 2.56. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.57. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -18,7 +18,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido localmente (2.54); CI/paquete aprobados en 30ba0ec; reprueba manual y resto de H5.6 pendientes |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; reprueba manual y resto de H5.6 pendientes |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Última validación y paquete
@@ -47,7 +47,11 @@ No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin
 
 Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. La CI final de navegador 40800994726 está aprobada, incluida la corrección de scroll/zoom. Windows anterior a1c8856 fue cancelado por una publicación posterior; Windows/Linux finales 30ba0ec están cerrados PASS. [Evidencia final](VALIDACION_30ba0ec.json).
 
-## Próximo incremento, en orden
+## Próximo incremento autónomo
+
+Preparar el contrato y un piloto aislado de composición HD de una sola pose C01, parametrizado para 8× y 12×, sin fijar todavía la densidad final. Leer SoldierArt.hpp y MissionLayers.hpp: conservar orden real de comandos, destinos, recorte, anclaje, oclusiones y retorno clásico ante casos no soportados. Verificar equivalencia nativa, límites y fallback con pruebas aisladas antes de integrar. El motor actual sigue componiendo a 16×14; el visor no es integración HD. No ampliar animaciones ni introducir hilos. Este trabajo está autorizado sin esperar la prueba manual de opciones.
+
+## Validaciones pendientes de Miguel (no bloquean lo anterior)
 
 1. Escenas aceptadas por Miguel. No pedir repetir el recorrido completo por esta corrección acotada al menú.
 2. Paquete corregido 30ba0ec ya verificado; cuando Miguel retome opciones, probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.

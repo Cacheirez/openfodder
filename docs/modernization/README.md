@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente: 29-10-2026 · plan 2.56.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
+**Estado vigente: 29-10-2026 · plan 2.57.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
 ## Leer en este orden
 
@@ -9,6 +9,8 @@
 3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](VALIDACION_30ba0ec.json).
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
+
+Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 
 ## Referencias vigentes
 
@@ -45,7 +47,7 @@ git clone https://github.com/OpenFodder/tests.git Run/Tests
 git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
 ```
 
-Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `e18b05bd46c35bf471863985e732b2b89f8513c7` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
+Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `30ba0eccc752cf693b56f1f120842b51f3fd937e` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
 
 Pins: Run `070a6086c62164e859fc3274b75b5f536fa9d902`, Scripts `dad04730860bcdd1189aa8562860e379b0f5d783`, tests SHA anterior; SDL release-3.4.0, SDL_mixer `3045b35335113e5e5ba258858cb403d8803bfbeb`. Linux registra SHA efectivos en los artefactos. Las imágenes de Actions/paquetes del sistema no están congeladas: no se promete binario reproducible bit a bit. H2.5 describe un mixer Linux flotante **histórico**, corregido en H2.6.
 
