@@ -719,8 +719,10 @@ bool cFodder::Options_Menu_Run() {
             mMouse_EventLastWheel.mY = 0;
         }
 
+        // Consume the press edge once. A held button is +1 after consumption,
+        // not another click; release rearms it in Mouse_UpdateButtons.
         // Mouse click processing
-        if (mMouse_Button_Left_Toggle)
+        if (Mouse_Button_Left_Toggled() > 0)
             GUI_Handle_Element_Mouse_Check(mGUI_Elements);
 
         if (mPhase_EscapeKeyAbort || mPhase_Aborted) {

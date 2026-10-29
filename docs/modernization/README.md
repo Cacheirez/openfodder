@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente: 28-10-2026 · plan 2.53.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
+**Estado vigente: 29-10-2026 · plan 2.54.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
 ## Leer en este orden
 
@@ -13,10 +13,10 @@
 ## Referencias vigentes
 
 - Repositorio: https://github.com/Cacheirez/openfodder; rama `modernization/windows-foundation`; [PR #1](https://github.com/Cacheirez/openfodder/pull/1) abierto, borrador y **sin fusionar**.
-- Último motor verificado: `e18b05bd46c35bf471863985e732b2b89f8513c7`. Las revisiones siguientes de documentación no cambian ese motor. No confundir HEAD, motor y merge temporal de pruebas.
+- Último motor verificado: `e18b05bd46c35bf471863985e732b2b89f8513c7`. La revisión 2bc8e31 solo documenta; el incremento 2.54 corrige clics repetidos y está pendiente de CI/paquete propios. No confundir HEAD, motor y merge temporal de pruebas.
 - Windows [40760804335](https://github.com/Cacheirez/openfodder/actions/runs/40760804335) y Linux [40760804513](https://github.com/Cacheirez/openfodder/actions/runs/40760804513): PASS completo. [Paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551).
 - FIT común en ventana/maximizada/F11, con ratón alternativo desbloqueado. Geometría lógica y campo visible conservados. CLASSIC sigue disponible y es el valor por defecto.
-- Pendiente: aceptación física de este ajuste común, Heroes in Victory y opciones. Después comparar C a 8×/12×. No volver a elegir A/B/C: Miguel eligió C.
+- Escenas aceptadas («Probar escenas está ok»). Pendiente: verificar y probar la [corrección de clics en opciones](H5_6_INCIDENCIA_CLIC_REPETIDO.md). Después comparar C a 8×/12×. No volver a elegir A/B/C: Miguel eligió C.
 - Base clásica: `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; no mover ni reescribir. Inspección aislada: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 
 ## Cómo interpretar los informes

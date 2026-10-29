@@ -2,6 +2,8 @@
 
 Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la pausa perfectamente». Windows y Linux de ese paquete PASS. La CI propia de e18b05b está cerrada en Windows/Linux; [evidencia y paquete verificado](H5_9_VALIDACION_e18b05b.json). Aceptación manual de opciones pendiente.
 
+**Incidencia 29-10:** Miguel acepta escenas, pero los toggles del menú revierten casi inmediatamente. [Corrección y prueba real del clic](H5_6_INCIDENCIA_CLIC_REPETIDO.md), pendiente de CI/paquete propio; el ZIP e18b05b no incluye el arreglo. No considerar aceptadas las opciones por la CI anterior.
+
 ## Comportamiento implementado
 
 El menú existente ofrece Presentation: CLASSIC / FIT. Es presentación, independiente del arte C01. Clásico sigue siendo el valor predeterminado. Desde 2.51, FIT ajusta todas las rutas de escenas de [este inventario](H5_9_INVENTARIO_ESCENAS.md), con aspecto lógico original y bandas, tanto en ventana como en F11. Requiere ratón alternativo desbloqueado; el menú lo indica. CLASSIC conserva el camino original.

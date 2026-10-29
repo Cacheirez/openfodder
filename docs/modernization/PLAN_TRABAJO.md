@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.53 · Revisión: 28 de octubre de 2026.**
+**Versión 2.54 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: relevo auditado y bocetos originales archivados; a continuación, aceptación física del paquete e18b05b (escenas comunes/Heroes/F11 y opciones). CI Windows/Linux cerrada. Comparación C 8×/12× después de esa aceptación.**
+**Tarea activa: corregir y verificar la repetición de clics en opciones. Escenas e18b05b aceptadas por Miguel; opciones pendientes de nuevo paquete y reprueba. Comparación C 8×/12× después.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.54 — escenas aceptadas y clic único en opciones
+
+Miguel confirma «Probar escenas está ok» y comunica que CLASSIC/FIT y ON/OFF cambian y vuelven inmediatamente. [Incidencia y reproducción](H5_6_INCIDENCIA_CLIC_REPETIDO.md): el bucle reenviaba el estado mantenido del botón; el limitador permitía repetir cada 90 ms. Ahora consume una sola pulsación con Mouse_Button_Left_Toggled, conservando ratón, dispatcher GUI y productores clásicos. La fixture extrae también el bloque real del bucle y las funciones reales de botones/GUI: falla antes del cambio y pasa después, incluidos clics sostenidos, soltar/repulsar, arrastre desde fuera y SAVE/KEEP separados. Se mantienen las pruebas de transacción, persistencia y fallos SDL. Nuevo motor necesita CI/paquete propios; el ZIP e18b05b aún tiene el defecto. No repetir todo el recorrido de escenas ni avanzar a densidad antes de cerrar opciones.
 
 ## Incremento 2.53 — auditoría documental y conservación de bocetos
 

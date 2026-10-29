@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-28-10-2026 · plan 2.53. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.54. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
-Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Último motor probado: `e18b05bd46c35bf471863985e732b2b89f8513c7`; árbol `1a470115106c3c6d2c471385d022d52590674a05`. Revisiones documentales posteriores no son otro binario. HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
+Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Último motor probado: `e18b05bd46c35bf471863985e732b2b89f8513c7`; árbol `1a470115106c3c6d2c471385d022d52590674a05`. Tras ese motor, 2bc8e31 solo documenta/archiva conceptos. El incremento 2.54 corrige repetición de clics en opciones; su CI y paquete propios están pendientes al publicar. HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
 
 Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentación suave y arte nuevo, conservando reglas, RNG, tiempos, colisiones, campo visible y base clásica. Windows 11 de Miguel: 3840×2160, escala 300 %. Soportar 4:3/16:9 hasta UHD, sin estirar ni ampliar información táctica. No acelerar simulación para aumentar FPS. No regenerar H3 para ocultar divergencias. No publicar recursos comerciales ni partidas privadas.
 
@@ -17,8 +17,8 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Programación H4.6 | 0/1/5 de misión con H3; sonda pausa acotada PC/Amiga 301 estados y sanitizadores declarados | Pausas largas, eventos y demás transiciones; no equivale a interpolación |
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
-| Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Aceptación física del ajuste común; matriz completa, relativo/bloqueado y viewport moderno |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Aceptación manual; monitores/modos, interfaz independiente, sincronización/FPS |
+| Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido localmente (2.54); CI/paquete/reprueba pendientes; resto de H5.6 pendiente |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Última validación y paquete
@@ -36,16 +36,16 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | «el mapa se queda centrado, se cierra y vuelve a misión» | Arreglo 6e98fda; problema era maximizado, F11 ya funcionaba |
 | «funciona la pausa perfectamente» | Incremento 63c4d6f |
 | «solucionado el problema de las dos ventanas… al maximizar» | Briefing y reclutamiento de 551eaf7 |
-| Heroes in Victory no se amplía | Arreglo e18b05b implementado y CI PASS; todavía sin aceptación visual |
-| Opciones SAVE/KEEP/REVERT/persistencia | Todavía sin aceptación manual |
+| «Probar escenas está ok» | Aceptación general del recorrido propuesto con e18b05b, incluido el arreglo común; no acredita finales/ediciones no visitados |
+| CLASSIC/FIT y ON/OFF revierten en menos de 0,2 s | Incidencia reproducida; [corrección 2.54](H5_6_INCIDENCIA_CLIC_REPETIDO.md); prueba de opciones todavía bloqueada en el ZIP e18b05b |
 
 No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin motivo. El asistente no dispone de escritorio Windows físico; CI Windows no es interacción humana.
 
 ## Próximo incremento, en orden
 
-1. Registrar la respuesta de Miguel al paquete e18b05b. Con `PROBAR_ESCENAS_H5.cmd`, recorrer intro → reclutamiento → briefing → misión → pausa/mapa → servicio/Heroes → siguiente misión, alternando maximizar/F11. Ediciones/finales no visitados siguen pendientes.
-2. Con `PROBAR_OPCIONES_H5.cmd`, comprobar CLASSIC/FIT, ratón alternativo desbloqueado, SAVE/KEEP, REVERT/caducidad y reinicio. Este lanzador limpia overrides; el de escenas los fuerza. Guardar FIT y reiniciar para solicitar alta densidad al crear la ventana.
-3. Corregir incidencias concretas si aparecen. Linux de e18b05b ya está cerrado; no repetir su cierre como tarea pendiente.
+1. Escenas aceptadas por Miguel. No pedir repetir el recorrido completo por esta corrección acotada al menú.
+2. Verificar CI y paquete del incremento 2.54; el ZIP e18b05b no contiene la corrección de clics. Después probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.
+3. Con el paquete corregido y PROBAR_OPCIONES_H5.cmd, confirmar SAVE/KEEP mediante clics separados, REVERT/caducidad 15 s y persistencia al reiniciar. Explicar los términos en español; no asumir que Miguel conoce los nombres técnicos del menú.
 4. Tras aceptación, comparar **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
 
 ## Decisiones visuales y custodia

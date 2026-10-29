@@ -517,10 +517,13 @@
     ]
   },
   "manual_windows": {
-    "verdict": "PENDING",
+    "verdict": "SCENES_ACCEPTED_OPTIONS_BLOCKED",
     "environment": "3840x2160, escala 300%",
     "scope": "FIT común ventana/maximizada/F11, Heroes in Victory y opciones",
-    "limits": "CI y dobles SDL no sustituyen prueba física. Escenas dependientes de edición, bajas, ascensos y final de campaña requieren visita explícita."
+    "limits": "CI y dobles SDL no sustituyen prueba física. Escenas dependientes de edición, bajas, ascensos y final de campaña requieren visita explícita.",
+    "scenes_user_report": "Probar escenas está ok",
+    "scenes_scope": "Aceptación general del recorrido propuesto; no atribuir finales/ediciones no visitados",
+    "options_issue": "CLASSIC/FIT y ON/OFF alternan de nuevo inmediatamente; reproducido por repetición del botón mantenido. Ver H5_6_INCIDENCIA_CLIC_REPETIDO.md."
   },
   "pr": {
     "number": 1,

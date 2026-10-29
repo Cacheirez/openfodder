@@ -94,12 +94,28 @@ struct cWindow {
 #define private public
 #include "OptionsMenu.hpp"
 #undef private
-struct Fodder{sFodderParameters start,runtime; sFodderParameters*mStartParams=&start,*mParams=&runtime;
- cWindow window;cWindow*mWindow=&window;int mMouseY=0;}fodder;
-Fodder*g_Fodder=&fodder;
+struct cFodder;
+struct sGUI_Element {int field_0=0;int16 mX=0,mY=0,mWidth=0,mHeight=0;
+ void(cFodder::*mMouseInsideFuncPtr)()=nullptr;
+ void(*mOnClick)(void*,int16,int16)=nullptr;void*mCtx=nullptr;int16 mAction=0,mArg=0;};
+struct cFodder{sFodderParameters start,runtime; sFodderParameters*mStartParams=&start,*mParams=&runtime;
+ cWindow window;cWindow*mWindow=&window;int mMouseX=0,mMouseY=0;
+ int16 mMouse_Button_Left_Toggle=0,mMouse_Button_Right_Toggle=0,mButtonPressLeft=0,mButtonPressRight=0;
+ int mMouseButtonStatus=0;bool mMouse_Exit_Loop=false,mMouse_Button_LeftRight_Toggle=false;
+ bool mMouse_Button_LeftRight_Toggle2=false,mSquad_Member_Fire_CoolDown_Override=false;
+ sGUI_Element*mGUI_Elements=nullptr;
+ void Mouse_UpdateButtons();int16 Mouse_Button_Left_Toggled();
+ void GUI_Handle_Element_Mouse_Check(sGUI_Element*);void OptionsClickFrame();
+}fodder;
+cFodder*g_Fodder=&fodder;
 uint32_t now=1000;uint32_t now_ms_u32(){return now;}
 #define PLATFORM_BASED(a,b) (a)
 '''
+    gui=(ROOT/'Source/GUI_Element.cpp').read_text()
+    mouse=(ROOT/'Source/Mouse.cpp').read_text()
+    loop=function(menu,'bool cFodder::Options_Menu_Run')
+    click=loop.split('// Mouse click processing',1)[1].split('if (mPhase_EscapeKeyAbort',1)[0]
+    assert 'GUI_Handle_Element_Mouse_Check(mGUI_Elements);' in click
     code=prefix
     for name in ['CapturePresentation','ApplyPresentation','PreviewPresentation','CalculateFullscreenSize']:
         sig=('int16' if name=='CalculateFullscreenSize' else 'bool')+' cWindow::'+name
@@ -111,6 +127,11 @@ uint32_t now=1000;uint32_t now_ms_u32(){return now;}
     code+='cOptionsMenu::cOptionsMenu()=default; cOptionsMenu::~cOptionsMenu()=default;\n'
     for ret,name in [('void','Open'),('void','Close'),('bool','AllowInput'),('void','BuildItems'),('void','BuildPageItems'),('void','ChangePage'),('void','RestoreSnapshot'),('bool','PresentationChanged'),('void','SaveOrPreview'),('void','Confirm'),('int','GetInt'),('void','SetInt'),('std::string','FormatValue'),('void','Tick'),('void','OnUp'),('void','OnDown'),('void','OnBack'),('void','Adjust'),('void','ResetDefaults'),('void','OnRowClick')]:
         code+=function(menu,ret+' cOptionsMenu::'+name)+'\n'
+    code+=function(mouse,'void cFodder::Mouse_UpdateButtons')+'\n'
+    code+=function(gui,'int16 cFodder::Mouse_Button_Left_Toggled')+'\n'
+    code+=function(gui,'void cFodder::GUI_Handle_Element_Mouse_Check')+'\n'
+    code+='void cFodder::OptionsClickFrame(){'+click+'}\n'
+    code+=function(menu,'static void Gui_OptionsMenu_Click')+'\n'
     code+=r'''
 std::string disk(){std::ifstream f("openfodder.ini");std::ostringstream s;s<<f.rdbuf();return s.str();}
 void reset(){fodder.start.clear();fodder.runtime.clear();fodder.start.mWindowMode=true;
@@ -130,6 +151,35 @@ int main(){
  setenv("OPENFODDER_MISSION_SCREEN_FIT","0",1);assert(!loaded.ScreenFitEnabled());unsetenv("OPENFODDER_MISSION_SCREEN_FIT");
  // Edit/defaults/cancel never write or apply anything.
  reset();auto original=disk();{cOptionsMenu m;m.Open();edit(m);m.ResetDefaults();assert(disk()==original);assert(!fodder.start.mFitPresentation);m.OnBack();assert(!m.WasApplied());}
+ // Real mouse latch -> actual loop dispatch -> GUI hit test -> actual menu callback.
+ // A normal press held >90ms used to toggle repeatedly; release must rearm it.
+ for(int option:{cOptionsMenu::OPT_PRESENTATION,cOptionsMenu::OPT_ALTERNATE_MOUSE,cOptionsMenu::OPT_MOUSE_LOCKED}) {
+  reset();cOptionsMenu m;m.Open();int row=0;
+  while(m.mItems[row].id!=option)++row;
+  sGUI_Element elements[2];elements[0].field_0=1;elements[0].mWidth=200;elements[0].mHeight=100;
+  elements[0].mOnClick=Gui_OptionsMenu_Click;elements[0].mCtx=&m;
+  elements[0].mAction=cOptionsMenu::GUIACT_OPT_ROW_PRIMARY;elements[0].mArg=row;
+  fodder.mGUI_Elements=elements;fodder.mMouseX=0;fodder.mMouseY=0;
+  fodder.mMouseButtonStatus=0;fodder.Mouse_UpdateButtons();
+  const int before=m.GetInt(option);auto saved=disk();
+  for(int frame=0;frame<120;++frame){now+=16;fodder.mMouseButtonStatus=1;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();assert(m.GetInt(option)==!before);}
+  assert(disk()==saved);fodder.mMouseButtonStatus=0;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();
+  now+=150;fodder.mMouseButtonStatus=1;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();assert(m.GetInt(option)==before);
+  // Press outside then drag inside: no action without a new press.
+  fodder.mMouseButtonStatus=0;fodder.Mouse_UpdateButtons();
+  now+=150;fodder.mMouseX=500;fodder.mMouseButtonStatus=1;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();
+  fodder.mMouseX=0;now+=150;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();assert(m.GetInt(option)==before);
+ }
+ // Holding SAVE across the redraw must not confirm KEEP automatically.
+ reset();{cOptionsMenu m;m.Open();edit(m);sGUI_Element elements[2];
+ elements[0].field_0=1;elements[0].mWidth=200;elements[0].mHeight=100;
+ elements[0].mOnClick=Gui_OptionsMenu_Click;elements[0].mCtx=&m;elements[0].mAction=cOptionsMenu::GUIACT_OPT_SAVE;
+ fodder.mGUI_Elements=elements;fodder.mMouseX=fodder.mMouseY=0;
+ fodder.mMouseButtonStatus=0;fodder.Mouse_UpdateButtons();auto saved=disk();
+ for(int frame=0;frame<120;++frame){now+=16;fodder.mMouseButtonStatus=1;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();assert(m.mConfirmation.pending&&!m.WasApplied()&&disk()==saved);}
+ fodder.mMouseButtonStatus=0;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();
+ fodder.mMouseButtonStatus=1;fodder.Mouse_UpdateButtons();fodder.OptionsClickFrame();assert(m.WasApplied());}
+ puts("PASS: actual mouse/GUI/menu dispatch, held toggles, release/repress, outside drag and separate SAVE/KEEP clicks");
  // Countdown boundary, including wraparound. No frame/simulation counters involved.
  for(uint32_t start:{100u,0xfffffff0u}) {
   reset();original=disk();now=start;cOptionsMenu m;m.Open();edit(m);m.SaveOrPreview();assert(m.mConfirmation.pending);
