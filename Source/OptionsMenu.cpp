@@ -4,6 +4,13 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iostream>
+
+// Opt-in, flushed breadcrumbs: no paths, settings contents or private data.
+static void OptionsTrace(const char* stage) {
+    if (std::getenv("OPENFODDER_OPTIONS_TRACE"))
+        std::cerr << "[options] " << stage << std::endl;
+}
 
 static int clamp_int(int v, int lo, int hi) {
     if (v < lo) return lo;
@@ -270,11 +277,13 @@ bool cOptionsMenu::PresentationChanged() const {
 
 void cOptionsMenu::SaveOrPreview() {
     if (mPreviewApplied) { RestoreSnapshot(); return; }
+    OptionsTrace("SAVE begin");
     mStatus.clear();
     if (!PresentationChanged()) { Confirm(); return; }
     if (!g_Fodder->mWindow->CapturePresentation(mWindowSnapshot)) {
         mStatus="WINDOW ERROR"; return;
     }
+    OptionsTrace("SAVE window captured");
     mRuntimeSnapshot=*g_Fodder->mParams;
     mPreviewApplied=true;
     *g_Fodder->mStartParams=mDraft;
@@ -285,17 +294,22 @@ void cOptionsMenu::SaveOrPreview() {
     g_Fodder->mParams->mMouseLocked=mDraft.mMouseLocked;
     const bool fit=mDraft.ScreenTransformEnabled() && mDraft.ScreenFitEnabled() &&
         mDraft.mMouseAlternative && !mDraft.mMouseLocked;
+    OptionsTrace("SAVE applying preview");
     if (!g_Fodder->mWindow->PreviewPresentation(mDraft.mWindowMode,int(mDraft.mWindowScale),fit,
             !mDraft.mMouseAlternative || mDraft.mMouseLocked)) {
         mStatus="WINDOW ERROR"; RestoreSnapshot(); return;
     }
+    OptionsTrace("SAVE preview applied");
     if (!g_Fodder->mWindow->CapturePresentation(mPreviewState)) {
         mStatus="WINDOW ERROR"; RestoreSnapshot(); return;
     }
     mConfirmation.Begin(now_ms_u32());
+    mTracePreviewDrawn=false;
+    OptionsTrace("SAVE confirmation pending");
 }
 
 void cOptionsMenu::Confirm() {
+    OptionsTrace("KEEP or direct SAVE begin");
     if (mConfirmation.Expired(now_ms_u32())) {
         mStatus="TIME EXPIRED"; RestoreSnapshot(); return;
     }
@@ -310,12 +324,14 @@ void cOptionsMenu::Confirm() {
     }
     // Write only an explicitly confirmed candidate. Save failure leaves the
     // last confirmed file intact and restores the live preview.
+    OptionsTrace("SAVE writing INI");
     if (!mDraft.SaveIni()) { mStatus="SAVE FAILED"; RestoreSnapshot(); return; }
     *g_Fodder->mStartParams=mDraft;
     g_Fodder->mParams->mCopyProtection=mDraft.mCopyProtection;
     g_Fodder->mWindow->SetMouseSpeed(mDraft.mMouseSpeed);
     mConfirmation.Clear(); mPreviewApplied=false;
     mApplied=true; mDone=true;
+    OptionsTrace("SAVE committed");
 }
 
 int cOptionsMenu::GetInt(int optId) const {
@@ -431,6 +447,7 @@ void cOptionsMenu::Draw() {
     g_Fodder->mString_GapCharID = 0;
 
     if (mConfirmation.pending) {
+        if (!mTracePreviewDrawn) OptionsTrace("confirmation draw begin");
         const std::string question="KEEP CHANGES? " + std::to_string(mConfirmation.Seconds(now_ms_u32()));
         g_Fodder->String_Print_Small_LeftInBox(question,32,288,64);
         g_Fodder->String_Print_Small_LeftInBox("REVERTS AFTER 15 SECONDS",32,288,88);
@@ -438,6 +455,8 @@ void cOptionsMenu::Draw() {
         g_Fodder->GUI_Button_Setup_New(Gui_OptionsMenu_Click,this,GUIACT_OPT_SAVE,0);
         g_Fodder->GUI_Button_Draw_SmallBoxAt("REVERT",160,256,120,0xB2,0xB3,eTextAlign::Centre);
         g_Fodder->GUI_Button_Setup_New(Gui_OptionsMenu_Click,this,GUIACT_OPT_CANCEL,0);
+        if (!mTracePreviewDrawn) OptionsTrace("confirmation draw complete");
+        mTracePreviewDrawn=true;
         return;
     }
     const int tabY = PLATFORM_BASED(0x1A, 0x18);

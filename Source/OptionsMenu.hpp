@@ -165,6 +165,7 @@ private:
     sFodderParameters mSnapshot, mDraft, mRuntimeSnapshot;
     cWindow::PresentationState mWindowSnapshot, mPreviewState;
     bool mPreviewApplied = false;
+    bool mTracePreviewDrawn = false;
     openfodder::PresentationConfirmation mConfirmation;
     std::string mStatus;
     bool mSnapshotValid = false;

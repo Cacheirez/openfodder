@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-29-10-2026 · plan 2.57. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.58. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -18,7 +18,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; reprueba manual y resto de H5.6 pendientes |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; nuevo cierre en Save, diagnóstico abierto y resto de H5.6 pendientes |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Última validación y paquete
@@ -39,24 +39,30 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | «funciona la pausa perfectamente» | Incremento 63c4d6f |
 | «solucionado el problema de las dos ventanas… al maximizar» | Briefing y reclutamiento de 551eaf7 |
 | «Probar escenas está ok» | Aceptación general del recorrido propuesto con e18b05b, incluido el arreglo común; no acredita finales/ediciones no visitados |
-| CLASSIC/FIT y ON/OFF revierten en menos de 0,2 s | Incidencia reproducida; [corrección 2.54](H5_6_INCIDENCIA_CLIC_REPETIDO.md); prueba de opciones todavía bloqueada en el ZIP e18b05b |
+| Alternancia corregida, Save cierra antes de KEEP/REVERT | Confirmación manual 29-10; [nuevo fallo abierto](H5_6_INCIDENCIA_SAVE.md) |
+| Ambas densidades se ven bien, algo mejor la alta | Comparador revisado; preferencia por calidad condicionada a memoria/rendimiento, no decisión final |
 
 No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin motivo. El asistente no dispone de escritorio Windows físico; CI Windows no es interacción humana.
 
-## Autorización de avance independiente (29-10)
+## Autorización de avance independiente (histórico anterior a 2.58)
 
 Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. La CI final de navegador 40800994726 está aprobada, incluida la corrección de scroll/zoom. Windows anterior a1c8856 fue cancelado por una publicación posterior; Windows/Linux finales 30ba0ec están cerrados PASS. [Evidencia final](VALIDACION_30ba0ec.json).
 
-## Próximo incremento autónomo
+## Incremento actual y siguiente paso
 
-Preparar el contrato y un piloto aislado de composición HD de una sola pose C01, parametrizado para 8× y 12×, sin fijar todavía la densidad final. Leer SoldierArt.hpp y MissionLayers.hpp: conservar orden real de comandos, destinos, recorte, anclaje, oclusiones y retorno clásico ante casos no soportados. Verificar equivalencia nativa, límites y fallback con pruebas aisladas antes de integrar. El motor actual sigue componiendo a 16×14; el visor no es integración HD. No ampliar animaciones ni introducir hilos. Este trabajo está autorizado sin esperar la prueba manual de opciones.
+[Contrato/piloto HD aislado](H6_4_PILOTO_HD_AISLADO.md) implementado para 8×/12×. No está conectado a SDL: el juego sigue con C01 nativo. Conserva orden, destinos y anclaje; oclusiones/recortes no soportados vuelven al clásico. PNG y derivados reproducibles preservados. Pruebas locales y límites en el contrato.
 
-## Validaciones pendientes de Miguel (no bloquean lo anterior)
+Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos revisados, algo mejor la alta; prefiere calidad si memoria/rendimiento lo permiten. No repetir A/B/C ni el comparador completo. Falta medir coste en el motor antes de cerrar densidad.
 
-1. Escenas aceptadas por Miguel. No pedir repetir el recorrido completo por esta corrección acotada al menú.
-2. Paquete corregido 30ba0ec ya verificado; cuando Miguel retome opciones, probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.
-3. Con el paquete corregido y PROBAR_OPCIONES_H5.cmd, confirmar SAVE/KEEP mediante clics separados, REVERT/caducidad 15 s y persistencia al reiniciar. Explicar los términos en español; no asumir que Miguel conoce los nombres técnicos del menú.
-4. En paralelo al seguimiento del menú, usar el visor técnico verificado **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales; después solicitar decisión visual cuando Miguel retome las pruebas. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
+Miguel confirma alternancia correcta; **Save cierra tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Incidencia](H5_6_INCIDENCIA_SAVE.md) abierta: no reproducida por la fixture SDL simulada. Instrumentación optativa añadida, no reparación. El próximo paquete permitirá recoger el último paso en H5_OPCIONES.log. No usar el paquete anterior para obtener marcas que aún no contenía.
+
+Próximo trabajo: cerrar CI y verificar paquete de este incremento; localizar y corregir Save con evidencia real; integrar opcionalmente destino HD en misión después de validar el contrato y medir costes. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+
+## Validaciones pendientes de Miguel
+
+1. Cuando haya paquete propio verificado, reproducir solo Save con el lanzador y conservar el log si cierra; indicar opciones cambiadas.
+2. Tras corregir ese fallo, completar KEEP/REVERT, caducidad 15 s y persistencia.
+3. Densidad final condicionada a coste medido; revisión del comparador ya recibida. Integración HD y cursor aún pendientes de prueba visual específica.
 
 ## Decisiones visuales y custodia
 

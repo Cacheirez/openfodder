@@ -153,6 +153,7 @@ jobs:
           python3 tools/modernization/check_soldier_semantic.py
           python3 tools/modernization/check_soldier_pose.py
           python3 tools/modernization/check_soldier_art.py
+          python3 tools/modernization/check_soldier_art_hd.py
       - name: H4.1 - software video replays with mission layer audit
         env:
           SDL_VIDEODRIVER: dummy

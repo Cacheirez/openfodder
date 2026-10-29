@@ -1,5 +1,7 @@
 # H6 — evaluación inicial de densidad del arte C
 
+**Actualización 2.58:** ambas densidades revisadas por Miguel; preferencia por alta condicionada al coste. [Piloto HD aislado implementado](H6_4_PILOTO_HD_AISLADO.md), sin conexión SDL; falta medir antes de fijar densidad.
+
 28-10-2026. Evaluación geométrica, no aceptación visual ni decisión definitiva. C — Pintado moderado se conserva; el cursor también forma parte del rediseño. No producir animaciones todavía. Actualización 29-10: Miguel autoriza avanzar en tareas independientes mientras prueba opciones; escenas aceptadas. Preparación técnica y comparación instrumental permitidas, elección visual pendiente.
 
 La geometría lógica permanece 320×200 PC / 320×225 Amiga. El ajuste usa `min(ancho físico/320, alto físico/alto lógico)`. La escala Windows del 300 % no se vuelve a multiplicar: el renderer ya informa píxeles físicos. Los recursos se eligen por densidad, no por cada resolución de monitor; un maestro puede generar niveles de detalle compartidos por fondos y sprites. La resolución nativa de dibujo y la ventana son conceptos distintos.

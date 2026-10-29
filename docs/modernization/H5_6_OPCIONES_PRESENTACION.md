@@ -1,5 +1,7 @@
 # H5.6 — opciones de presentación y confirmación
 
+**Actualización 2.58:** alternancia aceptada por Miguel; Save cierra tras cambios antes de KEEP/REVERT. [Incidencia abierta y diagnóstico](H5_6_INCIDENCIA_SAVE.md); no reparada todavía.
+
 **Estado vigente 29-10:** escenas aceptadas. Arreglo de clic único del menú incluido en el [paquete 30ba0ec verificado](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476); [CI completa y evidencia](VALIDACION_30ba0ec.json). Repetir solo opciones cuando Miguel retome la validación; el ZIP e18b05b anterior tiene el fallo. Los apartados fechados anteriores son históricos.
 
 Incremento 2.49, 28-10-2026. Pausa de 63c4d6f aceptada por Miguel: «funciona la pausa perfectamente». Windows y Linux de ese paquete PASS. La CI propia de e18b05b está cerrada en Windows/Linux; [evidencia y paquete verificado](H5_9_VALIDACION_e18b05b.json). Aceptación manual de opciones pendiente.

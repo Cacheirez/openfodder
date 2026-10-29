@@ -1,10 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.57 · Revisión: 29 de octubre de 2026.**
+**Versión 2.58 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: avanzar tareas independientes de la validación manual por instrucción de Miguel. Corrección de opciones y visor C01 8×/12× con CI cerrada en 30ba0ec; paquete corregido verificado. Escenas aceptadas, opciones y elección de densidad pendientes de Miguel.**
+**Tarea activa: contrato y piloto HD C01 aislado 8×/12× implementados, sin conexión SDL. Alternancia de opciones aceptada por Miguel; cierre al pulsar Save antes de KEEP/REVERT pendiente de reproducir y corregir. Preferencia por mayor densidad condicionada al coste; no hay decisión final.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.58 — composición HD aislada y nueva incidencia Save
+
+[Contrato y piloto HD](H6_4_PILOTO_HD_AISLADO.md): destino privado 8×/12×, equivalencia nativa 1×, anclaje y orden conservados mediante guards clásicos; fallback completo ante oclusión/recorte/pitch no soportados. Derivados reproducibles desde el PNG original, sin alterar el header nativo. 132 casos de retorno y comprobaciones alfa/detalle/destinos/0-1-5/presupuesto PASS local ASan/UBSan. CTest Windows/Linux añadido. No es HD integrado en el juego ni prueba de rendimiento/GPU.
+
+Miguel acepta ambas densidades del comparador, con preferencia por más detalle si el coste lo permite; no se fija densidad final. Confirma alternancia correcta, pero [Save cierra antes de KEEP/REVERT](H5_6_INCIDENCIA_SAVE.md). La fixture actual pasa, no reproduce el fallo real. Se añade registro optativo y se habilita en el lanzador de opciones; **no se declara corregido**. Escenas aceptadas y cursor pendiente. Regresiones locales: C01 nativo 64 casos, opciones y 30 tests Python PASS. CI propia/paquete se registrarán tras publicar, sin heredar el verde de 30ba0ec.
 
 ## Incremento 2.57 — relevo a un nuevo hilo
 
@@ -434,7 +440,7 @@ C1–C3 son obligaciones continuas con entregas verificables; no sustituyen ni r
 | D4 | Refresco y equipo | 60 Hz primero; recoger monitor/configuración para H5.7, 120/144 Hz después si procede |
 | D5 | Pantallas auxiliares | Inventario H5.9 y FIT común implementados; aceptación física común y arte moderno aún pendientes |
 
-La elección C está cerrada; la densidad 8×/12× se decidirá después de aceptar presentación/opciones.
+La elección C está cerrada. Ambas densidades están revisadas visualmente por Miguel; prefiere mayor detalle si memoria/rendimiento lo permiten. Medir antes de fijar la densidad final.
 
 | ID | Riesgo actual | Tratamiento |
 |---|---|---|

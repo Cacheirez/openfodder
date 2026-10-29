@@ -129,6 +129,22 @@ if(Python3_Interpreter_FOUND)
     target_include_directories(openfodder_presentation_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
     add_test(NAME presentation_options_transaction COMMAND $<TARGET_FILE:openfodder_presentation_tests>)
 endif()
+# Isolated HD pose pilot: generates derivatives from the preserved original PNG.
+add_executable(openfodder_art_builder tools/modernization/build_soldier_art.cpp)
+target_include_directories(openfodder_art_builder PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+foreach(_density IN ITEMS 8 12)
+    add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/c01_${_density}.hpp"
+        COMMAND $<TARGET_FILE:openfodder_art_builder>
+            "${CMAKE_CURRENT_SOURCE_DIR}/assets/modernization/soldier-c01/source.png"
+            "${CMAKE_CURRENT_BINARY_DIR}/c01_${_density}.hpp" ${_density}
+        DEPENDS openfodder_art_builder assets/modernization/soldier-c01/source.png
+        VERBATIM)
+endforeach()
+add_executable(openfodder_art_hd_tests tools/modernization/test_soldier_art_hd.cpp
+    "${CMAKE_CURRENT_BINARY_DIR}/c01_8.hpp" "${CMAKE_CURRENT_BINARY_DIR}/c01_12.hpp")
+target_include_directories(openfodder_art_hd_tests PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_BINARY_DIR}")
+add_test(NAME soldier_art_hd_isolated COMMAND $<TARGET_FILE:openfodder_art_hd_tests>)
 add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
 add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
 add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)

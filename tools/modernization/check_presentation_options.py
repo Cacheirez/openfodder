@@ -20,6 +20,7 @@ def build():
 #include <cstdlib>
 #include <cstdio>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -116,7 +117,7 @@ uint32_t now=1000;uint32_t now_ms_u32(){return now;}
     loop=function(menu,'bool cFodder::Options_Menu_Run')
     click=loop.split('// Mouse click processing',1)[1].split('if (mPhase_EscapeKeyAbort',1)[0]
     assert 'GUI_Handle_Element_Mouse_Check(mGUI_Elements);' in click
-    code=prefix
+    code=prefix+function(menu,'static void OptionsTrace')+'\n'
     for name in ['CapturePresentation','ApplyPresentation','PreviewPresentation','CalculateFullscreenSize']:
         sig=('int16' if name=='CalculateFullscreenSize' else 'bool')+' cWindow::'+name
         code+=function(window,sig)+'\n'
