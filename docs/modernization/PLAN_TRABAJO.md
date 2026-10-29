@@ -1,10 +1,16 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.55 · Revisión: 29 de octubre de 2026.**
+**Versión 2.56 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: avanzar tareas independientes de la validación manual por instrucción de Miguel. Corrección de opciones a1c8856 en CI; escenas aceptadas. Visor técnico C01 8×/12× preparado, sin fijar densidad ni cambiar el motor.**
+**Tarea activa: avanzar tareas independientes de la validación manual por instrucción de Miguel. Corrección de opciones y visor C01 8×/12× con CI cerrada en 30ba0ec; paquete corregido verificado. Escenas aceptadas, opciones y elección de densidad pendientes de Miguel.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.56 — cierre automático de opciones y visor
+
+[Validación 30ba0ec](VALIDACION_30ba0ec.json): Windows 40800994744, Linux 40800994727 y navegador 40800994726 completos PASS. Paquete 12866468476 verificado por SHA-256, ejecutable/PRUEBAS.json y árbol de VERSION temporal; 279 entradas, 29 fases sin omisiones, siete CTest. Incluye pulsación única a1c8856. El intento Windows anterior fue cancelado por la política del workflow al publicar otra revisión; no fue un PASS completo.
+
+Comparador autónomo final verificado byte a byte contra Git; capturas DPR 1/3 inspeccionadas. Modelo reproduce C01 nativo y compara 8×/12× a huella física igual. No hay elección de densidad ni composición HD del juego todavía. Trabajo independiente de la aceptación del menú completado; próxima preparación técnica posible: contrato/destino HD conservando orden/oclusiones y fallback. La prueba manual de opciones puede esperar a Miguel. Esta revisión solo registra resultados, sin cambiar motor ni herramienta.
 
 ## Incremento 2.55 — preparación independiente de densidades
 
@@ -180,11 +186,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor candidato verificado | `e18b05bd46c35bf471863985e732b2b89f8513c7`; revisiones posteriores solo documentales y de archivo de conceptos |
+| Motor/revisión verificados | `30ba0eccc752cf693b56f1f120842b51f3fd937e`, incluye clic único a1c8856 y visor independiente |
 | Aceptación manual | Parcial por incrementos; [registro vigente](CONTINUIDAD.md). No hay aceptación manual global de e18b05b |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows e18b05b | [40760804335](https://github.com/Cacheirez/openfodder/actions/runs/40760804335), éxito |
-| CI Linux e18b05b | [40760804513](https://github.com/Cacheirez/openfodder/actions/runs/40760804513), éxito, incluidos los diagnósticos declarados |
+| CI Windows 30ba0ec | [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), éxito |
+| CI Linux 30ba0ec | [40800994727](https://github.com/Cacheirez/openfodder/actions/runs/40800994727), éxito, incluidos los diagnósticos declarados |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Interpolación pendiente; C elegida y pose C01 experimental; densidad HD pendiente |
 

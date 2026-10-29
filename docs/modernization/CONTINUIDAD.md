@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-29-10-2026 · plan 2.55. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+29-10-2026 · plan 2.56. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
-Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Último motor probado: `e18b05bd46c35bf471863985e732b2b89f8513c7`; árbol `1a470115106c3c6d2c471385d022d52590674a05`. Tras ese motor, 2bc8e31 solo documenta/archiva conceptos. El incremento 2.54 corrige repetición de clics en opciones; su CI y paquete propios están pendientes al publicar. HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
+Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Última revisión probada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, árbol `14edfa9575a0f1297e31058a75e868b4e8299e3a`. Incluye el arreglo del menú a1c8856 y el visor independiente. Windows, Linux y navegador completos PASS; [evidencia](VALIDACION_30ba0ec.json). HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
 
 Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentación suave y arte nuevo, conservando reglas, RNG, tiempos, colisiones, campo visible y base clásica. Windows 11 de Miguel: 3840×2160, escala 300 %. Soportar 4:3/16:9 hasta UHD, sin estirar ni ampliar información táctica. No acelerar simulación para aumentar FPS. No regenerar H3 para ocultar divergencias. No publicar recursos comerciales ni partidas privadas.
 
@@ -18,14 +18,16 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido localmente (2.54); CI/paquete/reprueba pendientes; resto de H5.6 pendiente |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido localmente (2.54); CI/paquete aprobados en 30ba0ec; reprueba manual y resto de H5.6 pendientes |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Última validación y paquete
 
-[Evidencia e18b05b](H5_9_VALIDACION_e18b05b.json): Windows 40760804335 y Linux 40760804513 PASS completos; siete CTest Windows, 29 fases públicas sin omisiones y regresiones/sanitizadores según pasos registrados. No implica cobertura GPU, audio físico, todos los finales ni toda CD32.
+[Evidencia 30ba0ec](VALIDACION_30ba0ec.json): Windows 40800994744, Linux 40800994727 y navegador 40800994726 PASS completos. Siete CTest Windows, incluida la pulsación única del menú, y 29 fases sin omisiones. Sanitizadores y regresiones según pasos registrados; no acredita cobertura universal.
 
-[Paquete Windows verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551): 279 entradas; SHA-256 `15a756c7e39981f7b5dc2b31a1549b8f78c70f4738b7b8fd3342a7223da481d6`; ejecutable `4e0bd5de3d40823889bce0fd2ee9d88bbdaf9423d43fe881abb54dee487e532a`. VERSION `b87c5e1fa34668f8a03b21f83727377dc2b14530` es el merge temporal de CI, con árbol idéntico a e18b05b, no una fusión del PR. Incluye el arreglo Heroes/F11 común. Los ZIP anteriores no lo incluyen. Artefacto caducable el 27-11-2026; después reconstruir desde commit y workflows.
+[Paquete Windows corregido](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476): 279 entradas; SHA-256 `18fb4f30d54a62d9a6c10608401777f48ae4dc8144819ceaac9b3bd0ebb48aed`. VERSION `078aa7fed5b328d9a2b88a6683df3bae96e63237` es el merge temporal de CI, árbol idéntico a 30ba0ec, no fusión del PR. Incluye el arreglo de clics. El ZIP e18b05b anterior no lo incluye. Caduca el 28-11-2026; reconstruir desde commit/workflows si ya no existe.
+
+[Visor 8×/12×](../../assets/modernization/density-review/README.md) y [artefacto con capturas](https://github.com/Cacheirez/openfodder/actions/runs/40800994726/artifacts/12865961333) verificados; HTML coincide byte a byte con Git, capturas DPR 1/3 inspeccionadas. El HTML autónomo está conservado permanentemente en Git. No es el render del motor.
 
 ## Aceptaciones manuales y límites
 
@@ -43,14 +45,14 @@ No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin
 
 ## Autorización de avance independiente (29-10)
 
-Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. Su primera CI de navegador 40800565963 está aprobada; [evidencia](H6_DENSIDAD_VALIDACION_f842b3d.json). Ajuste posterior de encuadre/scroll del visor requiere su CI propia. Windows a1c8856 fue cancelado por la siguiente publicación (política cancel-in-progress); comprobar CI de la rama actual para el paquete corregido, sin confundir cancelación con fallo. La CI del visor es independiente de la CI del motor.
+Miguel pide continuar con puntos que no necesiten su validación, antes de revisar opciones. Se adelanta la preparación técnica 8×/12×: [visor autónomo y pruebas](../../assets/modernization/density-review/README.md). No bloquea ese trabajo la aceptación del menú; siguen pendientes la elección visual de densidad y la aceptación de opciones. El visor no modifica el render del juego. La CI final de navegador 40800994726 está aprobada, incluida la corrección de scroll/zoom. Windows anterior a1c8856 fue cancelado por una publicación posterior; Windows/Linux finales 30ba0ec están cerrados PASS. [Evidencia final](VALIDACION_30ba0ec.json).
 
 ## Próximo incremento, en orden
 
 1. Escenas aceptadas por Miguel. No pedir repetir el recorrido completo por esta corrección acotada al menú.
-2. Verificar CI y paquete del incremento 2.54; el ZIP e18b05b no contiene la corrección de clics. Después probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.
+2. Paquete corregido 30ba0ec ya verificado; cuando Miguel retome opciones, probar que CLASSIC/FIT y ON/OFF cambian una sola vez por pulsación, incluso manteniendo el botón.
 3. Con el paquete corregido y PROBAR_OPCIONES_H5.cmd, confirmar SAVE/KEEP mediante clics separados, REVERT/caducidad 15 s y persistencia al reiniciar. Explicar los términos en español; no asumir que Miguel conoce los nombres técnicos del menú.
-4. En paralelo al seguimiento del menú, verificar el visor técnico **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales; después solicitar decisión visual cuando Miguel retome las pruebas. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
+4. En paralelo al seguimiento del menú, usar el visor técnico verificado **8× frente a 12×** con C, misma pose/anclaje/fondo, vistas a 1080p/1440p/UHD y tamaños reales; después solicitar decisión visual cuando Miguel retome las pruebas. [Cálculos](H6_DENSIDAD_EVALUACION.md). No producir animaciones ni prometer que ampliar el PNG activa HD: el compositor actual reduce a 16×14.
 
 ## Decisiones visuales y custodia
 

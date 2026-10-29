@@ -1,5 +1,7 @@
 # Validación interactiva Windows — pantalla y ratón H5.5
 
+**Estado vigente 29-10:** escenas aceptadas. Arreglo de clic único del menú incluido en el [paquete 30ba0ec verificado](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476); [CI completa y evidencia](VALIDACION_30ba0ec.json). Repetir solo opciones cuando Miguel retome la validación; el ZIP e18b05b anterior tiene el fallo. Los apartados fechados anteriores son históricos.
+
 **Guía vigente 28-10:** [paquete e18b05b verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551), CI Windows/Linux PASS. Ejecutar PROBAR_ESCENAS_H5.cmd para el [recorrido común](H5_9_INVENTARIO_ESCENAS.md) y PROBAR_OPCIONES_H5.cmd para persistencia/KEEP/REVERT. El piloto inicial, bordes, mapa, pausa y briefing/reclutamiento anteriores ya fueron aceptados. Las secciones siguientes conservan las pruebas históricas y sus incrementos; no usar sus ZIP antiguos para probar Heroes/F11 común. [Estado de aceptación](CONTINUIDAD.md).
 
 El piloto de correspondencia original fue aceptado por Miguel el 27-10-2026. El nuevo ajuste multirresolución requiere una comprobación específica cuando su CI termine; no se considera probado por esa aceptación anterior.

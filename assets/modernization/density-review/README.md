@@ -30,3 +30,5 @@ La comprobación requiere C++14, Node.js y Python estándar, sin npm para el mod
 [Originales y decisión C](../concepts/README.md) · [Evaluación y siguiente trabajo](../../../docs/modernization/H6_DENSIDAD_EVALUACION.md).
 
 Primera validación completa: [CI 40800565963](https://github.com/Cacheirez/openfodder/actions/runs/40800565963), [evidencia](../../../docs/modernization/H6_DENSIDAD_VALIDACION_f842b3d.json). Capturas inspeccionadas; ajuste posterior de zoom inicial/scroll cubierto por una nueva aserción. Comprobar la CI del HEAD antes de atribuirle ese resultado.
+
+**Versión final verificada:** 30ba0ec, [CI 40800994726](https://github.com/Cacheirez/openfodder/actions/runs/40800994726) PASS; capturas DPR 1/3 inspeccionadas y HTML idéntico al de Git. [Evidencia](../../../docs/modernization/VALIDACION_30ba0ec.json). No requiere ninguna prueba de Miguel para conservar o usar la herramienta; la elección artística sigue abierta.

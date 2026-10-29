@@ -32,3 +32,5 @@ CI y paquete nuevos pendientes al publicar. El ZIP e18b05b/12849036551 todavía 
 4. Cerrar y abrir el mismo lanzador conserva lo confirmado. FIT ajusta la imagen; CLASSIC conserva el escalado original. No cambian el arte.
 
 Escenas ya aceptadas; no se requiere repetir el recorrido completo por esta corrección del menú. Densidad C 8×/12× después de aceptar opciones. Base clásica, mejoras, bocetos y PR sin fusionar conservados.
+
+**Cierre 29-10, plan 2.56:** revisión 30ba0ec, Windows/Linux/navegador completos PASS; paquete corregido y visor verificados. [Evidencia final](VALIDACION_30ba0ec.json). Las menciones de CI pendiente anteriores describen el estado al publicar. Aceptación manual de opciones y elección visual de densidad siguen pendientes.

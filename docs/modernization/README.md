@@ -1,22 +1,22 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente: 29-10-2026 · plan 2.55.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
+**Estado vigente: 29-10-2026 · plan 2.56.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
 ## Leer en este orden
 
 1. [Estado de continuidad y siguiente incremento](CONTINUIDAD.md).
 2. [Plan vivo completo](PLAN_TRABAJO.md), especialmente tarea activa y H4–H10. Sus incrementos fechados son bitácora, no estados pendientes acumulativos.
-3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](H5_9_VALIDACION_e18b05b.json).
+3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](VALIDACION_30ba0ec.json).
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
 ## Referencias vigentes
 
 - Repositorio: https://github.com/Cacheirez/openfodder; rama `modernization/windows-foundation`; [PR #1](https://github.com/Cacheirez/openfodder/pull/1) abierto, borrador y **sin fusionar**.
-- Último motor verificado: `e18b05bd46c35bf471863985e732b2b89f8513c7`. La revisión 2bc8e31 solo documenta; el incremento 2.54 corrige clics repetidos y está pendiente de CI/paquete propios. No confundir HEAD, motor y merge temporal de pruebas.
-- Windows [40760804335](https://github.com/Cacheirez/openfodder/actions/runs/40760804335) y Linux [40760804513](https://github.com/Cacheirez/openfodder/actions/runs/40760804513): PASS completo. [Paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/40760804335/artifacts/12849036551).
+- Última revisión verificada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, con arreglo de clics a1c8856 y comparador independiente. No confundir HEAD documental, motor y merge temporal de CI.
+- Windows [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), Linux [40800994727](https://github.com/Cacheirez/openfodder/actions/runs/40800994727) y navegador [40800994726](https://github.com/Cacheirez/openfodder/actions/runs/40800994726): PASS completo. [Paquete corregido verificado](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476), [evidencia final](VALIDACION_30ba0ec.json).
 - FIT común en ventana/maximizada/F11, con ratón alternativo desbloqueado. Geometría lógica y campo visible conservados. CLASSIC sigue disponible y es el valor por defecto.
-- Escenas aceptadas («Probar escenas está ok»). Pendiente: verificar y probar la [corrección de clics en opciones](H5_6_INCIDENCIA_CLIC_REPETIDO.md). Miguel autoriza adelantar tareas independientes: [comparador técnico C 8×/12×](../../assets/modernization/density-review/README.md) preparado; elección visual pendiente. No volver a elegir A/B/C: Miguel eligió C.
+- Escenas aceptadas («Probar escenas está ok»). Pendiente: probar manualmente la [corrección de clics en opciones](H5_6_INCIDENCIA_CLIC_REPETIDO.md). Miguel autoriza adelantar tareas independientes: [comparador técnico C 8×/12×](../../assets/modernization/density-review/README.md) verificado; elección visual pendiente. No volver a elegir A/B/C: Miguel eligió C.
 - Base clásica: `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; no mover ni reescribir. Inspección aislada: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 
 ## Cómo interpretar los informes
@@ -82,7 +82,7 @@ En Linux ejecutar también los diez scripts `check_final_timer_equivalence.py`, 
 
 Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo todavía no existen; hay un visor técnico 8×/12× separado del motor, pendiente de revisión visual.
 
-Los JSON de validación y resúmenes están en Git; **los logs/trazas completos y los binarios de Actions no están archivados todos de forma permanente en GitHub**. El paquete y evidencia Windows de e18b05b caducan el 27-11-2026. Si desaparecen, reconstruir/probar el commit exacto con los workflows y registrar nuevos hashes; un hash no reconstruye el ZIP ni garantiza binarios idénticos. No hace falta disponer de los ZIP antiguos para editar y reconstruir el proyecto. C1 conserva la deuda de archivo completo.
+Los JSON de validación y resúmenes están en Git; **los logs/trazas completos y los binarios de Actions no están archivados todos de forma permanente en GitHub**. El paquete y evidencia Windows de 30ba0ec caducan el 28-11-2026. Si desaparecen, reconstruir/probar el commit exacto con los workflows y registrar nuevos hashes; un hash no reconstruye el ZIP ni garantiza binarios idénticos. No hace falta disponer de los ZIP antiguos para editar y reconstruir el proyecto. C1 conserva la deuda de archivo completo.
 
 CD32: los datos originales privados no están en GitHub y no deben publicarse. Las demos públicas y sus grabaciones fijadas permiten continuar las pruebas automatizadas. La inspección previa de 72 fases CD32 no equivale a 72 replays aprobados. Pedir los datos privados únicamente si una tarea concreta los requiere; no bloquear el desarrollo público por su ausencia.
 
