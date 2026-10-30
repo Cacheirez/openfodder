@@ -1,6 +1,8 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente: 29-10-2026 · plan 2.59.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
+**Actualización 2.60:** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+
+**Estado vigente: 29-10-2026 · plan 2.60.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
 ## Leer en este orden
 

@@ -1,9 +1,11 @@
 # Prompt para continuar en otro hilo
 
+**Actualización 2.60:** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+
 ```text
 Continúa OpenFodder en https://github.com/Cacheirez/openfodder, rama modernization/windows-foundation, PR #1 abierto, borrador y sin fusionar.
 
-Lee íntegros README.md, CONTINUIDAD.md, PLAN_TRABAJO.md, RELEVO_2026-10-29.md y este prompt en docs/modernization desde la rama. Comprueba HEAD/PR/CI antes de editar. El plan vigente es 2.59. 2479fea era el relevo inicial 2.57; 30ba0ec es la referencia anterior con paquete verificado. Consulta evidencia posterior antes de afirmar CI/paquete nuevos aprobados.
+Lee íntegros README.md, CONTINUIDAD.md, PLAN_TRABAJO.md, RELEVO_2026-10-29.md y este prompt en docs/modernization desde la rama. Comprueba HEAD/PR/CI antes de editar. El plan vigente es 2.60. 2479fea era el relevo inicial 2.57; 30ba0ec es la referencia anterior con paquete verificado. Consulta evidencia posterior antes de afirmar CI/paquete nuevos aprobados.
 
 Conserva base clásica 5e6a4f3, mejoras, originales visuales y H3 sin regenerar huellas para ocultar divergencias. No publiques datos comerciales CD32 ni partidas privadas. No cambies reglas, RNG, tiempos, colisiones ni campo visible. No introduzcas hilos ni actualices dependencias sin necesidad.
 

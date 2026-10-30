@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <algorithm>
 #include <cstdlib>
+#include <string>
 int main(int argc,char**argv){
  if(argc!=3 && argc!=4)return 2;
  const int density=argc==4?std::atoi(argv[3]):1;

@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.59 · Revisión: 29 de octubre de 2026.**
+**Versión 2.60 · Revisión: 29 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: piloto HD C01 aislado 8×/12× implementado. Cierre Save reproducido en el glifo de confirmación y corregido; nueva prueba real de texto PC/Amiga. Pendientes CI/paquete propios y aceptación Windows. Densidad final condicionada a coste medido.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.60 — portabilidad del generador HD y medición en curso
+
+La CI Windows de d2e05e8 (40903703370) falla al compilar el generador: std::to_string requiere `<string>` explícito en MSVC. Se añade ese include sin alterar píxeles, algoritmo ni motor. El PASS Linux no sustituye Windows; la CI de la nueva revisión y su paquete quedan pendientes. [Registro del fallo](evidence/windows-d2e05e8-build-failure.json). Medición CPU/memoria aislada 8×/12× en preparación, sin integrar HD ni fijar densidad.
 
 ## Incremento 2.59 — causa de Save reproducida y corregida
 
