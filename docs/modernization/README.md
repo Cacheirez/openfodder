@@ -1,8 +1,10 @@
 # Relevo técnico — empezar aquí
 
-**Actualización 2.60:** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+**Estado vigente 30-10-2026 · plan 2.61:** `3d82ff2` tiene CI Windows/Linux/comparador completa PASS y [paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/41017089830/artifacts/12961100516). [Cierre y evidencia](VALIDACION_3d82ff2.md). [Costes HD medidos](H6_COSTE_HD_AISLADO.md): evitar integrar tal cual el escalado completo CPU; 12× sigue candidato de textura y 8× parametrizado. Save pendiente de aceptación física; HD aún aislado, densidad final abierta.
 
-**Estado vigente: 29-10-2026 · plan 2.60.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
+**Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+
+**Estado anterior: 29-10-2026 · plan 2.60.** Este repositorio contiene el relevo operativo, las decisiones, el código, las pruebas y los originales visuales. No hace falta recuperar el chat para continuar el desarrollo. Los datos comerciales privados y los ZIP/logs completos caducables de Actions tienen las limitaciones indicadas abajo.
 
 ## Leer en este orden
 
@@ -19,7 +21,7 @@ Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 ## Referencias vigentes
 
 - Repositorio: https://github.com/Cacheirez/openfodder; rama `modernization/windows-foundation`; [PR #1](https://github.com/Cacheirez/openfodder/pull/1) abierto, borrador y **sin fusionar**.
-- Última revisión verificada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, con arreglo de clics a1c8856 y comparador independiente. No confundir HEAD documental, motor y merge temporal de CI.
+- Referencia anterior verificada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, con arreglo de clics a1c8856 y comparador independiente. No confundir HEAD documental, motor y merge temporal de CI.
 - Windows [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), Linux [40800994727](https://github.com/Cacheirez/openfodder/actions/runs/40800994727) y navegador [40800994726](https://github.com/Cacheirez/openfodder/actions/runs/40800994726): PASS completo. [Paquete corregido verificado](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476), [evidencia final](VALIDACION_30ba0ec.json).
 - FIT común en ventana/maximizada/F11, con ratón alternativo desbloqueado. Geometría lógica y campo visible conservados. CLASSIC sigue disponible y es el valor por defecto.
 - Escenas aceptadas («Probar escenas está ok»). Alternancia del menú aceptada; Save corregido en código, pendiente de aceptación física. Miguel autoriza adelantar tareas independientes: [comparador técnico C 8×/12×](../../assets/modernization/density-review/README.md) verificado; comparación visual revisada, densidad final pendiente de coste. No volver a elegir A/B/C: Miguel eligió C.

@@ -20,3 +20,7 @@ La fixture anterior de transacción omitía el dibujo de la confirmación: por e
 Usar el paquete de este incremento (no el anterior 30ba0ec para obtener las marcas nuevas), extraído en carpeta nueva. Ejecutar `PROBAR_OPCIONES_H5.cmd`, cambiar las mismas opciones y pulsar Save. Si vuelve a cerrar, conservar `H5_OPCIONES.log` y comunicar las opciones cambiadas. El código de salida y las últimas marcas permitirán distinguir preview de dibujo. No pedir repetir escenas aceptadas ni publicar automáticamente ningún archivo privado. No hay acceso físico al Windows de Miguel.
 
 Conservar también versión exacta del paquete probado. La causa de código está corregida y cubierta; aceptación física pendiente. KEEP significa conservar el cambio; REVERT, restaurarlo. Caducidad de 15 segundos y persistencia siguen pendientes de poder completar este recorrido real.
+
+## Cierre automático 30-10-2026
+
+CI Windows/Linux/comparador de 3d82ff2 completadas PASS; [paquete que contiene la corrección verificado](VALIDACION_3d82ff2.md). Falta aceptación física: cambiar opción → SAVE → KEEP, reiniciar para comprobar persistencia; repetir REVERT y caducidad 15 segundos. No repetir escenas ya aceptadas. Si cierra, conservar H5_OPCIONES.log.

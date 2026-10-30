@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.60 · Revisión: 29 de octubre de 2026.**
+**Versión 2.61 · Revisión: 30 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: piloto HD C01 aislado 8×/12× implementado. Cierre Save reproducido en el glifo de confirmación y corregido; nueva prueba real de texto PC/Amiga. Pendientes CI/paquete propios y aceptación Windows. Densidad final condicionada a coste medido.**
+**Tarea activa: piloto HD C01 aislado 8×/12× implementado. Cierre Save reproducido en el glifo de confirmación y corregido; nueva prueba real de texto PC/Amiga. CI/paquete 3d82ff2 verificados. Coste aislado medido; integración eficiente y aceptación física Save pendientes. Densidad final abierta.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.61 — coste HD medido antes de integración
+
+[Ensayo reproducible](H6_COSTE_HD_AISLADO.md), 108 procesos/21.600 muestras. Escalado completo CPU 12× no es una ruta adecuada para el objetivo de 60 Hz en este entorno: Amiga compleja mediana 39,398 ms frente a 11,126 ms a 8×. Mantener calidad 12× como candidata de recurso, desacoplar densidad de textura y destino de composición antes de integrar. No se fija densidad ni se modifica el motor. MSVC corregido en 3d82ff2; CI Windows/Linux/comparador completa PASS y paquete verificado, [cierre](VALIDACION_3d82ff2.md). Save pendiente de aceptación física.
 
 ## Incremento 2.60 — portabilidad del generador HD y medición en curso
 
@@ -206,7 +210,7 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor/revisión verificados | `30ba0eccc752cf693b56f1f120842b51f3fd937e`, incluye clic único a1c8856 y visor independiente |
+| Motor/revisión verificados | `3d82ff2b4774c8d9939a2315e19bef3fe21122de`, incluye arreglo Save, piloto HD aislado y portabilidad MSVC; [evidencia](VALIDACION_3d82ff2.md) |
 | Aceptación manual | Parcial por incrementos; [registro vigente](CONTINUIDAD.md). No hay aceptación manual global de e18b05b |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
 | CI Windows 30ba0ec | [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), éxito |
@@ -240,7 +244,7 @@ Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de m
 | H3 · Misma jugabilidad | H3.1–H3.6 completadas en demos | Barrera permanente para H4–H10 |
 | H4 · Presentación separada | Avanzado, parcial | Publicación opcional → motor 0/1/N y transiciones → estados aptos para interpolación |
 | H5 · Cámara y movimiento suaves | Parcial: medición inicial, transformaciones/FIT y opciones mínimas implementados | Aceptar ajuste común/opciones; interpolación pendiente |
-| H6 · Arte y recursos | C elegida, bocetos archivados y pose integrada experimentalmente | Comparación 8×/12× y compositor HD pendientes |
+| H6 · Arte y recursos | C elegida, bocetos archivados y pose integrada experimentalmente | Comparación aceptada, piloto aislado y coste medidos; integración eficiente pendiente |
 | H7 · Primera misión moderna | Pendiente | H5 y muestra H6 aprobados, fase inventariada |
 | H8 · Cobertura de CF1/CD32 | Edición confirmada, producción pendiente | H7 y matriz de recursos/escenarios |
 | H9 · Pulido Windows | Pendiente | Regresión continua; cierre tras H8 |

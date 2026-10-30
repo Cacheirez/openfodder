@@ -41,3 +41,7 @@ Regresión nativa: 64 casos existentes de C01 con adaptadores reales conservados
 ## Siguiente
 
 Validar físicamente la corrección de Save (causa reproducida/corregida en 2.59), después integrar opcionalmente el destino HD en una publicación de misión conservando el contraste clásico y la identidad temporal. Ampliar oclusiones solo con un contrato de escrituras verificable; no superponer a ciegas una textura al final. Medir costes antes de fijar 12×. Cursor, atlas de animaciones y terrenos siguen pendientes.
+
+## Medición posterior — 30-10-2026
+
+[Costes medidos y propuesta de integración](H6_COSTE_HD_AISLADO.md). No integrar tal cual el escalado completo CPU; textura 12× sigue candidata, densidad definitiva pendiente.

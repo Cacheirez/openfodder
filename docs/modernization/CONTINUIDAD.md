@@ -1,12 +1,14 @@
 # Estado operativo para continuar sin el chat
 
-**Actualización 2.60:** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+**Estado vigente 30-10-2026 · plan 2.61:** `3d82ff2` tiene CI Windows/Linux/comparador completa PASS y [paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/41017089830/artifacts/12961100516). [Cierre y evidencia](VALIDACION_3d82ff2.md). [Costes HD medidos](H6_COSTE_HD_AISLADO.md): evitar integrar tal cual el escalado completo CPU; 12× sigue candidato de textura y 8× parametrizado. Save pendiente de aceptación física; HD aún aislado, densidad final abierta.
 
-29-10-2026 · plan 2.60. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+**Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
+
+30-10-2026 · plan 2.61. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
-Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Última revisión probada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, árbol `14edfa9575a0f1297e31058a75e868b4e8299e3a`. Incluye el arreglo del menú a1c8856 y el visor independiente. Windows, Linux y navegador completos PASS; [evidencia](VALIDACION_30ba0ec.json). HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
+Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`, PR #1 abierto, borrador y sin fusionar. Base clásica intocable: `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`. Referencia anterior probada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, árbol `14edfa9575a0f1297e31058a75e868b4e8299e3a`. Incluye el arreglo del menú a1c8856 y el visor independiente. Windows, Linux y navegador completos PASS; [evidencia](VALIDACION_30ba0ec.json). HEAD cambia: leerlo del repositorio, no inferirlo de este documento.
 
 Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentación suave y arte nuevo, conservando reglas, RNG, tiempos, colisiones, campo visible y base clásica. Windows 11 de Miguel: 3840×2160, escala 300 %. Soportar 4:3/16:9 hasta UHD, sin estirar ni ampliar información táctica. No acelerar simulación para aumentar FPS. No regenerar H3 para ocultar divergencias. No publicar recursos comerciales ni partidas privadas.
 
@@ -23,7 +25,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; nuevo cierre en Save reproducido/corregido; aceptación física pendiente y resto de H5.6 pendientes |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
-## Última validación y paquete
+## Validación anterior y paquete 30ba0ec (histórico)
 
 [Evidencia 30ba0ec](VALIDACION_30ba0ec.json): Windows 40800994744, Linux 40800994727 y navegador 40800994726 PASS completos. Siete CTest Windows, incluida la pulsación única del menú, y 29 fases sin omisiones. Sanitizadores y regresiones según pasos registrados; no acredita cobertura universal.
 
@@ -58,7 +60,7 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Falta aceptación física. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: cerrar CI y verificar paquete de este incremento; validar en Windows la corrección de Save; integrar opcionalmente destino HD en misión después de validar el contrato y medir costes. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: validar en Windows Save con el paquete 3d82ff2; preparar una composición HD eficiente y opcional a partir de los costes medidos, antes de fijar densidad. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
