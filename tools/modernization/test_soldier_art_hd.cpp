@@ -2,7 +2,7 @@
 #ifdef NDEBUG
 #undef NDEBUG
 #endif
-#include "Utils/SoldierArtHD.hpp"
+#include "Utils/SoldierArtHDLayers.hpp"
 #include "c01_8.hpp"
 #include "c01_12.hpp"
 #include <cassert>
@@ -34,8 +34,33 @@ static MissionLayer soldier(bool amiga,int shift) {
     auto input=g;input.source=p.resource.source();p.draw=PrepareSpriteDraw(input);
     return l;
 }
+// Full HD oracle is expanded only in tests, never by the layered producer.
+static void checkLayers(const MissionLayerSequence& scene,const PresentationDestinationId& id,
+        const SoldierArtHDAsset& a,bool stable=true) {
+    const auto full=ComposeSoldierArtHD(scene,id,stable,a);
+    const auto layers=ComposeSoldierArtHDLayers(scene,id,stable,a);
+    assert(layers.status==full.status && layers.density==full.density);
+    assert(layers.background.destination==full.target.destination);
+    if(layers.status!=SoldierArtHDStatus::Replaced){
+        assert(layers.patch.empty() && layers.background.pixels==full.target.pixels);return;
+    }
+    assert(layers.logicalX==full.logicalX && layers.logicalY==full.logicalY && layers.scene==full.scene);
+    const auto d=layers.density;
+    assert(layers.patch.size()==224*d*d);
+    for(size_t y=0;y<full.target.height;++y)for(size_t x=0;x<full.target.width;++x){
+        uint32_t pixel=layers.background.pixels[(y/d)*layers.background.width+x/d];
+        const size_t left=size_t(layers.logicalX)*d,top=size_t(layers.logicalY)*d;
+        if(x>=left && x<left+16*d && y>=top && y<top+14*d)
+            pixel=layers.patch[(y-top)*16*d+x-left];
+        assert(pixel==full.target.pixels[y*full.target.stride+x]);
+    }
+    const auto denied=ComposeSoldierArtHDLayers(scene,id,stable,a,layers.patch.size()*4-1);
+    assert(denied.status==SoldierArtHDStatus::BudgetExceeded && denied.patch.empty());
+    assert(denied.background.pixels==RasterizeMissionLayers(scene,id).pixels);
+}
 static void fallback(const MissionLayerSequence& scene,const PresentationDestinationId& id,
         const SoldierArtHDAsset& a, bool stable=true, size_t budget=64u*1024u*1024u) {
+    if(budget==64u*1024u*1024u)checkLayers(scene,id,a,stable);
     auto result=ComposeSoldierArtHD(scene,id,stable,a,budget);
     auto reference=RasterizeMissionLayers(scene,id);
     assert(result.status!=SoldierArtHDStatus::Replaced && result.density==1);
@@ -50,7 +75,7 @@ int main() {
         auto l=soldier(amiga,shift);l.destination=id;
         MissionLayer early;early.destination=id;early.role=MissionLayerRole::Cursor;
         early.pixels.put((32+shift)*96+72+shift,50);scene.layers={early,l};
-        auto a=asset(d);auto hd=ComposeSoldierArtHD(scene,id,true,a);
+        auto a=asset(d);checkLayers(scene,id,a);auto hd=ComposeSoldierArtHD(scene,id,true,a);
         assert(hd.status==SoldierArtHDStatus::Replaced && hd.density==d && hd.target.destination==id);
         assert(hd.logicalX==64+shift && hd.logicalY==32+shift && hd.scene==1);
         assert(hd.target.width==96*d && hd.target.height==64*d && hd.target.stride==96*d);
@@ -70,7 +95,7 @@ int main() {
         // is checked against an independent pixel equation at every output pixel.
         for(uint32_t color:{0u,0xff123456u,0x80123456u}) {
             auto solid=a;solid.pixels=std::make_shared<const std::vector<uint32_t>>(224*d*d,color);
-            auto got=ComposeSoldierArtHD(scene,id,true,solid);auto ground=scene;ground.layers.pop_back();
+            checkLayers(scene,id,solid);auto got=ComposeSoldierArtHD(scene,id,true,solid);auto ground=scene;ground.layers.pop_back();
             auto bg=RasterizeMissionLayers(ground,id);
             for(size_t y=0;y<14*d;++y)for(size_t x=0;x<16*d;++x) {
                 size_t ox=size_t(hd.logicalX)*d+x,oy=size_t(hd.logicalY)*d+y;
@@ -80,7 +105,7 @@ int main() {
             }
         }
         for(int count:{0,1,5})for(int n=0;n<count;++n)
-            assert(ComposeSoldierArtHD(scene,id,true,a).target.pixels==hd.target.pixels);
+            {checkLayers(scene,id,a);assert(ComposeSoldierArtHD(scene,id,true,a).target.pixels==hd.target.pixels);}
         assert(RasterizeMissionLayers(scene,id).pixels==classic.pixels);
         fallback(scene,id,a,false);fallback(scene,id,{});auto wrong=a;wrong.density=9;fallback(scene,id,wrong);
         wrong.density=d;wrong.pixels=std::make_shared<const std::vector<uint32_t>>(3,0);fallback(scene,id,wrong);
@@ -108,7 +133,7 @@ int main() {
         // Identical coordinates on another destination never occlude this one.
         auto other=early;other.destination=scene.destinations[1].initial.destination;
         scene.layers.push_back(other);
-        assert(ComposeSoldierArtHD(scene,id,true,a).target.pixels==hd.target.pixels);
+        {checkLayers(scene,id,a);assert(ComposeSoldierArtHD(scene,id,true,a).target.pixels==hd.target.pixels);}
         fallback(scene,other.destination,a);
         scene.destinations[0]=destination(96,64,3);auto padded=scene.destinations[0].initial.destination;
         for(auto& cmd:scene.layers)if(cmd.destination==id)cmd.destination=padded;
@@ -117,7 +142,9 @@ int main() {
     // Bound the largest supported candidate independently of machine RAM.
     MissionLayerSequence large;large.destinations={destination(352,272)};
     auto l=soldier(false,0);l.destination=large.destinations[0].initial.destination;large.layers={l};
+    checkLayers(large,l.destination,asset(12));
     auto hd=ComposeSoldierArtHD(large,l.destination,true,asset(12));
     assert(hd.status==SoldierArtHDStatus::Replaced && hd.target.pixels.size()*4==55148544);
-    std::cout<<"PASS HD C01: "<<cases<<" guards; PC/Amiga 1x/8x/12x, native oracle, alpha, order, destinations, pitch, budget, retained 0/1/5\n";
+    std::cout<<"PASS full/layered pixel equality; HD C01: "<<cases<<" guards; PC/Amiga 1x/8x/12x, native oracle, alpha, order, destinations, pitch, budget, retained 0/1/5\n";
+    return 0;
 }

@@ -21,9 +21,9 @@ int main(int argc,char** argv) {
     const int mode=std::stoi(argv[3]),samples=std::stoi(argv[4]),warmup=std::stoi(argv[5]);
     const int round=std::stoi(argv[6]);
     if(platform<0||platform>2||complexity<0||complexity>1||samples<100||samples>10000||warmup<1)return 2;
-    if(mode!=0&&mode!=1&&mode!=8&&mode!=12&&mode!=108&&mode!=112)return 2;
-    const bool amiga=platform==1,blocked=mode>100;
-    const unsigned density=blocked?unsigned(mode-100):unsigned(mode);
+    if(mode!=0&&mode!=1&&mode!=8&&mode!=12&&mode!=108&&mode!=112&&mode!=208&&mode!=212)return 2;
+    const bool amiga=platform==1,layered=mode>200,blocked=mode>100&&!layered;
+    const unsigned density=layered?unsigned(mode-200):(blocked?unsigned(mode-100):unsigned(mode));
     const size_t w=platform==2?352:320,h=platform==0?200:(platform==1?225:272);
     MissionLayerSequence scene;scene.destinations.push_back(destination(w,h));
     if(complexity)scene.destinations.push_back(destination(w,h));
@@ -42,6 +42,13 @@ int main(int argc,char** argv) {
         PresentationTarget target;
         if(mode==0)target=RasterizeMissionLayers(scene,id);
         else if(mode==1){auto result=ComposeSoldierArt(scene,id,true);if(!result.replaced)throw std::runtime_error("native inactive");target=std::move(result.target);}
+        else if(layered){
+            auto result=ComposeSoldierArtHDLayers(scene,id,true,a);
+            if(result.status!=SoldierArtHDStatus::Replaced)throw std::runtime_error("layered inactive");
+            outputBytes=result.background.pixels.size()*4+result.patch.size()*4;
+            consumed+=result.patch.front()+result.patch.back()+result.background.pixels.front();
+            return fullHash?(digest(result.background.pixels)^digest(result.patch)):uint64_t(0);
+        }
         else {
             auto result=ComposeSoldierArtHD(scene,id,true,a);
             if((result.status==SoldierArtHDStatus::Replaced)!=!blocked)throw std::runtime_error("wrong HD path");

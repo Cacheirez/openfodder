@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 30-10-2026 · plan 2.61:** `3d82ff2` tiene CI Windows/Linux/comparador completa PASS y [paquete verificado](https://github.com/Cacheirez/openfodder/actions/runs/41017089830/artifacts/12961100516). [Cierre y evidencia](VALIDACION_3d82ff2.md). [Costes HD medidos](H6_COSTE_HD_AISLADO.md): evitar integrar tal cual el escalado completo CPU; 12× sigue candidato de textura y 8× parametrizado. Save pendiente de aceptación física; HD aún aislado, densidad final abierta.
+**Estado vigente 30-10-2026 · plan 2.62:** Miguel acepta guardado y persistencia de opciones. [Composición HD eficiente por capas](H6_COMPOSICION_HD_POR_CAPAS.md) implementada y verificada localmente: fondo nativo + parche HD, mismos guards/fallback y equivalencia píxel a píxel. Sigue aislada, sin SDL; CI nueva pendiente. Último paquete verificado: 3d82ff2. Densidad final abierta.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-30-10-2026 · plan 2.61. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+30-10-2026 · plan 2.62. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -22,7 +22,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
 | Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
-| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; nuevo cierre en Save reproducido/corregido; aceptación física pendiente y resto de H5.6 pendientes |
+| Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; cierre Save corregido y guardado/persistencia aceptados por Miguel el 30-10; resto de H5.6 pendiente |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
 
 ## Validación anterior y paquete 30ba0ec (histórico)
@@ -58,15 +58,13 @@ Miguel pide continuar con puntos que no necesiten su validación, antes de revis
 
 Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos revisados, algo mejor la alta; prefiere calidad si memoria/rendimiento lo permiten. No repetir A/B/C ni el comparador completo. Falta medir coste en el motor antes de cerrar densidad.
 
-Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Falta aceptación física. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
+Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: validar en Windows Save con el paquete 3d82ff2; preparar una composición HD eficiente y opcional a partir de los costes medidos, antes de fijar densidad. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: verificar CI de la composición por capas y preparar su consumidor SDL opcional antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
-1. Cuando haya paquete propio verificado, reproducir solo Save con el lanzador y conservar el log si cierra; indicar opciones cambiadas.
-2. Con el paquete corregido, completar KEEP/REVERT, caducidad 15 s y persistencia.
-3. Densidad final condicionada a coste medido; revisión del comparador ya recibida. Integración HD y cursor aún pendientes de prueba visual específica.
+Guardado y persistencia de opciones aceptados el 30-10-2026. No pedir repetir esa prueba. REVERT/caducidad no tienen confirmación separada; mantener esa distinción sin bloquear trabajo independiente. La integración HD futura necesitará prueba visual específica; no repetir A/B/C ni el comparador ya revisado.
 
 ## Decisiones visuales y custodia
 

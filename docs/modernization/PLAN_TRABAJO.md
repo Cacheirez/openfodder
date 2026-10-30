@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.61 · Revisión: 30 de octubre de 2026.**
+**Versión 2.62 · Revisión: 30 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: piloto HD C01 aislado 8×/12× implementado. Cierre Save reproducido en el glifo de confirmación y corregido; nueva prueba real de texto PC/Amiga. CI/paquete 3d82ff2 verificados. Coste aislado medido; integración eficiente y aceptación física Save pendientes. Densidad final abierta.**
+**Tarea activa: composición HD por capas implementada y verificada localmente; fondo nativo y parche HD sin ampliar el canvas por CPU. Guardado y persistencia aceptados por Miguel. Pendientes CI propia, consumidor SDL y densidad definitiva.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.62 — composición eficiente y opciones aceptadas
+
+[Contrato y pruebas](H6_COMPOSICION_HD_POR_CAPAS.md): fondo nativo más parche HD precompuesto; equivalencia exacta con el compositor completo en pruebas PC/Amiga 1×/8×/12× y guards de retorno clásico. Implementación aislada, aún sin SDL ni nueva oclusión parcial. No cambia motor activo, H3 ni originales. Miguel confirma que las opciones guardan y mantienen valores; REVERT/caducidad no se atribuyen como pruebas manuales separadas. CI nueva pendiente.
 
 ## Incremento 2.61 — coste HD medido antes de integración
 
@@ -329,7 +333,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.
 - [ ] **H5.5 — Asistente:** resolver y probar la correspondencia ratón → ventana → cámara visual → mundo. Medir el retraso visual de interpolación y su efecto al apuntar. **Avance 2.35:** [contrato y modelo verificable](TRANSFORMACIONES_PANTALLA.md), con inversa, bandas, HUD, cámara y anclajes; **Avance 2.36:** [adaptador de misión](H5_5_TRANSFORMACION_MISION.md) opcional, dibujo y ratón absoluto compartidos; equivalencia local con offsets clásicos comprobada. **Avance 2.38:** CI Windows/Linux cerrada y aceptación manual general de Miguel recibida. Pendientes matriz detallada de resolución/DPI, ratón relativo, cámara interpolada y otros modos/escenas.
-- [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego. **Avance 2.49–2.52:** CLASSIC/FIT y transacción SAVE/KEEP/REVERT implementados, CI cerrada; aceptación manual pendiente. Monitor/modos/FPS/interfaz independiente siguen pendientes.
+- [ ] **H5.6 — Asistente:** opciones de presentación: clásico/moderno, monitor, resolución, ventana/sin bordes y exclusiva si se valida, escala de interfaz, calidad, sincronización y límite de FPS. Detectar modos admitidos, confirmar cambios en 15 segundos y recuperar configuración anterior ante fallo. Persistencia segura sin cambiar velocidad de juego. **Avance 2.49–2.52:** CLASSIC/FIT y transacción SAVE/KEEP/REVERT implementados, CI cerrada; guardado/persistencia aceptados por Miguel el 30-10 (2.62). Monitor/modos/FPS/interfaz independiente siguen pendientes.
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
 

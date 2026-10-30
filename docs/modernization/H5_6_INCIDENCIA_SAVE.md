@@ -24,3 +24,7 @@ Conservar también versión exacta del paquete probado. La causa de código est�
 ## Cierre automático 30-10-2026
 
 CI Windows/Linux/comparador de 3d82ff2 completadas PASS; [paquete que contiene la corrección verificado](VALIDACION_3d82ff2.md). Falta aceptación física: cambiar opción → SAVE → KEEP, reiniciar para comprobar persistencia; repetir REVERT y caducidad 15 segundos. No repetir escenas ya aceptadas. Si cierra, conservar H5_OPCIONES.log.
+
+## Aceptación manual 30-10-2026
+
+Miguel: «ahora ya funcionan las opciones, graba y mantiene los valores». Guardado y persistencia aceptados. No se atribuye prueba separada de REVERT/caducidad. La incidencia de cierre Save queda cerrada en el recorrido confirmado.
