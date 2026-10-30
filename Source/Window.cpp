@@ -517,7 +517,8 @@ void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
             throw std::runtime_error("screen transform differs from draw rectangle");
         // Dest is already the SDL-precision rectangle retained by FromDraw.
     }
-    const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
+    const int hd=pMission ? TryRenderMissionHD(pImage,Src,Dest) : -1;
+    const bool drawn=hd<0 ? SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest) : hd==1;
     if(drawn && fitPause && transform.valid && g_Fodder->mStartParams->mUnitTesting) {
         static bool reportedPause=false;
         if(!reportedPause) {

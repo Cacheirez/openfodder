@@ -67,16 +67,17 @@ def main():
     p.add_argument('--pose-probe', action='store_true', help='Replace one original indexed pose and require per-scene evidence; implies soldier capture')
     p.add_argument('--screen-probe', action='store_true', help='Require presented mission transform and inverse; replay input remains canonical')
     p.add_argument('--art-probe', action='store_true', help='C01 RGBA pilot; require at least one actual selected-pose replacement across the declared campaigns')
+    p.add_argument('--hd-probe',type=int,choices=(8,12),help='Require optional SDL HD patch publication')
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
-    args.soldier_probe = args.soldier_probe or args.pose_probe or args.art_probe
+    args.soldier_probe = args.soldier_probe or args.pose_probe or args.art_probe or bool(args.hd_probe)
     root = Path(__file__).resolve().parents[2]
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
     fixture_hash, count = sha_manifest(args.data.resolve() / 'Tests')
     settings = {'flags': ['--appveyor', '--unit-test', '--nosound'],
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
-                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe, 'art_probe': args.art_probe,
+                'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe, 'art_probe': args.art_probe, 'hd_probe':args.hd_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
     if args.screen_probe:
         settings['flags'] += ['--window', '--alternate-mouse']
@@ -97,6 +98,7 @@ def main():
                        OPENFODDER_MISSION_SCREEN_TRANSFORM='1' if args.screen_probe else '0',
                        OPENFODDER_MISSION_SCREEN_FIT='1' if args.screen_probe else '0',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
+                       OPENFODDER_SOLDIER_HD=str(args.hd_probe or 0),
                        OPENFODDER_SOLDIER_ART='1' if args.art_probe else '0',
                        OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',
                        OPENFODDER_CAPTURE_SOLDIER='1' if args.soldier_probe else '0',
@@ -142,8 +144,11 @@ def main():
             pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
                                         'pause_transitions': pauses, 'soldier_scenes': soldier_scenes, 'pose_scenes': pose_scenes, 'art_scenes': art_probe_scenes(log) if args.art_probe else 0,
+                                        'hd_published': 'SOLDIER_HD_SDL: published native background and HD patch' in log,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
+        if args.hd_probe and args.presentations!=0 and not any(c['hd_published'] for c in results['campaigns']):
+            raise RuntimeError('HD SDL path never published')
         if args.art_probe:
             require_art_coverage(results['campaigns'])
         baseline = root/'tools/modernization/reference-gameplay-v1.json'

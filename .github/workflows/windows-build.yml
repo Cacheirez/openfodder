@@ -89,6 +89,16 @@ jobs:
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
         run: python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-art-full --art-probe
+      - name: H6 - optional SDL HD 8x and 12x with original H3 and pause transitions
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-hd-8 --hd-probe 8 --screen-probe --pause-probe
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-hd-12 --hd-probe 12 --screen-probe --pause-probe --presentations 5
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build

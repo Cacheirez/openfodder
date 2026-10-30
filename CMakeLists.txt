@@ -159,6 +159,33 @@ add_executable(openfodder_art_hd_tests tools/modernization/test_soldier_art_hd.c
 target_include_directories(openfodder_art_hd_tests PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_BINARY_DIR}")
 add_test(NAME soldier_art_hd_isolated COMMAND $<TARGET_FILE:openfodder_art_hd_tests>)
+# Shared generated assets are built once before either consumer compiles.
+add_dependencies(openfodder openfodder_art_hd_tests)
+target_include_directories(openfodder PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
+add_executable(openfodder_art_sdl_tests tools/modernization/test_soldier_art_sdl.cpp)
+add_dependencies(openfodder_art_sdl_tests openfodder_art_hd_tests)
+target_include_directories(openfodder_art_sdl_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_BINARY_DIR}")
+target_link_libraries(openfodder_art_sdl_tests PRIVATE SDL3::SDL3)
+add_test(NAME soldier_art_sdl_transaction COMMAND $<TARGET_FILE:openfodder_art_sdl_tests>)
+if(Python3_Interpreter_FOUND)
+    set(_hd_window_fixture "${CMAKE_CURRENT_BINARY_DIR}/hd_window_fixture.cpp")
+    add_custom_command(OUTPUT "${_hd_window_fixture}"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/build_hd_window_fixture.py" --emit "${_hd_window_fixture}"
+        DEPENDS tools/modernization/build_hd_window_fixture.py Source/WindowHD.cpp VERBATIM)
+    add_executable(openfodder_hd_window_tests "${_hd_window_fixture}")
+    add_dependencies(openfodder_hd_window_tests openfodder_art_sdl_tests)
+    target_include_directories(openfodder_hd_window_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization" "${CMAKE_CURRENT_BINARY_DIR}")
+    target_link_libraries(openfodder_hd_window_tests PRIVATE SDL3::SDL3)
+    add_test(NAME soldier_hd_window_lifecycle COMMAND $<TARGET_FILE:openfodder_hd_window_tests>)
+    if(WIN32)
+        foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests)
+            add_custom_command(TARGET ${_hd_test} POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:SDL3::SDL3> $<TARGET_FILE_DIR:${_hd_test}> VERBATIM)
+        endforeach()
+    endif()
+endif()
+
+
 add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
 add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
 add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)

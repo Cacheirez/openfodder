@@ -56,6 +56,7 @@ class cWindow {
 							cWindow();
 		virtual				~cWindow();
 
+        int TryRenderMissionHD(cSurface*,const SDL_FRect&,const SDL_FRect&);
         struct PresentationState {
             int x=0, y=0, w=0, h=0, scaler=1, previousScaler=1;
             bool fullscreen=false, maximized=false, resizable=false, relative=false;

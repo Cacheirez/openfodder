@@ -14,11 +14,12 @@ def build():
     # Audit all desktop texture/present sinks, so a future bypass cannot silently
     # omit the common policy. Browser callers use Window; native input remains separate.
     sinks={}
-    for path in (ROOT/'Source').rglob('*.cpp'):
+    for path in list((ROOT/'Source').rglob('*.cpp'))+list((ROOT/'Source').rglob('*.hpp')):
         for api in re.findall(r'\b(SDL_Render(?:Texture\w*|Geometry\w*|Present))\s*\(',path.read_text()):
             key=(path.relative_to(ROOT).as_posix(),api)
             sinks[key]=sinks.get(key,0)+1
-    assert sinks=={('Source/Window.cpp','SDL_RenderTexture'):2,
+    assert sinks=={('Source/Utils/SoldierArtSDL.hpp','SDL_RenderTexture'):4,
+                   ('Source/Window.cpp','SDL_RenderTexture'):2,
                    ('Source/Window.cpp','SDL_RenderPresent'):1,
                    ('Source/VideoMPEG.cpp','SDL_RenderTexture'):1}, sinks
     window=(ROOT/'Source/Window.cpp').read_text()
@@ -77,6 +78,7 @@ struct cWindow{
  bool IsMissionCursorInBand() const;unsigned FittedInputScene() const;
  SDL_Renderer* GetRenderer(){return mRenderer;}
  cDimension GetWindowSize(){return {640,mScreenSize.mHeight*2};}
+ int TryRenderMissionHD(cSurface*,const SDL_FRect&,const SDL_FRect&){return -1;}
  void BeginVideoPresentation();void RenderAt(cSurface*,bool=false);void RenderShrunk(cSurface*);void FrameEnd();void InvalidateScreenTransform();
  openfodder::ScreenMouseResult MapMissionMouse(int,int,int16&,int16&);
 };

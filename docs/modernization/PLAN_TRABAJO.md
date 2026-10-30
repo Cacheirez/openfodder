@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.62 · Revisión: 30 de octubre de 2026.**
+**Versión 2.63 · Revisión: 30 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: composición HD por capas implementada y verificada localmente; fondo nativo y parche HD sin ampliar el canvas por CPU. Guardado y persistencia aceptados por Miguel. Pendientes CI propia, consumidor SDL y densidad definitiva.**
+**Tarea activa: conexión SDL opcional 8×/12× implementada; escalado, transiciones y recuperación comprobados localmente. CI anterior 832895d cerrada PASS. Nueva CI/paquete y prueba visual Windows pendientes; densidad final abierta.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.63 — SDL opcional con recuperación clásica
+
+[Contrato y evidencia](H6_HD_SDL_OPCIONAL.md). Texturas temporales de fondo nativo y parche HD, misma transformación de pantalla, validación de escena/destino y vuelta a clásico ante error. Escala entera contra oráculo completo; fraccionaria conserva exactamente exterior clásico SDL, sin exigir idéntico muestreo interior. Pruebas software y método real local PASS; CI nueva y paquete pendientes. Se cierra CI 832895d en las tres plataformas. Opciones aceptadas; sin cambios de simulación, H3 u originales.
 
 ## Incremento 2.62 — composición eficiente y opciones aceptadas
 

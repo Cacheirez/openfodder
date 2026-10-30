@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 30-10-2026 · plan 2.62:** Miguel acepta guardado y persistencia de opciones. [Composición HD eficiente por capas](H6_COMPOSICION_HD_POR_CAPAS.md) implementada y verificada localmente: fondo nativo + parche HD, mismos guards/fallback y equivalencia píxel a píxel. Sigue aislada, sin SDL; CI nueva pendiente. Último paquete verificado: 3d82ff2. Densidad final abierta.
+**Estado vigente 30-10-2026 · plan 2.63:** CI 832895d cerrada PASS. [Conexión SDL opcional](H6_HD_SDL_OPCIONAL.md) implementada, pruebas locales de escalado, transiciones y fallos aprobadas; nueva CI pendiente. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL; no usarlo para validar este incremento.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-30-10-2026 · plan 2.62. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+30-10-2026 · plan 2.63. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -60,7 +60,7 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: verificar CI de la composición por capas y preparar su consumidor SDL opcional antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: cerrar CI del adaptador SDL, verificar su paquete y hacer prueba visual acotada antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
