@@ -1,6 +1,6 @@
 # H6 — publicación SDL opcional de C01 HD
 
-31-10-2026 · plan 2.64. Conexión implementada; validación local software aprobada, nueva CI del motor pendiente. No se declara prueba física Windows/GPU ni densidad definitiva.
+31-10-2026 · plan 2.65. Conexión implementada; validación local software aprobada, nueva CI del motor pendiente. No se declara prueba física Windows/GPU ni densidad definitiva.
 
 ## Activación y alcance
 
@@ -41,3 +41,9 @@ Siguiente: cerrar CI de la integración, verificar paquete nuevo y prueba visual
 ## Corrección de CI 2.64
 
 Windows 41095340402 y Linux 41095340185 (75a91ff) fallaron en la sonda de pausa tras completar las ocho fases PC. Los replays restauran mEngineTicks (por ejemplo PC m2p2=788, Amiga m1p2=150), de modo que buscar ticks absolutos 8/16 omitía fases. La sonda usa ahora pasos por fase sin escribir el reloj ni cambiar H3. La puerta exige exactamente dos parejas 8/16 en cada fase. Informes HD añadidos al artefacto Linux; nueva CI y paquete pendientes.
+
+Validación local de la corrección: motor completo sin mixer, SDL software 3.4.0, 8× con una presentación y 12× con cinco; ambas ejecuciones PASS, 11 fases, 22 pausas/reanudaciones y 11.361 estados H3 originales por ejecución. Publicación HD real en PC y Amiga. [Informes](evidence/hd-sdl-replay-fix-2026-10-31.json). No equivale a Windows/GPU ni a audio.
+
+## Presupuesto de CI 2.65
+
+Windows 41194788492 agotó el límite global de 35 minutos durante Amiga 12×. 8× completo (11 fases, 22 pausas, H3) y PC 12× sí pasaron. Linux aprobó el paso HD completo. Se amplía el job Windows a 60 minutos; no se reducen fases ni presentaciones. CI/paquete nuevos pendientes.

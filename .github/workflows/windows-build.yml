@@ -17,7 +17,8 @@ concurrency:
 jobs:
   windows-x64:
     runs-on: windows-2022
-    timeout-minutes: 35
+    # Full HD 12x five-presentation replays exceed the former 35-minute job budget.
+    timeout-minutes: 60
     defaults:
       run:
         shell: pwsh

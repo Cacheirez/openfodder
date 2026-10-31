@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 31-10-2026 · plan 2.64:** integración HD SDL opcional implementada. CI 75a91ff falló en la sonda de pausa: los replays restauran relojes no nulos. Sonda corregida para contar pasos por fase, con dos parejas completas obligatorias; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
+**Estado vigente 31-10-2026 · plan 2.65:** sonda de pausa corregida; replays locales 8×/12× completos PASS y paso HD de CI Linux 4856a8f PASS. Windows 41194788492 agotó 35 minutos durante Amiga 12×, después de aprobar 8× completo y PC 12×. Presupuesto elevado a 60 minutos sin recortar cobertura; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 

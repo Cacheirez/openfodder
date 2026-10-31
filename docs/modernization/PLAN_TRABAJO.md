@@ -1,14 +1,18 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.64 · Revisión: 31 de octubre de 2026.**
+**Versión 2.65 · Revisión: 31 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: corregir la sonda de pausa de CI y validar el paquete HD SDL 8×/12×. CI nueva y prueba visual Windows pendientes.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
 
+## Incremento 2.65 — presupuesto de CI Windows
+
+4856a8f resuelve la sonda: local 8×/12× y paso HD Linux PASS. Windows supera 8× completo y PC 12×, pero el job cancela Amiga 12× al cumplir 35 minutos (41194788492). Se amplía a 60 minutos, manteniendo las 11 fases y cinco presentaciones de 12×. Nueva CI y paquete pendientes; no se atribuye PASS a la ejecución cancelada. [Evidencia](evidence/hd-sdl-replay-fix-2026-10-31.json).
+
 ## Incremento 2.64 — pausa por fase en replays restaurados
 
-CI 75a91ff compiló y superó las pruebas SDL, pero falló al exigir 16 pausas en PC: la sonda buscaba ticks absolutos 8/16 y siete fases PC/Amiga restauran relojes posteriores. Ahora cuenta pasos elegibles dentro de cada fase sin modificar relojes de simulación. Se conserva la campaña completa, se refuerza la puerta para exigir pasos 8/16 en cada fase y se incluyen informes HD en el artefacto Linux. 31 tests Python PASS; replays completos y nueva CI en validación. No se cambian referencias H3.
+CI 75a91ff compiló y superó las pruebas SDL, pero falló al exigir 16 pausas en PC: la sonda buscaba ticks absolutos 8/16 y siete fases PC/Amiga restauran relojes posteriores. Ahora cuenta pasos elegibles dentro de cada fase sin modificar relojes de simulación. Se conserva la campaña completa, se refuerza la puerta para exigir pasos 8/16 en cada fase y se incluyen informes HD en el artefacto Linux. 31 tests Python PASS; replays locales completos 8×/12× PASS (11 fases, 22 pausas y 11.361 estados por ejecución), nueva CI en validación. No se cambian referencias H3.
 
 ## Incremento 2.63 — SDL opcional con recuperación clásica
 
