@@ -1,0 +1,241 @@
+{
+  "schema": 1,
+  "evidence": "static_review_only",
+  "source_commit": "d42b052ea483c47b975fe894a9eb0a21e0c72fa7",
+  "report": "docs/modernization/CD32_CAPACIDADES_VEHICULOS.md",
+  "sources": [
+    {
+      "path": "Source/Sprites/Sprite_Helicopter.cpp",
+      "sha256": "795a80d7394b9a245af6af244085841dbced7199d794654fe6efc3832c27f543",
+      "functions": [
+        "Sprite_Handle_Helicopter",
+        "Sprite_Handle_Helicopter_Human",
+        "Sprite_Handle_Helicopter_Enemy",
+        "Sprite_Handle_Helicopter_Human_CallCheck",
+        "Sprite_HelicopterCallPad_Check",
+        "Sprite_Handle_Helicopter_PropCrash"
+      ]
+    },
+    {
+      "path": "Source/Sprites/Sprite_Vehicle.cpp",
+      "sha256": "09ea6a9b0ddb9a7377cf014b6f20267ab1574e46b37b3273d22cbc10b8674d19",
+      "functions": [
+        "Sprite_Handle_Player_Enter_Vehicle",
+        "Vehicle_Try_Exit_On_Mouse",
+        "Sprite_Handle_Player_InVehicle",
+        "Sprite_Handle_Turret",
+        "Sprite_Handle_Vehicle_Terrain_Check",
+        "Sprite_Vehicle_Turret_Update"
+      ]
+    },
+    {
+      "path": "Source/Sprites/Sprite_Core.cpp",
+      "sha256": "7795d54333543a2d54e3eefab335f54d0acc61bddbc528886ef738f0046b57c7",
+      "functions": [
+        "Sprite_Destroy",
+        "Sprite_Get_Free_Max42",
+        "Sprite_Animation_SlideOrDie",
+        "Sprite_Shadow_Update_From_Height"
+      ]
+    },
+    {
+      "path": "Source/Sprites/Sprite_Projectiles.cpp",
+      "sha256": "2ea6ad6b45864fb686f0304e9e0fcdf8b19d02f11e3e66c6c7503955d1d2e832",
+      "functions": [
+        "Sprite_Create_MissileHoming",
+        "Sprite_Create_Missile",
+        "Sprite_Create_Grenade2",
+        "Sprite_Create_FireTrail"
+      ]
+    },
+    {
+      "path": "Source/Sprites/Sprite_Effects.cpp",
+      "sha256": "ece78d4fbba8337cd186363b7357d7503648852c403b78424837f7f4df385030",
+      "functions": [
+        "Sprite_Create_Smoke"
+      ]
+    },
+    {
+      "path": "Source/Sprites/Sprite_Troop.cpp",
+      "sha256": "ef0ba41fd7c531e9bb61c559fb1f6981091fbb82783c957fa951f2c3f8af224b",
+      "functions": [
+        "Sprite_Handle_Player"
+      ]
+    },
+    {
+      "path": "Source/Squad.cpp",
+      "sha256": "4fea7633314978cf1f6aeb2284144890c006a334d41e2460450e54093cbf4061",
+      "functions": [
+        "Squad_Assign_Target_From_Mouse"
+      ]
+    },
+    {
+      "path": "Source/Sprites.cpp",
+      "sha256": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",
+      "functions": [
+        "Sprite_Table_Setup"
+      ]
+    },
+    {
+      "path": "Source/Sprites.hpp",
+      "sha256": "2a6369404bcddd376f629303bdab21a45d4f4e3b0d0e79bd2d63fb90e6a34d1c",
+      "functions": []
+    },
+    {
+      "path": "Source/Amiga/Graphics_Amiga.cpp",
+      "sha256": "52ecada50545a1806d9f17fdb0749fe2d66ef0508ff98afeb4ed3e664771539a",
+      "functions": [
+        "Map_Load_Resources"
+      ]
+    },
+    {
+      "path": "Source/Amiga/SpriteData_Amiga.hpp",
+      "sha256": "72d283d5186d48f568dd02924bf2e2dd37569d5e30fe52f977a50a1aad112241",
+      "functions": []
+    },
+    {
+      "path": "Source/SpriteSheet.hpp",
+      "sha256": "2953a418dd8dd16d458dfd21ae09a96f854910273c874c21421283ce0cb71296",
+      "functions": []
+    }
+  ],
+  "components": [
+    {
+      "role": "body",
+      "sheet": 139,
+      "array": "stru_8D798",
+      "frames": 16
+    },
+    {
+      "role": "rotor",
+      "sheet": 140,
+      "array": "stru_8D898",
+      "frames": 4
+    },
+    {
+      "role": "shadow",
+      "sheet": 141,
+      "array": "stru_8D8D8",
+      "frames": 3
+    }
+  ],
+  "scenarios": [
+    {
+      "map": "mapm30",
+      "mission": 11,
+      "phase": 3,
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "types": [
+        50
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm36",
+      "mission": 12,
+      "phase": 6,
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "types": [
+        99,
+        102
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm38",
+      "mission": 14,
+      "phase": 1,
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "types": [
+        52
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm42",
+      "mission": 15,
+      "phase": 2,
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "types": [
+        49
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm49",
+      "mission": 18,
+      "phase": 3,
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "types": [
+        51
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm52",
+      "mission": 19,
+      "phase": 1,
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "types": [
+        99,
+        103
+      ],
+      "execution": "pending"
+    },
+    {
+      "map": "mapm72",
+      "mission": 24,
+      "phase": 6,
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "types": [
+        99,
+        104,
+        107
+      ],
+      "execution": "pending"
+    }
+  ],
+  "limitations": [
+    "No runtime states observed in this increment",
+    "No source pixels, coordinates or commercial data included",
+    "Partial family review; other entities and terrain remain pending",
+    "Function presence and source hashes require human review; not a proof of behavior"
+  ],
+  "hash_normalization": "CRLF-to-LF only",
+  "followup_review": "H4 soldier pilot: presentation generation in sSprite/Clear and scene/capture hooks in Sprite_Core; vehicle behavior unchanged. Original review remains based on source_commit."
+}

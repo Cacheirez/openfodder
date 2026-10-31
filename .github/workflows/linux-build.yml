@@ -9,11 +9,13 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: H5.5 - screen transform mathematical contract
+        run: python3 tools/modernization/check_screen_transform_contract.py
       - name: Install build tools
         run: >-
           sudo apt-get update --allow-releaseinfo-change &&
@@ -38,14 +40,295 @@ jobs:
         run: |
           mkdir -p /tmp/sdl3
           cd /tmp/sdl3
-          git clone --depth 1 https://github.com/libsdl-org/SDL_mixer.git
+          git init SDL_mixer
+          git -C SDL_mixer remote add origin https://github.com/libsdl-org/SDL_mixer.git
+          git -C SDL_mixer fetch --depth 1 origin 3045b35335113e5e5ba258858cb403d8803bfbeb
+          git -C SDL_mixer checkout --detach FETCH_HEAD
+          test "$(git -C SDL_mixer rev-parse HEAD)" = "3045b35335113e5e5ba258858cb403d8803bfbeb"
+          mkdir -p "$GITHUB_WORKSPACE/reports/dependencies"
+          git -C SDL rev-parse HEAD > "$GITHUB_WORKSPACE/reports/dependencies/sdl3.txt"
+          git -C SDL_mixer rev-parse HEAD > "$GITHUB_WORKSPACE/reports/dependencies/sdl3-mixer.txt"
           cmake -S SDL_mixer -B SDL_mixer/build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DSDLMIXER_VENDORED=OFF -DSDLMIXER_MOD_XMP=ON -DSDLMIXER_MOD_XMP_LITE=OFF -DSDLMIXER_MOD_XMP_SHARED=OFF
           cmake --build SDL_mixer/build
           sudo cmake --install SDL_mixer/build
+      - name: H2.3 - verify actual sprite frame metadata
+        run: python3 tools/modernization/check_sprite_table_lengths.py
       - name: Configure
         run: cmake -S . -B build -G Ninja
       - name: Build
         run: cmake --build build
+      - name: H2.3 - direction lookup boundary tests
+        run: ctest --test-dir build --output-on-failure
+      - name: Prepare pinned gameplay fixtures
+        run: |
+          git submodule update --init --recursive
+          git clone https://github.com/OpenFodder/tests.git Run/Tests
+          git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
+      - name: H5.5 - fitted mission pause and resumed inverse with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h5-screen-transform --screen-probe --pause-probe --first-phase
+      - name: H3.6 - verify the legacy visibility contract
+        run: python3 tools/modernization/check_visibility_contract.py
+      - name: H4.1 - retail final timer equivalence with accepted classic base
+        run: |
+          git fetch --no-tags --depth 1 origin 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8
+          python3 tools/modernization/check_final_timer_equivalence.py
+      - name: H4.1 - value-only sprite preparation and clipping equivalence
+        run: |
+          git fetch --no-tags --depth 1 origin a2f63090fc0732787df8ba56cc142e9938771d9c
+          python3 tools/modernization/check_sprite_draw_equivalence.py
+      - name: H4.1 - explicit sprite raster pixels and register equivalence
+        run: |
+          git fetch --no-tags --depth 1 origin 77dac5410a7e92eee574a8da6aa231c8c0f5e88c
+          python3 tools/modernization/check_sprite_raster_equivalence.py
+      - name: H4.1 - retained sprite resources and original palette resolution
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin a2f63090fc0732787df8ba56cc142e9938771d9c
+          python3 tools/modernization/check_sprite_resource_equivalence.py
+      - name: H4.1 - retained visible terrain and atlas equivalence
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin ff82fb6049def3d784bc09a3a3c2d7fc685f4ea5
+          python3 tools/modernization/check_terrain_equivalence.py
+      - name: H4.1 - retained HUD and cursor equivalence
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin 7eeb6f777cc2ddfd9c615a2a94eef69bd3625c41
+          python3 tools/modernization/check_hud_cursor_equivalence.py
+      - name: H4.1 - retained effective RGB palette and owned destinations
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin c6af094c49641018b6dea6dc77cbe731a7ea0218
+          python3 tools/modernization/check_surface_draw_equivalence.py
+      - name: H4.1 - owned indexed destinations and ordered layer composition
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin ff15219680b289abf207fdc23fc436a9f390e649
+          python3 tools/modernization/check_surface_layers_equivalence.py
+      - name: H4.1 - GUI raster, scene and minimap producers
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin 793e347cd9f118da1c9ec6a84f88caf3257b74c2
+          python3 tools/modernization/check_indexed_producer_equivalence.py
+      - name: H5.5 - mission screen draw and mouse inverse under ASan UBSan
+        run: python3 tools/modernization/check_screen_transform_integration.py
+      - name: H4.1 - retained pause scene and zero/one/many presentations
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin d35e2675ffbbc79f8bf21eb961d78c06d74abd14
+          python3 tools/modernization/check_pause_presentation.py
+      - name: H4.1 - complete composed mission and mission-pause scheduling
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin a133afb8188a26f51e703b7a81576cf1b9264f67
+          python3 tools/modernization/check_mission_presentation.py
+      - name: H4.1 - presentation destination identity and geometry
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin 049439d56126e95b56eebd183e4f42610d8b6821
+          python3 tools/modernization/check_presentation_destination.py
+      - name: H4.1 - ordered mission layers with independent destinations
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: python3 tools/modernization/check_mission_layers.py
+      - name: H4.1 - real mission producer recording and missing-write detection
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          git fetch --no-tags --depth 1 origin fb44314e6baedd17691e7ac9c9ac9fedab495994
+          python3 tools/modernization/check_mission_recording.py
+          python3 tools/modernization/check_soldier_semantic.py
+          python3 tools/modernization/check_soldier_pose.py
+          python3 tools/modernization/check_soldier_art.py
+          python3 tools/modernization/check_soldier_art_hd.py
+          python3 tools/modernization/check_options_font.py
+      - name: H4.1 - software video replays with mission layer audit
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          OPENFODDER_AUDIT_MISSION_LAYERS: '1'
+        run: |
+          python3 tools/modernization/audit_replays.py --exe build/openfodder --data Run --out reports/h4-recording-pc --campaign "PC Format" --video --timeout 600
+          python3 tools/modernization/audit_replays.py --exe build/openfodder --data Run --out reports/h4-recording-amiga --campaign "Amiga The One" --video --timeout 600
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          for campaign, count in (('pc', 8), ('amiga', 3)):
+              text = Path(f'reports/h4-recording-{campaign}/engine.log').read_text(errors='replace')
+              assert 'MISSION_LAYER_AUDIT: verified real producer interval' in text, campaign
+              report = json.loads(Path(f'reports/h4-recording-{campaign}/report.json').read_text())
+              assert report['phases_passed'] == count and report['skipped'] == 0 and report['video_enabled'], campaign
+          PY
+      - name: H4.3 - recorded publication and original H3 states
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-publication
+      - name: H4.2 - semantic soldier with original resources and H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-soldier-full --soldier-probe
+          for count in 0 1 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-soldier-pause-$count --soldier-probe --presentations "$count" --pause-probe --first-phase
+          done
+      - name: H4.4 - one original pose replacement and classic fallback
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-pose-full --pose-probe
+          for count in 0 1 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-pose-pause-$count --pose-probe --presentations "$count" --pause-probe --first-phase
+          done
+      - name: H6.3 - C01 RGBA selected pose with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-art-full --art-probe
+      - name: H6 - optional SDL HD 8x and 12x with original H3 and pause transitions
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-hd-8 --hd-probe 8 --screen-probe --pause-probe
+          python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-hd-12 --hd-probe 12 --screen-probe --pause-probe --presentations 5
+      - name: H4.6 - real engine zero and five mission presentations with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          for count in 0 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-schedule-$count --presentations "$count"
+          done
+      - name: H4.6 - bounded SDL pause and resumed mission with zero one five presentations
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: |
+          for count in 0 1 5; do
+            python3 tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h4-pause-$count --presentations "$count" --pause-probe --first-phase
+          done
+      - name: H2 - bounded RNC fixtures under ASan and UBSan
+        run: python3 tools/modernization/run_rnc_audit.py --data Run/Data --out reports/h2-rnc
+      - name: H3 - Linux PC Format gameplay reference
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "PC Format" --out reports/h3-linux-pc --timeout 600
+      - name: H3 - Linux Amiga The One gameplay reference
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: python3 tools/modernization/verify_gameplay_determinism.py --exe build/openfodder --data Run --campaign "Amiga The One" --out reports/h3-linux-amiga --timeout 600
+      - name: H3 - compare with pinned pre-stabilization gameplay baseline
+        run: python3 tools/modernization/check_gameplay_baseline.py --baseline tools/modernization/reference-gameplay-v1.json --traces reports/h3-linux-pc/run1/traces reports/h3-linux-amiga/run1/traces
+      - name: H2.3 - full game-engine ASan and UBSan diagnostic
+        env:
+          ASAN_OPTIONS: detect_leaks=0
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          cmake -S . -B build-h2-asan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=address,undefined'
+          cmake --build build-h2-asan --parallel 2
+          ctest --test-dir build-h2-asan --output-on-failure
+          python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-engine-asan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H2.3 - enforce zero ASan and UBSan findings
+        run: python3 tools/modernization/check_ubsan_indices.py --report reports/h2-engine-asan/report.json --log reports/h2-engine-asan/engine.log
+      # Sanitizer failures are blocking; retain reports even when a gate fails.
+      - name: H2.3 - LeakSanitizer on all 29 public demos
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23:report_objects=1
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python3 tools/modernization/audit_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h2-leaksan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H4.3 - active publication with ASan UBSan and LSan
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-publication-asan
+      - name: H4.6 - bounded SDL pause with ASan UBSan and LSan
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+          LSAN_OPTIONS: exitcode=23
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-asan/openfodder --data Run --out reports/h4-pause-asan --presentations 1 --pause-probe --first-phase --soldier-probe --pose-probe
+      - name: H2.4 - ThreadSanitizer diagnostic on all public demos
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=0:exitcode=66:history_size=5:report_limit=40
+        run: |
+          cmake -S . -B build-h2-tsan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DOPENFODDER_AUTO_FFMPEG=OFF '-DCMAKE_CXX_FLAGS=-fsanitize=thread -fno-omit-frame-pointer -O1' '-DCMAKE_EXE_LINKER_FLAGS=-fsanitize=thread'
+          cmake --build build-h2-tsan --parallel 2
+          python3 tools/modernization/audit_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h2-threadsan --timeout 600 --baseline tools/modernization/reference-completion.json
+      - name: H4.3 - first PC and Amiga phases with active publication and ThreadSanitizer
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-publication-tsan --first-phase
+      - name: H4.6 - bounded SDL pause with ThreadSanitizer
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+          TSAN_OPTIONS: halt_on_error=1:exitcode=66:history_size=5
+        run: python3 tools/modernization/check_mission_publication_replays.py --exe build-h2-tsan/openfodder --data Run --out reports/h4-pause-tsan --presentations 1 --pause-probe --first-phase --soldier-probe --pose-probe
+      - name: Upload H3 Linux reference evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenFodder-Linux-H3-evidence
+          path: |
+            reports/h3-linux-*/
+            reports/h4-recording-*/
+            reports/h4-publication*/
+            reports/h4-pose*/
+            reports/h6-art*/
+            reports/h6-hd*/
+            reports/h5-screen-transform/
+            reports/h4-schedule-*/
+            reports/h4-pause-*/
+            reports/h2-rnc/report.json
+            reports/h2-engine-asan/
+            reports/h2-leaksan/
+            reports/h2-threadsan/
+            reports/dependencies/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Package
         run: python -m zipfile -c OpenFodder-linux-latest.zip build/openfodder README.md COPYING openfodder.ini.example
       - name: Upload artifact

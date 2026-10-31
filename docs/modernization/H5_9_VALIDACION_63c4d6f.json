@@ -1,0 +1,50 @@
+{
+  "code_commit": "63c4d6f1eeafce56320c0ad7308f3054c3df6b6e",
+  "date": "2026-10-28",
+  "windows": {
+    "run": 40667967583,
+    "job": 122747216905,
+    "verdict": "PASS",
+    "artifact": 12807892335,
+    "sha256": "0140121a656dedeb4efc16c7dd2e34b5bce108869993bc092c585c1fe1d0a71e",
+    "entries": 277,
+    "version": "71fc3b0109264d3c2510fc5e90571e51506b23a2",
+    "version_note": "Temporary PR test merge; tree equals code commit, not a merged PR",
+    "tree": "4122e37a1e9582ecc238247c16987b470c30c72f",
+    "phases_passed": 29,
+    "skipped": 0,
+    "pause_probe": {
+      "verdict": "PASS",
+      "campaigns": [
+        "PC Format",
+        "Amiga The One"
+      ],
+      "pause_transitions_per_campaign": 2,
+      "canonical_states": 301,
+      "marker_in_both": "SCREEN_TRANSFORM: fitted pause without mission input"
+    },
+    "evidence_artifact": 12808211119,
+    "evidence_sha256": "0a2e92c18b5c00c2decaf5df7922d30995089e17738ce4f95b55a2b5e6f2d86c"
+  },
+  "linux": {
+    "run": 40667967516,
+    "job": 122747216453,
+    "verdict": "PASS",
+    "early_fitted_pause_probe": "PASS",
+    "global_completed": true
+  },
+  "manual_windows": {
+    "verdict": "PASS_USER_REPORTED",
+    "sequence": "Maximizar → P → restaurar/maximizar durante pausa → P → selección y órdenes",
+    "target": "3840x2160, escala Windows 300%",
+    "limitation": "Aceptación manual de Miguel para pausa en su Windows UHD/300 %. No implica aceptación de opciones o ajuste de briefing/reclutamiento posteriores.",
+    "date": "2026-10-28",
+    "quote": "funciona la pausa perfectamente."
+  },
+  "pr": {
+    "number": 1,
+    "state": "open",
+    "draft": true,
+    "merged": false
+  }
+}

@@ -375,11 +375,9 @@ loc_2F593:;
     return -1;
 }
 
-void cFodder::GUI_Sidebar_Draw()
+// Keep this after squad-icon processing and before consuming refresh flags.
+void cFodder::GUI_Sidebar_UpdateWeaponSelection()
 {
-    Mission_Final_TimeToDie();
-    GUI_Sidebar_SquadIcons_Draw();
-
     int16 Data0 = 2;
     int16 Data4 = 2;
 
@@ -423,8 +421,17 @@ void cFodder::GUI_Sidebar_Draw()
         Data4--;
     }
 
-    Data20 = &mGUI_RefreshSquadGrenades[2];
-    Data24 = &mGUI_RefreshSquadRockets[2];
+}
+
+void cFodder::GUI_Sidebar_Draw()
+{
+    Mission_Final_TimeToDie();
+    GUI_Sidebar_SquadIcons_Draw();
+
+    GUI_Sidebar_UpdateWeaponSelection();
+
+    int8 *Data20 = &mGUI_RefreshSquadGrenades[2];
+    int8 *Data24 = &mGUI_RefreshSquadRockets[2];
 
     for (int16 Data0 = 2; Data0 >= 0; --Data0, --Data20, --Data24)
     {
@@ -481,25 +488,35 @@ void cFodder::GUI_Sidebar_Grenades_Split_Draw()
     GUI_Sidebar_Squad_Split_Icon_Draw();
 }
 
-void cFodder::Mission_Final_TimeToDie()
+bool cFodder::Mission_Final_TimeToDie_Update()
 {
 
     // Retail CF1 only
     if (!mVersionCurrent->isRetail() || !mVersionCurrent->isCannonFodder1())
-        return;
+        return false;
 
     if (!(mGame_Data.mMission_Number == 24 && mGame_Data.mMission_Phase == 6))
-        return;
+        return false;
 
     ++mMission_Final_TimeToDie_Ticker;
     if (mMission_Final_TimeToDie_Ticker < 40)
-        return;
+        return false;
 
     mMission_Final_TimeToDie_Ticker = 0;
 
     --mMission_Final_TimeRemain;
     if (mMission_Final_TimeRemain < 0)
         mMission_Final_TimeRemain = 0;
+
+    return true;
+}
+
+// Preserve the retail timer cadence even when video is disabled. The legacy
+// caller draws the counter only on the same update that advances the timer.
+void cFodder::Mission_Final_TimeToDie()
+{
+    if (!Mission_Final_TimeToDie_Update())
+        return;
 
     if (mParams->mDisableVideo)
         return;

@@ -1,0 +1,45 @@
+{
+  "name": "C01 neutral southeast pilot",
+  "selected_style": "C - Pintado moderado",
+  "user_choice_date": "2026-10-27",
+  "source_sha256": "9fb5dd519e8589de6c6420e4385c8eb2e12ac1f24c83f9a64678a2d943e31c77",
+  "source_dimensions": [
+    1353,
+    1162
+  ],
+  "source_alpha_bounds_at_16": [
+    406,
+    176,
+    969,
+    1026
+  ],
+  "native_frame": [
+    16,
+    14
+  ],
+  "native_content_box": [
+    3,
+    0,
+    13,
+    14
+  ],
+  "native_feet_anchor": [
+    8,
+    14
+  ],
+  "legacy_logical_anchor": [
+    0,
+    14
+  ],
+  "legacy_mod": [
+    0,
+    0
+  ],
+  "sheet": 7,
+  "frame": 0,
+  "pc_offset": 2248,
+  "amiga_offset": 562,
+  "scale_policy": "Native-size anchor prototype; HD scale not integrated",
+  "shadow": "No shadow baked into new body; classic shadow remains",
+  "provenance": "Generated with imagegen from previously generated C01 concept; no commercial graphic input"
+}

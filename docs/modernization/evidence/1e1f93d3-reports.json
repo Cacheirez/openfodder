@@ -1,0 +1,1387 @@
+{
+  "commit": "1e1f93d3da14e70d6456cbaa84b4aa555774b43f",
+  "runs": {
+    "linux": 40201830487,
+    "windows": 40201830489
+  },
+  "overall": "Linux FAIL: active TSan timed out; not an accepted increment",
+  "reports": {
+    "linux/h2-engine-asan/report.json": {
+      "records": [
+        {
+          "name": "Cannon Fodder Plus - Mission 1 Phase 1: STAGE 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 2 Phase 1: STAGE 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 3 Phase 1: STAGE 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 4 Phase 1: STAGE 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Cannon Fodder Plus",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Action",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Power Alien Levels",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 1 Phase 1: LAND OF HOPE AND GLORY",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 2 Phase 1: IT'S SNOW TIME!",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Christmas Special",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Not Very Festive",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 29,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-asan/openfodder",
+        "--appveyor",
+        "--unit-test-headless"
+      ],
+      "campaign": null,
+      "returncode": 0,
+      "video_enabled": false,
+      "timed_out": false,
+      "seconds": 37.05,
+      "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h2-leaksan/report.json": {
+      "records": [
+        {
+          "name": "Cannon Fodder Plus - Mission 1 Phase 1: STAGE 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 2 Phase 1: STAGE 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 3 Phase 1: STAGE 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 4 Phase 1: STAGE 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Cannon Fodder Plus",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Action",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Power Alien Levels",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 1 Phase 1: LAND OF HOPE AND GLORY",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 2 Phase 1: IT'S SNOW TIME!",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Christmas Special",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Not Very Festive",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 29,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-asan/openfodder",
+        "--appveyor",
+        "--unit-test-headless"
+      ],
+      "campaign": null,
+      "returncode": 0,
+      "video_enabled": false,
+      "timed_out": false,
+      "seconds": 36.852,
+      "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h2-rnc/report.json": {
+      "resource_count": 88,
+      "returncode": 0,
+      "output": "RNC bounded audit: valid=88, rejected_invalid=1047\n",
+      "verdict": "PASS",
+      "limitations": "Demo resources only; not a substitute for whole-engine ASan."
+    },
+    "linux/h2-threadsan/report.json": {
+      "records": [
+        {
+          "name": "Cannon Fodder Plus - Mission 1 Phase 1: STAGE 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 2 Phase 1: STAGE 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 3 Phase 1: STAGE 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 4 Phase 1: STAGE 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Cannon Fodder Plus",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Action",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Power Alien Levels",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 1 Phase 1: LAND OF HOPE AND GLORY",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 2 Phase 1: IT'S SNOW TIME!",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Christmas Special",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Not Very Festive",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 29,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-tsan/openfodder",
+        "--appveyor",
+        "--unit-test-headless"
+      ],
+      "campaign": null,
+      "returncode": 0,
+      "video_enabled": false,
+      "timed_out": false,
+      "seconds": 152.639,
+      "executable_sha256": "cfed15e1bece672f4ac54460e61f8ab1255dfd0d874feae0574d5d0ac20b6e07",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h3-linux-amiga/report.json": {
+      "campaign": "Amiga The One",
+      "fixture_count": 29,
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "settings_sha256": "11a72bec9c27777f8272ec0bcaf9eeb4ff347db8cad10e7d11b77a39b40a992e",
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "verdict": "PASS",
+      "compared_phases": 3,
+      "compared_ticks": 3405,
+      "mutation_detected": [
+        "tick 0",
+        "state.game.kills_home",
+        0,
+        1
+      ],
+      "visibility_mutation_detected": [
+        "tick 0",
+        "state.sprites[0].was_drawn",
+        1,
+        2
+      ]
+    },
+    "linux/h3-linux-pc/report.json": {
+      "campaign": "PC Format",
+      "fixture_count": 29,
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "settings_sha256": "b0cf871a1331f0b3e665c66d3a2b8224de9efae74c7e3829c01cdac46700cdad",
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "verdict": "PASS",
+      "compared_phases": 8,
+      "compared_ticks": 7956,
+      "mutation_detected": [
+        "tick 0",
+        "state.game.kills_home",
+        0,
+        1
+      ],
+      "visibility_mutation_detected": [
+        "tick 0",
+        "state.sprites[0].was_drawn",
+        1,
+        2
+      ]
+    },
+    "linux/h4-publication/amiga/report.json": {
+      "records": [
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 3,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "Amiga The One"
+      ],
+      "campaign": "Amiga The One",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 53.786,
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-publication/pc/report.json": {
+      "records": [
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 8,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "PC Format"
+      ],
+      "campaign": "PC Format",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 61.905,
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-publication/report.json": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 8,
+          "seconds": 61.905,
+          "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 3,
+          "seconds": 53.786,
+          "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e"
+        }
+      ],
+      "canonical_states": 11361
+    },
+    "linux/h4-publication-asan/amiga/report.json": {
+      "records": [
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 3,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-asan/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "Amiga The One"
+      ],
+      "campaign": "Amiga The One",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 347.246,
+      "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-publication-asan/pc/report.json": {
+      "records": [
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 8,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-asan/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "PC Format"
+      ],
+      "campaign": "PC Format",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 694.409,
+      "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-publication-asan/report.json": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 8,
+          "seconds": 694.409,
+          "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 3,
+          "seconds": 347.246,
+          "executable_sha256": "c33bf87dda9fc78dfa86fbebe9d317db37f7ec5f95eb9a79618a87790c688bcf"
+        }
+      ],
+      "canonical_states": 11361
+    },
+    "linux/h4-publication-tsan/pc/report.json": {
+      "records": [],
+      "errors": [],
+      "phases_passed": 0,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build-h2-tsan/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "PC Format"
+      ],
+      "campaign": "PC Format",
+      "returncode": null,
+      "video_enabled": true,
+      "timed_out": true,
+      "seconds": 1200.036,
+      "executable_sha256": "cfed15e1bece672f4ac54460e61f8ab1255dfd0d874feae0574d5d0ac20b6e07",
+      "coverage": "available campaigns only",
+      "reasons": [
+        "Timeout: execution did not finish.",
+        "Process returned an error.",
+        "No completed phase: empty coverage is not success."
+      ],
+      "verdict": "FAIL",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-publication-tsan/report.json": {
+      "verdict": "FAIL",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [],
+      "failure": "Command '['/usr/bin/python3', '/home/runner/work/openfodder/openfodder/tools/modernization/audit_replays.py', '--exe', '/home/runner/work/openfodder/openfodder/build-h2-tsan/openfodder', '--data', '/home/runner/work/openfodder/openfodder/Run', '--out', '/home/runner/work/openfodder/openfodder/reports/h4-publication-tsan/pc', '--campaign', 'PC Format', '--video', '--timeout', '1200']' returned non-zero exit status 1."
+    },
+    "linux/h4-recording-amiga/report.json": {
+      "records": [
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 3,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "Amiga The One"
+      ],
+      "campaign": "Amiga The One",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 56.04,
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "linux/h4-recording-pc/report.json": {
+      "records": [
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 8,
+      "skipped": 0,
+      "command": [
+        "/home/runner/work/openfodder/openfodder/build/openfodder",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--campaign",
+        "PC Format"
+      ],
+      "campaign": "PC Format",
+      "returncode": 0,
+      "video_enabled": true,
+      "timed_out": false,
+      "seconds": 66.415,
+      "executable_sha256": "3ba968280802e1ab6ff0a7d74fc4a86de89b22b51d6c760de9fc415f05e9754e",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    },
+    "windows/reports/h3-amiga/report.json": {
+      "campaign": "Amiga The One",
+      "fixture_count": 29,
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "settings_sha256": "11a72bec9c27777f8272ec0bcaf9eeb4ff347db8cad10e7d11b77a39b40a992e",
+      "executable_sha256": "000de2b67a7141e5e9c8d49c4b3d7a7824c43c9167524c2da87a6cbad1779392",
+      "verdict": "PASS",
+      "compared_phases": 3,
+      "compared_ticks": 3405,
+      "mutation_detected": [
+        "tick 0",
+        "state.game.kills_home",
+        0,
+        1
+      ],
+      "visibility_mutation_detected": [
+        "tick 0",
+        "state.sprites[0].was_drawn",
+        1,
+        2
+      ]
+    },
+    "windows/reports/h3-pc/report.json": {
+      "campaign": "PC Format",
+      "fixture_count": 29,
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "settings_sha256": "b0cf871a1331f0b3e665c66d3a2b8224de9efae74c7e3829c01cdac46700cdad",
+      "executable_sha256": "000de2b67a7141e5e9c8d49c4b3d7a7824c43c9167524c2da87a6cbad1779392",
+      "verdict": "PASS",
+      "compared_phases": 8,
+      "compared_ticks": 7956,
+      "mutation_detected": [
+        "tick 0",
+        "state.game.kills_home",
+        0,
+        1
+      ],
+      "visibility_mutation_detected": [
+        "tick 0",
+        "state.sprites[0].was_drawn",
+        1,
+        2
+      ]
+    },
+    "windows/reports/windows/report.json": {
+      "records": [
+        {
+          "name": "Cannon Fodder Plus - Mission 1 Phase 1: STAGE 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 2 Phase 1: STAGE 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 3 Phase 1: STAGE 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Cannon Fodder Plus - Mission 4 Phase 1: STAGE 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Cannon Fodder Plus",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga The One",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Action - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Action",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Power Alien Levels - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Power Alien Levels",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 1 Phase 1: LAND OF HOPE AND GLORY",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Christmas Special - Mission 2 Phase 1: IT'S SNOW TIME!",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Christmas Special",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 1 Phase 1: LEVEL 1",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 2 Phase 1: LEVEL 2",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 3 Phase 1: LEVEL 3",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Amiga Format Not Very Festive - Mission 4 Phase 1: LEVEL 4",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - Amiga Format Not Very Festive",
+          "message": "",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+          "message": "Phase Complete",
+          "status": "Passed"
+        },
+        {
+          "name": "Campaign - PC Format",
+          "message": "",
+          "status": "Passed"
+        }
+      ],
+      "errors": [],
+      "phases_passed": 29,
+      "skipped": 0,
+      "command": [
+        "D:\\a\\openfodder\\openfodder\\Run\\openfodder.exe",
+        "--appveyor",
+        "--unit-test-headless"
+      ],
+      "campaign": null,
+      "returncode": 0,
+      "video_enabled": false,
+      "timed_out": false,
+      "seconds": 25.437,
+      "executable_sha256": "000de2b67a7141e5e9c8d49c4b3d7a7824c43c9167524c2da87a6cbad1779392",
+      "coverage": "available campaigns only",
+      "reasons": [],
+      "verdict": "PASS",
+      "limitations": "Replay completion only; no state hashes, GPU, audio or Windows validation implied. Unavailable campaigns may not be enumerated."
+    }
+  },
+  "artifacts": [
+    {
+      "file": "openfodder-1e1f93d3-linux-evidence.zip",
+      "size": 16602965,
+      "sha256": "8afbfb794765c074af09ffec96cb49bed1c45a1b35e78770174a735cd78ba230"
+    },
+    {
+      "file": "openfodder-1e1f93d3-windows-evidence.zip",
+      "size": 7791338,
+      "sha256": "d172fb434bc3cd8865d6717025ebd7508af5cd49f797a1a6e4abcd532f6ddb9b"
+    }
+  ],
+  "sanitizer_findings": [],
+  "partial_tsan": {
+    "timeout_seconds": 1200,
+    "matching_complete_traces": {
+      "PC_Format_m1_p1.jsonl": 152,
+      "PC_Format_m2_p1.jsonl": 787,
+      "PC_Format_m2_p2.jsonl": 1270
+    },
+    "unfinished_trace": "PC_Format_m3_p1.jsonl",
+    "limitation": "Buffered stdout reported zero completions; complete trace hashes prove progress, not full suite success.",
+    "matching_prefix_states": 1276
+  }
+}

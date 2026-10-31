@@ -22,6 +22,8 @@
 
 #include "stdafx.hpp"
 #include <sstream>
+#include <cstdlib>
+#include <cstdio>
 
 cWindow::cWindow() {
 
@@ -61,7 +63,11 @@ bool cWindow::InitWindow( const std::string& pWindowTitle ) {
 	
     ToggleFullscreen();
 
-	mWindow = SDL_CreateWindow(pWindowTitle.c_str(), GetWindowSize().mWidth, GetWindowSize().mHeight, 0);
+    const bool fitWindow=g_Fodder->mStartParams->ScreenTransformEnabled() &&
+        g_Fodder->mStartParams->ScreenFitEnabled() &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked;
+    mWindow = SDL_CreateWindow(pWindowTitle.c_str(), GetWindowSize().mWidth, GetWindowSize().mHeight,
+        fitWindow ? SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY : 0);
 	if (!mWindow) {
         g_Debugger->Error("Failed to create window");
 		exit( 1 );
@@ -150,7 +156,13 @@ void cWindow::EventCheck() {
 		cEvent Event;
 
 		switch (SysEvent.type) {
+        case SDL_EVENT_WINDOW_RESIZED:
+        case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+        case SDL_EVENT_WINDOW_DISPLAY_CHANGED:
+            InvalidateScreenTransform();
+            break;
 		case SDL_EVENT_WINDOW_FOCUS_LOST:
+            InvalidateScreenTransform();
 			Event.mType = eEvent_Focus;
 			Event.mHasFocus = false;
 			mHasFocus = false;
@@ -334,7 +346,36 @@ bool cWindow::CanChangeToMultiplier( const int pNewMultiplier ) {
 
 void cWindow::FrameEnd() {
     #ifndef EMSCRIPTEN
-	SDL_RenderPresent( mRenderer );
+    const bool presented=SDL_RenderPresent(mRenderer);
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        mPresentedScreenTransform=presented ? mPendingScreenTransform : openfodder::ScreenTransform{};
+        mPresentedScreenClassic=presented && mPendingScreenClassic;
+        mPresentedScreenScene=presented ? mPendingScreenScene : 0;
+        mPendingScreenTransform={};mPendingScreenClassic=false;mPendingScreenScene=0;
+        // OS cursor follows the pointer through letterbox bands; presentation only.
+        const bool systemCursor=mPresentedScreenTransform.valid && IsMissionCursorInBand();
+        if(systemCursor!=mSystemMissionCursorShown) {
+            if(systemCursor) SDL_ShowCursor(); else SDL_HideCursor();
+            mSystemMissionCursorShown=systemCursor;
+        }
+        if(mPresentedScreenTransform.valid && g_Fodder->mStartParams->mUnitTesting) {
+            const auto& t=mPresentedScreenTransform;
+            for(const auto& point : {openfodder::ScreenPoint{0.5,0.5},
+                    openfodder::ScreenPoint{t.source.w/2,t.source.h/2},
+                    openfodder::ScreenPoint{t.source.w-0.5,t.source.h-0.5}}) {
+                openfodder::ScreenPoint roundtrip;
+                if(!t.WindowToCanvas(t.CanvasToWindow(point),roundtrip) ||
+                   std::abs(roundtrip.x-point.x)>1e-8 || std::abs(roundtrip.y-point.y)>1e-8)
+                    throw std::runtime_error("presented screen mouse inverse mismatch");
+            }
+            static bool reported=false;
+            if(!reported) {
+                std::fprintf(stderr,"SCREEN_TRANSFORM: presented mission and verified mouse inverse\n");
+                reported=true;
+            }
+        }
+    }
     
 	SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 0);
 	SDL_RenderClear( mRenderer );
@@ -385,7 +426,13 @@ void cWindow::WindowDecrease() {
 	SetWindowSize( mScaler - 1 );
 }
 
-void cWindow::RenderAt( cSurface* pImage ) {
+void cWindow::RenderAt( cSurface* pImage, bool pMission ) {
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        mPendingScreenTransform = {};
+        mPendingScreenClassic = false;
+        mPendingScreenScene = 0;
+    }
 	SDL_FRect Src, Dest;
 
 	Src.w = (float)mScreenSize.mWidth;
@@ -421,10 +468,75 @@ void cWindow::RenderAt( cSurface* pImage ) {
 		}
 	}
 
-	SDL_RenderTexture( mRenderer, pImage->GetTexture(), &Src, &Dest );
+    const SDL_FRect classicDestination=Dest;
+    openfodder::ScreenTransform transform;
+    const bool flag = g_Fodder->mStartParams->ScreenTransformEnabled();
+    const bool fitFlag=g_Fodder->mStartParams->ScreenFitEnabled();
+    // The existing pause loop presents the main mission surface with the
+    // default pMission=false. Fit that scene without publishing world input.
+    const bool fitPause=!pMission && fitFlag &&
+        pImage==g_Fodder->mSurface && g_Fodder->mPhase_In_Progress &&
+        g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview &&
+        !g_Fodder->mInterruptCallback && !pImage->isLoadedImage();
+    const unsigned inputScene=FittedInputScene();
+    // FIT is a presentation policy for every RenderAt scene, not a list of
+    // named screens. Preserve each source crop and share its inverse with GUI.
+    if ((pMission || fitFlag) && flag && (mWindowMode || fitFlag) &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked)
+    {
+        int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
+        float sx=0,sy=0;
+        SDL_Rect viewport{};
+        SDL_RendererLogicalPresentation logicalMode=SDL_LOGICAL_PRESENTATION_DISABLED;
+        if (SDL_GetWindowSize(mWindow,&ww,&wh) && SDL_GetRenderOutputSize(mRenderer,&pw,&ph) &&
+            !SDL_GetRenderTarget(mRenderer) && SDL_GetRenderScale(mRenderer,&sx,&sy) && sx==1 && sy==1 &&
+            SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
+            viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
+            SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
+            logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED) {
+            const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
+            if(fit && ww>0 && wh>0 && pw>0 && ph>0) {
+                const auto rect=openfodder::ScreenTransform::FitSource(pw,ph,
+                    {Src.x,Src.y,Src.w,Src.h});
+                // Quantize once to SDL's actual draw precision before retaining the inverse.
+                if(openfodder::ScreenTransform::RectValid(rect))
+                    Dest={float(rect.x),float(rect.y),float(rect.w),float(rect.h)};
+            }
+            transform=openfodder::ScreenTransform::FromDraw(ww,wh,pw,ph,
+                {Src.x,Src.y,Src.w,Src.h},{Dest.x,Dest.y,Dest.w,Dest.h});
+        }
+    }
+    if(!transform.valid) Dest=classicDestination; // Draw and input always fall back together.
+    if (transform.valid) {
+        // Source origin is storage padding, not a second camera translation.
+        const auto origin=transform.StorageToOutput({Src.x,Src.y});
+        const auto end=transform.CanvasToOutput({Src.w,Src.h});
+        if (origin.x!=Dest.x || origin.y!=Dest.y ||
+            std::abs(end.x-(double(Dest.x)+Dest.w))>1e-8 ||
+            std::abs(end.y-(double(Dest.y)+Dest.h))>1e-8)
+            throw std::runtime_error("screen transform differs from draw rectangle");
+        // Dest is already the SDL-precision rectangle retained by FromDraw.
+    }
+    const int hd=pMission ? TryRenderMissionHD(pImage,Src,Dest) : -1;
+    const bool drawn=hd<0 ? SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest) : hd==1;
+    if(drawn && fitPause && transform.valid && g_Fodder->mStartParams->mUnitTesting) {
+        static bool reportedPause=false;
+        if(!reportedPause) {
+            std::fprintf(stderr,"SCREEN_TRANSFORM: fitted pause without mission input\n");
+            reportedPause=true;
+        }
+    }
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    // A fitted pause never publishes a world-input snapshot. On resume input
+    // stays blocked until a fresh mission frame has actually been presented.
+    const bool inputAllowed=inputScene!=0 && (inputScene!=1 || pMission);
+    mPendingScreenTransform = drawn && inputAllowed ? transform : openfodder::ScreenTransform{};
+    mPendingScreenScene = drawn && inputAllowed ? inputScene : 0;
+    mPendingScreenClassic = drawn && !transform.valid;
 }
 
 void cWindow::RenderShrunk( cSurface* pImage ) {
+    InvalidateScreenTransform();
 	SDL_FRect Src, Dest;
 	Src.w = (float)pImage->GetWidth();
 	Src.h = (float)pImage->GetHeight();
@@ -450,7 +562,42 @@ void cWindow::RenderShrunk( cSurface* pImage ) {
 		}
 	}
 
-	SDL_RenderTexture( mRenderer, pImage->GetTexture(), &Src, &Dest);
+    const SDL_FRect classicDestination=Dest;
+    openfodder::ScreenTransform transform;
+    const bool screen=g_Fodder->mStartParams->ScreenTransformEnabled();
+    const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
+    if(screen && fit && g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked) {
+        int ww=0,wh=0,pw=0,ph=0,lw=0,lh=0;
+        float sx=0,sy=0;
+        SDL_Rect viewport{};
+        SDL_RendererLogicalPresentation logicalMode=SDL_LOGICAL_PRESENTATION_DISABLED;
+        if(SDL_GetWindowSize(mWindow,&ww,&wh) && SDL_GetRenderOutputSize(mRenderer,&pw,&ph) && pw>0 && ph>0 &&
+           !SDL_GetRenderTarget(mRenderer) && SDL_GetRenderScale(mRenderer,&sx,&sy) && sx==1 && sy==1 &&
+           SDL_GetRenderViewport(mRenderer,&viewport) && viewport.x==0 && viewport.y==0 &&
+           viewport.w==pw && viewport.h==ph && !SDL_RenderClipEnabled(mRenderer) &&
+           SDL_GetRenderLogicalPresentation(mRenderer,&lw,&lh,&logicalMode) &&
+           logicalMode==SDL_LOGICAL_PRESENTATION_DISABLED) {
+            // Shrink presentations retain their classic logical aspect (the
+            // square overview is intentionally shown in the legacy screen aspect).
+            const auto rect=openfodder::ScreenTransform::FitSource(pw,ph,{0,0,Dest.w,Dest.h});
+            if(openfodder::ScreenTransform::RectValid(rect))
+                Dest={float(rect.x),float(rect.y),float(rect.w),float(rect.h)};
+            // GUI overlays are in screen coordinates, not PNG/map texel coordinates.
+            transform=openfodder::ScreenTransform::FromDraw(ww,wh,pw,ph,
+                {0,0,double(mScreenSize.mWidth),double(mScreenSize.mHeight)},
+                {Dest.x,Dest.y,Dest.w,Dest.h});
+        }
+    }
+    if(!transform.valid) Dest=classicDestination;
+    const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);
+    const unsigned inputScene=FittedInputScene();
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    // Never publish a world inverse from an overview or a shrink presentation.
+    const bool inputAllowed=inputScene>1;
+    mPendingScreenTransform=drawn && inputAllowed ? transform : openfodder::ScreenTransform{};
+    mPendingScreenScene=drawn && inputAllowed ? inputScene : 0;
+    mPendingScreenClassic=drawn && !transform.valid;
+
 }
 
 bool cWindow::isFullscreen() const {
@@ -484,6 +631,7 @@ bool cWindow::isGrabbed() const {
 }
 
 void cWindow::ToggleFullscreen() {
+    InvalidateScreenTransform();
 
 	if (mWindowMode) {
 
@@ -518,6 +666,7 @@ void cWindow::SetMousePositionInWindow(float pX, float pY) {
 
 void cWindow::SetScreenSize( const cDimension& pDimension ) {
 
+    InvalidateScreenTransform();
 	mScreenSize = pDimension;
 }
 
@@ -532,7 +681,13 @@ void cWindow::SetOriginalRes( const cDimension& pDimension ) {
         return;
 
 	mOriginalResolution = pDimension;
-	
+    // Scene resolution changes must not undo a user-maximized fitted window.
+    if (mWindow && mWindowMode && g_Fodder->mStartParams->ScreenTransformEnabled() &&
+        g_Fodder->mStartParams->ScreenFitEnabled() &&
+        (SDL_GetWindowFlags(mWindow) & SDL_WINDOW_MAXIMIZED)) {
+        InvalidateScreenTransform();
+        return;
+    }
 
 	if (!mWindowMode) {
 		ToggleFullscreen();
@@ -618,4 +773,134 @@ bool cWindowNull::InitWindow(const std::string& pWindowTitle) {
 
 
     return true;
+}
+
+void cWindow::InvalidateScreenTransform() {
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    mPendingScreenTransform={};mPresentedScreenTransform={};
+    mPendingScreenClassic=false;mPresentedScreenClassic=false;
+    mPendingScreenScene=0;mPresentedScreenScene=0;
+}
+
+openfodder::ScreenMouseResult cWindow::MapMissionMouse(int x,int y,int16& mappedX,int16& mappedY) {
+    using openfodder::ScreenMouseResult;
+#ifdef EMSCRIPTEN
+    return ScreenMouseResult::Classic; // Browser presentation lifecycle is a separate adapter.
+#endif
+    const bool flag=g_Fodder->mStartParams->ScreenTransformEnabled();
+    if (!flag || (!mWindowMode && !g_Fodder->mStartParams->ScreenFitEnabled()) ||
+        !g_Fodder->mStartParams->mMouseAlternative || g_Fodder->mParams->mMouseLocked ||
+        !FittedInputScene())
+        return ScreenMouseResult::Classic;
+    if(!g_Fodder->mWindow_Focus)return ScreenMouseResult::Blocked;
+    openfodder::ScreenTransform t;
+    {
+        std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+        if(mPresentedScreenClassic)return ScreenMouseResult::Classic;
+        if(mPresentedScreenScene!=FittedInputScene())return ScreenMouseResult::Blocked;
+        t=mPresentedScreenTransform;
+    }
+    // Unsupported renderer configuration retains classic input; an invalidated
+    // snapshot must not reuse the geometry of a previous window/scene.
+    if(!t.valid)return ScreenMouseResult::Blocked;
+    int ww=0,wh=0,pw=0,ph=0;
+    if(!SDL_GetWindowSize(mWindow,&ww,&wh) || !SDL_GetRenderOutputSize(mRenderer,&pw,&ph) ||
+       ww!=t.windowW || wh!=t.windowH || pw!=t.outputW || ph!=t.outputH)
+        return ScreenMouseResult::Blocked;
+    openfodder::ScreenPoint canvas;
+    if(!t.WindowToCanvas({double(x),double(y)},canvas)) {
+        const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
+        return fit ? ScreenMouseResult::Band : ScreenMouseResult::Blocked;
+    }
+    // Same legacy cursor domain as Mouse.cpp. Downstream HUD/camera/hotspot
+    // adjustments stay in their original functions; do not apply them twice.
+    const double mx=std::floor(canvas.x)-32,my=std::floor(canvas.y)+4;
+    if(mx<-32768 || mx>32767 || my<-32768 || my>32767)return ScreenMouseResult::Blocked;
+    mappedX=static_cast<int16>(mx);mappedY=static_cast<int16>(my);
+    return ScreenMouseResult::Mapped;
+}
+
+// Used by cursor capture on the simulation thread: no SDL operations here.
+unsigned cWindow::FittedInputScene() const {
+    const bool fit=g_Fodder->mStartParams->ScreenFitEnabled();
+    if (g_Fodder->mPhase_In_Progress) {
+        if(g_Fodder->mPhase_ShowMapOverview || (g_Fodder->mPhase_Paused && !g_Fodder->mInterruptCallback)) return 0;
+        if(!g_Fodder->mInterruptCallback) return 1;
+        return fit ? 4 : 0; // In-mission dialog: GUI coordinates, never world input.
+    }
+    if (!fit) return 0;
+    if (g_Fodder->mBriefing_Screen_Active && !g_Fodder->mInterruptCallback) return 2;
+    if (g_Fodder->mRecruit_Screen_Active && g_Fodder->mInterruptCallback) return 3;
+    return 4; // Service, intro, selection, save/load, options, credits, endings.
+}
+
+bool cWindow::IsMissionCursorInBand() const {
+    return mMissionCursorInBand.load() && (mWindowMode || g_Fodder->mStartParams->ScreenFitEnabled()) &&
+        g_Fodder->mStartParams->mMouseAlternative && !g_Fodder->mParams->mMouseLocked &&
+        !g_Fodder->mParams->mDemoPlayback && FittedInputScene()!=0;
+}
+
+// Video has no logical GUI hitboxes; keep raw click-to-skip and discard an
+// earlier menu/world inverse before the external texture is presented.
+void cWindow::BeginVideoPresentation() {
+    InvalidateScreenTransform();
+    SetMissionCursorInBand(false);
+    std::lock_guard<std::mutex> lock(mScreenTransformMutex);
+    mPendingScreenClassic=true;
+}
+
+// Options-only transaction. F11 and the classic sizing functions are unchanged.
+bool cWindow::CapturePresentation(PresentationState& s) const {
+    if (!mWindow || !SDL_GetWindowSize(mWindow,&s.w,&s.h) ||
+        !SDL_GetWindowPosition(mWindow,&s.x,&s.y)) return false;
+    const auto flags=SDL_GetWindowFlags(mWindow);
+    s.fullscreen=(flags & SDL_WINDOW_FULLSCREEN)!=0;
+    s.maximized=(flags & SDL_WINDOW_MAXIMIZED)!=0;
+    s.resizable=(flags & SDL_WINDOW_RESIZABLE)!=0;
+    s.relative=SDL_GetWindowRelativeMouseMode(mWindow);
+    s.scaler=mScaler; s.previousScaler=mScalerPrevious;
+    return s.w>0 && s.h>0;
+}
+
+bool cWindow::ApplyPresentation(const PresentationState& s) {
+    InvalidateScreenTransform();
+    SetMissionCursorInBand(false);
+    if (!mWindow || s.w<=0 || s.h<=0 || s.scaler<1 || s.scaler>255) return false;
+    // A resize request is ignored while maximized/fullscreen. Verify the
+    // actual state after SDL's asynchronous transitions, not just its request.
+    if (!SDL_SetWindowFullscreen(mWindow,false) || !SDL_SyncWindow(mWindow) ||
+        !SDL_RestoreWindow(mWindow) || !SDL_SyncWindow(mWindow) ||
+        !SDL_SetWindowResizable(mWindow,s.resizable) ||
+        !SDL_SetWindowSize(mWindow,s.w,s.h) ||
+        !SDL_SetWindowPosition(mWindow,s.x,s.y) || !SDL_SyncWindow(mWindow)) return false;
+    if (s.maximized && (!SDL_MaximizeWindow(mWindow) || !SDL_SyncWindow(mWindow))) return false;
+    if (s.fullscreen && (!SDL_SetWindowFullscreen(mWindow,true) || !SDL_SyncWindow(mWindow))) return false;
+    if (!SDL_SetWindowRelativeMouseMode(mWindow,s.relative)) return false;
+    PresentationState actual;
+    if (!CapturePresentation(actual) || actual.fullscreen!=s.fullscreen ||
+        (!s.fullscreen && actual.maximized!=s.maximized) || actual.resizable!=s.resizable ||
+        actual.relative!=s.relative ||
+        (!s.fullscreen && !s.maximized && (actual.w!=s.w || actual.h!=s.h))) return false;
+    mWindowMode=!s.fullscreen; mScaler=static_cast<uint8>(s.scaler);
+    mScalerPrevious=static_cast<uint8>(s.previousScaler); mResized=true;
+    return true;
+}
+
+bool cWindow::PreviewPresentation(bool windowed,int scale,bool resizable,bool relative) {
+    PresentationState target;
+    if (!CapturePresentation(target)) return false;
+    target.fullscreen=!windowed; target.maximized=false;
+    target.resizable=resizable; target.relative=relative;
+    const auto* display=SDL_GetCurrentDisplayMode(SDL_GetDisplayForWindow(mWindow));
+    if (!display) return false;
+    if (scale==0) {
+        scale=1;
+        while (scale<6 && mOriginalResolution.mWidth*scale<=unsigned(display->w/2) &&
+               mOriginalResolution.mHeight*scale<=unsigned(display->h/2)) ++scale;
+    }
+    if (scale<1 || scale>6) return false;
+    target.previousScaler=scale;
+    target.scaler=windowed ? scale : CalculateFullscreenSize();
+    target.w=mOriginalResolution.mWidth*scale; target.h=mOriginalResolution.mHeight*scale;
+    return ApplyPresentation(target);
 }

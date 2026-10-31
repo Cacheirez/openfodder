@@ -1,0 +1,18 @@
+{
+  "plan": "2.59",
+  "base_head": "738fefef1b5ce11e289d39c7de122b45f855c6a2",
+  "before": {
+    "verdict": "FAIL expected",
+    "diagnostic": "Invalid sprite sheet/frame: type=0 frame=54 available=37; UBSan member access within null pointer of type const sSpriteSheet"
+  },
+  "after": {
+    "verdict": "PASS",
+    "coverage": "Real String_Print -> GUI_Draw_Frame_8 -> Sprite_Get_Sheet, actual PC/Amiga briefing extents, countdown 0..15, KEEP/REVERT",
+    "sanitizers": "ASan/UBSan, local detect_leaks=0"
+  },
+  "fix": "Remove unsupported question mark from confirmation heading only",
+  "limits": [
+    "No SDL/physical Windows execution",
+    "Full workflow/package pending own revision"
+  ]
+}

@@ -784,6 +784,7 @@ const std::vector<std::vector<int16>> mSoldier_Squad_Fire_RotationOrder = {
 };
 
 void sSprite::Clear() {
+    mPresentationGeneration = openfodder::NextPresentationSerial();
 	mPosX = -32768;
 	mPosXFrac = 0;
 	mPosY = 0;

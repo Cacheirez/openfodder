@@ -20,6 +20,10 @@
  *
  */
 
+#include "Utils/ScreenTransform.hpp"
+#include <mutex>
+#include <atomic>
+
 class cWindow {
 	
 	protected:
@@ -27,6 +31,12 @@ class cWindow {
 		SDL_Renderer*		mRenderer;
 
         std::vector<cEvent> mEvents;
+        std::mutex mScreenTransformMutex;
+        openfodder::ScreenTransform mPendingScreenTransform, mPresentedScreenTransform;
+        bool mPendingScreenClassic=false, mPresentedScreenClassic=false;
+        unsigned mPendingScreenScene=0, mPresentedScreenScene=0;
+        std::atomic<bool> mMissionCursorInBand{false};
+        bool mSystemMissionCursorShown=false;
 
 		cDimension			mOriginalResolution;
 
@@ -46,11 +56,25 @@ class cWindow {
 							cWindow();
 		virtual				~cWindow();
 
+        int TryRenderMissionHD(cSurface*,const SDL_FRect&,const SDL_FRect&);
+        struct PresentationState {
+            int x=0, y=0, w=0, h=0, scaler=1, previousScaler=1;
+            bool fullscreen=false, maximized=false, resizable=false, relative=false;
+        };
+        bool CapturePresentation(PresentationState& state) const;
+        bool ApplyPresentation(const PresentationState& state);
+        bool PreviewPresentation(bool windowed, int scale, bool resizable, bool relative);
 		void		        CalculateWindowSize();
 		int16				CalculateFullscreenSize();
 
 		bool				CanChangeToMultiplier( const int pNewMultiplier );
 
+        void SetMissionCursorInBand(bool outside) { mMissionCursorInBand.store(outside); }
+        bool IsMissionCursorInBand() const;
+        unsigned FittedInputScene() const;
+        void InvalidateScreenTransform();
+        void BeginVideoPresentation();
+        openfodder::ScreenMouseResult MapMissionMouse(int x, int y, int16& mappedX, int16& mappedY);
         bool                Cycle();
 
         std::vector<cEvent>* EventGet();
@@ -61,7 +85,7 @@ class cWindow {
 			
 		virtual void		PositionWindow();
 
-		virtual void		RenderAt( cSurface* pImage );
+		virtual void		RenderAt( cSurface* pImage, bool pMission = false );
 		virtual void		RenderShrunk( cSurface* pImage );
 
 		void				WindowIncrease();

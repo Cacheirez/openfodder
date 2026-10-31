@@ -22,6 +22,83 @@
 
 #include "stdafx.hpp"
 #include <chrono>
+#include <cstdlib>
+#include <stdexcept>
+
+void cUnitTesting::ProbeMissionPause() {
+    auto& game = *g_Fodder;
+    if (!game.mStartParams->mUnitTesting || !game.mStartParams->mDemoPlayback ||
+        game.mStartParams->mDemoRecord || game.mStartParams->mDisableVideo)
+        return;
+    const char* enabled = std::getenv("OPENFODDER_TEST_MISSION_PAUSE");
+    if (!enabled || std::string(enabled) != "1") return;
+
+    // The replay caller owns mSurfaceMtx throughout. No worker can advance
+    // producers while this bounded SDL-input probe borrows the pause loop.
+    static std::string previous;
+    static bool awaitingResume = false;
+    if (awaitingResume) {
+        if (game.mPhase_Paused || !game.mSurface->MissionAuditActive())
+            throw std::runtime_error("pause probe: mission recording did not resume");
+        game.mSurface->VerifyMissionAudit(game.mSurfaceFinal);
+        std::fprintf(stderr, "MISSION_PAUSE_PROBE: resumed %s\n", previous.c_str());
+        awaitingResume = false;
+    }
+    if (!game.mPhase_In_Progress || game.mPhase_Paused || game.mPhase_ShowMapOverview) return;
+    // Saved replays may start with a nonzero engine clock. Schedule this test
+    // by eligible replay steps within each phase; never reset the game clock.
+    static std::string phase;
+    static unsigned steps = 0;
+    const std::string currentPhase = game.mStartParams->mCampaignName + ":" +
+        std::to_string(game.mGame_Data.mMission_Number) + ":" +
+        std::to_string(game.mGame_Data.mMission_Phase);
+    if (phase != currentPhase) { phase = currentPhase; steps = 0; }
+    if (steps < 17) ++steps;
+    if (steps != 8 && steps != 16) return;
+    const std::string key = currentPhase + ":" + std::to_string(steps);
+    if (previous == key) return;
+    previous = key;
+    if (!game.mSurface->MissionAuditActive())
+        throw std::runtime_error("pause probe: missing pre-pause recording");
+    game.mSurface->VerifyMissionAudit(game.mSurfaceFinal);
+    const auto demoTick = game.mGame_Data.mDemoRecorded.mTick;
+    const auto engineTick = game.mMission_EngineTicks;
+    int16 r0, r1, r2, r3, s0, s1, s2, s3;
+    game.mRandom.getSeeds(r0, r1, r2, r3);
+    auto pressP = []() {
+        for (auto type : {SDL_EVENT_KEY_DOWN, SDL_EVENT_KEY_UP}) {
+            SDL_Event event{};
+            event.type = type;
+            event.key.scancode = SDL_SCANCODE_P;
+            event.key.down = type == SDL_EVENT_KEY_DOWN;
+            if (!SDL_PushEvent(&event))
+                throw std::runtime_error("pause probe: SDL rejected key event");
+        }
+    };
+    // Route input through SDL and eventsProcess, not a direct pause flag write.
+    // Restore replay input even if a strict check fails. Production flags and
+    // the demo's recorded events are not edited.
+    struct RestorePlayback {
+        bool& target; bool value;
+        ~RestorePlayback() { target = value; }
+    } restore{game.mParams->mDemoPlayback, game.mParams->mDemoPlayback};
+    game.mParams->mDemoPlayback = false;
+    pressP();
+    game.mWindow->Cycle();
+    game.eventsProcess();
+    if (!game.mPhase_Paused)
+        throw std::runtime_error("pause probe: SDL did not enter pause");
+    pressP(); // Consumed after the first real pause frame, without a helper thread.
+    game.Phase_Paused();
+    game.mRandom.getSeeds(s0, s1, s2, s3);
+    if (game.mPhase_Paused || game.mSurface->MissionAuditActive() ||
+        game.mSurfaceFinal->MissionAuditActive() ||
+        demoTick != game.mGame_Data.mDemoRecorded.mTick || engineTick != game.mMission_EngineTicks ||
+        r0 != s0 || r1 != s1 || r2 != s2 || r3 != s3)
+        throw std::runtime_error("pause probe: pause changed clocks/RNG or retained a stale recording");
+    std::fprintf(stderr, "MISSION_PAUSE_PROBE: completed %s\n", key.c_str());
+    awaitingResume = true;
+}
 
 cUnitTesting::cUnitTesting() {
 
@@ -91,9 +168,13 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
 
 	if (g_Fodder->mStartParams->mUnitTesting && g_Fodder->mStartParams->mDemoPlayback) {
 		//g_Fodder->mStartParams->mSleepDelta = 0;
-		g_Fodder->mParams->mSleepDelta = 0;
+		g_Fodder->SetInterruptSleepDelta(0);
 	}
 
+    // Explicit bounded diagnostic scope; normal test suites still run every phase.
+    const char* firstPhase = std::getenv("OPENFODDER_TEST_FIRST_PHASE");
+    const bool firstPhaseOnly = firstPhase && std::string(firstPhase) == "1" &&
+        !g_Fodder->mStartParams->mDemoRecord;
     while (g_Fodder->mGame_Data.mMission_Current) {
         EngineSetup();
         setDemoName();
@@ -128,7 +209,7 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
             // And we have a resume cycle set
             if (g_Fodder->mStartParams->mDemoRecordResumeCycle) {
                 g_Debugger->Notice("Resuming " + MissionTitle);
-                g_Fodder->mParams->mSleepDelta = 0;
+                g_Fodder->SetInterruptSleepDelta(0);
             }
             else {
                 g_Fodder->mGame_Data.mDemoRecorded.clear();
@@ -137,10 +218,13 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
         }
 
         // Reset demo status
-        g_Fodder->mParams->mDemoFile = g_Fodder->mStartParams->mDemoFile;
-        g_Fodder->mParams->mDemoRecord = g_Fodder->mStartParams->mDemoRecord;
-        g_Fodder->mParams->mDemoPlayback = g_Fodder->mStartParams->mDemoPlayback;
-        g_Fodder->mParams->mAppVeyor = g_Fodder->mStartParams->mAppVeyor;
+        {
+            std::lock_guard<std::mutex> lock(g_Fodder->mSurfaceMtx);
+            g_Fodder->mParams->mDemoFile = g_Fodder->mStartParams->mDemoFile;
+            g_Fodder->mParams->mDemoRecord = g_Fodder->mStartParams->mDemoRecord;
+            g_Fodder->mParams->mDemoPlayback = g_Fodder->mStartParams->mDemoPlayback;
+            g_Fodder->mParams->mAppVeyor = g_Fodder->mStartParams->mAppVeyor;
+        }
         // Keep game state
         g_Fodder->mGame_Data_Backup = g_Fodder->mGame_Data;
 
@@ -188,6 +272,10 @@ bool cUnitTesting::RunTests(const std::string pCampaign) {
 
         g_Fodder->mGame_Data = g_Fodder->mGame_Data_Backup;
         g_Fodder->mGame_Data.Phase_Next();
+        if (firstPhaseOnly) {
+            g_Debugger->Notice("DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed");
+            break;
+        }
     }
 
     return true;
@@ -209,7 +297,14 @@ bool cUnitTesting::Start() {
         if (CampaignName == "Random Map" || CampaignName == "Single Map")
             continue;
 
-        *g_Fodder->mParams = *g_Fodder->mStartParams;
+        {
+            // Interrupt_Redraw consults mParams while holding mSurfaceMtx.
+            // Replace the parameter snapshot under the same lock, and
+            // publish the cadence atomically for Interrupt_Sim.
+            std::lock_guard<std::mutex> lock(g_Fodder->mSurfaceMtx);
+            *g_Fodder->mParams = *g_Fodder->mStartParams;
+            g_Fodder->mInterruptSleepDelta.store(g_Fodder->mParams->mSleepDelta);
+        }
         g_Fodder->mStartParams->mCampaignName = CampaignName;
 
         g_Debugger->TestStart(CampaignName, "Campaign");

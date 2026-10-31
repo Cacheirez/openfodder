@@ -1,0 +1,33 @@
+{
+  "previous_ci": {
+    "commit": "832895df722d0de0c4f880915e789d09250f3d29",
+    "windows": 41075746093,
+    "linux": 41075746384,
+    "density": 41075746047,
+    "conclusion": "success"
+  },
+  "local": {
+    "sdl_sha": "a962f40bbba175e9716557a25d5d7965f134a3d3",
+    "sdl_software": "PASS",
+    "fault_transitions": 176,
+    "additional_failed_recovery": 16,
+    "asan_ubsan_harness": "PASS",
+    "lsan": "disabled locally",
+    "sdl_library_instrumented": false,
+    "window_method_fixture": "PASS",
+    "screen_mouse_regression": "PASS",
+    "python_tests": 30
+  },
+  "limits": [
+    "Not physical Windows/GPU",
+    "New CI pending",
+    "Fractional sampling differs from expanded full canvas; exact classic exterior checked",
+    "No integrated performance claim"
+  ],
+  "source_sha256": {
+    "Source/WindowHD.cpp": "a759211bf6f6a54ec366b386d2f1c34f07995c7216338df2b58f2c5bbb5153d7",
+    "Source/Utils/SoldierArtSDL.hpp": "75e19bd22b247ee97db1f4306bd8cce5048a68efd7aecc4b53030dc1ad97b3b4",
+    "tools/modernization/test_soldier_art_sdl.cpp": "a03a77e84b1eb842278157d19b0416d85c7c3fcede75067c3a34f57e113d4d34",
+    "tools/modernization/build_hd_window_fixture.py": "86ba0c994dce79d3c4847f760d7ed0e047fcc836a17d81179a8cd58fd45bc674"
+  }
+}

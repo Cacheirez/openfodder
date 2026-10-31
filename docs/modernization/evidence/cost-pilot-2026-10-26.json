@@ -1,0 +1,185 @@
+{
+  "verdict": "PASS",
+  "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd",
+  "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+  "fixture_count": 29,
+  "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+  "host": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "rounds": 3,
+  "metric": "whole child process wall seconds, including startup, trace I/O and teardown",
+  "scope": "PC/Amiga first phases; software SDL; no sound; one mission presentation",
+  "limitations": [
+    "Shared host, not a controlled Windows/GPU benchmark",
+    "No per-frame p95/p99, CPU attribution, memory or upload counts",
+    "Small sample; timings are observations, not acceptance thresholds"
+  ],
+  "runs": [
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "classic",
+      "seconds": {
+        "pc": 0.921,
+        "amiga": 1.119
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "audit",
+      "seconds": {
+        "pc": 2.375,
+        "amiga": 3.429
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "publication",
+      "seconds": {
+        "pc": 2.225,
+        "amiga": 3.226
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "classic",
+      "seconds": {
+        "pc": 0.82,
+        "amiga": 1.07
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "audit",
+      "seconds": {
+        "pc": 2.323,
+        "amiga": 3.329
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "publication",
+      "seconds": {
+        "pc": 2.125,
+        "amiga": 3.174
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "audit",
+      "seconds": {
+        "pc": 2.275,
+        "amiga": 3.277
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "publication",
+      "seconds": {
+        "pc": 2.173,
+        "amiga": 3.336
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "classic",
+      "seconds": {
+        "pc": 0.768,
+        "amiga": 1.018
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "publication",
+      "seconds": {
+        "pc": 2.174,
+        "amiga": 3.279
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "classic",
+      "seconds": {
+        "pc": 0.767,
+        "amiga": 1.018
+      },
+      "canonical_states": 301
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "audit",
+      "seconds": {
+        "pc": 2.325,
+        "amiga": 3.333
+      },
+      "canonical_states": 301
+    }
+  ],
+  "summary": {
+    "classic": {
+      "pc": {
+        "median": 0.768,
+        "minimum": 0.767,
+        "maximum": 0.82,
+        "n": 3
+      },
+      "amiga": {
+        "median": 1.018,
+        "minimum": 1.018,
+        "maximum": 1.07,
+        "n": 3
+      }
+    },
+    "audit": {
+      "pc": {
+        "median": 2.323,
+        "minimum": 2.275,
+        "maximum": 2.325,
+        "n": 3
+      },
+      "amiga": {
+        "median": 3.329,
+        "minimum": 3.277,
+        "maximum": 3.333,
+        "n": 3
+      }
+    },
+    "publication": {
+      "pc": {
+        "median": 2.173,
+        "minimum": 2.125,
+        "maximum": 2.174,
+        "n": 3
+      },
+      "amiga": {
+        "median": 3.279,
+        "minimum": 3.174,
+        "maximum": 3.336,
+        "n": 3
+      }
+    }
+  },
+  "output_directory": "/dev/shm/openfodder-cost-20261026",
+  "storage_note": "Successful run stored traces/logs on tmpfs. Two workspace runs rejected incomplete traces; root cause not established."
+}

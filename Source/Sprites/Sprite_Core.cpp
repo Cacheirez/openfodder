@@ -21,8 +21,12 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/IndexBounds.hpp"
+#include "Utils/SpriteFrameBounds.hpp"
+#include "Utils/SpriteDrawState.hpp"
 
 void cFodder::Sprite_Clear_All() {
+    mPresentationScene = openfodder::NextPresentationSerial();
 	mSprites.resize(mParams->mSpritesMax);
 	Squad_Set_Squad_Leader();
 
@@ -79,34 +83,72 @@ void cFodder::Sprite_Sort_DrawList() {
     }
 }
 
+// Keep preparation at every legacy call site, including headless execution.
+// Additional presentation must not call this stateful compatibility wrapper.
 void cFodder::Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination) {
+    openfodder::PreparedSpriteDraw prepared;
+    if (Sprite_PrepareLegacyFrame(pDi, pSpriteType, pFrame, prepared) && !mStartParams->mDisableVideo)
+        mGraphics->Video_Draw_8_Resolved(prepared, pDestination);
+}
+
+// Legacy adapter: resolve resources, prepare value-only geometry, then commit
+// visibility and clipped registers at the original logical point.
+bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame,
+                                       openfodder::PreparedSpriteDraw& prepared) {
     auto SheetData = Sprite_Get_Sheet(pSpriteType, pFrame);
+    prepared = {};
+    if (SheetData)
+        prepared.resource = mGraphics->ResolveSpriteResource(SheetData->mLoadSegment,
+            SheetData->mLoadOffset, SheetData->mPalleteIndex & 0xFF);
+    if (!SheetData || !prepared.resource) {
+        // Preserve logical off-screen state when an animation frame is invalid.
+        pDi->mWasDrawn = 0;
+        return false;
+    }
 
-    mVideo_Draw_PaletteIndex = SheetData->mPalleteIndex & 0xFF;
-    mVideo_Draw_FrameDataPtr = SheetData->GetGraphicsPtr();
-
-    mVideo_Draw_Columns = SheetData->mColCount;
-    mVideo_Draw_Rows = SheetData->mRowCount - pDi->mRowsToSkip;
+    openfodder::SpriteDrawInput input;
+    input.source = prepared.resource.source();
+    input.palette = prepared.resource.palette;
+    input.columns = SheetData->mColCount;
+    input.rows = SheetData->mRowCount;
+    input.rowsToSkip = pDi->mRowsToSkip;
+    input.spriteX = pDi->mPosX;
+    input.spriteY = pDi->mPosY;
+    input.height = pDi->mHeight;
+    input.modX = SheetData->mModX;
+    input.modY = SheetData->mModY;
 
 #if defined(_OFED) || defined(_OFBOT)
+    // Keep the editor/bot camera bookkeeping in this legacy adapter only.
     mMapTile_DrawY = (mMapTile_MovedVertical * 16) + mMapTile_RowOffset;
     mMapTile_DrawX = (mMapTile_MovedHorizontal * 16) + mMapTile_ColumnOffset;
-    
-    mVideo_Draw_PosX = (int16)((SheetData->mModX + pDi->mPosX) - mMapTile_DrawX);
-#else
-    mVideo_Draw_PosX = (int16)((SheetData->mModX + pDi->mPosX) - mMapTile_DrawX + 0x40);
+    input.xBias = 0;
 #endif
+    input.mapX = mMapTile_DrawX;
+    input.mapY = mMapTile_DrawY;
+    input.viewWidth = getWindowWidth();
+    input.viewHeight = g_Window->GetScreenSize().getHeight();
+    input.format = prepared.resource.layout.format;
+    auto& draw = prepared.draw;
+    draw = openfodder::PrepareSpriteDraw(input);
+    CaptureSoldierSemantic(pDi, pSpriteType, pFrame, input, prepared);
 
-    mVideo_Draw_PosY = (int16)((SheetData->mModY + pDi->mPosY) - mVideo_Draw_Rows - pDi->mHeight - mMapTile_DrawY);
-    mVideo_Draw_PosY += 0x10;
+    // Only the compatibility adapter publishes legacy registers. The pure
+    // preparation above can be repeated without writing engine/sprite state.
+    mVideo_Draw_PaletteIndex = draw.palette;
+    mVideo_Draw_FrameDataPtr += draw.sourceOffset;
+    mVideo_Draw_Columns = draw.columns;
+    mVideo_Draw_Rows = draw.rows;
+    mVideo_Draw_PosX = draw.x;
+    mVideo_Draw_PosY = draw.y;
 
-    if (Sprite_OnScreen_Check()) {
+    if (draw.visible) {
         pDi->mWasDrawn = 1;
-        if(!mStartParams->mDisableVideo)
-            mGraphics->Video_Draw_8(pDestination);
+        return true;
     }
     else
         pDi->mWasDrawn = 0;
+    return false;
 }
 
 bool cFodder::Sprite_OnScreen_Check() {
@@ -287,7 +329,7 @@ void cFodder::Sprite_Update_DirectionMod(sSprite* pSprite) {
     DataC &= 0x0F;
     //seg007:0920
     DataC = (int16)mDirectionStepTable[DataC];
-    DataC <<= 1;
+    DataC = wrapShiftLeft16(DataC, 1);
 
     mDirectionMod = DataC;
 }
@@ -457,7 +499,7 @@ void cFodder::Sprite_Movement_Calculate(sSprite* pSprite) {
     Dataa8 *= Data4;
     DataaC *= Data4;
 
-    int32 tmp = (pSprite->mPosXFrac & 0xFFFF) | pSprite->mPosX << 16;
+    int32 tmp = packWords32(pSprite->mPosX, pSprite->mPosXFrac);
     tmp += Dataa8;
 
     pSprite->mPosXFrac = tmp & 0xFFFF;
@@ -469,7 +511,7 @@ void cFodder::Sprite_Movement_Calculate(sSprite* pSprite) {
         mSprite_Bullet_Destroy = -1;
     }
 
-    tmp = (pSprite->mPosYFrac & 0xFFFF) | pSprite->mPosY << 16;
+    tmp = packWords32(pSprite->mPosY, pSprite->mPosYFrac);
     tmp += DataaC;
     pSprite->mPosYFrac = tmp & 0xFFFF;
     pSprite->mPosY = tmp >> 16;
@@ -589,9 +631,19 @@ loc_2A2F5:;
 }
 
 const sSpriteSheet* cFodder::Sprite_Get_Sheet(int16 pSpriteType, int16 pFrame) {
-    const sSpriteSheet* Sheet = &mSprite_SheetPtr[pSpriteType][pFrame];
-
-    return Sheet;
+    if (!spriteFrameInRange(pSpriteType, pFrame, mSprite_FrameCounts, mSprite_SheetCount) ||
+        !mSprite_SheetPtr || !mSprite_SheetPtr[pSpriteType]) {
+        static std::atomic<unsigned> warnings{0};
+        if (warnings.fetch_add(1) < 24) {
+            const std::size_t available = mSprite_FrameCounts && pSpriteType >= 0 &&
+                static_cast<std::size_t>(pSpriteType) < mSprite_SheetCount
+                ? mSprite_FrameCounts[pSpriteType] : 0;
+            std::cerr << "::warning::Invalid sprite sheet/frame: type=" << pSpriteType
+                      << " frame=" << pFrame << " available=" << available << std::endl;
+        }
+        return nullptr;
+    }
+    return &mSprite_SheetPtr[pSpriteType][pFrame];
 }
 
 void cFodder::Sprite_SetDirectionMod(sSprite* pSprite) {
@@ -1202,8 +1254,8 @@ void cFodder::Sprite_PositionNext_AdjustByHeight(sSprite* pSprite) {
 void cFodder::Sprite_XY_Store(sSprite* pSprite) {
     mSprite_Reached_Target = 0;
 
-    mStoredSpriteX = (pSprite->mPosX & 0xFFFF) | (pSprite->mPosXFrac << 16);
-    mStoredSpriteY = (pSprite->mPosY & 0xFFFF) | (pSprite->mPosYFrac << 16);
+    mStoredSpriteX = packWords32(pSprite->mPosXFrac, pSprite->mPosX);
+    mStoredSpriteY = packWords32(pSprite->mPosYFrac, pSprite->mPosY);
 }
 
 void cFodder::Sprite_XY_Restore(sSprite* pSprite) {
@@ -2017,7 +2069,14 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
     }
     else {
 
-        Squad0_Member = mSquad_0_Sprites[pSprite->field_5E_Squad];
+        // Original DOS-style indexing crosses consecutive 9-slot squads.
+        // Decode that logical flattened index without C++ array overflow.
+        const auto followerSlot = gameFlattenedIndex(pSprite->field_5E_Squad,
+            sizeof(mSquad_0_Sprites)/sizeof(mSquad_0_Sprites[0]),
+            sizeof(mSquads)/sizeof(mSquads[0]));
+        if (!followerSlot.valid)
+            goto loc_21E4A;
+        Squad0_Member = mSquads[followerSlot.group][followerSlot.offset];
         if (Squad0_Member == INVALID_SPRITE_PTR)
             goto loc_21E4A;
 
@@ -2148,10 +2207,15 @@ void cFodder::Sprite_Update_Follower_Target(sSprite* pSprite) {
         if (mSprite_FaceWeaponTarget)
             goto loc_22125;
 
-        if (mSquad_0_Sprites[pSprite->field_5E_Squad] == INVALID_SPRITE_PTR)
+        const auto targetSlot = gameFlattenedIndex(pSprite->field_5E_Squad,
+            sizeof(mSquad_0_Sprites)/sizeof(mSquad_0_Sprites[0]),
+            sizeof(mSquads)/sizeof(mSquads[0]));
+        if (!targetSlot.valid)
+            goto loc_22125;
+        if (mSquads[targetSlot.group][targetSlot.offset] == INVALID_SPRITE_PTR)
             goto loc_22125;
 
-        Data0 = mSquad_0_Sprites[pSprite->field_5E_Squad];
+        Data0 = mSquads[targetSlot.group][targetSlot.offset];
     }
 
     // "Sort of" Random Movement Target
@@ -2343,4 +2407,31 @@ void cFodder::Sprite_Update_Direction_Anim(sSprite* pSprite) {
     pSprite->mSheetIndex = *Data28;
     pSprite->field_3E = pSprite->mDirection;
     pSprite->mFrameIndex = 0;
+}
+
+// One authored player soldier only. Capture after preparation, never in a consumer.
+void cFodder::CaptureSoldierSemantic(sSprite* sprite, int16 sheet, int16 frame,
+        const openfodder::SpriteDrawInput& input, openfodder::PreparedSpriteDraw& prepared) {
+    const char* enabled = std::getenv("OPENFODDER_CAPTURE_SOLDIER");
+    if (!enabled || std::string(enabled) != "1" || !mPhase_In_Progress || mPhase_Paused ||
+        mPhase_ShowMapOverview || !prepared.draw.visible || sprite->mSpriteType != eSprite_Player ||
+        sprite->mInVehicle || sprite->mPendingDestroy || !mPresentationScene) return;
+    for (size_t slot = 0; slot < mSprites.size(); ++slot) {
+        const auto& candidate = mSprites[slot];
+        if (candidate.mPosX == -32768 || candidate.mPosX == -1 || candidate.mSpriteType != eSprite_Player)
+            continue;
+        if (&candidate != sprite) return; // Only the first present player slot is the pilot.
+        auto& state = prepared.soldier;
+        state.valid = true; state.scene = mPresentationScene;
+        state.slot = slot; state.generation = sprite->mPresentationGeneration;
+        state.tick = mMission_EngineTicks; state.cameraX = mCameraX; state.cameraY = mCameraY;
+        state.xFraction = sprite->mPosXFrac; state.yFraction = sprite->mPosYFrac;
+        state.heightFraction = sprite->mHeightFrac; state.type = sprite->mSpriteType;
+        state.sheet = sheet; state.frame = frame; state.animation = sprite->mAnimState;
+        state.direction = sprite->mDirection;
+        state.geometry = input; state.geometry.source = nullptr;
+        const auto metadata = Sprite_Get_Sheet(sheet, frame);
+        state.segment = metadata->mLoadSegment;
+        return;
+    }
 }
