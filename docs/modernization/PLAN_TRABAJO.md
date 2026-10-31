@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.65 · Revisión: 31 de octubre de 2026.**
+**Versión 2.66 · Revisión: 31 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: corregir la sonda de pausa de CI y validar el paquete HD SDL 8×/12×. CI nueva y prueba visual Windows pendientes.**
+**Tarea activa: CI y paquete HD SDL cerrados; pendiente prueba visual Windows/GPU de 8×/12× y coste integrado antes de fijar densidad.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.66 — CI y paquete HD SDL cerrados
+
+[Validación a05e656](VALIDACION_a05e656.md): Windows 41197313659, Linux 41197313403 y comparador 41197313475 completos PASS. Informes HD 8×/12× en ambos sistemas: 11 fases, 22 pausas/reanudaciones y 11.361 estados H3 originales por ejecución; publicación HD real en PC/Amiga. ZIP Windows 13041734254 inspeccionado: 281 archivos, 29 demos sin omisiones, ejecutable coincidente con los informes, dos lanzadores HD y VERSION con árbol idéntico al commit probado. Escalado/transiciones/fallos automatizados aprobados; Windows/GPU físico y coste integrado pendientes. PR en borrador, sin fusionar.
 
 ## Incremento 2.65 — presupuesto de CI Windows
 

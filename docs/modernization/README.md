@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente 31-10-2026 · plan 2.65:** sonda de pausa corregida; replays locales 8×/12× completos PASS y paso HD de CI Linux 4856a8f PASS. Windows 41194788492 agotó 35 minutos durante Amiga 12×, después de aprobar 8× completo y PC 12×. Presupuesto elevado a 60 minutos sin recortar cobertura; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
+**Estado vigente 31-10-2026 · plan 2.66:** [CI y paquete a05e656 verificados](VALIDACION_a05e656.md). Windows, Linux y comparador completos PASS; HD opcional 8×/12× con 11 fases, 22 pausas y 11.361 estados H3 por ejecución. ZIP Windows inspeccionado, ambos lanzadores incluidos. Siguiente: prueba visual Windows/GPU y coste integrado; densidad final abierta. Guardado/persistencia aceptados; PR borrador, sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
@@ -14,7 +14,7 @@
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
-Incremento vigente: [contrato y piloto HD aislado](H6_4_PILOTO_HD_AISLADO.md) implementado, sin integración SDL; [Save: glifo inválido reproducido y corregido](H5_6_INCIDENCIA_SAVE.md), prueba real PC/Amiga añadida; aceptación física pendiente. Alternancia aceptada. Ambas densidades revisadas visualmente; preferencia por alta condicionada a coste. CI y paquete nuevos no heredan resultados de 30ba0ec.
+Incremento vigente: [HD SDL opcional](H6_HD_SDL_OPCIONAL.md), CI completa y [paquete a05e656 verificado](VALIDACION_a05e656.md). Guardado/persistencia aceptados. Falta prueba visual Windows/GPU y coste integrado; ambas densidades siguen abiertas.
 
 Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 

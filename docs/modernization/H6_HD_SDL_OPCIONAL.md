@@ -1,6 +1,6 @@
 # H6 — publicación SDL opcional de C01 HD
 
-31-10-2026 · plan 2.65. Conexión implementada; validación local software aprobada, nueva CI del motor pendiente. No se declara prueba física Windows/GPU ni densidad definitiva.
+31-10-2026 · plan 2.66. [CI y paquete a05e656 cerrados PASS](VALIDACION_a05e656.md). Prueba física Windows/GPU y densidad definitiva pendientes. Las notas posteriores de CI pendiente son historia de los incrementos 2.63–2.65.
 
 ## Activación y alcance
 
@@ -47,3 +47,7 @@ Validación local de la corrección: motor completo sin mixer, SDL software 3.4.
 ## Presupuesto de CI 2.65
 
 Windows 41194788492 agotó el límite global de 35 minutos durante Amiga 12×. 8× completo (11 fases, 22 pausas, H3) y PC 12× sí pasaron. Linux aprobó el paso HD completo. Se amplía el job Windows a 60 minutos; no se reducen fases ni presentaciones. CI/paquete nuevos pendientes.
+
+## Cierre 2.66
+
+Windows, Linux y comparador a05e656 completos PASS. Informes 8×/12× de ambos sistemas y manifiesto del ZIP conservados en evidence; [cierre y prueba visual acotada](VALIDACION_a05e656.md). No se atribuye prueba física ni rendimiento GPU.

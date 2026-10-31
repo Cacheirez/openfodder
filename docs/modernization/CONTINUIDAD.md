@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 31-10-2026 · plan 2.65:** sonda de pausa corregida; replays locales 8×/12× completos PASS y paso HD de CI Linux 4856a8f PASS. Windows 41194788492 agotó 35 minutos durante Amiga 12×, después de aprobar 8× completo y PC 12×. Presupuesto elevado a 60 minutos sin recortar cobertura; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
+**Estado vigente 31-10-2026 · plan 2.66:** [CI y paquete a05e656 verificados](VALIDACION_a05e656.md). Windows, Linux y comparador completos PASS; HD opcional 8×/12× con 11 fases, 22 pausas y 11.361 estados H3 por ejecución. ZIP Windows inspeccionado, ambos lanzadores incluidos. Siguiente: prueba visual Windows/GPU y coste integrado; densidad final abierta. Guardado/persistencia aceptados; PR borrador, sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-30-10-2026 · plan 2.63. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+31-10-2026 · plan 2.66. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -20,7 +20,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | Presentación H4 | Capturas propias, núcleos de raster, terreno/HUD/cursor/paleta, capas ordenadas, registro y publicación opcional con contraste y fallback | Generalización semántica, transiciones completas, independencia global |
 | Programación H4.6 | 0/1/5 de misión con H3; sonda pausa acotada PC/Amiga 301 estados y sanitizadores declarados | Pausas largas, eventos y demás transiciones; no equivale a interpolación |
 | Soldado H4.2/H4.4 | Captura semántica mínima y sustitución de una pose original | Resto de estados, entidades y helicóptero compuesto |
-| Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | HD real, densidad, animación, terrenos y cursor artístico |
+| Arte H6 | C elegida; PNG transparente y manifiesto; piloto C01 hoja 7/frame 0, 16×14, fuente incorporada y fallback | Prueba visual/GPU del HD opcional integrado, densidad final, animación, terrenos y cursor artístico |
 | Pantalla H5.5/H5.9 | Transformación e inversa, DPI físico, bandas/clic sostenido, mapa, pausa, briefing/reclutamiento, ahora todas las rutas RenderAt/RenderShrunk y F11 FIT | Escenas aceptadas por Miguel («Probar escenas está ok»); matriz completa, relativo/bloqueado y viewport moderno pendientes |
 | Opciones H5.6 | CLASSIC/FIT, borrador, SAVE/KEEP/REVERT 15 s, restauración y persistencia comprobadas automáticamente | Fallo manual de alternancia repetida corregido y publicado (2.54); CI/paquete aprobados en 30ba0ec; alternancia aceptada; cierre Save corregido y guardado/persistencia aceptados por Miguel el 30-10; resto de H5.6 pendiente |
 | Suavidad H5 | Medición inicial del tiempo de proceso conservada | Interpolación de cámara/entidades, medidas por frame p95/p99, 60/120/144 Hz |
@@ -60,7 +60,7 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: cerrar CI del adaptador SDL, verificar su paquete y hacer prueba visual acotada antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: prueba visual acotada del paquete a05e656 verificado y medición integrada/GPU antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
