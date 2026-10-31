@@ -26,6 +26,12 @@ def verify_pause_probe(log, phases):
     resumed = re.findall(r'^MISSION_PAUSE_PROBE: resumed (.+)$', log, re.M)
     if len(completed) != 2 * phases or len(set(completed)) != len(completed) or resumed != completed:
         raise RuntimeError('Incomplete SDL pause/resume probe')
+    by_phase = {}
+    for key in completed:
+        phase, _, step = key.rpartition(':')
+        by_phase.setdefault(phase, set()).add(step)
+    if len(by_phase) != phases or any(steps != {'8', '16'} for steps in by_phase.values()):
+        raise RuntimeError('Incomplete per-phase SDL pause/resume coverage')
     return len(completed)
 
 
@@ -62,7 +68,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--presentations', type=int, choices=(0, 1, 5), help='Test-only mission presentation count; production cadence stays unchanged')
     p.add_argument('--first-phase', action='store_true', help='Explicit partial scope: first PC and Amiga phases only')
-    p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at mission ticks 8 and 16')
+    p.add_argument('--pause-probe', action='store_true', help='Opt-in bounded SDL P-key pause/resume at replay steps 8 and 16 per phase')
     p.add_argument('--soldier-probe', action='store_true', help='Require semantic soldier reproduction with original resources')
     p.add_argument('--pose-probe', action='store_true', help='Replace one original indexed pose and require per-scene evidence; implies soldier capture')
     p.add_argument('--screen-probe', action='store_true', help='Require presented mission transform and inverse; replay input remains canonical')

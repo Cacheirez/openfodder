@@ -318,6 +318,7 @@ jobs:
             reports/h4-publication*/
             reports/h4-pose*/
             reports/h6-art*/
+            reports/h6-hd*/
             reports/h5-screen-transform/
             reports/h4-schedule-*/
             reports/h4-pause-*/

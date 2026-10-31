@@ -1,6 +1,6 @@
 # H6 — publicación SDL opcional de C01 HD
 
-30-10-2026 · plan 2.63. Conexión implementada; validación local software aprobada, nueva CI del motor pendiente. No se declara prueba física Windows/GPU ni densidad definitiva.
+31-10-2026 · plan 2.64. Conexión implementada; validación local software aprobada, nueva CI del motor pendiente. No se declara prueba física Windows/GPU ni densidad definitiva.
 
 ## Activación y alcance
 
@@ -37,3 +37,7 @@ Local: SDL tag release-3.4.0, SHA a962f40bbba175e9716557a25d5d7965f134a3d3, comp
 832895d: Windows 41075746093, Linux 41075746384 y comparador 41075746047, todos completed/success. Su paquete no se ha descargado/inspeccionado en este incremento; último paquete inspeccionado sigue siendo 3d82ff2 y no contiene HD SDL. No pedir al usuario probar HD con él.
 
 Siguiente: cerrar CI de la integración, verificar paquete nuevo y prueba visual acotada 8×/12×, transiciones y resolución en Windows. Medir tiempo de frame/subidas GPU antes de fijar densidad o cachear texturas. Guardado/persistencia ya aceptados. PR abierto/borrador/sin fusionar.
+
+## Corrección de CI 2.64
+
+Windows 41095340402 y Linux 41095340185 (75a91ff) fallaron en la sonda de pausa tras completar las ocho fases PC. Los replays restauran mEngineTicks (por ejemplo PC m2p2=788, Amiga m1p2=150), de modo que buscar ticks absolutos 8/16 omitía fases. La sonda usa ahora pasos por fase sin escribir el reloj ni cambiar H3. La puerta exige exactamente dos parejas 8/16 en cada fase. Informes HD añadidos al artefacto Linux; nueva CI y paquete pendientes.

@@ -36,6 +36,17 @@ class PublicationGateTests(unittest.TestCase):
             with self.subTest(log=log), self.assertRaises(RuntimeError):
                 verify_pause_probe(log, 1)
 
+    def test_pause_pairs_cannot_be_borrowed_from_another_phase(self):
+        def pair(key):
+            return f'MISSION_PAUSE_PROBE: completed {key}\nMISSION_PAUSE_PROBE: resumed {key}\n'
+        valid = ''.join(pair(f'PC Format:{phase}:1:{step}')
+                        for phase in (1, 2) for step in (8, 16))
+        self.assertEqual(verify_pause_probe(valid, 2), 4)
+        for bad in (valid.replace(':2:1:16', ':1:1:24'),
+                    valid.replace(':2:1:8', ':2:1:9')):
+            with self.assertRaises(RuntimeError):
+                verify_pause_probe(bad, 2)
+
     def test_successful_completion_does_not_hide_recoverable_findings(self):
         for finding in ('source.cpp:42: runtime error: signed integer overflow',
                         'WARNING: ThreadSanitizer: data race',

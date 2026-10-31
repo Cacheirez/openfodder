@@ -1,13 +1,13 @@
 # Prompt para continuar en otro hilo
 
-**Estado vigente 30-10-2026 · plan 2.63:** CI 832895d cerrada PASS. [Conexión SDL opcional](H6_HD_SDL_OPCIONAL.md) implementada, pruebas locales de escalado, transiciones y fallos aprobadas; nueva CI pendiente. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL; no usarlo para validar este incremento.
+**Estado vigente 31-10-2026 · plan 2.64:** integración HD SDL opcional implementada. CI 75a91ff falló en la sonda de pausa: los replays restauran relojes no nulos. Sonda corregida para contar pasos por fase, con dos parejas completas obligatorias; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
 ```text
 Continúa OpenFodder en https://github.com/Cacheirez/openfodder, rama modernization/windows-foundation, PR #1 abierto, borrador y sin fusionar.
 
-Lee íntegros README.md, CONTINUIDAD.md, PLAN_TRABAJO.md, RELEVO_2026-10-29.md y este prompt en docs/modernization desde la rama. Comprueba HEAD/PR/CI antes de editar. El plan vigente es 2.63. 2479fea era el relevo inicial 2.57; 30ba0ec es la referencia anterior con paquete verificado. Consulta evidencia posterior antes de afirmar CI/paquete nuevos aprobados.
+Lee íntegros README.md, CONTINUIDAD.md, PLAN_TRABAJO.md, RELEVO_2026-10-29.md y este prompt en docs/modernization desde la rama. Comprueba HEAD/PR/CI antes de editar. El plan vigente es 2.64. 2479fea era el relevo inicial 2.57; 30ba0ec es la referencia anterior con paquete verificado. Consulta evidencia posterior antes de afirmar CI/paquete nuevos aprobados.
 
 Conserva base clásica 5e6a4f3, mejoras, originales visuales y H3 sin regenerar huellas para ocultar divergencias. No publiques datos comerciales CD32 ni partidas privadas. No cambies reglas, RNG, tiempos, colisiones ni campo visible. No introduzcas hilos ni actualices dependencias sin necesidad.
 

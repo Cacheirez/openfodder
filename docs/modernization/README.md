@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente 30-10-2026 · plan 2.63:** CI 832895d cerrada PASS. [Conexión SDL opcional](H6_HD_SDL_OPCIONAL.md) implementada, pruebas locales de escalado, transiciones y fallos aprobadas; nueva CI pendiente. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL; no usarlo para validar este incremento.
+**Estado vigente 31-10-2026 · plan 2.64:** integración HD SDL opcional implementada. CI 75a91ff falló en la sonda de pausa: los replays restauran relojes no nulos. Sonda corregida para contar pasos por fase, con dos parejas completas obligatorias; nueva CI/paquete pendientes. Guardado/persistencia aceptados. Último paquete inspeccionado 3d82ff2, sin HD SDL.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 

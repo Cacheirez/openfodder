@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.63 · Revisión: 30 de octubre de 2026.**
+**Versión 2.64 · Revisión: 31 de octubre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: conexión SDL opcional 8×/12× implementada; escalado, transiciones y recuperación comprobados localmente. CI anterior 832895d cerrada PASS. Nueva CI/paquete y prueba visual Windows pendientes; densidad final abierta.**
+**Tarea activa: corregir la sonda de pausa de CI y validar el paquete HD SDL 8×/12×. CI nueva y prueba visual Windows pendientes.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.64 — pausa por fase en replays restaurados
+
+CI 75a91ff compiló y superó las pruebas SDL, pero falló al exigir 16 pausas en PC: la sonda buscaba ticks absolutos 8/16 y siete fases PC/Amiga restauran relojes posteriores. Ahora cuenta pasos elegibles dentro de cada fase sin modificar relojes de simulación. Se conserva la campaña completa, se refuerza la puerta para exigir pasos 8/16 en cada fase y se incluyen informes HD en el artefacto Linux. 31 tests Python PASS; replays completos y nueva CI en validación. No se cambian referencias H3.
 
 ## Incremento 2.63 — SDL opcional con recuperación clásica
 

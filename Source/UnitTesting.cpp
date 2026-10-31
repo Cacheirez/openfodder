@@ -44,12 +44,18 @@ void cUnitTesting::ProbeMissionPause() {
         std::fprintf(stderr, "MISSION_PAUSE_PROBE: resumed %s\n", previous.c_str());
         awaitingResume = false;
     }
-    if (!game.mPhase_In_Progress || game.mPhase_Paused || game.mPhase_ShowMapOverview ||
-        (game.mMission_EngineTicks != 8 && game.mMission_EngineTicks != 16)) return;
-    const std::string key = game.mStartParams->mCampaignName + ":" +
+    if (!game.mPhase_In_Progress || game.mPhase_Paused || game.mPhase_ShowMapOverview) return;
+    // Saved replays may start with a nonzero engine clock. Schedule this test
+    // by eligible replay steps within each phase; never reset the game clock.
+    static std::string phase;
+    static unsigned steps = 0;
+    const std::string currentPhase = game.mStartParams->mCampaignName + ":" +
         std::to_string(game.mGame_Data.mMission_Number) + ":" +
-        std::to_string(game.mGame_Data.mMission_Phase) + ":" +
-        std::to_string(game.mMission_EngineTicks);
+        std::to_string(game.mGame_Data.mMission_Phase);
+    if (phase != currentPhase) { phase = currentPhase; steps = 0; }
+    if (steps < 17) ++steps;
+    if (steps != 8 && steps != 16) return;
+    const std::string key = currentPhase + ":" + std::to_string(steps);
     if (previous == key) return;
     previous = key;
     if (!game.mSurface->MissionAuditActive())
