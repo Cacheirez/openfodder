@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 01-11-2026 · plan 2.69:** Miguel acepta detalle, posición e integración en C01_12.html del paquete 3ee12e9. No repetir esa valoración, A/B/C ni guardado/persistencia. [Medición integrada](H6_COSTE_HD_INTEGRADO.md) completada: 16 recorridos/48 fases con H3, tiempo/CPU/RSS; 8× y 12× sin diferencia concluyente en esta carga. Siguiente: perfilado por bloque antes de optimizar; densidad final, latencia por frame y GPU pendientes. Motor y ZIP vigentes sin cambios, PR borrador sin fusionar.
+**Estado vigente 01-11-2026 · plan 2.70:** revisión para acelerar. Próxima entrega A: soldado animado visible en una fase pública; inventario acotado y perfilado mínimo, sin esperar densidad definitiva ni cerrar H4/H5 globales. [Ruta, validación y límites](PLAN_TRABAJO.md). C01, estilo C y guardado/persistencia aceptados. Motor/ZIP vigente 3ee12e9; cambios de CI y animación aún no implementados. PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-01-11-2026 · plan 2.69. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+01-11-2026 · plan 2.70. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -61,7 +61,7 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: perfilado por bloque de la ruta HD; medición integrada inicial completada; C01_12.html ya aceptado en detalle, posición e integración; diagnóstico y prueba visible cerrados en [validación](VALIDACION_3ee12e9.md). Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: entrega A de la ruta 2.70. Confirmar inventario y recorrido de Amiga The One m1p1 como candidata; preparar un pequeño lote de reposo/marcha y direcciones pertinentes, con instrumentación mínima. 12× es variante provisional de trabajo y 8× sigue disponible. La optimización se limita a un cuello demostrado; GPU y densidad final no bloquean inventario/recursos. Mantener clásico por defecto y los guards. No producir animaciones masivas ni introducir hilos. El paquete siguiente debe aportar un cambio perceptible a velocidad normal.
 
 ## Validaciones pendientes de Miguel
 
@@ -75,6 +75,6 @@ El cursor también se rediseñará: estados, hotspot, contraste, tamaño físico
 
 ## Protocolo de trabajo
 
-Leer README/plan y documentos afectados completos; comprobar HEAD/PR/CI antes de editar. Preservar cambios ajenos y usar actualizaciones con comprobación del HEAD esperado. Mantener PR en borrador sin fusionar. No introducir hilos, actualizar dependencias o ampliar alcance sin necesidad. Ejecutar pruebas adecuadas al cambio y registrar límites; una revisión documental no necesita otra batería de motor.
+Leer estado, ruta operativa del plan y contratos afectados; comprobar HEAD/PR/CI antes de editar. Consultar historia solo cuando una dependencia lo requiera. Preservar cambios ajenos y usar actualizaciones con comprobación del HEAD esperado. Mantener PR en borrador sin fusionar. No introducir hilos, actualizar dependencias o ampliar alcance sin necesidad. Ejecutar pruebas adecuadas al cambio y registrar límites; una revisión documental no necesita otra batería de motor.
 
-Al cerrar cada mensaje, incluir exactamente estas etiquetas, con contenido concreto: **Hecho:**, **Situación del plan:** y **Próximos pasos:**. Mantener este estado, plan, evidencia y originales artísticos actualizados para que el siguiente hilo no dependa de memoria externa.
+Al cerrar cada mensaje, incluir exactamente estas etiquetas, con contenido concreto: **Hecho:**, **Situación del plan:** y **Próximos pasos:**. Mantener una actualización breve de este estado y del plan, evidencia por entrega y originales artísticos actualizados para que el siguiente hilo no dependa de memoria externa.

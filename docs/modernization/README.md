@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente 01-11-2026 · plan 2.69:** Miguel acepta detalle, posición e integración en C01_12.html del paquete 3ee12e9. No repetir esa valoración, A/B/C ni guardado/persistencia. [Medición integrada](H6_COSTE_HD_INTEGRADO.md) completada: 16 recorridos/48 fases con H3, tiempo/CPU/RSS; 8× y 12× sin diferencia concluyente en esta carga. Siguiente: perfilado por bloque antes de optimizar; densidad final, latencia por frame y GPU pendientes. Motor y ZIP vigentes sin cambios, PR borrador sin fusionar.
+**Entrada vigente:** [estado operativo](CONTINUIDAD.md) y [ruta del plan](PLAN_TRABAJO.md). Estos dos documentos determinan la próxima entrega; los informes fechados conservan evidencia histórica.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
@@ -9,8 +9,8 @@
 ## Leer en este orden
 
 1. [Estado de continuidad y siguiente incremento](CONTINUIDAD.md).
-2. [Plan vivo completo](PLAN_TRABAJO.md), especialmente tarea activa y H4–H10. Sus incrementos fechados son bitácora, no estados pendientes acumulativos.
-3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](VALIDACION_30ba0ec.json).
+2. [Ruta operativa y tarea activa](PLAN_TRABAJO.md), después las tareas H4–H10 afectadas. Consultar la bitácora solo si hace falta rastrear una decisión.
+3. [Inventario de escenas y criterio FIT](H5_9_INVENTARIO_ESCENAS.md), [opciones](H5_6_OPCIONES_PRESENTACION.md) y [evidencia del motor vigente](VALIDACION_3ee12e9.md).
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
