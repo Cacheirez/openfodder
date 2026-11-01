@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 01-11-2026 · plan 2.67:** Miguel confirma funcionamiento general, pero sus logs 8×/12× no registran publicación HD. Diagnóstico acotado de motivos y comparación C01 de una escena real implementados; nueva CI/paquete pendientes. Prueba visible mediante replay público PC Format completo para conservar H3. Último paquete aprobado a05e656 no incluye este diagnóstico.
+**Estado vigente 01-11-2026 · plan 2.68:** diagnóstico de retorno clásico y prueba visible C01 cerrados. Motor 3ee12e9 con CI Windows/Linux/comparador completa PASS y ZIP de 300 archivos verificado. Incluye comparación real 8×/12× y PROBAR_C01_VISIBLE.cmd. [Validación y descarga](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados; pendiente aceptación visual HD Windows/GPU y coste integrado. PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-31-10-2026 · plan 2.66. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+01-11-2026 · plan 2.68. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -54,17 +54,17 @@ Miguel pide continuar con puntos que no necesiten su validación, antes de revis
 
 ## Incremento actual y siguiente paso
 
-[Contrato/piloto HD aislado](H6_4_PILOTO_HD_AISLADO.md) implementado para 8×/12×. No está conectado a SDL: el juego sigue con C01 nativo. Conserva orden, destinos y anclaje; oclusiones/recortes no soportados vuelven al clásico. PNG y derivados reproducibles preservados. Pruebas locales y límites en el contrato.
+[Contrato/piloto HD](H6_4_PILOTO_HD_AISLADO.md) implementado para 8×/12×, con [composición eficiente](H6_COMPOSICION_HD_POR_CAPAS.md) e [integración SDL opcional](H6_HD_SDL_OPCIONAL.md). Conserva orden, destinos y anclaje; oclusiones/recortes no soportados vuelven al clásico. PNG y derivados reproducibles preservados. Pruebas locales y límites en el contrato.
 
 Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos revisados, algo mejor la alta; prefiere calidad si memoria/rendimiento lo permiten. No repetir A/B/C ni el comparador completo. Falta medir coste en el motor antes de cerrar densidad.
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: cerrar CI/paquete del diagnóstico 2.67 y entregar la comparación C01 y el lanzador reproducible. Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: aceptación visual acotada de C01 con el paquete 3ee12e9 y medición del coste integrado/GPU; diagnóstico y prueba visible cerrados en [validación](VALIDACION_3ee12e9.md). Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
-Guardado y persistencia de opciones aceptados el 30-10-2026. No pedir repetir esa prueba. REVERT/caducidad no tienen confirmación separada; mantener esa distinción sin bloquear trabajo independiente. La integración HD futura necesitará prueba visual específica; no repetir A/B/C ni el comparador ya revisado.
+Guardado y persistencia de opciones aceptados el 30-10-2026. No pedir repetir esa prueba. REVERT/caducidad no tienen confirmación separada; mantener esa distinción sin bloquear trabajo independiente. La integración HD opcional necesita aceptación visual específica; no repetir A/B/C ni el comparador ya revisado.
 
 ## Decisiones visuales y custodia
 

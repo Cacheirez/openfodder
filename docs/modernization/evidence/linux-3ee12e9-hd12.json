@@ -1,0 +1,51 @@
+{
+  "verdict": "PASS",
+  "settings": {
+    "flags": [
+      "--appveyor",
+      "--unit-test",
+      "--nosound",
+      "--window",
+      "--alternate-mouse"
+    ],
+    "publication": true,
+    "contrast": true,
+    "cadence": "classic producers",
+    "mission_presentations": 5,
+    "pause_probe": true,
+    "soldier_probe": true,
+    "pose_probe": false,
+    "art_probe": false,
+    "hd_probe": 12,
+    "coverage": "11 reference phases",
+    "screen_probe": true,
+    "screen_fit": true
+  },
+  "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+  "fixture_count": 29,
+  "campaigns": [
+    {
+      "campaign": "PC Format",
+      "phases": 8,
+      "pause_transitions": 16,
+      "soldier_scenes": 8,
+      "pose_scenes": 0,
+      "art_scenes": 0,
+      "hd_published": true,
+      "seconds": 284.391,
+      "executable_sha256": "2c1f5ac136394d4f20b02c90ede10c5d2aff5815dffd81ac31c71edc0f259056"
+    },
+    {
+      "campaign": "Amiga The One",
+      "phases": 3,
+      "pause_transitions": 6,
+      "soldier_scenes": 3,
+      "pose_scenes": 0,
+      "art_scenes": 0,
+      "hd_published": true,
+      "seconds": 234.2,
+      "executable_sha256": "2c1f5ac136394d4f20b02c90ede10c5d2aff5815dffd81ac31c71edc0f259056"
+    }
+  ],
+  "canonical_states": 11361
+}

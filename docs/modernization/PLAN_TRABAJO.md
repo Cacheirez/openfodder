@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.67 · Revisión: 1 de noviembre de 2026.**
+**Versión 2.68 · Revisión: 1 de noviembre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: diagnóstico de retorno clásico y prueba visible C01; validar nueva CI y paquete.**
+**Tarea activa: diagnóstico y prueba visible C01 cerrados; aceptación visual HD y medición del coste integrado pendientes.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.68 — diagnóstico, prueba visible y paquete cerrados
+
+[Validación 3ee12e9](VALIDACION_3ee12e9.md): Windows 41288644622, Linux 41288644597 y comparador 41288644598 completos PASS. Prueba visible C01 en ambas plataformas y densidades: ocho fases PC y 7.956 estados H3 originales por ejecución; exportaciones idénticas entre Windows/Linux/local. Regresión HD: 11 fases, 22 pausas y 11.361 estados por ejecución. ZIP 13077821521 verificado: 300 archivos, ejecutable coincidente, comparaciones y ocho grabaciones PC públicas, lanzador automático y diagnóstico. Se corrige el include MSVC del intento 7d27b59; no cambia H3 ni composición. Pendientes aceptación visual Windows/GPU y coste integrado; PR borrador sin fusionar.
 
 ## Incremento 2.67 — diagnóstico y prueba visible C01
 
@@ -197,7 +201,7 @@ Captura opcional del primer Player junto al productor real: identidad/escena/gen
 
 ## 1. Dictamen de la revisión
 
-El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto. Los conceptos H6.1 ya existen, C está elegida y su pose mínima está integrada experimentalmente. La siguiente decisión artística es densidad 8×/12× tras validar presentación/opciones.**
+El objetivo y la arquitectura general siguen siendo válidos. Hemos avanzado bastante más que el inventario que todavía indicaban algunas casillas: existen capturas propias, composición ordenada, validación de destinos y registro conectado a productores reales. Sin embargo, reconstruir el mismo frame no equivale aún a poder presentar con otra frecuencia ni a interpolar entidades por separado. **H4 sigue abierto. Los conceptos H6.1 ya existen, C está elegida y su pose mínima está integrada experimentalmente. La siguiente decisión artística es densidad 8×/12× tras comprobar el piloto HD y medir su coste integrado; guardado/persistencia ya aceptados.**
 
 Cambios respecto al plan anterior:
 
@@ -234,11 +238,11 @@ Modernizar Cannon Fodder para Windows sobre OpenFodder, C++ y SDL3: cámara y mo
 |---|---|
 | Repositorio y rama | [Cacheirez/openfodder](https://github.com/Cacheirez/openfodder), `modernization/windows-foundation` |
 | PR | [#1](https://github.com/Cacheirez/openfodder/pull/1), abierto, borrador, sin fusionar |
-| Motor/revisión verificados | `3d82ff2b4774c8d9939a2315e19bef3fe21122de`, incluye arreglo Save, piloto HD aislado y portabilidad MSVC; [evidencia](VALIDACION_3d82ff2.md) |
+| Motor/revisión verificados | `3ee12e978c21b3157521c0e1fb65573bb4c56a26`, diagnóstico y prueba visible C01 con SDL opcional; [evidencia](VALIDACION_3ee12e9.md) |
 | Aceptación manual | Parcial por incrementos; [registro vigente](CONTINUIDAD.md). No hay aceptación manual global de e18b05b |
 | Base clásica aceptada | `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8` |
-| CI Windows 30ba0ec | [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), éxito |
-| CI Linux 30ba0ec | [40800994727](https://github.com/Cacheirez/openfodder/actions/runs/40800994727), éxito, incluidos los diagnósticos declarados |
+| CI Windows 3ee12e9 | [41288644622](https://github.com/Cacheirez/openfodder/actions/runs/41288644622), éxito |
+| CI Linux 3ee12e9 | [41288644597](https://github.com/Cacheirez/openfodder/actions/runs/41288644597), éxito, incluidos los diagnósticos declarados |
 | Publicación desde órdenes | Implementada, opcional y con contraste obligatorio; validada en acfc099a con el alcance de pruebas declarado. H4 global sigue abierto. Clásico por defecto |
 | Interpolación / arte | Interpolación pendiente; C elegida y pose C01 experimental; densidad HD pendiente |
 
@@ -267,8 +271,8 @@ Fuentes: [registro real y resultados](H4_1_REGISTRO_PRODUCTORES.md), [frame de m
 | H2 · Estabilización | Base aceptada; H2.1 histórico delimitado | Mantener regresiones y exclusiones |
 | H3 · Misma jugabilidad | H3.1–H3.6 completadas en demos | Barrera permanente para H4–H10 |
 | H4 · Presentación separada | Avanzado, parcial | Publicación opcional → motor 0/1/N y transiciones → estados aptos para interpolación |
-| H5 · Cámara y movimiento suaves | Parcial: medición inicial, transformaciones/FIT y opciones mínimas implementados | Aceptar ajuste común/opciones; interpolación pendiente |
-| H6 · Arte y recursos | C elegida, bocetos archivados y pose integrada experimentalmente | Comparación aceptada, piloto aislado y coste medidos; integración eficiente pendiente |
+| H5 · Cámara y movimiento suaves | Parcial: medición inicial, transformaciones/FIT y opciones mínimas implementados | Ajuste común y guardado/persistencia aceptados; interpolación pendiente |
+| H6 · Arte y recursos | C elegida, bocetos archivados y pose integrada experimentalmente | Comparación de densidades aceptada; composición eficiente y SDL opcional implementados; aceptación visual HD y coste integrado pendientes |
 | H7 · Primera misión moderna | Pendiente | H5 y muestra H6 aprobados, fase inventariada |
 | H8 · Cobertura de CF1/CD32 | Edición confirmada, producción pendiente | H7 y matriz de recursos/escenarios |
 | H9 · Pulido Windows | Pendiente | Regresión continua; cierre tras H8 |
@@ -357,7 +361,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 - [ ] **H5.7 — Asistente / Miguel:** validar a 60 Hz: desplazamientos lentos/rápidos, diagonales, esquinas, seguimiento, selección y disparos junto al panel.
 - [ ] **H5.8 — Asistente / Miguel:** medir 120/144 Hz si el monitor lo permite, después de cerrar 60 Hz. Registrar lo no probado.
 
-- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200/300 % y transformaciones de entrada verificadas. **Avance 2.51–2.52:** política FIT común para todas las rutas de escenas y F11; pruebas hasta UHD/300 % y CI aprobadas, prueba física común pendiente.
+- [ ] **H5.9 — Asistente:** soportar la [matriz 4:3/16:9 hasta UHD](RESOLUCIONES_PC_HASTA_4K.md), ventana redimensionable, píxeles físicos separados de coordenadas de ventana, DPI 100/125/150/175/200/300 % y transformaciones de entrada verificadas. **Avance 2.51–2.52:** política FIT común para todas las rutas de escenas y F11; pruebas hasta UHD/300 % y CI aprobadas, recorrido común aceptado por Miguel; matriz exhaustiva pendiente.
 - [ ] **H5.10 — Asistente / Miguel:** viewport e interfaz modernos nativos 4:3/16:9, sin estirar la imagen clásica. Separar visibilidad de dibujo y lógica antes de mostrar más mapa; conservar encuadre clásico y revisar explícitamente la información táctica del panorámico.
 
 **Aceptación:** mismo estado lógico en replays, ausencia de huecos o temblores en bordes, panel estable y clics coherentes con lo mostrado. A 60 Hz el presupuesto por fotograma es 16,67 ms; evaluar intervalos y percentiles, no solo una media de FPS. Los objetivos de mayor frecuencia son secundarios hasta que 60 Hz esté resuelto.
@@ -474,7 +478,7 @@ C1–C3 son obligaciones continuas con entregas verificables; no sustituyen ni r
 | D2 | Edición y fase piloto | CD32 confirmada como campaña principal; concretar fase demo pequeña antes de H7.1 |
 | D3 | Campo de visión | Conservar área lógica original; cualquier ampliación será una decisión posterior explícita |
 | D4 | Refresco y equipo | 60 Hz primero; recoger monitor/configuración para H5.7, 120/144 Hz después si procede |
-| D5 | Pantallas auxiliares | Inventario H5.9 y FIT común implementados; aceptación física común y arte moderno aún pendientes |
+| D5 | Pantallas auxiliares | Inventario H5.9 y FIT común implementados, recorrido común aceptado; matriz exhaustiva y arte moderno pendientes |
 
 La elección C está cerrada. Ambas densidades están revisadas visualmente por Miguel; prefiere mayor detalle si memoria/rendimiento lo permiten. Medir antes de fijar la densidad final.
 

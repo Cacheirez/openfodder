@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente 01-11-2026 · plan 2.67:** Miguel confirma funcionamiento general, pero sus logs 8×/12× no registran publicación HD. Diagnóstico acotado de motivos y comparación C01 de una escena real implementados; nueva CI/paquete pendientes. Prueba visible mediante replay público PC Format completo para conservar H3. Último paquete aprobado a05e656 no incluye este diagnóstico.
+**Estado vigente 01-11-2026 · plan 2.68:** diagnóstico de retorno clásico y prueba visible C01 cerrados. Motor 3ee12e9 con CI Windows/Linux/comparador completa PASS y ZIP de 300 archivos verificado. Incluye comparación real 8×/12× y PROBAR_C01_VISIBLE.cmd. [Validación y descarga](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados; pendiente aceptación visual HD Windows/GPU y coste integrado. PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
@@ -14,7 +14,7 @@
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
-Incremento vigente: [HD SDL opcional](H6_HD_SDL_OPCIONAL.md), CI completa y [paquete a05e656 verificado](VALIDACION_a05e656.md). Guardado/persistencia aceptados. Falta prueba visual Windows/GPU y coste integrado; ambas densidades siguen abiertas.
+Incremento vigente: [diagnóstico y prueba visible C01](H6_C01_DIAGNOSTICO_VISIBLE.md). La integración [HD SDL opcional](H6_HD_SDL_OPCIONAL.md) ya existe; [paquete vigente 3ee12e9 verificado](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados. Falta aceptación visual HD Windows/GPU y coste integrado; ambas densidades siguen abiertas.
 
 Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 
@@ -24,7 +24,7 @@ Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 - Referencia anterior verificada: `30ba0eccc752cf693b56f1f120842b51f3fd937e`, con arreglo de clics a1c8856 y comparador independiente. No confundir HEAD documental, motor y merge temporal de CI.
 - Windows [40800994744](https://github.com/Cacheirez/openfodder/actions/runs/40800994744), Linux [40800994727](https://github.com/Cacheirez/openfodder/actions/runs/40800994727) y navegador [40800994726](https://github.com/Cacheirez/openfodder/actions/runs/40800994726): PASS completo. [Paquete corregido verificado](https://github.com/Cacheirez/openfodder/actions/runs/40800994744/artifacts/12866468476), [evidencia final](VALIDACION_30ba0ec.json).
 - FIT común en ventana/maximizada/F11, con ratón alternativo desbloqueado. Geometría lógica y campo visible conservados. CLASSIC sigue disponible y es el valor por defecto.
-- Escenas aceptadas («Probar escenas está ok»). Alternancia del menú aceptada; Save corregido en código, pendiente de aceptación física. Miguel autoriza adelantar tareas independientes: [comparador técnico C 8×/12×](../../assets/modernization/density-review/README.md) verificado; comparación visual revisada, densidad final pendiente de coste. No volver a elegir A/B/C: Miguel eligió C.
+- Escenas aceptadas («Probar escenas está ok»). Alternancia del menú aceptada; Save corregido; guardado/persistencia aceptados por Miguel el 30-10. Miguel autoriza adelantar tareas independientes: [comparador técnico C 8×/12×](../../assets/modernization/density-review/README.md) verificado; comparación visual revisada, densidad final pendiente de coste. No volver a elegir A/B/C: Miguel eligió C.
 - Base clásica: `baseline/classic-h2.6-2026-10-22` → `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; no mover ni reescribir. Inspección aislada: `git worktree add --detach ../openfodder-classic 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`.
 
 ## Cómo interpretar los informes
@@ -53,7 +53,7 @@ git clone https://github.com/OpenFodder/tests.git Run/Tests
 git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
 ```
 
-Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `30ba0eccc752cf693b56f1f120842b51f3fd937e` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
+Usar directorio nuevo para este ejemplo; no volver a clonar sobre Run/Tests existente. Para reproducir exactamente el motor validado, hacer checkout detached de `3ee12e978c21b3157521c0e1fb65573bb4c56a26` **antes** de inicializar submódulos. En clones superficiales, obtener los commits originales que cada script declara en `BASELINE` antes de ejecutar equivalencia (`git fetch --no-tags origin <SHA>`). Conservar historia completa o un git bundle del repositorio y de los submódulos para un relevo sin red; no hacer squash que elimine las fuentes de comparación.
 
 Pins: Run `070a6086c62164e859fc3274b75b5f536fa9d902`, Scripts `dad04730860bcdd1189aa8562860e379b0f5d783`, tests SHA anterior; SDL release-3.4.0, SDL_mixer `3045b35335113e5e5ba258858cb403d8803bfbeb`. Linux registra SHA efectivos en los artefactos. Las imágenes de Actions/paquetes del sistema no están congeladas: no se promete binario reproducible bit a bit. H2.5 describe un mixer Linux flotante **histórico**, corregido en H2.6.
 
@@ -88,7 +88,7 @@ En Linux ejecutar también los diez scripts `check_final_timer_equivalence.py`, 
 
 ## Custodia y límites del relevo
 
-Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo todavía no existen; hay un visor técnico 8×/12× separado del motor, revisado visualmente; el piloto HD aislado todavía no está integrado en SDL.
+Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo todavía no existen; hay un visor técnico 8×/12× separado del motor, revisado visualmente; el piloto HD ya tiene integración SDL opcional con retorno clásico, sin aceptación visual HD de Miguel todavía.
 
 Los JSON de validación y resúmenes están en Git; **los logs/trazas completos y los binarios de Actions no están archivados todos de forma permanente en GitHub**. El paquete y evidencia Windows de 30ba0ec caducan el 28-11-2026. Si desaparecen, reconstruir/probar el commit exacto con los workflows y registrar nuevos hashes; un hash no reconstruye el ZIP ni garantiza binarios idénticos. No hace falta disponer de los ZIP antiguos para editar y reconstruir el proyecto. C1 conserva la deuda de archivo completo.
 

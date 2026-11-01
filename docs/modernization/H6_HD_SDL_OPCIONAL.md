@@ -1,5 +1,7 @@
 # H6 — publicación SDL opcional de C01 HD
 
+Cierre vigente: [diagnóstico, prueba visible y paquete 3ee12e9](VALIDACION_3ee12e9.md), plan 2.68.
+
 **Actualización 2.67 (01-11-2026):** tras los logs de Miguel sin publicación HD, se añade [diagnóstico y prueba visible](H6_C01_DIAGNOSTICO_VISIBLE.md). CI/paquete propios pendientes; el cierre 2.66 siguiente corresponde al paquete anterior.
 31-10-2026 · plan 2.66. [CI y paquete a05e656 cerrados PASS](VALIDACION_a05e656.md). Prueba física Windows/GPU y densidad definitiva pendientes. Las notas posteriores de CI pendiente son historia de los incrementos 2.63–2.65.
 
