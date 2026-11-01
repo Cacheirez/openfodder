@@ -6,6 +6,7 @@ namespace openfodder {
 struct SoldierArtResult {
     PresentationTarget target;
     bool replaced = false;
+    const char* reason = "no-eligible-c01";
     uint64_t scene = 0;
     int x = 0, y = 0;
 };
@@ -54,9 +55,9 @@ inline SoldierArtResult ComposeSoldierArt(const MissionLayerSequence& scene,
         const std::array<uint32_t,224>* asset=&SoldierArtPixels()) {
     SoldierArtResult result;
     result.target=RasterizeMissionLayers(scene,destination); // pure reference; no simulation
-    if(!paletteStable || !asset)return result;
+    if(!paletteStable || !asset){result.reason="palette-or-asset";return result;}
     size_t slot=0;while(slot<scene.destinations.size() && scene.destinations[slot].initial.destination!=destination)++slot;
-    if(slot==scene.destinations.size())return result;
+    if(slot==scene.destinations.size()){result.reason="destination-missing";return result;}
     const auto& surface=scene.destinations[slot].initial;
     const size_t width=surface.indexed.width,height=surface.indexed.height;
     // Indexed conversion uses packed rows, including padded SDL backing.
@@ -72,10 +73,10 @@ inline SoldierArtResult ComposeSoldierArt(const MissionLayerSequence& scene,
                old.soldier.soldier.slot==l.soldier.soldier.slot &&
                old.soldier.soldier.generation==l.soldier.soldier.generation) repeated=true;
         }
-        if(repeated)continue;
+        if(repeated){result.reason="repeated-actor";continue;}
         int x=l.soldier.draw.x,y=l.soldier.draw.y;
-        if(x<surface.indexed.skipX || y<surface.indexed.skipY || size_t(x)+16>width || size_t(y)+14>height ||
-           SoldierArtLaterOverlap(scene,i,width))continue;
+        if(x<surface.indexed.skipX || y<surface.indexed.skipY || size_t(x)+16>width || size_t(y)+14>height){result.reason="body-clipped";continue;}
+        if(SoldierArtLaterOverlap(scene,i,width)){result.reason="later-layer-overlap";continue;}
         // Remove only this original body before drawing RGBA. Its old opaque
         // pixels must not survive behind the new transparent margins.
         auto without=scene;without.layers.erase(without.layers.begin()+i);
@@ -94,7 +95,7 @@ inline SoldierArtResult ComposeSoldierArt(const MissionLayerSequence& scene,
         for(size_t n=0;n<modern.pixels.size();++n)
             if(!SoldierArtTouches(n,width,x,y) && modern.pixels[n]!=result.target.pixels[n])
                 throw std::runtime_error("soldier art changed pixels outside its permitted body");
-        result.target=std::move(modern);result.replaced=true;result.scene=l.soldier.soldier.scene;result.x=x;result.y=y;
+        result.target=std::move(modern);result.replaced=true;result.reason="replaced";result.scene=l.soldier.soldier.scene;result.x=x;result.y=y;
         return result; // exactly one command at most
     }
     return result;

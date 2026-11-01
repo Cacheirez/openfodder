@@ -7,6 +7,7 @@ def build():
     return r'''
 #define OPENFODDER_HD_WINDOW_FIXTURE
 #include "test_soldier_art_sdl.cpp"
+#include "Utils/SoldierArtCompare.hpp"
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {
     MissionLayerSequence scene;bool active=true,adjusting=false,loaded=false;SDL_Texture* tex=nullptr;int verified=0;
@@ -34,6 +35,18 @@ int main(){
     env("OPENFODDER_PRESENT_MISSION_LAYERS","1");env("OPENFODDER_SOLDIER_ART","0");
     cSurface image,other;image.scene.destinations={destination(96,64)};
     auto body=soldier(false,0);body.destination=image.scene.destinations[0].initial.destination;image.scene.layers={body};
+    auto checkReason=[&](MissionLayerSequence scene,const char* reason){
+        auto result=ComposeSoldierArtHDLayers(scene,body.destination,true,asset(8));
+        assert(result.status!=SoldierArtHDStatus::Replaced);
+        assert(std::string(result.reason)==reason);
+    };
+    auto rejected=image.scene;rejected.layers[0].soldier.soldier.frame=1;
+    checkReason(rejected,"no-eligible-c01");
+    rejected=image.scene;rejected.destinations[0].initial.indexed.skipX=80;checkReason(rejected,"body-clipped");
+    rejected=image.scene;rejected.layers.push_back(body);checkReason(rejected,"repeated-actor");
+    rejected=image.scene;MissionLayer occluder;occluder.destination=body.destination;
+    occluder.pixels.put(body.soldier.draw.y*96+body.soldier.draw.x,5);
+    rejected.layers.push_back(occluder);checkReason(rejected,"later-layer-overlap");
     fodder.mSurface=&image;fodder.mSurfaceFinal=&other;
     auto surface=SDL_CreateSurface(192,128,SDL_PIXELFORMAT_XRGB8888);auto renderer=SDL_CreateSoftwareRenderer(surface);assert(renderer);
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);

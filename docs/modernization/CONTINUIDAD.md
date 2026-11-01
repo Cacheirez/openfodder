@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 31-10-2026 · plan 2.66:** [CI y paquete a05e656 verificados](VALIDACION_a05e656.md). Windows, Linux y comparador completos PASS; HD opcional 8×/12× con 11 fases, 22 pausas y 11.361 estados H3 por ejecución. ZIP Windows inspeccionado, ambos lanzadores incluidos. Siguiente: prueba visual Windows/GPU y coste integrado; densidad final abierta. Guardado/persistencia aceptados; PR borrador, sin fusionar.
+**Estado vigente 01-11-2026 · plan 2.67:** Miguel confirma funcionamiento general, pero sus logs 8×/12× no registran publicación HD. Diagnóstico acotado de motivos y comparación C01 de una escena real implementados; nueva CI/paquete pendientes. Prueba visible mediante replay público PC Format completo para conservar H3. Último paquete aprobado a05e656 no incluye este diagnóstico.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
@@ -60,7 +60,7 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: prueba visual acotada del paquete a05e656 verificado y medición integrada/GPU antes de fijar densidad. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: cerrar CI/paquete del diagnóstico 2.67 y entregar la comparación C01 y el lanzador reproducible. Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 

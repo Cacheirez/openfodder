@@ -90,6 +90,12 @@ jobs:
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
         run: python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-art-full --art-probe
+      - name: H6 - reproducible visible C01 comparison with original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python tools/modernization/check_c01_visible.py --exe Run/openfodder.exe --data Run --out reports/h6-c01-visible
       - name: H6 - optional SDL HD 8x and 12x with original H3 and pause transitions
         env:
           SDL_VIDEODRIVER: dummy

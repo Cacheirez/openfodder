@@ -6,6 +6,7 @@ struct SoldierArtHDLayers {
     PresentationTarget background; // native size; exact classic on fallback
     std::vector<uint32_t> patch; // replacement pixels, NOT a second alpha blend
     SoldierArtHDStatus status = SoldierArtHDStatus::ClassicGuard;
+    const char* reason = "classic-guard";
     unsigned density = 1;
     int logicalX = 0, logicalY = 0;
     uint64_t scene = 0;
@@ -18,19 +19,19 @@ inline SoldierArtHDLayers ComposeSoldierArtHDLayers(const MissionLayerSequence& 
     SoldierArtHDLayers out;
     out.background=RasterizeMissionLayers(scene,destination);
     const unsigned d=asset.density;
-    if(d!=1 && d!=8 && d!=12){out.status=SoldierArtHDStatus::UnsupportedDensity;return out;}
+    if(d!=1 && d!=8 && d!=12){out.status=SoldierArtHDStatus::UnsupportedDensity;out.reason="unsupported-density";return out;}
     if(!asset.pixels || asset.pixels->size()!=size_t(224)*d*d){
-        out.status=SoldierArtHDStatus::MissingAsset;return out;
+        out.status=SoldierArtHDStatus::MissingAsset;out.reason="missing-asset";return out;
     }
     if(out.background.stride!=out.background.width){
-        out.status=SoldierArtHDStatus::UnsupportedPitch;return out;
+        out.status=SoldierArtHDStatus::UnsupportedPitch;out.reason="unsupported-pitch";return out;
     }
     if(size_t(224)*d*d>maxPatchBytes/sizeof(uint32_t)){
-        out.status=SoldierArtHDStatus::BudgetExceeded;return out;
+        out.status=SoldierArtHDStatus::BudgetExceeded;out.reason="patch-budget";return out;
     }
     const std::array<uint32_t,224> transparent{};
     auto ground=ComposeSoldierArt(scene,destination,paletteStable,&transparent);
-    if(!ground.replaced)return out;
+    if(!ground.replaced){out.reason=ground.reason;return out;}
     out.patch.resize(size_t(224)*d*d);
     for(size_t y=0;y<14*d;++y)for(size_t x=0;x<16*d;++x){
         const uint32_t src=(*asset.pixels)[y*16*d+x];const unsigned alpha=src>>24;
@@ -40,7 +41,7 @@ inline SoldierArtHDLayers ComposeSoldierArtHDLayers(const MissionLayerSequence& 
             rgb|=((((src>>shift)&255)*alpha+((bg>>shift)&255)*(255-alpha)+127)/255)<<shift;
         out.patch[y*16*d+x]=rgb;
     }
-    out.background=std::move(ground.target);out.status=SoldierArtHDStatus::Replaced;
+    out.background=std::move(ground.target);out.status=SoldierArtHDStatus::Replaced;out.reason="replaced";
     out.density=d;out.logicalX=ground.x;out.logicalY=ground.y;out.scene=ground.scene;
     return out;
 }

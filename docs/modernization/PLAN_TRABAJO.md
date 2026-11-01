@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.66 · Revisión: 31 de octubre de 2026.**
+**Versión 2.67 · Revisión: 1 de noviembre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: CI y paquete HD SDL cerrados; pendiente prueba visual Windows/GPU de 8×/12× y coste integrado antes de fijar densidad.**
+**Tarea activa: diagnóstico de retorno clásico y prueba visible C01; validar nueva CI y paquete.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.67 — diagnóstico y prueba visible C01
+
+Miguel confirma funcionamiento correcto sin diferencia visual; ambos logs carecen de SOLDIER_HD_SDL. [Diagnóstico y prueba](H6_C01_DIAGNOSTICO_VISIBLE.md): motivos acotados por proceso, exportación optativa del primer parche publicado y comparación del mismo instante con clásico. El paquete incluirá HTML/BMP verificados y PROBAR_C01_VISIBLE.cmd con ocho grabaciones PC públicas. No se fuerza la sustitución ni se desactivan guards. Arrancar directamente en m2p1 muestra C01 pero no reproduce el H3 de campaña; se usa PC completo sin regenerar referencias. Nueva CI/paquete pendientes.
 
 ## Incremento 2.66 — CI y paquete HD SDL cerrados
 
