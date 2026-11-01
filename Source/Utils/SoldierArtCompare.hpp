@@ -2,6 +2,8 @@
 #pragma once
 #include "SoldierArtHDLayers.hpp"
 #include <fstream>
+#include <string>
+#include <exception>
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
