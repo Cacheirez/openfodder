@@ -1,10 +1,14 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.68 · Revisión: 1 de noviembre de 2026.**
+**Versión 2.69 · Revisión: 1 de noviembre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
-**Tarea activa: diagnóstico y prueba visible C01 cerrados; aceptación visual HD y medición del coste integrado pendientes.**
+**Tarea activa: C01 aceptado y coste integrado inicial medido; perfilar por bloque antes de optimizar o fijar densidad.**
 
 Estado operativo: [CONTINUIDAD.md](CONTINUIDAD.md). [Prompt nuevo hilo](PROMPT_NUEVO_HILO.md). Los incrementos fechados siguientes son bitácora: sus pendientes quedan superados cuando una entrada posterior registra su cierre.
+
+## Incremento 2.69 — C01 aceptado y medición integrada
+
+Miguel acepta explícitamente detalle, posición e integración al abrir C01_12.html. [Alcance y ensayo](H6_COSTE_HD_INTEGRADO.md): comparación visual aceptada, sin extrapolar a todas las animaciones o GPU. Se mide el motor completo con SDL software en clásico, publicación, HD 8× y HD 12×, campaña Amiga completa y H3 por ejecución. Motor y paquete 3ee12e9 conservados; ensayo tmpfs completo PASS: 16 recorridos/48 fases con H3, cuatro calentamientos y tres muestras por modo. Medianas de campaña: clásico 19,924 s; publicación 49,621 s; HD 8× 76,816 s; HD 12× 76,551 s. Sin diferencia concluyente entre densidades. Intento previo de escritura local rechazado y conservado; siguiente paso, perfilado por bloque, no reducir calidad ni prometer FPS. No se fija densidad ni se produce arte adicional.
 
 ## Incremento 2.68 — diagnóstico, prueba visible y paquete cerrados
 
@@ -352,7 +356,7 @@ Se puede comenzar un piloto limitado de H5 cuando la misión elegida supere las 
 
 ## H5. Scroll y movimiento suaves
 
-- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos. **Se adelanta su inicio a H4:** comparar clásico, registro/contraste y publicación nueva en las mismas escenas y condiciones; CPU, tiempos p95/p99, memoria, copias y subidas a GPU cuando esa ruta exista. Herramienta inicial `measure_presentation_cost.py`: compara clásico, auditoría y publicación, calentamiento y orden rotatorio, con H3 obligatorio. [Primera medición](H5_1_MEDICION_INICIAL.md): 24 fases PASS con H3, resultados en tmpfs; dos intentos locales rechazados y conservados. Mide tiempo del proceso completo; p95/p99 por frame, CPU, memoria y GPU siguen pendientes. No inventar un presupuesto ni confundirlo con FPS.
+- [ ] **H5.1 — Asistente:** medir el ritmo real de simulación y presentación antes del cambio; conservar los ritmos clásicos. **Se adelanta su inicio a H4:** comparar clásico, registro/contraste y publicación nueva en las mismas escenas y condiciones; CPU, tiempos p95/p99, memoria, copias y subidas a GPU cuando esa ruta exista. Herramienta inicial `measure_presentation_cost.py`: compara clásico, auditoría y publicación, calentamiento y orden rotatorio, con H3 obligatorio. [Primera medición](H5_1_MEDICION_INICIAL.md): 24 fases PASS con H3, resultados en tmpfs; dos intentos locales rechazados y conservados. Mide tiempo del proceso completo; p95/p99 por frame, CPU, memoria y GPU siguen pendientes. No inventar un presupuesto ni confundirlo con FPS. **Avance 2.69:** [coste integrado HD](H6_COSTE_HD_INTEGRADO.md): tiempo, CPU y RSS del proceso completo con H3; faltan atribución por bloque, percentiles de frame y GPU.
 - [ ] **H5.2 — Asistente:** interpolar la cámara con posiciones fraccionarias, manteniendo márgenes suficientes de dibujo y límites del mapa.
 - [ ] **H5.3 — Asistente:** interpolar entidades según su propio ritmo de actualización. No confundir suavizar posición con cambiar la duración de sus animaciones.
 - [ ] **H5.4 — Asistente:** reiniciar interpolación ante carga, salto de cámara, pausa, muerte/reaparición y reutilización de identificadores de sprites.

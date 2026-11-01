@@ -1,6 +1,6 @@
 # Relevo técnico — empezar aquí
 
-**Estado vigente 01-11-2026 · plan 2.68:** diagnóstico de retorno clásico y prueba visible C01 cerrados. Motor 3ee12e9 con CI Windows/Linux/comparador completa PASS y ZIP de 300 archivos verificado. Incluye comparación real 8×/12× y PROBAR_C01_VISIBLE.cmd. [Validación y descarga](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados; pendiente aceptación visual HD Windows/GPU y coste integrado. PR borrador sin fusionar.
+**Estado vigente 01-11-2026 · plan 2.69:** Miguel acepta detalle, posición e integración en C01_12.html del paquete 3ee12e9. No repetir esa valoración, A/B/C ni guardado/persistencia. [Medición integrada](H6_COSTE_HD_INTEGRADO.md) completada: 16 recorridos/48 fases con H3, tiempo/CPU/RSS; 8× y 12× sin diferencia concluyente en esta carga. Siguiente: perfilado por bloque antes de optimizar; densidad final, latencia por frame y GPU pendientes. Motor y ZIP vigentes sin cambios, PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
@@ -14,7 +14,7 @@
 4. [Galería original del soldado y jungla](../../assets/modernization/concepts/README.md), [pose C01 y anclajes](H6_3_POSE_C01.md), [densidad 8×/12×](H6_DENSIDAD_EVALUACION.md).
 5. [Auditoría de continuidad y mapa de todos los documentos](AUDITORIA_CONTINUIDAD_2026-10-28.md). [Prompt listo para otro hilo](PROMPT_NUEVO_HILO.md).
 
-Incremento vigente: [diagnóstico y prueba visible C01](H6_C01_DIAGNOSTICO_VISIBLE.md). La integración [HD SDL opcional](H6_HD_SDL_OPCIONAL.md) ya existe; [paquete vigente 3ee12e9 verificado](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados. Falta aceptación visual HD Windows/GPU y coste integrado; ambas densidades siguen abiertas.
+Incremento vigente: [diagnóstico y prueba visible C01](H6_C01_DIAGNOSTICO_VISIBLE.md). La integración [HD SDL opcional](H6_HD_SDL_OPCIONAL.md) ya existe; [paquete vigente 3ee12e9 verificado](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados. C01_12.html aceptado; faltan rendimiento integrado/GPU y cobertura visual dinámica; ambas densidades siguen abiertas.
 
 Relevo revisado: [cierre documental del 29-10](RELEVO_2026-10-29.md).
 
@@ -88,7 +88,7 @@ En Linux ejecutar también los diez scripts `check_final_timer_equivalence.py`, 
 
 ## Custodia y límites del relevo
 
-Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo todavía no existen; hay un visor técnico 8×/12× separado del motor, revisado visualmente; el piloto HD ya tiene integración SDL opcional con retorno clásico, sin aceptación visual HD de Miguel todavía.
+Los cuatro PNG conceptuales y la pose C01 están en Git con SHA-256, además de prompts, manifiestos, código generador y header nativo. No dependen de enlaces de imágenes del chat; no deben regenerarse para sustituir originales perdidos. Las láminas son conceptos, no capturas ni atlas utilizables. Fondos finales, animaciones, cursor nuevo todavía no existen; hay un visor técnico 8×/12× separado del motor, revisado visualmente; el piloto HD ya tiene integración SDL opcional con retorno clásico, con detalle, posición e integración aceptados en C01_12.html; cobertura dinámica/GPU pendiente.
 
 Los JSON de validación y resúmenes están en Git; **los logs/trazas completos y los binarios de Actions no están archivados todos de forma permanente en GitHub**. El paquete y evidencia Windows de 30ba0ec caducan el 28-11-2026. Si desaparecen, reconstruir/probar el commit exacto con los workflows y registrar nuevos hashes; un hash no reconstruye el ZIP ni garantiza binarios idénticos. No hace falta disponer de los ZIP antiguos para editar y reconstruir el proyecto. C1 conserva la deuda de archivo completo.
 

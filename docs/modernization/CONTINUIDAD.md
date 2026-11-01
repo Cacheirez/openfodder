@@ -1,10 +1,10 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente 01-11-2026 · plan 2.68:** diagnóstico de retorno clásico y prueba visible C01 cerrados. Motor 3ee12e9 con CI Windows/Linux/comparador completa PASS y ZIP de 300 archivos verificado. Incluye comparación real 8×/12× y PROBAR_C01_VISIBLE.cmd. [Validación y descarga](VALIDACION_3ee12e9.md). Guardado/persistencia aceptados; pendiente aceptación visual HD Windows/GPU y coste integrado. PR borrador sin fusionar.
+**Estado vigente 01-11-2026 · plan 2.69:** Miguel acepta detalle, posición e integración en C01_12.html del paquete 3ee12e9. No repetir esa valoración, A/B/C ni guardado/persistencia. [Medición integrada](H6_COSTE_HD_INTEGRADO.md) completada: 16 recorridos/48 fases con H3, tiempo/CPU/RSS; 8× y 12× sin diferencia concluyente en esta carga. Siguiente: perfilado por bloque antes de optimizar; densidad final, latencia por frame y GPU pendientes. Motor y ZIP vigentes sin cambios, PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 
-01-11-2026 · plan 2.68. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
+01-11-2026 · plan 2.69. Prioridad de lectura: este estado y el plan vivo prevalecen sobre pendientes de informes históricos. Comprobar siempre la rama y CI en GitHub al retomar.
 
 ## Referencias y objetivo
 
@@ -44,6 +44,7 @@ Meta: modernizar Cannon Fodder 1, con CD32 como edición principal, presentació
 | «solucionado el problema de las dos ventanas… al maximizar» | Briefing y reclutamiento de 551eaf7 |
 | «Probar escenas está ok» | Aceptación general del recorrido propuesto con e18b05b, incluido el arreglo común; no acredita finales/ediciones no visitados |
 | Alternancia corregida, Save cierra antes de KEEP/REVERT | Confirmación manual 29-10; [fallo reproducido y corregido](H5_6_INCIDENCIA_SAVE.md) |
+| C01_12.html: detalle, posición e integración correctos | Aceptación explícita 01-11-2026 del HTML generado con 3ee12e9; no acredita todos los frames/animaciones, escalado GPU ni rendimiento |
 | Ambas densidades se ven bien, algo mejor la alta | Comparador revisado; preferencia por calidad condicionada a memoria/rendimiento, no decisión final |
 
 No extrapolar aceptaciones anteriores al paquete nuevo ni pedir repetir todo sin motivo. El asistente no dispone de escritorio Windows físico; CI Windows no es interacción humana.
@@ -60,11 +61,11 @@ Miguel confirma que ambas densidades se ven bien en las resoluciones y fondos re
 
 Miguel confirma alternancia correcta; **Save cerraba tras cambiar opciones, antes de mostrar KEEP/REVERT**. [Causa reproducida y corregida](H5_6_INCIDENCIA_SAVE.md): el signo `?` solicita frame 54 en fuente de 37; acceso nulo en dibujo. Se elimina el glifo incompatible y se añade fixture de texto real PC/Amiga, que falla antes y pasa después. Guardado y persistencia aceptados por Miguel el 30-10. Registro H5_OPCIONES.log conservado para diagnosticar si hubiera otro fallo. No usar el paquete anterior para obtener marcas que aún no contenía.
 
-Próximo trabajo: aceptación visual acotada de C01 con el paquete 3ee12e9 y medición del coste integrado/GPU; diagnóstico y prueba visible cerrados en [validación](VALIDACION_3ee12e9.md). Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
+Próximo trabajo: perfilado por bloque de la ruta HD; medición integrada inicial completada; C01_12.html ya aceptado en detalle, posición e integración; diagnóstico y prueba visible cerrados en [validación](VALIDACION_3ee12e9.md). Los logs de Miguel no publicaron HD con a05e656. Guardado/persistencia aceptados por Miguel. Mantener clásico por defecto. No producir animaciones ni introducir hilos. Escenas ya aceptadas: no pedir repetirlas.
 
 ## Validaciones pendientes de Miguel
 
-Guardado y persistencia de opciones aceptados el 30-10-2026. No pedir repetir esa prueba. REVERT/caducidad no tienen confirmación separada; mantener esa distinción sin bloquear trabajo independiente. La integración HD opcional necesita aceptación visual específica; no repetir A/B/C ni el comparador ya revisado.
+Guardado y persistencia de opciones aceptados el 30-10-2026. No pedir repetir esa prueba. REVERT/caducidad no tienen confirmación separada; mantener esa distinción sin bloquear trabajo independiente. La comparación C01_12.html está aceptada; cobertura visual dinámica y rendimiento GPU siguen pendientes; no repetir A/B/C ni el comparador ya revisado.
 
 ## Decisiones visuales y custodia
 
