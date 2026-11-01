@@ -219,6 +219,8 @@ jobs:
         run: |
           python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-hd-8 --hd-probe 8 --screen-probe --pause-probe
           python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-hd-12 --hd-probe 12 --screen-probe --pause-probe --presentations 5
+      - name: H6 - six-key batch publication and original Amiga H3
+        run: python tools/modernization/check_soldier_batch_replay.py --exe build/openfodder --data Run --out reports/h6-batch
       - name: H4.6 - real engine zero and five mission presentations with original H3
         env:
           SDL_VIDEODRIVER: dummy

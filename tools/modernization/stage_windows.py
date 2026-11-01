@@ -39,7 +39,7 @@ def stage(root, output, report):
     shutil.copy2(run / 'README.md', output / 'DATOS_DEMOS.md')
     shutil.copy2(root / 'docs/modernization/PRIMER_ARRANQUE_WINDOWS.md', output / 'LEEME.md')
     shutil.copy2(root / 'docs/modernization/VALIDAR_RATON_WINDOWS_H5.md', output / 'VALIDAR_RATON_H5.md')
-    for name in ('PROBAR_RATON_H5.cmd', 'COMPARAR_RATON_CLASICO.cmd', 'PROBAR_RESOLUCIONES_H5.cmd', 'PROBAR_OPCIONES_H5.cmd', 'PROBAR_ESCENAS_H5.cmd', 'PROBAR_HD_8X.cmd', 'PROBAR_HD_12X.cmd', 'PROBAR_C01_VISIBLE.cmd'):
+    for name in ('PROBAR_RATON_H5.cmd', 'COMPARAR_RATON_CLASICO.cmd', 'PROBAR_RESOLUCIONES_H5.cmd', 'PROBAR_OPCIONES_H5.cmd', 'PROBAR_ESCENAS_H5.cmd', 'PROBAR_HD_8X.cmd', 'PROBAR_HD_12X.cmd', 'PROBAR_C01_VISIBLE.cmd', 'PROBAR_SOLDADO_ANIMADO.cmd'):
         text = (root / 'tools/modernization/windows' / name).read_text(encoding='ascii')
         (output / name).write_bytes(text.replace('\r\n', '\n').replace('\n', '\r\n').encode('ascii'))
     # Only the eight pinned public PC Format phases, never user saves.
@@ -57,6 +57,11 @@ def stage(root, output, report):
                 raise ValueError('C01 comparison changed since verification')
             shutil.copy2(source, output / entry['name'])
     shutil.copy2(root / 'reports/h6-c01-visible/report.json', output / 'C01_PRUEBA.json')
+    batch = json.loads((root / 'reports/h6-batch/report.json').read_text())
+    if batch['verdict'] != 'PASS' or batch['exe_sha256'] != result['executable_sha256']:
+        raise ValueError('Batch H3/publication proof must match the packaged executable')
+    shutil.copy2(root / 'reports/h6-batch/report.json', output / 'LOTE_PRUEBA.json')
+    shutil.copy2(root / 'docs/modernization/SOLDADO_ANIMADO.html', output / 'SOLDADO_ANIMADO.html')
     shutil.copy2(report, output / 'PRUEBAS.json')
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     (output / 'VERSION.txt').write_text(commit+'\n', encoding='utf-8')

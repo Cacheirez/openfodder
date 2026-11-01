@@ -30,7 +30,7 @@ inline SoldierArtHDLayers ComposeSoldierArtHDLayers(const MissionLayerSequence& 
         out.status=SoldierArtHDStatus::BudgetExceeded;out.reason="patch-budget";return out;
     }
     const std::array<uint32_t,224> transparent{};
-    auto ground=ComposeSoldierArt(scene,destination,paletteStable,&transparent);
+    auto ground=ComposeSoldierArt(scene,destination,paletteStable,&transparent,asset.sheet,asset.frame);
     if(!ground.replaced){out.reason=ground.reason;return out;}
     out.patch.resize(size_t(224)*d*d);
     for(size_t y=0;y<14*d;++y)for(size_t x=0;x<16*d;++x){

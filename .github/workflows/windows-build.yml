@@ -106,6 +106,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-hd-12 --hd-probe 12 --screen-probe --pause-probe --presentations 5
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: H6 - six-key batch publication and original Amiga H3
+        run: python tools/modernization/check_soldier_batch_replay.py --exe Run/openfodder.exe --data Run --out reports/h6-batch
       - name: Prepare playable demo package
         run: python tools/modernization/stage_windows.py --out dist/OpenFodder --report reports/windows/report.json
       - name: Upload Windows demo build

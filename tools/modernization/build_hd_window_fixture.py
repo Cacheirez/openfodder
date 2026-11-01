@@ -8,6 +8,7 @@ def build():
 #define OPENFODDER_HD_WINDOW_FIXTURE
 #include "test_soldier_art_sdl.cpp"
 #include "Utils/SoldierArtCompare.hpp"
+#include "Utils/SoldierArtBatch.hpp"
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {
     MissionLayerSequence scene;bool active=true,adjusting=false,loaded=false;SDL_Texture* tex=nullptr;int verified=0;
@@ -65,6 +66,17 @@ int main(){
         env("OPENFODDER_PRESENT_MISSION_LAYERS","0");assert(win.TryRenderMissionHD(&image,src,dst)==-1);env("OPENFODDER_PRESENT_MISSION_LAYERS","1");
         assert(win.TryRenderMissionHD(&image,src,dst)==1);
     }
+    env("OPENFODDER_SOLDIER_BATCH","1");
+    for(const char* d:{"8","12"})for(int sheet:{2,7})for(int frame:{0,1,2}){
+        env("OPENFODDER_SOLDIER_HD",d);auto selected=body;
+        selected.soldier.soldier.sheet=sheet;selected.soldier.soldier.frame=frame;
+        selected.soldier.resource.offset=(sheet==2?48:2248)+frame*8;
+        image.scene.layers={selected};assert(win.TryRenderMissionHD(&image,src,dst)==1);
+        image.adjusting=true;assert(win.TryRenderMissionHD(&image,src,dst)==-1);image.adjusting=false;
+        assert(win.TryRenderMissionHD(&image,src,dst)==1);
+        image.scene.layers[0].soldier.resource.offset++;assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+    }
+    env("OPENFODDER_SOLDIER_BATCH","0");image.scene.layers={body};
     for(const char* d:{"0","bad","9"}){env("OPENFODDER_SOLDIER_HD",d);assert(win.TryRenderMissionHD(&image,src,dst)==-1);}
     assert(live==0);SDL_DestroyTexture(image.tex);SDL_DestroyRenderer(renderer);SDL_DestroySurface(surface);
     std::cout<<"PASS actual Window HD method: enable/disable, pause/map/callback, palette, destination, scene generation, renderer state and resume\n";

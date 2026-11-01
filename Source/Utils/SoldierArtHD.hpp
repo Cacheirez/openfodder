@@ -4,6 +4,7 @@
 namespace openfodder {
 struct SoldierArtHDAsset {
     unsigned density = 0;
+    int sheet = 7, frame = 0; // Explicit asset identity; C01 remains the default.
     std::shared_ptr<const std::vector<uint32_t>> pixels; // straight ARGB, 16d x 14d
 };
 enum class SoldierArtHDStatus { Replaced, UnsupportedDensity, MissingAsset,
@@ -44,7 +45,7 @@ inline SoldierArtHDResult ComposeSoldierArtHD(const MissionLayerSequence& scene,
     // native art removes the selected original body, exposing its actual ground.
     // Later overlapping writes (including same-color and OR) cause full fallback.
     const std::array<uint32_t,224> transparent{};
-    const auto ground = ComposeSoldierArt(scene, destination, paletteStable, &transparent);
+    const auto ground = ComposeSoldierArt(scene, destination, paletteStable, &transparent, asset.sheet, asset.frame);
     if (!ground.replaced) return out;
     PresentationTarget modern;
     modern.destination = destination;

@@ -167,6 +167,7 @@ add_dependencies(openfodder_art_sdl_tests openfodder_art_hd_tests)
 target_include_directories(openfodder_art_sdl_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_libraries(openfodder_art_sdl_tests PRIVATE SDL3::SDL3)
 add_test(NAME soldier_art_sdl_transaction COMMAND $<TARGET_FILE:openfodder_art_sdl_tests>)
+include(tools/modernization/soldier_batch_assets.cmake)
 if(Python3_Interpreter_FOUND)
     set(_hd_window_fixture "${CMAKE_CURRENT_BINARY_DIR}/hd_window_fixture.cpp")
     add_custom_command(OUTPUT "${_hd_window_fixture}"

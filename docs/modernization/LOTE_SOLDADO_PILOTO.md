@@ -1,6 +1,6 @@
 # Entrega A — inventario y lote inicial
 
-Estado: inventario terminado; cinco recursos nuevos pendientes de producción e integración. No hay nuevo ZIP ni cambios del motor. C01 conserva la aceptación de Miguel.
+Estado 2.72: cinco maestros nuevos generados e integración SDL opcional implementada. C01 permanece intacto. Pruebas locales PASS; CI del candidato y nuevo ZIP pendientes. La aceptación visual del lote por Miguel sigue pendiente.
 
 Elegimos **Amiga The One m1p2 (Find Grenades)**. m1p1 no prepara la hoja 7 del primer jugador y no permite reutilizar C01 en ese recorrido. m1p2 ejercita los seis fotogramas seleccionados con más presencia de la hoja 7 que m1p3. La prueba lógica conserva el orden de las tres fases de campaña.
 
@@ -14,7 +14,7 @@ Los contadores incluyen preparaciones repetidas dentro de un tick. Solo observan
 
 ## Lote acotado
 
-[Manifiesto del lote](../../assets/modernization/soldier-pilot-batch.json): hojas 2 (Face Left) y 7 (Face Right + Forward), frames 0, 1 y 2. Se reutiliza C01 en 7/0; faltan cinco imágenes. Tablas Amiga verificadas: offsets 12/14/16 y 562/564/566, segmento eGFX_IN_GAME, cuerpo 16×14, modificadores 0/0. Los anclajes del arte nuevo requieren comprobación visual; no se dan por aceptados al copiar dimensiones.
+[Manifiesto del lote](../../assets/modernization/soldier-pilot-batch.json): hojas 2 (Face Left) y 7 (Face Right + Forward), frames 0, 1 y 2. Se reutiliza C01 en 7/0; los cinco maestros nuevos están en assets/modernization/soldier-pilot, con procedencia y hashes. Tablas Amiga verificadas: offsets 12/14/16 y 562/564/566, segmento eGFX_IN_GAME, cuerpo 16×14, modificadores 0/0. Los anclajes del arte nuevo requieren comprobación visual; no se dan por aceptados al copiar dimensiones.
 
 Usar el frame capturado del motor y sus contadores originales. El índice de frame no distingue por sí solo reposo y marcha. No introducir un reloj de animación independiente. Mantener estilo C, originales, sombras clásicas, orden, oclusiones y retorno clásico en claves o condiciones no cubiertas. 12× es variante provisional de trabajo; 8× permanece disponible.
 
@@ -27,6 +27,20 @@ Usar el frame capturado del motor y sus contadores originales. El índice de fra
 
 La herramienta build_soldier_inventory_probe.py emite una copia diagnóstica de Sprite_Core.cpp: no modifica Source. Se compila esa copia en un ejecutable local separado y se ejecuta la campaña con las opciones registradas en la procedencia. analyze_soldier_inventory.py resume el log mediante --log y --out. archive_replay_evidence.py conserva los archivos originales después del ensayo. El ejecutable diagnóstico no es el paquete Windows.
 
-## Siguiente trabajo
+## Integración y prueba visible
 
-Producir las cinco imágenes coherentes con C01, preparar sus derivados y comprobar juntos anclaje y ciclo. Generalizar después la selección a estas seis claves conservando los controles de contraste y retorno. Añadir contadores de sustitución efectiva y tiempos mínimos en esa integración. Antes del nuevo ZIP: H3, CI pertinente y prueba visible a velocidad normal. Esto no cierra H7 ni promete cobertura completa del recorrido.
+Activación explícita mediante OPENFODDER_SOLDIER_BATCH=1 junto con OPENFODDER_SOLDIER_HD=8 o 12. Sin la opción de lote se conserva el piloto C01; clásico sigue siendo el valor por defecto. La selección valida clave, recurso, geometría y animación. Conserva contraste, orden, oclusiones, recortes y retorno clásico. El compositor completo y el de capas coinciden píxel a píxel en los tests.
+
+PROBAR_SOLDADO_ANIMADO.cmd inicia Amiga The One, misión 1 fase 2, para jugar a velocidad normal (sin --unit-test). Solo el primer soldado y las orientaciones cubiertas cambian. SOLDADO_ANIMADO.html permite inspeccionar los derivados exactos de 12×, pausar y variar la velocidad ilustrativa. Su secuencia 0–1–2–1 no sustituye al reloj original. Revisar piernas, estabilidad de cuerpo/casco, pies y cambios de orientación como conjunto; C01 no necesita nueva aprobación aislada.
+
+Con diagnóstico activo, SOLDIER_BATCH_PUBLISHED registra clave y contador acumulado en la primera sustitución y cada 256; tiempos de composición y SDL de esa muestra. No son percentiles ni incluyen todo el frame. Los motivos de retorno mantienen su diagnóstico acotado.
+
+## Validación del candidato
+
+- 24 combinaciones de seis claves, dos formatos y dos densidades; ASan/UBSan. Clave/recurso/animación incorrectos, actor repetido, oclusión, paleta y equivalencia del compositor completo/capas.
+- Método real WindowHD: seis claves a ambas densidades, transición de paleta y recuperación; protecciones anteriores de pausa/mapa/renderer conservadas.
+- Recorrido Amiga completo con las seis claves publicadas realmente por SDL y 3405 estados H3 originales: [informe local](evidence/soldier-batch-local.json), [log y trazas](evidence/soldier-batch-final-traces.json.gz). Ejecutable local GCC O3 sin mixer, SDL software/dummy; no certifica GPU Windows ni FPS.
+- Visor: seis buffers, secuencia y pausa/reanudación comprobadas con Skia Canvas; revisión visual de los derivados. No es prueba de DOM del navegador ni una captura del juego.
+- CI Windows/Linux añade el recorrido del lote conservando las pruebas existentes. El empaquetado exige que el informe del lote corresponda al ejecutable entregado. CI pendiente al publicar este candidato.
+
+Siguiente: cerrar CI, verificar el ZIP y revisar el conjunto a velocidad normal. No cierra H7 ni cubre todas las direcciones, estados o soldados. Los antiguos planes continúan marcados como obsoletos.
