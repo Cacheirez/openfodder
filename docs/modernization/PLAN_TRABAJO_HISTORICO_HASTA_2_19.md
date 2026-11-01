@@ -1,3 +1,5 @@
+> **OBSOLETO COMO PLAN DE EJECUCIÓN.** Sustituido por [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Se conserva únicamente como histórico; sus tareas pendientes no determinan el trabajo vigente.
+
 > Archivo histórico cerrado el 25-10-2026. Sus pendientes y siguientes pasos describen momentos anteriores; para el estado vigente, consultar [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Se conserva íntegro el plan v2.19.
 
 # Plan de trabajo vivo — OpenFodder modernizado para Windows

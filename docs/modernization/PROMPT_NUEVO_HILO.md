@@ -11,7 +11,7 @@ Preserva base clásica 5e6a4f3, H3 sin regenerar huellas, reglas, RNG, tiempos, 
 
 C — Pintado moderado elegida. Originales en assets/modernization/concepts y soldier-c01, no recrearlos. C01_12.html aceptado en detalle, posición e integración; guardado/persistencia y recorrido común de escenas aceptados. No repetir esas validaciones ni A/B/C. 12× es variante provisional para el pequeño lote y 8× permanece disponible; no fijar densidad final todavía.
 
-Siguiente: entrega A. Inventario acotado de Amiga The One m1p1 como candidata y lote de reposo/marcha/direcciones del recorrido; instrumentación mínima por bloque. El perfilado no se convierte en una cadena de estudios previa al arte. Un cuello demostrado se optimiza y revalida; defectos reales bloquean solo la ruta afectada. No exigir el censo comercial completo para este piloto. No producir arte en masa.
+Siguiente: entrega A. Inventario terminado: Amiga The One m1p2, hojas 2/7 frames 0/1/2. Producir cinco recursos nuevos y reutilizar C01 según LOTE_SOLDADO_PILOTO.md; instrumentación mínima por bloque. El perfilado no se convierte en una cadena de estudios previa al arte. Un cuello demostrado se optimiza y revalida; defectos reales bloquean solo la ruta afectada. No exigir el censo comercial completo para este piloto. No producir arte en masa.
 
 Agrupa cambios coherentes y evidencia por entrega. Pruebas focalizadas durante desarrollo, CI completa pertinente y ZIP contrastado antes de entregar código nuevo a Miguel. La simplificación de eventos/caché de CI está planificada, no implementada: comprobar los workflows reales. Nunca marcar tests omitidos como aprobados. Aprovecha esperas de CI para preparación independiente; sin delegar a subagentes salvo autorización explícita.
 

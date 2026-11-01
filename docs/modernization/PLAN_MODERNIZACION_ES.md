@@ -1,3 +1,5 @@
+> **OBSOLETO COMO PLAN DE EJECUCIÓN.** Sustituido por [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Se conserva únicamente como histórico; sus tareas pendientes no determinan el trabajo vigente.
+
 # OpenFodder para Windows: plan de modernización y primera auditoría
 
 > Documento histórico: las fechas, pendientes y recetas siguientes describen su revisión original. Para el estado vigente y el relevo técnico, consultar [README.md](README.md) y [PLAN_TRABAJO.md](PLAN_TRABAJO.md). No aplicar parches iniciales de nuevo sobre la rama actual.

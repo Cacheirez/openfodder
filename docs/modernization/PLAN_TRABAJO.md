@@ -1,6 +1,6 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.70 · Revisión: 1 de noviembre de 2026.**
+**Versión 2.71 · Revisión: 1 de noviembre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: entrega A — preparar un soldado animado visible en una fase pública, con perfilado acotado y validación por entrega.**
 
@@ -20,12 +20,12 @@ Hay dependencias demasiado amplias: inventariar todas las fases antes de ampliar
 
 | Entrega | Trabajo acotado | Resultado y criterio de salida |
 |---|---|---|
-| **A — soldado visiblemente animado** (H4.2/H4.4, H5.1, H6.4–6.6, H7.1/H7.3) | Inventariar primero Amiga The One m1p1 como candidata; confirmar sus estados y grabación. Integrar un pequeño lote coherente de reposo/marcha y las direcciones de un recorrido definido, con manifiesto/anclajes y tiempos originales. Añadir contadores y tiempos mínimos a la ruta real. | Nuevo ZIP con una diferencia perceptible jugando a velocidad normal, sin tener que localizar un único frame. Estados no cubiertos vuelven al clásico y quedan enumerados. H3 y validación de paquete aprobados. Es muestra parcial, no soldado ni H7 completos. |
+| **A — soldado visiblemente animado** (H4.2/H4.4, H5.1, H6.4–6.6, H7.1/H7.3) | Inventario completado: Amiga The One m1p2 seleccionada; lote de hojas 2/7, frames 0/1/2. Integrar un pequeño lote coherente de reposo/marcha y las direcciones de un recorrido definido, con manifiesto/anclajes y tiempos originales. Añadir contadores y tiempos mínimos a la ruta real. | Nuevo ZIP con una diferencia perceptible jugando a velocidad normal, sin tener que localizar un único frame. Estados no cubiertos vuelven al clásico y quedan enumerados. H3 y validación de paquete aprobados. Es muestra parcial, no soldado ni H7 completos. |
 | **B — escena de muestra coherente** (H6, H7.2/H7.4/H7.6) | Completar el lote de estados necesarios para el recorrido, añadir un conjunto pequeño de terreno/vegetación y cursor con punto activo conservado. Probarlos juntos antes de producir más recursos. | Recorrido de una fase con personajes y entorno renovados, cobertura explícita y comparador. Una valoración del conjunto por Miguel; no una aprobación por sprite. |
 | **C — movimiento suave y fase completa** (H4 temporal, H5.2–5.5, H7.7–7.9) | Capturas anterior/actual coherentes; piloto de cámara y soldado, reinicio ante discontinuidades, inversa de ratón y comprobación 0/1/N. Completar los recursos que falten en la fase. | Fase jugable con suavidad, presentación coherente y controles correctos. Objetivo 60 Hz sujeto a medidas reales; solo cerrar H7 cuando cumpla su definición completa. |
 | **D — extensión y pulido** (H8–H10) | Tras la muestra, ampliar por lotes a CF1/CD32 y completar matriz, opciones y entrega. | Conservar el alcance final; no convertir los retornos clásicos del piloto en cobertura terminada. |
 
-**Estamos antes de A. Siguiente acción concreta:** inventario acotado de m1p1 y definición del pequeño lote de animación, junto con la instrumentación mínima. Si esa fase no ejercita el lote, elegir otra fase pública ya grabada y registrar la razón; no forzar una pose ni cambiar la referencia lógica para mostrar HD. El orden de campaña necesario para H3 se conserva aunque la demostración visual se centre en una fase.
+**Estamos en A: inventario y lote definidos.** [Selección, límites y evidencia H3](LOTE_SOLDADO_PILOTO.md). Siguiente acción: producir cinco imágenes nuevas, reutilizar C01 y comprobar el ciclo/anclajes antes de integrar las seis claves. m1p2 sustituye a la candidata m1p1 porque esta no ejercita la orientación C01. Mantener la campaña completa en H3; no forzar poses ni cambiar la referencia lógica.
 
 La preparación de recursos y su manifiesto puede avanzar mientras corre CI o se mide la ruta existente; la integración espera a sus contratos concretos. No implica delegación ni creación de subagentes. La interpolación no bloquea mostrar primero animación HD a ritmo clásico, pero sigue siendo requisito del objetivo final.
 

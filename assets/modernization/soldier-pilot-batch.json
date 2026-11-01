@@ -1,0 +1,83 @@
+{
+  "status": "planned-not-integrated",
+  "campaign": "Amiga The One",
+  "mission": 1,
+  "phase": 2,
+  "scope": "First live player only; six body keys, not full soldier coverage",
+  "density": {
+    "work": 12,
+    "alternative": 8,
+    "final": false
+  },
+  "native_frame": [
+    16,
+    14
+  ],
+  "legacy_mod": [
+    0,
+    0
+  ],
+  "legacy_logical_anchor": [
+    0,
+    14
+  ],
+  "timing": "Use captured native sheet/frame and original counters; no independent animation clock. Frame number does not imply idle versus walking.",
+  "frames": [
+    {
+      "sheet": 2,
+      "frame": 0,
+      "amiga_offset": 12,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": null,
+      "status": "to-produce"
+    },
+    {
+      "sheet": 2,
+      "frame": 1,
+      "amiga_offset": 14,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": null,
+      "status": "to-produce"
+    },
+    {
+      "sheet": 2,
+      "frame": 2,
+      "amiga_offset": 16,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": null,
+      "status": "to-produce"
+    },
+    {
+      "sheet": 7,
+      "frame": 0,
+      "amiga_offset": 562,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": "soldier-c01/source.png",
+      "status": "accepted-existing"
+    },
+    {
+      "sheet": 7,
+      "frame": 1,
+      "amiga_offset": 564,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": null,
+      "status": "to-produce"
+    },
+    {
+      "sheet": 7,
+      "frame": 2,
+      "amiga_offset": 566,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": null,
+      "status": "to-produce"
+    }
+  ],
+  "fallback": "All uncovered keys and failed contrast, anchor, occlusion or publication checks remain classic. Preserve original shadows.",
+  "acceptance": "Five new assets must match C01 style and be checked as an animated batch in a normal-speed Windows build; not yet done."
+}

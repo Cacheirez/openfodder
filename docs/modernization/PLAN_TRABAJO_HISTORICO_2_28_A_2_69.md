@@ -1,3 +1,5 @@
+> **OBSOLETO COMO PLAN DE EJECUCIÓN.** Sustituido por [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Se conserva únicamente como histórico; sus tareas pendientes no determinan el trabajo vigente.
+
 # Bitácora del plan 2.28–2.69
 
 Estado histórico. La tarea vigente está en [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Se conservan los incrementos íntegros, con sus resultados y pendientes de cada fecha.
