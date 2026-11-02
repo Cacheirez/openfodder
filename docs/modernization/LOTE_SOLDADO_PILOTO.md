@@ -1,6 +1,6 @@
 # Entrega A — inventario y lote inicial
 
-Estado 2.72: cinco maestros nuevos generados e integración SDL opcional implementada. C01 permanece intacto. Pruebas locales PASS; CI del candidato y nuevo ZIP pendientes. La aceptación visual del lote por Miguel sigue pendiente.
+Estado 2.73 (02-11-2026): cinco maestros nuevos generados e integración SDL opcional implementada. C01 permanece intacto. Pruebas locales y CI Windows/Linux/comparador PASS; ZIP f72d6e7 verificado. La aceptación visual del lote por Miguel sigue pendiente.
 
 Elegimos **Amiga The One m1p2 (Find Grenades)**. m1p1 no prepara la hoja 7 del primer jugador y no permite reutilizar C01 en ese recorrido. m1p2 ejercita los seis fotogramas seleccionados con más presencia de la hoja 7 que m1p3. La prueba lógica conserva el orden de las tres fases de campaña.
 
@@ -41,6 +41,8 @@ Con diagnóstico activo, SOLDIER_BATCH_PUBLISHED registra clave y contador acumu
 - Método real WindowHD: seis claves a ambas densidades, transición de paleta y recuperación; protecciones anteriores de pausa/mapa/renderer conservadas.
 - Recorrido Amiga completo con las seis claves publicadas realmente por SDL y 3405 estados H3 originales: [informe local](evidence/soldier-batch-local.json), [log y trazas](evidence/soldier-batch-final-traces.json.gz). Ejecutable local GCC O3 sin mixer, SDL software/dummy; no certifica GPU Windows ni FPS.
 - Visor: seis buffers, secuencia y pausa/reanudación comprobadas con Skia Canvas; revisión visual de los derivados. No es prueba de DOM del navegador ni una captura del juego.
-- CI Windows/Linux añade el recorrido del lote conservando las pruebas existentes. El empaquetado exige que el informe del lote corresponda al ejecutable entregado. CI pendiente al publicar este candidato.
+- CI Windows/Linux añade el recorrido del lote conservando las pruebas existentes. El empaquetado exige que el informe del lote corresponda al ejecutable entregado. CI completa PASS: Windows 41359306896, Linux 41359307009 y comparador 41359306892.
 
-Siguiente: cerrar CI, verificar el ZIP y revisar el conjunto a velocidad normal. No cierra H7 ni cubre todas las direcciones, estados o soldados. Los antiguos planes continúan marcados como obsoletos.
+[Verificación del ZIP](evidence/soldier-batch-package.json): artefacto 13106475504, 303 archivos; informe del lote y 29 fases sin omisiones corresponden al ejecutable incluido. Vista HTML idéntica tras normalizar CRLF. VERSION.txt identifica el merge temporal de CI, no una fusión del PR.
+
+Siguiente: revisar el conjunto a velocidad normal. No cierra H7 ni cubre todas las direcciones, estados o soldados. Los antiguos planes continúan marcados como obsoletos.

@@ -1,6 +1,6 @@
 # Estado operativo para continuar sin el chat
 
-**Estado vigente · plan 2.72:** entrega A, lote de seis claves integrado con OPENFODDER_SOLDIER_BATCH=1. Cinco maestros nuevos; C01 intacto. Pruebas locales: 24 combinaciones, ciclo/visor, método WindowHD y campaña Amiga con seis claves publicadas y H3 3405 estados PASS. [Detalle y evidencia](LOTE_SOLDADO_PILOTO.md). CI del candidato y nuevo ZIP pendientes; el paquete Windows aprobado anterior sigue siendo 3ee12e9. No confundir compilación local sin mixer con validación Windows. Próximo: cerrar CI, paquete y revisión visual del lote. PR borrador sin fusionar.
+**Estado vigente 02-11-2026 · plan 2.73:** entrega A, candidato f72d6e7 validado y empaquetado. Windows 41359306896, Linux 41359307009 y comparador 41359306892 completos PASS. ZIP artefacto 13106475504 verificado, 303 archivos; ejecutable y evidencias coinciden, 29 fases sin omisiones y seis claves publicadas con H3 3405 estados. [Verificación](evidence/soldier-batch-package.json). PROBAR_SOLDADO_ANIMADO.cmd abre m1p2 a velocidad normal; SOLDADO_ANIMADO.html ofrece el visor aislado. Próximo: valoración del lote en movimiento por Miguel; A y H7 no se dan por aceptados automáticamente. C01 permanece intacto. PR borrador sin fusionar.
 
 **Histórico 2.60 (superado por el cierre 2.61):** CI Windows d2e05e8 falló por falta de `<string>` en el generador HD (MSVC std::to_string). Include corregido; nueva CI/paquete pendientes. No usar d2e05e8 como paquete aprobado. [Evidencia](evidence/windows-d2e05e8-build-failure.json).
 

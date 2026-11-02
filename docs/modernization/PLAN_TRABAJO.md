@@ -1,6 +1,6 @@
 # Plan de trabajo — Cannon Fodder modernizado para Windows
 
-**Versión 2.72 · Revisión: 1 de noviembre de 2026.**
+**Versión 2.73 · Revisión: 2 de noviembre de 2026.**
 Responsable técnico: asistente. Validación de juego y decisiones visuales: Miguel.
 **Tarea activa: entrega A — preparar un soldado animado visible en una fase pública, con perfilado acotado y validación por entrega.**
 
@@ -25,7 +25,7 @@ Hay dependencias demasiado amplias: inventariar todas las fases antes de ampliar
 | **C — movimiento suave y fase completa** (H4 temporal, H5.2–5.5, H7.7–7.9) | Capturas anterior/actual coherentes; piloto de cámara y soldado, reinicio ante discontinuidades, inversa de ratón y comprobación 0/1/N. Completar los recursos que falten en la fase. | Fase jugable con suavidad, presentación coherente y controles correctos. Objetivo 60 Hz sujeto a medidas reales; solo cerrar H7 cuando cumpla su definición completa. |
 | **D — extensión y pulido** (H8–H10) | Tras la muestra, ampliar por lotes a CF1/CD32 y completar matriz, opciones y entrega. | Conservar el alcance final; no convertir los retornos clásicos del piloto en cobertura terminada. |
 
-**Estamos en A: lote generado e integrado de forma opcional.** [Implementación, visor y evidencia](LOTE_SOLDADO_PILOTO.md). Los cinco maestros, derivados 8×/12× y selección de seis claves están implementados; las pruebas locales publican las seis y conservan H3. Siguiente acción: cerrar CI Windows/Linux, verificar el nuevo ZIP y revisar el lote a velocidad normal con PROBAR_SOLDADO_ANIMADO.cmd. La aceptación artística del lote y el cierre de A siguen pendientes.
+**Estamos en A: lote generado e integrado de forma opcional.** [Implementación, visor y evidencia](LOTE_SOLDADO_PILOTO.md). Los cinco maestros, derivados 8×/12× y selección de seis claves están implementados; las pruebas locales publican las seis y conservan H3. CI Windows/Linux y comparador completos PASS para f72d6e7; ZIP verificado (artefacto 13106475504). Siguiente acción: revisar el lote a velocidad normal con PROBAR_SOLDADO_ANIMADO.cmd. La aceptación artística del lote y el cierre de A siguen pendientes.
 
 La preparación de recursos y su manifiesto puede avanzar mientras corre CI o se mide la ruta existente; la integración espera a sus contratos concretos. No implica delegación ni creación de subagentes. La interpolación no bloquea mostrar primero animación HD a ritmo clásico, pero sigue siendo requisito del objetivo final.
 
