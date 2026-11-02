@@ -1,32 +1,19 @@
-# Primera prueba en Windows
+# Paquete de prueba Windows
 
-Esta compilación sigue mostrando los gráficos originales. Incluye un parche de límites al leer pistas de los mapas y las demos públicas del paquete de datos del proyecto. No incluye las campañas comerciales completas. El vídeo introductorio FFmpeg está desactivado.
+Incluye ejecutable, dependencias y demos públicas; no campañas comerciales completas. Extraer el ZIP entero en una carpeta nueva antes de ejecutarlo. No hace falta instalar las herramientas de desarrollo para jugar.
 
-## Descargar
+## Arranque
 
-1. Abre https://github.com/Cacheirez/openfodder/actions e inicia sesión.
-2. Selecciona la ejecución de **Windows - modernization foundation** correspondiente a la rama `modernization/windows-foundation`.
-3. Solo utiliza el paquete si la ejecución termina en verde. Abre el artefacto `OpenFodder-Windows-x64-demos` al final de esa página.
-4. Extrae todo el ZIP a una carpeta nueva, por ejemplo `C:\Juegos\OpenFodder-Prueba`. No ejecutes el juego dentro del ZIP ni lo copies encima de otra instalación.
+- `INICIAR.cmd`: juego normal con presentación clásica por defecto.
+- `PROBAR_SOLDADO_ANIMADO.cmd`: piloto experimental de seis poses a 12×, Amiga The One m1p2, velocidad normal.
+- `SOLDADO_ANIMADO.html`: visor aislado del ciclo, con pausa; no es el render de la fase.
 
-## Arrancar
+**Limitación confirmada del piloto f72d6e7:** alterna con el soldado clásico porque solo cubre algunas poses del primer jugador y hay retornos por composición. Está pendiente la sustitución completa. No interpretar el ZIP como soldado terminado ni pedir repetir esta misma validación sin una corrección.
 
-Haz doble clic en **INICIAR.cmd**. Abre el juego en ventana y omite la introducción. El archivo se asegura de que el programa encuentre los datos de esa misma carpeta.
+## Descargar y comunicar incidencias
 
-No necesitas Git, Python ni Visual Studio para jugar con este paquete. Si Windows informa de que falta MSVCP140.dll o VCRUNTIME140.dll, consulta la instalación del redistribuible de Visual C++ x64 en la documentación oficial de Microsoft: https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist . No descargues DLL sueltas.
+El artefacto se llama `OpenFodder-Windows-x64-demos` en Actions del repositorio Cacheirez/openfodder. Usar la ejecución vinculada al candidato indicado por el estado del proyecto; una ejecución verde no acredita aceptación visual completa. Los enlaces de Actions caducan.
 
-## Primera comprobación, cinco minutos
+Conservar `VERSION.txt`, `PRUEBAS.json`, `LOTE_PRUEBA.json` y, si se ejecutó el piloto, `SOLDADO_ANIMADO.log`. Indicar comando, fase, acción y error observado; un vídeo corto ayuda a localizar la alternancia. No es necesario volver a validar guardado/persistencia, estilo C ni C01 salvo una regresión concreta.
 
-1. Elige una demo disponible y entra en una misión.
-2. Comprueba que puedes mover el grupo y disparar con el ratón.
-3. Mueve la cámara y observa si el cursor coincide con lo que señalas.
-4. Pausa y reanuda; cambia de aplicación y vuelve al juego.
-5. Prueba F11 para cambiar entre ventana y pantalla completa.
-
-Cuéntame qué demo has elegido, si se oye el sonido, si el ratón responde bien y cualquier error literal. Una captura de la pantalla del juego ayuda. No esperamos todavía gráficos HD ni un scroll distinto.
-
-## Qué significa que las pruebas pasen
-
-El paquete solo se prepara después de completar 29 fases de demos y comparar sus nombres/resultados con la referencia Linux. Eso no demuestra identidad por tick, ausencia de todos los errores de memoria ni funcionamiento correcto del audio o del renderizado real. Sigue pendiente un problema de lectura en el descompresor Amiga registrado en `RESULTADOS.md`.
-
-`VERSION.txt` identifica la revisión. `PRUEBAS.json` contiene el resultado de esa ejecución Windows. Conserva ambos al comunicar problemas.
+`VERSION.txt` puede identificar el merge temporal construido por CI. Eso no significa que el PR se haya fusionado. Los informes y el hash del ejecutable permiten relacionar cada paquete con sus pruebas. El alcance vigente y los cambios pendientes se consultan en docs/modernization/CONTINUIDAD.md del repositorio.

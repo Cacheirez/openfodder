@@ -1,24 +1,37 @@
-# Prompt para continuar en otro hilo
+# Prompt para continuar en un nuevo hilo
 
-El estado vigente se conserva en CONTINUIDAD.md y la ruta operativa de PLAN_TRABAJO.md. No duplicar aquí la bitácora.
+Copia el bloque siguiente. Con acceso al repositorio de GitHub **no necesitas adjuntar nada**: código, maestros, manifiestos, pruebas, catálogo y plan están allí. El ZIP f72d6e7 sirve para reproducir el defecto; no es el código fuente ni una solución corregida.
 
 ```text
-Continúa OpenFodder en https://github.com/Cacheirez/openfodder, rama modernization/windows-foundation, PR #1 abierto, borrador y sin fusionar.
+Continúa la modernización de OpenFodder en https://github.com/Cacheirez/openfodder, rama modernization/windows-foundation. PR #1 debe permanecer abierto, en borrador y SIN fusionar. Trabaja en español de España y avanza con autonomía sin pedir confirmaciones rutinarias. No uses subagentes salvo que yo lo autorice.
 
-Lee CONTINUIDAD.md y la ruta operativa de PLAN_TRABAJO.md; después los contratos/evidencias del cambio concreto. Comprueba HEAD/PR/CI antes de editar. No releas toda la historia salvo necesidad. La ruta 2.70 prioriza una muestra jugable: pequeño lote de soldado animado, después escena coherente y suavidad, conservando H0–H10.
+Primero consulta el HEAD/PR/CI reales y lee docs/modernization/CONTINUIDAD.md, PLAN_TRABAJO.md y SOLDADOS_COBERTURA_COMPLETA.md. Usa DESARROLLO.md para preparar el entorno. El plan vigente es 2.74, salvo actualización posterior explícita. Los informes antiguos no determinan el próximo paso.
 
-Preserva base clásica 5e6a4f3, H3 sin regenerar huellas, reglas, RNG, tiempos, colisiones y campo lógico. Mantén contraste, orden, oclusiones, anclajes y retorno clásico. Clásico por defecto. No introduzcas hilos ni cambies dependencias sin necesidad; datos comerciales y partidas privadas fuera de GitHub.
+Incidencia confirmada por mí (Miguel): he probado PROBAR_SOLDADO_ANIMADO.cmd y el soldado moderno aparece intercalado con el antiguo. Esto NO está aceptado. Quiero recrear lo que hace el original, sustituyendo sus sprites por modernos en todas las direcciones y estados; no otra muestra que cambie de estilo durante el juego normal. Incluir todos los soldados presentes, y revisar enemigos y variantes; distinguir civiles/rehenes y efectos asociados en la matriz.
 
-C — Pintado moderado elegida. Originales en assets/modernization/concepts y soldier-c01, no recrearlos. C01_12.html aceptado en detalle, posición e integración; guardado/persistencia y recorrido común de escenas aceptados. No repetir esas validaciones ni A/B/C. 12× es variante provisional para el pequeño lote y 8× permanece disponible; no fijar densidad final todavía.
+El piloto f72d6e792c359cec2f53d006d167738c2104bc66 solo cubre hojas 2/7, frames 0/1/2, primer jugador y un parche. Rechaza superposiciones, recortes y muchos estados. Añadir PNG sin ampliar captura y composición NO soluciona el problema. No elimines guards sin implementar orden/oclusiones correctos.
 
-Siguiente: entrega A. Inventario terminado: Amiga The One m1p2, hojas 2/7 frames 0/1/2. Lote generado e integrado opcionalmente (plan 2.73), CI completa y ZIP f72d6e7 verificados; pendiente revisión visual por Miguel según LOTE_SOLDADO_PILOTO.md; instrumentación mínima por bloque. El perfilado no se convierte en una cadena de estudios previa al arte. Un cuello demostrado se optimiza y revalida; defectos reales bloquean solo la ruta afectada. No exigir el censo comercial completo para este piloto. No producir arte en masa.
+La revisión del código confirma 8 direcciones y 3 frames por dirección para marcha (24 claves por bando), con contador 0–1–2–1 y excepciones del motor. Hay agua, granadas, cuerpo a tierra, armas, muerte y rutas especiales. Respeta mFaceDirection, apuntado, selección de frame, ritmo y fase originales: no inventes dos frames globales ni un reloj a la frecuencia del monitor. El catálogo reproducible está en tools/modernization/inventory_soldier_catalog.py y docs/modernization/evidence/soldier-catalog.json. Sus entradas estáticas no son aceptación visual ni cobertura dinámica.
 
-Agrupa cambios coherentes y evidencia por entrega. Pruebas focalizadas durante desarrollo, CI completa pertinente y ZIP contrastado antes de entregar código nuevo a Miguel. La simplificación de eventos/caché de CI está planificada, no implementada: comprobar los workflows reales. Nunca marcar tests omitidos como aprobados. Aprovecha esperas de CI para preparación independiente; sin delegar a subagentes salvo autorización explícita.
+Siguiente trabajo: A1/A2 del plan. Completar matriz de estados/recursos/entidades y casos que detecten cualquier cuerpo clásico no previsto. Generalizar captura y composición ordenada de múltiples cuerpos con recortes/agua/oclusiones. Preparar el ciclo completo de 24 claves como paso interno y después todos los estados y variantes censados. No declarar soldado completo solo porque marcha en ocho direcciones o porque seis claves se publican alguna vez.
 
-Motor y paquete actuales: consultar VALIDACION_3ee12e9.md; medición integrada: H6_COSTE_HD_INTEGRADO.md. La revisión del plan no modifica el motor ni demuestra mejoras de rendimiento. Actualiza solo tarea activa, continuidad y evidencia afectada; el README es un índice y los informes históricos permanecen fechados.
+Conserva estilo C — Pintado moderado y maestro C01 (detalle, posición e integración ya aceptados). Los cinco maestros adicionales son provisionales y pueden necesitar ajuste al frame original. Originales/manifiestos en assets/modernization. No vuelvas a proponer estilos A/B/C. 12× provisional, 8× disponible; densidad final y GPU pendientes. No bloquees cobertura con más perfilado sin una hipótesis concreta.
 
-Finaliza todos los mensajes con:
+No cambies reglas, RNG, tiempos lógicos, colisiones, campo visible ni orden de simulación; no regeneres H3 para hacer pasar cambios. Mantén contraste clásico independiente. Base clásica 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8 intacta. Clásico disponible por elección y recuperación segura/coherente ante errores reales; no usar fallback normal por cobertura incompleta como criterio de terminado. CD32 es objetivo principal, pero sus datos privados no van a GitHub. Las demos públicas permiten avanzar; pide material privado solo si una tarea concreta lo necesita.
+
+Último ejecutable probado: f72d6e7. CI Windows/Linux/comparador PASS, ZIP artefacto 13106475504, 29 fases sin omisiones y H3 del lote 3405 estados intactos. Esto no corrige ni invalida la mezcla observada. La revisión documental 2.74 NO cambia el motor. La evidencia exacta está en soldier-batch-package.json. No pedir que vuelva a aprobar ese mismo piloto parcial.
+
+Agrupa cambios útiles, pruebas focalizadas y documentación breve. Antes de entregar otro ejecutable, CI pertinente completa, hashes e informes ligados al ZIP; validar giro continuo, marcha, apuntado, disparo, granadas, agua, daño/muerte, varios soldados, oclusiones y transiciones. Marcar casos no ejecutados como pendientes. Mantén el alcance final H0–H10 en ALCANCE_H0_H10.md y no cierres A/H7 por CI verde.
+
+Termina tus mensajes con estas tres líneas:
 Hecho: ...
 Situación del plan: ...
 Próximos pasos: ...
 ```
+
+## Adjuntos
+
+- **Con GitHub conectado:** ninguno obligatorio. Basta el prompt y acceso de lectura/escritura al repositorio.
+- **Opcional y útil para diagnosticar la alternancia concreta:** `SOLDADO_ANIMADO.log` de la carpeta del juego y un vídeo corto donde se vea. No bloquean las correcciones ya identificadas.
+- **Si el nuevo hilo no puede acceder a GitHub:** adjunta una copia de la rama de trabajo con código, assets, docs y tools. Para ejecutar pruebas de equivalencia contra commits antiguos se necesita también el historial Git y los submódulos/datos demo; el ZIP del ejecutable por sí solo no basta. El asistente debe explicar qué acceso falta antes de pedir más archivos.
+- No adjuntar partidas ni datos comerciales CD32 salvo petición concreta para una prueba que los necesite. No hace falta volver a adjuntar C01 ni las cinco poses: ya están versionadas.

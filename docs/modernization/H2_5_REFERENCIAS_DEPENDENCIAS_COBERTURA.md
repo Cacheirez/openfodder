@@ -76,7 +76,7 @@ Las trazas H3 suman **7.956 estados de PC Format** y **3.405 de Amiga The One**,
 - [Windows Actions 39641852057](https://github.com/Cacheirez/openfodder/actions/runs/39641852057): compilación x64 Release, CTest, 29 replays y baseline H3 con resultado satisfactorio.
 - [H3_VALIDACION_2026-10-21.md](H3_VALIDACION_2026-10-21.md): metodología, origen de 11.361 estados y limitaciones.
 - [H2_LEAK_THREAD_DIAGNOSTICOS.md](H2_LEAK_THREAD_DIAGNOSTICOS.md): hallazgos originales, correcciones y auditoría ampliada.
-- [PLAN_MODERNIZACION_ES.md](PLAN_MODERNIZACION_ES.md): separación entre simulación y presentación; reglas de no alteración de gameplay.
+- [PLAN_MODERNIZACION_ES.md](https://github.com/Cacheirez/openfodder/blob/df933bf69ea50544fe4e9158dc7a8d7cc27db710/docs/modernization/PLAN_MODERNIZACION_ES.md): separación entre simulación y presentación; reglas de no alteración de gameplay.
 
 Los artefactos Actions tienen caducidad. La evidencia permanente mínima la constituyen las referencias de replays y huellas en el repositorio más este inventario; conviene conservar el ZIP de la prueba cuando se haga la decisión H2.6.
 

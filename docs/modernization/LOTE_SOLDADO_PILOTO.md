@@ -1,6 +1,8 @@
+> **Piloto histórico incompleto.** Miguel probó el lote el 02-11-2026 y observó alternancia moderno/clásico. No está aceptado como soldado completo. El trabajo vigente está en [SOLDADOS_COBERTURA_COMPLETA.md](SOLDADOS_COBERTURA_COMPLETA.md). Las pruebas y cifras siguientes describen f72d6e7, no una corrección posterior.
+
 # Entrega A — inventario y lote inicial
 
-Estado 2.73 (02-11-2026): cinco maestros nuevos generados e integración SDL opcional implementada. C01 permanece intacto. Pruebas locales y CI Windows/Linux/comparador PASS; ZIP f72d6e7 verificado. La aceptación visual del lote por Miguel sigue pendiente.
+Estado 2.73 (02-11-2026): cinco maestros nuevos generados e integración SDL opcional implementada. C01 permanece intacto. Pruebas locales y CI Windows/Linux/comparador PASS; ZIP f72d6e7 verificado. La revisión de Miguel detectó mezcla de cuerpos clásicos y modernos; requiere ampliar cobertura y composición.
 
 Elegimos **Amiga The One m1p2 (Find Grenades)**. m1p1 no prepara la hoja 7 del primer jugador y no permite reutilizar C01 en ese recorrido. m1p2 ejercita los seis fotogramas seleccionados con más presencia de la hoja 7 que m1p3. La prueba lógica conserva el orden de las tres fases de campaña.
 
@@ -45,4 +47,4 @@ Con diagnóstico activo, SOLDIER_BATCH_PUBLISHED registra clave y contador acumu
 
 [Verificación del ZIP](evidence/soldier-batch-package.json): artefacto 13106475504, 303 archivos; informe del lote y 29 fases sin omisiones corresponden al ejecutable incluido. Vista HTML idéntica tras normalizar CRLF. VERSION.txt identifica el merge temporal de CI, no una fusión del PR.
 
-Siguiente: revisar el conjunto a velocidad normal. No cierra H7 ni cubre todas las direcciones, estados o soldados. Los antiguos planes continúan marcados como obsoletos.
+Resultado de la revisión: mezcla clásico/moderno confirmada; sustituir la solución parcial según el plan 2.74. No cierra H7 ni cubre todas las direcciones, estados o soldados. Los antiguos planes continúan marcados como obsoletos.
