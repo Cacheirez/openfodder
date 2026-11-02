@@ -286,3 +286,13 @@ add_test(NAME soldier_ordered_composition COMMAND $<TARGET_FILE:openfodder_order
 if(Python3_Interpreter_FOUND)
     add_test(NAME soldier_coverage_matrix COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_soldier_coverage.py")
 endif()
+
+# A2 ordered SDL publisher contract; no production resolver or artwork implied.
+add_executable(openfodder_ordered_sdl_tests tools/modernization/test_ordered_soldier_sdl.cpp)
+target_include_directories(openfodder_ordered_sdl_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+target_link_libraries(openfodder_ordered_sdl_tests PRIVATE SDL3::SDL3)
+add_test(NAME soldier_ordered_sdl_transaction COMMAND $<TARGET_FILE:openfodder_ordered_sdl_tests>)
+if(WIN32)
+    add_custom_command(TARGET openfodder_ordered_sdl_tests POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:SDL3::SDL3> $<TARGET_FILE_DIR:openfodder_ordered_sdl_tests> VERBATIM)
+endif()

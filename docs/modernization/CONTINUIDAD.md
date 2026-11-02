@@ -17,7 +17,11 @@ Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el
 
 ## Validación del bloque interno A1/A2
 
-[Informe con hashes](evidence/soldier-a1a2-validation.json): compositor 144 escenarios y captura ASan/UBSan PASS; 4 tests de matriz PASS. Replay real de 11 fases con contraste y 11.361 estados H3 originales PASS (build local Linux sin mixer). 532.749 comandos únicos capturados; 277 claves ordinarias observadas, no publicadas en HD. CI del commit pendiente de consultar; no hay nuevo paquete entregado. Primer intento de trazas truncado, descartado; repetición íntegra en almacenamiento temporal local.
+[Informe con hashes](evidence/soldier-a1a2-validation.json): compositor 144 escenarios y captura ASan/UBSan PASS; 4 tests de matriz PASS. Replay real de 11 fases con contraste y 11.361 estados H3 originales PASS (build local Linux sin mixer). 532.749 comandos únicos capturados; 277 claves ordinarias observadas, no publicadas en HD. CI de `45ad790` comprobada: Windows 41498165115, Linux 41498165124 y comparador 41498165156 PASS; no hay nuevo paquete entregado. Primer intento de trazas truncado, descartado; repetición íntegra en almacenamiento temporal local.
+
+## Siguiente bloque A2: publicación SDL interna
+
+`OrderedSoldierSDL.hpp` publica el resultado ordenado como fondo nativo y franjas HD disjuntas. Carga todas las texturas antes de dibujar, recorta contra la vista y recupera la vista clásica completa ante un fallo parcial. Rechaza cobertura incompleta. Pruebas locales SDL software: 348 casos PC/Amiga a 8×/12× con ASan/UBSan, más los 144 casos CPU. [Evidencia](evidence/soldier-ordered-sdl-validation.json). Añadido a CTest Windows/Linux. **No conectado aún a `WindowHD`**: falta resolver recursos/paletas y completar arte; GPU y recorrido real pendientes. No hay nuevo ZIP ni corrección visual entregada.
 
 ## Decisiones que se conservan
 

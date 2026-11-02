@@ -79,3 +79,11 @@ Esta revisión cambia alcance y pruebas; **no corrige todavía el ejecutable f72
 - Resolución artística: el llamador debe verificar recurso/variante completo y clasificar explícitamente lo que conserva clásico. Un recurso faltante se registra como `Missing`; no puede satisfacer `complete()`. Ese método comprueba únicamente el intervalo interno, **no aceptación global ni publicación SDL**. Los tests usan colores sintéticos, no arte nuevo aceptado.
 
 **Límite de este bloque:** el compositor nuevo aún no sustituye `ComposeSoldierArtHDLayers` ni `TryRenderMissionHD`. Los guards del piloto permanecen. Falta resolver arte por recurso/paleta, conectar la salida y recuperación SDL, cubrir transiciones y ejecutar la secuencia continua completa. No representa un ejecutable con la mezcla corregida. El alcance H0–H10 se conserva.
+
+## Adaptador SDL ordenado (interno)
+
+`OrderedSoldierSDL.hpp` consume el resultado del compositor, agrupa celdas contiguas por fila y carga el fondo y todas las franjas visibles antes de escribir en el renderer. Conserva huecos de oclusión y recorta cada franja contra la vista. Los extremos de destino se redondean de forma compartida: redondear posición y alto por separado dejaba rendijas en SDL software a escala fraccionaria. No equivale a certificar muestreo idéntico a un lienzo HD expandido a todas las escalas.
+
+La falta de recursos impide la publicación parcial. Cualquier fallo de dibujo restaura toda la vista desde la textura clásica independiente, desactivando temporalmente su mezcla; un fallo de recuperación devuelve error. Ninguna textura sobrevive a la llamada. Pruebas: comparación exacta con lienzo HD a escala entera y recorte atravesando cuerpos, agua, superposición, oclusión del mismo color, todas las llamadas SDL fallables, restauración de mezcla, recurso faltante, datos inválidos y reentrada. SDL software y ASan/UBSan; LSan no disponible bajo ptrace local.
+
+Sigue pendiente el resolver de recursos/variantes y su conexión desde `TryRenderMissionHD`, las poses completas, transiciones y GPU/recorrido visual. Este adaptador no cambia la ruta del piloto ni elimina sus guards. [Informe](evidence/soldier-ordered-sdl-validation.json).
