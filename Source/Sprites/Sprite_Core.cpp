@@ -2409,18 +2409,16 @@ void cFodder::Sprite_Update_Direction_Anim(sSprite* pSprite) {
     pSprite->mFrameIndex = 0;
 }
 
-// One authored player soldier only. Capture after preparation, never in a consumer.
+// Retain every visible sprite draw, including special bodies and associated effects.
+// Classification belongs to coverage policy, never to capture or simulation.
 void cFodder::CaptureSoldierSemantic(sSprite* sprite, int16 sheet, int16 frame,
         const openfodder::SpriteDrawInput& input, openfodder::PreparedSpriteDraw& prepared) {
     const char* enabled = std::getenv("OPENFODDER_CAPTURE_SOLDIER");
     if (!enabled || std::string(enabled) != "1" || !mPhase_In_Progress || mPhase_Paused ||
-        mPhase_ShowMapOverview || !prepared.draw.visible || sprite->mSpriteType != eSprite_Player ||
-        sprite->mInVehicle || sprite->mPendingDestroy || !mPresentationScene) return;
-    for (size_t slot = 0; slot < mSprites.size(); ++slot) {
-        const auto& candidate = mSprites[slot];
-        if (candidate.mPosX == -32768 || candidate.mPosX == -1 || candidate.mSpriteType != eSprite_Player)
-            continue;
-        if (&candidate != sprite) return; // Only the first present player slot is the pilot.
+        mPhase_ShowMapOverview || !prepared.draw.visible || !mPresentationScene) return;
+    for (size_t slot = 0; slot <= mSprites.size(); ++slot) {
+        const auto& candidate = slot == mSprites.size() ? mSprite_Spare : mSprites[slot];
+        if (&candidate != sprite) continue;
         auto& state = prepared.soldier;
         state.valid = true; state.scene = mPresentationScene;
         state.slot = slot; state.generation = sprite->mPresentationGeneration;
@@ -2429,6 +2427,10 @@ void cFodder::CaptureSoldierSemantic(sSprite* sprite, int16 sheet, int16 frame,
         state.heightFraction = sprite->mHeightFrac; state.type = sprite->mSpriteType;
         state.sheet = sheet; state.frame = frame; state.animation = sprite->mAnimState;
         state.direction = sprite->mDirection;
+        state.faceDirection = sprite->mFaceDirection;
+        state.personType = sprite->mPersonType;
+        state.inVehicle = sprite->mInVehicle;
+        state.pendingDestroy = sprite->mPendingDestroy;
         state.geometry = input; state.geometry.source = nullptr;
         const auto metadata = Sprite_Get_Sheet(sheet, frame);
         state.segment = metadata->mLoadSegment;

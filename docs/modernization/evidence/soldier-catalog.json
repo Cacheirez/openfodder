@@ -17,7 +17,7 @@
     "Source/PC/SpriteData_PC.hpp": "6ffe13e86a5d83c4793f68d762e4f23ebe582b045be1cc6e5e9dd8cae66818ea",
     "Source/Amiga/SpriteData_Amiga.hpp": "72d283d5186d48f568dd02924bf2e2dd37569d5e30fe52f977a50a1aad112241",
     "Source/Sprites/Sprite_Troop.cpp": "ef0ba41fd7c531e9bb61c559fb1f6981091fbb82783c957fa951f2c3f8af224b",
-    "Source/Sprites/Sprite_Core.cpp": "7795d54333543a2d54e3eefab335f54d0acc61bddbc528886ef738f0046b57c7",
+    "Source/Sprites/Sprite_Core.cpp": "23d45dd02224eda108f5f3067f5ef2660fd017e0d4ed0314c3b6fadf51f25d63",
     "Source/Sprites/Sprite_Civilian.cpp": "4234ec6ed581ed69c29d2a1da9fb9d4452deedb4037f5dfce94187ef117d8ab9"
   },
   "platforms": {

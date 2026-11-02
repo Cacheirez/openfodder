@@ -236,6 +236,27 @@ public:
             // Publish precisely the pixels just checked, not a new classic capture.
             if (publication && surface == this) *publication = std::move(replay);
         }
+        // Optional complete per-command trace, after independent classic audit.
+        // Capture is NOT evidence that a modern asset was published.
+        const char* coverage = std::getenv("OPENFODDER_SOLDIER_COVERAGE");
+        if (coverage && std::string(coverage) == "1") {
+            for (size_t order = 0; order < scene.layers.size(); ++order) {
+                const auto& layer = scene.layers[order];
+                if (layer.operation != openfodder::MissionLayerOperation::Soldier) continue;
+                const auto& p = layer.soldier; const auto& s = p.soldier;
+                std::fprintf(stderr, "SOLDIER_CAPTURE: scene=%llu interval=%llu order=%zu slot=%zu generation=%llu "
+                    "tick=%d type=%d person=%d sheet=%d frame=%d animation=%d direction=%d face=%d "
+                    "vehicle=%d destroy=%d format=%d segment=%u resource=%llu offset=%zu palette=%u "
+                    "width=%u height=%u planes=%u skip=%d crop=%td x=%d y=%d columns=%d rows=%d\n",
+                    (unsigned long long)s.scene, (unsigned long long)s.interval, order, s.slot,
+                    (unsigned long long)s.generation, int(s.tick), int(s.type), int(s.personType),
+                    int(s.sheet), int(s.frame), int(s.animation), int(s.direction), int(s.faceDirection),
+                    int(s.inVehicle), int(s.pendingDestroy), int(p.draw.format), unsigned(s.segment),
+                    (unsigned long long)p.resource.generation, p.resource.offset, unsigned(p.draw.palette),
+                    unsigned(p.resource.layout.width), unsigned(p.resource.layout.height), unsigned(p.resource.layout.planes),
+                    int(s.geometry.rowsToSkip), p.draw.sourceOffset, int(p.draw.x), int(p.draw.y), int(p.draw.columns), int(p.draw.rows));
+            }
+        }
         for (const auto& layer : scene.layers) {
             if (layer.operation != openfodder::MissionLayerOperation::Soldier) continue;
             static std::atomic<uint64_t> soldierScene{0};

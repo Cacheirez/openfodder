@@ -15,6 +15,7 @@ struct SoldierSemantic {
     int32_t cameraX = 0, cameraY = 0;
     int16_t tick = 0, xFraction = 0, yFraction = 0, heightFraction = 0;
     int16_t type = 0, sheet = 0, frame = 0, animation = 0, direction = 0;
+    int16_t faceDirection = 0, personType = 0, inVehicle = 0, pendingDestroy = 0;
     uint16_t segment = 0;
     // source is always null in snapshots: resolved resource owns the bytes.
     SpriteDrawInput geometry;

@@ -51,7 +51,7 @@ Hay limitaciones independientes, comprobables en el código de f72d6e7:
 3. `ComposeSoldierArt`: sustituye como máximo un comando. Superposición posterior, repetición del actor o recorte causan retorno clásico.
 4. `TryRenderMissionHD`: otras condiciones de pausa, mapa, paleta, destino o renderer también retornan al clásico. Las transiciones necesitan tratamiento coherente, no solo más PNG.
 
-Esto explica por qué la arquitectura permite la mezcla; sin `SOLDADO_ANIMADO.log` no se atribuye cada alternancia observada por Miguel a un motivo específico. El log es útil, pero no bloquea la corrección de las limitaciones conocidas.
+El log aportado por Miguel confirma `later-layer-overlap` y `no-eligible-batch-key`, además de `palette-transition` y `black-palette`; registra únicamente las seis claves del piloto. No incluye tiempos por frame, así que no permite asignar cada alternancia visual a una línea concreta.
 
 ## Implementación que sigue
 
@@ -68,3 +68,14 @@ En funcionamiento normal, **ningún cuerpo clásico intercalado** entre poses mo
 El modo clásico sigue disponible por elección. Ante fallo real de carga, recurso inválido o error SDL, conservar recuperación segura, registrada y coherente; no confundirla con aceptar una cobertura incompleta como producto terminado. No hace falta ocultar esa protección para cumplir el objetivo visual.
 
 Esta revisión cambia alcance y pruebas; **no corrige todavía el ejecutable f72d6e7 ni genera el resto de imágenes**. La siguiente implementación debe resolver conjuntamente cobertura y composición antes de entregar otra muestra como soldado completo.
+
+## Bloque interno A1/A2
+
+- Captura: todos los dibujos visibles de `mSprites` y `mSprite_Spare`; el nombre histórico `Soldier` de la operación incluye ahora efectos/civiles y otras entidades para no perder su procedencia. Clasificar después, sin excluir enemigos, agua, vehículo o destrucción en el productor. Conserva `mFaceDirection` además de movimiento, persona, escena/slot/generación y recurso propio. Pausa/mapa/fuera de misión siguen excluidos y pendientes de integración.
+- Traza: `OPENFODDER_CAPTURE_SOLDIER=1`, publicación de capas y `OPENFODDER_SOLDIER_COVERAGE=1` emiten `SOLDIER_CAPTURE` por comando después del contraste clásico. Incluye clave, recurso/generación/layout/paleta, estado, apuntado, recorte y orden. La generación solo identifica una versión local al proceso; no demuestra equivalencia entre biomas o ejecuciones. Puede producir logs grandes; usar solo en diagnósticos acotados.
+- Matriz: `python tools/modernization/soldier_coverage.py --out informe.json [--log engine.log]`. `--require-complete` devuelve 1 mientras no haya evidencia completa; un log vacío o seis claves publicadas nunca pasan. Distingue cuerpos conocidos, tipo inesperado con hoja de cuerpo, civiles/rehenes, asociados, marcador y otras entidades por clasificar. Variantes CD32 y escenarios no probados quedan pendientes.
+- Compositor interno: `ComposeOrderedSoldierArt` resuelve cada comando en su posición; no selecciona una única entidad ni modifica el reloj. Sustituye el cuerpo completo por celdas HD precompuestas y elimina las celdas afectadas por escrituras posteriores, incluidas las del mismo color, cero y OR. Guarda/restaura índices y celdas juntos. El presupuesto cuenta celdas activas y guardadas; un exceso genera error, nunca salida parcial. La referencia clásica independiente sigue ejecutándose antes.
+- Recorte: dimensiones variables del recurso original y coordenadas de muestra derivadas de `sourceOffset`, columnas/filas ya preparadas y `rowsToSkip`. No estira el trozo visible ni reinterpreta el joystick. Geometrías inválidas, formatos/pitch no admitidos o activos inconsistentes fallan explícitamente. Los tests cubren agua, arriba/abajo y laterales PC; laterales Amiga reales siguen pendientes.
+- Resolución artística: el llamador debe verificar recurso/variante completo y clasificar explícitamente lo que conserva clásico. Un recurso faltante se registra como `Missing`; no puede satisfacer `complete()`. Ese método comprueba únicamente el intervalo interno, **no aceptación global ni publicación SDL**. Los tests usan colores sintéticos, no arte nuevo aceptado.
+
+**Límite de este bloque:** el compositor nuevo aún no sustituye `ComposeSoldierArtHDLayers` ni `TryRenderMissionHD`. Los guards del piloto permanecen. Falta resolver arte por recurso/paleta, conectar la salida y recuperación SDL, cubrir transiciones y ejecutar la secuencia continua completa. No representa un ejecutable con la mezcla corregida. El alcance H0–H10 se conserva.

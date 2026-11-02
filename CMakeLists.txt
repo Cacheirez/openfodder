@@ -278,3 +278,11 @@ if(WIN32)
     endif()
     target_link_libraries(openfodder PRIVATE ws2_32)
 endif()
+
+# A2 internal ordered compositor; no commercial assets or SDL required.
+add_executable(openfodder_ordered_soldier_tests tools/modernization/test_ordered_soldier_art.cpp)
+target_include_directories(openfodder_ordered_soldier_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+add_test(NAME soldier_ordered_composition COMMAND $<TARGET_FILE:openfodder_ordered_soldier_tests>)
+if(Python3_Interpreter_FOUND)
+    add_test(NAME soldier_coverage_matrix COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_soldier_coverage.py")
+endif()

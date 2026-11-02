@@ -43,7 +43,7 @@ struct cFodder {
 int main(){
  cFodder e;e.Sprite_Clear_All();
  auto& s=e.mSprites[0];s.mPosX=70;s.mPosY=80;s.mPosXFrac=123;s.mPosYFrac=-456;
- s.mHeightFrac=789;s.mDirection=42;s.mAnimState=2;e.sheet.mLoadSegment=3;
+ s.mHeightFrac=789;s.mDirection=42;s.mFaceDirection=6;s.mPersonType=1;s.mAnimState=2;e.sheet.mLoadSegment=3;
  openfodder::SpriteDrawInput input;input.spriteX=70;input.spriteY=80;input.modX=-2;input.modY=3;
  input.source=reinterpret_cast<const uint8_t*>(1); // Must never escape into snapshot.
  auto capture=[&](sSprite* p){openfodder::PreparedSpriteDraw out;out.draw.visible=true;
@@ -54,18 +54,27 @@ int main(){
  assert(first.geometry.modX==-2&&first.geometry.modY==3&&!first.geometry.source);
  assert(first.segment==3&&first.sheet==7&&first.frame==4&&first.animation==2&&first.direction==42);
  auto repeated=capture(&s);assert(first.generation==repeated.generation&&first.scene==repeated.scene);
- e.mSprites[1].mPosX=80;assert(!capture(&e.mSprites[1]).valid);
+ assert(first.faceDirection==6&&first.personType==1);
+ e.mSprites[1].mPosX=80;assert(capture(&e.mSprites[1]).valid&&capture(&e.mSprites[1]).slot==1);
+ for(auto type:{eSprite_Enemy,eSprite_Enemy_Rocket,eSprite_Floating_Dead_Soldier,
+               eSprite_Civilian,eSprite_Hostage,eSprite_Player_Shadow,eSprite_Player_Rank}) {
+  e.mSprites[1].mSpriteType=type;auto next=capture(&e.mSprites[1]);
+  assert(next.valid&&next.type==type&&next.slot==1);
+ }
+ e.mSprite_Spare.mPosX=80;auto spare=capture(&e.mSprite_Spare);
+ assert(spare.valid&&spare.slot==e.mSprites.size());
+ sSprite outside;assert(!capture(&outside).valid);
  e.mPhase_Paused=true;assert(!capture(&s).valid);e.mPhase_Paused=false;
  e.mPhase_ShowMapOverview=true;assert(!capture(&s).valid);e.mPhase_ShowMapOverview=false;
  e.mPhase_In_Progress=false;assert(!capture(&s).valid);e.mPhase_In_Progress=true;
- s.mInVehicle=-1;assert(!capture(&s).valid);s.mInVehicle=0;
- s.mPendingDestroy=1;assert(!capture(&s).valid);s.mPendingDestroy=0;
- s.mSpriteType=eSprite_Explosion;assert(!capture(&s).valid);s.mSpriteType=eSprite_Player;
+ s.mInVehicle=-1;assert(capture(&s).inVehicle==-1);s.mInVehicle=0;
+ s.mPendingDestroy=1;assert(capture(&s).pendingDestroy==1);s.mPendingDestroy=0;
+ s.mSpriteType=eSprite_Explosion;assert(capture(&s).valid);s.mSpriteType=eSprite_Player;
  s.Clear();s.mPosX=70;assert(capture(&s).generation!=first.generation);
  auto authored=e.mSprites;e.Sprite_Clear_All();e.mSprites=authored;
  assert(capture(&e.mSprites[0]).scene!=first.scene); // Reload same authored slots.
  assert(first.geometry.spriteX==70&&first.xFraction==123); // Old value retained.
- std::cout<<"PASS actual soldier capture: metadata, guards, same-slot Clear and scene reload\n";
+ std::cout<<"PASS actual soldier capture: all slots/types, facing, vehicle/destroy transitions, guards, same-slot Clear and scene reload\n";
 }
 '''
     with tempfile.TemporaryDirectory(prefix='soldier-semantic-') as td:

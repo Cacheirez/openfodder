@@ -1,6 +1,6 @@
 # Estado operativo — 2 de noviembre de 2026
 
-**Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). La siguiente implementación empieza por A1/A2: cerrar matriz y composición; los seis frames actuales no cumplen el objetivo.
+**Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo; la ruta SDL aún es la del piloto.
 
 ## Última observación de Miguel
 
@@ -12,7 +12,12 @@ Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el
 - Último código/ZIP probado: `f72d6e792c359cec2f53d006d167738c2104bc66`. CI Windows 41359306896, Linux 41359307009 y comparador 41359306892 PASS. ZIP 13106475504: 303 archivos; 29 fases públicas sin omisiones; lote publica seis claves y conserva 3405 estados H3 Amiga. [Verificación y hashes](evidence/soldier-batch-package.json).
 - Ese PASS es técnico, no cobertura visual completa. Solo dos orientaciones, primer jugador, un parche y retornos conservadores. [Diagnóstico de los cuatro límites](SOLDADOS_COBERTURA_COMPLETA.md#por-qué-se-intercala-el-clásico).
 - Inventario estático nuevo: PC jugador 158 claves, Amiga jugador 159, enemigos 160 por formato; 71 hojas por bando. Marcha: 24 claves por bando. No confundir entradas de tablas con imágenes únicas por producir o estados ya probados. Rutas especiales/civiles/efectos clasificados aparte.
-- No se ha modificado el motor ni arreglado la alternancia en la revisión documental 2.74. No hay un ZIP posterior que la corrija.
+- El bloque posterior A1/A2 amplía la captura real (todos los sprites visibles, incluido el slot auxiliar), conserva apuntado/persona/vehículo/destrucción y añade traza por comando. `OrderedSoldierArt.hpp` compone múltiples cuerpos con recortes y oclusiones, pero sigue **interno, sin conexión a SDL**. No hay un ZIP posterior que corrija la mezcla.
+- Matriz reproducible: [soldier-coverage-matrix.json](evidence/soldier-coverage-matrix.json); 637 claves estáticas y 96 entradas de marcha (24 × 2 bandos × 2 formatos). No son 637 imágenes distintas. Observación de captura ≠ publicación HD. [Detalle de implementación y límites](SOLDADOS_COBERTURA_COMPLETA.md#bloque-interno-a1a2).
+
+## Validación del bloque interno A1/A2
+
+[Informe con hashes](evidence/soldier-a1a2-validation.json): compositor 144 escenarios y captura ASan/UBSan PASS; 4 tests de matriz PASS. Replay real de 11 fases con contraste y 11.361 estados H3 originales PASS (build local Linux sin mixer). 532.749 comandos únicos capturados; 277 claves ordinarias observadas, no publicadas en HD. CI del commit pendiente de consultar; no hay nuevo paquete entregado. Primer intento de trazas truncado, descartado; repetición íntegra en almacenamiento temporal local.
 
 ## Decisiones que se conservan
 
@@ -23,8 +28,8 @@ Objetivo: CF1 modernizado, CD32 principal, presentación suave y nueva sin alter
 ## Para continuar
 
 1. Comprobar HEAD, PR y CI reales. HEAD documental puede ser posterior al código validado.
-2. Leer el catálogo y el productor/compositor afectados; ampliar las pruebas para impedir mezcla normal, no solo verificar que HD aparece alguna vez.
-3. Implementar captura/múltiples cuerpos y cobertura original completa con pasos internos verificables. Entregar otro ZIP solo después de las pruebas pertinentes.
+2. Resolver las rutas/variantes aún pendientes de la matriz, incluida captura en transiciones excluidas; no convertir conteos de captura en aceptación visual.
+3. Conectar el compositor ordenado a publicación SDL con recuperación transaccional, resolver claves de arte por recurso/paleta y preparar las 24 poses originales. Mantener guards del piloto hasta sustituir su ruta; entregar ZIP solo tras cobertura y pruebas pertinentes.
 4. Registrar aceptación visual exacta y límites; no cerrar A/H7 por CI verde.
 
 Recuperación y compilación: [DESARROLLO.md](DESARROLLO.md). Relevo: [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md). Mensajes al usuario: terminar con `Hecho:`, `Situación del plan:` y `Próximos pasos:`. Sin subagentes salvo autorización expresa.
