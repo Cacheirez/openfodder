@@ -30,7 +30,7 @@
     },
     {
       "path": "Source/Sprites/Sprite_Core.cpp",
-      "sha256": "7795d54333543a2d54e3eefab335f54d0acc61bddbc528886ef738f0046b57c7",
+      "sha256": "23d45dd02224eda108f5f3067f5ef2660fd017e0d4ed0314c3b6fadf51f25d63",
       "functions": [
         "Sprite_Destroy",
         "Sprite_Get_Free_Max42",
@@ -237,5 +237,6 @@
     "Function presence and source hashes require human review; not a proof of behavior"
   ],
   "hash_normalization": "CRLF-to-LF only",
-  "followup_review": "H4 soldier pilot: presentation generation in sSprite/Clear and scene/capture hooks in Sprite_Core; vehicle behavior unchanged. Original review remains based on source_commit."
+  "followup_review": "H4 soldier pilot: presentation generation in sSprite/Clear and scene/capture hooks in Sprite_Core; vehicle behavior unchanged. Original review remains based on source_commit.",
+  "a1a2_source_review": "b418959: only CaptureSoldierSemantic changed in Sprite_Core.cpp. Listed vehicle functions compared byte-for-byte with 5f0d7b1 and unchanged. Full-file freshness hash renewed; runtime CD32 remains pending, no H3 baseline change."
 }

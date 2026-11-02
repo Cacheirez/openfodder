@@ -64,7 +64,8 @@
         }
       ],
       "canonical_states": 11361
-    }
+    },
+    "python_suite": "PASS 37 tests after reviewed CD32 manifest refresh"
   },
   "trace_incident": "First scratch replay traces truncated mid-JSON: rejected. Repeated in /tmp, all 11361 original states match. No reference changed.",
   "coverage": {
@@ -117,5 +118,5 @@
       "Continuous visual/CD32 validation pending"
     ]
   },
-  "ci": "Pending for implementation commit; no release/package validation claimed"
+  "ci": "b418959 Windows run 41497745520 failed before build: static CD32 whole-file hash stale after capture change. Listed vehicle functions verified unchanged; manifest corrected. Follow-up CI pending."
 }
