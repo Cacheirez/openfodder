@@ -64,6 +64,12 @@ jobs:
           git submodule update --init --recursive
           git clone https://github.com/OpenFodder/tests.git Run/Tests
           git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
+      - name: A2 - ordered resolver with missing-art gate and original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-ordered --ordered-manifest tools/modernization/ordered-empty-bindings.json --first-phase --pause-probe
       - name: H5.5 - fitted mission pause and resumed inverse with original H3
         env:
           SDL_VIDEODRIVER: dummy
@@ -330,6 +336,7 @@ jobs:
             reports/h4-pose*/
             reports/h6-art*/
             reports/h6-hd*/
+            reports/h6-ordered/
             reports/h6-c01*/
             reports/h5-screen-transform/
             reports/h4-schedule-*/

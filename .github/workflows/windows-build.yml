@@ -50,6 +50,12 @@ jobs:
         run: cmake --build build-win --config Release --parallel 4
       - name: H2.3 - direction lookup boundary tests
         run: ctest --test-dir build-win -C Release --output-on-failure
+      - name: A2 - ordered resolver with missing-art gate and original H3
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_RENDER_DRIVER: software
+          SDL_AUDIODRIVER: dummy
+        run: python tools/modernization/check_mission_publication_replays.py --exe Run/openfodder.exe --data Run --out reports/h6-ordered --ordered-manifest tools/modernization/ordered-empty-bindings.json --first-phase --pause-probe
       - name: H5.5 - fitted mission pause and resumed inverse with original H3
         env:
           SDL_VIDEODRIVER: dummy

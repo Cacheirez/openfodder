@@ -5,6 +5,9 @@
 #include "c01_8.hpp"
 #include "c01_12.hpp"
 #include "Utils/SoldierArtBatch.hpp"
+#include "Utils/OrderedSoldierSDL.hpp"
+#include "Utils/OrderedSoldierRegistry.hpp"
+#include <set>
 
 int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_FRect& dst) {
     const char* option=std::getenv("OPENFODDER_SOLDIER_HD");
@@ -48,6 +51,47 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
         if(layer.operation==openfodder::MissionLayerOperation::Soldier &&
            layer.soldier.soldier.scene!=g_Fodder->mPresentationScene)return classic("stale-scene");
     try {
+        const char* orderedPath=std::getenv("OPENFODDER_SOLDIER_ORDERED_MANIFEST");
+        if(orderedPath && *orderedPath){
+            // Exclusive route: missing bindings never fall into the pilot.
+            static std::string loadedPath;
+            static std::shared_ptr<const openfodder::OrderedSoldierRegistry> registry;
+            try {
+                if(!registry || loadedPath!=orderedPath){
+                    auto next=std::make_shared<const openfodder::OrderedSoldierRegistry>(
+                        openfodder::OrderedSoldierRegistry::Load(orderedPath));
+                    registry=std::move(next);loadedPath=orderedPath;
+                }
+            } catch(const std::exception&) {return classic("ordered-manifest-invalid");}
+            const unsigned density=std::string(option)=="12"?12:8;
+            const char* trace=std::getenv("OPENFODDER_ORDERED_KEYS");
+            const bool traceKeys=trace && std::string(trace)=="1";
+            static std::set<std::string> reportedKeys;
+            std::vector<openfodder::OrderedSoldierAsset> resolvedCommands;
+            bool missing=false;
+            for(const auto& layer:scene.layers){
+                if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
+                const auto& command=layer.soldier;
+                const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
+                const auto resolved=registry->resolve(command,key,density);
+                if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
+                    std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",
+                        key.c_str(),command.soldier.type,command.soldier.sheet,command.soldier.frame,int(resolved.decision));
+                missing|=resolved.decision==openfodder::SoldierArtDecision::Missing;
+                resolvedCommands.push_back(resolved);
+            }
+            // Census first; reject incomplete intervals before CPU/GPU work.
+            if(missing)return classic("ordered-missing-variant");
+            size_t commandIndex=0;
+            const auto frame=openfodder::ComposeOrderedSoldierArt(scene,current.destination,density,
+                [&](const openfodder::PreparedSpriteDraw&){return resolvedCommands.at(commandIndex++);});
+            if(!frame.complete())return classic("ordered-no-body");
+            bool replaced=false;
+            const bool drawn=openfodder::RenderOrderedSoldierHD(mRenderer,frame,image->GetTexture(),src,dst,replaced);
+            if(!replaced)report(drawn?"sdl-error-classic-recovered":"sdl-error-recovery-failed");
+            if(replaced)report("ordered-published");
+            return drawn?1:0;
+        }
         static const auto a8=std::make_shared<const std::vector<uint32_t>>(
             openfodder::SoldierArtPixels8().begin(),openfodder::SoldierArtPixels8().end());
         static const auto a12=std::make_shared<const std::vector<uint32_t>>(
@@ -87,4 +131,7 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
         }
         return drawn?1:0;
     } catch(const std::bad_alloc&) {return classic("allocation-failed");}
+      catch(const std::invalid_argument&) {return classic("ordered-invalid-resource");}
+      catch(const std::out_of_range&) {return classic("ordered-resource-bounds");}
+      catch(const std::length_error&) {return classic("ordered-budget-exceeded");}
 }

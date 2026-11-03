@@ -1,6 +1,6 @@
-# Estado operativo — 2 de noviembre de 2026
+# Estado operativo — 3 de noviembre de 2026
 
-**Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo; la ruta SDL aún es la del piloto.
+**Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo. La ruta ordenada se conecta por manifiesto explícito; el lanzador del piloto no cambia.
 
 ## Última observación de Miguel
 
@@ -12,7 +12,7 @@ Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el
 - Último código/ZIP probado: `f72d6e792c359cec2f53d006d167738c2104bc66`. CI Windows 41359306896, Linux 41359307009 y comparador 41359306892 PASS. ZIP 13106475504: 303 archivos; 29 fases públicas sin omisiones; lote publica seis claves y conserva 3405 estados H3 Amiga. [Verificación y hashes](evidence/soldier-batch-package.json).
 - Ese PASS es técnico, no cobertura visual completa. Solo dos orientaciones, primer jugador, un parche y retornos conservadores. [Diagnóstico de los cuatro límites](SOLDADOS_COBERTURA_COMPLETA.md#por-qué-se-intercala-el-clásico).
 - Inventario estático nuevo: PC jugador 158 claves, Amiga jugador 159, enemigos 160 por formato; 71 hojas por bando. Marcha: 24 claves por bando. No confundir entradas de tablas con imágenes únicas por producir o estados ya probados. Rutas especiales/civiles/efectos clasificados aparte.
-- El bloque posterior A1/A2 amplía la captura real (todos los sprites visibles, incluido el slot auxiliar), conserva apuntado/persona/vehículo/destrucción y añade traza por comando. `OrderedSoldierArt.hpp` compone múltiples cuerpos con recortes y oclusiones, pero sigue **interno, sin conexión a SDL**. No hay un ZIP posterior que corrija la mezcla.
+- El bloque posterior A1/A2 amplía la captura real (todos los sprites visibles, incluido el slot auxiliar), conserva apuntado/persona/vehículo/destrucción y añade traza por comando. `OrderedSoldierArt.hpp` compone múltiples cuerpos con recortes y oclusiones, conectado ahora a SDL mediante manifiesto explícito para desarrollo. No hay un ZIP posterior que corrija la mezcla.
 - Matriz reproducible: [soldier-coverage-matrix.json](evidence/soldier-coverage-matrix.json); 637 claves estáticas y 96 entradas de marcha (24 × 2 bandos × 2 formatos). No son 637 imágenes distintas. Observación de captura ≠ publicación HD. [Detalle de implementación y límites](SOLDADOS_COBERTURA_COMPLETA.md#bloque-interno-a1a2).
 
 ## Validación del bloque interno A1/A2
@@ -21,7 +21,13 @@ Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el
 
 ## Siguiente bloque A2: publicación SDL interna
 
-`OrderedSoldierSDL.hpp` publica el resultado ordenado como fondo nativo y franjas HD disjuntas. Carga todas las texturas antes de dibujar, recorta contra la vista y recupera la vista clásica completa ante un fallo parcial. Rechaza cobertura incompleta. Pruebas locales SDL software: 348 casos PC/Amiga a 8×/12× con ASan/UBSan, más los 144 casos CPU. [Evidencia](evidence/soldier-ordered-sdl-validation.json). Añadido a CTest Windows/Linux. **No conectado aún a `WindowHD`**: falta resolver recursos/paletas y completar arte; GPU y recorrido real pendientes. No hay nuevo ZIP ni corrección visual entregada.
+`OrderedSoldierSDL.hpp` publica el resultado ordenado como fondo nativo y franjas HD disjuntas. Carga todas las texturas antes de dibujar, recorta contra la vista y recupera la vista clásica completa ante un fallo parcial. Rechaza cobertura incompleta. Pruebas locales SDL software: 348 casos PC/Amiga a 8×/12× con ASan/UBSan, más los 144 casos CPU. [Evidencia](evidence/soldier-ordered-sdl-validation.json). Añadido a CTest Windows/Linux. **Conectado a `WindowHD` mediante `OPENFODDER_SOLDIER_ORDERED_MANIFEST`**. Resolución por contenido del recurso y paleta RGB efectiva; desconocidos bloquean todo el intervalo. Faltan vinculaciones/arte completos, transiciones y GPU/recorrido visual. No hay nuevo ZIP ni corrección visual entregada.
+
+## Integración por recurso/paleta — 3 de noviembre
+
+CI de `060c0b1`: Windows 41533396790 y comparador 41533396822 PASS. Linux 41533397215 compiló y pasó 15 CTests, pero falló en el inventario estricto de llamadas SDL, que no incluía las cuatro del adaptador. Inventario corregido; no atribuir PASS a los pasos omitidos.
+
+La ruta ordenada de `WindowHD` mantiene el contraste clásico y los guards de escena/pausa/renderer. Resuelve claves estables antes de componer y no cae al piloto si faltan vinculaciones. La recuperación conserva toda la vista. El código local del intento anterior se perdió antes de publicarse; se reconstruyó desde el hilo y se repiten sus pruebas. No reutilizar resultados H3 perdidos. [Contrato](SOLDADOS_COBERTURA_COMPLETA.md#resolución-de-variantes-e-integración-windowhd). Consultar nueva CI y evidencia del commit antes de atribuir resultados.
 
 ## Decisiones que se conservan
 
@@ -33,7 +39,7 @@ Objetivo: CF1 modernizado, CD32 principal, presentación suave y nueva sin alter
 
 1. Comprobar HEAD, PR y CI reales. HEAD documental puede ser posterior al código validado.
 2. Resolver las rutas/variantes aún pendientes de la matriz, incluida captura en transiciones excluidas; no convertir conteos de captura en aceptación visual.
-3. Conectar el compositor ordenado a publicación SDL con recuperación transaccional, resolver claves de arte por recurso/paleta y preparar las 24 poses originales. Mantener guards del piloto hasta sustituir su ruta; entregar ZIP solo tras cobertura y pruebas pertinentes.
+3. Completar vinculaciones explícitas por recurso/paleta y las 24 poses originales, después los demás estados/entidades censados. La ruta ordenada está conectada por manifiesto; faltan transiciones/GPU y cobertura antes de cambiar el lanzador. Entregar ZIP solo tras cobertura y pruebas pertinentes.
 4. Registrar aceptación visual exacta y límites; no cerrar A/H7 por CI verde.
 
 Recuperación y compilación: [DESARROLLO.md](DESARROLLO.md). Relevo: [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md). Mensajes al usuario: terminar con `Hecho:`, `Situación del plan:` y `Próximos pasos:`. Sin subagentes salvo autorización expresa.

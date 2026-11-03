@@ -9,6 +9,9 @@ def build():
 #include "test_soldier_art_sdl.cpp"
 #include "Utils/SoldierArtCompare.hpp"
 #include "Utils/SoldierArtBatch.hpp"
+#include "Utils/OrderedSoldierSDL.hpp"
+#include "Utils/OrderedSoldierRegistry.hpp"
+#include <set>
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {
     MissionLayerSequence scene;bool active=true,adjusting=false,loaded=false;SDL_Texture* tex=nullptr;int verified=0;
@@ -78,6 +81,7 @@ int main(){
     }
     env("OPENFODDER_SOLDIER_BATCH","0");image.scene.layers={body};
     for(const char* d:{"0","bad","9"}){env("OPENFODDER_SOLDIER_HD",d);assert(win.TryRenderMissionHD(&image,src,dst)==-1);}
+    #include "ordered_window_cases.inc"
     assert(live==0);SDL_DestroyTexture(image.tex);SDL_DestroyRenderer(renderer);SDL_DestroySurface(surface);
     std::cout<<"PASS actual Window HD method: enable/disable, pause/map/callback, palette, destination, scene generation, renderer state and resume\n";
 }

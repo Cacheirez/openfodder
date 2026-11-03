@@ -78,7 +78,7 @@ Esta revisión cambia alcance y pruebas; **no corrige todavía el ejecutable f72
 - Recorte: dimensiones variables del recurso original y coordenadas de muestra derivadas de `sourceOffset`, columnas/filas ya preparadas y `rowsToSkip`. No estira el trozo visible ni reinterpreta el joystick. Geometrías inválidas, formatos/pitch no admitidos o activos inconsistentes fallan explícitamente. Los tests cubren agua, arriba/abajo y laterales PC; laterales Amiga reales siguen pendientes.
 - Resolución artística: el llamador debe verificar recurso/variante completo y clasificar explícitamente lo que conserva clásico. Un recurso faltante se registra como `Missing`; no puede satisfacer `complete()`. Ese método comprueba únicamente el intervalo interno, **no aceptación global ni publicación SDL**. Los tests usan colores sintéticos, no arte nuevo aceptado.
 
-**Límite de este bloque:** el compositor nuevo aún no sustituye `ComposeSoldierArtHDLayers` ni `TryRenderMissionHD`. Los guards del piloto permanecen. Falta resolver arte por recurso/paleta, conectar la salida y recuperación SDL, cubrir transiciones y ejecutar la secuencia continua completa. No representa un ejecutable con la mezcla corregida. El alcance H0–H10 se conserva.
+**Límite del bloque CPU inicial:** no sustituía `ComposeSoldierArtHDLayers` ni `TryRenderMissionHD`; la integración posterior por manifiesto se describe abajo. Los guards del piloto permanecen. Falta resolver arte por recurso/paleta, conectar la salida y recuperación SDL, cubrir transiciones y ejecutar la secuencia continua completa. No representa un ejecutable con la mezcla corregida. El alcance H0–H10 se conserva.
 
 ## Adaptador SDL ordenado (interno)
 
@@ -86,4 +86,24 @@ Esta revisión cambia alcance y pruebas; **no corrige todavía el ejecutable f72
 
 La falta de recursos impide la publicación parcial. Cualquier fallo de dibujo restaura toda la vista desde la textura clásica independiente, desactivando temporalmente su mezcla; un fallo de recuperación devuelve error. Ninguna textura sobrevive a la llamada. Pruebas: comparación exacta con lienzo HD a escala entera y recorte atravesando cuerpos, agua, superposición, oclusión del mismo color, todas las llamadas SDL fallables, restauración de mezcla, recurso faltante, datos inválidos y reentrada. SDL software y ASan/UBSan; LSan no disponible bajo ptrace local.
 
-Sigue pendiente el resolver de recursos/variantes y su conexión desde `TryRenderMissionHD`, las poses completas, transiciones y GPU/recorrido visual. Este adaptador no cambia la ruta del piloto ni elimina sus guards. [Informe](evidence/soldier-ordered-sdl-validation.json).
+La integración posterior por manifiesto conecta desde `TryRenderMissionHD`; siguen pendientes las vinculaciones completas, poses, transiciones y GPU/recorrido visual. Este adaptador no cambia la ruta del piloto ni elimina sus guards. [Informe](evidence/soldier-ordered-sdl-validation.json).
+
+## Resolución de variantes e integración WindowHD
+
+`SoldierVariant.hpp` calcula SHA-256 sobre formato, segmento, offset, dimensiones/planos, tipo/persona, hoja/frame/animación, vehículo/destrucción, geometría original, bytes de la pose completa sin recorte y los 255 colores RGB efectivos de presentación. No usa punteros ni generaciones de proceso. Posición, slot, escena, reloj y recortes no cambian la clave. Los colores no usados también cuentan: decisión conservadora que evita extrapolar equivalencias sin revisar. El diagnóstico emite hashes, no bytes gráficos privados.
+
+`OrderedSoldierRegistry.hpp` carga vinculaciones explícitas; rechaza versión/clave/decisión inválidas, duplicados, más de 8192 entradas o ficheros mayores de 8 MiB. Se carga una vez por ruta: reiniciar para aplicar ediciones. Observar una clave no crea ni aprueba su vinculación. El formato inicial permite las seis poses existentes; extenderlo para el resto del arte sigue pendiente.
+
+```json
+{"version":1,"bindings":[
+  {"key":"<SHA-256 de 64 caracteres observado y revisado>","decision":"replace-pilot","sheet":7,"frame":0}
+]}
+```
+
+El marcador del ejemplo no es una clave válida. `replace-pilot` exige jugador, pose 16×14, hoja/frame del activo, sin vehículo/destrucción y los offsets originales soportados; admite todos los slots y recortes del compositor. `keep-associated` solo permite claves exactas de marcador 0x7C o tipos/hojas asociados expresamente enumerados. No permite ignorar cuerpos o civiles desconocidos.
+
+Activación interna: captura/publicación de misión, densidad HD 8/12 y `OPENFODDER_SOLDIER_ORDERED_MANIFEST` con ruta al JSON. `OPENFODDER_ORDERED_KEYS=1` registra claves únicas, máximo 8192 por proceso; `OPENFODDER_HD_DIAGNOSTICS=1` registra motivos. El manifiesto vacío `tools/modernization/ordered-empty-bindings.json` prueba el rechazo y no sustituye soldados. El lanzador de Miguel no se modifica ni se entrega como corregido.
+
+El método real verifica el contraste clásico independiente, resuelve todos los comandos del destino y rechaza faltantes antes de la composición CPU o carga GPU. Si el intervalo tiene recursos suficientes, compone y publica en orden. Un fallo de carga no reutiliza otro manifiesto; esta rama nunca cae al piloto. Continúan los guards de pausa, mapa, paleta y renderer, pendientes de tratamiento posterior.
+
+Las pruebas del método real incluyen vectores SHA-256, identidad estable con movimiento/agua/generación, sensibilidad a bytes/paleta/persona/offset, límites del recurso, duplicados, intento de conservar un cuerpo, varios soldados, agua, oclusión, faltantes y reentrada. Comparación exacta con lienzo HD expandido a escala entera. El runner `check_mission_publication_replays.py --ordered-manifest ...` comprueba ruta y H3, manteniendo cobertura artística `PENDING`; CI añade las primeras fases PC/Amiga con pausa. Un PASS de rechazo por manifiesto vacío no es una prueba de publicación HD real ni cobertura completa.

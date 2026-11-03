@@ -74,9 +74,13 @@ def main():
     p.add_argument('--screen-probe', action='store_true', help='Require presented mission transform and inverse; replay input remains canonical')
     p.add_argument('--art-probe', action='store_true', help='C01 RGBA pilot; require at least one actual selected-pose replacement across the declared campaigns')
     p.add_argument('--hd-probe',type=int,choices=(8,12),help='Require optional SDL HD patch publication')
+    p.add_argument('--ordered-manifest', type=Path, help='Exercise ordered resolver; art coverage remains PENDING')
+    p.add_argument('--ordered-density', type=int, choices=(8,12), default=12)
     p.add_argument('--timeout', type=int, default=1200)
     args = p.parse_args()
-    args.soldier_probe = args.soldier_probe or args.pose_probe or args.art_probe or bool(args.hd_probe)
+    if args.ordered_manifest and (args.hd_probe or args.art_probe or args.pose_probe):
+        p.error('ordered and pilot probes are exclusive')
+    args.soldier_probe = args.soldier_probe or args.pose_probe or args.art_probe or bool(args.hd_probe) or bool(args.ordered_manifest)
     root = Path(__file__).resolve().parents[2]
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -85,6 +89,10 @@ def main():
                 'publication': True, 'contrast': True, 'cadence': 'classic producers', 'mission_presentations': args.presentations if args.presentations is not None else 1,
                 'pause_probe': args.pause_probe, 'soldier_probe': args.soldier_probe, 'pose_probe': args.pose_probe, 'art_probe': args.art_probe, 'hd_probe':args.hd_probe,
                 'coverage': 'first phase per campaign' if args.first_phase else '11 reference phases'}
+    if args.ordered_manifest:
+        settings['ordered_manifest_sha256'] = hashlib.sha256(args.ordered_manifest.read_bytes()).hexdigest()
+        settings['ordered_density'] = args.ordered_density
+        settings['art_coverage'] = 'PENDING; replay PASS validates integration and H3 only'
     if args.screen_probe:
         settings['flags'] += ['--window', '--alternate-mouse']
         settings['screen_probe'] = True
@@ -104,7 +112,10 @@ def main():
                        OPENFODDER_MISSION_SCREEN_TRANSFORM='1' if args.screen_probe else '0',
                        OPENFODDER_MISSION_SCREEN_FIT='1' if args.screen_probe else '0',
                        OPENFODDER_AUDIT_MISSION_LAYERS='0',
-                       OPENFODDER_SOLDIER_HD=str(args.hd_probe or 0),
+                       OPENFODDER_SOLDIER_HD=str(args.ordered_density if args.ordered_manifest else args.hd_probe or 0),
+                       OPENFODDER_SOLDIER_ORDERED_MANIFEST=str(args.ordered_manifest.resolve()) if args.ordered_manifest else '',
+                       OPENFODDER_ORDERED_KEYS='1' if args.ordered_manifest else '0',
+                       OPENFODDER_HD_DIAGNOSTICS='1' if args.ordered_manifest else os.environ.get('OPENFODDER_HD_DIAGNOSTICS','0'),
                        OPENFODDER_SOLDIER_ART='1' if args.art_probe else '0',
                        OPENFODDER_REPLACE_SOLDIER_POSE='1' if args.pose_probe else '0',
                        OPENFODDER_CAPTURE_SOLDIER='1' if args.soldier_probe else '0',
@@ -145,12 +156,21 @@ def main():
             for marker in markers:
                 if marker not in log:
                     raise RuntimeError('Inactive publication/contrast/schedule: ' + campaign)
+            if args.ordered_manifest and args.presentations!=0:
+                if 'SOLDIER_ORDERED_KEY:' not in log or 'SOLDIER_HD_SDL: published native background and HD patch' in log:
+                    raise RuntimeError('Ordered resolver inactive or pilot route used: ' + campaign)
+                for error in ('ordered-manifest-invalid','ordered-invalid-resource','ordered-resource-bounds','ordered-budget-exceeded'):
+                    if 'SOLDIER_HD_REASON: '+error in log:
+                        raise RuntimeError('Ordered integration error: '+error)
             soldier_scenes = verify_soldier_probe(log, phases) if args.soldier_probe else 0
             pose_scenes = verify_pose_probe(log, phases) if args.pose_probe else 0
             pauses = verify_pause_probe(log, phases) if args.pause_probe else 0
             results['campaigns'].append({'campaign': campaign, 'phases': phases,
                                         'pause_transitions': pauses, 'soldier_scenes': soldier_scenes, 'pose_scenes': pose_scenes, 'art_scenes': art_probe_scenes(log) if args.art_probe else 0,
                                         'hd_published': 'SOLDIER_HD_SDL: published native background and HD patch' in log,
+                                        'ordered_variant_keys': log.count('SOLDIER_ORDERED_KEY:') if args.ordered_manifest else 0,
+                                        'ordered_published': 'SOLDIER_HD_REASON: ordered-published' in log,
+                                        'ordered_missing': 'SOLDIER_HD_REASON: ordered-missing-variant' in log,
                                         'seconds': report['seconds'],
                                         'executable_sha256': report['executable_sha256']})
         if args.hd_probe and args.presentations!=0 and not any(c['hd_published'] for c in results['campaigns']):

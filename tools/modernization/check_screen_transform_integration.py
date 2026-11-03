@@ -19,6 +19,7 @@ def build():
             key=(path.relative_to(ROOT).as_posix(),api)
             sinks[key]=sinks.get(key,0)+1
     assert sinks=={('Source/Utils/SoldierArtSDL.hpp','SDL_RenderTexture'):4,
+                   ('Source/Utils/OrderedSoldierSDL.hpp','SDL_RenderTexture'):4,
                    ('Source/Window.cpp','SDL_RenderTexture'):2,
                    ('Source/Window.cpp','SDL_RenderPresent'):1,
                    ('Source/VideoMPEG.cpp','SDL_RenderTexture'):1}, sinks
