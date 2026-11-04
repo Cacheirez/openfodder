@@ -72,92 +72,145 @@
       "key": "29effe88bcd701970a20c6e4c7255ba5b9da0e779bf76911070ef7b0fc0cf881",
       "sheet": 7,
       "frame": 2,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 50,
+      "state": "Slide1-shared-body",
+      "native_rgba_sha256": "858c1782c8d26fa457510bc24c5cd1a90f4e737989e94643376e921000bb0a5e",
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746"
     },
     {
       "platform": "PC",
       "key": "87e0af2e624443fbeeec40082d0b09bcf2e6ffa48bf2c133241b2ee6e420c397",
       "sheet": 7,
       "frame": 2,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "858c1782c8d26fa457510bc24c5cd1a90f4e737989e94643376e921000bb0a5e",
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746"
     },
     {
       "platform": "PC",
       "key": "94e14a98d443a72c5eef5fc0311f465c5e41fb402ee9132db0e1a690d62ebe0c",
       "sheet": 7,
       "frame": 0,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "5c990664fc67c57d052d102541429e032be72bfc3b68be415ca95df8fd8f689f",
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746"
     },
     {
       "platform": "PC",
       "key": "adfda6349037bf93286bca94ecf6ac5eccc729e62d70e7327a51f4471748c718",
       "sheet": 7,
       "frame": 2,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "e67b8799a6fd7b270beb5def7e1379ff78fe7cb48a3e0663ae4098354ebcabe8",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
     },
     {
       "platform": "PC",
       "key": "aefd7343289cbff9125bb7d4d6b383fce6e98d5a7d4f9a1ad9a979537655d3da",
       "sheet": 7,
       "frame": 1,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "70035ff59846ed8c6cdcb9bffb641f9b9337700978dde1dc772d1526bbbf4ed5",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
     },
     {
       "platform": "PC",
       "key": "c6785c4c6c6ce7bbfbc57fcca6fed026a8cd1b82fa2a5a75dc3a7b435d8997e0",
       "sheet": 7,
       "frame": 1,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "45f3904150ac889520e3e6f0cf4c795434e424d08b1f88699829db6e27eb3e3e",
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746"
     },
     {
       "platform": "PC",
       "key": "cd1d3f7f72a06de38d608f67aa29e108d5fa8bc38044cb28b583101e999b75bd",
       "sheet": 7,
       "frame": 0,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "211bf7bfcc979a2d6b0785039cb1f21b269f20f86602a9e7b897be06eb4d45b0",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
     },
     {
       "platform": "Amiga",
       "key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
       "sheet": 7,
       "frame": 0,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "a8fc9fdaea351682135675bfa572b63916d4e148918a7b72a5e789fec11d0bab",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
     },
     {
       "platform": "Amiga",
       "key": "29446d182424162a0e905366b62d12c0bb2b7290833c52206440d65dfd209e06",
       "sheet": 7,
       "frame": 2,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "8b63db0d0554c5191c101f9d3d481d29fa83f55fa5e45f655792708723e14c8f",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
     },
     {
       "platform": "Amiga",
       "key": "29c8f9efacbe54fc2102deba281fe286ed2778999f4e74be7eaa6958cf8240ca",
       "sheet": 7,
       "frame": 1,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "39230c3430af6f92d2a988f7f9ac5d077f3b4b91c1876a9f84ce062c4fa646fd",
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9"
     },
     {
       "platform": "Amiga",
       "key": "5f1228f6df5d1bd412ade7595398a9050b36382013b5c2f6a7950cbfec87c515",
       "sheet": 7,
       "frame": 0,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "cf3f2ee522284ee62e63184e3daa8d642053631cd74a68ed44eb4a5e0d0fab65",
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9"
     },
     {
       "platform": "Amiga",
       "key": "829de99ac763bcf357493634493d72e9a8949a2163ef41262575fb2fde5b4c4c",
       "sheet": 7,
       "frame": 1,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "8c0dd186a9f78aa0fb148fd35943583482e1cd74f0fa0a201b32502cb8a46788",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
     },
     {
       "platform": "Amiga",
       "key": "95393641765c5f3ef9ff5fb8d980b748ef3c4c0a0537121f065ce824e119b92f",
       "sheet": 7,
       "frame": 2,
-      "status": "candidate-resource-review-pending"
+      "status": "native-resource-key-and-sdl-verified-art-acceptance-pending",
+      "animation": 0,
+      "state": "ordinary-walk",
+      "native_rgba_sha256": "951eb712a29eb7454493b93702d2aff654ae557ac61f87a283e08947e233bba3",
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9"
     }
   ],
-  "acceptance": "PENDING: native pose correspondence, resource/palette appearance, continuous campaign and user review"
+  "acceptance": "PENDING: user artistic acceptance, other 21 walk keys, complete campaign HD, GPU/CD32; current 13 native keys reconstructed and SDL-tested",
+  "native_verification": "docs/modernization/evidence/soldier-native-walk-validation.json"
 }

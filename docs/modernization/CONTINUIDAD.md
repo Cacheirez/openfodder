@@ -1,4 +1,4 @@
-# Estado operativo — 4 de noviembre de 2026
+# Estado operativo — 5 de noviembre de 2026
 
 **Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo. La ruta ordenada se conecta por manifiesto explícito; el lanzador del piloto no cambia.
 
@@ -56,6 +56,18 @@ Preparación reproducible con los constructores existentes: seis derivados RGBA/
 Prueba del método real Window/SDL con este arte: 32 intervalos y 64 cuerpos publicados, PC/Amiga, 8×/12×, dos variantes de persona/paleta, dos soldados, agua/oclusión, ASan/UBSan PASS. CTest `soldier_walk_art_review` añadido. [Evidencia](evidence/soldier-walk-art-review.json). H3 completo no repetido en este bloque de arte/utillaje: no cambia código del motor, reglas ni referencias. CI del nuevo commit pendiente al publicar.
 
 **Siguiente paso:** contrastar este ciclo con los frames nativos y sus recursos/paletas reales; continuar con las otras 21 claves de marcha. La galería interna permite detectar escala/apoyo, pero no es un recorrido de campaña ni aceptación de Miguel. Las poses 1/2 son provisionales; los demás estados, enemigos, transiciones y GPU/CD32 siguen pendientes. La alternancia del ejecutable sigue NO resuelta como producto. Sin ZIP.
+
+## Contraste nativo y vinculaciones reales — 5 de noviembre
+
+CI de `3e8592c` comprobada: Windows 41884964506, Linux 41884964393 y comparador 41884964392 PASS. PR #1 abierta, borrador, sin fusionar.
+
+Bloque de contraste técnico completado para las demos públicas: 112 instantáneas reales (56 PC + 56 Amiga), con las 24 claves ordinarias de marcha por plataforma. Se recuperan píxeles y paletas efectivos, se verifica el hash del recurso y se recalcula cada clave antes de rasterizar. Copia diagnóstica separada de WindowHD, sin modificar el motor distribuido. Bytes originales, paletas y comparador nativo permanecen locales. [Contrato y reproducción](NATIVE_WALK_REVIEW.md).
+
+Las 13 vinculaciones diagonales se reprodujeron con recursos reales, sin claves sintéticas: 12 de marcha y una de `Slide1` (0x32) que comparte 7/2, clasificada aparte. ASan/UBSan, método real SDL: cuatro ciclos 0–1–2–1 y Slide1, dos soldados, agua/oclusión, 8×/12×, 34 intervalos y 68 cuerpos publicados; C01 idéntico. 24 claves nativas por plataforma revisadas internamente frente a las poses disponibles; las poses artísticas siguen provisionales y no hay aceptación visual nueva de Miguel. [Evidencia y hashes](evidence/soldier-native-walk-validation.json).
+
+H3 completo PASS en repetición canónica con trazas íntegras en memoria: 11 fases, 11.361 estados y 22 pausas/reanudaciones originales. Primer intento directo paralelo con trazas JSONL incompletas descartado; no se cambia la referencia. Añadido CTest de reconstrucción con píxeles conocidos PC/Amiga y 12 negativos; pruebas locales ASan/UBSan PASS. CI del nuevo commit pendiente al publicar.
+
+**Siguiente bloque A3:** producir/contrastar las otras 21 claves artísticas (incluidas las tres izquierdas aún provisionales), usando las referencias nativas ya recuperadas. Después, estados/enemigos y transiciones. No repetir censo, exportación ni resolver sin una regresión concreta. Este bloque no añade esas 21 poses, no cierra A3, no acredita publicación HD de una campaña completa y no cambia el lanzador ni entrega ZIP. La alternancia sigue NO resuelta como producto.
 
 ## Decisiones que se conservan
 

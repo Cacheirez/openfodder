@@ -32,6 +32,7 @@ def build():
 #undef SDL_RenderTexture
 #include "Utils/OrderedSoldierRegistry.hpp"
 #include "Utils/OrderedSoldierCoverage.hpp"
+#include "native_walk_snapshot.hpp"
 #include <set>
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {
@@ -78,7 +79,9 @@ int main(){
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);
     cWindow win;win.mRenderer=renderer;SDL_FRect src{0,0,96,64},dst{0,0,192,128};
 #ifdef OPENFODDER_EXTERNAL_ASSET_FIXTURE
-    if(std::getenv("OPENFODDER_WALK_ART_REVIEW")){
+    if(std::getenv("OPENFODDER_WALK_NATIVE_REVIEW")){
+        #include "walk_native_cases.inc"
+    } else if(std::getenv("OPENFODDER_WALK_ART_REVIEW")){
         #include "walk_art_cases.inc"
     } else {
         #include "ordered_asset_cases.inc"

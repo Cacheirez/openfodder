@@ -201,6 +201,15 @@ if(Python3_Interpreter_FOUND)
         --c01-builder $<TARGET_FILE:openfodder_art_builder>
         --batch-builder $<TARGET_FILE:openfodder_batch_builder>
         --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    add_executable(openfodder_native_walk_renderer tools/modernization/render_walk_native.cpp)
+    add_executable(openfodder_native_walk_snapshot_test tools/modernization/test_native_walk_snapshot.cpp)
+    foreach(_native_target IN ITEMS openfodder_native_walk_renderer openfodder_native_walk_snapshot_test)
+        target_include_directories(${_native_target} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+    endforeach()
+    add_test(NAME soldier_native_walk_snapshot COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_native_walk_snapshot.py"
+        --fixture $<TARGET_FILE:openfodder_native_walk_snapshot_test>
+        --renderer $<TARGET_FILE:openfodder_native_walk_renderer>)
     if(WIN32)
         foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests openfodder_external_asset_tests)
             add_custom_command(TARGET ${_hd_test} POST_BUILD
