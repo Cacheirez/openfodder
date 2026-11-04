@@ -178,6 +178,9 @@ if(Python3_Interpreter_FOUND)
     target_include_directories(openfodder_hd_window_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization" "${CMAKE_CURRENT_BINARY_DIR}")
     target_link_libraries(openfodder_hd_window_tests PRIVATE SDL3::SDL3)
     add_test(NAME soldier_hd_window_lifecycle COMMAND $<TARGET_FILE:openfodder_hd_window_tests>)
+    add_test(NAME soldier_ordered_coverage COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_coverage_integration.py"
+        --exe $<TARGET_FILE:openfodder_hd_window_tests>)
     if(WIN32)
         foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests)
             add_custom_command(TARGET ${_hd_test} POST_BUILD

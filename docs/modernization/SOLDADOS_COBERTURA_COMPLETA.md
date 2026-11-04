@@ -107,3 +107,16 @@ Activación interna: captura/publicación de misión, densidad HD 8/12 y `OPENFO
 El método real verifica el contraste clásico independiente, resuelve todos los comandos del destino y rechaza faltantes antes de la composición CPU o carga GPU. Si el intervalo tiene recursos suficientes, compone y publica en orden. Un fallo de carga no reutiliza otro manifiesto; esta rama nunca cae al piloto. Continúan los guards de pausa, mapa, paleta y renderer, pendientes de tratamiento posterior.
 
 Las pruebas del método real incluyen vectores SHA-256, identidad estable con movimiento/agua/generación, sensibilidad a bytes/paleta/persona/offset, límites del recurso, duplicados, intento de conservar un cuerpo, varios soldados, agua, oclusión, faltantes y reentrada. Comparación exacta con lienzo HD expandido a escala entera. El runner `check_mission_publication_replays.py --ordered-manifest ...` comprueba ruta y H3, manteniendo cobertura artística `PENDING`; CI añade las primeras fases PC/Amiga con pausa. Un PASS de rechazo por manifiesto vacío no es una prueba de publicación HD real ni cobertura completa.
+
+
+## Evidencia transaccional de publicación ordenada — 4 de noviembre
+
+`OPENFODDER_ORDERED_COVERAGE=1` activa una traza por intento en la ruta ordenada, después del contraste clásico y de los guards de misión. `SOLDIER_ORDERED_COMMAND` identifica escena/intervalo/orden, slot/generación, tipo/hoja/frame, clave efectiva y decisión. `SOLDIER_ORDERED_RESULT` cierra el intento con censo esperado/observado y resultado: publicación, variante faltante, ausencia de cuerpo, manifiesto inválido, recuperación clásica, recuperación fallida o interrupción por excepción. Un censo parcial conserva el número de comandos sin resolver. Desactivada por defecto; usar en recorridos acotados para evitar logs masivos.
+
+```bash
+python tools/modernization/ordered_soldier_coverage.py --log engine.log --out coverage.json
+```
+
+Cada entrada `--log` debe corresponder a un proceso. El analizador rechaza registros truncados, contadores incoherentes, órdenes duplicados o una publicación sin censo completo. Separa presentaciones de comandos únicos por escena/intervalo/orden y agrupa variantes y estados por entidad. Una decisión `replace` solo suma publicación cuando termina la transacción SDL; una recuperación clásica nunca la acredita. Los guards previos (pausa/mapa/paleta/renderer) quedan fuera de esta traza y siguen pendientes: la ausencia de registros no es cobertura. Tampoco acredita que cada cuerpo conserve píxeles visibles tras oclusiones posteriores. El veredicto global permanece `PENDING`, incluso con todos los intentos registrados publicados. [Evidencia del bloque](evidence/soldier-ordered-coverage-validation.json).
+
+CTest añade `soldier_ordered_coverage`, que ejecuta el método real con diagnóstico desactivado/activado y comprueba los resultados SDL, errores y repetición de presentaciones. No cambia el lanzador ni añade arte. El siguiente avance de contenido requiere ampliar el resolver más allá de los seis activos y verificar una secuencia original completa, además de las transiciones pendientes.

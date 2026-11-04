@@ -9,8 +9,21 @@ def build():
 #include "test_soldier_art_sdl.cpp"
 #include "Utils/SoldierArtCompare.hpp"
 #include "Utils/SoldierArtBatch.hpp"
+#define SDL_CreateTexture create
+#define SDL_DestroyTexture destroy
+#define SDL_SetTextureBlendMode blend
+#define SDL_SetTextureScaleMode scale
+#define SDL_UpdateTexture update
+#define SDL_RenderTexture render
 #include "Utils/OrderedSoldierSDL.hpp"
+#undef SDL_CreateTexture
+#undef SDL_DestroyTexture
+#undef SDL_SetTextureBlendMode
+#undef SDL_SetTextureScaleMode
+#undef SDL_UpdateTexture
+#undef SDL_RenderTexture
 #include "Utils/OrderedSoldierRegistry.hpp"
+#include "Utils/OrderedSoldierCoverage.hpp"
 #include <set>
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {

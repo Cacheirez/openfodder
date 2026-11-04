@@ -7,6 +7,7 @@
 #include "Utils/SoldierArtBatch.hpp"
 #include "Utils/OrderedSoldierSDL.hpp"
 #include "Utils/OrderedSoldierRegistry.hpp"
+#include "Utils/OrderedSoldierCoverage.hpp"
 #include <set>
 
 int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_FRect& dst) {
@@ -53,6 +54,8 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     try {
         const char* orderedPath=std::getenv("OPENFODDER_SOLDIER_ORDERED_MANIFEST");
         if(orderedPath && *orderedPath){
+            const unsigned density=std::string(option)=="12"?12:8;
+            openfodder::OrderedSoldierCoverage coverage(scene,current.destination,density);
             // Exclusive route: missing bindings never fall into the pilot.
             static std::string loadedPath;
             static std::shared_ptr<const openfodder::OrderedSoldierRegistry> registry;
@@ -62,18 +65,21 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                         openfodder::OrderedSoldierRegistry::Load(orderedPath));
                     registry=std::move(next);loadedPath=orderedPath;
                 }
-            } catch(const std::exception&) {return classic("ordered-manifest-invalid");}
-            const unsigned density=std::string(option)=="12"?12:8;
+            } catch(const std::exception&) {
+                coverage.finish("manifest-invalid");return classic("ordered-manifest-invalid");
+            }
             const char* trace=std::getenv("OPENFODDER_ORDERED_KEYS");
             const bool traceKeys=trace && std::string(trace)=="1";
             static std::set<std::string> reportedKeys;
             std::vector<openfodder::OrderedSoldierAsset> resolvedCommands;
             bool missing=false;
-            for(const auto& layer:scene.layers){
+            for(size_t order=0;order<scene.layers.size();++order){
+                const auto& layer=scene.layers[order];
                 if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
                 const auto& command=layer.soldier;
                 const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
                 const auto resolved=registry->resolve(command,key,density);
+                coverage.resolved(order,key,resolved.decision);
                 if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
                     std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",
                         key.c_str(),command.soldier.type,command.soldier.sheet,command.soldier.frame,int(resolved.decision));
@@ -81,13 +87,14 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                 resolvedCommands.push_back(resolved);
             }
             // Census first; reject incomplete intervals before CPU/GPU work.
-            if(missing)return classic("ordered-missing-variant");
+            if(missing){coverage.finish("missing-variant");return classic("ordered-missing-variant");}
             size_t commandIndex=0;
             const auto frame=openfodder::ComposeOrderedSoldierArt(scene,current.destination,density,
                 [&](const openfodder::PreparedSpriteDraw&){return resolvedCommands.at(commandIndex++);});
-            if(!frame.complete())return classic("ordered-no-body");
+            if(!frame.complete()){coverage.finish("no-body");return classic("ordered-no-body");}
             bool replaced=false;
             const bool drawn=openfodder::RenderOrderedSoldierHD(mRenderer,frame,image->GetTexture(),src,dst,replaced);
+            coverage.finish(replaced?"published":drawn?"classic-recovered":"recovery-failed");
             if(!replaced)report(drawn?"sdl-error-classic-recovered":"sdl-error-recovery-failed");
             if(replaced)report("ordered-published");
             return drawn?1:0;

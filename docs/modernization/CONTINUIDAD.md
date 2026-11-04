@@ -1,4 +1,4 @@
-# Estado operativo — 3 de noviembre de 2026
+# Estado operativo — 4 de noviembre de 2026
 
 **Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo. La ruta ordenada se conecta por manifiesto explícito; el lanzador del piloto no cambia.
 
@@ -28,6 +28,14 @@ Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el
 CI de `060c0b1`: Windows 41533396790 y comparador 41533396822 PASS. Linux 41533397215 compiló y pasó 15 CTests, pero falló en el inventario estricto de llamadas SDL, que no incluía las cuatro del adaptador. Inventario corregido; no atribuir PASS a los pasos omitidos.
 
 La ruta ordenada de `WindowHD` mantiene el contraste clásico y los guards de escena/pausa/renderer. Resuelve claves estables antes de componer y no cae al piloto si faltan vinculaciones. La recuperación conserva toda la vista. El código local del intento anterior se perdió antes de publicarse; se reconstruyó desde el hilo y se repiten sus pruebas. No reutilizar resultados H3 perdidos. [Contrato](SOLDADOS_COBERTURA_COMPLETA.md#resolución-de-variantes-e-integración-windowhd). Código publicado: `615a90d`. [Evidencia](evidence/soldier-ordered-integration.json): 15 CTests, 37 tests Python e integración/pantalla ASan/UBSan PASS; H3 completo 11 fases / 11.361 estados y 22 transiciones de pausa PASS. Se descartó una traza truncada en el workspace y se repitió íntegro en almacenamiento temporal local. 635 claves PC y 508 Amiga conservadas en `evidence/soldier-ordered-variants.json.gz`, observadas, no aprobadas. El replay usó manifiesto vacío: valida rechazo y simulación, no publicación HD de campaña. CI Windows 41623136653 y Linux 41623137007 en ejecución al registrar; comparador 41623136723 PASS. Consultar estado vivo antes de afirmar CI completa.
+
+## Censo de publicación ordenada — 4 de noviembre
+
+A1 incorpora `OPENFODDER_ORDERED_COVERAGE=1` y `ordered_soldier_coverage.py`: resultado transaccional por intervalo/comando, variante y entidad, con deduplicación de presentaciones. Sustituir una clave en el resolver no cuenta como publicación hasta completar SDL. Errores, recuperación clásica, recursos faltantes y censo interrumpido quedan separados; logs incoherentes/truncados se rechazan. [Contrato](SOLDADOS_COBERTURA_COMPLETA.md#evidencia-transaccional-de-publicación-ordenada--4-de-noviembre) y [evidencia](evidence/soldier-ordered-coverage-validation.json).
+
+Pruebas del método real a 8×/12×: 21 intentos, 8 publicaciones, 4 rechazos por variante, 2 recuperaciones clásicas, 2 fallos de recuperación, 2 intervalos sin cuerpo, 2 censos interrumpidos y 1 manifiesto inválido; ASan/UBSan PASS. 41 tests Python y captura/contrato de pantalla ASan/UBSan PASS. Replays iniciales PC/Amiga con cinco presentaciones: 301 estados H3 originales PASS; 45.785 registros corresponden a 9.157 comandos únicos, cero publicaciones con manifiesto vacío. CTest añade comprobación con diagnóstico desactivado/activado. H3 completo PASS: 11 fases, 11.361 estados originales (7.956 PC + 3.405 Amiga) y 22 transiciones de pausa; compilación local sin mixer. CI del nuevo commit pendiente al publicar; no heredar el verde anterior.
+
+**No corrige todavía la alternancia del ejecutable de Miguel.** No añade poses ni cambia el lanzador. A1/A2/A3 siguen abiertos; guards previos, arte completo, GPU y aceptación visual/CD32 pendientes. No repetir la instrumentación ya cubierta: utilizarla para comprobar vinculaciones/arte y continuar con el resolver más allá de los seis activos, una secuencia completa de 24 claves y las rutas/transiciones aún pendientes.
 
 ## Decisiones que se conservan
 

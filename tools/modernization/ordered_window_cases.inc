@@ -58,6 +58,18 @@ for(const char* density:{"8","12"}){
     image.scene.destinations[0].initial.indexed.colors=colors;assert(win.TryRenderMissionHD(&image,src,dst)==1);
     image.adjusting=true;assert(win.TryRenderMissionHD(&image,src,dst)==-1);image.adjusting=false;
     assert(win.TryRenderMissionHD(&image,src,dst)==1);
+    // Resolution is not publication: exercise both SDL recovery outcomes.
+    clear(renderer);callNumber=0;failAt=1;
+    assert(win.TryRenderMissionHD(&image,src,dst)==1 && live==0);
+    callNumber=0;secondFail=2;
+    assert(win.TryRenderMissionHD(&image,src,dst)==0 && live==0);
+    failAt=secondFail=0;
+    assert(win.TryRenderMissionHD(&image,src,dst)==1);
+    image.scene.layers={cover};assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+    image.scene.layers={body,second,cover};
+    image.scene.layers[1].soldier.resource.bytes=std::make_shared<const std::vector<uint8_t>>(1,0);
+    assert(win.TryRenderMissionHD(&image,src,dst)==-1); // Partial census is not publication.
+    image.scene.layers={body,second,cover};
 }
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","nonexistent-ordered-bindings.json");
 assert(win.TryRenderMissionHD(&image,src,dst)==-1);

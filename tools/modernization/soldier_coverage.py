@@ -95,7 +95,7 @@ def report(logs=()):
                      direction=s['direction'],array=r['array'],metadata=r['metadata'],art=r['art'])
                 for r in rows for s in r['states'] if s['family']=='walk'],
         scenarios={s:'pending' for s in SCENARIOS}, captured_draws=record_count, duplicate_audits=duplicate_audits, entities=len(entities),
-        observations=observations, blockers=['HD publication not instrumented for ordered compositor',
+        observations=observations, blockers=['Producer capture alone does not establish SDL publication; see ordered_soldier_coverage.py',
             'Full artwork/state/resource coverage pending', 'Continuous visual/CD32 validation pending'])
 
 def write_report(path, result):
