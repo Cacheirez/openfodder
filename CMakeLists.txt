@@ -195,6 +195,12 @@ if(Python3_Interpreter_FOUND)
     add_test(NAME soldier_external_asset_export COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_asset_builder.py"
         --exe $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    add_test(NAME soldier_walk_art_review COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_walk_art_review.py"
+        --exe $<TARGET_FILE:openfodder_external_asset_tests>
+        --c01-builder $<TARGET_FILE:openfodder_art_builder>
+        --batch-builder $<TARGET_FILE:openfodder_batch_builder>
+        --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
     if(WIN32)
         foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests openfodder_external_asset_tests)
             add_custom_command(TARGET ${_hd_test} POST_BUILD

@@ -43,7 +43,19 @@ El resolver ya admite poses externas por clave completa y densidad, con tamaño/
 
 Prueba sintética con tablas originales de marcha: 24 claves × PC/Amiga × 8×/12×, ciclo 0–1–2–1, dos cuerpos con agua/transparencia/oclusión: 128 intervalos SDL y 256 comandos publicados. 96 combinaciones clave/densidad, sin equipararlas a imágenes nuevas. Incluye estado/enemigo 32×10 con offsets, civil explícito, marcador rechazado, rutas relativas, integridad, inmutabilidad y presupuesto de 64 MiB; ASan/UBSan PASS. Exportación byte a byte PASS; 42 tests Python PASS. H3 completo PASS: 11 fases, 11.361 estados originales y 22 transiciones de pausa, usando manifiesto v2 vacío para validar integración/rechazo, sin acreditar arte. CI del nuevo commit pendiente al publicar.
 
-**El bloqueo de seis activos en código queda resuelto; el arte no está completado.** El siguiente bloque útil es preparar y revisar los derivados de las 24 poses originales, conservar C01 y tratar las otras cinco como provisionales, vincular variantes explícitas y validar una secuencia continua. No volver a implementar instrumentación/carga que ya está probada. A1/A2/A3 siguen abiertos por arte/cobertura/transiciones; GPU/CD32 y aceptación visual pendientes. No se cambia el lanzador ni se entrega ZIP.
+**El bloqueo de seis activos en código queda resuelto; el arte no está completado.** No volver a implementar instrumentación/carga que ya está probada. A1/A2/A3 siguen abiertos por arte/cobertura/transiciones; GPU/CD32 y aceptación visual pendientes. No se cambia el lanzador ni se entrega ZIP.
+
+## Revisión artística A3 — ciclo diagonal con escala común
+
+CI del HEAD de partida `db8a910` verificada: Windows 41859419924, Linux 41859419902 y comparador 41859419881 PASS. No equivale a aceptación artística.
+
+Primer bloque de arte revisado antes de multiplicar poses: el recorte de 7/2 comprimía 942 píxeles a la altura lógica donde C01 usa 850, cambiando la escala del torso/casco. Nuevo maestro candidato de zancada opuesta, conservando el anterior, y recortes de altura común 850 para las tres claves diagonales. C01 y sus derivados permanecen idénticos byte a byte. [Fuentes, prompt y reproducción](../../assets/modernization/soldier-walk-review/README.md).
+
+Preparación reproducible con los constructores existentes: seis derivados RGBA/PNG (tres claves × dos densidades), visor de ciclo 0–1–2–1 con paso manual y manifiesto v2 con 13 vinculaciones explícitas **candidatas** del censo existente. No se aprueban por observación ni se activan en el lanzador. La prueba usa claves de recursos controlados recalculadas, no acredita esas 13 variantes de campaña.
+
+Prueba del método real Window/SDL con este arte: 32 intervalos y 64 cuerpos publicados, PC/Amiga, 8×/12×, dos variantes de persona/paleta, dos soldados, agua/oclusión, ASan/UBSan PASS. CTest `soldier_walk_art_review` añadido. [Evidencia](evidence/soldier-walk-art-review.json). H3 completo no repetido en este bloque de arte/utillaje: no cambia código del motor, reglas ni referencias. CI del nuevo commit pendiente al publicar.
+
+**Siguiente paso:** contrastar este ciclo con los frames nativos y sus recursos/paletas reales; continuar con las otras 21 claves de marcha. La galería interna permite detectar escala/apoyo, pero no es un recorrido de campaña ni aceptación de Miguel. Las poses 1/2 son provisionales; los demás estados, enemigos, transiciones y GPU/CD32 siguen pendientes. La alternancia del ejecutable sigue NO resuelta como producto. Sin ZIP.
 
 ## Decisiones que se conservan
 

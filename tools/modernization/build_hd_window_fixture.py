@@ -78,7 +78,11 @@ int main(){
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);
     cWindow win;win.mRenderer=renderer;SDL_FRect src{0,0,96,64},dst{0,0,192,128};
 #ifdef OPENFODDER_EXTERNAL_ASSET_FIXTURE
-    #include "ordered_asset_cases.inc"
+    if(std::getenv("OPENFODDER_WALK_ART_REVIEW")){
+        #include "walk_art_cases.inc"
+    } else {
+        #include "ordered_asset_cases.inc"
+    }
 #else
     for(const char* d:{"8","12"}){
         env("OPENFODDER_SOLDIER_HD",d);assert(win.TryRenderMissionHD(&image,src,dst)==1);
