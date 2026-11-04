@@ -1,10 +1,15 @@
 """Coverage must fail closed: static tables or observed partial keys aren't acceptance."""
 import tempfile
 import unittest
+import json
 from pathlib import Path
 from soldier_coverage import report, classify
 
 class CoverageTests(unittest.TestCase):
+    def test_committed_walk_fixture_matches_current_engine_tables(self):
+        root=Path(__file__).resolve().parents[2]
+        committed=json.loads((root/'docs/modernization/evidence/soldier-coverage-matrix.json').read_text())
+        self.assertEqual(committed['walk24'],report()['walk24'])
     def test_catalog(self):
         r=report()
         self.assertEqual(r['static_rows'],637)

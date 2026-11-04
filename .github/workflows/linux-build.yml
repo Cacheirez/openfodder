@@ -69,7 +69,7 @@ jobs:
           SDL_VIDEODRIVER: dummy
           SDL_RENDER_DRIVER: software
           SDL_AUDIODRIVER: dummy
-        run: python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-ordered --ordered-manifest tools/modernization/ordered-empty-bindings.json --first-phase --pause-probe
+        run: python tools/modernization/check_mission_publication_replays.py --exe build/openfodder --data Run --out reports/h6-ordered --ordered-manifest tools/modernization/ordered-empty-assets.json --first-phase --pause-probe
       - name: H5.5 - fitted mission pause and resumed inverse with original H3
         env:
           SDL_VIDEODRIVER: dummy

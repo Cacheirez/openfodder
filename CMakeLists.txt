@@ -172,7 +172,8 @@ if(Python3_Interpreter_FOUND)
     set(_hd_window_fixture "${CMAKE_CURRENT_BINARY_DIR}/hd_window_fixture.cpp")
     add_custom_command(OUTPUT "${_hd_window_fixture}"
         COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/build_hd_window_fixture.py" --emit "${_hd_window_fixture}"
-        DEPENDS tools/modernization/build_hd_window_fixture.py Source/WindowHD.cpp VERBATIM)
+        DEPENDS tools/modernization/build_hd_window_fixture.py Source/WindowHD.cpp
+            docs/modernization/evidence/soldier-coverage-matrix.json VERBATIM)
     add_executable(openfodder_hd_window_tests "${_hd_window_fixture}")
     add_dependencies(openfodder_hd_window_tests openfodder_art_sdl_tests)
     target_include_directories(openfodder_hd_window_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization" "${CMAKE_CURRENT_BINARY_DIR}")
@@ -181,8 +182,21 @@ if(Python3_Interpreter_FOUND)
     add_test(NAME soldier_ordered_coverage COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_coverage_integration.py"
         --exe $<TARGET_FILE:openfodder_hd_window_tests>)
+    add_executable(openfodder_external_asset_tests "${_hd_window_fixture}")
+    target_compile_definitions(openfodder_external_asset_tests PRIVATE OPENFODDER_EXTERNAL_ASSET_FIXTURE)
+    add_dependencies(openfodder_external_asset_tests openfodder_hd_window_tests)
+    target_include_directories(openfodder_external_asset_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization" "${CMAKE_CURRENT_BINARY_DIR}")
+    target_link_libraries(openfodder_external_asset_tests PRIVATE SDL3::SDL3)
+    add_test(NAME soldier_external_assets COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_asset_integration.py"
+        --exe $<TARGET_FILE:openfodder_external_asset_tests>)
+    add_executable(openfodder_ordered_asset_builder tools/modernization/build_ordered_soldier_asset.cpp)
+    target_include_directories(openfodder_ordered_asset_builder PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+    add_test(NAME soldier_external_asset_export COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_asset_builder.py"
+        --exe $<TARGET_FILE:openfodder_ordered_asset_builder>)
     if(WIN32)
-        foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests)
+        foreach(_hd_test IN ITEMS openfodder_art_sdl_tests openfodder_hd_window_tests openfodder_external_asset_tests)
             add_custom_command(TARGET ${_hd_test} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:SDL3::SDL3> $<TARGET_FILE_DIR:${_hd_test}> VERBATIM)
         endforeach()

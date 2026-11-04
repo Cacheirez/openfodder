@@ -92,7 +92,7 @@ La integración posterior por manifiesto conecta desde `TryRenderMissionHD`; sig
 
 `SoldierVariant.hpp` calcula SHA-256 sobre formato, segmento, offset, dimensiones/planos, tipo/persona, hoja/frame/animación, vehículo/destrucción, geometría original, bytes de la pose completa sin recorte y los 255 colores RGB efectivos de presentación. No usa punteros ni generaciones de proceso. Posición, slot, escena, reloj y recortes no cambian la clave. Los colores no usados también cuentan: decisión conservadora que evita extrapolar equivalencias sin revisar. El diagnóstico emite hashes, no bytes gráficos privados.
 
-`OrderedSoldierRegistry.hpp` carga vinculaciones explícitas; rechaza versión/clave/decisión inválidas, duplicados, más de 8192 entradas o ficheros mayores de 8 MiB. Se carga una vez por ruta: reiniciar para aplicar ediciones. Observar una clave no crea ni aprueba su vinculación. El formato inicial permite las seis poses existentes; extenderlo para el resto del arte sigue pendiente.
+`OrderedSoldierRegistry.hpp` carga vinculaciones explícitas; rechaza versión/clave/decisión inválidas, duplicados, más de 8192 entradas o ficheros mayores de 8 MiB. Se carga una vez por ruta: reiniciar para aplicar ediciones. Observar una clave no crea ni aprueba su vinculación. El formato v1 permite las seis poses existentes; la extensión de activos externos v2 se describe al final de este documento.
 
 ```json
 {"version":1,"bindings":[
@@ -119,4 +119,35 @@ python tools/modernization/ordered_soldier_coverage.py --log engine.log --out co
 
 Cada entrada `--log` debe corresponder a un proceso. El analizador rechaza registros truncados, contadores incoherentes, órdenes duplicados o una publicación sin censo completo. Separa presentaciones de comandos únicos por escena/intervalo/orden y agrupa variantes y estados por entidad. Una decisión `replace` solo suma publicación cuando termina la transacción SDL; una recuperación clásica nunca la acredita. Los guards previos (pausa/mapa/paleta/renderer) quedan fuera de esta traza y siguen pendientes: la ausencia de registros no es cobertura. Tampoco acredita que cada cuerpo conserve píxeles visibles tras oclusiones posteriores. El veredicto global permanece `PENDING`, incluso con todos los intentos registrados publicados. [Evidencia del bloque](evidence/soldier-ordered-coverage-validation.json).
 
-CTest añade `soldier_ordered_coverage`, que ejecuta el método real con diagnóstico desactivado/activado y comprueba los resultados SDL, errores y repetición de presentaciones. No cambia el lanzador ni añade arte. El siguiente avance de contenido requiere ampliar el resolver más allá de los seis activos y verificar una secuencia original completa, además de las transiciones pendientes.
+CTest añade `soldier_ordered_coverage`, que ejecuta el método real con diagnóstico desactivado/activado y comprueba los resultados SDL, errores y repetición de presentaciones. No cambia el lanzador ni añade arte. La ampliación del resolver se implementa en el contrato v2 descrito abajo; siguen pendientes la secuencia artística original completa y las transiciones.
+
+
+## Activos externos y manifiesto v2 — 4 de noviembre
+
+El resolver acepta ahora `version: 2`, manteniendo compatibilidad con v1 y sus seis activos. `replace-art` vincula una clave completa observada y revisada a activos externos por densidad. No decide dirección ni fase de animación, no crea vinculaciones al observar claves y no permite convertir el marcador 0x7C en un cuerpo. Admite geometría original variable y estados/enemigos/civiles con claves explícitas; la ausencia de una clave o densidad sigue siendo `Missing` y rechaza el intervalo completo.
+
+```json
+{
+  "version": 2,
+  "assets": [
+    {"id":"walk-front-0-8","file":"walk-front-0-8.rgba",
+     "width":16,"height":14,"density":8,"sha256":"<SHA-256 del archivo RGBA>"}
+  ],
+  "bindings": [
+    {"key":"<clave completa revisada>","decision":"replace-art",
+     "assets":{"8":"walk-front-0-8"}}
+  ]
+}
+```
+
+Los marcadores del ejemplo no son hashes válidos ni vinculaciones aprobadas. El archivo es RGBA de 8 bits por canal, filas contiguas, alfa recto, sin cabecera: exactamente `width × height × density² × 4` bytes. `width`/`height` describen la pose original completa; agua, bordes y offsets los aplica el compositor. Archivos relativos al directorio del manifiesto, con componentes ASCII alfanuméricos/guion/guion bajo/punto y separador `/`, sin componentes vacíos, `.` o `..`. Se comprueban tamaño exacto y SHA-256 antes de exponer los píxeles inmutables. Máximos: 8192 activos/vinculaciones, 8 MiB de manifiesto, 352×272 nativos y 64 MiB de píxeles cargados en total; presupuesto revisado antes de abrir archivos. La memoria temporal de verificación es adicional. Los activos compartidos se referencian por ID. Una densidad no declarada no usa otra por aproximación.
+
+El ejecutable de desarrollo `openfodder_ordered_asset_builder` exporta un PNG ya preparado con dimensiones exactas; conserva canales y alfa, no recorta ni reescala implícitamente:
+
+```bash
+openfodder_ordered_asset_builder pose_8.png pose_8.rgba walk-front-0-8 16 14 8
+```
+
+Escribe el descriptor JSON con hash en stdout. Repetir una exportación idéntica es válido; rechaza sobrescribir un archivo existente con contenido distinto, incluido el PNG maestro. El recorte, colocación y reducción desde el maestro deben prepararse y revisarse antes, con procedencia artística conservada. Un descriptor no asigna una variante automáticamente. El registro se carga una vez por ruta: reiniciar para aplicar cambios, también a los archivos de imagen. Si la carga falla, no se reutiliza otro manifiesto como sustituto.
+
+Pruebas: `soldier_external_assets` recorre las 24 claves del catálogo jugador PC/Amiga en ciclo 0–1–2–1, 8×/12×, dos cuerpos, agua, transparencia y oclusión: 128 intervalos SDL, 256 comandos y 96 combinaciones clave/densidad. Contrasta con lienzo expandido y comprueba canales del archivo de manera independiente. Añade geometría 32×10 de enemigo con offsets/estado, civil con vinculación explícita, rechazo de marcador, referencia relativa desde subdirectorio, inmutabilidad, densidad ausente, hashes/tamaños/referencias/duplicados inválidos y presupuesto excesivo. `soldier_external_asset_export` comprueba PNG/RGBA byte a byte sin dependencias Python adicionales. **Arte sintético: no son 24 poses artísticas terminadas ni un recorrido continuo aceptado.** [Evidencia del bloque](evidence/soldier-external-assets-validation.json). Los guards/transiciones previos siguen pendientes y el lanzador no cambia.

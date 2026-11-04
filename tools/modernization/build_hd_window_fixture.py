@@ -1,9 +1,17 @@
 """Emit the actual Window HD method with SDL software and controlled scene inputs."""
 from pathlib import Path
-import argparse
+import argparse, json
 ROOT=Path(__file__).resolve().parents[2]
 def build():
     method=(ROOT/'Source/WindowHD.cpp').read_text().split('int cWindow::TryRenderMissionHD',1)[1]
+    matrix=json.loads((ROOT/'docs/modernization/evidence/soldier-coverage-matrix.json').read_text())
+    tables=[]
+    for platform in ('PC','Amiga'):
+        rows=[r for r in matrix['walk24'] if r['platform']==platform and r['actor']=='player']
+        rows.sort(key=lambda r:(r['direction'],r['frame']))
+        assert [(r['direction'],r['frame']) for r in rows]==[(d,f) for d in range(8) for f in range(3)]
+        tables.append('{'+','.join('{'+','.join(map(str,[r['sheet'],r['frame'],*[int(r['metadata'][i],0) for i in (0,2,3,4,5)]]))+'}' for r in rows)+'}')
+    walk='static const int orderedWalkFixture[2][24][7]={'+','.join(tables)+'};\n'
     return r'''
 #define OPENFODDER_HD_WINDOW_FIXTURE
 #include "test_soldier_art_sdl.cpp"
@@ -48,6 +56,7 @@ static void env(const char* k,const char* v){
     setenv(k,v,1);
 #endif
 }
+'''+walk+r'''
 int main(){
     env("OPENFODDER_PRESENT_MISSION_LAYERS","1");env("OPENFODDER_SOLDIER_ART","0");
     cSurface image,other;image.scene.destinations={destination(96,64)};
@@ -68,6 +77,9 @@ int main(){
     auto surface=SDL_CreateSurface(192,128,SDL_PIXELFORMAT_XRGB8888);auto renderer=SDL_CreateSoftwareRenderer(surface);assert(renderer);
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);
     cWindow win;win.mRenderer=renderer;SDL_FRect src{0,0,96,64},dst{0,0,192,128};
+#ifdef OPENFODDER_EXTERNAL_ASSET_FIXTURE
+    #include "ordered_asset_cases.inc"
+#else
     for(const char* d:{"8","12"}){
         env("OPENFODDER_SOLDIER_HD",d);assert(win.TryRenderMissionHD(&image,src,dst)==1);
         for(bool* blocked:{&fodder.mPhase_Paused,&fodder.mPhase_ShowMapOverview,&fodder.mInterruptCallback,&image.adjusting,&image.loaded}){
@@ -95,6 +107,7 @@ int main(){
     env("OPENFODDER_SOLDIER_BATCH","0");image.scene.layers={body};
     for(const char* d:{"0","bad","9"}){env("OPENFODDER_SOLDIER_HD",d);assert(win.TryRenderMissionHD(&image,src,dst)==-1);}
     #include "ordered_window_cases.inc"
+#endif
     assert(live==0);SDL_DestroyTexture(image.tex);SDL_DestroyRenderer(renderer);SDL_DestroySurface(surface);
     std::cout<<"PASS actual Window HD method: enable/disable, pause/map/callback, palette, destination, scene generation, renderer state and resume\n";
 }
