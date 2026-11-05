@@ -69,6 +69,18 @@ H3 completo PASS en repetición canónica con trazas íntegras en memoria: 11 fa
 
 **Siguiente bloque A3:** producir/contrastar las otras 21 claves artísticas (incluidas las tres izquierdas aún provisionales), usando las referencias nativas ya recuperadas. Después, estados/enemigos y transiciones. No repetir censo, exportación ni resolver sin una regresión concreta. Este bloque no añade esas 21 poses, no cierra A3, no acredita publicación HD de una campaña completa y no cambia el lanzador ni entrega ZIP. La alternancia sigue NO resuelta como producto.
 
+## Siete ciclos artísticos pendientes — producidos y revisados internamente
+
+El bloque anterior de contraste queda reutilizado. Las **24 claves de marcha del jugador están preparadas**: 18 maestros nuevos, tres maestros anteriores reutilizados en la diagonal delantera izquierda que realmente representan y las tres poses diagonales C01 conservadas. Nuevos perfiles laterales para no confundirlos con diagonales; zancadas duplicadas de espalda descartadas y corregidas. Los maestros originales no se retocan con scripts y C01/derivados siguen idénticos. [Fuentes, prompts, visor y revisión](../../assets/modernization/soldier-walk24/README.md).
+
+Derivación compartida con la herramienta anterior: 48 activos PNG/RGBA (24 × 8×/12×) y manifiesto v2 con **94 claves reales de marcha ordinaria**. El censo de 112 incluía 18 estados no ordinarios; no eran 96 marchas completas. No se inventan 6/0 y 6/2 de un recurso Amiga no observadas en marcha ordinaria. Las imágenes sí existen y se prueban con otros recursos. La vinculación Slide1 anterior permanece en su manifiesto diagonal; el nuevo lote tiene alcance de marcha ordinaria explícito.
+
+ASan/UBSan, método real Window/SDL: 256 intervalos/512 cuerpos con recursos controlados y 236/472 con claves reales sin reasignación sintética. El caso real recorre ocho direcciones/ciclo 0–1–2–1 en tres grupos completos, y 22 claves del cuarto grupo individualmente. Agua, dos soldados, oclusión y 8×/12×; 188 combinaciones reales clave/densidad. Rechazo de enemigo, estado no vinculado y paleta desconocida conservado. Revisión visual interna de cada ciclo y del giro conjunto; aceptación de Miguel **PENDIENTE**. [Evidencia](evidence/soldier-walk24-validation.json).
+
+H3 con el nuevo manifiesto PASS: 11 fases/11.361 estados originales y 22 pausas/reanudaciones, trazas íntegras en memoria, motor local sin mixer y Source sin modificar. **El replay no publicó HD ordenado de campaña**: faltan otros estados/entidades, por lo que esta prueba acredita simulación/guards, no sustitución visual completa. CTest `soldier_walk24_art` añadido; regresiones del ciclo anterior y activos externos PASS. CI del nuevo commit pendiente al publicar.
+
+**Siguiente bloque:** otros estados del jugador, empezando por reposo/apuntado y su selección real; después granadas, agua/daño/muerte y enemigos como familias separadas. Reutilizar estos maestros y referencias cuando su correspondencia esté probada, sin mapear estados por compartir hoja. Resolver también las dos variantes ordinarias no observadas y transiciones. No regenerar los siete ciclos ni reconstruir el censo sin una regresión concreta. A1/A2/A3/A4 y A/H7 siguen abiertos: sin aceptación visual nueva, sin cambio del lanzador y sin ZIP.
+
 ## Decisiones que se conservan
 
 Estilo **C — Pintado moderado**; C01 aceptado en detalle, posición e integración del comparador. Guardado/persistencia y recorrido común de escenas aceptados. No repetir elección A/B/C ni esas pruebas sin una regresión concreta. Cinco maestros adicionales generados, provisionales. 12× de trabajo y 8× alternativa; GPU/densidad final pendientes.

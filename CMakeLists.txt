@@ -201,6 +201,12 @@ if(Python3_Interpreter_FOUND)
         --c01-builder $<TARGET_FILE:openfodder_art_builder>
         --batch-builder $<TARGET_FILE:openfodder_batch_builder>
         --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    add_test(NAME soldier_walk24_art COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_walk24_art.py"
+        --exe $<TARGET_FILE:openfodder_external_asset_tests>
+        --c01-builder $<TARGET_FILE:openfodder_art_builder>
+        --batch-builder $<TARGET_FILE:openfodder_batch_builder>
+        --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
     add_executable(openfodder_native_walk_renderer tools/modernization/render_walk_native.cpp)
     add_executable(openfodder_native_walk_snapshot_test tools/modernization/test_native_walk_snapshot.cpp)
     foreach(_native_target IN ITEMS openfodder_native_walk_renderer openfodder_native_walk_snapshot_test)

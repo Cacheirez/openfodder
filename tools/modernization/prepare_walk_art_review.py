@@ -23,6 +23,31 @@ def png(width, height, rgba):
             + chunk(b'IDAT', zlib.compress(scan)) + chunk(b'IEND', b''))
 
 
+def derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder):
+    """Shared exact derivative/export path for diagonal and full walking sets."""
+    sheet, f = frame['sheet'], frame['frame']
+    name = f's{sheet}-f{f}-{density}'
+    header = out/(name+'.hpp')
+    source = ROOT/'assets/modernization'/frame['asset']
+    if (sheet, f) == (7, 0):
+        command = [c01_builder, source, header, density]
+    else:
+        command = [batch_builder, source, header, density, 'WalkReview', *frame['crop'], *frame['placement']]
+    subprocess.run(list(map(str, command)), check=True)
+    pixels = [int(v) for v in re.findall(r'(\d+)u', header.read_text())]
+    if len(pixels) != 16*14*density*density:
+        raise ValueError('unexpected derivative geometry')
+    rgba = bytes(v for c in pixels for v in ((c >> 16) & 255, (c >> 8) & 255, c & 255, c >> 24))
+    image = png(16*density, 14*density, rgba)
+    image_path = out/(name+'.png')
+    image_path.write_bytes(image)
+    descriptor = json.loads(subprocess.check_output(list(map(str, [asset_builder, image_path,
+        out/(name+'.rgba'), name, 16, 14, density])), text=True))
+    if (out/descriptor['file']).read_bytes() != rgba:
+        raise ValueError('export changed derivative bytes')
+    return descriptor, image
+
+
 def prepare(out, c01_builder, batch_builder, asset_builder):
     config = json.loads(CONFIG.read_text())
     # Preflight all originals before producing anything. No changed master is silently accepted.
@@ -38,25 +63,7 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     for frame in config['frames']:
         for density in (8, 12):
             f = frame['frame']
-            name = f's7-f{f}-{density}'
-            header = out/(name+'.hpp')
-            source = ROOT/'assets/modernization'/frame['asset']
-            if f == 0:
-                command = [c01_builder, source, header, density]
-            else:
-                command = [batch_builder, source, header, density, 'WalkReview', *frame['crop'], *frame['placement']]
-            subprocess.run(list(map(str, command)), check=True)
-            pixels = [int(v) for v in re.findall(r'(\d+)u', header.read_text())]
-            if len(pixels) != 16*14*density*density:
-                raise ValueError('unexpected derivative geometry')
-            rgba = bytes(v for c in pixels for v in ((c >> 16) & 255, (c >> 8) & 255, c & 255, c >> 24))
-            image = png(16*density, 14*density, rgba)
-            image_path = out/(name+'.png')
-            image_path.write_bytes(image)
-            descriptor = json.loads(subprocess.check_output(list(map(str, [asset_builder, image_path,
-                out/(name+'.rgba'), name, 16, 14, density])), text=True))
-            if (out/descriptor['file']).read_bytes() != rgba:
-                raise ValueError('export changed derivative bytes')
+            descriptor, image = derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder)
             manifest['assets'].append(descriptor)
             preview[str(f)+'/'+str(density)] = base64.b64encode(image).decode()
     for row in config['bindings']:
