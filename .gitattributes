@@ -7,3 +7,7 @@
 *.props      text eol=crlf
 *.filters 	 text eol=crlf
 *.user 	 	 text eol=crlf
+
+# Text inputs checked byte-for-byte by the walking-art builders.
+/docs/modernization/evidence/soldier-native-walk-validation.json text eol=lf
+/assets/modernization/soldier-walk24/manifest.json text eol=lf
