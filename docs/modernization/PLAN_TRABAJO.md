@@ -40,7 +40,7 @@ El arreglo `1e1f021` trae la referencia clásica antes de compilar; queda verifi
 
 ## Siguiente bloque verificable
 
-**A3: lanzamiento de cohetes del jugador**, selección en offset `0x38`, sus frames/direcciones y retorno nativo. Confirmar los frames realmente seleccionados antes de producir arte: el catálogo tiene una dirección con cuatro entradas, que no equivale a cuatro frames usados por cada ruta. Después, agua, daño/muerte y enemigos. Reutilizar marcha, apuntado, granadas y diagnóstico sin regenerarlos salvo regresión. Mantener pendientes las variantes Amiga no observadas, transiciones, GPU/CD32 y cobertura continua; clasificar por separado proyectiles y otros elementos asociados.
+**A3: lanzamiento de cohetes del jugador.** Selección en offset `0x38` y retorno ya contrastados: entrada directa en frame 0; los llamadores con restauración conservan 0/1/2. [Contrato y evidencia](ROCKET_SELECTION.md). Preparar primero las tres poses de una dirección y verificar transición con dos soldados/oclusiones en WindowHD/SDL a 8×/12×; después ampliar las siete restantes. La cuarta entrada de una dirección no se selecciona en las rutas normales probadas, sin afirmar inalcanzabilidad universal. Después, agua, daño/muerte y enemigos. Reutilizar marcha, apuntado, granadas y diagnóstico sin regenerarlos salvo regresión. Mantener pendientes las variantes Amiga no observadas, transiciones, GPU/CD32 y cobertura continua; clasificar por separado proyectiles y otros elementos asociados.
 
 ## Orden de trabajo
 

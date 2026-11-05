@@ -5,8 +5,8 @@
 ## Rama y avance publicado
 
 - `Cacheirez/openfodder`, rama `modernization/windows-foundation`; PR #1 abierta, borrador y sin fusionar.
-- Último commit de implementación verificado: **`8d09a28dd24573789619ce71af94649451d51ca8`**, posturas normales y 24 poses de granada, sobre `1e1f021845457a9209b20eafa9ad6700f9748c2f` (arreglo del fetch clásico). Los cambios del bloque están publicados en esa rama.
-- Este relevo modifica únicamente documentación y añade la comprobación remota de CI. Su commit se identifica con `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`; no confundirlo con el commit de implementación anterior. Verificar siempre HEAD remoto y CI viva.
+- Último lote artístico publicado verificado: **`8d09a28dd24573789619ce71af94649451d51ca8`**, posturas normales y 24 poses de granada, sobre `1e1f021845457a9209b20eafa9ad6700f9748c2f` (arreglo del fetch clásico). Los cambios del bloque están publicados en esa rama.
+- El relevo documental anterior es `67ccf1b821f809abda0368afa4f63eef95392093`; el bloque actual añade la prueba de selección del lanzacohetes y resuelve la comprobación del checkout. El commit del estado operativo actual se identifica con `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`; no confundirlo con el commit del último lote artístico anterior. Verificar siempre HEAD remoto y CI viva.
 - Source del motor, jugabilidad, relojes, RNG y referencias originales no cambian. Base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`; H3 previo conserva 11 fases / 11.361 estados (7.956 PC + 3.405 Amiga) y 22 pausas/reanudaciones. No se repite H3 completo en este bloque de arte/herramientas.
 
 ## Completado y límites
@@ -42,24 +42,26 @@ Comprobación remota del 5 de noviembre, ligada a **`8d09a28dd24573789619ce71af9
 
 Los pasos LSan de la CI Linux existente pasan, pero no sustituyen la medición LSan pendiente de las fixtures locales nuevas de granadas. Los paquetes automáticos de demo conservan el piloto anterior; no son una entrega de soldados completos. La CI de este relevo documental se consulta por separado, sin atribuirle los resultados del commit de implementación.
 
+## Avance A3: selección del lanzacohetes
+
+Selector y llamadores de restauración comprobados contra la base clásica: **2.703 aserciones, 576 muestras, UBSan PASS con NDEBUG y aserciones activas**. La entrada directa mantiene frame 0 durante siete llamadas y retorna en la octava; los llamadores de ratón/objetivo con `field_43` conservan el frame previo 0, 1 o 2. Por ello hacen falta tres poses por dirección para las rutas normales probadas, no una sola imagen fija. Las llamadas del selector no se equiparan a ticks de juego ni a frames de pantalla.
+
+La cuarta entrada declarada en la dirección 5 no se selecciona en esos casos; no se afirma que sea inalcanzable desde cualquier estado. Se prueban giro/reinicio, prioridad del apuntado, retorno al agua y dos soldados intercalados con dirección/frame/tick propios. Sin arte nuevo ni publicación SDL de cohetes todavía. [Contrato y reproducción](ROCKET_SELECTION.md), [evidencia](evidence/soldier-rocket-selection.json). Nuevo CTest `soldier_rocket_original_selection`; CI del nuevo commit pendiente de publicación. No se repiten las pruebas anteriores ni H3 completo al no cambiar Source ni las referencias.
+
 ## Pendientes y siguiente tarea
 
-1. **Lanzacohetes del jugador:** contrastar selección original en offset `0x38`, frames/direcciones y retorno. La tabla contiene una dirección de cuatro entradas; comprobar uso real antes de encargar cuatro imágenes. Reutilizar contratos, maestros y diagnóstico existentes.
+1. **Lanzacohetes del jugador:** preparar primero una dirección con sus tres frames 0/1/2 y revisar marcha/apuntado → lanzacohetes → retorno en WindowHD/SDL, con dos soldados, oclusión y 8×/12×. Después ampliar las otras siete direcciones y las vinculaciones. Reutilizar los contratos y maestros existentes; no fabricar un ciclo 0–1–2 ni un cuarto frame que el selector no haya pedido.
 2. Después, agua, daño/muerte, enemigos y variantes. Clasificar proyectiles y elementos asociados por separado. No asumir cobertura total por tener 56 poses de tres familias.
 3. Completar las dos claves ordinarias Amiga 6/0 y 6/2 del recurso `3e0bf624…`, rutas/transiciones excluidas, GPU/densidad final y CD32. La vista completa sigue recuperándose al clásico si falta cualquier clave necesaria.
 4. Mantener estilo C — Pintado moderado; solo C01 tiene aceptación del usuario. 12× de trabajo y 8× alternativa. No repetir selección de estilo, censo completo ni pruebas concluidas sin regresión concreta. No cambiar el lanzador ni cerrar A/H7 hasta cobertura y recorrido continuo pertinentes.
 
 ## Recuperación y continuación
 
-El checkout anterior se documentó en `/workspace/scratch/a4e0bfdd2e06/openfodder`. **En este relevo no hay entorno de ejecución local disponible**: no se ha podido ejecutar `git status`, inspeccionar archivos sin seguimiento ni exportar nuevos parches/bundles. No se certifica que aquel checkout esté limpio ni que cualquier cambio local desconocido esté respaldado. El código/arte y las pruebas revisados aquí son los publicados en GitHub. Los bytes y capturas nativas locales no son entregables públicos.
+**Acceso recuperado y estado comprobado el 5 de noviembre.** El checkout `/workspace/scratch/a4e0bfdd2e06/openfodder` estaba en `8d09a28`, sin modificaciones de archivos seguidos, sin archivos no ignorados pendientes y sin commits locales ausentes de la rama remota. Se actualizó por avance rápido a `67ccf1b`; no fue necesario rescatar cambios de código/arte sin publicar. Esto resuelve la incertidumbre anotada en el relevo anterior. Los directorios ignorados de compilación y capturas nativas se conservan, sin tratarlos como fuentes entregables ni auditar cada temporal.
 
-Si el checkout vuelve a estar disponible, antes de limpiarlo o cambiar de rama:
+La CI de `67ccf1b` ha terminado con success: Windows [42062245413](https://github.com/Cacheirez/openfodder/actions/runs/42062245413), Linux [42062245967](https://github.com/Cacheirez/openfodder/actions/runs/42062245967) y densidades [42062245567](https://github.com/Cacheirez/openfodder/actions/runs/42062245567). Son resultados anteriores al nuevo test de lanzacohetes; no se atribuyen al nuevo commit.
 
-1. Ejecutar `git status --short --branch`, `git log --oneline origin/modernization/windows-foundation..HEAD` y revisar los archivos sin seguimiento.
-2. Guardar `git diff --binary HEAD` como parche, `git bundle create recuperacion.bundle --all` para commits locales y un archivo de los archivos sin seguimiento necesarios, con hashes y SHA de base. Separar datos privados/comerciales.
-3. Publicar únicamente cambios válidos en commits coherentes; registrar cualquier resto y su recuperación. No aplicar a ciegas el archivo antiguo descrito abajo.
-
-No se ha creado código local nuevo en este relevo; los cambios documentales se publican mediante GitHub. Una nueva clonación recupera el trabajo publicado, pero no recupera modificaciones desconocidas del checkout anterior.
+Los bytes, paletas y capturas nativas locales no se publican. Para recuperar el trabajo entregado basta la rama de GitHub. Conservar siempre cualquier cambio local antes de limpiar un checkout; el respaldo antiguo descrito abajo no se debe reaplicar sobre HEAD.
 
 El intento antiguo `c81d19f0fca7` sobre `db8a910`, con poses 3/2 y 5/2 rechazadas, quedó sustituido por los bloques posteriores. No aplicarlo sobre HEAD. Recuperación conservada en **OpenFodder_recuperacion_local_20261105.zip**, 71 entradas, SHA-256 `05ad629a90694b2c52a55ed49f82f739e6ef6caac6f34a68567d8e4e32e7ef31`; incluye instrucciones, parches y archivos locales de aquel intento y salidas/temporales antiguos. No se considera trabajo nuevo entregado.
 

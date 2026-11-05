@@ -238,6 +238,15 @@ if(Python3_Interpreter_FOUND)
         --c01-builder $<TARGET_FILE:openfodder_art_builder>
         --batch-builder $<TARGET_FILE:openfodder_batch_builder>
         --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    set(_rocket_selector_fixture "${CMAKE_CURRENT_BINARY_DIR}/rocket_selector_fixture.cpp")
+    add_custom_command(OUTPUT "${_rocket_selector_fixture}"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_rocket_selection.py"
+            --emit "${_rocket_selector_fixture}"
+        DEPENDS tools/modernization/check_rocket_selection.py tools/modernization/check_aim_selection.py
+            tools/modernization/check_final_timer_equivalence.py tools/modernization/audit_contract.py
+            tools/modernization/check_sprite_table_lengths.py ${GAMEENGINE_SOURCE} ${GAMEENGINE_HEADERS} VERBATIM)
+    add_executable(openfodder_rocket_selector_tests "${_rocket_selector_fixture}")
+    add_test(NAME soldier_rocket_original_selection COMMAND $<TARGET_FILE:openfodder_rocket_selector_tests>)
     add_executable(openfodder_aim_reference tools/modernization/rekey_aim_reference.cpp)
     target_include_directories(openfodder_aim_reference PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization")
     add_executable(openfodder_native_walk_renderer tools/modernization/render_walk_native.cpp)
