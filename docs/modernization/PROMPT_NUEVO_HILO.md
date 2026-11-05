@@ -14,6 +14,8 @@ Lee primero AGENTS.md en la raíz. Verifica HEAD, PR y CI actuales; después lee
 
 Incidencia aún NO aceptada: PROBAR_SOLDADO_ANIMADO.cmd intercala soldados modernos y clásicos. El objetivo es sustituir de forma coherente todos los soldados, orientaciones, animaciones y estados del alcance conservando la lógica y el render original. No presentes de nuevo el piloto de seis poses como una solución terminada.
 
+Antes de modificar un checkout previo, revisa sus cambios y commits locales; CONTINUIDAD.md registra las limitaciones del último relevo. No des por respaldado trabajo local desconocido ni apliques recuperaciones antiguas sobre HEAD sin revisar.
+
 Ejecuta el siguiente bloque verificable del plan: cambio útil, pruebas focalizadas, evidencia y commit coherente. Sigue las garantías de AGENTS.md. No atribuyas aceptación visual a una CI verde ni entregues ZIP sin las validaciones pertinentes.
 
 Evita investigaciones repetidas y bucles sin progreso. Si hay bloqueo, aplica el protocolo de AGENTS.md: reproduce el fallo, documenta lo intentado y recomienda consultar Astra para una pregunta concreta. No cambies de modelo por tu cuenta. Vuelve al modelo habitual para implementar lo resuelto cuando sea adecuado.

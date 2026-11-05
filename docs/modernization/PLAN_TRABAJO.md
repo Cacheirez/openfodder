@@ -13,20 +13,18 @@ Estado base contrastado con `b617168`, ampliado por el bloque de reposo/apuntado
 | A1 | Catálogo estático PC/Amiga, captura de todos los slots, claves por recurso/paleta y censo transaccional de publicación. | Variantes/rutas y escenarios completos, incluidas dos claves ordinarias Amiga no observadas y transiciones. |
 | A2 | Compositor ordenado de múltiples cuerpos, recortes/oclusiones, publicación SDL y recuperación de la vista completa; integración por manifiesto en `WindowHD`. | Cobertura normal sin retornos por arte ausente, transiciones y validación GPU/escenas reales. |
 | **A3 — bloque de desarrollo actual** | 24 poses de marcha, ocho de apuntado bajo y 24 de granada; 112 activos 8×/12× y 222 vinculaciones. Posturas y disparo normal verificados en los selectores originales; transiciones aisladas probadas. | Lanzacohetes, agua, daño/muerte, enemigos/variantes, cobertura de campaña y aceptación artística. Modo 0 interno auditado, sin activación normal localizada. No equivale a soldados completos. |
-| A4 | H3 previo y pruebas focalizadas de los lotes. Compilación/CTests del arreglo de referencia clásica verificados por commit. | CI completa en curso, cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. |
+| A4 | H3 previo y pruebas focalizadas de los lotes. Compilación/CTests del arreglo de referencia clásica verificados por commit. | Cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. CI completa de `8d09a28` PASS; no cierra A4. |
 | B/C/D | Hay infraestructura previa documentada en H0–H10. | No se inicia un nuevo bloque de escenario, interpolación o extensión como sustituto del cierre de soldados. |
 
 [Diagnóstico, catálogo y criterios de salida](SOLDADOS_COBERTURA_COMPLETA.md). La ruta ordenada rechaza todo el intervalo si falta una clave: tener el arte de marcha no elimina los retornos de campaña mientras falten otros estados/entidades. El último H3 local conserva 11.361 estados originales, pero no publicó HD ordenado de campaña.
 
-Referencia anterior de CI (no del HEAD actual), `577c702`: Windows [42019722132](https://github.com/Cacheirez/openfodder/actions/runs/42019722132) y Linux [42019722430](https://github.com/Cacheirez/openfodder/actions/runs/42019722430) han superado compilación/CTest; los workflows completos siguen en curso. Comparador [42019722401](https://github.com/Cacheirez/openfodder/actions/runs/42019722401) PASS. El fallo anterior de hash por CRLF no se reproduce en el CTest Windows posterior a `b921009`; no atribuir PASS a pasos aún pendientes. [Comprobación de estado](evidence/plan-status-20261105.json).
-
-Actualización de CI de `7de0ad1`: Linux falló al generar la nueva fixture porque el clon superficial no tenía la referencia clásica. Fetch fijado adelantado antes del build en ambos workflows; reproducción superficial y generación posteriores PASS. CI nueva pendiente. [Detalle](evidence/ci-selector-reference-20261105.json).
+CI completa de implementación `8d09a28`: Windows [42034593717](https://github.com/Cacheirez/openfodder/actions/runs/42034593717), Linux [42034593370](https://github.com/Cacheirez/openfodder/actions/runs/42034593370) y revisión de densidades [42034593520](https://github.com/Cacheirez/openfodder/actions/runs/42034593520), todas PASS. El fallo de referencia clásica ausente está resuelto. [Estado y límites del relevo](CONTINUIDAD.md), [comprobación remota](evidence/handoff-20261105.json).
 
 ## Avance A3: reposo/apuntado y transición — 5 de noviembre
 
 Implementado el lote bajo de apuntado en ocho direcciones y su derivación reproducible, conservando los 48 derivados de marcha exactos. [Fuentes y reproducción](../../assets/modernization/soldier-aim/README.md), [evidencia](evidence/soldier-aim-validation.json).
 
-Corregida la interpretación previa de la selección: `0x30` es la familia baja `Prone` (hojas `0x10–0x17`, frame 0) seleccionada por objetivo/condiciones; la quietud normal puede conservar frames de marcha. `0x40` pertenece a una ruta especial de caída y no se promueve a reposo normal. Las tres funciones selectoras permanecen idénticas a la base clásica. El modo de escuadrón 0 selecciona otra familia y sigue pendiente de arte.
+Corregida la interpretación previa de la selección: `0x30` es la familia baja `Prone` (hojas `0x10–0x17`, frame 0) seleccionada por objetivo/condiciones; la quietud normal puede conservar frames de marcha. `0x40` pertenece a una ruta especial de caída y no se promueve a reposo normal. Las tres funciones selectoras permanecen idénticas a la base clásica. El modo de escuadrón 0 selecciona otra familia; la auditoría posterior descrita abajo no localiza activación normal CF1, por lo que no se promueve arte para esa rama interna.
 
 Prueba de 152 aserciones/80 muestras originales, más transición con dos soldados independientes y oclusión en WindowHD/SDL: 640 intervalos controlados y 600 con recursos reales, 8×/12×. Las claves bajas son 32 reconstrucciones desde tablas/bytes verificados: 11 coinciden con el censo previo, 21 no se atribuyen a observación de replay. No hay aceptación visual de Miguel ni publicación HD completa de campaña. No se cambia el lanzador ni se entrega ZIP.
 
@@ -38,7 +36,7 @@ Marcha, quietud y disparo normal reutilizan las familias anteriores, conservando
 
 Las funciones originales mantienen la secuencia de lanzamiento 0,0,1,1,2,2 y su retorno nativo; 272 aserciones y 168 muestras. La prueba WindowHD/SDL usa dos soldados independientes y oclusión a 8×/12×: 1.344 intervalos controlados y 1.260 con recursos reales. El proyectil queda separado. No acredita campaña HD completa ni aceptación visual; A3 sigue abierto.
 
-El arreglo de CI `1e1f021` trae la referencia clásica antes de compilar. Windows 42027445300 y Linux 42027447090 superaron fetch, compilación y CTest; workflows completos todavía en curso al consultar. La CI del nuevo lote se comprueba aparte.
+El arreglo `1e1f021` trae la referencia clásica antes de compilar; queda verificado por la CI completa de `8d09a28` indicada arriba.
 
 ## Siguiente bloque verificable
 

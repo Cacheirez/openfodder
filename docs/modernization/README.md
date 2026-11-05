@@ -2,11 +2,11 @@
 
 **Estado único:** [CONTINUIDAD.md](CONTINUIDAD.md). **Plan único:** [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.
 
-La prueba de Miguel detecta alternancia moderno/clásico. El lote de seis poses sigue siendo un piloto incompleto; el siguiente objetivo es sustituir todas las direcciones/estados y todos los soldados previstos, conservando la animación original.
+La alternancia moderno/clásico observada por Miguel sigue sin resolver como producto completo. El lanzador conserva el piloto de seis poses. La rama ya incluye 24 poses de marcha, ocho de apuntado bajo y 24 de granada, con pruebas internas y CI de implementación PASS; falta cubrir los demás estados/variantes y obtener aceptación visual. El siguiente bloque técnico es el lanzacohetes del jugador, según CONTINUIDAD.md.
 
 ## Leer para trabajar
 
-1. [Estado y límites actuales](CONTINUIDAD.md).
+1. [Estado, CI y límites del relevo](CONTINUIDAD.md).
 2. [Plan y orden de implementación](PLAN_TRABAJO.md).
 3. [Soldados: catálogo, diagnóstico y criterio de cobertura completa](SOLDADOS_COBERTURA_COMPLETA.md).
 4. [Recuperación, compilación y pruebas](DESARROLLO.md), cuando haga falta ejecutar.
@@ -21,4 +21,4 @@ La prueba de Miguel detecta alternancia moderno/clásico. El lote de seis poses 
 - [Inventario CD32](CD32_CENSO_SPRITES.md): metadatos, no datos comerciales ni cobertura dinámica completa.
 - [Política de limpieza y referencias históricas](DOCUMENTACION.md): qué se eliminó y qué se conserva.
 
-No usar versiones antiguas, informes de validación o bitácoras como lista de próximas tareas. La CI del último código f72d6e7 está aprobada; la mezcla observada por Miguel sigue sin corregir.
+No usar versiones antiguas, informes de validación o bitácoras como lista de próximas tareas. Consultar la CI por commit en CONTINUIDAD.md; un verde no demuestra cobertura completa ni aceptación.

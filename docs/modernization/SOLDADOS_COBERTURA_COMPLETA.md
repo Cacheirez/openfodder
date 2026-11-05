@@ -154,7 +154,7 @@ Pruebas: `soldier_external_assets` recorre las 24 claves del catálogo jugador P
 
 ## Reposo/apuntado — avance del 5 de noviembre
 
-Ocho poses bajas y transición acotada implementadas: [contrato, selección y límites](../../assets/modernization/soldier-aim/README.md). La tabla `0x30` corresponde a la familia baja; la quietud puede conservar marcha. La familia `0x40` solo queda acreditada en una ruta especial, no como reposo normal. El modo de escuadrón 0 y otras familias permanecen pendientes. [Evidencia](evidence/soldier-aim-validation.json). No cierra A3 ni la sustitución completa.
+Ocho poses bajas y transición acotada implementadas: [contrato, selección y límites](../../assets/modernization/soldier-aim/README.md). La tabla `0x30` corresponde a la familia baja; la quietud puede conservar marcha. La familia `0x40` solo queda acreditada en una ruta especial, no como reposo normal. La auditoría posterior del modo 0 se recoge en el apartado siguiente; las demás familias aún no cubiertas permanecen pendientes. [Evidencia](evidence/soldier-aim-validation.json). No cierra A3 ni la sustitución completa.
 
 ## Posturas normales y granadas — avance del 5 de noviembre
 
