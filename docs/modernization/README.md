@@ -2,7 +2,7 @@
 
 **Estado único:** [CONTINUIDAD.md](CONTINUIDAD.md). **Plan único:** [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.
 
-La alternancia moderno/clásico observada por Miguel sigue sin resolver como producto completo. El lanzador conserva el piloto de seis poses. La rama ya incluye 24 poses de marcha, ocho de apuntado bajo y 24 de granada, con pruebas internas y CI de implementación PASS; falta cubrir los demás estados/variantes y obtener aceptación visual. El siguiente bloque técnico es el lanzacohetes del jugador, según CONTINUIDAD.md.
+La alternancia moderno/clásico observada por Miguel sigue sin resolver como producto completo. El lanzador conserva el piloto de seis poses. La rama ya incluye 24 poses de marcha, ocho de apuntado bajo, 24 de granada y tres de cohete (primera dirección), con pruebas internas y CI de implementación PASS; falta cubrir los demás estados/variantes y obtener aceptación visual. El siguiente bloque técnico es ampliar las siete direcciones restantes del lanzacohetes del jugador, según CONTINUIDAD.md.
 
 ## Leer para trabajar
 

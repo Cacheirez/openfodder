@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "base_commit": "31d82972453f5caa0b37a5a9d1fced0390f0dad3",
+  "plan": "2.74",
+  "scope": "first rocket direction 7, three retained body frames; not full soldiers/campaign",
+  "real": {
+    "status": "PASS bounded first-direction transitions; other directions/campaign/acceptance PENDING",
+    "mode": "source-reconstructed real resources",
+    "directions": [
+      7
+    ],
+    "intervals": 1584,
+    "bodies": 3168,
+    "sequences": 72,
+    "densities": [
+      8,
+      12
+    ],
+    "selector_assertions": 2703,
+    "selector_samples": 576,
+    "three_rejections": true,
+    "previous_112_assets": "exact",
+    "c01": "exact",
+    "log_sha256": "4b8b08ec60f230fe03e75a84cc11a92c875976ed3525e5d870f439057e908d75",
+    "preparation": {
+      "status": "PENDING other directions, campaign and Miguel in-game acceptance",
+      "directions": [
+        7
+      ],
+      "rocket_frames": 3,
+      "assets": 118,
+      "bindings": 234,
+      "reconstructed_rocket_keys": 12,
+      "previous_112_assets": "exact descriptors, bytes and bindings",
+      "manifest_sha256": "9280fc54ebc42a86f0e6ea777248b7b7c6c7bf8fadba424eee52efe136bd9e5c"
+    },
+    "limits": [
+      "geometry stubbed in selector fixture",
+      "prefix/suffix reuse prior walk/aim checks",
+      "reconstructed keys are not replay observations",
+      "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+      "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+    ]
+  },
+  "controlled": {
+    "status": "PASS bounded first-direction transitions; other directions/campaign/acceptance PENDING",
+    "mode": "controlled metadata and test-only keys",
+    "directions": [
+      7
+    ],
+    "intervals": 1584,
+    "bodies": 3168,
+    "sequences": 72,
+    "densities": [
+      8,
+      12
+    ],
+    "selector_assertions": 2703,
+    "selector_samples": 576,
+    "three_rejections": true,
+    "previous_112_assets": "exact",
+    "c01": "exact",
+    "log_sha256": "883e7117efca35bcc8267f494dd1725ad1d220cec4999dbc694fc6c01fbfb766",
+    "preparation": {
+      "status": "PENDING other directions, campaign and Miguel in-game acceptance",
+      "directions": [
+        7
+      ],
+      "rocket_frames": 3,
+      "assets": 118,
+      "bindings": 234,
+      "reconstructed_rocket_keys": 12,
+      "previous_112_assets": "exact descriptors, bytes and bindings",
+      "manifest_sha256": "9280fc54ebc42a86f0e6ea777248b7b7c6c7bf8fadba424eee52efe136bd9e5c"
+    },
+    "limits": [
+      "geometry stubbed in selector fixture",
+      "prefix/suffix reuse prior walk/aim checks",
+      "reconstructed keys are not replay observations",
+      "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+      "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+    ]
+  },
+  "art_review": {
+    "selected_masters": 3,
+    "direction": 7,
+    "style": "C / C01 retained",
+    "legs": "native-frame mapping and prior walk references; no generated recoil sequence",
+    "in_game_acceptance": "PENDING",
+    "prior_56_art_feedback": "Miguel favourable provisional feedback, explicitly pending gameplay test"
+  },
+  "compatibility": {
+    "previous_112_descriptors_and_222_bindings": "PASS exact against saved full grenade validation",
+    "Source": "UNCHANGED",
+    "classic_base": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8",
+    "H3": "prior results reused; not rerun; no campaign-HD claim"
+  },
+  "sanitizers": {
+    "ASan_UBSan": "PASS real WindowHD/SDL fixture; detect_leaks=0 explicit",
+    "LSan": "PENDING: ptrace task-inspection limitation; detect_leaks=0 explicit, no leak-free claim",
+    "log_sha256": "4b8b08ec60f230fe03e75a84cc11a92c875976ed3525e5d870f439057e908d75"
+  },
+  "CI": "new commit PENDING publication; previous commit Windows/Linux still in progress at consultation",
+  "privacy": "no original resource pixels, palettes or native rasters committed",
+  "grenade_regression": {
+    "status": "PASS bounded body transitions; full campaign and user acceptance PENDING",
+    "mode": "controlled source metadata and test-only keys",
+    "directions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "intervals": 1344,
+    "bodies": 2688,
+    "sequences": 64,
+    "densities": [
+      8,
+      12
+    ],
+    "selector_assertions": 272,
+    "selector_samples": 168,
+    "three_rejections": true,
+    "c01": "exact",
+    "previous_assets": "64 descriptors must remain unchanged",
+    "log_sha256": "f24f7079420ca338a4702eded0f3a4bad2858afc0e8253a0d34fa02ff13c53fc",
+    "limits": [
+      "reconstruction is not runtime coverage",
+      "two ordinary Amiga walking keys still absent",
+      "projectile/other actors remain separate, not campaign coverage"
+    ]
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "10070fc002a8ad5d174d7b349fb0e7f2d1c1929d8b0948e4ae09650e7a4ec352",
+    "tools/modernization/build_hd_window_fixture.py": "7279cc57283827b6cf06ed585661a6fda7fdf610110f8b0b960987d0bcf37e76",
+    "tools/modernization/rocket_art_cases.inc": "2656676103a7dce2c88f925cd0735710ad268da45d4d82c3835f0a80e8bb77f5",
+    "tools/modernization/check_rocket_art.py": "8c2904d81a1240e870f03c433bc46b9e16ad299b55fe958da944ab90fb51b331",
+    "tools/modernization/prepare_rocket_art.py": "92f2079e9b0a8476d2beceb80d41f0d8308b3648d2e029ab05286d683abc977d",
+    "assets/modernization/soldier-rocket/README.md": "b06fc16027a2cbbc21c4fdabbfd21906deb00db73c15fc4098b8e04153ec427e",
+    "assets/modernization/soldier-rocket/generation.json": "98c5ac2bd4d438c3f2722083f6671927e8a3f25452f92fda08380d5218072863",
+    "assets/modernization/soldier-rocket/manifest.json": "9551f9e690943849e8fdb76c9c5c9cbb0ffb3a56d848f2768a348014a4ade2e3",
+    "assets/modernization/soldier-rocket/r7-f0.png": "0e4e9e8663ad273d899f654fc3a422a56ed9d4679ca1cdb55387cb44218e52c7",
+    "assets/modernization/soldier-rocket/r7-f1.png": "f64319baeb5f066e14a2e322931b9b0264820e7a2f90490bcecfd4ec375750d8",
+    "assets/modernization/soldier-rocket/r7-f2.png": "e83f5c62f2a6dd05e9ee72865ca6715e7581bc7027d276fd6ebf0d1ccdeaa34c"
+  },
+  "local_environment_notes": [
+    "native snapshots are in pc/snapshots and amiga/snapshots, not their parent folders",
+    "old render-native-v2 is ASan-instrumented; LSan task inspection fails here; explicit detect_leaks=0 for reconstruction and new ASan fixture",
+    "cached build-walk/batch-builder predates current CLI; rebuilt from unchanged build_soldier_batch.cpp before deriving assets"
+  ],
+  "previous_commit_ci": {
+    "commit": "31d82972453f5caa0b37a5a9d1fced0390f0dad3",
+    "windows": {
+      "run_id": 42085518266,
+      "build": "success",
+      "CTest": "success",
+      "workflow": "in_progress"
+    },
+    "linux": {
+      "run_id": 42085518383,
+      "build": "success",
+      "CTest": "success",
+      "workflow": "in_progress"
+    },
+    "density": {
+      "run_id": 42085518445,
+      "workflow": "completed",
+      "conclusion": "success"
+    }
+  }
+}

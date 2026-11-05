@@ -25,7 +25,7 @@ La entrada 3 de la dirección 5 no aparece en estos casos con frame previo norma
 - Dos soldados intercalados conservan su propia dirección, frame y tick; la variable temporal compartida no impone la pose del otro.
 - La creación del cohete inicializa tick 1, giro −1 y tipo 3. Se contrasta su función completa con la base clásica, pero no se ejecuta la asignación de proyectiles en esta prueba.
 
-La fixture ejecuta los tres cuerpos de función originales, con geometría simulada. **2.703 aserciones y 576 muestras**, incluidas las rutas de restauración y regreso. Las aserciones siguen activas con NDEBUG; ejecución local con UBSan PASS. No ejecuta el manejador completo del jugador, no acredita cobertura de campaña, render SDL, GPU/CD32 ni aceptación de Miguel. No hay arte nuevo de cohetes todavía.
+La fixture ejecuta los tres cuerpos de función originales, con geometría simulada. **2.703 aserciones y 576 muestras**, incluidas las rutas de restauración y regreso. Las aserciones siguen activas con NDEBUG; ejecución local con UBSan PASS. No ejecuta el manejador completo del jugador, no acredita cobertura de campaña, render SDL, GPU/CD32 ni aceptación de Miguel. El primer lote posterior añade tres poses de dirección 7; [fuentes y validación acotada](../../assets/modernization/soldier-rocket/README.md).
 
 ## Reproducción
 
@@ -37,4 +37,4 @@ python tools/modernization/check_rocket_selection.py --out /ruta/nueva/rocket-se
 
 La opción `--emit` escribe la fixture C++ sin compilarla. CMake añade `openfodder_rocket_selector_tests` y CTest `soldier_rocket_original_selection`; la receta normal de compilación está en [DESARROLLO.md](DESARROLLO.md). La CI del commit que incorpora esta prueba debe comprobarse por separado; no atribuirle el verde del commit anterior.
 
-Siguiente entrega: preparar primero los tres frames de una dirección, compararlos con sus poses nativas y probar la transición completa con dos soldados, oclusión y 8×/12× en WindowHD/SDL. Solo después ampliar las otras direcciones. Conservar intactos marcha, apuntado, granadas y C01.
+La primera dirección (7) ya tiene sus tres frames y transición acotada WindowHD/SDL a 8×/12×. El siguiente bloque es ampliar las otras siete direcciones conforme a CONTINUIDAD.md. Conservar intactos marcha, apuntado, granadas y C01.

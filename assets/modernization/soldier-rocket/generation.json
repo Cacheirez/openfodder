@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen",
+  "transparent": true,
+  "input_roles": {
+    "r7_f0": "C01 identity/style/camera reference",
+    "r7_f1": "rocket frame 0 upper body; existing walk frame 1 lower-body reference",
+    "r7_f2": "rocket frame 0 upper body; existing walk frame 2 lower-body reference"
+  },
+  "prompts": [
+    {
+      "file": "r7-f0.png",
+      "prompt": "Use case: identity-preserve. Asset type: one isolated modern Cannon Fodder soldier sprite master, C — moderate painterly style. Input image is C01, the accepted identity/style/camera reference. Create a new rocket-launcher pose of exactly this soldier facing southeast (toward lower-right). Preserve his olive helmet, subtle blocky brush texture, green uniform, brown straps and belt pouches, dark brown boots, overhead three-quarter camera, body proportions and soft upper-left lighting. Replace the rifle in his hands with a clearly readable plain olive/dark metal shoulder-fired bazooka: rear opening just behind shoulder toward upper-left, front muzzle aimed diagonally forward toward lower-right; a single coherent straight tube, believable hands, trigger hand at rear grip and support hand beneath tube. Torso facing same direction as C01, compact balanced standing stance with both boots on ground, frame 0. Rifle may be stowed out of view; no second gun in hands. Single whole figure with helmet and boots fully inside image, centered with transparent space on every side. Genuine alpha transparent background, no floor, no shadow baked in, no explosion, smoke, muzzle flash, flying rocket, text, labels, border, watermarks or other soldiers. This is a body pose held by the game's native selector, not an illustration of a firing explosion. Preserve C01 scale and artistic detail, do not turn into pixel art or a photorealistic render."
+    },
+    {
+      "file": "r7-f1.png",
+      "prompt": "Use case: identity-preserve. Asset type: isolated game sprite master, southeast direction 7 frame 1. Image 1 is the already selected rocket soldier: preserve his helmet, face, shoulders, torso, arms, bazooka, hands, lighting, painterly texture, equipment and scale exactly. Image 2 is ONLY a lower-body pose reference from the existing walk animation; do NOT copy its rifle. Change only the legs/boots of image 1 to image 2's compact passing stance, both boots close together, exactly as image 2. Keep the bazooka pointing toward lower-right, with rear opening upper-left; keep upper-body orientation and camera unchanged. This is a retained leg pose while carrying/firing the same shoulder launcher, not a loading/recoil sequence. No extra gun, muzzleflash, smoke, projectile, shadows, floor, text, framing or labels. One centered full figure, helmet and both boots fully visible, margins all sides, genuine transparent alpha background. Match C01 moderate painterly style and exact uniform colors; no pixel-art conversion."
+    },
+    {
+      "file": "r7-f2.png",
+      "prompt": "Use case: identity-preserve. Asset type: isolated game sprite master, southeast direction 7 frame 2. Image 1 is the already selected rocket soldier: preserve his helmet, face, shoulders, torso, arms, bazooka, hands, lighting, painterly texture, equipment and scale exactly. Image 2 is ONLY a lower-body pose reference from the existing walk animation; do NOT copy its rifle. Change only the legs/boots of image 1 to image 2's opposite long stride with the soldier's right leg on viewer-left advanced downward and the other leg bent backward/upward, exactly as image 2. Keep the bazooka pointing toward lower-right, with rear opening upper-left; keep upper-body orientation and camera unchanged. This is a retained leg pose while carrying/firing the same shoulder launcher, not a loading/recoil sequence. No extra gun, muzzleflash, smoke, projectile, shadows, floor, text, framing or labels. One centered full figure, helmet and both boots fully visible, margins all sides, genuine transparent alpha background. Match C01 moderate painterly style and exact uniform colors; no pixel-art conversion."
+    }
+  ],
+  "scope": "first rocket direction 7; retained body frames, not recoil sequence; internal review pending in-game acceptance"
+}

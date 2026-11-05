@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "scope": "CF1 player rocket body direction 7 only; retained frames 0/1/2; projectile separate",
+  "frames": [
+    {
+      "sheet": 64,
+      "frame": 0,
+      "asset": "soldier-rocket/r7-f0.png",
+      "source_sha256": "0e4e9e8663ad273d899f654fc3a422a56ed9d4679ca1cdb55387cb44218e52c7",
+      "crop": [
+        381,
+        173,
+        1040,
+        1024
+      ],
+      "placement": [
+        3,
+        11,
+        14
+      ]
+    },
+    {
+      "sheet": 64,
+      "frame": 1,
+      "asset": "soldier-rocket/r7-f1.png",
+      "source_sha256": "f64319baeb5f066e14a2e322931b9b0264820e7a2f90490bcecfd4ec375750d8",
+      "crop": [
+        379,
+        170,
+        1041,
+        1021
+      ],
+      "placement": [
+        3,
+        11,
+        14
+      ]
+    },
+    {
+      "sheet": 64,
+      "frame": 2,
+      "asset": "soldier-rocket/r7-f2.png",
+      "source_sha256": "e83f5c62f2a6dd05e9ee72865ca6715e7581bc7027d276fd6ebf0d1ccdeaa34c",
+      "crop": [
+        240,
+        178,
+        1005,
+        1202
+      ],
+      "placement": [
+        3,
+        11,
+        14
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "key": "bf2bbb31fce36e7a490ab4b6d3419970dc388cb64148aa539af36bb499a77a4f",
+      "source_key": "02da650a88f0f60f1026193793cccc8e83a64d146c974ea803611eaa413ee77a",
+      "format": 0,
+      "sheet": 64,
+      "frame": 0,
+      "animation": 0,
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "5cbb4d61e0f8140832514be8cecb244884724900b70b4c8cc80c66aa2bb870dc",
+      "source_key": "02da650a88f0f60f1026193793cccc8e83a64d146c974ea803611eaa413ee77a",
+      "format": 0,
+      "sheet": 64,
+      "frame": 1,
+      "animation": 0,
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "4eac079421d88f7a2fae57c60250f940064748802bedc8c2b1ec946c718b1a30",
+      "source_key": "02da650a88f0f60f1026193793cccc8e83a64d146c974ea803611eaa413ee77a",
+      "format": 0,
+      "sheet": 64,
+      "frame": 2,
+      "animation": 0,
+      "resource_sha256": "30b585ea9b40f66b3590ec0cc89035babed69ebc0bda6042bcc56e4e9d364746",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "f9798cd09c1fccebd887b5dc9987064607abe33e66ff20fa639bef5ee6202359",
+      "source_key": "04d09e7ea29686de7ca87c645dce06f803a51709e79119d31cecb256ad4c8788",
+      "format": 0,
+      "sheet": 64,
+      "frame": 0,
+      "animation": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "b981edc59224bf407c0ec83bce01cb9cf0727b19cdc72d956eef77eaca8034e3",
+      "source_key": "04d09e7ea29686de7ca87c645dce06f803a51709e79119d31cecb256ad4c8788",
+      "format": 0,
+      "sheet": 64,
+      "frame": 1,
+      "animation": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "7f17b37e767426999851b833533e22766150f98e4ea02ff0ce5b6d8804b89efd",
+      "source_key": "04d09e7ea29686de7ca87c645dce06f803a51709e79119d31cecb256ad4c8788",
+      "format": 0,
+      "sheet": 64,
+      "frame": 2,
+      "animation": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "c03f50ceee71c26bb4f7aaee7a81ba4ee02892c43aed067d6463e5abbaadd93f",
+      "source_key": "0d3b1a65bbf5220a5c84c8c36494ced7b278fc85bf59a23f2f56f9f6809a7648",
+      "format": 1,
+      "sheet": 64,
+      "frame": 0,
+      "animation": 0,
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "8e6a9b5b2b89e8a255e0c000df9357204d8f5d30c5bf84aa64c457b3ebd8255d",
+      "source_key": "0d3b1a65bbf5220a5c84c8c36494ced7b278fc85bf59a23f2f56f9f6809a7648",
+      "format": 1,
+      "sheet": 64,
+      "frame": 1,
+      "animation": 0,
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "760236fac887cdb602bd2d90cfb4f5d87df493c4a620a1b057429a01b2d93305",
+      "source_key": "0d3b1a65bbf5220a5c84c8c36494ced7b278fc85bf59a23f2f56f9f6809a7648",
+      "format": 1,
+      "sheet": 64,
+      "frame": 2,
+      "animation": 0,
+      "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "5814d811db27933d66870ea954719c61ff2ff1e419c8517d029225b2c0cdebbc",
+      "source_key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
+      "format": 1,
+      "sheet": 64,
+      "frame": 0,
+      "animation": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "cd2a908b1529515d479649f67b1f03fa0a8e4e5c281786cc1356e947132a39d3",
+      "source_key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
+      "format": 1,
+      "sheet": 64,
+      "frame": 1,
+      "animation": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    },
+    {
+      "key": "54cd2f1cc929af624491688c4931ad6e7069a7f9dce7f7b8a35a5fa0f16b7612",
+      "source_key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
+      "format": 1,
+      "sheet": 64,
+      "frame": 2,
+      "animation": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "derivation": "source-table reconstruction from verified real resource; not runtime observation",
+      "replay_observed": false
+    }
+  ],
+  "acceptance": "internal review; Miguel in-game acceptance PENDING"
+}
