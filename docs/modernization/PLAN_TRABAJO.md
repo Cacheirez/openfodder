@@ -4,17 +4,35 @@
 
 ## Dónde estamos
 
-El candidato f72d6e7 compila, pasa CI y conserva H3, pero Miguel observa alternancia de soldado moderno/clásico. **Entrega A no aceptada como soldado completo.** Se retira el criterio de avanzar al escenario tras aceptar solo seis poses. Se requiere reproducir las direcciones, secuencias y estados originales con sustitución continua de todos los soldados del alcance.
+Estado contrastado con código y activos de `577c702` el **5 de noviembre de 2026**. Se conserva la versión 2.74: esta revisión actualiza avance y criterios operativos, sin cambiar alcance ni orden.
 
-[Diagnóstico, catálogo y criterios de salida](SOLDADOS_COBERTURA_COMPLETA.md). El inventario estático está hecho para las tablas CF1 PC/Amiga: marcha de ocho direcciones y tres frames por dirección, otras familias y rutas especiales localizadas. Falta completar cobertura dinámica/variantes y la implementación general.
+**Estamos desarrollando A3, con A1/A2 implementados parcialmente y pendientes de cobertura completa.** El piloto `PROBAR_SOLDADO_ANIMADO.cmd` sigue activando el lote antiguo de seis claves; no activa el manifiesto de marcha de 24 poses. La alternancia observada por Miguel continúa sin aceptación ni solución entregada como producto.
+
+| Bloque | Implementado y comprobado | Falta para cerrarlo |
+|---|---|---|
+| A1 | Catálogo estático PC/Amiga, captura de todos los slots, claves por recurso/paleta y censo transaccional de publicación. | Variantes/rutas y escenarios completos, incluidas dos claves ordinarias Amiga no observadas y transiciones. |
+| A2 | Compositor ordenado de múltiples cuerpos, recortes/oclusiones, publicación SDL y recuperación de la vista completa; integración por manifiesto en `WindowHD`. | Cobertura normal sin retornos por arte ausente, transiciones y validación GPU/escenas reales. |
+| **A3 — bloque de desarrollo actual** | 24 poses de marcha del jugador, derivados 8×/12× y 94 vinculaciones reales; revisión interna y pruebas aisladas de publicación. | Reposo/apuntado, demás estados, enemigos/variantes y aceptación artística. No equivale a soldados completos. |
+| A4 | H3 y pruebas focalizadas ya ejecutadas para los bloques anteriores; CTests Windows/Linux actuales PASS. | CI completa en curso, cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. |
+| B/C/D | Hay infraestructura previa documentada en H0–H10. | No se inicia un nuevo bloque de escenario, interpolación o extensión como sustituto del cierre de soldados. |
+
+[Diagnóstico, catálogo y criterios de salida](SOLDADOS_COBERTURA_COMPLETA.md). La ruta ordenada rechaza todo el intervalo si falta una clave: tener el arte de marcha no elimina los retornos de campaña mientras falten otros estados/entidades. El último H3 local conserva 11.361 estados originales, pero no publicó HD ordenado de campaña.
+
+CI consultada de `577c702`: Windows [42019722132](https://github.com/Cacheirez/openfodder/actions/runs/42019722132) y Linux [42019722430](https://github.com/Cacheirez/openfodder/actions/runs/42019722430) han superado compilación/CTest; los workflows completos siguen en curso. Comparador [42019722401](https://github.com/Cacheirez/openfodder/actions/runs/42019722401) PASS. El fallo anterior de hash por CRLF no se reproduce en el CTest Windows posterior a `b921009`; no atribuir PASS a pasos aún pendientes. [Comprobación de estado](evidence/plan-status-20261105.json).
+
+## Siguiente bloque verificable
+
+**A3: reposo/apuntado del jugador y transición marcha → reposo/apuntado → marcha.** Contrastar la rama de `Sprite_Handle_Troop_Animation` que selecciona la tabla en offset `0x30`, frame 0, y sus condiciones: dirección `mFaceDirection`, objetivo de arma, movimiento y agua. No asumir que toda quietud/disparo usa la misma familia.
+
+Reutilizar el censo y los maestros existentes cuando su correspondencia esté probada; recuperar solo referencias faltantes. Añadir vinculaciones explícitas y arte para las ocho direcciones de esta familia, con sus variantes observadas. Salida: prueba acotada Window/SDL con dos soldados, oclusión y 8×/12×, selección original intacta y censo de publicaciones/rechazos. Seguir la CI activa; resolver cualquier fallo nuevo pertinente antes de ampliar la entrega. Después, demás estados/enemigos y variantes pendientes. No regenerar la marcha ya publicada ni cambiar todavía el lanzador.
 
 ## Orden de trabajo
 
 | Paso | Trabajo | Cierre |
 |---|---|---|
-| **A1 — activo** | Matriz completa de soldados: todas las claves originales, entidades, estados, recursos/paletas y escenarios. Diagnóstico por entidad/estado y motivo. Casos para oclusiones, agua, bordes y transiciones. | Inventario trazable y puerta que detecte cualquier cuerpo clásico no previsto; no basta publicar una clave una vez. |
+| **A1 — abierto** | Matriz completa de soldados: todas las claves originales, entidades, estados, recursos/paletas y escenarios. Diagnóstico por entidad/estado y motivo. Casos para oclusiones, agua, bordes y transiciones. | Inventario trazable y puerta que detecte cualquier cuerpo clásico no previsto; no basta publicar una clave una vez. |
 | **A2** | Captura de todos los soldados y composición de múltiples cuerpos en el orden original, con recorte/oclusiones correctos. | Casos normales soportados sin volver al clásico; referencia clásica y simulación conservadas. No desactivar guards para saltarse el problema. |
-| **A3** | Ciclo de marcha completo de 24 claves del jugador; después todos los demás estados, enemigos y variantes del catálogo. Derivados/manifiestos reproducibles. Puede avanzar junto con A2 cuando los contratos estén fijados. | Poses coherentes y selección exacta del frame original; todas las familias del alcance cubiertas. Las 24 claves son un paso interno, no soldado completo. |
+| **A3 — activo** | Ciclo de marcha completo de 24 claves del jugador; después todos los demás estados, enemigos y variantes del catálogo. Derivados/manifiestos reproducibles. Puede avanzar junto con A2 cuando los contratos estén fijados. | Poses coherentes y selección exacta del frame original; todas las familias del alcance cubiertas. Las 24 claves son un paso interno, no soldado completo. |
 | **A4** | H3, pruebas de render, CI Windows/Linux, paquete y recorrido continuo a velocidad normal. | Ningún cuerpo clásico intercalado en condiciones normales dentro del alcance; validación visual de Miguel. Recuperación segura y coherente ante errores reales. |
 | **B** | Escena coherente: terreno, vegetación, edificios/objetos/efectos, interfaz y cursor completo con punto activo conservado. | Recursos del recorrido cubiertos, composición y legibilidad comprobadas. |
 | **C** | Interpolación de cámara/entidades, discontinuidades, ratón e independencia 0/1/N; completar la fase. | Misión completa con presentación nueva y suave; objetivo 60 Hz sujeto a medición real. Cierre H7 solo con su definición completa. |

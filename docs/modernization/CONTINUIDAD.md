@@ -1,4 +1,4 @@
-# Estado operativo — relevo del 5 de noviembre de 2026
+# Estado operativo — 5 de noviembre de 2026
 
 **Plan vigente 2.74, sin cambios de alcance ni orden. A1/A2/A3/A4 y A/H7 abiertos.** La alternancia del ejecutable de Miguel sigue sin resolverse como producto; el lanzador no cambia y no hay ZIP nuevo.
 
@@ -26,7 +26,14 @@ Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este rele
 - H3 local con el nuevo manifiesto: **11 fases, 11.361 estados originales (7.956 PC + 3.405 Amiga) y 22 pausas/reanudaciones PASS**. Trazas íntegras en memoria; compilación local sin mixer. **Cero publicación HD ordenada de campaña** por estados/entidades sin arte. Acredita simulación/guards, no cobertura visual ni audio.
 - CI real de `39c29f1`, consultada el 5 de noviembre: [Linux PR 41944510127](https://github.com/Cacheirez/openfodder/actions/runs/41944510127) y [comparador 41944510090](https://github.com/Cacheirez/openfodder/actions/runs/41944510090) PASS. [Windows PR 41944510095](https://github.com/Cacheirez/openfodder/actions/runs/41944510095) FAIL, igual que push 41944503184. Compila; 20/21 CTests pasan. Falla únicamente `soldier_walk24_art`: `ValueError: native evidence changed; inspect bindings`. Pasos posteriores de replay/H3 y paquete omitidos; no atribuirles PASS.
 - Causa reproducida: `core.autocrlf=true` convertía el JSON nativo a CRLF, distinto del SHA-256 fijado con LF. `b92100982ede0b6d6c18e0cd0072aed8d637f1c4` conserva bytes LF mediante `.gitattributes`, manteniendo la comprobación exacta. Verificación focalizada de checkout con `git -c core.autocrlf=true cat-file --filters HEAD:ruta`: ambos archivos idénticos byte a byte y hash original válido; CRLF reproduce el desacuerdo. No se han cambiado hashes para ocultarlo.
-- CTest no estaba disponible en PATH durante el relevo. Un primer intento directo usó un nombre de ejecutable inexistente y no ejecutó SDL; se corrigió al binario local existente. El intento con el binario correcto terminó con error de LeakSanitizer: no puede abrir `/proc/102/task` y no funciona bajo ptrace. No se declara PASS nuevo de SDL ni sanitizadores; no se desactiva la protección para obtener un verde. [Evidencia focalizada de relevo](evidence/handoff-20261105.json). La CI Windows posterior debe comprobarse en vivo; no se declara verde por la corrección local.
+- CTest no estaba disponible en PATH durante el relevo. Un primer intento directo usó un nombre de ejecutable inexistente y no ejecutó SDL; se corrigió al binario local existente. El intento con el binario correcto terminó con error de LeakSanitizer: no puede abrir `/proc/102/task` y no funciona bajo ptrace. No se declara PASS nuevo de SDL ni sanitizadores; no se desactiva la protección para obtener un verde. [Evidencia focalizada de relevo](evidence/handoff-20261105.json). Actualización posterior: el CTest Windows de `577c702` ya pasa; ver el estado de CI siguiente. El límite local de LeakSanitizer no equivale a un fallo del motor.
+
+## Contraste del plan con código — 5 de noviembre
+
+- HEAD auditado `577c702`; PR #1 abierta, borrador y sin fusionar. Plan 2.74 conserva alcance/orden; su resumen ya distingue implementación y cierre de A1–A4.
+- `WindowHD.cpp` carga el manifiesto ordenado y rechaza el intervalo completo ante cualquier clave ausente. `PROBAR_SOLDADO_ANIMADO.cmd` sigue en el lote antiguo de seis claves. Los 24 maestros y sus hashes están íntegros; el manifiesto tiene 94 vinculaciones únicas de marcha ordinaria, sin reposo/apuntado. No hay cambios de Source desde el lote artístico `39c29f1`.
+- CI de `577c702`: compilación y CTest Windows [42019722132](https://github.com/Cacheirez/openfodder/actions/runs/42019722132) PASS; el anterior fallo de hash ha superado su puerta de prueba. Compilación/CTest Linux [42019722430](https://github.com/Cacheirez/openfodder/actions/runs/42019722430) PASS; comparador [42019722401](https://github.com/Cacheirez/openfodder/actions/runs/42019722401) PASS. Windows/Linux completos aún en curso al consultar; los runs Windows de `b921009` fueron cancelados, no fallidos ni aprobados.
+- No se repiten H3, censo ni generaciones concluidas. [Evidencia de contraste](evidence/plan-status-20261105.json). Siguiente desarrollo: A3 reposo/apuntado, condicionado a resolver cualquier fallo nuevo pertinente de CI.
 
 ## Pendientes y bloqueos
 
@@ -45,7 +52,7 @@ Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este rele
 
 ## Siguiente tarea técnica concreta
 
-1. Comprobar HEAD/PR y CI posteriores a `b92100982ede0b6d6c18e0cd0072aed8d637f1c4`. Si Windows sigue fallando, leer el fallo nuevo y resolver esa regresión antes de ampliar arte; no repetir pruebas ya verdes sin motivo.
+1. Seguir el resultado final de Windows/Linux de `577c702` y del HEAD posterior. CTest Windows ya pasa tras la corrección LF. Si aparece otro fallo, diagnosticarlo antes de ampliar la entrega; no repetir pruebas ya verdes sin motivo.
 2. Continuar A3 con **reposo/apuntado del jugador**: contrastar selección original, estado, hoja/frame y dirección de apuntado independiente; recuperar solo las referencias reales que falten, preparar vinculaciones explícitas y arte, y probar un ciclo acotado marcha → reposo/apuntado → marcha en Window/SDL con dos soldados y oclusión, 8×/12×. Reutilizar maestros únicamente donde la correspondencia esté probada. Criterio de salida: selección exacta, publicaciones/rechazos trazables y regresiones focalizadas, sin cambiar lógica ni lanzador.
 3. Después, familias de granadas/agua/daño/muerte y enemigos; resolver las dos variantes ordinarias y transiciones. No cerrar A3/A/H7 ni entregar ZIP hasta cobertura y validación pertinentes.
 
