@@ -4,7 +4,7 @@
 
 ## Dónde estamos
 
-Estado contrastado con código y activos de `577c702` el **5 de noviembre de 2026**. Se conserva la versión 2.74: esta revisión actualiza avance y criterios operativos, sin cambiar alcance ni orden.
+Estado base contrastado con `b617168`, ampliado por el bloque de reposo/apuntado descrito abajo, el **5 de noviembre de 2026**. Se conserva la versión 2.74: esta revisión actualiza avance y criterios operativos, sin cambiar alcance ni orden.
 
 **Estamos desarrollando A3, con A1/A2 implementados parcialmente y pendientes de cobertura completa.** El piloto `PROBAR_SOLDADO_ANIMADO.cmd` sigue activando el lote antiguo de seis claves; no activa el manifiesto de marcha de 24 poses. La alternancia observada por Miguel continúa sin aceptación ni solución entregada como producto.
 
@@ -12,7 +12,7 @@ Estado contrastado con código y activos de `577c702` el **5 de noviembre de 202
 |---|---|---|
 | A1 | Catálogo estático PC/Amiga, captura de todos los slots, claves por recurso/paleta y censo transaccional de publicación. | Variantes/rutas y escenarios completos, incluidas dos claves ordinarias Amiga no observadas y transiciones. |
 | A2 | Compositor ordenado de múltiples cuerpos, recortes/oclusiones, publicación SDL y recuperación de la vista completa; integración por manifiesto en `WindowHD`. | Cobertura normal sin retornos por arte ausente, transiciones y validación GPU/escenas reales. |
-| **A3 — bloque de desarrollo actual** | 24 poses de marcha del jugador, derivados 8×/12× y 94 vinculaciones reales; revisión interna y pruebas aisladas de publicación. | Reposo/apuntado, demás estados, enemigos/variantes y aceptación artística. No equivale a soldados completos. |
+| **A3 — bloque de desarrollo actual** | 24 poses de marcha y ocho de apuntado bajo; derivados 8×/12×, 94 claves de marcha observadas y 32 de apuntado reconstruidas desde recursos reales. Transiciones aisladas probadas. | Otras posturas/modos de escuadrón, armas, daño/muerte, enemigos/variantes y aceptación artística. No equivale a soldados completos. |
 | A4 | H3 y pruebas focalizadas ya ejecutadas para los bloques anteriores; CTests Windows/Linux actuales PASS. | CI completa en curso, cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. |
 | B/C/D | Hay infraestructura previa documentada en H0–H10. | No se inicia un nuevo bloque de escenario, interpolación o extensión como sustituto del cierre de soldados. |
 
@@ -20,11 +20,17 @@ Estado contrastado con código y activos de `577c702` el **5 de noviembre de 202
 
 CI consultada de `577c702`: Windows [42019722132](https://github.com/Cacheirez/openfodder/actions/runs/42019722132) y Linux [42019722430](https://github.com/Cacheirez/openfodder/actions/runs/42019722430) han superado compilación/CTest; los workflows completos siguen en curso. Comparador [42019722401](https://github.com/Cacheirez/openfodder/actions/runs/42019722401) PASS. El fallo anterior de hash por CRLF no se reproduce en el CTest Windows posterior a `b921009`; no atribuir PASS a pasos aún pendientes. [Comprobación de estado](evidence/plan-status-20261105.json).
 
+## Avance A3: reposo/apuntado y transición — 5 de noviembre
+
+Implementado el lote bajo de apuntado en ocho direcciones y su derivación reproducible, conservando los 48 derivados de marcha exactos. [Fuentes y reproducción](../../assets/modernization/soldier-aim/README.md), [evidencia](evidence/soldier-aim-validation.json).
+
+Corregida la interpretación previa de la selección: `0x30` es la familia baja `Prone` (hojas `0x10–0x17`, frame 0) seleccionada por objetivo/condiciones; la quietud normal puede conservar frames de marcha. `0x40` pertenece a una ruta especial de caída y no se promueve a reposo normal. Las tres funciones selectoras permanecen idénticas a la base clásica. El modo de escuadrón 0 selecciona otra familia y sigue pendiente de arte.
+
+Prueba de 152 aserciones/80 muestras originales, más transición con dos soldados independientes y oclusión en WindowHD/SDL: 640 intervalos controlados y 600 con recursos reales, 8×/12×. Las claves bajas son 32 reconstrucciones desde tablas/bytes verificados: 11 coinciden con el censo previo, 21 no se atribuyen a observación de replay. No hay aceptación visual de Miguel ni publicación HD completa de campaña. No se cambia el lanzador ni se entrega ZIP.
+
 ## Siguiente bloque verificable
 
-**A3: reposo/apuntado del jugador y transición marcha → reposo/apuntado → marcha.** Contrastar la rama de `Sprite_Handle_Troop_Animation` que selecciona la tabla en offset `0x30`, frame 0, y sus condiciones: dirección `mFaceDirection`, objetivo de arma, movimiento y agua. No asumir que toda quietud/disparo usa la misma familia.
-
-Reutilizar el censo y los maestros existentes cuando su correspondencia esté probada; recuperar solo referencias faltantes. Añadir vinculaciones explícitas y arte para las ocho direcciones de esta familia, con sus variantes observadas. Salida: prueba acotada Window/SDL con dos soldados, oclusión y 8×/12×, selección original intacta y censo de publicaciones/rechazos. Seguir la CI activa; resolver cualquier fallo nuevo pertinente antes de ampliar la entrega. Después, demás estados/enemigos y variantes pendientes. No regenerar la marcha ya publicada ni cambiar todavía el lanzador.
+**A3: otras posturas normales del jugador, empezando por el modo de escuadrón 0 y la familia seleccionada en offset `0x18`.** Contrastar sus ramas y frames reales antes de denominarla por el comentario `Death-3`; después, lanzamiento de granadas y demás armas/estados. Reutilizar el diagnóstico, la marcha y el apuntado ya publicados. Resolver también variantes/transiciones pendientes; seguir la CI del nuevo commit y diagnosticar cualquier fallo nuevo pertinente antes de ampliar la entrega.
 
 ## Orden de trabajo
 

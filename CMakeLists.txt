@@ -173,7 +173,8 @@ if(Python3_Interpreter_FOUND)
     add_custom_command(OUTPUT "${_hd_window_fixture}"
         COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/build_hd_window_fixture.py" --emit "${_hd_window_fixture}"
         DEPENDS tools/modernization/build_hd_window_fixture.py Source/WindowHD.cpp
-            docs/modernization/evidence/soldier-coverage-matrix.json VERBATIM)
+            docs/modernization/evidence/soldier-coverage-matrix.json
+            docs/modernization/evidence/soldier-catalog.json VERBATIM)
     add_executable(openfodder_hd_window_tests "${_hd_window_fixture}")
     add_dependencies(openfodder_hd_window_tests openfodder_art_sdl_tests)
     target_include_directories(openfodder_hd_window_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization" "${CMAKE_CURRENT_BINARY_DIR}")
@@ -207,6 +208,23 @@ if(Python3_Interpreter_FOUND)
         --c01-builder $<TARGET_FILE:openfodder_art_builder>
         --batch-builder $<TARGET_FILE:openfodder_batch_builder>
         --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    set(_aim_selector_fixture "${CMAKE_CURRENT_BINARY_DIR}/aim_selector_fixture.cpp")
+    add_custom_command(OUTPUT "${_aim_selector_fixture}"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_aim_selection.py"
+            --emit "${_aim_selector_fixture}"
+        DEPENDS tools/modernization/check_aim_selection.py tools/modernization/check_final_timer_equivalence.py
+            Source/Sprites.cpp Source/Sprites/Sprite_Troop.cpp VERBATIM)
+    add_executable(openfodder_aim_selector_tests "${_aim_selector_fixture}")
+    add_test(NAME soldier_aim_original_selection COMMAND $<TARGET_FILE:openfodder_aim_selector_tests>)
+    add_test(NAME soldier_aim_art COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_aim_art.py"
+        --exe $<TARGET_FILE:openfodder_external_asset_tests>
+        --selector-exe $<TARGET_FILE:openfodder_aim_selector_tests>
+        --c01-builder $<TARGET_FILE:openfodder_art_builder>
+        --batch-builder $<TARGET_FILE:openfodder_batch_builder>
+        --asset-builder $<TARGET_FILE:openfodder_ordered_asset_builder>)
+    add_executable(openfodder_aim_reference tools/modernization/rekey_aim_reference.cpp)
+    target_include_directories(openfodder_aim_reference PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization")
     add_executable(openfodder_native_walk_renderer tools/modernization/render_walk_native.cpp)
     add_executable(openfodder_native_walk_snapshot_test tools/modernization/test_native_walk_snapshot.cpp)
     foreach(_native_target IN ITEMS openfodder_native_walk_renderer openfodder_native_walk_snapshot_test)

@@ -5,7 +5,7 @@
 ## Rama y commits
 
 - Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`. PR #1 comprobada abierta, borrador y sin fusionar.
-- Último bloque artístico publicado: `39c29f10edeb972418bb10885fb051d47b2af3f6`.
+- Marcha publicada: `39c29f10edeb972418bb10885fb051d47b2af3f6`. Este avance añade reposo/apuntado sobre `b617168`; su commit se obtiene del historial de este documento.
 - Corrección posterior de portabilidad: `b92100982ede0b6d6c18e0cd0072aed8d637f1c4`, fija LF en los dos JSON de marcha comprobados por hash; no cambia Source, arte, claves ni referencias.
 - El commit que contiene este relevo es documental y posterior a esos cambios. Obtener su SHA con `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`; comprobar también HEAD remoto antes de continuar. No confundir un commit documental con una nueva validación del motor.
 
@@ -13,7 +13,7 @@
 
 - A1/A2: captura de todos los slots, composición ordenada de varios cuerpos, resolución por contenido de recurso/paleta efectiva, manifiestos v2 de activos externos verificados y censo transaccional de publicación SDL. Implementado y probado; faltan cobertura/rutas y transiciones para cerrar estos bloques. Contrato: [SOLDADOS_COBERTURA_COMPLETA.md](SOLDADOS_COBERTURA_COMPLETA.md).
 - Contraste nativo: 112 instantáneas PC/Amiga de demos públicas; reconstrucción con recurso y paleta reales. 13 vinculaciones diagonales probadas: 12 de marcha y una Slide1 separada. [Reproducción y límites](NATIVE_WALK_REVIEW.md), [evidencia](evidence/soldier-native-walk-validation.json).
-- A3: **24 poses artísticas de marcha del jugador preparadas y revisadas internamente**, 48 derivados 8×/12×; 18 maestros nuevos, tres anteriores reutilizados en su diagonal correcta y tres del ciclo C01 conservados. C01 y sus derivados idénticos. [Fuentes, prompts, selección y visor](../../assets/modernization/soldier-walk24/README.md).
+- A3: **24 poses artísticas de marcha y ocho nuevas de apuntado bajo preparadas y revisadas internamente**. La marcha conserva sus 48 derivados 8×/12×; 18 maestros nuevos, tres anteriores reutilizados en su diagonal correcta y tres del ciclo C01 conservados. C01 y sus derivados idénticos. [Fuentes, prompts, selección y visor](../../assets/modernization/soldier-walk24/README.md).
 - Manifiesto de marcha ordinaria con **94 claves reales observadas: 48 PC + 46 Amiga**. Las 112 instantáneas incluyen estados no ordinarios; no equivalen a 96 vinculaciones de marcha. Slide1 conserva el manifiesto diagonal separado.
 - Falta observar 6/0 y 6/2 en el recurso Amiga `3e0bf624…`; sus imágenes modernas existen y se probaron con otros recursos. No inventar las dos claves ausentes ni vincular por compartir hoja.
 
@@ -31,14 +31,23 @@ Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este rele
 ## Contraste del plan con código — 5 de noviembre
 
 - HEAD auditado `577c702`; PR #1 abierta, borrador y sin fusionar. Plan 2.74 conserva alcance/orden; su resumen ya distingue implementación y cierre de A1–A4.
-- `WindowHD.cpp` carga el manifiesto ordenado y rechaza el intervalo completo ante cualquier clave ausente. `PROBAR_SOLDADO_ANIMADO.cmd` sigue en el lote antiguo de seis claves. Los 24 maestros y sus hashes están íntegros; el manifiesto tiene 94 vinculaciones únicas de marcha ordinaria, sin reposo/apuntado. No hay cambios de Source desde el lote artístico `39c29f1`.
+- `WindowHD.cpp` carga el manifiesto ordenado y rechaza el intervalo completo ante cualquier clave ausente. `PROBAR_SOLDADO_ANIMADO.cmd` sigue en el lote antiguo de seis claves. Los 24 maestros y sus hashes están íntegros; el manifiesto tiene 94 vinculaciones únicas de marcha ordinaria, sin reposo/apuntado en esa revisión base. No hay cambios de Source desde el lote artístico `39c29f1`.
 - CI de `577c702`: compilación y CTest Windows [42019722132](https://github.com/Cacheirez/openfodder/actions/runs/42019722132) PASS; el anterior fallo de hash ha superado su puerta de prueba. Compilación/CTest Linux [42019722430](https://github.com/Cacheirez/openfodder/actions/runs/42019722430) PASS; comparador [42019722401](https://github.com/Cacheirez/openfodder/actions/runs/42019722401) PASS. Windows/Linux completos aún en curso al consultar; los runs Windows de `b921009` fueron cancelados, no fallidos ni aprobados.
-- No se repiten H3, censo ni generaciones concluidas. [Evidencia de contraste](evidence/plan-status-20261105.json). Siguiente desarrollo: A3 reposo/apuntado, condicionado a resolver cualquier fallo nuevo pertinente de CI.
+- No se repiten H3, censo ni generaciones concluidas. [Evidencia de contraste](evidence/plan-status-20261105.json). Ese diagnóstico de base queda ampliado por el bloque de reposo/apuntado siguiente; consultar la tarea técnica vigente al final.
+
+## Reposo/apuntado implementado — 5 de noviembre
+
+- Ocho maestros de apuntado bajo, 16 derivados y manifiesto combinado de 64 activos/126 claves. [Fuentes, prompts, visor y reproducción](../../assets/modernization/soldier-aim/README.md). Marcha y C01 exactos respecto a la evidencia publicada.
+- La quietud normal reutiliza el frame de marcha que el original conserva. El apuntado permitido por el objetivo selecciona `0x30`, hojas `0x10–0x17`, frame 0. `0x40` se usa en una ruta especial de caída; la indicación previa de tratarlo como reposo normal queda descartada. Las funciones originales no se modifican.
+- Selección real extraída y contrastada con la base clásica: 152 aserciones y 80 muestras de transición, incluidas restricciones de agua, líder/seguidor y modos de escuadrón. Cálculo espacial simulado en la fixture, no una interacción completa de campaña.
+- Dos soldados con direcciones y fases independientes, solapamiento, recorte y oclusión posterior: 640 intervalos/1.280 cuerpos controlados, 600/1.200 con recursos reales a 8×/12×; tres rechazos transaccionales por modo. Tres grupos reales cubren ocho direcciones; el cuarto omite dos pares por las dos claves de marcha Amiga aún no observadas.
+- 32 claves de apuntado reconstruidas desde bytes/paletas reales y metadatos originales; 11 coinciden con el censo previo y 21 no se presentan como observaciones de replay. Originales y paletas permanecen locales. [Informe sin píxeles](evidence/soldier-aim-native-references.json).
+- [Validación, hashes y alcance de sanitizadores](evidence/soldier-aim-validation.json). No se repite H3 completo al no cambiar Source, lógica, tiempos ni referencias. La marcha anterior pasa su regresión. Aceptación visual, cobertura completa/GPU/CD32 y CI del nuevo commit pendientes al publicar. Sin ZIP ni cambio de lanzador.
 
 ## Pendientes y bloqueos
 
 - Aceptación artística de Miguel **PENDIENTE**: la revisión interna y la CI no la sustituyen. La última observación de Miguel rechaza la alternancia moderno/clásico en `PROBAR_SOLDADO_ANIMADO.cmd`; no volver a ofrecer el mismo piloto parcial como terminado.
-- Otros estados del jugador (reposo/apuntado, granadas, agua/daño/muerte), enemigos y variantes; las 24 poses no son el soldado completo.
+- Otros estados del jugador (posturas del modo de escuadrón 0, granadas, agua/daño/muerte), enemigos y variantes; las 24 poses no son el soldado completo.
 - Dos variantes Amiga ordinarias no observadas; rutas/transiciones excluidas, GPU, densidad final, CD32 y campaña continua sin retornos normales por falta de arte. Datos comerciales, bytes nativos y paletas permanecen fuera de Git.
 - Primer intento antiguo de H3 con JSONL incompleto descartado; la repetición canónica íntegra ya está acreditada. No reutilizar el intento truncado ni repetir la investigación sin regresión.
 
@@ -52,9 +61,9 @@ Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este rele
 
 ## Siguiente tarea técnica concreta
 
-1. Seguir el resultado final de Windows/Linux de `577c702` y del HEAD posterior. CTest Windows ya pasa tras la corrección LF. Si aparece otro fallo, diagnosticarlo antes de ampliar la entrega; no repetir pruebas ya verdes sin motivo.
-2. Continuar A3 con **reposo/apuntado del jugador**: contrastar selección original, estado, hoja/frame y dirección de apuntado independiente; recuperar solo las referencias reales que falten, preparar vinculaciones explícitas y arte, y probar un ciclo acotado marcha → reposo/apuntado → marcha en Window/SDL con dos soldados y oclusión, 8×/12×. Reutilizar maestros únicamente donde la correspondencia esté probada. Criterio de salida: selección exacta, publicaciones/rechazos trazables y regresiones focalizadas, sin cambiar lógica ni lanzador.
-3. Después, familias de granadas/agua/daño/muerte y enemigos; resolver las dos variantes ordinarias y transiciones. No cerrar A3/A/H7 ni entregar ZIP hasta cobertura y validación pertinentes.
+1. Comprobar CI real del nuevo HEAD; no atribuirle los resultados de commits anteriores.
+2. Continuar A3 con las **otras posturas normales del jugador: modo de escuadrón 0, tabla en offset `0x18`**. Contrastar selección, frames y referencias antes de asumir que el comentario `Death-3` describe todas sus rutas. Después, granadas y demás armas/estados.
+3. Reutilizar marcha/apuntado y pruebas ya concluidas. Completar las dos variantes ordinarias Amiga y transiciones, otros estados/enemigos y recorrido completo antes de cerrar A3/A/H7 o cambiar el lanzador.
 
 ## Inicio del próximo hilo
 
