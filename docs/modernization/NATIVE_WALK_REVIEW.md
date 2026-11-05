@@ -23,6 +23,6 @@ Los PNG nativos, bytes originales, instantáneas de paleta y HTML comparativo **
 
 El exportador limita 512 claves y recursos de 1 MiB, deduplica claves y valida los ficheros de salida. El renderer rechaza recurso/clave alterados y rutas inválidas. El exportador se inyecta únicamente en la copia diagnóstica y no cambia reglas, frames, tiempos ni selección de recursos.
 
-## Siguiente bloque
+## Continuación vigente
 
-Producir y contrastar los ciclos de las otras siete direcciones (21 claves artísticas), reutilizando esta referencia nativa ya obtenida; revisar las tres poses izquierdas provisionales antes de regenerarlas. Validar cada ciclo y sus variantes reales antes de extenderlo. Después, estados no ordinarios, enemigos y transiciones. No repetir el censo ni la reconstrucción de claves si no cambia el recurso o aparece una regresión.
+Las otras 21 claves artísticas ya están preparadas y revisadas internamente en `39c29f1`; [fuentes y límites del lote de 24](../../assets/modernization/soldier-walk24/README.md). No repetir su producción. Continuar con reposo/apuntado y demás estados/enemigos, variantes y transiciones según [CONTINUIDAD.md](CONTINUIDAD.md). Este informe conserva el alcance técnico del contraste diagonal; no acredita aceptación artística ni cobertura completa.

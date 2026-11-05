@@ -1,97 +1,54 @@
-# Estado operativo — 5 de noviembre de 2026
+# Estado operativo — relevo del 5 de noviembre de 2026
 
-**Plan 2.74. Tarea activa: sustitución completa de soldados.** Leer [plan](PLAN_TRABAJO.md) y [revisión de cobertura](SOLDADOS_COBERTURA_COMPLETA.md). A1/A2 tienen un primer bloque implementado: captura de todos los slots y compositor ordenado interno. Los seis frames actuales no cumplen el objetivo. La ruta ordenada se conecta por manifiesto explícito; el lanzador del piloto no cambia.
+**Plan vigente 2.74, sin cambios de alcance ni orden. A1/A2/A3/A4 y A/H7 abiertos.** La alternancia del ejecutable de Miguel sigue sin resolverse como producto; el lanzador no cambia y no hay ZIP nuevo.
 
-## Última observación de Miguel
+## Rama y commits
 
-Probó `PROBAR_SOLDADO_ANIMADO.cmd`: el nuevo soldado aparece intercalado con el antiguo. Pide sustituirlo en todos los casos, revisar todos los sprites y reproducir las ocho direcciones y el movimiento original. **No interpretar esta prueba como aceptación del lote.** No volver a pedirle validar la misma muestra parcial antes de corregirla.
+- Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`. PR #1 comprobada abierta, borrador y sin fusionar.
+- Último bloque artístico publicado: `39c29f10edeb972418bb10885fb051d47b2af3f6`.
+- Corrección posterior de portabilidad: `b92100982ede0b6d6c18e0cd0072aed8d637f1c4`, fija LF en los dos JSON de marcha comprobados por hash; no cambia Source, arte, claves ni referencias.
+- El commit que contiene este relevo es documental y posterior a esos cambios. Obtener su SHA con `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`; comprobar también HEAD remoto antes de continuar. No confundir un commit documental con una nueva validación del motor.
 
-## Estado comprobado
+## Trabajo completado y evidencia
 
-- Repositorio: https://github.com/Cacheirez/openfodder · rama `modernization/windows-foundation` · PR #1 abierto, borrador, sin fusionar.
-- Último código/ZIP probado: `f72d6e792c359cec2f53d006d167738c2104bc66`. CI Windows 41359306896, Linux 41359307009 y comparador 41359306892 PASS. ZIP 13106475504: 303 archivos; 29 fases públicas sin omisiones; lote publica seis claves y conserva 3405 estados H3 Amiga. [Verificación y hashes](evidence/soldier-batch-package.json).
-- Ese PASS es técnico, no cobertura visual completa. Solo dos orientaciones, primer jugador, un parche y retornos conservadores. [Diagnóstico de los cuatro límites](SOLDADOS_COBERTURA_COMPLETA.md#por-qué-se-intercala-el-clásico).
-- Inventario estático nuevo: PC jugador 158 claves, Amiga jugador 159, enemigos 160 por formato; 71 hojas por bando. Marcha: 24 claves por bando. No confundir entradas de tablas con imágenes únicas por producir o estados ya probados. Rutas especiales/civiles/efectos clasificados aparte.
-- El bloque posterior A1/A2 amplía la captura real (todos los sprites visibles, incluido el slot auxiliar), conserva apuntado/persona/vehículo/destrucción y añade traza por comando. `OrderedSoldierArt.hpp` compone múltiples cuerpos con recortes y oclusiones, conectado ahora a SDL mediante manifiesto explícito para desarrollo. No hay un ZIP posterior que corrija la mezcla.
-- Matriz reproducible: [soldier-coverage-matrix.json](evidence/soldier-coverage-matrix.json); 637 claves estáticas y 96 entradas de marcha (24 × 2 bandos × 2 formatos). No son 637 imágenes distintas. Observación de captura ≠ publicación HD. [Detalle de implementación y límites](SOLDADOS_COBERTURA_COMPLETA.md#bloque-interno-a1a2).
+- A1/A2: captura de todos los slots, composición ordenada de varios cuerpos, resolución por contenido de recurso/paleta efectiva, manifiestos v2 de activos externos verificados y censo transaccional de publicación SDL. Implementado y probado; faltan cobertura/rutas y transiciones para cerrar estos bloques. Contrato: [SOLDADOS_COBERTURA_COMPLETA.md](SOLDADOS_COBERTURA_COMPLETA.md).
+- Contraste nativo: 112 instantáneas PC/Amiga de demos públicas; reconstrucción con recurso y paleta reales. 13 vinculaciones diagonales probadas: 12 de marcha y una Slide1 separada. [Reproducción y límites](NATIVE_WALK_REVIEW.md), [evidencia](evidence/soldier-native-walk-validation.json).
+- A3: **24 poses artísticas de marcha del jugador preparadas y revisadas internamente**, 48 derivados 8×/12×; 18 maestros nuevos, tres anteriores reutilizados en su diagonal correcta y tres del ciclo C01 conservados. C01 y sus derivados idénticos. [Fuentes, prompts, selección y visor](../../assets/modernization/soldier-walk24/README.md).
+- Manifiesto de marcha ordinaria con **94 claves reales observadas: 48 PC + 46 Amiga**. Las 112 instantáneas incluyen estados no ordinarios; no equivalen a 96 vinculaciones de marcha. Slide1 conserva el manifiesto diagonal separado.
+- Falta observar 6/0 y 6/2 en el recurso Amiga `3e0bf624…`; sus imágenes modernas existen y se probaron con otros recursos. No inventar las dos claves ausentes ni vincular por compartir hoja.
 
-## Validación del bloque interno A1/A2
+## Pruebas realizadas y resultados
 
-[Informe con hashes](evidence/soldier-a1a2-validation.json): compositor 144 escenarios y captura ASan/UBSan PASS; 4 tests de matriz PASS. Replay real de 11 fases con contraste y 11.361 estados H3 originales PASS (build local Linux sin mixer). 532.749 comandos únicos capturados; 277 claves ordinarias observadas, no publicadas en HD. CI de `45ad790` comprobada: Windows 41498165115, Linux 41498165124 y comparador 41498165156 PASS; no hay nuevo paquete entregado. Primer intento de trazas truncado, descartado; repetición íntegra en almacenamiento temporal local.
+Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este relevo:
 
-## Siguiente bloque A2: publicación SDL interna
+- [Lote de marcha 39c29f1](evidence/soldier-walk24-validation.json): ASan/UBSan y método real Window/SDL PASS. Recursos controlados: 256 intervalos/512 cuerpos; claves reales sin reasignación sintética: 236/472 y 188 combinaciones clave/densidad. Tres grupos completos recorren ocho direcciones en 0–1–2–1; las 22 claves del cuarto grupo se prueban individualmente. Dos soldados, agua, oclusión y rechazos de enemigos/estados/paletas sin vincular.
+- Regresiones del ciclo diagonal (32 intervalos/64 cuerpos), activos externos (128/256), nueve tests Python y reglas del piloto: PASS según el informe publicado.
+- H3 local con el nuevo manifiesto: **11 fases, 11.361 estados originales (7.956 PC + 3.405 Amiga) y 22 pausas/reanudaciones PASS**. Trazas íntegras en memoria; compilación local sin mixer. **Cero publicación HD ordenada de campaña** por estados/entidades sin arte. Acredita simulación/guards, no cobertura visual ni audio.
+- CI real de `39c29f1`, consultada el 5 de noviembre: [Linux PR 41944510127](https://github.com/Cacheirez/openfodder/actions/runs/41944510127) y [comparador 41944510090](https://github.com/Cacheirez/openfodder/actions/runs/41944510090) PASS. [Windows PR 41944510095](https://github.com/Cacheirez/openfodder/actions/runs/41944510095) FAIL, igual que push 41944503184. Compila; 20/21 CTests pasan. Falla únicamente `soldier_walk24_art`: `ValueError: native evidence changed; inspect bindings`. Pasos posteriores de replay/H3 y paquete omitidos; no atribuirles PASS.
+- Causa reproducida: `core.autocrlf=true` convertía el JSON nativo a CRLF, distinto del SHA-256 fijado con LF. `b92100982ede0b6d6c18e0cd0072aed8d637f1c4` conserva bytes LF mediante `.gitattributes`, manteniendo la comprobación exacta. Verificación focalizada de checkout con `git -c core.autocrlf=true cat-file --filters HEAD:ruta`: ambos archivos idénticos byte a byte y hash original válido; CRLF reproduce el desacuerdo. No se han cambiado hashes para ocultarlo.
+- CTest no estaba disponible en PATH durante el relevo. Un primer intento directo usó un nombre de ejecutable inexistente y no ejecutó SDL; se corrigió al binario local existente. El intento con el binario correcto terminó con error de LeakSanitizer: no puede abrir `/proc/102/task` y no funciona bajo ptrace. No se declara PASS nuevo de SDL ni sanitizadores; no se desactiva la protección para obtener un verde. [Evidencia focalizada de relevo](evidence/handoff-20261105.json). La CI Windows posterior debe comprobarse en vivo; no se declara verde por la corrección local.
 
-`OrderedSoldierSDL.hpp` publica el resultado ordenado como fondo nativo y franjas HD disjuntas. Carga todas las texturas antes de dibujar, recorta contra la vista y recupera la vista clásica completa ante un fallo parcial. Rechaza cobertura incompleta. Pruebas locales SDL software: 348 casos PC/Amiga a 8×/12× con ASan/UBSan, más los 144 casos CPU. [Evidencia](evidence/soldier-ordered-sdl-validation.json). Añadido a CTest Windows/Linux. **Conectado a `WindowHD` mediante `OPENFODDER_SOLDIER_ORDERED_MANIFEST`**. Resolución por contenido del recurso y paleta RGB efectiva; desconocidos bloquean todo el intervalo. Faltan vinculaciones/arte completos, transiciones y GPU/recorrido visual. No hay nuevo ZIP ni corrección visual entregada.
+## Pendientes y bloqueos
 
-## Integración por recurso/paleta — 3 de noviembre
+- Aceptación artística de Miguel **PENDIENTE**: la revisión interna y la CI no la sustituyen. La última observación de Miguel rechaza la alternancia moderno/clásico en `PROBAR_SOLDADO_ANIMADO.cmd`; no volver a ofrecer el mismo piloto parcial como terminado.
+- Otros estados del jugador (reposo/apuntado, granadas, agua/daño/muerte), enemigos y variantes; las 24 poses no son el soldado completo.
+- Dos variantes Amiga ordinarias no observadas; rutas/transiciones excluidas, GPU, densidad final, CD32 y campaña continua sin retornos normales por falta de arte. Datos comerciales, bytes nativos y paletas permanecen fuera de Git.
+- Primer intento antiguo de H3 con JSONL incompleto descartado; la repetición canónica íntegra ya está acreditada. No reutilizar el intento truncado ni repetir la investigación sin regresión.
 
-CI de `060c0b1`: Windows 41533396790 y comparador 41533396822 PASS. Linux 41533397215 compiló y pasó 15 CTests, pero falló en el inventario estricto de llamadas SDL, que no incluía las cuatro del adaptador. Inventario corregido; no atribuir PASS a los pasos omitidos.
+## Decisiones y recuperación de cambios locales
 
-La ruta ordenada de `WindowHD` mantiene el contraste clásico y los guards de escena/pausa/renderer. Resuelve claves estables antes de componer y no cae al piloto si faltan vinculaciones. La recuperación conserva toda la vista. El código local del intento anterior se perdió antes de publicarse; se reconstruyó desde el hilo y se repiten sus pruebas. No reutilizar resultados H3 perdidos. [Contrato](SOLDADOS_COBERTURA_COMPLETA.md#resolución-de-variantes-e-integración-windowhd). Código publicado: `615a90d`. [Evidencia](evidence/soldier-ordered-integration.json): 15 CTests, 37 tests Python e integración/pantalla ASan/UBSan PASS; H3 completo 11 fases / 11.361 estados y 22 transiciones de pausa PASS. Se descartó una traza truncada en el workspace y se repitió íntegro en almacenamiento temporal local. 635 claves PC y 508 Amiga conservadas en `evidence/soldier-ordered-variants.json.gz`, observadas, no aprobadas. El replay usó manifiesto vacío: valida rechazo y simulación, no publicación HD de campaña. CI Windows 41623136653 y Linux 41623137007 en ejecución al registrar; comparador 41623136723 PASS. Consultar estado vivo antes de afirmar CI completa.
+- Se mantiene estilo C — Pintado moderado, maestro C01 y contadores originales. Solo C01 tiene aceptación del usuario; los restantes maestros siguen candidatos. 12× de trabajo y 8× alternativa, pendientes GPU/densidad final.
+- No regenerar los siete ciclos publicados ni reimplementar carga/censo/resolver salvo regresión demostrada. Las vinculaciones requieren identidad real y estado correcto; observar una clave no acredita publicación ni aceptación.
+- Checkout activo de relevo: `/workspace/scratch/a4e0bfdd2e06/openfodder`. No contiene cambios funcionales pendientes aparte de los commits identificados.
+- El checkout antiguo `c81d19f0fca7/openfodder`, basado en `db8a910`, conserva CMake, seis herramientas y arte experimental sin publicar. Está **sustituido** por `3e8592c`, `36e2cf8` y `39c29f1`; contiene las poses 3/2 y 5/2 rechazadas. No aplicarlo sobre HEAD ni atribuir sus resultados al lote vigente.
+- Recuperación duradera: archivo **OpenFodder_recuperacion_local_20261105.zip**, guardado junto a los archivos del usuario. ZIP verificado: 71 entradas y CRC íntegros antes/después de guardar. SHA-256 `05ad629a90694b2c52a55ed49f82f739e6ef6caac6f34a68567d8e4e32e7ef31`. Incluye `RECUPERAR.txt`, SHA base, parche binario y archivos no versionados para reconstruirlo en checkout separado. Incluye también las salidas/fixtures C01 y temporales duktape del checkout antiguo `aa523e15d6d8`; no son desarrollo nuevo entregado. Los originales locales se conservan. Esta copia es archivo de recuperación, no publicación en la rama ni lote aceptado.
 
-## Censo de publicación ordenada — 4 de noviembre
+## Siguiente tarea técnica concreta
 
-A1 incorpora `OPENFODDER_ORDERED_COVERAGE=1` y `ordered_soldier_coverage.py`: resultado transaccional por intervalo/comando, variante y entidad, con deduplicación de presentaciones. Sustituir una clave en el resolver no cuenta como publicación hasta completar SDL. Errores, recuperación clásica, recursos faltantes y censo interrumpido quedan separados; logs incoherentes/truncados se rechazan. [Contrato](SOLDADOS_COBERTURA_COMPLETA.md#evidencia-transaccional-de-publicación-ordenada--4-de-noviembre) y [evidencia](evidence/soldier-ordered-coverage-validation.json).
+1. Comprobar HEAD/PR y CI posteriores a `b92100982ede0b6d6c18e0cd0072aed8d637f1c4`. Si Windows sigue fallando, leer el fallo nuevo y resolver esa regresión antes de ampliar arte; no repetir pruebas ya verdes sin motivo.
+2. Continuar A3 con **reposo/apuntado del jugador**: contrastar selección original, estado, hoja/frame y dirección de apuntado independiente; recuperar solo las referencias reales que falten, preparar vinculaciones explícitas y arte, y probar un ciclo acotado marcha → reposo/apuntado → marcha en Window/SDL con dos soldados y oclusión, 8×/12×. Reutilizar maestros únicamente donde la correspondencia esté probada. Criterio de salida: selección exacta, publicaciones/rechazos trazables y regresiones focalizadas, sin cambiar lógica ni lanzador.
+3. Después, familias de granadas/agua/daño/muerte y enemigos; resolver las dos variantes ordinarias y transiciones. No cerrar A3/A/H7 ni entregar ZIP hasta cobertura y validación pertinentes.
 
-Pruebas del método real a 8×/12×: 21 intentos, 8 publicaciones, 4 rechazos por variante, 2 recuperaciones clásicas, 2 fallos de recuperación, 2 intervalos sin cuerpo, 2 censos interrumpidos y 1 manifiesto inválido; ASan/UBSan PASS. 41 tests Python y captura/contrato de pantalla ASan/UBSan PASS. Replays iniciales PC/Amiga con cinco presentaciones: 301 estados H3 originales PASS; 45.785 registros corresponden a 9.157 comandos únicos, cero publicaciones con manifiesto vacío. CTest añade comprobación con diagnóstico desactivado/activado. H3 completo PASS: 11 fases, 11.361 estados originales (7.956 PC + 3.405 Amiga) y 22 transiciones de pausa; compilación local sin mixer. CI de `344fb9e` verificada al continuar: Windows 41817267846, Linux 41817267875 y comparador 41817269613 PASS. Esto no acredita cobertura artística.
+## Inicio del próximo hilo
 
-**No corrige todavía la alternancia del ejecutable de Miguel.** No añade poses ni cambia el lanzador. A1/A2/A3 siguen abiertos; guards previos, arte completo, GPU y aceptación visual/CD32 pendientes. No repetir la instrumentación ya cubierta: utilizarla para comprobar vinculaciones/arte. La ampliación del resolver se implementa en el siguiente bloque, sin cerrar las rutas/transiciones pendientes.
-
-## Activos externos v2 — avance A3 junto a A2
-
-El resolver ya admite poses externas por clave completa y densidad, con tamaño/hash verificados, geometría variable y píxeles inmutables. Se conserva v1 y su prueba del método real. El exportador exacto PNG→RGBA no recorta/reescala ni sobrescribe contenido diferente; emite el descriptor con SHA-256. Límites y formato: [contrato v2](SOLDADOS_COBERTURA_COMPLETA.md#activos-externos-y-manifiesto-v2--4-de-noviembre). [Evidencia](evidence/soldier-external-assets-validation.json).
-
-Prueba sintética con tablas originales de marcha: 24 claves × PC/Amiga × 8×/12×, ciclo 0–1–2–1, dos cuerpos con agua/transparencia/oclusión: 128 intervalos SDL y 256 comandos publicados. 96 combinaciones clave/densidad, sin equipararlas a imágenes nuevas. Incluye estado/enemigo 32×10 con offsets, civil explícito, marcador rechazado, rutas relativas, integridad, inmutabilidad y presupuesto de 64 MiB; ASan/UBSan PASS. Exportación byte a byte PASS; 42 tests Python PASS. H3 completo PASS: 11 fases, 11.361 estados originales y 22 transiciones de pausa, usando manifiesto v2 vacío para validar integración/rechazo, sin acreditar arte. CI del nuevo commit pendiente al publicar.
-
-**El bloqueo de seis activos en código queda resuelto; el arte no está completado.** No volver a implementar instrumentación/carga que ya está probada. A1/A2/A3 siguen abiertos por arte/cobertura/transiciones; GPU/CD32 y aceptación visual pendientes. No se cambia el lanzador ni se entrega ZIP.
-
-## Revisión artística A3 — ciclo diagonal con escala común
-
-CI del HEAD de partida `db8a910` verificada: Windows 41859419924, Linux 41859419902 y comparador 41859419881 PASS. No equivale a aceptación artística.
-
-Primer bloque de arte revisado antes de multiplicar poses: el recorte de 7/2 comprimía 942 píxeles a la altura lógica donde C01 usa 850, cambiando la escala del torso/casco. Nuevo maestro candidato de zancada opuesta, conservando el anterior, y recortes de altura común 850 para las tres claves diagonales. C01 y sus derivados permanecen idénticos byte a byte. [Fuentes, prompt y reproducción](../../assets/modernization/soldier-walk-review/README.md).
-
-Preparación reproducible con los constructores existentes: seis derivados RGBA/PNG (tres claves × dos densidades), visor de ciclo 0–1–2–1 con paso manual y manifiesto v2 con 13 vinculaciones explícitas **candidatas** del censo existente. No se aprueban por observación ni se activan en el lanzador. La prueba usa claves de recursos controlados recalculadas, no acredita esas 13 variantes de campaña.
-
-Prueba del método real Window/SDL con este arte: 32 intervalos y 64 cuerpos publicados, PC/Amiga, 8×/12×, dos variantes de persona/paleta, dos soldados, agua/oclusión, ASan/UBSan PASS. CTest `soldier_walk_art_review` añadido. [Evidencia](evidence/soldier-walk-art-review.json). H3 completo no repetido en este bloque de arte/utillaje: no cambia código del motor, reglas ni referencias. CI del nuevo commit pendiente al publicar.
-
-**Siguiente paso:** contrastar este ciclo con los frames nativos y sus recursos/paletas reales; continuar con las otras 21 claves de marcha. La galería interna permite detectar escala/apoyo, pero no es un recorrido de campaña ni aceptación de Miguel. Las poses 1/2 son provisionales; los demás estados, enemigos, transiciones y GPU/CD32 siguen pendientes. La alternancia del ejecutable sigue NO resuelta como producto. Sin ZIP.
-
-## Contraste nativo y vinculaciones reales — 5 de noviembre
-
-CI de `3e8592c` comprobada: Windows 41884964506, Linux 41884964393 y comparador 41884964392 PASS. PR #1 abierta, borrador, sin fusionar.
-
-Bloque de contraste técnico completado para las demos públicas: 112 instantáneas reales (56 PC + 56 Amiga), con las 24 claves ordinarias de marcha por plataforma. Se recuperan píxeles y paletas efectivos, se verifica el hash del recurso y se recalcula cada clave antes de rasterizar. Copia diagnóstica separada de WindowHD, sin modificar el motor distribuido. Bytes originales, paletas y comparador nativo permanecen locales. [Contrato y reproducción](NATIVE_WALK_REVIEW.md).
-
-Las 13 vinculaciones diagonales se reprodujeron con recursos reales, sin claves sintéticas: 12 de marcha y una de `Slide1` (0x32) que comparte 7/2, clasificada aparte. ASan/UBSan, método real SDL: cuatro ciclos 0–1–2–1 y Slide1, dos soldados, agua/oclusión, 8×/12×, 34 intervalos y 68 cuerpos publicados; C01 idéntico. 24 claves nativas por plataforma revisadas internamente frente a las poses disponibles; las poses artísticas siguen provisionales y no hay aceptación visual nueva de Miguel. [Evidencia y hashes](evidence/soldier-native-walk-validation.json).
-
-H3 completo PASS en repetición canónica con trazas íntegras en memoria: 11 fases, 11.361 estados y 22 pausas/reanudaciones originales. Primer intento directo paralelo con trazas JSONL incompletas descartado; no se cambia la referencia. Añadido CTest de reconstrucción con píxeles conocidos PC/Amiga y 12 negativos; pruebas locales ASan/UBSan PASS. CI del nuevo commit pendiente al publicar.
-
-**Siguiente bloque A3:** producir/contrastar las otras 21 claves artísticas (incluidas las tres izquierdas aún provisionales), usando las referencias nativas ya recuperadas. Después, estados/enemigos y transiciones. No repetir censo, exportación ni resolver sin una regresión concreta. Este bloque no añade esas 21 poses, no cierra A3, no acredita publicación HD de una campaña completa y no cambia el lanzador ni entrega ZIP. La alternancia sigue NO resuelta como producto.
-
-## Siete ciclos artísticos pendientes — producidos y revisados internamente
-
-El bloque anterior de contraste queda reutilizado. Las **24 claves de marcha del jugador están preparadas**: 18 maestros nuevos, tres maestros anteriores reutilizados en la diagonal delantera izquierda que realmente representan y las tres poses diagonales C01 conservadas. Nuevos perfiles laterales para no confundirlos con diagonales; zancadas duplicadas de espalda descartadas y corregidas. Los maestros originales no se retocan con scripts y C01/derivados siguen idénticos. [Fuentes, prompts, visor y revisión](../../assets/modernization/soldier-walk24/README.md).
-
-Derivación compartida con la herramienta anterior: 48 activos PNG/RGBA (24 × 8×/12×) y manifiesto v2 con **94 claves reales de marcha ordinaria**. El censo de 112 incluía 18 estados no ordinarios; no eran 96 marchas completas. No se inventan 6/0 y 6/2 de un recurso Amiga no observadas en marcha ordinaria. Las imágenes sí existen y se prueban con otros recursos. La vinculación Slide1 anterior permanece en su manifiesto diagonal; el nuevo lote tiene alcance de marcha ordinaria explícito.
-
-ASan/UBSan, método real Window/SDL: 256 intervalos/512 cuerpos con recursos controlados y 236/472 con claves reales sin reasignación sintética. El caso real recorre ocho direcciones/ciclo 0–1–2–1 en tres grupos completos, y 22 claves del cuarto grupo individualmente. Agua, dos soldados, oclusión y 8×/12×; 188 combinaciones reales clave/densidad. Rechazo de enemigo, estado no vinculado y paleta desconocida conservado. Revisión visual interna de cada ciclo y del giro conjunto; aceptación de Miguel **PENDIENTE**. [Evidencia](evidence/soldier-walk24-validation.json).
-
-H3 con el nuevo manifiesto PASS: 11 fases/11.361 estados originales y 22 pausas/reanudaciones, trazas íntegras en memoria, motor local sin mixer y Source sin modificar. **El replay no publicó HD ordenado de campaña**: faltan otros estados/entidades, por lo que esta prueba acredita simulación/guards, no sustitución visual completa. CTest `soldier_walk24_art` añadido; regresiones del ciclo anterior y activos externos PASS. CI del nuevo commit pendiente al publicar.
-
-**Siguiente bloque:** otros estados del jugador, empezando por reposo/apuntado y su selección real; después granadas, agua/daño/muerte y enemigos como familias separadas. Reutilizar estos maestros y referencias cuando su correspondencia esté probada, sin mapear estados por compartir hoja. Resolver también las dos variantes ordinarias no observadas y transiciones. No regenerar los siete ciclos ni reconstruir el censo sin una regresión concreta. A1/A2/A3/A4 y A/H7 siguen abiertos: sin aceptación visual nueva, sin cambio del lanzador y sin ZIP.
-
-## Decisiones que se conservan
-
-Estilo **C — Pintado moderado**; C01 aceptado en detalle, posición e integración del comparador. Guardado/persistencia y recorrido común de escenas aceptados. No repetir elección A/B/C ni esas pruebas sin una regresión concreta. Cinco maestros adicionales generados, provisionales. 12× de trabajo y 8× alternativa; GPU/densidad final pendientes.
-
-Objetivo: CF1 modernizado, CD32 principal, presentación suave y nueva sin alterar jugabilidad ni campo lógico. Equipo de prueba de Miguel: Windows 11, 3840×2160, escala 300 %. Base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`, no mover ni reescribir. H3 original: 11 fases y 11361 estados (7956 PC + 3405 Amiga). Mantener contraste independiente, orden, anclaje, sombras y recortes. Datos comerciales privados fuera de GitHub.
-
-## Para continuar
-
-1. Comprobar HEAD, PR y CI reales. HEAD documental puede ser posterior al código validado.
-2. Resolver las rutas/variantes aún pendientes de la matriz, incluida captura en transiciones excluidas; no convertir conteos de captura en aceptación visual.
-3. Completar vinculaciones explícitas por recurso/paleta y las 24 poses originales, después los demás estados/entidades censados. La ruta ordenada está conectada por manifiesto; faltan transiciones/GPU y cobertura antes de cambiar el lanzador. Entregar ZIP solo tras cobertura y pruebas pertinentes.
-4. Registrar aceptación visual exacta y límites; no cerrar A/H7 por CI verde.
-
-Recuperación y compilación: [DESARROLLO.md](DESARROLLO.md). Relevo: [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md). Mensajes al usuario: terminar con `Hecho:`, `Situación del plan:` y `Próximos pasos:`. Sin subagentes salvo autorización expresa.
+Se puede utilizar directamente [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md), con GitHub conectado y sin adjuntos obligatorios. El archivo de recuperación solo hace falta para investigar el intento antiguo, no para continuar el trabajo publicado. [DESARROLLO.md](DESARROLLO.md) contiene preparación y compilación; [PLAN_TRABAJO.md](PLAN_TRABAJO.md) conserva el alcance vigente.

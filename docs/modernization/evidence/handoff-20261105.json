@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-05",
+  "art_commit": "39c29f10edeb972418bb10885fb051d47b2af3f6",
+  "portability_commit": "b92100982ede0b6d6c18e0cd0072aed8d637f1c4",
+  "scope": "handoff verification only; original H3 results reused, not rerun",
+  "ci_at_art_commit": {
+    "linux_pr": {
+      "run": 41944510127,
+      "result": "success"
+    },
+    "density": {
+      "run": 41944510090,
+      "result": "success"
+    },
+    "windows_pr": {
+      "run": 41944510095,
+      "result": "failure",
+      "job": 126973262522,
+      "ctest_passed": 20,
+      "ctest_total": 21,
+      "failed_test": "soldier_walk24_art",
+      "error": "ValueError: native evidence changed; inspect bindings",
+      "downstream_replays_and_package": "skipped"
+    }
+  },
+  "lf_fix": {
+    "git_autocrlf_true_filtered_bytes": "PASS exact match for pinned evidence and manifest",
+    "original_hash": "PASS",
+    "crlf_hash": "mismatch reproduced",
+    "guard": "unchanged"
+  },
+  "local_attempts": [
+    {
+      "command": "ctest --test-dir build-native -R ^soldier_walk24_art$ --output-on-failure",
+      "result": "NOT RUN: ctest absent from PATH"
+    },
+    {
+      "result": "NOT RUN: first direct invocation named nonexistent walk24-window-test"
+    },
+    {
+      "command": "python tools/modernization/check_walk24_art.py --exe build-walk24/window-test --c01-builder build-walk/c01-builder --batch-builder build-walk/batch-builder --asset-builder build-walk/asset-builder --out /workspace/scratch/5fc4bd2796c7/walk24-handoff",
+      "result": "FAIL environment: LeakSanitizer cannot access /proc task; no new SDL/sanitizer PASS",
+      "log_sha256": "59f255ed4bf6d825211138382bafb44d499b4be84b1b9a9227d1ad4119ba1de1",
+      "tail": [
+        "==103==Can't open /proc/102/task for reading.",
+        "==102==LeakSanitizer has encountered a fatal error.",
+        "==102==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1",
+        "==102==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)"
+      ]
+    }
+  ],
+  "recovery": {
+    "name": "OpenFodder_recuperacion_local_20261105.zip",
+    "sha256": "05ad629a90694b2c52a55ed49f82f739e6ef6caac6f34a68567d8e4e32e7ef31",
+    "size_bytes": 11250026,
+    "entries": 71,
+    "zip_crc": "PASS before and after save",
+    "status": "superseded local work, not branch delivery"
+  },
+  "engine_source_changed": false,
+  "new_zip_delivered": false
+}
