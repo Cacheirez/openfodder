@@ -12,8 +12,8 @@ Estado base contrastado con `b617168`, ampliado por el bloque de reposo/apuntado
 |---|---|---|
 | A1 | Catálogo estático PC/Amiga, captura de todos los slots, claves por recurso/paleta y censo transaccional de publicación. | Variantes/rutas y escenarios completos, incluidas dos claves ordinarias Amiga no observadas y transiciones. |
 | A2 | Compositor ordenado de múltiples cuerpos, recortes/oclusiones, publicación SDL y recuperación de la vista completa; integración por manifiesto en `WindowHD`. | Cobertura normal sin retornos por arte ausente, transiciones y validación GPU/escenas reales. |
-| **A3 — bloque de desarrollo actual** | 24 poses de marcha y ocho de apuntado bajo; derivados 8×/12×, 94 claves de marcha observadas y 32 de apuntado reconstruidas desde recursos reales. Transiciones aisladas probadas. | Otras posturas/modos de escuadrón, armas, daño/muerte, enemigos/variantes y aceptación artística. No equivale a soldados completos. |
-| A4 | H3 y pruebas focalizadas ya ejecutadas para los bloques anteriores; CTests Windows/Linux actuales PASS. | CI completa en curso, cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. |
+| **A3 — bloque de desarrollo actual** | 24 poses de marcha, ocho de apuntado bajo y 24 de granada; 112 activos 8×/12× y 222 vinculaciones. Posturas y disparo normal verificados en los selectores originales; transiciones aisladas probadas. | Lanzacohetes, agua, daño/muerte, enemigos/variantes, cobertura de campaña y aceptación artística. Modo 0 interno auditado, sin activación normal localizada. No equivale a soldados completos. |
+| A4 | H3 previo y pruebas focalizadas de los lotes. Compilación/CTests del arreglo de referencia clásica verificados por commit. | CI completa en curso, cobertura global, paquete nuevo y recorrido continuo aceptado por Miguel. |
 | B/C/D | Hay infraestructura previa documentada en H0–H10. | No se inicia un nuevo bloque de escenario, interpolación o extensión como sustituto del cierre de soldados. |
 
 [Diagnóstico, catálogo y criterios de salida](SOLDADOS_COBERTURA_COMPLETA.md). La ruta ordenada rechaza todo el intervalo si falta una clave: tener el arte de marcha no elimina los retornos de campaña mientras falten otros estados/entidades. El último H3 local conserva 11.361 estados originales, pero no publicó HD ordenado de campaña.
@@ -30,9 +30,19 @@ Corregida la interpretación previa de la selección: `0x30` es la familia baja 
 
 Prueba de 152 aserciones/80 muestras originales, más transición con dos soldados independientes y oclusión en WindowHD/SDL: 640 intervalos controlados y 600 con recursos reales, 8×/12×. Las claves bajas son 32 reconstrucciones desde tablas/bytes verificados: 11 coinciden con el censo previo, 21 no se atribuyen a observación de replay. No hay aceptación visual de Miguel ni publicación HD completa de campaña. No se cambia el lanzador ni se entrega ZIP.
 
+## Avance A3: posturas normales y granadas — 5 de noviembre
+
+El modo de escuadrón 0 queda auditado y probado como rama interna: solo se localizan cinco escrituras de inicialización a 2, sin un cambio normal a 0. No se generan ni se promueven como posturas normales las hojas comentadas `Death-3` sin una ruta efectiva. Es una conclusión de revisión de fuentes, no una garantía sobre estados manipulados externamente. [Auditoría](evidence/soldier-normal-postures-audit.json).
+
+Marcha, quietud y disparo normal reutilizan las familias anteriores, conservando frame/cooldown. Granadas añade 24 poses (ocho direcciones × tres), 48 derivados y 96 claves reconstruidas desde bytes reales; 34 coinciden con el censo previo y 62 no se atribuyen a observación de replay. El combinado tiene 112 activos/222 claves. Los 64 activos anteriores siguen exactos. [Contrato, selección y reproducción](../../assets/modernization/soldier-grenade/README.md), [evidencia](evidence/soldier-grenade-validation.json).
+
+Las funciones originales mantienen la secuencia de lanzamiento 0,0,1,1,2,2 y su retorno nativo; 272 aserciones y 168 muestras. La prueba WindowHD/SDL usa dos soldados independientes y oclusión a 8×/12×: 1.344 intervalos controlados y 1.260 con recursos reales. El proyectil queda separado. No acredita campaña HD completa ni aceptación visual; A3 sigue abierto.
+
+El arreglo de CI `1e1f021` trae la referencia clásica antes de compilar. Windows 42027445300 y Linux 42027447090 superaron fetch, compilación y CTest; workflows completos todavía en curso al consultar. La CI del nuevo lote se comprueba aparte.
+
 ## Siguiente bloque verificable
 
-**A3: otras posturas normales del jugador, empezando por el modo de escuadrón 0 y la familia seleccionada en offset `0x18`.** Contrastar sus ramas y frames reales antes de denominarla por el comentario `Death-3`; después, lanzamiento de granadas y demás armas/estados. Reutilizar el diagnóstico, la marcha y el apuntado ya publicados. Resolver también variantes/transiciones pendientes; seguir la CI del nuevo commit y diagnosticar cualquier fallo nuevo pertinente antes de ampliar la entrega.
+**A3: lanzamiento de cohetes del jugador**, selección en offset `0x38`, sus frames/direcciones y retorno nativo. Confirmar los frames realmente seleccionados antes de producir arte: el catálogo tiene una dirección con cuatro entradas, que no equivale a cuatro frames usados por cada ruta. Después, agua, daño/muerte y enemigos. Reutilizar marcha, apuntado, granadas y diagnóstico sin regenerarlos salvo regresión. Mantener pendientes las variantes Amiga no observadas, transiciones, GPU/CD32 y cobertura continua; clasificar por separado proyectiles y otros elementos asociados.
 
 ## Orden de trabajo
 

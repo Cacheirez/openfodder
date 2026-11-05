@@ -19,6 +19,12 @@ def build():
         assert [r['sheet'] for r in rows]==list(range(16,24))
         aim.append('{'+','.join('{'+','.join(map(str,[r['sheet'],0,*[int(r['frames'][0][i],0) for i in (0,2,3,4,5)]]))+'}' for r in rows)+'}')
     walk+='static const int orderedAimFixture[2][8][7]={'+','.join(aim)+'};\n'
+    grenades=[]
+    for platform in ('PC','Amiga'):
+        rows=catalog['platforms'][platform]['player']['groups'][5]['directions']
+        grenades.append('{'+','.join('{'+','.join(map(str,[r['sheet'],f,*[int(metadata[i],0) for i in (0,2,3,4,5)]]))+'}' for r in rows for f,metadata in enumerate(r['frames']))+'}')
+    walk+='static const int orderedGrenadeFixture[2][24][7]={'+','.join(grenades)+'};\n'
+
 
     return r'''
 #define OPENFODDER_HD_WINDOW_FIXTURE
@@ -87,7 +93,9 @@ int main(){
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);
     cWindow win;win.mRenderer=renderer;SDL_FRect src{0,0,96,64},dst{0,0,192,128};
 #ifdef OPENFODDER_EXTERNAL_ASSET_FIXTURE
-    if(std::getenv("OPENFODDER_AIM_ART")){
+    if(std::getenv("OPENFODDER_GRENADE_ART")){
+        #include "grenade_art_cases.inc"
+    } else if(std::getenv("OPENFODDER_AIM_ART")){
         #include "aim_art_cases.inc"
     } else if(std::getenv("OPENFODDER_WALK24_ART")){
         #include "walk24_art_cases.inc"

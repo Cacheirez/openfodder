@@ -9,10 +9,10 @@ int main(int argc,char**argv){
   nlohmann::json input;{std::ifstream f(argv[1]);f>>input;if(!f)return 3;}
   auto row=input.at("template");auto p=LoadNativeWalkSnapshot(row,argv[2]);
   const auto& m=input.at("metadata");auto& s=p.soldier;auto& g=s.geometry;
-  s.sheet=input.at("sheet");s.frame=0;s.faceDirection=input.at("direction").get<int>()*2;
+  s.sheet=input.at("sheet");s.frame=input.value("frame",0);s.faceDirection=input.at("direction").get<int>()*2;
   p.resource.offset=m.at(0);g.modX=m.at(2);g.modY=m.at(3);g.columns=m.at(4);g.rows=m.at(5);g.palette=m.at(6);
   p.draw.format=g.format;p.draw.palette=g.palette;
-  row["sheet"]=s.sheet;row["frame"]=0;row["face"]=s.faceDirection;
+  row["sheet"]=s.sheet;row["frame"]=s.frame;row["face"]=s.faceDirection;
   row["offset"]=p.resource.offset;row["mod_x"]=g.modX;row["mod_y"]=g.modY;row["columns"]=g.columns;row["rows"]=g.rows;row["palette"]=g.palette;
   const auto colors=row.at("colors").get<std::array<uint32_t,255>>();
   row["key"]=SoldierVariantKey(p,colors);row["derivation"]="source-table reconstruction from verified real resource; not runtime observation";

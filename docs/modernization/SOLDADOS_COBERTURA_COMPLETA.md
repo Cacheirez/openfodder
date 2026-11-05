@@ -155,3 +155,7 @@ Pruebas: `soldier_external_assets` recorre las 24 claves del catálogo jugador P
 ## Reposo/apuntado — avance del 5 de noviembre
 
 Ocho poses bajas y transición acotada implementadas: [contrato, selección y límites](../../assets/modernization/soldier-aim/README.md). La tabla `0x30` corresponde a la familia baja; la quietud puede conservar marcha. La familia `0x40` solo queda acreditada en una ruta especial, no como reposo normal. El modo de escuadrón 0 y otras familias permanecen pendientes. [Evidencia](evidence/soldier-aim-validation.json). No cierra A3 ni la sustitución completa.
+
+## Posturas normales y granadas — avance del 5 de noviembre
+
+Modo 0 auditado y probado como rama interna, sin activación normal CF1 localizada; quietud/disparo reutilizan la selección original de las familias existentes. Granadas añade 24 poses y 96 vinculaciones reconstruidas desde recursos reales, conservando los ticks originales y el proyectil separado. [Contrato y reproducción](../../assets/modernization/soldier-grenade/README.md), [auditoría](evidence/soldier-normal-postures-audit.json) y [pruebas](evidence/soldier-grenade-validation.json). El combinado de tres familias no equivale a cobertura completa. El siguiente bloque vigente está en CONTINUIDAD.md.
