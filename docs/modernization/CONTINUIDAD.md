@@ -44,6 +44,10 @@ Resultados anteriores reutilizados, sin repetir H3 ni el censo durante este rele
 - 32 claves de apuntado reconstruidas desde bytes/paletas reales y metadatos originales; 11 coinciden con el censo previo y 21 no se presentan como observaciones de replay. Originales y paletas permanecen locales. [Informe sin píxeles](evidence/soldier-aim-native-references.json).
 - [Validación, hashes y alcance de sanitizadores](evidence/soldier-aim-validation.json). No se repite H3 completo al no cambiar Source, lógica, tiempos ni referencias. La marcha anterior pasa su regresión. Aceptación visual, cobertura completa/GPU/CD32 y CI del nuevo commit pendientes al publicar. Sin ZIP ni cambio de lanzador.
 
+## CI del bloque 7de0ad1 — corrección de referencia clásica
+
+Linux PR [42025973189](https://github.com/Cacheirez/openfodder/actions/runs/42025973189) y push 42025963480 fallan al generar la fixture de selección: el checkout superficial aún no tenía `5e6a4f…:Source/Sprites/Sprite_Troop.cpp`. No llegaron al CTest nuevo. No es un fallo de los selectores ni de render. Los workflows Windows/Linux traen ahora ese commit fijado **antes** de configurar/compilar y verifican el objeto requerido; la comparación estricta se conserva. Reproducción local: un clon superficial falla antes del fetch y genera correctamente la fixture después. [Evidencia](evidence/ci-selector-reference-20261105.json). CI posterior pendiente al publicar; no se atribuye PASS a pasos omitidos.
+
 ## Pendientes y bloqueos
 
 - Aceptación artística de Miguel **PENDIENTE**: la revisión interna y la CI no la sustituyen. La última observación de Miguel rechaza la alternancia moderno/clásico en `PROBAR_SOLDADO_ANIMADO.cmd`; no volver a ofrecer el mismo piloto parcial como terminado.

@@ -36,6 +36,12 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git -C Run/Tests checkout c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Fetch pinned classic selector reference
+        run: |
+          git fetch --no-tags --depth 1 origin 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git cat-file -e 5e6a4f3834a0a491468ea659f45f8e5f4fb785a8:Source/Sprites/Sprite_Troop.cpp
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: H5.5 - screen transform mathematical contract
         run: python tools/modernization/check_screen_transform_contract.py
       - name: Test the audit gate
