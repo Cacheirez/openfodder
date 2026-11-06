@@ -7,12 +7,12 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74, sin cambio de alcance ni estrategia.
 
 - **Bloque activo:** A3 — arte de soldados; A1/A2/A4 siguen abiertos.
-- **Último microbloque completado:** `A3-ROCKET-D1`, dirección 1, frames 0/1/2, recuperada sin regeneración desde `3f23207` local. Publicadas 0/1/7: nueve poses de cohete, **65 poses totales, 130 activos 8×/12× y 258 vínculos**. Los 124 activos/246 vínculos de D0 permanecen exactos. Identificar el commit de cierre con `git log -1 --format=%H -- docs/modernization/PLAN_TRABAJO.md` y verificar HEAD remoto. Aceptación jugando PENDIENTE.
-- **Siguiente tarea única:** `A3-ROCKET-D2` — recuperar, revisar y validar exclusivamente dirección 2, frames 0/1/2, desde el respaldo indicado en Arranque rápido; no regenerar sin regresión demostrada. Contrastar primero la CI del cierre D1 y resolver únicamente fallos nuevos que afecten al bloque.
-- **Criterio de salida:** tres maestros con alfa y coherencia C01, derivados 8×/12×, claves/manifiestos/hashes correctos y pruebas focalizadas selector/WindowHD/SDL con dos soldados, recortes y oclusiones. Conservar 0/1/7 y familias previas; publicar evidencia y relevo. Recursos ausentes y aceptación jugando se registran PENDIENTES.
-- **Límites:** una dirección por bloque. No abrir D2 automáticamente al cerrar D1 ni incorporar en lote las otras direcciones del respaldo. No tocar Source, H3, lógica ni lanzador.
-- **Después del cierre de D2:** elegir el siguiente microbloque real no publicado (en principio D3), tras contrastar HEAD; si queda incompleto mantener D2 pendiente con motivo reproducible.
-- **Evidencias y relevo:** [evidencia D1](evidence/soldier-rocket-d1-validation.json) y «Arranque rápido» de CONTINUIDAD.md; el registro inferior conserva estados históricos y no determina la siguiente tarea.
+- **Último microbloque completado:** `A3-ROCKET-D2`, dirección 2, frames 0/1/2, recuperada sin regeneración desde `3f23207` local. Publicadas 0/1/2/7: doce poses de cohete, **68 poses totales, 136 activos 8×/12× y 270 vínculos**. Los 130 activos/258 vínculos de D1 permanecen exactos. Ajustado el watchdog de pruebas tras el timeout ASan/UBSan de D1; matriz local D2 ASan/UBSan PASS, LSan pendiente; CI remota completa pendiente por SHA. Identificar el cierre con `git log -1 --format=%H -- docs/modernization/PLAN_TRABAJO.md`. Aceptación jugando PENDIENTE.
+- **Siguiente tarea única:** `A3-ROCKET-D3` — recuperar, revisar y validar exclusivamente dirección 3, frames 0/1/2, desde el respaldo indicado en Arranque rápido; no regenerar sin regresión demostrada. Contrastar primero la CI del cierre D2 y resolver únicamente fallos nuevos que afecten al bloque.
+- **Criterio de salida:** tres maestros con alfa y coherencia C01, derivados 8×/12×, claves/manifiestos/hashes correctos y pruebas focalizadas selector/WindowHD/SDL con dos soldados, recortes y oclusiones. Conservar 0/1/2/7 y familias previas; publicar evidencia y relevo. Recursos ausentes y aceptación jugando se registran PENDIENTES.
+- **Límites:** una dirección por bloque. No abrir D4 automáticamente al cerrar D3 ni incorporar en lote las otras direcciones del respaldo. No tocar Source, H3, lógica ni lanzador.
+- **Después del cierre de D3:** elegir el siguiente microbloque real no publicado (en principio D4), tras contrastar HEAD; si queda incompleto mantener D3 pendiente con motivo reproducible.
+- **Evidencias y relevo:** [evidencia D2](evidence/soldier-rocket-d2-validation.json) y «Arranque rápido» de CONTINUIDAD.md; el registro inferior conserva estados históricos y no determina la siguiente tarea.
 
 ## Dónde estamos
 
