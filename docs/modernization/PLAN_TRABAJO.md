@@ -4,15 +4,15 @@
 
 ## Control operativo — siguiente paso (lectura inicial obligatoria)
 
-**Este bloque es la única fuente de verdad sobre la próxima tarea.** Leerlo al iniciar un hilo; consultar el resto del plan solo según la tarea. Actualizarlo **después de cada microbloque terminado y publicado**, sin incrementar la versión del plan salvo cambio de alcance o estrategia.
+**Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74, sin cambio de alcance ni estrategia.
 
 - **Bloque activo:** A3 — arte de soldados; A1/A2/A4 siguen abiertos.
-- **Último microbloque artístico publicado:** lanzacohetes dirección 7, frames 0/1/2 (`assets/modernization/soldier-rocket/`, commit artístico `7f1179b`); revisión jugable y cobertura global pendientes.
-- **Siguiente tarea única:** `A3-ROCKET-D0` — preparar y validar **dirección 0 del lanzacohetes**, frames 0/1/2, respetando la selección original y el estilo C01. Referencias: `assets/modernization/soldier-rocket/README.md`, `generation.json` y `ROCKET_SELECTION.md`. No regenerar dirección 7 ni las familias previas.
-- **Criterio de salida de esta tarea:** tres maestros coherentes y con alfa; derivados 8×/12×; manifiestos y hashes correctos; pruebas focalizadas de selector/WindowHD/SDL con dos soldados, recortes y oclusiones según datos disponibles; commits publicados y evidencia. Ausencias de recursos o aceptación en juego = **PENDIENTE**, nunca PASS inferido.
-- **Límites:** una dirección por hilo; no pasar a otra automáticamente; no volcar imágenes/Base64, grandes HTML/JSON ni logs en la conversación.
-- **Después del cierre:** sustituir aquí la tarea `A3-ROCKET-D0` por el **siguiente microbloque real no completado** (en principio dirección 1, sujeto a verificación del HEAD y dependencias). Si está bloqueada, mantenerla pendiente con motivo reproducible; no avanzar artificialmente.
-- **Evidencias y relevo:** actualizar solo la sección «Arranque rápido» de `CONTINUIDAD.md` y la evidencia específica de la tarea. No duplicar aquí logs, hashes exhaustivos ni la crónica de cada sesión.
+- **Último microbloque completado:** `A3-ROCKET-D0`, dirección 0 del lanzacohetes, frames 0/1/2, recuperada sin regeneración desde `3f23207` local e integrada en `e5f1f7a`. Publicados ahora 0 y 7: seis poses de cohete, 62 poses totales, 124 activos 8×/12× y 246 vínculos. Los 118 activos/234 vínculos anteriores permanecen exactos. Aceptación jugando PENDIENTE.
+- **Siguiente tarea única:** `A3-ROCKET-D1` — recuperar, revisar y validar exclusivamente dirección 1, frames 0/1/2, desde el respaldo del trabajo local indicado en Arranque rápido; no regenerar sin una regresión demostrada. Contrastar primero la CI del cierre D0 y resolver únicamente fallos nuevos que afecten al bloque.
+- **Criterio de salida:** tres maestros con alfa y coherencia C01, derivados 8×/12×, claves/manifiestos/hashes correctos y pruebas focalizadas selector/WindowHD/SDL con dos soldados, recortes y oclusiones. Conservar 0/7 y familias previas; publicar evidencia y relevo. Recursos ausentes y aceptación jugando se registran PENDIENTES.
+- **Límites:** una dirección por hilo. No abrir D1 automáticamente al cerrar D0. No incorporar en lote las otras direcciones del respaldo. No tocar Source, H3, lógica ni lanzador.
+- **Después del cierre de D1:** elegir el siguiente microbloque real no publicado (en principio D2), tras contrastar HEAD; si queda incompleto mantener D1 pendiente con motivo reproducible.
+- **Evidencias y relevo:** [evidencia D0](evidence/soldier-rocket-d0-validation.json) y «Arranque rápido» de CONTINUIDAD.md; el registro inferior conserva estados históricos, no determina la siguiente tarea.
 
 ## Dónde estamos
 
