@@ -1,4 +1,15 @@
-# Estado operativo — 5 de noviembre de 2026
+# Estado operativo — inicio rápido (6 de noviembre de 2026)
+
+## Arranque rápido — leer solo esta sección al empezar una sesión
+
+- **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta/borrador/sin fusionar; verificar HEAD y cambios locales. Plan **2.74**, fase **A3**; A1/A2/A4 y aceptación completa siguen abiertos.
+- **Arte publicado que consta en esta rama:** marcha (24 poses), apuntado bajo (8), granadas (24), lanzacohetes dirección **7** (3 poses: `r7-f0/f1/f2.png`). Último commit artístico de cohete documentado: `31d8297`. No hay entrega jugable completa ni aceptación visual de todos los soldados.
+- **Siguiente microtarea, si HEAD no aporta avances posteriores:** lanzar **solo la dirección 0 del cohete**, frames 0/1/2. Tomar identidad C01, referencias de esa dirección y los prompts de `assets/modernization/soldier-rocket/generation.json`; comprobar selector en `ROCKET_SELECTION.md`. No generar las siete direcciones en una sesión; después avanzar con 1–6, una por bloque verificable.
+- **Validar el lote, no toda la campaña:** alfa, consistencia de equipo/tubo y postura respecto de C01, derivados 8×/12×, manifiesto por recurso/paleta, selección original y prueba focalizada `WindowHD/SDL` con dos soldados/oclusiones. Conservar intactos anteriores, no tocar `Source`, relojes, H3 ni el lanzador. No declarar aceptación jugando.
+- **Contexto:** no leer de golpe el registro detallado que sigue, todo el plan o todos los manifiestos. Leer únicamente fragmentos necesarios. **No introducir HTML de visores con PNG en Base64, datos binarios, JSON gigantes ni logs completos en el chat.** Usar rutas, SHA, resúmenes y errores filtrados. Guardar y publicar una dirección antes de abrir otro hilo.
+- **Calidad y trazabilidad:** las dos claves ordinarias Amiga 6/0 y 6/2 y GPU/CD32/transiciones permanecen PENDIENTES; ante falta de datos o problema de entorno no inventar PASS. Si el HEAD o los assets contradicen este resumen, actualizarlo a partir de la evidencia antes de actuar.
+
+## Registro detallado conservado — 5 de noviembre de 2026
 
 **Plan vigente 2.74. A3 activo; A1/A2/A3/A4 y A/H7 abiertos.** La alternancia del piloto de Miguel no está resuelta ni aceptada como producto completo. El lanzador sigue usando el lote antiguo; no hay ZIP nuevo de soldados completos.
 
