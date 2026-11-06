@@ -1,29 +1,40 @@
-# Inicio ligero de un nuevo hilo — OpenFodder
+# Prompt universal de continuación — OpenFodder
 
-Las reglas permanentes están en [AGENTS.md](../../AGENTS.md). El bloque «Arranque rápido» al principio de [CONTINUIDAD.md](CONTINUIDAD.md) es la **única lectura de estado obligatoria**; el resto es consulta bajo demanda. Este prompt no copia la historia del proyecto.
+Válido para **cualquier fase del proyecto** y cualquier hilo nuevo en Work/Codex. No contiene la tarea siguiente: esta se consulta en la cabecera del [plan vigente](PLAN_TRABAJO.md). [AGENTS.md](../../AGENTS.md) mantiene las reglas y [CONTINUIDAD.md](CONTINUIDAD.md) registra el último avance y las evidencias.
 
-## Prompt para copiar
+## Copiar al nuevo hilo
 
 ```text
-Continúa OpenFodder en https://github.com/Cacheirez/openfodder
-Rama modernization/windows-foundation. PR #1 abierta, en borrador y SIN fusionar.
-Trabaja en español de España, sin subagentes ni confirmaciones rutinarias.
+Continúa la modernización de https://github.com/Cacheirez/openfodder en la rama modernization/windows-foundation.
+PR #1 siempre abierta, en borrador y SIN fusionar. Trabaja en español de España, con autonomía y sin subagentes.
 
-Lee AGENTS.md y SOLO la sección «Arranque rápido» (primeras ~12 líneas) de docs/modernization/CONTINUIDAD.md. Verifica HEAD, cambios locales y estado de la PR; si detectas arte más reciente, ajusta el siguiente paso. NO leas completos el plan, informes históricos, catálogos o manifiestos salvo necesidad justificada.
+ARRANQUE LIGERO:
+1. Lee AGENTS.md.
+2. Comprueba HEAD remoto, PR y cambios locales sin sobrescribir trabajo existente.
+3. Lee SOLO la sección inicial «Control operativo — siguiente paso» de docs/modernization/PLAN_TRABAJO.md y «Arranque rápido» de docs/modernization/CONTINUIDAD.md.
+4. Si hay discrepancias con código, arte o commits reales, contrástalas y corrige los documentos; no supongas que una tarea está terminada por figurar como tal.
+5. Consulta exclusivamente los fragmentos de código, contratos y evidencias necesarios para ejecutar la tarea seleccionada.
 
-Tarea de ESTA sesión: realizar exclusivamente el siguiente microbloque artístico pendiente según el arranque rápido: UNA dirección del lanzacohetes (habitualmente 3 poses/frame), sin regenerar familias ya terminadas. Sigue el contrato artístico y de selección del repositorio, reutilizando C01 y solo las referencias necesarias. No avances automáticamente a otra dirección.
+TRABAJO DE ESTA SESIÓN:
+Ejecuta UNA sola tarea verificable indicada por el control operativo del plan. No elijas tareas por el historial del chat, no amplíes el alcance ni empieces automáticamente la siguiente. Para arte, un lote pequeño (máximo una dirección/familia por hilo); para código, un cambio acotado con pruebas.
 
-CRÍTICO — Presupuesto de contexto: no imprimas ni pegues imágenes codificadas en Base64, data:image, HTML de visores, grandes JSON, diffs ni logs; conserva los archivos en el workspace y comunica rutas, SHA, conteos, errores filtrados y resúmenes breves (idealmente menos de 8 KB por salida de herramienta). Visualiza únicamente los maestros que sea necesario inspeccionar.
+PROTECCIÓN DEL CONTEXTO:
+No pegues ni imprimas binarios, imágenes en Base64, HTML con data:image, manifiestos completos, grandes diffs o logs extensos. Trabaja sobre archivos y resume rutas, SHA-256, contadores y fallos concretos. Evita lecturas y pruebas repetitivas, e interrumpe los bucles sin progreso. Saturación del contexto = relevo corto, no motivo para cambiar a Astra.
 
-Tras generar una dirección: valida consistencia, alfa, derivados 8×/12×, vinculaciones y pruebas focalizadas, sin atribuir aceptación jugable a CI verde. Crea commits coherentes y actualiza SOLO el arranque rápido de CONTINUIDAD.md y evidencia pertinente. Si no puedes publicar, conserva recuperación reproducible y dilo. Si se llena el contexto, DETENTE y releva; no cambies a Astra por este motivo.
+CIERRE OBLIGATORIO:
+- Comprueba los criterios de salida y ejecuta pruebas focalizadas; indica lo que NO se ha comprobado. La aceptación visual jugando sigue separada de la CI.
+- Publica cambios válidos mediante commits coherentes en la rama, sin fusionar PR #1. Conserva recuperación reproducible de trabajo no publicado.
+- Tras CADA paso terminado, actualiza el apartado «Control operativo» de PLAN_TRABAJO.md con el último paso terminado y la siguiente tarea única, y «Arranque rápido» de CONTINUIDAD.md con resultados, SHA y pendientes. No cambies la versión/alcance del plan si no hace falta.
+- Si el paso queda incompleto o bloqueado, NO avances el plan: mantén esa tarea pendiente y documenta el bloqueo y la recuperación.
+- Verifica que ambos documentos coinciden con GitHub, publica el relevo y DETENTE.
 
-Finaliza con Hecho / Situación del plan / Próximos pasos / Escalado.
+Finaliza con: Hecho / Estado del plan / Commit publicado / Trabajo no guardado / Próximos pasos / Escalado (NO o recomendación de Astra con motivo).
 ```
 
-## Adjuntos
+## Acceso y adjuntos
 
-Con GitHub conectado, ninguno obligatorio: maestros y arte versionados están en el repositorio. Para revisar un defecto visual nuevo, adjuntar solo la captura o el log acotado pertinente, nunca un volcado completo de medios o datos privados CD32.
+Con acceso a GitHub no hay adjuntos obligatorios. Si hay un defecto visual nuevo, aportar únicamente la captura o log reducido relevante; nunca publicar materiales comerciales privados. Sin acceso a GitHub, usar una copia reproducible de la rama con código, arte, herramientas e historial/submódulos cuando proceda.
 
-## Relevo tras el microbloque
+## Regla de mantenimiento
 
-Antes de iniciar otro hilo, exige commits y actualización del «Arranque rápido»: dirección/frames producidos, SHA, pruebas que sí se ejecutaron, bloqueos, archivos no publicados y **una sola siguiente dirección**. No transcribir la sesión anterior a la documentación.
+**Plan = qué hacer después. Continuidad = qué se ha hecho y cómo recuperarlo. AGENTS = cómo trabajar.** Actualizar la pequeña cabecera operativa al cerrar cada paso; no añadir resúmenes completos de cada hilo ni desplazar la tarea siguiente al prompt.
