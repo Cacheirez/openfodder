@@ -1,6 +1,6 @@
-# Lanzacohetes: direcciones 0 y 7 del jugador
+# Lanzacohetes: direcciones 0, 1 y 7 del jugador
 
-Bloque interno A3 del plan 2.74: **seis maestros de las direcciones 0 y 7**, frames 0/1/2 conservados por las rutas nativas. Estilo C — Pintado moderado, identidad C01 y sus activos exactos conservados. Las direcciones 1–6 y la prueba jugable de Miguel siguen pendientes.
+Bloque interno A3 del plan 2.74: **nueve maestros de las direcciones 0, 1 y 7**, frames 0/1/2 conservados por las rutas nativas. Estilo C — Pintado moderado, identidad C01 y sus activos exactos conservados. Las direcciones 2–6 y la prueba jugable de Miguel siguen pendientes.
 
 [Prompts y referencias](generation.json), [hashes, recortes, colocación y claves](manifest.json), [visor moderno](../../../docs/modernization/reviews/rocket.html), [contacto a 8×/12×](../../../docs/modernization/evidence/soldier-rocket-contact.png), [validación](../../../docs/modernization/evidence/soldier-rocket-art-validation.json).
 
@@ -14,13 +14,13 @@ La revisión interna compara casco, equipo, orientación del tubo, iluminación,
 
 ## Activos, claves y pruebas
 
-El combinado contiene **124 activos 8×/12× y 246 vinculaciones**: los 112 activos y 222 vínculos anteriores mantienen sus descriptores/bytes exactos, contrastados también con el resultado guardado de granadas. Las **24 claves nuevas** se reconstruyen desde cuatro grupos reales de recurso/paleta PC/Amiga y tres frames de las direcciones 0 y 7. No se atribuyen a observación de replay. Las dos claves ordinarias Amiga ausentes de la dirección 6 siguen pendientes; no se necesitan ni se inventan para este recorrido de direcciones 0 y 7.
+El combinado contiene **130 activos 8×/12× y 258 vinculaciones**: los 112 activos y 222 vínculos anteriores mantienen sus descriptores/bytes exactos, contrastados también con el resultado guardado de granadas. Las **36 claves de cohete** se reconstruyen desde cuatro grupos reales de recurso/paleta PC/Amiga y tres frames de las direcciones 0, 1 y 7. No se atribuyen a observación de replay. Las dos claves ordinarias Amiga ausentes de la dirección 6 siguen pendientes; no se necesitan ni se inventan para este recorrido de direcciones 0, 1 y 7.
 
-`check_rocket_art.py` ejecuta las muestras de los selectores originales en el método real `WindowHD::TryRenderMissionHD` con SDL software. Usa dieciocho casos (dos direcciones × tres llamadores × tres frames iniciales), preámbulo de marcha/apuntado, retención y regreso; 22 intervalos por secuencia. Dos soldados se presentan con rutas/fases independientes, solapamiento, recorte y oclusión posterior. A ambas densidades y en cuatro grupos: **3.168 intervalos / 6.336 cuerpos por modo**, controlado y con recursos reales. Tres casos de tipo/estado/paleta no vinculados rechazan todo el intervalo. C01 se contrasta exactamente.
+`check_rocket_art.py` ejecuta las muestras de los selectores originales en el método real `WindowHD::TryRenderMissionHD` con SDL software. Usa veintisiete casos (tres direcciones × tres llamadores × tres frames iniciales), preámbulo de marcha/apuntado, retención y regreso; 22 intervalos por secuencia. Dos soldados se presentan con rutas/fases independientes, solapamiento, recorte y oclusión posterior. A ambas densidades y en cuatro grupos: **4.752 intervalos / 9.504 cuerpos por modo**, controlado y con recursos reales. Tres casos de tipo/estado/paleta no vinculados rechazan todo el intervalo. C01 se contrasta exactamente.
 
 La expectativa SDL reutiliza el compositor CPU previamente probado: acredita integración/publicación, no una segunda evaluación anatómica independiente. La fixture del selector simula geometría; el preámbulo/final reutiliza las familias ya verificadas. No ejecuta el manejador completo del jugador ni demuestra cobertura de campaña, GPU, CD32 o aceptación de Miguel. El informe precisa los resultados de sanitizadores y sus límites.
 
-CTest añade `soldier_rocket_art`; se conserva `soldier_rocket_original_selection`. La modificación del emparejamiento se prueba en este bloque con dos direcciones independientes; no cambia la herramienta compartida de granadas. No cambia Source, el lanzador, los relojes ni las referencias H3; no se repite H3 completo ni se entrega ZIP nuevo.
+CTest añade `soldier_rocket_art`; se conserva `soldier_rocket_original_selection`. La modificación del emparejamiento se prueba en este bloque con tres direcciones independientes; no cambia la herramienta compartida de granadas. No cambia Source, el lanzador, los relojes ni las referencias H3; no se repite H3 completo ni se entrega ZIP nuevo.
 
 ## Reproducción
 
@@ -31,12 +31,18 @@ python tools/modernization/prepare_aim_native.py --group 7 --snapshots /ruta/sna
 python tools/modernization/check_rocket_art.py --exe /ruta/openfodder_external_asset_tests --selector-exe /ruta/openfodder_rocket_selector_tests --c01-builder /ruta/openfodder_art_builder --batch-builder /ruta/openfodder_batch_builder --asset-builder /ruta/openfodder_ordered_asset_builder --native-rocket /ruta/cohetes --native-grenade /ruta/granadas --native-aim /ruta/apuntado --native-walk /ruta/snapshots-pc --native-walk /ruta/snapshots-amiga --out /ruta/nueva/validacion
 ```
 
-No publicar los bytes, paletas ni rasters de los recursos originales. El helper puede reconstruir más entradas de la tabla para inspección; solo las 24 claves revisadas de este manifiesto se vinculan. El visor ilustra retención de frame, no la duración real de una llamada del motor.
+No publicar los bytes, paletas ni rasters de los recursos originales. El helper puede reconstruir más entradas de la tabla para inspección; solo las 36 claves revisadas de este manifiesto se vinculan. El visor ilustra retención de frame, no la duración real de una llamada del motor.
 
-Siguiente bloque: ampliar las otras siete direcciones, conservando el contrato de selección y el primer conjunto revisado. El recorrido completo en el juego sigue abierto.
+El siguiente microbloque se consulta exclusivamente en el control operativo de PLAN_TRABAJO.md. El recorrido completo en el juego sigue abierto.
 
 ## Microbloque A3-ROCKET-D0 — 6 de noviembre
 
-Dirección 0 recuperada byte a byte del commit local `3f23207`, sin regenerar arte ni incorporar las direcciones 1–6. El manifiesto conserva exactamente las tres descripciones de maestros, doce claves y seis derivados de dirección 7. [Evidencia específica](../../../docs/modernization/evidence/soldier-rocket-d0-validation.json). Los enlaces de validación/contacto de la primera dirección son históricos; el visor incluye ahora 0 y 7.
+Dirección 0 recuperada byte a byte del commit local `3f23207`, sin regenerar arte ni incorporar las direcciones 1–6. El manifiesto conserva exactamente las tres descripciones de maestros, doce claves y seis derivados de dirección 7. [Evidencia específica](../../../docs/modernization/evidence/soldier-rocket-d0-validation.json). Los enlaces de validación/contacto de la primera dirección son históricos; el visor de aquel bloque incluía 0 y 7.
 
-Los mismos comandos anteriores reproducen el lote 0/7 y ambos CTests; el selector de pareja usa desplazamiento 10 entre 18 secuencias para cruzar direcciones y variar ruta/frame. Pruebas controlada y reconstruida real: 3.168 intervalos y 6.336 cuerpos cada una, 8×/12×, tres rechazos transaccionales. Los datos reales siguen siendo privados. La siguiente tarea se consulta exclusivamente en el control operativo de PLAN_TRABAJO.md.
+En el commit `b54e19f`, los comandos anteriores reproducen el lote 0/7 y ambos CTests; el selector de pareja usa desplazamiento 10 entre 18 secuencias para cruzar direcciones y variar ruta/frame. Pruebas controlada y reconstruida real: 3.168 intervalos y 6.336 cuerpos cada una, 8×/12×, tres rechazos transaccionales. Los datos reales siguen siendo privados. La siguiente tarea se consulta exclusivamente en el control operativo de PLAN_TRABAJO.md.
+
+## Microbloque A3-ROCKET-D1 — 6 de noviembre
+
+Solo dirección 1 recuperada del commit local `3f23207`: tres maestros, seis derivados 8×/12× y doce claves reconstruidas. Las direcciones 2–6 permanecen en el respaldo; no se incorporan. [Evidencia D1](../../../docs/modernization/evidence/soldier-rocket-d1-validation.json).
+
+El mismo comando reproduce la matriz 0/1/7 de 27 secuencias: 4.752 intervalos y 9.504 cuerpos por modo, dos soldados con direcciones/rutas/fases independientes, recorte/oclusión y tres rechazos transaccionales. El desplazamiento 10 cambia de dirección y de caso en los tres grupos de nueve. Se comparan los 124 activos/246 vínculos de D0 con el nuevo resultado. No cambia código C++ ni selección: se reutiliza la fixture de D0; ASan/UBSan de D0 no se atribuye a D1. H3, campaña, GPU/CD32, LSan y aceptación jugando siguen pendientes de sus validaciones pertinentes.
