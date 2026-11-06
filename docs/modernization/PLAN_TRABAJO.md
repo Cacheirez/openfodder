@@ -2,6 +2,18 @@
 
 **Versión 2.74 · 2 de noviembre de 2026.** Responsable técnico: asistente. Decisiones y valoración de juego: Miguel. Este es el único plan de ejecución; [alcance completo H0–H10](ALCANCE_H0_H10.md).
 
+## Control operativo — siguiente paso (lectura inicial obligatoria)
+
+**Este bloque es la única fuente de verdad sobre la próxima tarea.** Leerlo al iniciar un hilo; consultar el resto del plan solo según la tarea. Actualizarlo **después de cada microbloque terminado y publicado**, sin incrementar la versión del plan salvo cambio de alcance o estrategia.
+
+- **Bloque activo:** A3 — arte de soldados; A1/A2/A4 siguen abiertos.
+- **Último microbloque artístico publicado:** lanzacohetes dirección 7, frames 0/1/2 (`assets/modernization/soldier-rocket/`, commit artístico `7f1179b`); revisión jugable y cobertura global pendientes.
+- **Siguiente tarea única:** `A3-ROCKET-D0` — preparar y validar **dirección 0 del lanzacohetes**, frames 0/1/2, respetando la selección original y el estilo C01. Referencias: `assets/modernization/soldier-rocket/README.md`, `generation.json` y `ROCKET_SELECTION.md`. No regenerar dirección 7 ni las familias previas.
+- **Criterio de salida de esta tarea:** tres maestros coherentes y con alfa; derivados 8×/12×; manifiestos y hashes correctos; pruebas focalizadas de selector/WindowHD/SDL con dos soldados, recortes y oclusiones según datos disponibles; commits publicados y evidencia. Ausencias de recursos o aceptación en juego = **PENDIENTE**, nunca PASS inferido.
+- **Límites:** una dirección por hilo; no pasar a otra automáticamente; no volcar imágenes/Base64, grandes HTML/JSON ni logs en la conversación.
+- **Después del cierre:** sustituir aquí la tarea `A3-ROCKET-D0` por el **siguiente microbloque real no completado** (en principio dirección 1, sujeto a verificación del HEAD y dependencias). Si está bloqueada, mantenerla pendiente con motivo reproducible; no avanzar artificialmente.
+- **Evidencias y relevo:** actualizar solo la sección «Arranque rápido» de `CONTINUIDAD.md` y la evidencia específica de la tarea. No duplicar aquí logs, hashes exhaustivos ni la crónica de cada sesión.
+
 ## Dónde estamos
 
 Estado base contrastado con `b617168`, ampliado por el bloque de reposo/apuntado descrito abajo, el **5 de noviembre de 2026**. Se conserva la versión 2.74: esta revisión actualiza avance y criterios operativos, sin cambiar alcance ni orden.
