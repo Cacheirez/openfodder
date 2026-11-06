@@ -1,45 +1,35 @@
-# AGENTS.md — OpenFodder
+# AGENTS.md — reglas permanentes de OpenFodder
 
-Instrucciones permanentes para agentes que trabajan en este repositorio. Aplican tanto a ChatGPT Work como a Codex u otras herramientas que lean este archivo. Trabajar en **español de España**.
+Trabaja en **español de España**. Repositorio `Cacheirez/openfodder`, rama `modernization/windows-foundation`. **PR #1 abierta, en borrador y SIN fusionar**; nunca modificar `master`. No usar subagentes sin permiso explícito.
 
-## Repositorio, autoridad y alcance
+## Fuente de verdad y arranque con contexto mínimo
 
-- Repositorio: `Cacheirez/openfodder`. Rama de trabajo: `modernization/windows-foundation`.
-- Mantener la **PR #1 abierta, en borrador y SIN fusionar**. No trabajar en `master` ni crear una PR alternativa salvo petición expresa.
-- No usar subagentes ni delegar trabajo sin autorización explícita.
-- Al comenzar, comprobar HEAD, estado de PR y CI *reales*. No dar por vigente un resultado de CI antiguo.
-- Leer `docs/modernization/CONTINUIDAD.md` (estado y siguiente paso) y el apartado pertinente de `PLAN_TRABAJO.md` (plan 2.74 salvo actualización posterior explícita).
-- Consultar `SOLDADOS_COBERTURA_COMPLETA.md`, `DESARROLLO.md` y `ALCANCE_H0_H10.md` **solo cuando afecten al bloque**. La documentación histórica y los informes son evidencia, no órdenes para rehacer trabajo ya terminado.
+1. Comprueba HEAD, estado de la PR y, solo si afectan al bloque, CI reciente. Revisa `git status --short` antes de tocar un checkout existente; no destruyas cambios locales.
+2. Lee **solo el apartado «Arranque rápido»** de `docs/modernization/CONTINUIDAD.md` y el apartado concreto del plan aplicable. No cargues de entrada todo `CONTINUIDAD.md`, `PLAN_TRABAJO.md`, `SOLDADOS_COBERTURA_COMPLETA.md` o informes históricos.
+3. Amplía la lectura **por fichero y fragmento**, únicamente ante una necesidad técnica. `DESARROLLO.md` contiene recetas de pruebas. Las decisiones y evidencias antiguas siguen disponibles, pero no se releen sistemáticamente.
+4. `CONTINUIDAD.md` conserva la autoridad sobre el estado y la siguiente tarea; el plan 2.74 sigue vigente salvo cambio explícito y justificado.
 
-## Invariantes de calidad
+## Presupuesto de contexto y trabajo artístico
 
-- Objetivo: modernizar **Cannon Fodder 1**, priorizando CD32, sin alterar jugabilidad ni campo lógico visible.
-- No modificar reglas, RNG, colisiones, secuencia, relojes lógicos ni selección original de frames. Respetar `mFaceDirection`, apuntado independiente y orden de dibujo. La marcha tiene **8 direcciones × 3 claves**, ciclo original 0–1–2–1 con sus excepciones: no introducir un reloj ligado a FPS ni sustituirlo por dos imágenes genéricas.
-- Conservar intacta la base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`, la comparación independiente y las referencias H3: **11 fases, 11.361 estados (7.956 PC + 3.405 Amiga)**. No regenerar referencias para encubrir diferencias.
-- Mantener estilo **C — Pintado moderado** y maestro C01 aceptado; las otras cinco poses son provisionales. No reabrir elecciones de estilo sin regresión demostrada.
-- La alternancia entre soldado moderno y clásico en el piloto `PROBAR_SOLDADO_ANIMADO.cmd` **NO está aceptada**. Sustituir todos los soldados/estados del alcance, respetando variantes, agua, recortes, oclusiones y orden. Las 24 poses de marcha no equivalen a cobertura total.
-- Conservar modo clásico por elección y recuperación coherente ante **fallos reales**. No quitar protecciones ni considerar la falta de arte o un retorno normal al clásico como funcionalidad terminada.
-- No subir a Git datos comerciales CD32, partidas ni material privado.
+- Una sesión de generación artística debe abordar **una sola dirección de una sola familia**, normalmente sus tres frames, seguida de validación, commit y relevo. Reducir a un solo frame si el intercambio de imágenes vuelve a ser excesivo. No pedir «completa todas las direcciones» en un solo hilo. No abrir tareas posteriores automáticamente.
+- Para cada pose consultar únicamente **C01, los maestros necesarios de esa dirección y las referencias nativas pertinentes**. Reutilizar assets, prompts y contratos aprobados; no volver a recuperar todas las hojas o a regenerar marchas, granadas y apuntado si siguen siendo válidos.
+- **Nunca volcar en la conversación** PNG/JPG binarios, cadenas Base64, `data:image`, HTML de visores con imágenes incrustadas, grandes manifiestos, JSON completos, diffs extensos ni logs completos. Para inspeccionarlos, usar archivos del workspace y mostrar solo ruta, dimensiones, SHA-256, contadores, estadísticas y fragmentos pertinentes. Visualizar imágenes específicas por separado cuando haga falta valorarlas.
+- Limitar salidas de comandos y herramientas a lo relevante (idealmente menos de 8 KB por llamada); redirigir logs a archivos y leer solo errores, últimas líneas o intervalos filtrados. No volver a transmitir bloques enormes por intentar resumirlos.
+- Antes de saturar la sesión: guardar los originales/derivados en el workspace, validar, publicar commits coherentes y actualizar el arranque rápido. Si el trabajo no se puede publicar, dejar **ruta, hashes e instrucciones reproducibles** y no darlo por entregado. Abrir otro hilo si se acerca el límite, sin esperar a que falle.
+- No confundir **contexto agotado** con **dificultad técnica**: cambiar a Astra no resuelve un exceso de imágenes/texto. Si ocurre, cerrar/relevar, reducir el lote y evitar salidas voluminosas.
 
-## Ejecución eficiente sin rebajar calidad
+## Garantías del proyecto
 
-1. Elegir el **siguiente bloque verificable** del plan vigente; delimitar objetivo, ficheros, hipótesis y criterio de salida.
-2. Reutilizar pruebas y diagnósticos válidos; no releer todo el repositorio ni repetir investigaciones concluidas. Consultar solo fuentes y código necesarios.
-3. Aplicar cambios pequeños pero completos; ejecutar primero pruebas focalizadas y sanitizadores pertinentes. Antes de entregar un ejecutable/ZIP, ejecutar la CI necesaria Windows/Linux, H3 y validación visual aplicable, con hashes y evidencia vinculada al commit.
-4. No confundir compilación/CI verde, captura de claves o manifiesto vacío con cobertura HD ni aceptación visual. Marcar siempre lo no ejecutado como **PENDIENTE**.
-5. Evitar refactorizaciones accesorias, generaciones masivas de arte sin comprobar una secuencia completa, logs gigantes y bucles de prueba sin información nueva. No eliminar controles para ahorrar tiempo o cuota.
-6. Crear commits coherentes; actualizar `CONTINUIDAD.md` y la evidencia afectada cuando exista avance real, sin duplicar la historia en varios documentos.
+- Modernizar Cannon Fodder 1, con CD32 como destino principal, **sin alterar simulación**: reglas, RNG, colisiones, reloj lógico, orden, campo visible, dirección/frame elegidos por el motor (`mFaceDirection` y apuntado). Marcha: 8 direcciones × 3 claves, ciclo original 0–1–2–1 con excepciones, no reloj ligado a FPS.
+- Mantener intocada base clásica `5e6a4f3834a0a491468ea659f45f8e5f4fb785a8`, referencia independiente y H3 de 11 fases / 11.361 estados. No modificar referencias para ocultar regresiones.
+- Estilo **C — Pintado moderado**, C01 aceptado; otros maestros según su estado documentado. No reflejar arte, reinventar estados ni mezclar estilos por comodidad.
+- La alternancia del piloto `PROBAR_SOLDADO_ANIMADO.cmd` **no está aceptada**. Son necesarias cobertura completa, variantes, múltiples soldados, oclusiones, recortes y transiciones; un lote parcial/CI verde no demuestra aceptación jugable.
+- Conservar modo clásico opcional y recuperación segura ante fallos reales; no desactivar protecciones. Datos comerciales CD32, partidas y recursos privados fuera de GitHub.
 
-## Detección de bloqueo y escalado de modelo
+## Calidad, bloqueo y cierre
 
-Usar por defecto el modelo de desarrollo económico que haya seleccionado el usuario. **No cambiar de modelo ni activar Astra de forma autónoma.**
+Delimitar un bloque verificable; cambios mínimos y completos; pruebas focalizadas primero, H3/CI Windows-Linux y revisión visual pertinentes antes de entregar un ejecutable. No repetir pruebas válidas salvo regresión. Marcar lo no ejercitado **PENDIENTE**. Publicar commits y evidencia breve.
 
-- Si **dos hipótesis técnicas distintas**, comprobadas con pruebas relevantes, no producen progreso o se repite el mismo error sin nueva evidencia, detener la iteración especulativa.
-- Antes de escalar, descartar problemas de permisos, dependencias, entorno, datos ausentes o herramientas; reducir a un caso reproducible.
-- Sugerir **Astra (primero nivel Bajo, o Medio si se justifica)** para una causa raíz difícil, regresiones inexplicadas o una decisión arquitectónica importante. Se puede sugerir antes si la complejidad es manifiesta; no forzar fallos artificiales.
-- Presentar un informe breve: commit SHA, resultado esperado/observado, pasos de reproducción, pruebas y logs, hipótesis descartadas, pregunta concreta para Astra y cómo devolver la implementación al modelo habitual.
-- No prolongar pruebas infructuosas ni prometer que el modelo cambiará automáticamente. Si hay progreso real y medible, continuar sin escalado.
+Tras **dos hipótesis técnicas distintas** sin progreso, descartar causas de entorno/permisos, preparar caso reproducible y **proponer**, no activar, Astra Bajo/Medio. El informe de escalado debe contener SHA, esperado/observado, pruebas, hipótesis descartadas y pregunta concreta. Volver al modelo habitual tras el diagnóstico. La falta de contexto exige un relevo más corto, no escalado de modelo.
 
-## Cierre de cada bloque
-
-Responder con **Hecho**, **Situación del plan**, **Próximos pasos** y **Escalado: NO/SÍ (motivo)**. Distinguir claramente código implementado, tests ejecutados, limitaciones y aceptación visual del usuario.
+Finalizar cada bloque con **Hecho**, **Situación del plan**, **Próximos pasos** y **Escalado: NO/SÍ**. Separar pruebas técnicas de aceptación visual.
