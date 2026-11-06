@@ -11,6 +11,7 @@ PR #1 siempre abierta, en borrador y SIN fusionar. Trabaja en español de Españ
 ARRANQUE LIGERO:
 1. Lee AGENTS.md.
 2. Comprueba HEAD remoto, PR y cambios locales sin sobrescribir trabajo existente.
+   Si la tarea incluye PNG u otros binarios, verifica también que tienes un procedimiento de publicación Git autenticado. No crees commits de prueba.
 3. Lee SOLO la sección inicial «Control operativo — siguiente paso» de docs/modernization/PLAN_TRABAJO.md y «Arranque rápido» de docs/modernization/CONTINUIDAD.md.
 4. Si hay discrepancias con código, arte o commits reales, contrástalas y corrige los documentos; no supongas que una tarea está terminada por figurar como tal.
 5. Consulta exclusivamente los fragmentos de código, contratos y evidencias necesarios para ejecutar la tarea seleccionada.
@@ -23,7 +24,7 @@ No pegues ni imprimas binarios, imágenes en Base64, HTML con data:image, manifi
 
 CIERRE OBLIGATORIO:
 - Comprueba los criterios de salida y ejecuta pruebas focalizadas; indica lo que NO se ha comprobado. La aceptación visual jugando sigue separada de la CI.
-- Publica cambios válidos mediante commits coherentes en la rama, sin fusionar PR #1. Conserva recuperación reproducible de trabajo no publicado.
+- Publica cambios válidos mediante commits coherentes en la rama, sin fusionar PR #1. Si `git push` falla por credenciales, **NO intentes volcar PNG/Base64 ni reconstruir el commit binario por el conector de GitHub**. Conserva el SHA local, proporciona una ruta de recuperación y detente; no des el trabajo por publicado.
 - Tras CADA paso terminado, actualiza el apartado «Control operativo» de PLAN_TRABAJO.md con el último paso terminado y la siguiente tarea única, y «Arranque rápido» de CONTINUIDAD.md con resultados, SHA y pendientes. No cambies la versión/alcance del plan si no hace falta.
 - Si el paso queda incompleto o bloqueado, NO avances el plan: mantén esa tarea pendiente y documenta el bloqueo y la recuperación.
 - Verifica que ambos documentos coinciden con GitHub, publica el relevo y DETENTE.
