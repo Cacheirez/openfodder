@@ -139,5 +139,13 @@
       "file": "r0-f2.png",
       "sha256": "7b170583bda381c44500aa1d25dab9c37102f7f64f6f5b0a38da2b9be37060f3"
     }
-  ]
+  ],
+  "publication_integrity": {
+    "issue": "initial alternate transfer truncated r0-f2.png and rocket.html; direct git push lacked credentials",
+    "repair": "re-upload exact tested originals in bounded chunks, check returned git blob SHA against local git hash-object",
+    "git_blobs": {
+      "assets/modernization/soldier-rocket/r0-f2.png": "f09774db9d815d9b732632ea0e8b969b55097962",
+      "docs/modernization/reviews/rocket.html": "e9896c0d54abc7889b2d03ba8b1e7f6cad55573e"
+    }
+  }
 }
