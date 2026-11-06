@@ -5,9 +5,9 @@ Trabaja en **español de España**. Repositorio `Cacheirez/openfodder`, rama `mo
 ## Fuente de verdad y arranque con contexto mínimo
 
 1. Comprueba HEAD, estado de la PR y, solo si afectan al bloque, CI reciente. Revisa `git status --short` antes de tocar un checkout existente; no destruyas cambios locales.
-2. Lee **solo el apartado «Arranque rápido»** de `docs/modernization/CONTINUIDAD.md` y el apartado concreto del plan aplicable. No cargues de entrada todo `CONTINUIDAD.md`, `PLAN_TRABAJO.md`, `SOLDADOS_COBERTURA_COMPLETA.md` o informes históricos.
+2. Lee **solo «Control operativo — siguiente paso»**, al principio de `docs/modernization/PLAN_TRABAJO.md`, y «Arranque rápido» de `CONTINUIDAD.md` (primeras líneas). No cargues de entrada documentos completos ni informes históricos.
 3. Amplía la lectura **por fichero y fragmento**, únicamente ante una necesidad técnica. `DESARROLLO.md` contiene recetas de pruebas. Las decisiones y evidencias antiguas siguen disponibles, pero no se releen sistemáticamente.
-4. `CONTINUIDAD.md` conserva la autoridad sobre el estado y la siguiente tarea; el plan 2.74 sigue vigente salvo cambio explícito y justificado.
+4. **`PLAN_TRABAJO.md` es la única autoridad sobre la siguiente tarea**, en su sección de control operativo. **`CONTINUIDAD.md` registra el último trabajo comprobado, evidencias, bloqueos y recuperación**. Si discrepan, contrastar HEAD y corregir ambos antes de trabajar. El plan 2.74 sigue vigente salvo cambio de alcance explícito.
 
 ## Presupuesto de contexto y trabajo artístico
 
@@ -15,7 +15,7 @@ Trabaja en **español de España**. Repositorio `Cacheirez/openfodder`, rama `mo
 - Para cada pose consultar únicamente **C01, los maestros necesarios de esa dirección y las referencias nativas pertinentes**. Reutilizar assets, prompts y contratos aprobados; no volver a recuperar todas las hojas o a regenerar marchas, granadas y apuntado si siguen siendo válidos.
 - **Nunca volcar en la conversación** PNG/JPG binarios, cadenas Base64, `data:image`, HTML de visores con imágenes incrustadas, grandes manifiestos, JSON completos, diffs extensos ni logs completos. Para inspeccionarlos, usar archivos del workspace y mostrar solo ruta, dimensiones, SHA-256, contadores, estadísticas y fragmentos pertinentes. Visualizar imágenes específicas por separado cuando haga falta valorarlas.
 - Limitar salidas de comandos y herramientas a lo relevante (idealmente menos de 8 KB por llamada); redirigir logs a archivos y leer solo errores, últimas líneas o intervalos filtrados. No volver a transmitir bloques enormes por intentar resumirlos.
-- Antes de saturar la sesión: guardar los originales/derivados en el workspace, validar, publicar commits coherentes y actualizar el arranque rápido. Si el trabajo no se puede publicar, dejar **ruta, hashes e instrucciones reproducibles** y no darlo por entregado. Abrir otro hilo si se acerca el límite, sin esperar a que falle.
+- Antes de saturar la sesión: guardar originales/derivados, validar y publicar commits coherentes. **Tras cada microbloque completado, actualizar el control operativo del plan con una sola tarea siguiente y «Arranque rápido» con evidencias breves**, preferiblemente en el mismo cierre; no avanzar de tarea sin publicar el relevo. Si no se puede publicar, dejar ruta, hashes e instrucciones reproducibles, mantener el paso pendiente y no darlo por entregado. Abrir otro hilo si se acerca el límite.
 - No confundir **contexto agotado** con **dificultad técnica**: cambiar a Astra no resuelve un exceso de imágenes/texto. Si ocurre, cerrar/relevar, reducir el lote y evitar salidas voluminosas.
 
 ## Garantías del proyecto
@@ -28,7 +28,7 @@ Trabaja en **español de España**. Repositorio `Cacheirez/openfodder`, rama `mo
 
 ## Calidad, bloqueo y cierre
 
-Delimitar un bloque verificable; cambios mínimos y completos; pruebas focalizadas primero, H3/CI Windows-Linux y revisión visual pertinentes antes de entregar un ejecutable. No repetir pruebas válidas salvo regresión. Marcar lo no ejercitado **PENDIENTE**. Publicar commits y evidencia breve.
+Delimitar **una única tarea del control operativo del plan**, dimensionada para una sesión; cambios mínimos y completos; pruebas focalizadas primero, H3/CI Windows-Linux y revisión visual pertinentes antes de entregar un ejecutable. No repetir pruebas válidas salvo regresión. Marcar lo no ejercitado **PENDIENTE**. Publicar commits y evidencia breve; actualizar plan y continuidad cuando el paso esté verificado. Si queda a medias, conservarlo como tarea pendiente con criterios explícitos; no iniciar el siguiente.
 
 Tras **dos hipótesis técnicas distintas** sin progreso, descartar causas de entorno/permisos, preparar caso reproducible y **proponer**, no activar, Astra Bajo/Medio. El informe de escalado debe contener SHA, esperado/observado, pruebas, hipótesis descartadas y pregunta concreta. Volver al modelo habitual tras el diagnóstico. La falta de contexto exige un relevo más corto, no escalado de modelo.
 
