@@ -36,20 +36,23 @@ def prepare(out, c01, batch, asset):
     assert len(manifest['bindings']) == len({b['key'] for b in manifest['bindings']}) == 222 + 12 * len(directions)
     assert manifest['assets'][:112] == old_assets and manifest['bindings'][:222] == old_bindings
     assert all(hashlib.sha256((out / name).read_bytes()).hexdigest() == digest for name, digest in old_hashes.items())
+    assert [f for f in config['frames'] if f['sheet'] == 64] == config['preserved_first_direction_frames']
+    assert [r for r in config['bindings'] if r['sheet'] == 64] == config['preserved_first_direction_bindings']
+    assert [a for a in manifest['assets'] if a['id'].startswith('s64-')] == config['preserved_first_direction_assets']
     (out / 'candidate-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     preview = {a['id']: base64.b64encode((out / (a['id'] + '.png')).read_bytes()).decode()
-               for a in manifest['assets'] if a['id'].startswith(('s7-', 's23-', 's64-'))}
-    html = '''<!doctype html><html lang="es"><meta charset="utf-8"><title>Lanzacohetes: dirección 7</title>
+               for a in manifest['assets'] if int(a['id'].split('-')[0][1:]) in directions + [16 + d for d in directions] + [57 + d for d in directions]}
+    html = '''<!doctype html><html lang="es"><meta charset="utf-8"><title>Lanzacohetes: direcciones 0 y 7</title>
 <style>body{background:#18251e;color:#eee;font:17px system-ui;padding:24px}img{width:288px;height:252px;background:#354638}button,select{font:inherit;margin:8px}section{display:flex;gap:12px;flex-wrap:wrap}</style>
-<h1>Lanzacohetes · dirección 7 · revisión interna</h1><p>Tres frames conservados por el selector, sin ciclo de retroceso inventado. La prueba en el juego y las otras siete direcciones siguen pendientes.</p>
-<label>Frame retenido <select id="frame"><option>0</option><option>1</option><option>2</option></select></label><label>Densidad <select id="density"><option>12</option><option>8</option></select></label><button id="play">Pausar</button><button id="step">Paso</button><span id="label"></span><br><img id="body" alt="Transición marcha y lanzacohetes"><section id="poses"></section>
+<h1>Lanzacohetes · direcciones 0 y 7 · revisión interna</h1><p>Tres frames conservados por el selector, sin ciclo de retroceso inventado. La prueba jugando y la cobertura completa de campaña siguen pendientes.</p>
+<label>Dirección <select id="direction"><option>0</option><option>7</option></select></label><label>Frame retenido <select id="frame"><option>0</option><option>1</option><option>2</option></select></label><label>Densidad <select id="density"><option>12</option><option>8</option></select></label><button id="play">Pausar</button><button id="step">Paso</button><span id="label"></span><br><img id="body" alt="Transición marcha y lanzacohetes"><section id="poses"></section>
 <p>Ritmo ilustrativo. El visor mantiene el frame de cohete, no anima 0–1–2. El motor conserva sus llamadas y relojes.</p>
-<script>const images=IMAGES;let phase=0,run=true;function seq(){let f=Number(document.getElementById('frame').value);return [[7,0],[7,1],[7,2],[7,1],[23,0],[7,f],...Array.from({length:7},()=>[64,f]),[7,f],[7,0],[7,1],[7,2],[7,1]]}function paint(){let [s,f]=seq()[phase%seq().length],d=document.getElementById('density').value;document.getElementById('body').src='data:image/png;base64,'+images['s'+s+'-f'+f+'-'+d];document.getElementById('label').textContent='Hoja '+s+' · frame '+f;document.getElementById('poses').replaceChildren(...[0,1,2].map(f=>{let im=new Image;im.src='data:image/png;base64,'+images['s64-f'+f+'-'+d];im.alt='Cohete frame '+f;return im}))}function next(){phase=(phase+1)%seq().length;paint()}for(let id of ['frame','density'])document.getElementById(id).onchange=()=>{phase=0;paint()};document.getElementById('play').onclick=()=>run=!run;document.getElementById('step').onclick=next;setInterval(()=>{if(run)next()},180);paint();</script></html>'''
+<script>const images=IMAGES;let phase=0,run=true;function seq(){let f=Number(document.getElementById('frame').value);let d=Number(document.getElementById('direction').value);return [[d,0],[d,1],[d,2],[d,1],[d+16,0],[d,f],...Array.from({length:7},()=>[57+d,f]),[d,f],[d,0],[d,1],[d,2],[d,1]]}function paint(){let [s,f]=seq()[phase%seq().length],d=document.getElementById('density').value;document.getElementById('body').src='data:image/png;base64,'+images['s'+s+'-f'+f+'-'+d];document.getElementById('label').textContent='Hoja '+s+' · frame '+f;document.getElementById('poses').replaceChildren(...[0,1,2].map(f=>{let im=new Image;im.src='data:image/png;base64,'+images['s'+(57+Number(document.getElementById('direction').value))+'-f'+f+'-'+d];im.alt='Cohete frame '+f;return im}))}function next(){phase=(phase+1)%seq().length;paint()}for(let id of ['direction','frame','density'])document.getElementById(id).onchange=()=>{phase=0;paint()};document.getElementById('play').onclick=()=>run=!run;document.getElementById('step').onclick=next;setInterval(()=>{if(run)next()},180);paint();</script></html>'''
     (out / 'rocket-review.html').write_text(html.replace('IMAGES', json.dumps(preview)), encoding='utf-8')
-    result = dict(status='PENDING other directions, campaign and Miguel in-game acceptance',
+    result = dict(status='PENDING campaign and Miguel in-game acceptance',
                   directions=directions, rocket_frames=len(config['frames']), assets=len(manifest['assets']),
                   bindings=len(manifest['bindings']), reconstructed_rocket_keys=len(config['bindings']),
-                  previous_112_assets='exact descriptors, bytes and bindings', previous=previous,
+                  previous_118_assets='exact descriptors, bytes and bindings, including first rocket trio', previous=previous,
                   manifest_sha256=hashlib.sha256((out / 'candidate-manifest.json').read_bytes()).hexdigest())
     (out / 'rocket-preparation.json').write_text(json.dumps(result, indent=2) + '\n')
     return result

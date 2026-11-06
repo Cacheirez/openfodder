@@ -42,7 +42,7 @@ const auto& sequencesInput=input.at("sequences");
 const size_t sequenceLength=input.at("sequence_length");
 for(unsigned density:{8u,12u})for(const auto& group:groups)for(size_t choice=0;choice<sequencesInput.size();++choice){
  const auto sequence=sequencesInput[choice].at("rows").get<std::vector<nlohmann::json>>();
- const auto otherSequence=sequencesInput[(choice+1)%sequencesInput.size()].at("rows").get<std::vector<nlohmann::json>>();
+ const auto otherSequence=sequencesInput[(choice+input.at("other_choice_offset").get<size_t>())%sequencesInput.size()].at("rows").get<std::vector<nlohmann::json>>();
  assert(sequence.size()==sequenceLength && otherSequence.size()==sequenceLength);
  bool complete=true;
  for(const auto& r:sequence)complete&=group.second.count(r.at("sheet").get<int>()*3+r.at("frame").get<int>())!=0;

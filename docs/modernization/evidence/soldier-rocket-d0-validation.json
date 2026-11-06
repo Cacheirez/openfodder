@@ -1,0 +1,143 @@
+{
+  "task": "A3-ROCKET-D0",
+  "base_commit": "75ed9339c479c95de308538afce251dddce30b62",
+  "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
+  "scope": "direction 0 frames 0/1/2 only; direction 7 regression",
+  "assets": 124,
+  "bindings": 246,
+  "poses": 62,
+  "preserved": {
+    "assets": 118,
+    "bindings": 234,
+    "result": "exact descriptors, bytes and bindings against first-art-v2"
+  },
+  "review": "three RGBA masters and density-12 derivative inspected internally; no in-game acceptance",
+  "tests": {
+    "controlled": {
+      "status": "PASS bounded directions 0 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "controlled metadata and test-only keys",
+      "directions": [
+        0,
+        7
+      ],
+      "intervals": 3168,
+      "bodies": 6336,
+      "sequences": 144,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_118_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "20d3b7e4b0cdec1d5f7d55d6d1d0692b707dc6e6cc31d304ba52bbb5bf0a8c2c",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "a9e96ebd887ef3a36f268282df4136bf7c99c085908ab956471fd4540aba55af"
+    },
+    "native": {
+      "status": "PASS bounded directions 0 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "source-reconstructed real resources",
+      "directions": [
+        0,
+        7
+      ],
+      "intervals": 3168,
+      "bodies": 6336,
+      "sequences": 144,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_118_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "4a18649b4fe8f9409b318a66045a6141ee5d3fae91f0c31d62cdfbac14690e73",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "a9e96ebd887ef3a36f268282df4136bf7c99c085908ab956471fd4540aba55af"
+    },
+    "asan_ubsan_controlled": {
+      "status": "PASS bounded directions 0 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "controlled metadata and test-only keys",
+      "directions": [
+        0,
+        7
+      ],
+      "intervals": 3168,
+      "bodies": 6336,
+      "sequences": 144,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_118_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "20d3b7e4b0cdec1d5f7d55d6d1d0692b707dc6e6cc31d304ba52bbb5bf0a8c2c",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "ASAN_OPTIONS": "detect_leaks=0",
+      "LSan": "PENDING"
+    }
+  },
+  "not_run": [
+    "full H3 (Source and reference unchanged)",
+    "full campaign",
+    "Windows local build",
+    "GPU",
+    "CD32",
+    "Miguel in-game acceptance",
+    "LSan"
+  ],
+  "recovery": {
+    "file": "OpenFodder_recuperacion_10a2d6c_20261106.zip",
+    "library_file_id": "libfile_a040196c2a608191856a972395a23b36",
+    "url": "https://chatgpt.com/library?file_id=libfile_a040196c2a608191856a972395a23b36&account_id=personal",
+    "bundle_base": "7f1179b4ee8ec1e0ac35199fb0918da160f2d26b",
+    "bundle_head": "10a2d6c",
+    "remaining_unpublished_directions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "masters": [
+    {
+      "file": "r0-f0.png",
+      "sha256": "95da13fc39363fe63660a91fd15774e9327997ee9e30d9085ec48c6aa0a2920f"
+    },
+    {
+      "file": "r0-f1.png",
+      "sha256": "713f10af75b6e9208161db069ebe33df3e9542770247d75cd28f0a8968d72f8e"
+    },
+    {
+      "file": "r0-f2.png",
+      "sha256": "7b170583bda381c44500aa1d25dab9c37102f7f64f6f5b0a38da2b9be37060f3"
+    }
+  ]
+}
