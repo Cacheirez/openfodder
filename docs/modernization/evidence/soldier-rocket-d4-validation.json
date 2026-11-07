@@ -1,6 +1,6 @@
 {
   "task": "A3-ROCKET-D4",
-  "status": "Local bounded validation PASS; publication/CI pending",
+  "status": "PUBLISHED D4; six local sanitizer modes and Windows/Linux/densities CI PASS; user in-game/global acceptance pending",
   "date": "2026-11-07",
   "base_commit": "ce1ae90294bab50368c8447d0e3a5d6ae7095f41",
   "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
@@ -503,7 +503,6 @@
   "source_manifest_sha256": "9a4d0a31bf75b924f9826eb3d44dbc114a137c5fc1e4ecaaaab4b5dcc0a4fb0d",
   "derived_manifest_sha256": "a5df8a94728129cd02af9b89e43604d304f0b2d295b477c2842037e6135fdecc",
   "pending": [
-    "remote CI/publication",
     "Miguel in-game acceptance",
     "directions 5/6",
     "full player handler/campaign/audio/GPU/CD32/global soldier acceptance"
@@ -520,5 +519,32 @@
     "baseline": "/root/openfodder-d3-linux/post-json-controlled/art"
   },
   "zlib_windows": "1.3.1.zlib-ng",
-  "cross_platform_PNG": "148 PNGs per Linux mode encode differently from Windows (zlib versions differ); decoded RGBA/geometry exact. Prior PNG/RGBA exact within each platform against its D3 baseline."
+  "cross_platform_PNG": "148 PNGs per Linux mode encode differently from Windows (zlib versions differ); decoded RGBA/geometry exact. Prior PNG/RGBA exact within each platform against its D3 baseline.",
+  "implementation_commit": "31f89a852657502f8b3d228eeea249c460b42b2f",
+  "ci_d4": [
+    {
+      "id": 42399368592,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "31f89a852657502f8b3d228eeea249c460b42b2f",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42399368592"
+    },
+    {
+      "id": 42399368768,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "31f89a852657502f8b3d228eeea249c460b42b2f",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42399368768"
+    },
+    {
+      "id": 42399368569,
+      "name": "linux-build",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "31f89a852657502f8b3d228eeea249c460b42b2f",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42399368569"
+    }
+  ]
 }
