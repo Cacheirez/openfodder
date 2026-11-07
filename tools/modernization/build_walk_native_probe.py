@@ -32,6 +32,9 @@ def project(directory, headers):
              'target_include_directories(native_probe PRIVATE '+
              ' '.join(quoted(p) for p in (ROOT/'Source', directory/'include', headers, ROOT/'tools/modernization'))+')\n'
              'target_compile_definitions(native_probe PRIVATE OPENFODDER_NO_MIXER)\n'
+             'if(WIN32)\n'
+             'target_compile_definitions(native_probe PRIVATE UNICODE _UNICODE _USE_MATH_DEFINES)\n'
+             'endif()\n'
              'target_link_libraries(native_probe PRIVATE SDL3::SDL3 Threads::Threads)\n')
     (directory/'CMakeLists.txt').write_text(cmake)
 

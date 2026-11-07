@@ -1,0 +1,1057 @@
+{
+  "task": "A3-ROCKET-D3",
+  "status": "LOCAL post-JSON Windows x86/x64 ASan/UBSan and Linux ASan/UBSan/LSan controlled/real PASS without findings or runtime warnings; H3 11/11361 PASS; publication/CI/product acceptance pending",
+  "date": "2026-11-07",
+  "base_commit": "12740d002755e2bc6bdcb7aa19ebcb285f7c9ed6",
+  "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
+  "recovery_bundle_sha256": "97029b073850645d27fdd8bb3b076fe027099ff48f2eb5fcfa34b502df07c65f",
+  "scope": "direction 3 only; regression 0/1/2/7; directions 4-6 excluded",
+  "poses": 71,
+  "assets": 142,
+  "bindings": 282,
+  "preserved": {
+    "status": "PASS",
+    "previous_assets": 136,
+    "previous_bindings": 270,
+    "preserved": "descriptors, RGBA bytes, PNG bytes and complete bindings exact",
+    "added_assets": [
+      {
+        "density": 8,
+        "file": "s60-f0-8.rgba",
+        "height": 14,
+        "id": "s60-f0-8",
+        "sha256": "c0ec35cfe74ef04178d74ae71f61b3fbcc5df6f1b38952fc2a77750c92cce061",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s60-f0-12.rgba",
+        "height": 14,
+        "id": "s60-f0-12",
+        "sha256": "40b897ef2b1a19ce14c8f7716d03dfea31b2615bde252d0d911651dda13ee9fd",
+        "width": 16
+      },
+      {
+        "density": 8,
+        "file": "s60-f1-8.rgba",
+        "height": 14,
+        "id": "s60-f1-8",
+        "sha256": "d139b000d7e4b2bc20daea935367bac110501d2f7502f723b973187da93ad8a1",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s60-f1-12.rgba",
+        "height": 14,
+        "id": "s60-f1-12",
+        "sha256": "1c25e74d9fb406b0fec91e6907df197617fca5d85dfafcc65534d6fb7bf170e7",
+        "width": 16
+      },
+      {
+        "density": 8,
+        "file": "s60-f2-8.rgba",
+        "height": 14,
+        "id": "s60-f2-8",
+        "sha256": "83eeb7f9fa424d73ffac2546dd3d67727a01645a76e05fe244c0fa4e8f811ab1",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s60-f2-12.rgba",
+        "height": 14,
+        "id": "s60-f2-12",
+        "sha256": "8f2f595fe9085ca1afaac9e0868010eadeb35b987de35b0d757d89ff6cff5f5a",
+        "width": 16
+      }
+    ],
+    "total_assets": 142,
+    "total_bindings": 282,
+    "baseline_manifest_sha256": "2f7311c584fe6f8ae659c66344db747ff67f3761ec210ce7f63a39fcf82474f9",
+    "candidate_manifest_sha256": "fa4dba7a05cf18d6fad4ca58d3c78228a6888b4e9812f7ff68132705847575ce"
+  },
+  "review": "Internal C01/walk D3 and six derivatives favorable; native D3 compared in all four groups, Amiga captured palettes allow silhouette comparison only; user in-game acceptance PENDING",
+  "crop_review": {
+    "scope": "D3 crops and six derivatives only; no integration",
+    "source_commit": "3f23207",
+    "alpha_threshold": 16,
+    "frames": [
+      {
+        "frame": 0,
+        "crop": [
+          275,
+          156,
+          906,
+          1041
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "69bfa359448721777352fe3d2d525a29bd5470752ca54abdb3681118d9dafa15",
+        "significant_bbox": [
+          275,
+          156,
+          906,
+          1041
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 233,
+            "rgba_sha256": "c0ec35cfe74ef04178d74ae71f61b3fbcc5df6f1b38952fc2a77750c92cce061",
+            "png_sha256": "08b7278bc28194f5e18ede8010e405ec4b7319be4d8d4ae13beb14201add1200"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 226,
+            "rgba_sha256": "40b897ef2b1a19ce14c8f7716d03dfea31b2615bde252d0d911651dda13ee9fd",
+            "png_sha256": "99a7b97e08eb1398e2fd1af3bb4cd484193ff63cde85288e890c23454cfe8958"
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "crop": [
+          274,
+          153,
+          907,
+          1021
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "41d3f51c2798ae0ab012c50ab7ed188c23c57b2af2f78db3f71dd1d18509f2d0",
+        "significant_bbox": [
+          274,
+          153,
+          907,
+          1021
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 212,
+            "rgba_sha256": "d139b000d7e4b2bc20daea935367bac110501d2f7502f723b973187da93ad8a1",
+            "png_sha256": "db141935a042bd56429a77b42bceec8c414ca5e27e2f420329fd985c2d584e8f"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 199,
+            "rgba_sha256": "1c25e74d9fb406b0fec91e6907df197617fca5d85dfafcc65534d6fb7bf170e7",
+            "png_sha256": "517e9a7aff67d90ddc9c2c3d76ff07883d97aa4125daae7af9b608dcddb85ca9"
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "crop": [
+          273,
+          153,
+          905,
+          1041
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "1ad146f9689aaa5eb5202cba90a9ee8ef67120c43fb5a7aefcf3dd18ddec4850",
+        "significant_bbox": [
+          273,
+          153,
+          905,
+          1041
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 234,
+            "rgba_sha256": "83eeb7f9fa424d73ffac2546dd3d67727a01645a76e05fe244c0fa4e8f811ab1",
+            "png_sha256": "fa6863645661437991bc92e3bd2b05d8db8ab255f66c79776739837988213189"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 229,
+            "rgba_sha256": "8f2f595fe9085ca1afaac9e0868010eadeb35b987de35b0d757d89ff6cff5f5a",
+            "png_sha256": "c5e140bdd9b8791c94ad08c4752d263216cf104758a82e70147ac7917b42e8f5"
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "Native raster comparison pending",
+      "SDL integration pending",
+      "In-game acceptance pending"
+    ]
+  },
+  "tests": {
+    "controlled": {
+      "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "controlled metadata and test-only keys",
+      "directions": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ],
+      "intervals": 7920,
+      "bodies": 15840,
+      "sequences": 360,
+      "densities": [
+        8,
+        12
+      ],
+      "timeout_seconds": 990,
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "c01": "exact",
+      "log_sha256": "4cd67e0004c625136bfa433ede4481dc99f75d6a211d464c80cb9bbab81a43f9",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ]
+    },
+    "selector": "PASS 2703 assertions / 576 samples; emitted functions checked against classic base by metadata()",
+    "real_resources": {
+      "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "source-reconstructed real resources",
+      "directions": [
+        0,
+        1,
+        2,
+        3,
+        7
+      ],
+      "intervals": 7920,
+      "bodies": 15840,
+      "sequences": 360,
+      "densities": [
+        8,
+        12
+      ],
+      "timeout_seconds": 990,
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "c01": "exact",
+      "log_sha256": "ae4c3dda7b3709ef6b6b99611650859d677984281095f2668f088ca396a10d23",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ]
+    },
+    "sanitizers": {
+      "status": "PASS bounded ASan/UBSan x64 controlled and source-reconstructed real modes; runtime interception warning retained",
+      "compiler": "Clang 19.1.5 x86_64-pc-windows-msvc; static release CRT",
+      "flags": "-std=c++17 -O1 -g -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer",
+      "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "d17eb6fdf38c047d034fc03ac6824a5bc63b65a03c2999dde2fc0689d6df5f2d",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real_resources": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "02fc0ea2a3242e19162f6c5f6b149b0003e1fb10443baf71e3923ad30ae628a1",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "selector": "same source-selector fixture also instrumented; 2703 assertions / 576 samples in both modes",
+      "runtime_warning": "interception_win: unhandled instruction",
+      "runtime_warning_limit": "The runtime could not intercept an instruction sequence. This limits coverage; do not present these runs as warning-free or proof of complete sanitizer coverage.",
+      "positive_controls": {
+        "ASan": "expected exit 1 and container-overflow for std::vector access beyond size but within capacity",
+        "UBSan": "expected exit 1 and signed integer overflow; no recover/suppressions"
+      },
+      "stl_annotations": "x64 stl_asan.lib absent; built official installed crt/src/stl/asan.cpp with both annotation flags true, without editing it",
+      "stl_annotation_source_sha256": "e9dba3685f0332cb35152d4d22e787da33f086db5f9cb425e95d345344633efd",
+      "stl_annotation_library_sha256": "5eaeef341881a81595ce62ae107262eb9b264c7435f5ad065f4d9f118c88dfea",
+      "dynamic_crt_attempt": "Cannot link this installed LLVM UBSan C++ runtime: LNK2038 MT_StaticRelease vs MD_DynamicRelease. No checks disabled to bypass it.",
+      "x86": "FAIL before D3: json.hpp:16691 constructor call on misaligned std::function. Reproduced by isolated JSON parse without SDL or D3; x86 not validated.",
+      "x86_repro_source_sha256": "45a41e1ad1e3224be8eec8b49b2b766075fca5b1fc717c13c77f9b39159f2fd3",
+      "x86_repro_log_sha256": "fe2fc2beb4b57a04ebc059b7b4b03262d0a72bfe9842c7130bcfc27dabd93b16",
+      "LSan": "PASS Linux integrated LSan, detect_leaks=1, controlled and real matrices, positive leak control confirmed; see tests.linux_ASan_UBSan_LSan",
+      "LSan_platform_reference": "https://clang.llvm.org/docs/LeakSanitizer.html",
+      "LLVM23_Windows_followup": {
+        "status": "x64 resolved with explicit cl driver /MD; original failure retained in local logs",
+        "details": "See windows_LLVM23_MD_ASan_UBSan and x86_alignment_reduced_diagnostic"
+      }
+    },
+    "linux_ASan_UBSan_LSan": {
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "d91acd55671c35624427cbc511f490a00a65fb672346b77dbcb4e831b8df32be",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "db84177ae048dd1650b2bfa9d6ffc499422579b6901c4a210e85c65bb4d4e847",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "preservation": "All 142 asset descriptors/RGBA files and 282 bindings exact against Windows controlled output",
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "warning_free": true,
+      "binaries": {
+        "openfodder_external_asset_sanitized": "bfbfa911766e45f49f7130ac5036da6b16e9b10c05226fd232c856ac14ec47d2",
+        "openfodder_rocket_selector_sanitized": "b2506b5dfdaeb19a8b500f4e21205a1513a071624da8dae84d37a5f4a498558b"
+      },
+      "environment": "isolated WSL2 OpenFodderD3, Ubuntu 24.04, Clang 18.1.3, SDL 3.4.0 compiled from pinned release source",
+      "kernel": "6.6.87.2-microsoft-standard-WSL2",
+      "positive_controls": "ASan heap-buffer-overflow, UBSan signed integer overflow and LSan 123-byte intentional leak each detected; expected nonzero exits (23)",
+      "results_sha256": "6980be27ee1657430ce1d33561aeb7273bce7dc33199172504235c349db06a13",
+      "reproduction": [
+        "build_linux_sanitizers.sh",
+        "run_linux_sanitizers.sh",
+        "linux_sanitizer_canary.cpp"
+      ],
+      "work": "/root/openfodder-d3-linux",
+      "WSL_disk": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops\\linux-wsl",
+      "original_resources": "read from prior local native-snapshots/rocket/grenade/aim; kept outside repository"
+    },
+    "windows_LLVM23_MD_ASan_UBSan": {
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "4cd67e0004c625136bfa433ede4481dc99f75d6a211d464c80cb9bbab81a43f9",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "ae4c3dda7b3709ef6b6b99611650859d677984281095f2668f088ca396a10d23",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "compiler": "LLVM 23.1.5 Windows x64",
+      "runtime": "MD dynamic CRT + ASan dynamic runtime thunk",
+      "cause": "clang GCC-style driver added -defaultlib:libcmt and static ASan thunk despite fixture.obj MD directives; --driver-mode=cl /MD selects coherent dynamic CRT/thunk",
+      "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+      "warning_free": true,
+      "preservation": "142 descriptors and RGBA assets / 282 bindings exact against baseline",
+      "positive_controls": {
+        "container_overflow": {
+          "exit": 1,
+          "detected": true
+        },
+        "signed_overflow": {
+          "exit": 1,
+          "detected": true
+        }
+      },
+      "selector_md": {
+        "assertions": 2703,
+        "samples": 576,
+        "output_exact_against_matrix_selector": true
+      },
+      "hashes": {
+        "fixture.obj": "d51436144e8db6d1ad44b4bccbc378f4f4c407fa51b9964cc0a767d489538e4c",
+        "stl_asan.lib": "4dd46cf2b3a267c65f96b0376431121c0817b711efaca17e0ec33ded98fbaff7",
+        "openfodder_external_asset_sanitized.exe": "78b422e13954e77ed3bd1c9daf6ae76e9a834fe1916ec517b29597a9d8b7e8e4",
+        "openfodder_rocket_selector_sanitized.exe": "998812f8995b73eabc85bc0e9fa92155031426e342ed1c4c9663c1ea7f63cb67",
+        "selector_md.exe": "df1e0ce28b8752bf486e015277f7bad43953bed44da5cc3a7329cde22bc98137",
+        "canary_md.exe": "71de3f6f550febd93abf1db2c6a51ba287ab34be409eacbd9794abf1b5e42717",
+        "clang_rt.asan_dynamic-x86_64.dll": "d70595751174aaebc49bbb683c0f8743d2c08f5df3986e306c169f0a91b32336",
+        "driver-before.log": "28d1bda2c864f6c2e7ee58ace92a47c2e60592bffc7e1daa972685d106b9c3f1",
+        "driver-md.log": "9406dc7311921319019ad9bd0adf201ed0e8caaf0462b090ee49c2b2f937f4ff"
+      }
+    },
+    "x86_alignment_reduced_diagnostic": {
+      "status": "PENDING correction/valid sanitized x86 run; diagnosis reduced outside JSON/SDL/D3",
+      "source": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops\\function_alignment_repro.cpp",
+      "source_sha256": "50687a5e76ba5a9695ee1c76fa0a6adf55e30b390707b1ca4e36c6a9bdb183a8",
+      "LLVM23_O1_UBSan_trap_exit": -1073741795,
+      "LLVM23_O0_UBSan_trap_exit": 0,
+      "LLVM23_x64_UBSan_trap_exit": 0,
+      "plain_x86_observation": "alignof(std::function<bool(int)>)=8, parameter address mod8=4",
+      "IR": "packed inalloca argument block align4; callback after 4-byte pointer; constructor pointer annotated align8 and UBSan checks low three bits",
+      "interpretation": "Compiler/MSVC x86 ABI/STL alignment interaction, independent of D3; do not call it a harmless false positive or suppress alignment",
+      "limitations": "Separate Clang19 UBSan-only diagnostic did not link (missing ContinueOnError/RawWrite runtime symbols); no extra PASS claimed"
+    },
+    "x86_followup": {
+      "base_local": "12740d002755e2bc6bdcb7aa19ebcb285f7c9ed6",
+      "remote_PR_head": "a8268ffa912614d26485ed6edfb37c0f33e4bd95",
+      "compiler": "LLVM23.1.5 i686 MSVC ABI",
+      "flags": "--driver-mode=cl --target=i686-pc-windows-msvc /MD /EHsc /std:c++17 -O1 -fsanitize=undefined -fsanitize-trap=all",
+      "stack_realign": {
+        "extra_flags": "-mstackrealign -mstack-alignment=16",
+        "build_exit": 0,
+        "run_exit": -1073741795
+      },
+      "const_reference_candidate": {
+        "function_minimum_exit": 0,
+        "JSON_minimum_exit": -1073741795,
+        "conclusion": "Partial experiment only; not valid for matrix or integration"
+      },
+      "matrix": "NOT RUN: JSON minimum still fails",
+      "Source_modified": false,
+      "escalation": "Astra Medio proposed, not activated",
+      "hashes": {
+        "function_alignment_candidate.cpp": "f1c64d01954c82be5fe3402a3a09a426b9783430a96922d5ffb84fbc66ea5bbe",
+        "json_alignment_candidate.cpp": "a27fbeacb9d1846a37fd3683f07e0f800e7e82f53fbf337ad92208630f335983",
+        "x86-candidate/json.hpp": "ef36ea0ffd395761b1f5b99ba3cb678849e9990d455b5e03c7ebbbe54d59860e",
+        "x86-candidate/json-reference.patch": "3ced3f8f471a8f68e33d7111848269ac7253cb31b08867d92a370f6e63a0db94"
+      }
+    },
+    "x86_exact_location": {
+      "status": "Located alignment failure in diagnostic variant; correction not expanded",
+      "location": "x86-candidate/json.hpp:5485:35",
+      "expression": "*object_element = BasicJsonType(std::forward<Value>(v));",
+      "type": "nlohmann::basic_json<>",
+      "type_check_kind": 5,
+      "required_alignment": 8,
+      "observed_pointer_modulo": 4,
+      "diagnostic_exit": 86,
+      "related_signature": "basic_json& operator=(basic_json other), Source/Utils/json.hpp:18661",
+      "IR_evidence": "Original O1 trap IR includes line5485 debug locations and basic_json inalloca blocks align4",
+      "method": "LLVM23 full undefined instrumentation; alignment uses explicit abortive reporter, other checks still trap; missing standalone runtime default libraries excluded only to link replacement diagnostic handler",
+      "limits": "Not a sanitizer PASS or matrix result. Reporting can affect stack layout; do not claim debugger capture of original trap instruction. By-value assignment is the next concrete ABI site to investigate.",
+      "artifacts": [
+        "x86-candidate/alignment_reporter.cpp",
+        "win23/json-report-run.log",
+        "win23/json-candidate-trap.ll"
+      ],
+      "patch_expanded": false
+    },
+    "x86_assignment_candidate": {
+      "status": "Isolated JSON x86 candidate PASS; not integrated into Source; WindowHD matrix pending",
+      "change": "Callback-reference candidate plus const-reference copy assignment and rvalue-reference move assignment, aligned local temporary before original swap",
+      "minimal_JSON_i686_O1_exit": 0,
+      "focused_checks": {
+        "i686_O1": 0,
+        "i686_O2": 0,
+        "x86_64_O1": 0,
+        "x86_64_O2": 0
+      },
+      "checks": "nested null/bool/integer/float/string/object/array, copy independence, move source null, copy/move self-assignment, dump/parse roundtrip, invalid-input exception",
+      "flags": "--driver-mode=cl /MD /EHsc /std:c++17 -O1 or -O2 -fsanitize=undefined -fsanitize-trap=all",
+      "new_UBSan_overflow_control_exit": -1073741795,
+      "old_control_exit": 1,
+      "old_control_note": "Not used as evidence: previous executable exit was ambiguous; rebuilt positive control with exact flags",
+      "ASan": "Not exercised in this follow-up; LLVM23 package lacks i386 ASan runtime",
+      "Source_modified": false,
+      "publication": "None",
+      "hashes": {
+        "x86-candidate-v2/json.hpp": "8010e92f075e8ee445b11025cd4ccac9eb7b342d9c544aad0a88b36f86d43cd7",
+        "x86-candidate-v2/assignment.patch": "27834ddd98fb8ffde604c59ba925039b246539ffe7c9a128aaf87168d3aba86a",
+        "json_alignment_candidate_v2.cpp": "b1b4a3b459ec5d4f375c17b10cc6ed9130d968ba1678a38683706ce8a3edd6ee",
+        "json_assignment_checks.cpp": "2fcd30e9d919730ba0bba0ca29edf60fefcb6ca65849e28b4600560b8dee1fd5",
+        "prepare_x86_assignment.py": "e9afafb9ecc5754c35ef37b56b3aece8af73fa6b0734e8f863e59e00e390f911"
+      }
+    },
+    "integrated_x86_UBSan": {
+      "compiler": "LLVM23.1.5 i686 MSVC ABI",
+      "flags": "--driver-mode=cl --target=i686-pc-windows-msvc /MD /EHsc /std:c++17 -O1 -g -fsanitize=undefined -fsanitize-trap=all",
+      "source_sha256": "8010e92f075e8ee445b11025cd4ccac9eb7b342d9c544aad0a88b36f86d43cd7",
+      "positive_control_exit": -1073741795,
+      "focused_JSON_i686_O2_exit": 0,
+      "focused_JSON_x64_O2_exit": 0,
+      "regression_test": "tools/modernization/test_json_alignment.cpp",
+      "regression_exit": 0,
+      "ASan_x86": "PENDING: LLVM23 package does not include i386 ASan; not claimed by these UBSan-trap results",
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "4cd67e0004c625136bfa433ede4481dc99f75d6a211d464c80cb9bbab81a43f9",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          7
+        ],
+        "intervals": 7920,
+        "bodies": 15840,
+        "sequences": 360,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 990,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "ae4c3dda7b3709ef6b6b99611650859d677984281095f2668f088ca396a10d23",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "preservation": "142 descriptors/RGBA assets and 282 bindings exact",
+      "binaries": {
+        "fixture.exe": "4f1bfcb9d871836816962395b6c09c79f7bcd884b1c00b74ff7df9bd8587d5ab",
+        "selector.exe": "d08fc4e86d08a00a095834d2dc70cec392cf62765531546fd7b6e8bb4f130b90",
+        "json_regression.exe": "80ca37be17addc644ad9962c22cd689a5805ef8797428caaaf4a6e86fc54b263",
+        "SDL3.dll": "e299cfa2e035455eec92a5f8aae672acad1604025caa20fb12f931b99a2c2581"
+      }
+    },
+    "post_JSON_broad_validation": {
+      "source_JSON_sha256": "8010e92f075e8ee445b11025cd4ccac9eb7b342d9c544aad0a88b36f86d43cd7",
+      "scope": "post-JSON selector, WindowHD/SDL controlled/real, H3; not full product/audio/GPU/CD32 acceptance",
+      "x86": {
+        "controlled": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "controlled metadata and test-only keys",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "4cd67e0004c625136bfa433ede4481dc99f75d6a211d464c80cb9bbab81a43f9",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "real": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "source-reconstructed real resources",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "ae4c3dda7b3709ef6b6b99611650859d677984281095f2668f088ca396a10d23",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "binary_hashes": {
+          "fixture.exe": "7effc60733a91dc45a8a86039336e483eaa373fdbdea841216ef0b25e7f3cc0a",
+          "selector.exe": "e052e86aab215e2942e0be02fe0766ed4fc69204252641b10d0b78607e0e2aaa",
+          "SDL3.dll": "e299cfa2e035455eec92a5f8aae672acad1604025caa20fb12f931b99a2c2581"
+        },
+        "warning_free": true,
+        "positive_controls": {
+          "ASan_container_overflow_exit": 1,
+          "UBSan_integer_overflow_exit": 1
+        },
+        "runtime": {
+          "compiler": "LLVM23.1.5 i686 /MD",
+          "built_from": "Official llvm-project-23.1.5.src.tar.xz",
+          "archive_sha256": "fb50b1eac93ddeb3aa8dab4cfe324dff74f4a9c2bdee6160c9e36188f8d06a6e",
+          "runtime_dll_sha256": "238507427f1f0c96b815d9865a11565d152db1a1832394e53341203645b29226",
+          "flags": "-fsanitize=address,undefined -fno-sanitize-recover=all -O1 -g -fno-omit-frame-pointer",
+          "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+          "note": "Windows LSan unsupported; leak detection validated separately on Linux",
+          "build_cache": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops\\asan23-i386-build\\CMakeCache.txt",
+          "build_log_sha256": "a82f94344adc6b6eb89358324666eb61c0f3f271d772b2a60015e29ee9577c21"
+        }
+      },
+      "x64": {
+        "controlled": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "controlled metadata and test-only keys",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "4cd67e0004c625136bfa433ede4481dc99f75d6a211d464c80cb9bbab81a43f9",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "real": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "source-reconstructed real resources",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "ae4c3dda7b3709ef6b6b99611650859d677984281095f2668f088ca396a10d23",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "binary_hashes": {
+          "fixture.exe": "dcd690b650b7b75c7f0a02aa0079cbe5a1406e128d9dcd657907b545a8c0f38b",
+          "selector.exe": "16ebdff6e979bcaed7b0a730d5fce6504f38e6b55c56969297a3e80dc49af10d",
+          "SDL3.dll": "2632e21625861a0dc106f2b1abb649e610d8be88534ba74c76a763abe5aefaa3"
+        },
+        "warning_free": true
+      },
+      "Linux": {
+        "post-json-controlled": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "controlled metadata and test-only keys",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "d91acd55671c35624427cbc511f490a00a65fb672346b77dbcb4e831b8df32be",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "post-json-real": {
+          "status": "PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING",
+          "mode": "source-reconstructed real resources",
+          "directions": [
+            0,
+            1,
+            2,
+            3,
+            7
+          ],
+          "intervals": 7920,
+          "bodies": 15840,
+          "sequences": 360,
+          "densities": [
+            8,
+            12
+          ],
+          "timeout_seconds": 990,
+          "selector_assertions": 2703,
+          "selector_samples": 576,
+          "three_rejections": true,
+          "c01": "exact",
+          "log_sha256": "db84177ae048dd1650b2bfa9d6ffc499422579b6901c4a210e85c65bb4d4e847",
+          "limits": [
+            "geometry stubbed in selector fixture",
+            "prefix/suffix reuse prior walk/aim checks",
+            "reconstructed keys are not replay observations",
+            "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+            "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+          ]
+        },
+        "preservation": "All 142 asset descriptors/RGBA files and 282 bindings exact against Windows post-json-controlled output",
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+        "LSAN_OPTIONS": "exitcode=23",
+        "warning_free": true,
+        "binaries": {
+          "openfodder_external_asset_sanitized": "bd013ac546335807b8b224c63560c5cbedfc6dd67217bc0f01650a224a9011f8",
+          "openfodder_rocket_selector_sanitized": "b2506b5dfdaeb19a8b500f4e21205a1513a071624da8dae84d37a5f4a498558b"
+        }
+      },
+      "H3": {
+        "status": "PASS",
+        "phases": 11,
+        "canonical_states": 11361,
+        "report_sha256": "3d13379db9d5998b7c1c4b4ac5b5ec52b59c18b3d821d9af9ccdde352b981306",
+        "exe_sha256": "4626253e914072d9029ef0445f8ecd2419003c19d7ce6e9e4de13286d5232f66"
+      }
+    }
+  },
+  "environment": {
+    "compiler": "MSVC 19.44.35207 x64 /std:c++17 /EHsc /O2; fixture assertions enabled",
+    "SDL": "official SDL 3.4.0 VC x64 development release",
+    "sdl_archive_sha256": "4489ba0070b8ce047b8717e4b71fa7e35ac71362e7a6bb2a90a7a27f624b3d5d",
+    "video_driver": "dummy",
+    "audio_driver": "dummy"
+  },
+  "binaries": {
+    "openfodder_external_asset_tests.exe": "7f87be4eeca0b23d5ba614bc9ef5853b2e424b905c8191aee68e3511009d9ef6",
+    "openfodder_rocket_selector_tests.exe": "aedee698be65c98a5ef4570c84903a2df2223b66229d571c51606f7ca50693da",
+    "openfodder_art_builder.exe": "a9b1d4234e7b72ffe03ce1f875a2df3c302b9a04205724fea4c8ef9e8f7a32cc",
+    "openfodder_batch_builder.exe": "40e967271efce7b8132a97a78202ef1c62c3d0ee7367dbac9cd09581b2f5192d",
+    "openfodder_ordered_asset_builder.exe": "543086c37f8c3ef6c95cca64d1fe20984f46c4da871a6efb27618fd0e5d75544",
+    "SDL3.dll": "2632e21625861a0dc106f2b1abb649e610d8be88534ba74c76a763abe5aefaa3",
+    "openfodder_external_asset_sanitized.exe": "2d4eecf455da7254524efa28704f67b369e4b92e1f2346e76033f36aa3558e66",
+    "openfodder_rocket_selector_sanitized.exe": "4af34320194a36f83bb620960b60560e599ee239317cbe6c996b28b3fd9c995e",
+    "openfodder_native_walk_renderer.exe": "1ebfebb0575e4c27681ba8bdc2e53acfce414d06861c6b8bfa4368122dcf48ae",
+    "openfodder_aim_reference.exe": "b925a5b060cfe05db423b119a4054da2c438abedbc21e866e63ed3c783f565c2",
+    "sanitizer_canary.exe": "64d062f895ec9429ead795d4018e2a05adbbf18770427ef0206fd3bafa5b8bfa"
+  },
+  "fixtures": {
+    "hd_window_fixture.cpp": "845ce6f64ad67dfb2d30a96405df093d1e09431ee01b8434a036101fcaeb9876",
+    "rocket_selector.cpp": "2be60686d28685015e8af676ce9ee0bf9988a8e6791e0967addcc07f32a63b9c"
+  },
+  "ci_d2": {
+    "commit": "5001c36dcb4d8ca28f2b36aff2fa1d99b71f202b",
+    "windows": "https://github.com/Cacheirez/openfodder/actions/runs/42298027667",
+    "linux": "https://github.com/Cacheirez/openfodder/actions/runs/42298027700",
+    "densities": "https://github.com/Cacheirez/openfodder/actions/runs/42298027683",
+    "status": "all completed success"
+  },
+  "local_artifacts": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops",
+  "reproduction": "README.md: normal check_rocket_art.py command without --native-* reproduces controlled mode; local exact builders and fixture retained in local_artifacts. check_d2_preservation.py compares baseline-d2 and validation-d3/art. Native capture: build_walk_native_probe.py --project <new> --headers <existing C01/pilot headers>; CMake SDL3_DIR points to pinned SDL3 3.4.0. Run check_mission_publication_replays.py --soldier-probe --screen-probe --pause-probe --ordered-manifest tools/modernization/ordered-empty-assets.json with OPENFODDER_NATIVE_WALK_OUT=<new snapshots>, SDL dummy/software; Tests pinned as above. prepare_aim_native.py groups 6/5/7 reconstruct aim/grenade/rocket. README check_rocket_art.py --native-* uses those folders. For sanitizer run use the x64 sanitized selector and WindowHD fixture with flags/environment recorded here. Exact binaries, repro sources, compiler logs and all outputs retained in local_artifacts. Linux full memory check: WSL OpenFodderD3 runs the saved build_linux_sanitizers.sh and run_linux_sanitizers.sh with ASan/UBSan, integrated LSan enabled and no suppression; all binaries, logs and positive controls stay under /root/openfodder-d3-linux in the isolated disk.",
+  "pending": [
+    "full production build/audio/GPU/CD32/campaign coverage",
+    "Miguel in-game acceptance",
+    "commit/publication",
+    "new Windows/Linux CI"
+  ],
+  "invariants": "Only Source/Utils/json.hpp changed with explicit user authorization; simulation, classic references, launcher and C01 unchanged; no new playable ZIP",
+  "native_capture": {
+    "status": "PASS diagnostic capture; source engine unchanged",
+    "tests_commit": "c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86",
+    "snapshot_count": 112,
+    "public_replay_campaigns": [
+      "PC Format",
+      "Amiga The One"
+    ],
+    "resource_palette_groups": 4,
+    "reconstructed_references": {
+      "aim": 32,
+      "grenade": 96,
+      "rocket": 100
+    },
+    "snapshot_integrity": "PASS PC/Amiga known pixels, source/key integrity, duplicate capture, 12 negative cases",
+    "H3": {
+      "verdict": "PASS",
+      "phases": 11,
+      "canonical_states": 11361,
+      "report_sha256": "b9dd87c99b062dd085d4fe2d22b3760772ed9b10d6214dc42c2100919241dd28"
+    },
+    "diagnostic_build": "MSVC x64 Release OPENFODDER_NO_MIXER; not a shipped build or audio test",
+    "exe_sha256": "a4934da24c0afcf7d1bb6215e46b9ac144d1d3705d131964e4ba67f86bfab288",
+    "private_artifacts": "native-data, native-snapshots, native-aim/grenade/rocket and d3-native-private-contact.png remain outside repository; no bytes or palettes in evidence"
+  },
+  "derived_preservation_across_modes": "All 142 descriptors, 282 bindings and RGBA files exact between controlled, real, controlled ASan/UBSan and real ASan/UBSan modes"
+}

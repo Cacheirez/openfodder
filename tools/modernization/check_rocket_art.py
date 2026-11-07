@@ -51,9 +51,9 @@ def check(a, out):
             p = candidates[0]
             rows.append(dict(row=json.loads(p.read_text()), directory=str(p.parent)))
         assert len(rows) == preparation['bindings']
-    # All four native groups have direction-0, direction-1, direction-2 and direction-7 walk keys. The two missing Amiga
+    # All four native groups have direction-0/1/2/3/7 walk keys. The two missing Amiga
     # direction-6 keys remain excluded, never manufactured as observations.
-    assert directions == [0, 1, 2, 7], 'this microblock covers only directions 0, 1, 2 and 7'
+    assert directions == [0, 1, 2, 3, 7], 'this microblock covers only directions 0, 1, 2, 3 and 7'
     expected = len(sequences) * 22 * 4 * 2
     (out / 'art/transition-input.json').write_text(json.dumps(dict(
         native=native, rows=rows, directions=directions, sequences=sequences,
@@ -71,11 +71,11 @@ def check(a, out):
     assert census['outcomes'] == {'published': expected, 'missing-variant': 3}, census
     assert census['published_command_presentations'] == expected * 2 and census['verdict'] == 'PENDING'
     assert 'PASS rocket transition' in log.read_text()
-    result = dict(status='PASS bounded directions 0, 1, 2 and 7; other directions/campaign/acceptance PENDING',
+    result = dict(status='PASS bounded directions 0, 1, 2, 3 and 7; other directions/campaign/acceptance PENDING',
                   mode='source-reconstructed real resources' if native else 'controlled metadata and test-only keys',
                   directions=directions, intervals=expected, bodies=expected * 2,
                   sequences=expected // 22, densities=[8, 12], timeout_seconds=timeout_seconds, selector_assertions=2703,
-                  selector_samples=576, three_rejections=True, previous_130_assets='exact', c01='exact',
+                  selector_samples=576, three_rejections=True, c01='exact',
                   log_sha256=hashlib.sha256(log.read_bytes()).hexdigest(), preparation=preparation,
                   limits=['geometry stubbed in selector fixture', 'prefix/suffix reuse prior walk/aim checks',
                           'reconstructed keys are not replay observations',

@@ -274,6 +274,11 @@ if(Python3_Interpreter_FOUND)
 endif()
 
 
+add_executable(openfodder_json_alignment_tests tools/modernization/test_json_alignment.cpp)
+target_include_directories(openfodder_json_alignment_tests PRIVATE Source)
+target_compile_features(openfodder_json_alignment_tests PRIVATE cxx_std_17)
+add_test(NAME json_assignment_alignment COMMAND $<TARGET_FILE:openfodder_json_alignment_tests>)
+
 add_executable(openfodder_direction_tests tools/modernization/test_direction_lut.cpp)
 add_executable(openfodder_sprite_frame_tests tools/modernization/test_sprite_frame_bounds.cpp)
 add_executable(openfodder_index_layout_tests tools/modernization/test_index_layout.cpp)
