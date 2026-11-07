@@ -33,4 +33,6 @@ Delimitar **una única tarea del control operativo del plan**, dimensionada para
 
 Tras **dos hipótesis técnicas distintas** sin progreso, descartar causas de entorno/permisos, preparar caso reproducible y **proponer**, no activar, Astra Bajo/Medio. El informe de escalado debe contener SHA, esperado/observado, pruebas, hipótesis descartadas y pregunta concreta. Volver al modelo habitual tras el diagnóstico. La falta de contexto exige un relevo más corto, no escalado de modelo.
 
-Finalizar cada bloque con **Hecho**, **Situación del plan**, **Próximos pasos** y **Escalado: NO/SÍ**. Separar pruebas técnicas de aceptación visual.
+**Sugerencia de hilo nuevo al cerrar un microbloque:** una vez que el trabajo esté validado, los commits válidos publicados y `PLAN_TRABAJO.md` / `CONTINUIDAD.md` sincronizados con HEAD, **recomendar expresamente abrir un hilo nuevo en Codex** para abordar el siguiente bloque usando `PROMPT_NUEVO_HILO.md`. Es una **recomendación, no una obligación**: el usuario decide. No sugerir el cambio automáticamente tras una sola compactación si la tarea continúa progresando. Si hay cambios sin publicar o falta el relevo, indicar primero qué falta y cómo recuperarlo; no presentar el bloque como cerrado.
+
+Finalizar cada bloque con **Hecho**, **Situación del plan**, **Próximos pasos**, **Escalado: NO/SÍ** y **Nuevo hilo: recomendado/no necesario (motivo)**. Separar pruebas técnicas de aceptación visual.
