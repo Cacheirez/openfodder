@@ -1,6 +1,10 @@
-# D3 — diagnóstico Windows: x64 resuelto, x86 acotado
+# D3 — diagnóstico resuelto y validación del cierre
 
 **7 de noviembre de 2026.** HEAD `12740d002755e2bc6bdcb7aa19ebcb285f7c9ed6`, PR #1 abierta/borrador/sin fusionar. Sin commit/publicación, sin cambiar Source, referencias ni maestros. No se ha activado otro modelo ni subagentes.
+
+## Cierre publicado
+
+Implementación `79c1028`, CI Windows/Linux/densidades PASS; IDs en la evidencia D3. La validación posterior a JSON y las limitaciones de runtime de este bloque están resueltas. Antecedentes inferiores conservados como historial; no representan tareas pendientes. Quedan aceptación jugando y alcance global de producción.
 
 ## Validación posterior a JSON completada — sin limitación de interceptación x86
 

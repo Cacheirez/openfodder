@@ -1,6 +1,6 @@
 {
   "task": "A3-ROCKET-D3",
-  "status": "LOCAL post-JSON Windows x86/x64 ASan/UBSan and Linux ASan/UBSan/LSan controlled/real PASS without findings or runtime warnings; H3 11/11361 PASS; publication/CI/product acceptance pending",
+  "status": "PUBLISHED D3 code/art validated; Windows/Linux/densities CI PASS; user in-game acceptance and global production scope remain pending",
   "date": "2026-11-07",
   "base_commit": "12740d002755e2bc6bdcb7aa19ebcb285f7c9ed6",
   "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
@@ -1023,9 +1023,7 @@
   "reproduction": "README.md: normal check_rocket_art.py command without --native-* reproduces controlled mode; local exact builders and fixture retained in local_artifacts. check_d2_preservation.py compares baseline-d2 and validation-d3/art. Native capture: build_walk_native_probe.py --project <new> --headers <existing C01/pilot headers>; CMake SDL3_DIR points to pinned SDL3 3.4.0. Run check_mission_publication_replays.py --soldier-probe --screen-probe --pause-probe --ordered-manifest tools/modernization/ordered-empty-assets.json with OPENFODDER_NATIVE_WALK_OUT=<new snapshots>, SDL dummy/software; Tests pinned as above. prepare_aim_native.py groups 6/5/7 reconstruct aim/grenade/rocket. README check_rocket_art.py --native-* uses those folders. For sanitizer run use the x64 sanitized selector and WindowHD fixture with flags/environment recorded here. Exact binaries, repro sources, compiler logs and all outputs retained in local_artifacts. Linux full memory check: WSL OpenFodderD3 runs the saved build_linux_sanitizers.sh and run_linux_sanitizers.sh with ASan/UBSan, integrated LSan enabled and no suppression; all binaries, logs and positive controls stay under /root/openfodder-d3-linux in the isolated disk.",
   "pending": [
     "full production build/audio/GPU/CD32/campaign coverage",
-    "Miguel in-game acceptance",
-    "commit/publication",
-    "new Windows/Linux CI"
+    "Miguel in-game acceptance"
   ],
   "invariants": "Only Source/Utils/json.hpp changed with explicit user authorization; simulation, classic references, launcher and C01 unchanged; no new playable ZIP",
   "native_capture": {
@@ -1053,5 +1051,38 @@
     "exe_sha256": "a4934da24c0afcf7d1bb6215e46b9ac144d1d3705d131964e4ba67f86bfab288",
     "private_artifacts": "native-data, native-snapshots, native-aim/grenade/rocket and d3-native-private-contact.png remain outside repository; no bytes or palettes in evidence"
   },
-  "derived_preservation_across_modes": "All 142 descriptors, 282 bindings and RGBA files exact between controlled, real, controlled ASan/UBSan and real ASan/UBSan modes"
+  "derived_preservation_across_modes": "All 142 descriptors, 282 bindings and RGBA files exact between controlled, real, controlled ASan/UBSan and real ASan/UBSan modes",
+  "implementation_commit": "79c10284965bbd4b0173b4de32643f9ba9c497c5",
+  "ci_d3": [
+    {
+      "name": "H6 - offline density review",
+      "id": 42385884141,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42385884141",
+      "conclusion": "success"
+    },
+    {
+      "name": "Windows - modernization foundation",
+      "id": 42385884156,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42385884156",
+      "conclusion": "success"
+    },
+    {
+      "name": "linux-build",
+      "id": 42385884166,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42385884166",
+      "conclusion": "success"
+    },
+    {
+      "name": "Windows - modernization foundation",
+      "id": 42385879182,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42385879182",
+      "conclusion": "success"
+    },
+    {
+      "name": "linux-build",
+      "id": 42385879005,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42385879005",
+      "conclusion": "success"
+    }
+  ]
 }
