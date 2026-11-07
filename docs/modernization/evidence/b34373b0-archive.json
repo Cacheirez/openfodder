@@ -1,0 +1,21 @@
+{
+  "commit": "b34373b0d1f7fbbbecec78ecafedea8bf9a96fb4",
+  "repository": "Cacheirez/openfodder",
+  "artifacts": [
+    {
+      "file": "openfodder-b34373b0-evidence-12592558892.zip",
+      "bytes": 7791259,
+      "sha256": "371581a6ae9b3708f037e7fd6186daa1355e29ff8b6c6a015eb3ebc1bcb87060"
+    },
+    {
+      "file": "openfodder-b34373b0-evidence-12594080274.zip",
+      "bytes": 7757041,
+      "sha256": "6f3e6784176380f286b4a7d2535f4173f04efe6e37f077c16e6dec59d5e47648"
+    }
+  ],
+  "scope": "Complete public demo CI evidence ZIPs, not playable package or commercial assets",
+  "archive": "OPENFODDER_EVIDENCIAS_b34373b0.zip",
+  "archive_bytes": 15549330,
+  "archive_sha256": "66170af435071fd15d76db1acb7475de79e1bdcd0dbc65b1a74a3fa269f33496",
+  "retention": "Persistent user deliverable saved 2026-10-25; search by exact archive filename. No dependency on Actions expiry for these two evidence ZIPs."
+}

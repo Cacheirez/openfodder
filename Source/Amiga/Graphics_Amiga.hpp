@@ -57,6 +57,7 @@ protected:
 	virtual sImage		DecodeIFF(const std::string& pFilename);
 
 	public:
+    openfodder::IndexedProducerDraw CaptureOverviewTile(uint16 tile,uint16 x,uint16 y) const override;
 						cGraphics_Amiga();
 	virtual				~cGraphics_Amiga();
 
@@ -71,7 +72,9 @@ protected:
 	virtual void		Load_And_Draw_Image( const std::string &pFilename, unsigned int pColors = 0, size_t pBackColor = 0 );
 
 	virtual uint8*		GetSpriteData( uint16 pSegment );
+    tSharedBuffer GetSpriteResourceStorage(uint16 segment) const override;
 	virtual void		Mouse_DrawCursor();
+    openfodder::PreparedSpriteDraw Cursor_PrepareLegacyDraw() override;
 	virtual void		Tile_Prepare_Gfx();
 	virtual void		Load_pStuff();
 	virtual void		Load_Sprite_Font();
@@ -81,6 +84,7 @@ protected:
 	virtual void		Map_Load_Resources();
 	virtual void		Map_Tile_Draw(cSurface *pTarget, uint16 pTile, uint16 pX, uint16 pY, uint16 pOffset);
 	virtual void		MapTiles_Draw();
+    openfodder::TerrainDraw CaptureVisibleTerrain() override;
 	virtual void		Hill_Prepare_Overlays();
 	virtual void		MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY );
 	
@@ -92,10 +96,11 @@ protected:
 
 	virtual void		Video_Draw_16_Offset( int16 pCx );
 	virtual void		Video_Draw_16( const uint8* RowPallete = 0 );
-	virtual void		Video_Draw_8( cSurface *pTarget = 0, const uint8* RowPallete = 0 );
+	openfodder::SpriteRasterLayout GetSpriteRasterLayout() const override;
     virtual void		Video_Draw_8_Alt( const uint8* RowPallete = 0 );
 
 	virtual void		SetActiveSpriteSheet(eGFX_Types pSpriteType );
+    void                SetActiveCF2SpriteSheet(); // Shares the real CF2 frame bounds.
 
 	virtual void		Sidebar_Copy_To_Surface( int16 pStartY, cSurface* pSurface = 0);
 	virtual void		Sidebar_Copy_Sprite_To_ScreenBufPtr( int16 pSpriteType, size_t pX, size_t pY );

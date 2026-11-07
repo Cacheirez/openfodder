@@ -21,6 +21,7 @@
  */
  
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include <cmath>
 
 cGraphics::cGraphics() {
@@ -94,27 +95,16 @@ bool cGraphics::Sprite_OnScreen_ClipBottom() {
 	return true;
 }
 
+openfodder::SidebarDraw cGraphics::CaptureSidebarDraw(int16 startY, bool offsetSource) const {
+    return openfodder::CaptureSidebar(reinterpret_cast<const uint8*>(mFodder->mSidebar_Screen_Buffer),
+        mSurface->GetWidth(), mSurface->GetHeight(), startY, offsetSource);
+}
+
 void cGraphics::Sidebar_Copy_To_Surface_Common(int16 pStartY, cSurface* pSurface, bool pOffsetSource) {
-	uint8* buffer = mSurface->GetSurfaceBuffer();
-	if (pSurface)
-		buffer = pSurface->GetSurfaceBuffer();
-
-	uint8* si = (uint8*)mFodder->mSidebar_Screen_Buffer;
-
-	buffer += (16 * mSurface->GetWidth()) + 16;
-
-	if (pOffsetSource && pStartY) {
-		buffer += (mSurface->GetWidth() * pStartY);
-		si += (0x30 * pStartY);
-	}
-
-	for (unsigned int y = 17 + pStartY; y < mSurface->GetHeight(); ++y) {
-		for (unsigned int x = 0; x < 0x30; ++x) {
-			buffer[x] = *si++;
-		}
-
-		buffer += mSurface->GetWidth();
-	}
+    const auto draw = CaptureSidebarDraw(pStartY, pOffsetSource);
+    auto* target = pSurface ? pSurface : mSurface;
+    target->RecordMissionSidebar(draw);
+    openfodder::RasterizeSidebar(draw, target->GetSurfaceBuffer());
 }
 
 void cGraphics::Sidebar_Copy_ScreenBuffer_Common(uint16 pRow, int16 pRows, int16 pCopyToScreen, uint32*& pBuffer,
@@ -196,4 +186,95 @@ void cGraphics::HeliIntro_TickParallaxAndText()
 	Heli_Front -= d0;
 	if (Heli_Front < 0)
 		Heli_Front += 320 << 16;
+}
+
+// Compatibility entry point for callers still using legacy drawing registers.
+void cGraphics::Video_Draw_8(cSurface* target, const uint8* rowPalette) {
+    openfodder::SpriteDrawState draw;
+    draw.source = mFodder->mVideo_Draw_FrameDataPtr;
+    draw.x = mFodder->mVideo_Draw_PosX;
+    draw.y = mFodder->mVideo_Draw_PosY;
+    draw.columns = mFodder->mVideo_Draw_Columns;
+    draw.rows = mFodder->mVideo_Draw_Rows;
+    draw.palette = mFodder->mVideo_Draw_PaletteIndex;
+    draw.format = GetSpriteRasterLayout().format;
+    Video_Draw_8_Prepared(draw, target, rowPalette);
+}
+
+// Stateful coordinator: preserve old register writes immediately before rasterization.
+// Reusable rendering calls RasterizeSprite8 with explicit layout/target instead.
+void cGraphics::Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
+                                    cSurface* target, const uint8* rowPalette) {
+    if (!target)
+        target = mSurface;
+    const auto layout = GetSpriteRasterLayout();
+    const openfodder::SpriteRasterTarget output{target->GetSurfaceBuffer(), target->GetWidth()};
+    const auto registers = openfodder::PrepareSpriteRasterRegisters(draw, layout, output.width);
+    const auto captured=openfodder::CaptureSprite8Producer(draw,layout,output.width,rowPalette);
+    mFodder->mVideo_Draw_Columns = registers.columns;
+    mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
+    mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    target->RecordMissionPixels(captured);
+    openfodder::RasterizeIndexedProducer(captured,output.pixels);
+}
+
+openfodder::ResolvedSpriteResource cGraphics::ResolveSpriteResource(uint16 segment,
+        size_t frameOffset, uint8 tablePalette) {
+    // Exact classic order: table palette first, then backend selection effects.
+    mFodder->mVideo_Draw_PaletteIndex = tablePalette;
+    auto source = GetSpriteData(segment);
+    const auto storage = GetSpriteResourceStorage(segment);
+    if (!source || !storage || storage->empty()) return {};
+    // Valid GetSpriteData segments point inside their corresponding storage.
+    const size_t segmentOffset = static_cast<size_t>(source - storage->data());
+    if (segmentOffset >= storage->size() || frameOffset >= storage->size() - segmentOffset)
+        return {};
+    const auto layout = GetSpriteRasterLayout();
+    auto result = mFrozenSpriteResources.capture(segment, *storage,
+        segmentOffset + frameOffset, layout, mFodder->mVideo_Draw_PaletteIndex);
+    // Legacy registers must still refer to original storage, not a retained copy.
+    mFodder->mVideo_Draw_FrameDataPtr = source + frameOffset;
+    return result;
+}
+
+void cGraphics::Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prepared,
+                                     cSurface* target) {
+    if (!target) target = mSurface;
+    const auto& draw = prepared.draw;
+    const auto& layout = prepared.resource.layout;
+    const openfodder::SpriteRasterTarget output{target->GetSurfaceBuffer(), target->GetWidth()};
+    const auto registers = openfodder::PrepareSpriteRasterRegisters(draw, layout, output.width);
+    mFodder->mVideo_Draw_Columns = registers.columns;
+    mFodder->mDraw_Source_SkipPixelsPerRow = registers.sourceSkip;
+    mFodder->mDraw_Dest_SkipPixelsPerRow = registers.destinationSkip;
+    if (prepared.isCursor && prepared.suppressCursorPixels) return;
+    if (target->MissionAuditActive() && prepared.soldier.valid)
+        target->RecordMissionSoldier(prepared);
+    else if (target->MissionAuditActive())
+        target->RecordMissionPixels(openfodder::CaptureSprite8Producer(draw, layout, output.width),
+            prepared.isCursor ? openfodder::MissionLayerRole::Cursor : openfodder::MissionLayerRole::Sprite);
+    openfodder::RasterizeSprite8(draw, layout, output);
+}
+
+// Capture after the backend's classic cursor selection. Do not call the
+// effectful GetSpriteData again or replace its legacy source register.
+openfodder::PreparedSpriteDraw cGraphics::CaptureCursorDraw() {
+    openfodder::PreparedSpriteDraw prepared;
+    prepared.isCursor = true;
+    prepared.suppressCursorPixels = mFodder->mWindow->IsMissionCursorInBand();
+    const auto storage = GetSpriteResourceStorage(eGFX_PSTUFF);
+    const auto layout = GetSpriteRasterLayout();
+    const size_t offset = static_cast<size_t>(mFodder->mVideo_Draw_FrameDataPtr - storage->data());
+    prepared.resource = mFrozenSpriteResources.capture(eGFX_PSTUFF, *storage, offset,
+        layout, mFodder->mVideo_Draw_PaletteIndex);
+    auto& draw = prepared.draw;
+    draw.source = prepared.resource.source();
+    draw.x = mFodder->mVideo_Draw_PosX;
+    draw.y = mFodder->mVideo_Draw_PosY;
+    draw.columns = mFodder->mVideo_Draw_Columns;
+    draw.rows = mFodder->mVideo_Draw_Rows;
+    draw.palette = mFodder->mVideo_Draw_PaletteIndex;
+    draw.format = layout.format;
+    draw.visible = true;
+    return prepared;
 }

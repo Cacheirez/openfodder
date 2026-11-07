@@ -1,0 +1,22 @@
+{
+  "verdict": "PASS",
+  "roundtrip": "Every archived log/trace reconstructed and compared byte-for-byte with source by archive_replay_evidence.py",
+  "files": {
+    "hd-integrated-cost-2026-11-01.json": {
+      "bytes": 8197,
+      "sha256": "23c923bec613d06746cce75c92bce2eabbb8c315a9b635125068bf774817c802"
+    },
+    "hd-integrated-traces-2026-11-01.json.gz": {
+      "bytes": 942147,
+      "sha256": "21d5dc40e903fe5145edf64ea62e74b9a2553d6ab2a4d5ee66be021c31f73521"
+    },
+    "hd-integrated-rejected-2026-11-01.json": {
+      "bytes": 5334,
+      "sha256": "dfe8cf234899e3bd41963e232fe541440186b61cff79727cf492b8efc932cb23"
+    },
+    "hd-integrated-rejected-2026-11-01.json.gz": {
+      "bytes": 961910,
+      "sha256": "913f2739e3a315459a9c58b08c1aeb0483fd57edda0e7ded586facb904896cd1"
+    }
+  }
+}

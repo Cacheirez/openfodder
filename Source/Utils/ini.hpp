@@ -395,7 +395,7 @@ public:
 
 		file.close();
 
-		return true;
+		return !file.fail();
 	}
 
 	//Clear the contents from memory

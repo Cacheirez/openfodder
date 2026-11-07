@@ -1,0 +1,86 @@
+{
+  "description": "Canonical gameplay-state trace fingerprints from 11 demo phases, validated across Windows/Linux (exact state lines, not full campaign)",
+  "schema_version": 1,
+  "reference_code_commit": "cc5e337ddf8533a1a0377de987948d150760f272",
+  "replay_fixtures_commit": "c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86",
+  "replay_fixture_manifest_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+  "verified_platforms": [
+    "Windows-x64",
+    "Linux-x64"
+  ],
+  "windows_exe_sha256": "8c2388163c5d93d647967a1fe2b70f20ade2a53133689592053baf47f7b464c4",
+  "linux_exe_sha256": "bfeefa1f871922104b6a78a89fdfb11123f30b36596e603f1645ffb3389be5f5",
+  "windows_run": 39593037606,
+  "linux_run": 39593037449,
+  "hash_method": "SHA256 of UTF-8 JSONL tick lines joined by LF (with final LF), excluding metadata header; no numeric tolerances or field exclusions",
+  "total_phases": 11,
+  "total_samples": 11361,
+  "phases": [
+    {
+      "file": "Amiga_The_One_m1_p1.jsonl",
+      "campaign": "Amiga The One",
+      "samples": 149,
+      "logical_sha256": "b8dffa513ff48ba0fed450d4bc42c253005a1c4defde7a0ce176f55b6b9e3e4d"
+    },
+    {
+      "file": "Amiga_The_One_m1_p2.jsonl",
+      "campaign": "Amiga The One",
+      "samples": 1546,
+      "logical_sha256": "5996aea99df370416989b49ed5ca4b6129f6b0ff380f8398490a4de95c3f5259"
+    },
+    {
+      "file": "Amiga_The_One_m1_p3.jsonl",
+      "campaign": "Amiga The One",
+      "samples": 1710,
+      "logical_sha256": "e987d0c84cdafb14aeec72008dad2a326d2ede26c5a761436bcc66705eb5612b"
+    },
+    {
+      "file": "PC_Format_m1_p1.jsonl",
+      "campaign": "PC Format",
+      "samples": 152,
+      "logical_sha256": "67c6bf8077f5519aad340bb4f0ea72437fa86b36476498384b77fdb7e7fb6853"
+    },
+    {
+      "file": "PC_Format_m2_p1.jsonl",
+      "campaign": "PC Format",
+      "samples": 787,
+      "logical_sha256": "f42a4ad6bcf0001b47217e8071769a67845d28d8b886a4a369ddf946e13ed0c8"
+    },
+    {
+      "file": "PC_Format_m2_p2.jsonl",
+      "campaign": "PC Format",
+      "samples": 1270,
+      "logical_sha256": "555b95026c07cd79cf3b20d1e85800b7331f563bde51fe70dd835eb653e4017e"
+    },
+    {
+      "file": "PC_Format_m3_p1.jsonl",
+      "campaign": "PC Format",
+      "samples": 1331,
+      "logical_sha256": "e265dcfce7b6aa7a19c4079838f8cb21fcfac8e693db4703871b7da7fba846eb"
+    },
+    {
+      "file": "PC_Format_m4_p1.jsonl",
+      "campaign": "PC Format",
+      "samples": 1979,
+      "logical_sha256": "182a9aa7c470e7b35ba0bc65928ca4623d3980de8b999b134ca5d41090ca95a9"
+    },
+    {
+      "file": "PC_Format_m4_p2.jsonl",
+      "campaign": "PC Format",
+      "samples": 288,
+      "logical_sha256": "a2b928ea283ab083d4c88322f5a5d2b648642b0f02adbf954f55777e878b4cf3"
+    },
+    {
+      "file": "PC_Format_m4_p3.jsonl",
+      "campaign": "PC Format",
+      "samples": 1062,
+      "logical_sha256": "8aea162e5dee10cda75cb9bd95f07aaf88f1d1d5f9881c139fe325a3ff0e41b2"
+    },
+    {
+      "file": "PC_Format_m4_p4.jsonl",
+      "campaign": "PC Format",
+      "samples": 1087,
+      "logical_sha256": "e78d7ddca31f164331f4fa7727cce4b5e9069971ccc8354529a971d1c6cc3858"
+    }
+  ]
+}

@@ -24,6 +24,7 @@
 #include "Utils/md5.hpp"
 
 #include <chrono>
+#include <cstdlib> // free() entries returned by scandir()
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -602,7 +603,7 @@ int file_select(const struct dirent *entry) {
 }
 
 std::vector<std::string> cResourceMan::DirectoryList(const std::string& pPath, const std::string& pExtension) {
-	struct dirent		**directFiles;
+	struct dirent		**directFiles = nullptr;
 	std::vector<std::string>		  results;
 
 	// Build the file path
@@ -617,18 +618,24 @@ std::vector<std::string> cResourceMan::DirectoryList(const std::string& pPath, c
 	int count = scandir(finalPath.str().c_str(), (dirent***)&directFiles, file_select, 0);
 
 	for (int i = 0; i < count; ++i) {
-
-		results.push_back(std::string(directFiles[i]->d_name));
+        results.emplace_back(directFiles[i]->d_name);
+        // POSIX scandir allocates the entry and the outer pointer array.
+        std::free(directFiles[i]);
 	}
+    std::free(directFiles);
+    directFiles = nullptr;
 
 	transform(findType.begin(), findType.end(), findType.begin(), ::tolower);
 
 	count = scandir(finalPath.str().c_str(), (dirent***)&directFiles, file_select, 0);
 
 	for (int i = 0; i < count; ++i) {
-
-		results.push_back(std::string(directFiles[i]->d_name));
+        results.emplace_back(directFiles[i]->d_name);
+        // POSIX scandir allocates the entry and the outer pointer array.
+        std::free(directFiles[i]);
 	}
+    std::free(directFiles);
+    directFiles = nullptr;
 
 	return results;
 }

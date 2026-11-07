@@ -88,6 +88,24 @@ void cFodder::Mouse_Cursor_Handle() {
     };
 
 	if (mStartParams->mMouseAlternative) {
+        static bool blockedPress=false;
+        int16 mappedX=0,mappedY=0;
+        const auto mapping=mWindow->MapMissionMouse(mMouse_EventLastPosition.mX,
+            mMouse_EventLastPosition.mY,mappedX,mappedY);
+        mWindow->SetMissionCursorInBand(mapping==openfodder::ScreenMouseResult::Band);
+        if(mapping!=openfodder::ScreenMouseResult::Classic) {
+            if(!mMouse_EventLastButtonsPressed)blockedPress=false;
+            if(mapping==openfodder::ScreenMouseResult::Blocked ||
+                mapping==openfodder::ScreenMouseResult::Band) {
+                if(mMouse_EventLastButtonsPressed)blockedPress=true;
+                mMouseButtonStatus=0;
+                return; // Keep prior cursor; never turn a band click into a map order.
+            }
+            mInputMouseX=mappedX;mInputMouseY=mappedY;
+            if(blockedPress)mMouseButtonStatus=0; // Release before re-entering with a held press.
+            return;
+        }
+        blockedPress=false;
 		mInputMouseX = (mMouse_EventLastPosition.mX / scale.getWidth()) + MOUSE_POSITION_X_ADJUST;
 		mInputMouseY = (mMouse_EventLastPosition.mY / scale.getHeight()) + MOUSE_POSITION_Y_ADJUST;
 		return;
@@ -286,6 +304,14 @@ void cFodder::Mouse_UpdateButtons() {
 
 }
 
+// Called only after the legacy DisableVideo guard and coordinate setup.
+void cFodder::Mouse_CommitCursorRequest() {
+    if (mMouseSpriteNew >= 0) {
+        mMouseSpriteCurrent = mMouseSpriteNew;
+        mMouseSpriteNew = -1;
+    }
+}
+
 void cFodder::Mouse_DrawCursor() {
     if (mParams->mDisableVideo)
         return;
@@ -293,10 +319,7 @@ void cFodder::Mouse_DrawCursor() {
     mVideo_Draw_PosX = (mMouseX + mMouseX_Offset) + SIDEBAR_WIDTH;
     mVideo_Draw_PosY = (mMouseY + mMouseY_Offset) + 12;
 
-    if (mMouseSpriteNew >= 0) {
-        mMouseSpriteCurrent = mMouseSpriteNew;
-        mMouseSpriteNew = -1;
-    }
+    Mouse_CommitCursorRequest();
 
     if (mGraphics)
         mGraphics->Mouse_DrawCursor();

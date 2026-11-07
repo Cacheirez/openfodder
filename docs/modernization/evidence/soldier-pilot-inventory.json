@@ -1,0 +1,696 @@
+{
+  "scope": "First live player; prepared bodies before final occlusion/eligibility. Calls may repeat within a tick.",
+  "log_sha256": "efb371aec44c2a12316f526e71ef32ebf321247cf30aa45ce2e62160d23fb806",
+  "phases": [
+    {
+      "mission": 1,
+      "phase": 1,
+      "prepared_calls": 593,
+      "unique_ticks": 149,
+      "keys": [
+        {
+          "sheet": 0,
+          "frame": 2,
+          "calls": 20
+        },
+        {
+          "sheet": 1,
+          "frame": 2,
+          "calls": 24
+        },
+        {
+          "sheet": 2,
+          "frame": 0,
+          "calls": 20
+        },
+        {
+          "sheet": 2,
+          "frame": 1,
+          "calls": 24
+        },
+        {
+          "sheet": 2,
+          "frame": 2,
+          "calls": 8
+        },
+        {
+          "sheet": 3,
+          "frame": 0,
+          "calls": 16
+        },
+        {
+          "sheet": 3,
+          "frame": 1,
+          "calls": 20
+        },
+        {
+          "sheet": 3,
+          "frame": 2,
+          "calls": 24
+        },
+        {
+          "sheet": 4,
+          "frame": 0,
+          "calls": 64
+        },
+        {
+          "sheet": 4,
+          "frame": 1,
+          "calls": 48
+        },
+        {
+          "sheet": 4,
+          "frame": 2,
+          "calls": 48
+        },
+        {
+          "sheet": 5,
+          "frame": 0,
+          "calls": 56
+        },
+        {
+          "sheet": 5,
+          "frame": 1,
+          "calls": 120
+        },
+        {
+          "sheet": 5,
+          "frame": 2,
+          "calls": 48
+        },
+        {
+          "sheet": 6,
+          "frame": 0,
+          "calls": 8
+        },
+        {
+          "sheet": 6,
+          "frame": 1,
+          "calls": 16
+        },
+        {
+          "sheet": 6,
+          "frame": 2,
+          "calls": 24
+        },
+        {
+          "sheet": 159,
+          "frame": 0,
+          "calls": 5
+        }
+      ],
+      "batch_key_calls": 52,
+      "geometry": [
+        [
+          2,
+          14,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "mission": 1,
+      "phase": 2,
+      "prepared_calls": 6129,
+      "unique_ticks": 1534,
+      "keys": [
+        {
+          "sheet": 0,
+          "frame": 0,
+          "calls": 92
+        },
+        {
+          "sheet": 0,
+          "frame": 1,
+          "calls": 232
+        },
+        {
+          "sheet": 0,
+          "frame": 2,
+          "calls": 140
+        },
+        {
+          "sheet": 1,
+          "frame": 0,
+          "calls": 391
+        },
+        {
+          "sheet": 1,
+          "frame": 1,
+          "calls": 356
+        },
+        {
+          "sheet": 1,
+          "frame": 2,
+          "calls": 176
+        },
+        {
+          "sheet": 2,
+          "frame": 0,
+          "calls": 364
+        },
+        {
+          "sheet": 2,
+          "frame": 1,
+          "calls": 664
+        },
+        {
+          "sheet": 2,
+          "frame": 2,
+          "calls": 300
+        },
+        {
+          "sheet": 3,
+          "frame": 0,
+          "calls": 88
+        },
+        {
+          "sheet": 3,
+          "frame": 1,
+          "calls": 188
+        },
+        {
+          "sheet": 3,
+          "frame": 2,
+          "calls": 104
+        },
+        {
+          "sheet": 4,
+          "frame": 0,
+          "calls": 48
+        },
+        {
+          "sheet": 4,
+          "frame": 1,
+          "calls": 192
+        },
+        {
+          "sheet": 4,
+          "frame": 2,
+          "calls": 76
+        },
+        {
+          "sheet": 5,
+          "frame": 0,
+          "calls": 144
+        },
+        {
+          "sheet": 5,
+          "frame": 1,
+          "calls": 244
+        },
+        {
+          "sheet": 5,
+          "frame": 2,
+          "calls": 80
+        },
+        {
+          "sheet": 6,
+          "frame": 0,
+          "calls": 276
+        },
+        {
+          "sheet": 6,
+          "frame": 1,
+          "calls": 492
+        },
+        {
+          "sheet": 6,
+          "frame": 2,
+          "calls": 256
+        },
+        {
+          "sheet": 7,
+          "frame": 0,
+          "calls": 152
+        },
+        {
+          "sheet": 7,
+          "frame": 1,
+          "calls": 380
+        },
+        {
+          "sheet": 7,
+          "frame": 2,
+          "calls": 184
+        },
+        {
+          "sheet": 8,
+          "frame": 0,
+          "calls": 8
+        },
+        {
+          "sheet": 8,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 8,
+          "frame": 2,
+          "calls": 8
+        },
+        {
+          "sheet": 11,
+          "frame": 0,
+          "calls": 8
+        },
+        {
+          "sheet": 12,
+          "frame": 0,
+          "calls": 16
+        },
+        {
+          "sheet": 13,
+          "frame": 0,
+          "calls": 12
+        },
+        {
+          "sheet": 13,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 13,
+          "frame": 2,
+          "calls": 8
+        },
+        {
+          "sheet": 34,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 34,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 40,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 40,
+          "frame": 1,
+          "calls": 161
+        },
+        {
+          "sheet": 41,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 41,
+          "frame": 1,
+          "calls": 24
+        },
+        {
+          "sheet": 43,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 43,
+          "frame": 1,
+          "calls": 144
+        },
+        {
+          "sheet": 44,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 45,
+          "frame": 1,
+          "calls": 16
+        },
+        {
+          "sheet": 46,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 47,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 56,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 56,
+          "frame": 1,
+          "calls": 1
+        },
+        {
+          "sheet": 124,
+          "frame": 1,
+          "calls": 32
+        },
+        {
+          "sheet": 179,
+          "frame": 0,
+          "calls": 4
+        }
+      ],
+      "batch_key_calls": 2044,
+      "geometry": [
+        [
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "mission": 1,
+      "phase": 3,
+      "prepared_calls": 6840,
+      "unique_ticks": 1711,
+      "keys": [
+        {
+          "sheet": 0,
+          "frame": 0,
+          "calls": 64
+        },
+        {
+          "sheet": 0,
+          "frame": 1,
+          "calls": 124
+        },
+        {
+          "sheet": 0,
+          "frame": 2,
+          "calls": 96
+        },
+        {
+          "sheet": 1,
+          "frame": 0,
+          "calls": 727
+        },
+        {
+          "sheet": 1,
+          "frame": 1,
+          "calls": 620
+        },
+        {
+          "sheet": 1,
+          "frame": 2,
+          "calls": 324
+        },
+        {
+          "sheet": 2,
+          "frame": 0,
+          "calls": 556
+        },
+        {
+          "sheet": 2,
+          "frame": 1,
+          "calls": 1220
+        },
+        {
+          "sheet": 2,
+          "frame": 2,
+          "calls": 656
+        },
+        {
+          "sheet": 3,
+          "frame": 0,
+          "calls": 120
+        },
+        {
+          "sheet": 3,
+          "frame": 1,
+          "calls": 264
+        },
+        {
+          "sheet": 3,
+          "frame": 2,
+          "calls": 424
+        },
+        {
+          "sheet": 4,
+          "frame": 0,
+          "calls": 104
+        },
+        {
+          "sheet": 4,
+          "frame": 1,
+          "calls": 216
+        },
+        {
+          "sheet": 4,
+          "frame": 2,
+          "calls": 184
+        },
+        {
+          "sheet": 5,
+          "frame": 0,
+          "calls": 32
+        },
+        {
+          "sheet": 5,
+          "frame": 1,
+          "calls": 56
+        },
+        {
+          "sheet": 5,
+          "frame": 2,
+          "calls": 28
+        },
+        {
+          "sheet": 6,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 7,
+          "frame": 0,
+          "calls": 12
+        },
+        {
+          "sheet": 7,
+          "frame": 1,
+          "calls": 36
+        },
+        {
+          "sheet": 7,
+          "frame": 2,
+          "calls": 40
+        },
+        {
+          "sheet": 9,
+          "frame": 0,
+          "calls": 24
+        },
+        {
+          "sheet": 9,
+          "frame": 1,
+          "calls": 32
+        },
+        {
+          "sheet": 9,
+          "frame": 2,
+          "calls": 32
+        },
+        {
+          "sheet": 10,
+          "frame": 0,
+          "calls": 32
+        },
+        {
+          "sheet": 10,
+          "frame": 1,
+          "calls": 28
+        },
+        {
+          "sheet": 10,
+          "frame": 2,
+          "calls": 24
+        },
+        {
+          "sheet": 11,
+          "frame": 0,
+          "calls": 8
+        },
+        {
+          "sheet": 11,
+          "frame": 1,
+          "calls": 8
+        },
+        {
+          "sheet": 11,
+          "frame": 2,
+          "calls": 8
+        },
+        {
+          "sheet": 17,
+          "frame": 0,
+          "calls": 8
+        },
+        {
+          "sheet": 24,
+          "frame": 0,
+          "calls": 40
+        },
+        {
+          "sheet": 24,
+          "frame": 1,
+          "calls": 36
+        },
+        {
+          "sheet": 25,
+          "frame": 0,
+          "calls": 48
+        },
+        {
+          "sheet": 25,
+          "frame": 1,
+          "calls": 40
+        },
+        {
+          "sheet": 26,
+          "frame": 0,
+          "calls": 32
+        },
+        {
+          "sheet": 26,
+          "frame": 1,
+          "calls": 44
+        },
+        {
+          "sheet": 27,
+          "frame": 0,
+          "calls": 56
+        },
+        {
+          "sheet": 27,
+          "frame": 1,
+          "calls": 48
+        },
+        {
+          "sheet": 28,
+          "frame": 0,
+          "calls": 16
+        },
+        {
+          "sheet": 28,
+          "frame": 1,
+          "calls": 16
+        },
+        {
+          "sheet": 46,
+          "frame": 0,
+          "calls": 4
+        },
+        {
+          "sheet": 46,
+          "frame": 1,
+          "calls": 124
+        },
+        {
+          "sheet": 59,
+          "frame": 0,
+          "calls": 76
+        },
+        {
+          "sheet": 60,
+          "frame": 0,
+          "calls": 56
+        },
+        {
+          "sheet": 61,
+          "frame": 0,
+          "calls": 28
+        },
+        {
+          "sheet": 124,
+          "frame": 1,
+          "calls": 16
+        },
+        {
+          "sheet": 164,
+          "frame": 1,
+          "calls": 32
+        },
+        {
+          "sheet": 164,
+          "frame": 3,
+          "calls": 13
+        }
+      ],
+      "batch_key_calls": 2520,
+      "geometry": [
+        [
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          2
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          3
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          4
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          5
+        ],
+        [
+          2,
+          14,
+          0,
+          0,
+          6
+        ]
+      ]
+    }
+  ]
+}

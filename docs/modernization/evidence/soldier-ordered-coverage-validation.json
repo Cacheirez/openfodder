@@ -1,0 +1,373 @@
+{
+  "base_commit": "1e405a118ef66ba29a2a56f9eedae813101879be",
+  "plan": "2.74",
+  "scope": "A1 ordered transaction publication evidence; soldier replacement not complete",
+  "source_sha256": {
+    "CMakeLists.txt": "2626e83909dbcc9f7ea4cdfc02444d30f945a1ed566f2ef98696fc0a579f2690",
+    "Source/WindowHD.cpp": "428d15ee07110254bff0d5673c5ebd5a65a98f73197be6d97abf39250ea37bf7",
+    "Source/Utils/OrderedSoldierCoverage.hpp": "d92bb11f4937774803bba8edc04d04e77d4b80df483b64c382c89174a5e3ed16",
+    "tools/modernization/build_hd_window_fixture.py": "cd99e98ec70364cfc688f877a6b2bee1e54943c674f30cd913f8bf3aa1f8b7aa",
+    "tools/modernization/ordered_window_cases.inc": "35781fd7ae69b51c03239d541b3bcbd888d4be26f98c159ca7d2796488e3d04e",
+    "tools/modernization/check_ordered_coverage_integration.py": "63c1e767a364d3728a97dc746460c3a5f32a1ee13e98954292cdaa52a2f0ce10",
+    "tools/modernization/ordered_soldier_coverage.py": "dc3a16c60bb95d677e4a155ac30b2884619b2724b44d8f143154671eda7a0f55",
+    "tools/modernization/test_ordered_soldier_coverage.py": "f4af291fdee453e03724746b6d716c4c29f1d419fc6d5c742ca4557597283a4e",
+    "tools/modernization/soldier_coverage.py": "0b9840a0bf7477bca9f886f1c0b0355bfa4ba0a220a6d7e0519b6a85ebf09fc9"
+  },
+  "build": "GCC C++14 -O2, SDL3 release-3.4.0 a962f40bbba175e9716557a25d5d7965f134a3d3, local no-mixer build; 70 translation units",
+  "tests": {
+    "python": "41 PASS",
+    "window_integration": "PASS actual Window method and SDL software at 8x/12x, ASan/UBSan; diagnostics disabled/enabled; recovery/failure/partial census",
+    "semantic": "PASS ASan/UBSan",
+    "screen": "PASS ASan/UBSan",
+    "new_ctest": "soldier_ordered_coverage registered; exact underlying command PASS locally; full CTest Windows/Linux pending CI",
+    "lsan": "PENDING locally"
+  },
+  "fixture": {
+    "schema": 1,
+    "verdict": "PENDING",
+    "scope": "ordered transaction evidence; no global art/visual/CD32 acceptance",
+    "attempts": 21,
+    "outcomes": {
+      "classic-recovered": 2,
+      "interrupted": 2,
+      "manifest-invalid": 1,
+      "missing-variant": 4,
+      "no-body": 2,
+      "published": 8,
+      "recovery-failed": 2
+    },
+    "unique_producer_commands": 2,
+    "published_command_presentations": 16,
+    "unique_published_variant_commands": 4,
+    "unresolved_commands": 4,
+    "variants": [
+      {
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 8,
+        "resolution_replace": 14,
+        "published_presentations": 8,
+        "unpublished_presentations": 6
+      },
+      {
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 12,
+        "resolution_replace": 14,
+        "published_presentations": 8,
+        "unpublished_presentations": 6
+      },
+      {
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 8,
+        "resolution_missing": 2,
+        "unpublished_presentations": 2
+      },
+      {
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 12,
+        "resolution_missing": 2,
+        "unpublished_presentations": 2
+      },
+      {
+        "key": "eefd8b3682502986eaa8fe7883f1976cc9ddf2d412d12af7908ee71f59adeb5c",
+        "density": 8,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "key": "eefd8b3682502986eaa8fe7883f1976cc9ddf2d412d12af7908ee71f59adeb5c",
+        "density": 12,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      }
+    ],
+    "entity_states": [
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 0,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 8,
+        "resolution_replace": 8,
+        "published_presentations": 4,
+        "unpublished_presentations": 4
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 0,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 12,
+        "resolution_replace": 8,
+        "published_presentations": 4,
+        "unpublished_presentations": 4
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 0,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 8,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 0,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 12,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 8,
+        "resolution_replace": 6,
+        "published_presentations": 4,
+        "unpublished_presentations": 2
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "56a510d3f9cb62ef626940f33ab766d76ebc4ebb71432aed5206d7526d87df49",
+        "density": 12,
+        "resolution_replace": 6,
+        "published_presentations": 4,
+        "unpublished_presentations": 2
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 8,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 0,
+        "key": "e1ca20d4e1e44bdcb5748bc693e825ce23f42e173b8567f91dd5f6e71d2c44aa",
+        "density": 12,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 1,
+        "key": "eefd8b3682502986eaa8fe7883f1976cc9ddf2d412d12af7908ee71f59adeb5c",
+        "density": 8,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      },
+      {
+        "log": 0,
+        "scene": 1,
+        "slot": 1,
+        "generation": 2,
+        "type": 0,
+        "sheet": 7,
+        "frame": 1,
+        "key": "eefd8b3682502986eaa8fe7883f1976cc9ddf2d412d12af7908ee71f59adeb5c",
+        "density": 12,
+        "resolution_missing": 1,
+        "unpublished_presentations": 1
+      }
+    ]
+  },
+  "five_presentations_replay": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 5,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": null,
+      "coverage": "first phase per campaign",
+      "ordered_manifest_sha256": "7ab4d0de89a66a2208a396faa97fab8ae8ccd87a4802a09374ba3f5904e85438",
+      "ordered_density": 12,
+      "art_coverage": "PENDING; replay PASS validates integration and H3 only",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 1,
+        "pause_transitions": 2,
+        "soldier_scenes": 1,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 75,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 22.417,
+        "executable_sha256": "af351ca55b1c24c9e673f6cdae71b3bfa3f915f88f251af86f6efcd84289915a"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 1,
+        "pause_transitions": 2,
+        "soldier_scenes": 1,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 77,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 24.114,
+        "executable_sha256": "af351ca55b1c24c9e673f6cdae71b3bfa3f915f88f251af86f6efcd84289915a"
+      }
+    ],
+    "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+    "canonical_states": 301
+  },
+  "five_presentations_coverage": {
+    "schema": 1,
+    "verdict": "PENDING",
+    "scope": "ordered transaction evidence; no global art/visual/CD32 acceptance",
+    "attempts": 4445,
+    "outcomes": {
+      "missing-variant": 4445
+    },
+    "unique_producer_commands": 9157,
+    "published_command_presentations": 0,
+    "unique_published_variant_commands": 0,
+    "unresolved_commands": 0
+  },
+  "deduplication": "PASS: 45785 command records = 5 * 9157 unique producer commands; empty manifest publishes zero HD commands",
+  "log_sha256": {
+    "window": "6578acd55b5bb9176f347eb52655e9bb3961c4b41ed14c2bc2a12eb27488e8ab",
+    "semantic": "a238649ae52fa2c587cd6c42a099c9c5380ac59d279b541f659ca8252058bc32",
+    "screen": "36502d7431061c7a04370c9f2c881abc6370d973da389a79ac8157510794e533",
+    "python": "9c1153a930530dd8a07090d9815df4fb11bd68bdefe1592375f284bdb712c654",
+    "five_pc": "e6248132bd5e72ba5f3a12228c169a35fcbe44d0c79724bac54dce743a9a19a0",
+    "five_amiga": "cca6c95854a6364be33c36ca060a6986b9f7f53c899cb2ff27de5ae4361afe25",
+    "full_pc": "046ef0c358e411714c02fa05febfc18b807bf78d0a82bdcd156271e2f5407b96",
+    "full_amiga": "e525dc47c1c0720733cf4e701eee2d72508995fb1180f72bac245aabe7dfb1cd"
+  },
+  "ci": "PENDING for the new commit at publication; consult live branch checks, do not inherit base CI",
+  "pending": [
+    "complete art and resource/palette bindings",
+    "guards before ordered route: pause/map/palette/renderer",
+    "full soldier states and continuous visual/CD32 acceptance",
+    "GPU validation; no ZIP delivered"
+  ],
+  "full_h3": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 1,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": null,
+      "coverage": "11 reference phases",
+      "ordered_manifest_sha256": "7ab4d0de89a66a2208a396faa97fab8ae8ccd87a4802a09374ba3f5904e85438",
+      "ordered_density": 12,
+      "art_coverage": "PENDING; replay PASS validates integration and H3 only",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 635,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 171.493,
+        "executable_sha256": "af351ca55b1c24c9e673f6cdae71b3bfa3f915f88f251af86f6efcd84289915a"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 508,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 154.844,
+        "executable_sha256": "af351ca55b1c24c9e673f6cdae71b3bfa3f915f88f251af86f6efcd84289915a"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de"
+}

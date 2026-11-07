@@ -1,0 +1,1929 @@
+{
+  "schema": 1,
+  "base_commit": "1e1f021845457a9209b20eafa9ad6700f9748c2f",
+  "plan": "2.74",
+  "scope": "normal land posture/fire selector checks and 24 grenade body poses; not full soldiers/campaign",
+  "real": {
+    "status": "PASS bounded body transitions; full campaign and user acceptance PENDING",
+    "mode": "real source-derived grenade/aim, observed walking",
+    "directions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "intervals": 1260,
+    "bodies": 2520,
+    "sequences": 60,
+    "densities": [
+      8,
+      12
+    ],
+    "selector_assertions": 272,
+    "selector_samples": 168,
+    "three_rejections": true,
+    "c01": "exact",
+    "previous_assets": "64 descriptors must remain unchanged",
+    "log_sha256": "b89f089504c5c0646fc4b7cf020ea196d37060968f07ad3002da548ab25910ff",
+    "preparation": {
+      "status": "PENDING full campaign and Miguel acceptance",
+      "directions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "grenade_frames": 24,
+      "assets": 112,
+      "bindings": 222,
+      "source_derived_grenade_keys": 96,
+      "previous": {
+        "status": "PENDING user visual acceptance and full coverage",
+        "aim_frames": 8,
+        "aim_assets": 16,
+        "total_assets": 64,
+        "total_bindings": 126,
+        "source_derived_aim_keys": 32,
+        "replay_observed_aim_keys": 11,
+        "walking": {
+          "status": "PENDING user artistic acceptance and full soldier coverage",
+          "frames": 24,
+          "assets": [
+            {
+              "density": 8,
+              "file": "s0-f0-8.rgba",
+              "height": 14,
+              "id": "s0-f0-8",
+              "sha256": "bb71ec069e12229b5d0809dc1101ecf63df5722b5d99ba9b53e9499539344640",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f0-12.rgba",
+              "height": 14,
+              "id": "s0-f0-12",
+              "sha256": "e8f29bb0db1a91ac5d6da22fc8e6f183325799342716ef4169a9343ff6d40777",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s0-f1-8.rgba",
+              "height": 14,
+              "id": "s0-f1-8",
+              "sha256": "268b3997375d89c71c2ba50ea20434ecc2f816ad47886740aca30519d5b7acac",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f1-12.rgba",
+              "height": 14,
+              "id": "s0-f1-12",
+              "sha256": "d6b53139fb028f70f691123abff5c3d8a30857553427458fae62046e7cf6167e",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s0-f2-8.rgba",
+              "height": 14,
+              "id": "s0-f2-8",
+              "sha256": "920b065dd669394b963bb6615f99546f1fc394069cab9123ceccadcaef4c08b3",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f2-12.rgba",
+              "height": 14,
+              "id": "s0-f2-12",
+              "sha256": "745ccaffa54299da8416b801e77e7d5c1c3176c215dea30d3947b0144141bcd3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f0-8.rgba",
+              "height": 14,
+              "id": "s1-f0-8",
+              "sha256": "1518543ef2e907a41f99383e33b98cfa308265d16bebdd9da842b3a242ca0690",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f0-12.rgba",
+              "height": 14,
+              "id": "s1-f0-12",
+              "sha256": "63d40fdb7e7b05db66d3fe80eb23d22c8b808f08f9b13ef4b60980d99eec3b88",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f1-8.rgba",
+              "height": 14,
+              "id": "s1-f1-8",
+              "sha256": "df44850aaf31c9930299f02c3efe0633e0008227ff47ba90573e1caeb43f5c19",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f1-12.rgba",
+              "height": 14,
+              "id": "s1-f1-12",
+              "sha256": "b8b9fe534351e4b5b388b34346db34764a5623bec0b2612304b5e8976090b474",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f2-8.rgba",
+              "height": 14,
+              "id": "s1-f2-8",
+              "sha256": "249b891c64a8d8dd4ced25b75886224a09764e68b4618c3b3564a7f1a82d4436",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f2-12.rgba",
+              "height": 14,
+              "id": "s1-f2-12",
+              "sha256": "4e6f257e1e506807ebdf4b104a309c4f099fad50f7e79e81ddb629fbb3db9a32",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f0-8.rgba",
+              "height": 14,
+              "id": "s2-f0-8",
+              "sha256": "dbbf18df623c9c3b5cedeb5a79f056246ea2722521e73ba0f34b1289b1a4869e",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f0-12.rgba",
+              "height": 14,
+              "id": "s2-f0-12",
+              "sha256": "df5080ce79b3309bd58ae0f2e42ee8592bbdee6a49f999d72f9a0ce343a2ade3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f1-8.rgba",
+              "height": 14,
+              "id": "s2-f1-8",
+              "sha256": "064b6283fe6ffd8f042153fee9800a9ea9ea1de3b332c1ea187ea35f597934b7",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f1-12.rgba",
+              "height": 14,
+              "id": "s2-f1-12",
+              "sha256": "991cd25ed05b843a896eca67515c25adb21f244382b431c60a70ce89d2115dd4",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f2-8.rgba",
+              "height": 14,
+              "id": "s2-f2-8",
+              "sha256": "7a1ec9a90b437693c99baf93dc7bef2b1b9d5a370ec6c5f91f3dfdcd8491245c",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f2-12.rgba",
+              "height": 14,
+              "id": "s2-f2-12",
+              "sha256": "70cd1b432b3b11ca8677e0191694ac0a1a2d09ba83cd9f2ed57995d3d8fbf6c1",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f0-8.rgba",
+              "height": 14,
+              "id": "s3-f0-8",
+              "sha256": "46cc0ac556a209951e2d1a06ee0f7fb89c5e9fb1a3534f0e1468561e65b2ad07",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f0-12.rgba",
+              "height": 14,
+              "id": "s3-f0-12",
+              "sha256": "90845c74a3ed4896b52fecdb735fcc7ca21f7ab6068bb4fff498bdc87924febd",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f1-8.rgba",
+              "height": 14,
+              "id": "s3-f1-8",
+              "sha256": "602eb784cd66fbc6c835dc3690b204699d0b7e1fdedd7b519fc29cad8bc883a5",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f1-12.rgba",
+              "height": 14,
+              "id": "s3-f1-12",
+              "sha256": "3eb1c87ff80b4a7c8f9aefc6e9198906ccaff9193977ad30feaa22139b141406",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f2-8.rgba",
+              "height": 14,
+              "id": "s3-f2-8",
+              "sha256": "ffdafe0f27aa64dd688d2fe13675aeaa62ad48767aaeef56923faca1a5cf2caa",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f2-12.rgba",
+              "height": 14,
+              "id": "s3-f2-12",
+              "sha256": "5b80e9aa285e5414c91a43f755b5a5a21e7140c34b78d806d399107adf11b29a",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f0-8.rgba",
+              "height": 14,
+              "id": "s4-f0-8",
+              "sha256": "84d7bcf501fe2d9121e67a90da2151f6a28453950129663a3625aa057cf18048",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f0-12.rgba",
+              "height": 14,
+              "id": "s4-f0-12",
+              "sha256": "79842261bce4a537038270f9c8e9885404c4ccf1593484d77dd47cba0f15a119",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f1-8.rgba",
+              "height": 14,
+              "id": "s4-f1-8",
+              "sha256": "fccc2bc21883b319b0880608a8299db9660e577e9d587dadb886eea0dc84160d",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f1-12.rgba",
+              "height": 14,
+              "id": "s4-f1-12",
+              "sha256": "18d10d07bb8103813aa8c6627bbb7c9a982c1774ac27f5d89b32571f87b3770c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f2-8.rgba",
+              "height": 14,
+              "id": "s4-f2-8",
+              "sha256": "6ff5f3c2134436bb2072e849a1b9106f61446c1896ae0abdf92fada57b7d082f",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f2-12.rgba",
+              "height": 14,
+              "id": "s4-f2-12",
+              "sha256": "af7646259be7eea141282df07378151dc404b4f5c1a405548c790f28b72f9376",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f0-8.rgba",
+              "height": 14,
+              "id": "s5-f0-8",
+              "sha256": "ec308fe10d71ff0dc40805f8e754a4b5fcdc5ef6e6388c01803daf26b82cb09a",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f0-12.rgba",
+              "height": 14,
+              "id": "s5-f0-12",
+              "sha256": "07fe483b7c61e0bfb4a1504b7c2b5cd0356681fda5dee48e581732f5be93184c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f1-8.rgba",
+              "height": 14,
+              "id": "s5-f1-8",
+              "sha256": "9a9722708fe9a323cd4c8a09177fbaa5903f7d3b12eb09cdf6e76d2ec68c541b",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f1-12.rgba",
+              "height": 14,
+              "id": "s5-f1-12",
+              "sha256": "e76777fdcd59daf70588dc4c629f22425089f8999fc289e88a8dd6561bd05ab3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f2-8.rgba",
+              "height": 14,
+              "id": "s5-f2-8",
+              "sha256": "72b1b91208297ec4dde3d220b52e6356cd372076b4c2994fcdaef49f3aa4b809",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f2-12.rgba",
+              "height": 14,
+              "id": "s5-f2-12",
+              "sha256": "bae920143288944856f0bb05ef806ea0525dbe675e047717a331de6c4d21faf2",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f0-8.rgba",
+              "height": 14,
+              "id": "s6-f0-8",
+              "sha256": "4cfc35967df09bb49292ec5116d4bf29874c7410633c3e5c80697f216d89de7c",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f0-12.rgba",
+              "height": 14,
+              "id": "s6-f0-12",
+              "sha256": "b622c197939e61b9135581b83d04eea1fa12737d923c1a19d047ed9e1604da05",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f1-8.rgba",
+              "height": 14,
+              "id": "s6-f1-8",
+              "sha256": "739c648bd5bf643dc8632f1d2d03acd74fea2b87b28e482005e45fe04003a514",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f1-12.rgba",
+              "height": 14,
+              "id": "s6-f1-12",
+              "sha256": "6a970e62d13344445710f70d3f8575979edc40766f2b7157f790bbc5a6485113",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f2-8.rgba",
+              "height": 14,
+              "id": "s6-f2-8",
+              "sha256": "2d24db6a188bae8035de7cdae5a223964204fe6837acd4754410eec54c226d0a",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f2-12.rgba",
+              "height": 14,
+              "id": "s6-f2-12",
+              "sha256": "9640f1b766912f82e0513b0491504810fce9e57c3c362acc0b6d4affee006128",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f0-8.rgba",
+              "height": 14,
+              "id": "s7-f0-8",
+              "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f0-12.rgba",
+              "height": 14,
+              "id": "s7-f0-12",
+              "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f1-8.rgba",
+              "height": 14,
+              "id": "s7-f1-8",
+              "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f1-12.rgba",
+              "height": 14,
+              "id": "s7-f1-12",
+              "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f2-8.rgba",
+              "height": 14,
+              "id": "s7-f2-8",
+              "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f2-12.rgba",
+              "height": 14,
+              "id": "s7-f2-12",
+              "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+              "width": 16
+            }
+          ],
+          "observed_native_bindings": 94,
+          "unobserved": [
+            {
+              "format": 1,
+              "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+              "sheet": 6,
+              "frame": 0,
+              "status": "ordinary-walk-not-replay-observed; no key invented"
+            },
+            {
+              "format": 1,
+              "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+              "sheet": 6,
+              "frame": 2,
+              "status": "ordinary-walk-not-replay-observed; no key invented"
+            }
+          ],
+          "source_manifest_sha256": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+          "scope": "Player ordinary walk: 8 directions x 3 artistic keys; 94 observed native variants. Other states/enemies excluded, not full soldier coverage.",
+          "no_clock_changes": true,
+          "c01": "original source and builder unchanged"
+        },
+        "manifest_sha256": "5f12774d6138258500870700de7549b034d64bd7c06a3c4867ed6f74de502751"
+      },
+      "manifest_sha256": "b2120733ec7ba9b66f669a548d0e7a9577b030b9a49b5e3f75f4324426fb1ec3"
+    },
+    "limits": [
+      "reconstruction is not runtime coverage",
+      "two ordinary Amiga walking keys still absent",
+      "projectile/other actors remain separate, not campaign coverage"
+    ]
+  },
+  "controlled": {
+    "status": "PASS bounded body transitions; full campaign and user acceptance PENDING",
+    "mode": "controlled source metadata and test-only keys",
+    "directions": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "intervals": 1344,
+    "bodies": 2688,
+    "sequences": 64,
+    "densities": [
+      8,
+      12
+    ],
+    "selector_assertions": 272,
+    "selector_samples": 168,
+    "three_rejections": true,
+    "c01": "exact",
+    "previous_assets": "64 descriptors must remain unchanged",
+    "log_sha256": "f24f7079420ca338a4702eded0f3a4bad2858afc0e8253a0d34fa02ff13c53fc",
+    "preparation": {
+      "status": "PENDING full campaign and Miguel acceptance",
+      "directions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "grenade_frames": 24,
+      "assets": 112,
+      "bindings": 222,
+      "source_derived_grenade_keys": 96,
+      "previous": {
+        "status": "PENDING user visual acceptance and full coverage",
+        "aim_frames": 8,
+        "aim_assets": 16,
+        "total_assets": 64,
+        "total_bindings": 126,
+        "source_derived_aim_keys": 32,
+        "replay_observed_aim_keys": 11,
+        "walking": {
+          "status": "PENDING user artistic acceptance and full soldier coverage",
+          "frames": 24,
+          "assets": [
+            {
+              "density": 8,
+              "file": "s0-f0-8.rgba",
+              "height": 14,
+              "id": "s0-f0-8",
+              "sha256": "bb71ec069e12229b5d0809dc1101ecf63df5722b5d99ba9b53e9499539344640",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f0-12.rgba",
+              "height": 14,
+              "id": "s0-f0-12",
+              "sha256": "e8f29bb0db1a91ac5d6da22fc8e6f183325799342716ef4169a9343ff6d40777",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s0-f1-8.rgba",
+              "height": 14,
+              "id": "s0-f1-8",
+              "sha256": "268b3997375d89c71c2ba50ea20434ecc2f816ad47886740aca30519d5b7acac",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f1-12.rgba",
+              "height": 14,
+              "id": "s0-f1-12",
+              "sha256": "d6b53139fb028f70f691123abff5c3d8a30857553427458fae62046e7cf6167e",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s0-f2-8.rgba",
+              "height": 14,
+              "id": "s0-f2-8",
+              "sha256": "920b065dd669394b963bb6615f99546f1fc394069cab9123ceccadcaef4c08b3",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s0-f2-12.rgba",
+              "height": 14,
+              "id": "s0-f2-12",
+              "sha256": "745ccaffa54299da8416b801e77e7d5c1c3176c215dea30d3947b0144141bcd3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f0-8.rgba",
+              "height": 14,
+              "id": "s1-f0-8",
+              "sha256": "1518543ef2e907a41f99383e33b98cfa308265d16bebdd9da842b3a242ca0690",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f0-12.rgba",
+              "height": 14,
+              "id": "s1-f0-12",
+              "sha256": "63d40fdb7e7b05db66d3fe80eb23d22c8b808f08f9b13ef4b60980d99eec3b88",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f1-8.rgba",
+              "height": 14,
+              "id": "s1-f1-8",
+              "sha256": "df44850aaf31c9930299f02c3efe0633e0008227ff47ba90573e1caeb43f5c19",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f1-12.rgba",
+              "height": 14,
+              "id": "s1-f1-12",
+              "sha256": "b8b9fe534351e4b5b388b34346db34764a5623bec0b2612304b5e8976090b474",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s1-f2-8.rgba",
+              "height": 14,
+              "id": "s1-f2-8",
+              "sha256": "249b891c64a8d8dd4ced25b75886224a09764e68b4618c3b3564a7f1a82d4436",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s1-f2-12.rgba",
+              "height": 14,
+              "id": "s1-f2-12",
+              "sha256": "4e6f257e1e506807ebdf4b104a309c4f099fad50f7e79e81ddb629fbb3db9a32",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f0-8.rgba",
+              "height": 14,
+              "id": "s2-f0-8",
+              "sha256": "dbbf18df623c9c3b5cedeb5a79f056246ea2722521e73ba0f34b1289b1a4869e",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f0-12.rgba",
+              "height": 14,
+              "id": "s2-f0-12",
+              "sha256": "df5080ce79b3309bd58ae0f2e42ee8592bbdee6a49f999d72f9a0ce343a2ade3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f1-8.rgba",
+              "height": 14,
+              "id": "s2-f1-8",
+              "sha256": "064b6283fe6ffd8f042153fee9800a9ea9ea1de3b332c1ea187ea35f597934b7",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f1-12.rgba",
+              "height": 14,
+              "id": "s2-f1-12",
+              "sha256": "991cd25ed05b843a896eca67515c25adb21f244382b431c60a70ce89d2115dd4",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s2-f2-8.rgba",
+              "height": 14,
+              "id": "s2-f2-8",
+              "sha256": "7a1ec9a90b437693c99baf93dc7bef2b1b9d5a370ec6c5f91f3dfdcd8491245c",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s2-f2-12.rgba",
+              "height": 14,
+              "id": "s2-f2-12",
+              "sha256": "70cd1b432b3b11ca8677e0191694ac0a1a2d09ba83cd9f2ed57995d3d8fbf6c1",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f0-8.rgba",
+              "height": 14,
+              "id": "s3-f0-8",
+              "sha256": "46cc0ac556a209951e2d1a06ee0f7fb89c5e9fb1a3534f0e1468561e65b2ad07",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f0-12.rgba",
+              "height": 14,
+              "id": "s3-f0-12",
+              "sha256": "90845c74a3ed4896b52fecdb735fcc7ca21f7ab6068bb4fff498bdc87924febd",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f1-8.rgba",
+              "height": 14,
+              "id": "s3-f1-8",
+              "sha256": "602eb784cd66fbc6c835dc3690b204699d0b7e1fdedd7b519fc29cad8bc883a5",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f1-12.rgba",
+              "height": 14,
+              "id": "s3-f1-12",
+              "sha256": "3eb1c87ff80b4a7c8f9aefc6e9198906ccaff9193977ad30feaa22139b141406",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s3-f2-8.rgba",
+              "height": 14,
+              "id": "s3-f2-8",
+              "sha256": "ffdafe0f27aa64dd688d2fe13675aeaa62ad48767aaeef56923faca1a5cf2caa",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s3-f2-12.rgba",
+              "height": 14,
+              "id": "s3-f2-12",
+              "sha256": "5b80e9aa285e5414c91a43f755b5a5a21e7140c34b78d806d399107adf11b29a",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f0-8.rgba",
+              "height": 14,
+              "id": "s4-f0-8",
+              "sha256": "84d7bcf501fe2d9121e67a90da2151f6a28453950129663a3625aa057cf18048",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f0-12.rgba",
+              "height": 14,
+              "id": "s4-f0-12",
+              "sha256": "79842261bce4a537038270f9c8e9885404c4ccf1593484d77dd47cba0f15a119",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f1-8.rgba",
+              "height": 14,
+              "id": "s4-f1-8",
+              "sha256": "fccc2bc21883b319b0880608a8299db9660e577e9d587dadb886eea0dc84160d",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f1-12.rgba",
+              "height": 14,
+              "id": "s4-f1-12",
+              "sha256": "18d10d07bb8103813aa8c6627bbb7c9a982c1774ac27f5d89b32571f87b3770c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s4-f2-8.rgba",
+              "height": 14,
+              "id": "s4-f2-8",
+              "sha256": "6ff5f3c2134436bb2072e849a1b9106f61446c1896ae0abdf92fada57b7d082f",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s4-f2-12.rgba",
+              "height": 14,
+              "id": "s4-f2-12",
+              "sha256": "af7646259be7eea141282df07378151dc404b4f5c1a405548c790f28b72f9376",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f0-8.rgba",
+              "height": 14,
+              "id": "s5-f0-8",
+              "sha256": "ec308fe10d71ff0dc40805f8e754a4b5fcdc5ef6e6388c01803daf26b82cb09a",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f0-12.rgba",
+              "height": 14,
+              "id": "s5-f0-12",
+              "sha256": "07fe483b7c61e0bfb4a1504b7c2b5cd0356681fda5dee48e581732f5be93184c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f1-8.rgba",
+              "height": 14,
+              "id": "s5-f1-8",
+              "sha256": "9a9722708fe9a323cd4c8a09177fbaa5903f7d3b12eb09cdf6e76d2ec68c541b",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f1-12.rgba",
+              "height": 14,
+              "id": "s5-f1-12",
+              "sha256": "e76777fdcd59daf70588dc4c629f22425089f8999fc289e88a8dd6561bd05ab3",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s5-f2-8.rgba",
+              "height": 14,
+              "id": "s5-f2-8",
+              "sha256": "72b1b91208297ec4dde3d220b52e6356cd372076b4c2994fcdaef49f3aa4b809",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s5-f2-12.rgba",
+              "height": 14,
+              "id": "s5-f2-12",
+              "sha256": "bae920143288944856f0bb05ef806ea0525dbe675e047717a331de6c4d21faf2",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f0-8.rgba",
+              "height": 14,
+              "id": "s6-f0-8",
+              "sha256": "4cfc35967df09bb49292ec5116d4bf29874c7410633c3e5c80697f216d89de7c",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f0-12.rgba",
+              "height": 14,
+              "id": "s6-f0-12",
+              "sha256": "b622c197939e61b9135581b83d04eea1fa12737d923c1a19d047ed9e1604da05",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f1-8.rgba",
+              "height": 14,
+              "id": "s6-f1-8",
+              "sha256": "739c648bd5bf643dc8632f1d2d03acd74fea2b87b28e482005e45fe04003a514",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f1-12.rgba",
+              "height": 14,
+              "id": "s6-f1-12",
+              "sha256": "6a970e62d13344445710f70d3f8575979edc40766f2b7157f790bbc5a6485113",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s6-f2-8.rgba",
+              "height": 14,
+              "id": "s6-f2-8",
+              "sha256": "2d24db6a188bae8035de7cdae5a223964204fe6837acd4754410eec54c226d0a",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s6-f2-12.rgba",
+              "height": 14,
+              "id": "s6-f2-12",
+              "sha256": "9640f1b766912f82e0513b0491504810fce9e57c3c362acc0b6d4affee006128",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f0-8.rgba",
+              "height": 14,
+              "id": "s7-f0-8",
+              "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f0-12.rgba",
+              "height": 14,
+              "id": "s7-f0-12",
+              "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f1-8.rgba",
+              "height": 14,
+              "id": "s7-f1-8",
+              "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f1-12.rgba",
+              "height": 14,
+              "id": "s7-f1-12",
+              "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+              "width": 16
+            },
+            {
+              "density": 8,
+              "file": "s7-f2-8.rgba",
+              "height": 14,
+              "id": "s7-f2-8",
+              "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+              "width": 16
+            },
+            {
+              "density": 12,
+              "file": "s7-f2-12.rgba",
+              "height": 14,
+              "id": "s7-f2-12",
+              "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+              "width": 16
+            }
+          ],
+          "observed_native_bindings": 94,
+          "unobserved": [
+            {
+              "format": 1,
+              "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+              "sheet": 6,
+              "frame": 0,
+              "status": "ordinary-walk-not-replay-observed; no key invented"
+            },
+            {
+              "format": 1,
+              "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+              "sheet": 6,
+              "frame": 2,
+              "status": "ordinary-walk-not-replay-observed; no key invented"
+            }
+          ],
+          "source_manifest_sha256": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+          "scope": "Player ordinary walk: 8 directions x 3 artistic keys; 94 observed native variants. Other states/enemies excluded, not full soldier coverage.",
+          "no_clock_changes": true,
+          "c01": "original source and builder unchanged"
+        },
+        "manifest_sha256": "5f12774d6138258500870700de7549b034d64bd7c06a3c4867ed6f74de502751"
+      },
+      "manifest_sha256": "b2120733ec7ba9b66f669a548d0e7a9577b030b9a49b5e3f75f4324426fb1ec3"
+    },
+    "limits": [
+      "reconstruction is not runtime coverage",
+      "two ordinary Amiga walking keys still absent",
+      "projectile/other actors remain separate, not campaign coverage"
+    ]
+  },
+  "initial_cycle": {
+    "direction": 7,
+    "controlled": {
+      "status": "PASS bounded body transitions; full campaign and user acceptance PENDING",
+      "mode": "controlled source metadata and test-only keys",
+      "directions": [
+        7
+      ],
+      "intervals": 168,
+      "bodies": 336,
+      "sequences": 8,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 272,
+      "selector_samples": 168,
+      "three_rejections": true,
+      "c01": "exact",
+      "previous_assets": "64 descriptors must remain unchanged",
+      "log_sha256": "51af0dadd78215e656cad088fd99546dd546292d7a084a0886b28c373aa4f6d8",
+      "preparation": {
+        "status": "PENDING full campaign and Miguel acceptance",
+        "directions": [
+          7
+        ],
+        "grenade_frames": 3,
+        "assets": 70,
+        "bindings": 138,
+        "source_derived_grenade_keys": 12,
+        "previous": {
+          "status": "PENDING user visual acceptance and full coverage",
+          "aim_frames": 8,
+          "aim_assets": 16,
+          "total_assets": 64,
+          "total_bindings": 126,
+          "source_derived_aim_keys": 32,
+          "replay_observed_aim_keys": 11,
+          "walking": {
+            "status": "PENDING user artistic acceptance and full soldier coverage",
+            "frames": 24,
+            "assets": [
+              {
+                "density": 8,
+                "file": "s0-f0-8.rgba",
+                "height": 14,
+                "id": "s0-f0-8",
+                "sha256": "bb71ec069e12229b5d0809dc1101ecf63df5722b5d99ba9b53e9499539344640",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f0-12.rgba",
+                "height": 14,
+                "id": "s0-f0-12",
+                "sha256": "e8f29bb0db1a91ac5d6da22fc8e6f183325799342716ef4169a9343ff6d40777",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s0-f1-8.rgba",
+                "height": 14,
+                "id": "s0-f1-8",
+                "sha256": "268b3997375d89c71c2ba50ea20434ecc2f816ad47886740aca30519d5b7acac",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f1-12.rgba",
+                "height": 14,
+                "id": "s0-f1-12",
+                "sha256": "d6b53139fb028f70f691123abff5c3d8a30857553427458fae62046e7cf6167e",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s0-f2-8.rgba",
+                "height": 14,
+                "id": "s0-f2-8",
+                "sha256": "920b065dd669394b963bb6615f99546f1fc394069cab9123ceccadcaef4c08b3",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f2-12.rgba",
+                "height": 14,
+                "id": "s0-f2-12",
+                "sha256": "745ccaffa54299da8416b801e77e7d5c1c3176c215dea30d3947b0144141bcd3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f0-8.rgba",
+                "height": 14,
+                "id": "s1-f0-8",
+                "sha256": "1518543ef2e907a41f99383e33b98cfa308265d16bebdd9da842b3a242ca0690",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f0-12.rgba",
+                "height": 14,
+                "id": "s1-f0-12",
+                "sha256": "63d40fdb7e7b05db66d3fe80eb23d22c8b808f08f9b13ef4b60980d99eec3b88",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f1-8.rgba",
+                "height": 14,
+                "id": "s1-f1-8",
+                "sha256": "df44850aaf31c9930299f02c3efe0633e0008227ff47ba90573e1caeb43f5c19",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f1-12.rgba",
+                "height": 14,
+                "id": "s1-f1-12",
+                "sha256": "b8b9fe534351e4b5b388b34346db34764a5623bec0b2612304b5e8976090b474",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f2-8.rgba",
+                "height": 14,
+                "id": "s1-f2-8",
+                "sha256": "249b891c64a8d8dd4ced25b75886224a09764e68b4618c3b3564a7f1a82d4436",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f2-12.rgba",
+                "height": 14,
+                "id": "s1-f2-12",
+                "sha256": "4e6f257e1e506807ebdf4b104a309c4f099fad50f7e79e81ddb629fbb3db9a32",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f0-8.rgba",
+                "height": 14,
+                "id": "s2-f0-8",
+                "sha256": "dbbf18df623c9c3b5cedeb5a79f056246ea2722521e73ba0f34b1289b1a4869e",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f0-12.rgba",
+                "height": 14,
+                "id": "s2-f0-12",
+                "sha256": "df5080ce79b3309bd58ae0f2e42ee8592bbdee6a49f999d72f9a0ce343a2ade3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f1-8.rgba",
+                "height": 14,
+                "id": "s2-f1-8",
+                "sha256": "064b6283fe6ffd8f042153fee9800a9ea9ea1de3b332c1ea187ea35f597934b7",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f1-12.rgba",
+                "height": 14,
+                "id": "s2-f1-12",
+                "sha256": "991cd25ed05b843a896eca67515c25adb21f244382b431c60a70ce89d2115dd4",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f2-8.rgba",
+                "height": 14,
+                "id": "s2-f2-8",
+                "sha256": "7a1ec9a90b437693c99baf93dc7bef2b1b9d5a370ec6c5f91f3dfdcd8491245c",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f2-12.rgba",
+                "height": 14,
+                "id": "s2-f2-12",
+                "sha256": "70cd1b432b3b11ca8677e0191694ac0a1a2d09ba83cd9f2ed57995d3d8fbf6c1",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f0-8.rgba",
+                "height": 14,
+                "id": "s3-f0-8",
+                "sha256": "46cc0ac556a209951e2d1a06ee0f7fb89c5e9fb1a3534f0e1468561e65b2ad07",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f0-12.rgba",
+                "height": 14,
+                "id": "s3-f0-12",
+                "sha256": "90845c74a3ed4896b52fecdb735fcc7ca21f7ab6068bb4fff498bdc87924febd",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f1-8.rgba",
+                "height": 14,
+                "id": "s3-f1-8",
+                "sha256": "602eb784cd66fbc6c835dc3690b204699d0b7e1fdedd7b519fc29cad8bc883a5",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f1-12.rgba",
+                "height": 14,
+                "id": "s3-f1-12",
+                "sha256": "3eb1c87ff80b4a7c8f9aefc6e9198906ccaff9193977ad30feaa22139b141406",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f2-8.rgba",
+                "height": 14,
+                "id": "s3-f2-8",
+                "sha256": "ffdafe0f27aa64dd688d2fe13675aeaa62ad48767aaeef56923faca1a5cf2caa",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f2-12.rgba",
+                "height": 14,
+                "id": "s3-f2-12",
+                "sha256": "5b80e9aa285e5414c91a43f755b5a5a21e7140c34b78d806d399107adf11b29a",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f0-8.rgba",
+                "height": 14,
+                "id": "s4-f0-8",
+                "sha256": "84d7bcf501fe2d9121e67a90da2151f6a28453950129663a3625aa057cf18048",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f0-12.rgba",
+                "height": 14,
+                "id": "s4-f0-12",
+                "sha256": "79842261bce4a537038270f9c8e9885404c4ccf1593484d77dd47cba0f15a119",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f1-8.rgba",
+                "height": 14,
+                "id": "s4-f1-8",
+                "sha256": "fccc2bc21883b319b0880608a8299db9660e577e9d587dadb886eea0dc84160d",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f1-12.rgba",
+                "height": 14,
+                "id": "s4-f1-12",
+                "sha256": "18d10d07bb8103813aa8c6627bbb7c9a982c1774ac27f5d89b32571f87b3770c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f2-8.rgba",
+                "height": 14,
+                "id": "s4-f2-8",
+                "sha256": "6ff5f3c2134436bb2072e849a1b9106f61446c1896ae0abdf92fada57b7d082f",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f2-12.rgba",
+                "height": 14,
+                "id": "s4-f2-12",
+                "sha256": "af7646259be7eea141282df07378151dc404b4f5c1a405548c790f28b72f9376",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f0-8.rgba",
+                "height": 14,
+                "id": "s5-f0-8",
+                "sha256": "ec308fe10d71ff0dc40805f8e754a4b5fcdc5ef6e6388c01803daf26b82cb09a",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f0-12.rgba",
+                "height": 14,
+                "id": "s5-f0-12",
+                "sha256": "07fe483b7c61e0bfb4a1504b7c2b5cd0356681fda5dee48e581732f5be93184c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f1-8.rgba",
+                "height": 14,
+                "id": "s5-f1-8",
+                "sha256": "9a9722708fe9a323cd4c8a09177fbaa5903f7d3b12eb09cdf6e76d2ec68c541b",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f1-12.rgba",
+                "height": 14,
+                "id": "s5-f1-12",
+                "sha256": "e76777fdcd59daf70588dc4c629f22425089f8999fc289e88a8dd6561bd05ab3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f2-8.rgba",
+                "height": 14,
+                "id": "s5-f2-8",
+                "sha256": "72b1b91208297ec4dde3d220b52e6356cd372076b4c2994fcdaef49f3aa4b809",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f2-12.rgba",
+                "height": 14,
+                "id": "s5-f2-12",
+                "sha256": "bae920143288944856f0bb05ef806ea0525dbe675e047717a331de6c4d21faf2",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f0-8.rgba",
+                "height": 14,
+                "id": "s6-f0-8",
+                "sha256": "4cfc35967df09bb49292ec5116d4bf29874c7410633c3e5c80697f216d89de7c",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f0-12.rgba",
+                "height": 14,
+                "id": "s6-f0-12",
+                "sha256": "b622c197939e61b9135581b83d04eea1fa12737d923c1a19d047ed9e1604da05",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f1-8.rgba",
+                "height": 14,
+                "id": "s6-f1-8",
+                "sha256": "739c648bd5bf643dc8632f1d2d03acd74fea2b87b28e482005e45fe04003a514",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f1-12.rgba",
+                "height": 14,
+                "id": "s6-f1-12",
+                "sha256": "6a970e62d13344445710f70d3f8575979edc40766f2b7157f790bbc5a6485113",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f2-8.rgba",
+                "height": 14,
+                "id": "s6-f2-8",
+                "sha256": "2d24db6a188bae8035de7cdae5a223964204fe6837acd4754410eec54c226d0a",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f2-12.rgba",
+                "height": 14,
+                "id": "s6-f2-12",
+                "sha256": "9640f1b766912f82e0513b0491504810fce9e57c3c362acc0b6d4affee006128",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f0-8.rgba",
+                "height": 14,
+                "id": "s7-f0-8",
+                "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f0-12.rgba",
+                "height": 14,
+                "id": "s7-f0-12",
+                "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f1-8.rgba",
+                "height": 14,
+                "id": "s7-f1-8",
+                "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f1-12.rgba",
+                "height": 14,
+                "id": "s7-f1-12",
+                "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f2-8.rgba",
+                "height": 14,
+                "id": "s7-f2-8",
+                "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f2-12.rgba",
+                "height": 14,
+                "id": "s7-f2-12",
+                "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+                "width": 16
+              }
+            ],
+            "observed_native_bindings": 94,
+            "unobserved": [
+              {
+                "format": 1,
+                "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+                "sheet": 6,
+                "frame": 0,
+                "status": "ordinary-walk-not-replay-observed; no key invented"
+              },
+              {
+                "format": 1,
+                "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+                "sheet": 6,
+                "frame": 2,
+                "status": "ordinary-walk-not-replay-observed; no key invented"
+              }
+            ],
+            "source_manifest_sha256": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+            "scope": "Player ordinary walk: 8 directions x 3 artistic keys; 94 observed native variants. Other states/enemies excluded, not full soldier coverage.",
+            "no_clock_changes": true,
+            "c01": "original source and builder unchanged"
+          },
+          "manifest_sha256": "5f12774d6138258500870700de7549b034d64bd7c06a3c4867ed6f74de502751"
+        },
+        "manifest_sha256": "6a4fe663db179a42953ae7af80b45f84f2df6afebf1a977b4c77d807f1d013f8"
+      },
+      "limits": [
+        "reconstruction is not runtime coverage",
+        "two ordinary Amiga walking keys still absent",
+        "projectile/other actors remain separate, not campaign coverage"
+      ]
+    },
+    "real": {
+      "status": "PASS bounded body transitions; full campaign and user acceptance PENDING",
+      "mode": "real source-derived grenade/aim, observed walking",
+      "directions": [
+        7
+      ],
+      "intervals": 168,
+      "bodies": 336,
+      "sequences": 8,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 272,
+      "selector_samples": 168,
+      "three_rejections": true,
+      "c01": "exact",
+      "previous_assets": "64 descriptors must remain unchanged",
+      "log_sha256": "9ab259cc55cb33c3a7228b43f219f6018df813688a0960210a493c1b43fa78ee",
+      "preparation": {
+        "status": "PENDING full campaign and Miguel acceptance",
+        "directions": [
+          7
+        ],
+        "grenade_frames": 3,
+        "assets": 70,
+        "bindings": 138,
+        "source_derived_grenade_keys": 12,
+        "previous": {
+          "status": "PENDING user visual acceptance and full coverage",
+          "aim_frames": 8,
+          "aim_assets": 16,
+          "total_assets": 64,
+          "total_bindings": 126,
+          "source_derived_aim_keys": 32,
+          "replay_observed_aim_keys": 11,
+          "walking": {
+            "status": "PENDING user artistic acceptance and full soldier coverage",
+            "frames": 24,
+            "assets": [
+              {
+                "density": 8,
+                "file": "s0-f0-8.rgba",
+                "height": 14,
+                "id": "s0-f0-8",
+                "sha256": "bb71ec069e12229b5d0809dc1101ecf63df5722b5d99ba9b53e9499539344640",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f0-12.rgba",
+                "height": 14,
+                "id": "s0-f0-12",
+                "sha256": "e8f29bb0db1a91ac5d6da22fc8e6f183325799342716ef4169a9343ff6d40777",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s0-f1-8.rgba",
+                "height": 14,
+                "id": "s0-f1-8",
+                "sha256": "268b3997375d89c71c2ba50ea20434ecc2f816ad47886740aca30519d5b7acac",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f1-12.rgba",
+                "height": 14,
+                "id": "s0-f1-12",
+                "sha256": "d6b53139fb028f70f691123abff5c3d8a30857553427458fae62046e7cf6167e",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s0-f2-8.rgba",
+                "height": 14,
+                "id": "s0-f2-8",
+                "sha256": "920b065dd669394b963bb6615f99546f1fc394069cab9123ceccadcaef4c08b3",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s0-f2-12.rgba",
+                "height": 14,
+                "id": "s0-f2-12",
+                "sha256": "745ccaffa54299da8416b801e77e7d5c1c3176c215dea30d3947b0144141bcd3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f0-8.rgba",
+                "height": 14,
+                "id": "s1-f0-8",
+                "sha256": "1518543ef2e907a41f99383e33b98cfa308265d16bebdd9da842b3a242ca0690",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f0-12.rgba",
+                "height": 14,
+                "id": "s1-f0-12",
+                "sha256": "63d40fdb7e7b05db66d3fe80eb23d22c8b808f08f9b13ef4b60980d99eec3b88",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f1-8.rgba",
+                "height": 14,
+                "id": "s1-f1-8",
+                "sha256": "df44850aaf31c9930299f02c3efe0633e0008227ff47ba90573e1caeb43f5c19",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f1-12.rgba",
+                "height": 14,
+                "id": "s1-f1-12",
+                "sha256": "b8b9fe534351e4b5b388b34346db34764a5623bec0b2612304b5e8976090b474",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s1-f2-8.rgba",
+                "height": 14,
+                "id": "s1-f2-8",
+                "sha256": "249b891c64a8d8dd4ced25b75886224a09764e68b4618c3b3564a7f1a82d4436",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s1-f2-12.rgba",
+                "height": 14,
+                "id": "s1-f2-12",
+                "sha256": "4e6f257e1e506807ebdf4b104a309c4f099fad50f7e79e81ddb629fbb3db9a32",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f0-8.rgba",
+                "height": 14,
+                "id": "s2-f0-8",
+                "sha256": "dbbf18df623c9c3b5cedeb5a79f056246ea2722521e73ba0f34b1289b1a4869e",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f0-12.rgba",
+                "height": 14,
+                "id": "s2-f0-12",
+                "sha256": "df5080ce79b3309bd58ae0f2e42ee8592bbdee6a49f999d72f9a0ce343a2ade3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f1-8.rgba",
+                "height": 14,
+                "id": "s2-f1-8",
+                "sha256": "064b6283fe6ffd8f042153fee9800a9ea9ea1de3b332c1ea187ea35f597934b7",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f1-12.rgba",
+                "height": 14,
+                "id": "s2-f1-12",
+                "sha256": "991cd25ed05b843a896eca67515c25adb21f244382b431c60a70ce89d2115dd4",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s2-f2-8.rgba",
+                "height": 14,
+                "id": "s2-f2-8",
+                "sha256": "7a1ec9a90b437693c99baf93dc7bef2b1b9d5a370ec6c5f91f3dfdcd8491245c",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s2-f2-12.rgba",
+                "height": 14,
+                "id": "s2-f2-12",
+                "sha256": "70cd1b432b3b11ca8677e0191694ac0a1a2d09ba83cd9f2ed57995d3d8fbf6c1",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f0-8.rgba",
+                "height": 14,
+                "id": "s3-f0-8",
+                "sha256": "46cc0ac556a209951e2d1a06ee0f7fb89c5e9fb1a3534f0e1468561e65b2ad07",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f0-12.rgba",
+                "height": 14,
+                "id": "s3-f0-12",
+                "sha256": "90845c74a3ed4896b52fecdb735fcc7ca21f7ab6068bb4fff498bdc87924febd",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f1-8.rgba",
+                "height": 14,
+                "id": "s3-f1-8",
+                "sha256": "602eb784cd66fbc6c835dc3690b204699d0b7e1fdedd7b519fc29cad8bc883a5",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f1-12.rgba",
+                "height": 14,
+                "id": "s3-f1-12",
+                "sha256": "3eb1c87ff80b4a7c8f9aefc6e9198906ccaff9193977ad30feaa22139b141406",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s3-f2-8.rgba",
+                "height": 14,
+                "id": "s3-f2-8",
+                "sha256": "ffdafe0f27aa64dd688d2fe13675aeaa62ad48767aaeef56923faca1a5cf2caa",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s3-f2-12.rgba",
+                "height": 14,
+                "id": "s3-f2-12",
+                "sha256": "5b80e9aa285e5414c91a43f755b5a5a21e7140c34b78d806d399107adf11b29a",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f0-8.rgba",
+                "height": 14,
+                "id": "s4-f0-8",
+                "sha256": "84d7bcf501fe2d9121e67a90da2151f6a28453950129663a3625aa057cf18048",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f0-12.rgba",
+                "height": 14,
+                "id": "s4-f0-12",
+                "sha256": "79842261bce4a537038270f9c8e9885404c4ccf1593484d77dd47cba0f15a119",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f1-8.rgba",
+                "height": 14,
+                "id": "s4-f1-8",
+                "sha256": "fccc2bc21883b319b0880608a8299db9660e577e9d587dadb886eea0dc84160d",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f1-12.rgba",
+                "height": 14,
+                "id": "s4-f1-12",
+                "sha256": "18d10d07bb8103813aa8c6627bbb7c9a982c1774ac27f5d89b32571f87b3770c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s4-f2-8.rgba",
+                "height": 14,
+                "id": "s4-f2-8",
+                "sha256": "6ff5f3c2134436bb2072e849a1b9106f61446c1896ae0abdf92fada57b7d082f",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s4-f2-12.rgba",
+                "height": 14,
+                "id": "s4-f2-12",
+                "sha256": "af7646259be7eea141282df07378151dc404b4f5c1a405548c790f28b72f9376",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f0-8.rgba",
+                "height": 14,
+                "id": "s5-f0-8",
+                "sha256": "ec308fe10d71ff0dc40805f8e754a4b5fcdc5ef6e6388c01803daf26b82cb09a",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f0-12.rgba",
+                "height": 14,
+                "id": "s5-f0-12",
+                "sha256": "07fe483b7c61e0bfb4a1504b7c2b5cd0356681fda5dee48e581732f5be93184c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f1-8.rgba",
+                "height": 14,
+                "id": "s5-f1-8",
+                "sha256": "9a9722708fe9a323cd4c8a09177fbaa5903f7d3b12eb09cdf6e76d2ec68c541b",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f1-12.rgba",
+                "height": 14,
+                "id": "s5-f1-12",
+                "sha256": "e76777fdcd59daf70588dc4c629f22425089f8999fc289e88a8dd6561bd05ab3",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s5-f2-8.rgba",
+                "height": 14,
+                "id": "s5-f2-8",
+                "sha256": "72b1b91208297ec4dde3d220b52e6356cd372076b4c2994fcdaef49f3aa4b809",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s5-f2-12.rgba",
+                "height": 14,
+                "id": "s5-f2-12",
+                "sha256": "bae920143288944856f0bb05ef806ea0525dbe675e047717a331de6c4d21faf2",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f0-8.rgba",
+                "height": 14,
+                "id": "s6-f0-8",
+                "sha256": "4cfc35967df09bb49292ec5116d4bf29874c7410633c3e5c80697f216d89de7c",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f0-12.rgba",
+                "height": 14,
+                "id": "s6-f0-12",
+                "sha256": "b622c197939e61b9135581b83d04eea1fa12737d923c1a19d047ed9e1604da05",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f1-8.rgba",
+                "height": 14,
+                "id": "s6-f1-8",
+                "sha256": "739c648bd5bf643dc8632f1d2d03acd74fea2b87b28e482005e45fe04003a514",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f1-12.rgba",
+                "height": 14,
+                "id": "s6-f1-12",
+                "sha256": "6a970e62d13344445710f70d3f8575979edc40766f2b7157f790bbc5a6485113",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s6-f2-8.rgba",
+                "height": 14,
+                "id": "s6-f2-8",
+                "sha256": "2d24db6a188bae8035de7cdae5a223964204fe6837acd4754410eec54c226d0a",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s6-f2-12.rgba",
+                "height": 14,
+                "id": "s6-f2-12",
+                "sha256": "9640f1b766912f82e0513b0491504810fce9e57c3c362acc0b6d4affee006128",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f0-8.rgba",
+                "height": 14,
+                "id": "s7-f0-8",
+                "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f0-12.rgba",
+                "height": 14,
+                "id": "s7-f0-12",
+                "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f1-8.rgba",
+                "height": 14,
+                "id": "s7-f1-8",
+                "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f1-12.rgba",
+                "height": 14,
+                "id": "s7-f1-12",
+                "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+                "width": 16
+              },
+              {
+                "density": 8,
+                "file": "s7-f2-8.rgba",
+                "height": 14,
+                "id": "s7-f2-8",
+                "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+                "width": 16
+              },
+              {
+                "density": 12,
+                "file": "s7-f2-12.rgba",
+                "height": 14,
+                "id": "s7-f2-12",
+                "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+                "width": 16
+              }
+            ],
+            "observed_native_bindings": 94,
+            "unobserved": [
+              {
+                "format": 1,
+                "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+                "sheet": 6,
+                "frame": 0,
+                "status": "ordinary-walk-not-replay-observed; no key invented"
+              },
+              {
+                "format": 1,
+                "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+                "sheet": 6,
+                "frame": 2,
+                "status": "ordinary-walk-not-replay-observed; no key invented"
+              }
+            ],
+            "source_manifest_sha256": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+            "scope": "Player ordinary walk: 8 directions x 3 artistic keys; 94 observed native variants. Other states/enemies excluded, not full soldier coverage.",
+            "no_clock_changes": true,
+            "c01": "original source and builder unchanged"
+          },
+          "manifest_sha256": "5f12774d6138258500870700de7549b034d64bd7c06a3c4867ed6f74de502751"
+        },
+        "manifest_sha256": "6a4fe663db179a42953ae7af80b45f84f2df6afebf1a977b4c77d807f1d013f8"
+      },
+      "limits": [
+        "reconstruction is not runtime coverage",
+        "two ordinary Amiga walking keys still absent",
+        "projectile/other actors remain separate, not campaign coverage"
+      ]
+    },
+    "decision": "reviewed in scale and actual SDL before generating other seven directions"
+  },
+  "normal_postures": {
+    "audit": "soldier-normal-postures-audit.json",
+    "mode0": "internal branch preserved/tested; no normal CF1 setter found; no artwork promoted",
+    "normal_idle_and_fire": "reuse existing exact walking and aim keys"
+  },
+  "art_review": {
+    "selected_masters": 24,
+    "rejected": "g5-f1.png, rifle reversed; replaced by g5-f1-v2.png",
+    "orientation_scale_feet_equipment": "internal eight-direction contact/sequence review",
+    "Miguel": "PENDING"
+  },
+  "sanitizers": {
+    "ASan": "PASS controlled and real WindowHD/SDL fixtures",
+    "UBSan": "PASS fixtures and source selectors with release assertions",
+    "LSan": "PENDING: known /proc task inspection failure; ASan runs explicitly used detect_leaks=0, no leak-free claim",
+    "permanent_CI_guards": "unchanged"
+  },
+  "compatibility": {
+    "previous_64_assets": "PASS exact descriptors/hashes",
+    "default_frame_zero_reference": "PASS same prior aim key when frame omitted",
+    "source_engine": "UNCHANGED",
+    "H3": "prior 11361 original states reused; not rerun; no campaign-HD claim"
+  },
+  "CI": "new commit PENDING at publication; parent reference-fetch repair verified separately",
+  "source_sha256": {
+    "CMakeLists.txt": "201bb1ea24a5bdc743c524dab7a8b2d5ce98775c6434d6ab432beed93ab62ceb",
+    "assets/modernization/soldier-grenade/README.md": "bc09408b581809df1e59d36326424984e4c185c2282fd7df7876eed42bb06fe5",
+    "assets/modernization/soldier-grenade/g0-f0.png": "bbc50c0a95854560cdaa823b3a688446b1813707aff227c0b7f95582ea314e37",
+    "assets/modernization/soldier-grenade/g0-f1.png": "628b9c620875c3b3ea70e6d4fd5bb93466fb3fd64ce7d66692cf20536f39be6e",
+    "assets/modernization/soldier-grenade/g0-f2.png": "15155ec528632cf2aa219b406da7ac452ec6c46398e6277d47a74743810a8f31",
+    "assets/modernization/soldier-grenade/g1-f0.png": "9a20c0eae9c10dd4feb15be040645f9cdb9669f25eabac3a9c40d2f4634b6a4d",
+    "assets/modernization/soldier-grenade/g1-f1.png": "7d02820b223c6a357f823a87fc83a106df5d73bf86efd1d7006ce4b19a8f659b",
+    "assets/modernization/soldier-grenade/g1-f2.png": "6eaabf5ae54f96c1ae57d79bc55517cebf384feb13690a43d12f2faf91c0eeb5",
+    "assets/modernization/soldier-grenade/g2-f0.png": "d91c4b3ba71a5386ceb2eb10208bc028ce14cfb21536d1961323e6cf359d9a2b",
+    "assets/modernization/soldier-grenade/g2-f1.png": "2daeb139dc02a81322b582012309fb10bd88576fde0309d1873d360bc03b2ce6",
+    "assets/modernization/soldier-grenade/g2-f2.png": "085d68537ec399226cedf2c54e8aef19e1fc3ec488e954a56b47bf7287ae0df9",
+    "assets/modernization/soldier-grenade/g3-f0.png": "63ba56cd834590379680c1aa235cf76ad27c4ab34471be7bb3c24e4d082064db",
+    "assets/modernization/soldier-grenade/g3-f1.png": "85eeb4771b6609e942ed2c460bfb9fc278245b86447d57e35b09d19690588e95",
+    "assets/modernization/soldier-grenade/g3-f2.png": "ab6a82bd7ff67f67a21a21c710bc11638aa06c50e1f1e8be8c73ec5eca950459",
+    "assets/modernization/soldier-grenade/g4-f0.png": "685cdee5ddd6b0f570ec54bcbaaba631557aef5cffdeb210e123cb2b8f60abc7",
+    "assets/modernization/soldier-grenade/g4-f1.png": "47afb281ab210264118f9a1f7028646f0ba5d7cdcc8b2c4f8ca1467550f039f2",
+    "assets/modernization/soldier-grenade/g4-f2.png": "31e4d914d7523eca2509e93f157380ec6fbe77106202d3de5e08858501864fae",
+    "assets/modernization/soldier-grenade/g5-f0.png": "8d8cf73866e081b1672d44749b6be04515d52ad6fe39c903aafea4f8bf6013da",
+    "assets/modernization/soldier-grenade/g5-f1-v2.png": "58b5803b7f0c53cfd599ac2bec66eddf2b290070ffb75c9ce773e6a2ccb3e941",
+    "assets/modernization/soldier-grenade/g5-f1.png": "37954d57f6e5904176cbee6f0ddd8b5e13d637557227cd4aeae28d6f42d0ba8a",
+    "assets/modernization/soldier-grenade/g5-f2.png": "2e7ee8e52220b3fa1fd37d89161982ffd44163e7660f728b90d13e2063c61624",
+    "assets/modernization/soldier-grenade/g6-f0.png": "98f5b944a18b4004a01603a366b9aacec78750fb2ce6f0dc3af3ce260938a3ec",
+    "assets/modernization/soldier-grenade/g6-f1.png": "30eb6c738e113f59c9ce0da848c2d3cf28747f3ff8d2f4cfbfd1e94ca6fb24af",
+    "assets/modernization/soldier-grenade/g6-f2.png": "bbb3021d9421199d01df0751646eda11a58ae7afbf4d295621843db55cff64ec",
+    "assets/modernization/soldier-grenade/g7-f0.png": "9ed68288dd78fcbc3475f13f431cf3e66d5b3228eb6a27fb76387c27f7c3a829",
+    "assets/modernization/soldier-grenade/g7-f1.png": "da9665b2c0f44c779b6094a9b8ad39ed7e602cb32213d4e058bbd0a96170c41a",
+    "assets/modernization/soldier-grenade/g7-f2.png": "391b6ed177bbf4a7c8f360da2a3dc488ab928deba6762113c3de26a8e7ac0713",
+    "assets/modernization/soldier-grenade/generation.json": "1f4d724ca69c5f492e512b3439b639b8d332adf4a2fa7b2dc5a50cd3e770073d",
+    "assets/modernization/soldier-grenade/manifest.json": "f580e035e02d4b74853bc2f1201363279b99f764300e81b1844430e7ca14cba5",
+    "tools/modernization/build_hd_window_fixture.py": "1a93fe61fe465225a6ba11e882ddf2dcbd5f37812eed475e169491b3b24aab78",
+    "tools/modernization/check_grenade_art.py": "60103620e8cf0cea31a0cdfa7abe536f4522306c5a8ee063aae31a4d90d7afa9",
+    "tools/modernization/check_grenade_selection.py": "79d2f78a134fbd72e7dc1368b8a96df40131e3da2f2f1eb3cfc8ef475f25638b",
+    "tools/modernization/grenade_art_cases.inc": "8e65978781646e4112a81e48126f6fa97e6bf224f0240aea19359d6f089e1e6a",
+    "tools/modernization/prepare_aim_native.py": "fae5f31e86ac41c23b2207cd19418ef68aed330b46badd3e12b030b86297da85",
+    "tools/modernization/prepare_grenade_art.py": "00065af82d5da0ce35e01fa4aff61682e0d3187641e2d89e537f243d5d54a1bb",
+    "tools/modernization/rekey_aim_reference.cpp": "ce7d1a43a02c5a78da9747fb486a1d48cdbfa59450bc29d0299b9e0b2fe95fcb"
+  },
+  "privacy": "no original pixels, palette snapshots or commercial data published"
+}

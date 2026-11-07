@@ -1,0 +1,58 @@
+{
+  "status": "No normal CF1 setter for mode 0 found; initialization writes only 2",
+  "references": [
+    {
+      "path": "Source/CampaignSelect.cpp",
+      "line": 392,
+      "text": "word_3AA1D = word_3BED5[0];"
+    },
+    {
+      "path": "Source/Fodder.cpp",
+      "line": 1162,
+      "text": "word_3BED5[0] = 2;"
+    },
+    {
+      "path": "Source/Fodder.cpp",
+      "line": 1163,
+      "text": "word_3BED5[1] = 2;"
+    },
+    {
+      "path": "Source/Fodder.cpp",
+      "line": 1164,
+      "text": "word_3BED5[2] = 2;"
+    },
+    {
+      "path": "Source/Fodder.cpp",
+      "line": 1165,
+      "text": "word_3BED5[3] = 2;"
+    },
+    {
+      "path": "Source/Fodder.cpp",
+      "line": 1166,
+      "text": "word_3BED5[4] = 2;"
+    },
+    {
+      "path": "Source/Fodder.hpp",
+      "line": 520,
+      "text": "uint16          word_3BED5[5];"
+    },
+    {
+      "path": "Source/Sprites/Sprite_Troop.cpp",
+      "line": 157,
+      "text": "word_3AA1D = word_3BED5[pSprite->field_32];"
+    },
+    {
+      "path": "Source/Sprites/Sprite_Troop.cpp",
+      "line": 2032,
+      "text": "Data0 = word_3BED5[pSprite->field_32];"
+    },
+    {
+      "path": "Source/Squad.cpp",
+      "line": 276,
+      "text": "if (word_3BED5[Data0]) {"
+    }
+  ],
+  "scope": "source reachability audit, not a universal proof against arbitrary external memory/state mutation",
+  "decision": "Preserve/test internal mode0 and its idle/exit, but do not author/promote normal-mode0 artwork without a reachable normal CF1 path; movement/idle/shoot modes 1/2 reuse walking, low aim already supported.",
+  "base_commit": "7de0ad10dd1dd61883188d8bfcecc791edabcd13"
+}

@@ -1,0 +1,98 @@
+{
+  "verdict": "PASS",
+  "zip_sha256": "04cd7fa886aa93acc28830f01a9c522e0471b00120b62bf0d57383a115760e5a",
+  "files": 300,
+  "proof_matches_ci_evidence": true,
+  "comparison": {
+    "verdict": "PASS",
+    "campaign": "PC Format",
+    "scope": "8 reference phases",
+    "executable_sha256": "b804a58ea63c26779e823499be4693de7632d2bc773c212c910d2465d65b27d7",
+    "densities": [
+      {
+        "density": 8,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_8.html",
+            "sha256": "a31000242e0c5fafa957b7af919d8baa6c4c244d3fe808523efc1210967b62f6"
+          },
+          {
+            "name": "C01_8_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_8_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_8_parche.bmp",
+            "sha256": "5a19bc9d929d63502391dda1a73648c37fea43ab8e39fd545cfb2c0d9bcd9754"
+          }
+        ]
+      },
+      {
+        "density": 12,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_12.html",
+            "sha256": "0c14e39122a108163c57364641c0c40a4353cb3ece5010b584a28131686781a3"
+          },
+          {
+            "name": "C01_12_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_12_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_12_parche.bmp",
+            "sha256": "22f8b6d131e3e33bef79be53a00e6f83447feab19d78ba738ce1d72f30e3c2de"
+          }
+        ]
+      }
+    ]
+  },
+  "public_fixtures": [
+    {
+      "name": "Tests/PC Format/m1p1.ofd",
+      "sha256": "816855e96ed18ab2a987ea710704eb10915b66e7b729b421299ec436f199ddc3"
+    },
+    {
+      "name": "Tests/PC Format/m2p1.ofd",
+      "sha256": "fb130593b013328491e2dd34816acb31493901b15d0b74cdef759b5882346e2a"
+    },
+    {
+      "name": "Tests/PC Format/m2p2.ofd",
+      "sha256": "a0a520902ae4a0ffbe7a271dd44c9b000ddcd3b425644756da5aaba92b16d980"
+    },
+    {
+      "name": "Tests/PC Format/m3p1.ofd",
+      "sha256": "7a476a68673b336cc5baa60fcc78b09f83ee577f9abf708834616915e8fa346a"
+    },
+    {
+      "name": "Tests/PC Format/m4p1.ofd",
+      "sha256": "1b286e7876f4f0d0cee777310610d3573abd34c844b8fd027ff331ecbf00ca29"
+    },
+    {
+      "name": "Tests/PC Format/m4p2.ofd",
+      "sha256": "95125f733ea71ec3c94feb2e37e94e84eb8a4ee46f9dccefe1b49efc58e1158d"
+    },
+    {
+      "name": "Tests/PC Format/m4p3.ofd",
+      "sha256": "1ba8ba2b5767a989da59fe5a7f5787ca1a8450d2b2eb1b0f4e579f98dcc96d2e"
+    },
+    {
+      "name": "Tests/PC Format/m4p4.ofd",
+      "sha256": "7f58f9e15c083a1907672f8c3036cb640d505e9d5cae5b2e59aebe783a951f2d"
+    },
+    {
+      "name": "Tests/README.md",
+      "sha256": "3ad7b70f23029c8bef42591b778449edba009012bf3b5cf4106e23b755506854"
+    }
+  ]
+}

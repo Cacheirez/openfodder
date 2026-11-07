@@ -1,0 +1,138 @@
+{
+  "verdict": "REJECTED",
+  "report": {
+    "verdict": "FAIL",
+    "commit": "a66b4fa95a0cdb88adf8daa17e1a7ff667aafdf2",
+    "executable_sha256": "3e5b2300a0c68e9737b5ab5ec229876085459557a7589f72418b7d89a8d60b6a",
+    "build_description": "GCC C++14 -O3 -DNDEBUG, OPENFODDER_NO_MIXER, static SDL 3.4.0; engine source a66b4fa identical to validated 3ee12e9",
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+    "tool_sha256": "4fcce0ce03fa033359c98b87de56544de46da75e0c52e8cc8d99630f80ae037b",
+    "host": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cpu_max": "800000 100000",
+    "memory_max": "8589934592",
+    "campaign": "Amiga The One",
+    "rounds": 3,
+    "runs": [
+      {
+        "round": -1,
+        "warmup": true,
+        "mode": "classic",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 19.776987683000016,
+        "user_seconds": 20.69321,
+        "system_seconds": 0.397696,
+        "peak_rss_kib": 17368,
+        "cpu_seconds": 21.090906
+      },
+      {
+        "round": -1,
+        "warmup": true,
+        "mode": "publication",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 50.269009130000086,
+        "user_seconds": 54.124595,
+        "system_seconds": 0.9480799999999999,
+        "peak_rss_kib": 23488,
+        "cpu_seconds": 55.072675
+      },
+      {
+        "round": -1,
+        "warmup": true,
+        "mode": "hd8",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 75.74484625499986,
+        "user_seconds": 79.601672,
+        "system_seconds": 0.89138,
+        "peak_rss_kib": 24248,
+        "cpu_seconds": 80.49305199999999
+      },
+      {
+        "round": -1,
+        "warmup": true,
+        "mode": "hd12",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 77.21903152500022,
+        "user_seconds": 81.346065,
+        "system_seconds": 0.928037,
+        "peak_rss_kib": 24204,
+        "cpu_seconds": 82.274102
+      },
+      {
+        "round": 0,
+        "warmup": false,
+        "mode": "classic",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 19.521311544000127,
+        "user_seconds": 20.348814,
+        "system_seconds": 0.46458499999999997,
+        "peak_rss_kib": 17512,
+        "cpu_seconds": 20.813399
+      },
+      {
+        "round": 0,
+        "warmup": false,
+        "mode": "publication",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 50.267452568999715,
+        "user_seconds": 54.273225,
+        "system_seconds": 0.8639469999999999,
+        "peak_rss_kib": 23392,
+        "cpu_seconds": 55.137172
+      },
+      {
+        "round": 0,
+        "warmup": false,
+        "mode": "hd8",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 77.96971143599967,
+        "user_seconds": 82.19438,
+        "system_seconds": 1.07094,
+        "peak_rss_kib": 23908,
+        "cpu_seconds": 83.26531999999999
+      },
+      {
+        "round": 0,
+        "warmup": false,
+        "mode": "hd12",
+        "canonical_states": 3405,
+        "returncode": 0,
+        "wall_seconds": 77.66117460999976,
+        "user_seconds": 81.815667,
+        "system_seconds": 0.9721479999999999,
+        "peak_rss_kib": 24032,
+        "cpu_seconds": 82.78781500000001
+      }
+    ],
+    "summary": {},
+    "method": "Full three-phase campaign; one excluded warmup/mode, rotated order, fresh process per sample; identical executable, FIT, no sound and trace I/O; no export or pause probe",
+    "limits": [
+      "Whole-process wall/CPU and high-water RSS, not per-frame latency or GPU time",
+      "Shared Linux software SDL; not user Windows, UHD, hardware GPU or VRAM",
+      "Three measured samples per mode by default; no p95/p99 or performance acceptance threshold",
+      "Publication includes semantic capture; HD comparison isolates its additional path",
+      "HD marker confirms at least one publication, not replacement rate or per-patch cost"
+    ],
+    "failure": "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python', '/workspace/scratch/aa523e15d6d8/openfodder/tools/modernization/check_gameplay_baseline.py', '--baseline', '/workspace/scratch/aa523e15d6d8/hd-integrated-cost-2026-11-01/baseline-selection.json', '--traces', '/workspace/scratch/aa523e15d6d8/hd-integrated-cost-2026-11-01/round-1-publication/traces']' returned non-zero exit status 1."
+  },
+  "observation": {
+    "phase1_expected_samples": 149,
+    "phase1_observed_samples": 137,
+    "observed_lines_equal_reference_prefix": true,
+    "remaining_phases_byte_identical": true
+  },
+  "cause": "Not established; similar local trace truncation documented in H5_1_MEDICION_INICIAL.md",
+  "next_attempt": "One full independent run on tmpfs /dev/shm, same binary and flags; no baseline change; samples not pooled",
+  "original_archive_sha256": "90c306b092bc69b8a227225526693fa52f67a435673e2b93cb36a1382076616c",
+  "archive_format": "openfodder-replay-shared-bodies-v1",
+  "archive_sha256": "913f2739e3a315459a9c58b08c1aeb0483fd57edda0e7ded586facb904896cd1"
+}

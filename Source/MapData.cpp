@@ -267,3 +267,7 @@ const int16 mMap_DirectionsBetweenPoints[] = {
 	45, 44, 43, 42, 41, 40, 39, 38, 37, 36,
 	35, 34, 33, 32,
 };
+
+// Catch unexpected table resizing when editing its original values.
+static_assert(sizeof(mMap_DirectionsBetweenPoints) / sizeof(mMap_DirectionsBetweenPoints[0]) == 1024,
+              "Direction table must remain 32x32");

@@ -1,0 +1,550 @@
+{
+  "code_commit": "6e98fda5430a3204783b5bb81b6d9808372502df",
+  "observed_at": "2026-10-28T05:12:38.451Z",
+  "windows_verdict": "PASS",
+  "linux_verdict": "PASS",
+  "runs": [
+    {
+      "id": 40634973004,
+      "head_sha": "6e98fda5430a3204783b5bb81b6d9808372502df",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/40634973004",
+      "jobs": [
+        {
+          "id": 122639783847,
+          "name": "windows-x64",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 40634973004,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Get pinned replay fixtures",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "H5.5 - screen transform mathematical contract",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Test the audit gate",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "H3.6 - verify the legacy visibility contract",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "H2.3 - verify actual sprite frame metadata",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Configure Windows x64",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "Build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "H2.3 - direction lookup boundary tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "H5.5 - presented mission transform and inverse with original H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12
+            },
+            {
+              "name": "Replay all available demos and compare completion outcomes",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13
+            },
+            {
+              "name": "H3 - compare two real PC Format gameplay traces",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            },
+            {
+              "name": "H3 - compare two real Amiga The One gameplay traces",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 15
+            },
+            {
+              "name": "H3 - compare with pinned pre-stabilization gameplay baseline",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 16
+            },
+            {
+              "name": "H4.2 - semantic soldier original graphics and bounded pause",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            },
+            {
+              "name": "H4.4 - individual original pose and bounded pause",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 18
+            },
+            {
+              "name": "H6.3 - C01 RGBA selected pose with original H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 19
+            },
+            {
+              "name": "Prepare playable demo package",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 20
+            },
+            {
+              "name": "Upload Windows demo build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 21
+            },
+            {
+              "name": "Preserve test evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 22
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 43
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 44
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 40634973034,
+      "head_sha": "6e98fda5430a3204783b5bb81b6d9808372502df",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/40634973034",
+      "jobs": [
+        {
+          "id": 122639735058,
+          "name": "build",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 40634973034,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "H5.5 - screen transform mathematical contract",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Install build tools",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Build SDL3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5
+            },
+            {
+              "name": "Build SDL3_mixer",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6
+            },
+            {
+              "name": "H2.3 - verify actual sprite frame metadata",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Configure",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            },
+            {
+              "name": "H2.3 - direction lookup boundary tests",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10
+            },
+            {
+              "name": "Prepare pinned gameplay fixtures",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11
+            },
+            {
+              "name": "H5.5 - presented mission transform and inverse with original H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12
+            },
+            {
+              "name": "H3.6 - verify the legacy visibility contract",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13
+            },
+            {
+              "name": "H4.1 - retail final timer equivalence with accepted classic base",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            },
+            {
+              "name": "H4.1 - value-only sprite preparation and clipping equivalence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 15
+            },
+            {
+              "name": "H4.1 - explicit sprite raster pixels and register equivalence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 16
+            },
+            {
+              "name": "H4.1 - retained sprite resources and original palette resolution",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 17
+            },
+            {
+              "name": "H4.1 - retained visible terrain and atlas equivalence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 18
+            },
+            {
+              "name": "H4.1 - retained HUD and cursor equivalence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 19
+            },
+            {
+              "name": "H4.1 - retained effective RGB palette and owned destinations",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 20
+            },
+            {
+              "name": "H4.1 - owned indexed destinations and ordered layer composition",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 21
+            },
+            {
+              "name": "H4.1 - GUI raster, scene and minimap producers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 22
+            },
+            {
+              "name": "H5.5 - mission screen draw and mouse inverse under ASan UBSan",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 23
+            },
+            {
+              "name": "H4.1 - retained pause scene and zero/one/many presentations",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 24
+            },
+            {
+              "name": "H4.1 - complete composed mission and mission-pause scheduling",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 25
+            },
+            {
+              "name": "H4.1 - presentation destination identity and geometry",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 26
+            },
+            {
+              "name": "H4.1 - ordered mission layers with independent destinations",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 27
+            },
+            {
+              "name": "H4.1 - real mission producer recording and missing-write detection",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 28
+            },
+            {
+              "name": "H4.1 - software video replays with mission layer audit",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 29
+            },
+            {
+              "name": "H4.3 - recorded publication and original H3 states",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 30
+            },
+            {
+              "name": "H4.2 - semantic soldier with original resources and H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 31
+            },
+            {
+              "name": "H4.4 - one original pose replacement and classic fallback",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 32
+            },
+            {
+              "name": "H6.3 - C01 RGBA selected pose with original H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 33
+            },
+            {
+              "name": "H4.6 - real engine zero and five mission presentations with original H3",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 34
+            },
+            {
+              "name": "H4.6 - bounded SDL pause and resumed mission with zero one five presentations",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 35
+            },
+            {
+              "name": "H2 - bounded RNC fixtures under ASan and UBSan",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 36
+            },
+            {
+              "name": "H3 - Linux PC Format gameplay reference",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 37
+            },
+            {
+              "name": "H3 - Linux Amiga The One gameplay reference",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 38
+            },
+            {
+              "name": "H3 - compare with pinned pre-stabilization gameplay baseline",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 39
+            },
+            {
+              "name": "H2.3 - full game-engine ASan and UBSan diagnostic",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 40
+            },
+            {
+              "name": "H2.3 - enforce zero ASan and UBSan findings",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 41
+            },
+            {
+              "name": "H2.3 - LeakSanitizer on all 29 public demos",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 42
+            },
+            {
+              "name": "H4.3 - active publication with ASan UBSan and LSan",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 43
+            },
+            {
+              "name": "H4.6 - bounded SDL pause with ASan UBSan and LSan",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 44
+            },
+            {
+              "name": "H2.4 - ThreadSanitizer diagnostic on all public demos",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 45
+            },
+            {
+              "name": "H4.3 - first PC and Amiga phases with active publication and ThreadSanitizer",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 46
+            },
+            {
+              "name": "H4.6 - bounded SDL pause with ThreadSanitizer",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 47
+            },
+            {
+              "name": "Upload H3 Linux reference evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 48
+            },
+            {
+              "name": "Package",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 49
+            },
+            {
+              "name": "Upload artifact",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 50
+            },
+            {
+              "name": "Discord notification",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 51
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 102
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 103
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "windows_package": {
+    "artifact_id": 12793692851,
+    "run_id": 40634973004,
+    "url": "https://github.com/Cacheirez/openfodder/actions/runs/40634973004/artifacts/12793692851",
+    "sha256": "e7687ac997024a00ca738a96a9533d8f12f37c86249169b1e53378a57be9ed25",
+    "entries": 277,
+    "version": "7c596ea4861d37c11921083c94b0c8ef5d3e0e4f",
+    "tree": "fb67a59b3fccc3d6ac40423d64bed8bb0ccf2f3b",
+    "branch_commit": "6e98fda5430a3204783b5bb81b6d9808372502df",
+    "version_note": "GitHub temporary PR test commit, tree identical to branch code; PR remains unmerged.",
+    "verification": "Downloaded ZIP, checksum matched, archive intact, three CRLF isolated launchers and overview retest guide present.",
+    "demo_phases": 29,
+    "skipped": 0
+  },
+  "manual_windows": {
+    "verdict": "PASS_USER_REPORTED",
+    "desktop": "3840x2160",
+    "scale": "300%",
+    "sequence": [
+      "maximize window",
+      "open overview in the same edition previously used",
+      "verify fit and centering",
+      "close with click",
+      "select and command soldiers",
+      "compare F11"
+    ],
+    "reported_at": "2026-10-28",
+    "quote": "perfecto, el mapa se queda centrado, se cierra y vuelve a misión. Todo funciona bien.",
+    "scope": "Reported overview centering, closing and return to mission on the previously described UHD/300% setup; no extrapolation to other scenes or editions."
+  },
+  "scope": [
+    "No physical Windows observation by assistant.",
+    "Overview is disabled in non-custom release demos; demo replay success does not prove overview interaction.",
+    "Linux actual-method overview fixture and full workflow passed; see closure_observed_at."
+  ],
+  "closure_observed_at": "2026-10-28T09:53:43.418Z"
+}
