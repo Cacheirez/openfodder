@@ -71,6 +71,76 @@ for(const char* density:{"8","12"}){
     assert(win.TryRenderMissionHD(&image,src,dst)==-1); // Partial census is not publication.
     image.scene.layers={body,second,cover};
 }
+// A.1: explicit scenery classification, native writes over modern cells,
+// cropped sprites, and whole-interval rejection/recovery with real SDL.
+{
+    const char* associatedPath="ordered-window-associated-bindings.json";
+    const char* absentPath="ordered-window-absent-body.json";
+    auto bird=body;auto& p=bird.soldier;auto& s=p.soldier;
+    s.type=19;s.sheet=0x98;s.frame=0;
+    p.resource.bytes=std::make_shared<const std::vector<uint8_t>>(40*32*4,0xaa);
+    p.resource.offset=0;p.resource.layout={SpriteDrawFormat::Amiga8,320,32,4};
+    s.geometry.format=SpriteDrawFormat::Amiga8;s.geometry.columns=2;
+    s.geometry.rowsToSkip=3;s.geometry.spriteX+=4;
+    auto prepareBird=[&](){auto g=s.geometry;g.source=p.resource.source();p.draw=PrepareSpriteDraw(g);};
+    prepareBird();
+    auto associated=manifest;
+    for(int frame:{0,1}){
+        s.frame=frame;associated["bindings"].push_back({{"key",SoldierVariantKey(p,colors)},{"decision","keep-associated"}});
+    }
+    auto rank=bird;rank.soldier.soldier.type=21;rank.soldier.soldier.sheet=0x95;rank.soldier.soldier.frame=0;
+    associated["bindings"].push_back({{"key",SoldierVariantKey(rank.soldier,colors)},{"decision","keep-associated"}});
+    const OrderedSoldierRegistry scoped(associated);
+    for(int frame:{0,1}){
+        s.frame=frame;prepareBird();
+        assert(scoped.resolve(p,SoldierVariantKey(p,colors),12).decision==SoldierArtDecision::KeepClassic);
+        assert(scoped.resolve(p,SoldierVariantKey(p,recolored),12).decision==SoldierArtDecision::Missing);
+        for(const char* density:{"8","12"}){
+            {std::ofstream file(associatedPath);file<<associated.dump();}
+            env("OPENFODDER_SOLDIER_HD",density);const unsigned d=unsigned(std::stoi(density));
+            env("OPENFODDER_SOLDIER_ORDERED_MANIFEST",associatedPath);
+            image.scene.layers={body,bird,rank,cover};
+            const auto composed=ComposeOrderedSoldierArt(image.scene,body.destination,d,[&](const PreparedSpriteDraw& q){
+                return scoped.resolve(q,SoldierVariantKey(q,colors),d);});
+            assert(composed.complete()&&composed.replaced==1&&composed.kept==2);
+            const auto classic=RasterizeMissionLayers(image.scene,body.destination);
+            // Native associated producer writes erase HD cells, including equal
+            // colours; their clipped pixels retain the independently drawn RGB.
+            for(const auto& layer:{bird,rank}){
+                auto draw=layer.soldier.draw;draw.source=layer.soldier.resource.source();
+                for(const auto& v:CaptureSprite8Producer(draw,layer.soldier.resource.layout,96).writes){
+                    assert(!composed.cells.count(size_t(v.offset)));
+                    assert(composed.background.pixels[size_t(v.offset)]==classic.pixels[size_t(v.offset)]);
+                }
+            }
+            clear(renderer);assert(win.TryRenderMissionHD(&image,src,dst)==1);
+            auto absent=associated;absent["bindings"].erase(absent["bindings"].begin());
+            {std::ofstream file(absentPath);file<<absent.dump();}
+            env("OPENFODDER_SOLDIER_ORDERED_MANIFEST",absentPath);
+            clear(renderer);const auto before=read(renderer);
+            assert(win.TryRenderMissionHD(&image,src,dst)==-1&&read(renderer)==before);
+            {std::ofstream file(associatedPath);file<<associated.dump();}
+            env("OPENFODDER_SOLDIER_ORDERED_MANIFEST",associatedPath);
+            assert(win.TryRenderMissionHD(&image,src,dst)==1);
+        }
+    }
+    // Even a deliberately bound key cannot exempt another body, civilian,
+    // bird frame/sheet/format, vehicle or destroyed sprite.
+    for(int variant=0;variant<9;++variant){
+        auto bad=p;auto& b=bad.soldier;
+        if(variant<3)b.type=variant==0?0:variant==1?5:61;
+        if(variant==3)b.frame=2;if(variant==4)b.sheet=0x97;
+        if(variant==5)b.geometry.format=SpriteDrawFormat::PC;
+        if(variant==6)b.inVehicle=true;if(variant==7)b.pendingDestroy=true;
+        if(variant==8)b.valid=false;
+        const auto bound=SoldierSHA256({uint8_t(variant)});
+        const OrderedSoldierRegistry deny({{"version",1},{"bindings",nlohmann::json::array({{{"key",bound},{"decision","keep-associated"}}})}});
+        assert(deny.resolve(bad,bound,12).decision==SoldierArtDecision::Missing);
+    }
+    std::remove(associatedPath);std::remove(absentPath);
+    image.scene.layers={body,second,cover};
+    std::cout<<"PASS A.1 associated: two bird frames, rank, explicit keys, classic clipped writes, body rejection and SDL recovery\n";
+}
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","nonexistent-ordered-bindings.json");
 assert(win.TryRenderMissionHD(&image,src,dst)==-1);
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","");std::remove(path);

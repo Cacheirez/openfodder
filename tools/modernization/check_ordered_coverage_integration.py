@@ -23,11 +23,11 @@ def main():
             if enabled == '0':
                 assert result['attempts'] == 0, result
             else:
-                assert result['outcomes'] == dict(published=8, **{'missing-variant': 4,
+                assert result['outcomes'] == dict(published=16, **{'missing-variant': 8,
                     'classic-recovered': 2, 'recovery-failed': 2, 'no-body': 2,
                     'interrupted': 2, 'manifest-invalid': 1}), result
-                assert result['published_command_presentations'] == 16, result
-                assert result['unique_producer_commands'] == 2, result
+                assert result['published_command_presentations'] == 24, result
+                assert result['unique_producer_commands'] == 3, result
                 assert result['unique_published_variant_commands'] == 4, result
                 assert result['unresolved_commands'] == 4, result
                 assert result['verdict'] == 'PENDING', result

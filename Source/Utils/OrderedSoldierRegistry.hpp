@@ -117,7 +117,12 @@ public:
             // Explicit associated sheets only; never a body/civilian exemption.
             const bool effectType=s.type==2||s.type==3||s.type==6||s.type==21||s.type==22||s.type==23||
                 s.type==33||s.type==35||s.type==93||s.type==94||s.type==95||s.type==96||s.type==98;
-            if(s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
+            // Bird2_Left is scenery, not a human body. Only its original two
+            // Amiga frames may be retained, and only after an exact-key lookup.
+            const bool bird=s.type==19 && s.sheet==0x98 && (s.frame==0||s.frame==1) &&
+                g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
+                !s.inVehicle && !s.pendingDestroy;
+            if(bird || s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }
