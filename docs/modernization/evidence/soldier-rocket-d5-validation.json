@@ -460,10 +460,34 @@
   "source_manifest_sha256": "01d28e694dd3ae0d8dabf1fc431e47206a09fd824b618b00703833ac2353103f",
   "derived_manifest_sha256": "60d411b4ba92cf19c31869bec0d609d072698e41a5b66bf6a04bc13b41dbc836",
   "pending": [
-    "remote CI/publication",
     "direction 6",
     "Miguel in-game acceptance",
     "campaign/audio/GPU/CD32/global soldier acceptance"
   ],
-  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D4, Linux/Windows zlib encoding differs"
+  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D4, Linux/Windows zlib encoding differs",
+  "implementation_commit": "1f5aa2c6ef0ba390fbb5967d9d8658df75b047d6",
+  "ci_d5": [
+    {
+      "id": 42433145209,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145209"
+    },
+    {
+      "id": 42433145281,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145281"
+    },
+    {
+      "id": 42433145198,
+      "name": "linux-build",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145198"
+    }
+  ],
+  "documentation_handoff": "Documentation-only follow-up; implementation CI PASS, handoff CI checked separately"
 }
