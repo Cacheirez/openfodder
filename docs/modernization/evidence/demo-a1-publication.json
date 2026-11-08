@@ -1,0 +1,628 @@
+{
+  "schema": 1,
+  "task": "DEMO-A.1-PUBLICATION",
+  "date": "2026-11-08",
+  "recorded_utc": "2026-11-08T13:27:43.786128+00:00",
+  "base_commit": "31225950278da2a93c4bf3bfe7d0032c30fb8af1",
+  "implementation_commit": "babb62b3b931a2284ca18dfc22f85ac14fb4e2e1",
+  "verdict": "INITIAL_PUBLICATION_VERIFIED_WINDOWS; NOT_READY_FOR_B",
+  "scope": "No new art, simulation, launcher or package; no microblock B",
+  "local_recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1",
+  "manifest": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\art-complete\\candidate-manifest.json",
+    "sha256": "dd81d551031cfc8ac0265c4979c80575fcf31c1bb9166ebc8a563fb216a18147",
+    "bytes": 102780,
+    "poses": 80,
+    "assets": 160,
+    "replace": 318,
+    "keep": 4,
+    "bindings": 322
+  },
+  "approved_bindings": {
+    "path": "C:\\Users\\migue\\Projects\\openfodder\\assets\\modernization\\demo-a1-associated.json",
+    "sha256": "1ff96b60ff7cbd67723741060406a927859215f78d0379c28e1b013abe82ea43",
+    "bytes": 2997
+  },
+  "native_verification": {
+    "keys_verified": 4,
+    "rows": [
+      {
+        "format": 1,
+        "frame": 0,
+        "height": 10,
+        "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410",
+        "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+        "rgba_sha256": "7255a67be84b80cfdc624c95375146a9a9850f21557d2e1899a8a7c7a855dd71",
+        "sheet": 149,
+        "width": 16
+      },
+      {
+        "format": 1,
+        "frame": 0,
+        "height": 13,
+        "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7",
+        "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+        "rgba_sha256": "5418664acf919662133b587149da892daef910708c441c94e198bce83e731899",
+        "sheet": 152,
+        "width": 16
+      },
+      {
+        "format": 1,
+        "frame": 1,
+        "height": 13,
+        "key": "a71fc49adfbcf17ef450f8ea27cefef5f7d18bb144ec718b700a7d82079329f1",
+        "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+        "rgba_sha256": "bd67bbba90f37e4154ce7b6fd5429d25cde7751e3f47a0ee31cd66232dff501f",
+        "sheet": 152,
+        "width": 16
+      },
+      {
+        "format": 1,
+        "frame": 0,
+        "height": 1,
+        "key": "43d75bbd75b2fc2885345f6c127c067111b3b3ea969be6f2fb7be5c9b70510a3",
+        "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+        "rgba_sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+        "sheet": 124,
+        "width": 16
+      }
+    ],
+    "renderer_sha256": "1ebfebb0575e4c27681ba8bdc2e53acfce414d06861c6b8bfa4368122dcf48ae"
+  },
+  "build": {
+    "compiler": "MSVC 19.44.35223; Windows x64 Release C++14; existing SDL 3.4.0",
+    "source": "Current Source with production WindowHD.cpp; diagnostic project reused, no mixer; --nosound; not a shipping package",
+    "executable": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\data\\openfodder.exe",
+      "sha256": "04e6d63e7335f41f539665409b610cd920c729e4e65d3fcad17c37287a7d7b3b",
+      "bytes": 2926080
+    },
+    "production_WindowHD_sha256": "af42b3811d7783f8b2dd5b9fb4262b2a6fa1df9649ef3a8af69191a4d4ed37ab",
+    "registry_sha256": "bf14c34a838cbe2fc002eff1372b5f49ade4dc129e5f032265b770b22cbe059f",
+    "logs": [
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\config.log",
+        "sha256": "5f67026a1e5d04e8795d6668c4f4e0096e7243927da60b9df504825622b0f97a",
+        "bytes": 1379
+      },
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\build.log",
+        "sha256": "d5203de600530986ac674739dc759b72d11fc2c4d92f6155e548b6ec7df69b4f",
+        "bytes": 2191
+      },
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\production-build.log",
+        "sha256": "b7031821888d05e94f57f0fbf1df165a1fc5e27d2830a62b16054fb8ede0f810",
+        "bytes": 224
+      }
+    ]
+  },
+  "baseline": {
+    "path": "C:\\Users\\migue\\Projects\\openfodder\\tools\\modernization\\reference-gameplay-v1.json",
+    "sha256": "ae1bcaf6b006d8e41bc0de3fcf7e908d48b786ac427f1620ff69eecc9ff9e819",
+    "bytes": 3225,
+    "changed": false,
+    "full_H3_rerun": false
+  },
+  "runs": [
+    {
+      "campaign": "Amiga The One",
+      "mission": 1,
+      "phase": 2,
+      "command": [
+        "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\data\\openfodder.exe",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse",
+        "--campaign",
+        "Amiga The One",
+        "--mission",
+        "1",
+        "--phase",
+        "2"
+      ],
+      "returncode": 0,
+      "wall_seconds": 28.996,
+      "exe_sha256": "04e6d63e7335f41f539665409b610cd920c729e4e65d3fcad17c37287a7d7b3b",
+      "manifest_sha256": "dd81d551031cfc8ac0265c4979c80575fcf31c1bb9166ebc8a563fb216a18147",
+      "trace_files": [
+        "Amiga_The_One_m1_p2.jsonl"
+      ],
+      "attempts": 4554,
+      "outcomes": {
+        "missing-variant": 3874,
+        "published": 680
+      },
+      "unique_producer_commands": 46053,
+      "published_command_presentations": 3248,
+      "unresolved_commands": 0,
+      "role": "verified",
+      "h3": {
+        "samples": 1546,
+        "logical_sha256": "5996aea99df370416989b49ed5ca4b6129f6b0ff380f8398490a4de95c3f5259",
+        "matches_pinned_baseline": true
+      },
+      "trace": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\verified\\traces\\Amiga_The_One_m1_p2.jsonl",
+        "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf",
+        "bytes": 21337099
+      },
+      "files": [
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\verified\\engine.log",
+          "sha256": "de6aa544c7cffa83d36137b113baeedbc3b7c6b86426d5eb828a0fa0c5bf805e",
+          "bytes": 10487470
+        },
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\verified\\coverage.json",
+          "sha256": "68c2d27774cbbd2a2c989f97e71d4884ae631b83b9d8ba5abf0fe8f3e37288e6",
+          "bytes": 706236
+        },
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\verified\\run.json",
+          "sha256": "4f144daa9db46fed873b90791235196b43134f3d2d1fa4d130f404e74da2622f",
+          "bytes": 898
+        }
+      ],
+      "phase_complete": true,
+      "first_drawn_enemy_tick": 203
+    },
+    {
+      "campaign": "Amiga The One",
+      "mission": 1,
+      "phase": 2,
+      "command": [
+        "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\data\\openfodder.exe",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse",
+        "--campaign",
+        "Amiga The One",
+        "--mission",
+        "1",
+        "--phase",
+        "2"
+      ],
+      "returncode": 0,
+      "wall_seconds": 20.655,
+      "exe_sha256": "04e6d63e7335f41f539665409b610cd920c729e4e65d3fcad17c37287a7d7b3b",
+      "manifest_sha256": "5f3803fb7d47ff5674cc69895752bf50d97ce224995370e0fca03b573234e845",
+      "trace_files": [
+        "Amiga_The_One_m1_p2.jsonl"
+      ],
+      "attempts": 0,
+      "outcomes": {},
+      "unique_producer_commands": 0,
+      "published_command_presentations": 0,
+      "unresolved_commands": 0,
+      "role": "classic",
+      "h3": {
+        "samples": 1546,
+        "logical_sha256": "5996aea99df370416989b49ed5ca4b6129f6b0ff380f8398490a4de95c3f5259",
+        "matches_pinned_baseline": true
+      },
+      "trace": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\classic\\traces\\Amiga_The_One_m1_p2.jsonl",
+        "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf",
+        "bytes": 21337099
+      },
+      "files": [
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\classic\\engine.log",
+          "sha256": "a59d0a5f770c6098677a986fda1cf9ae18e8a893771342d520a39acfe08730fb",
+          "bytes": 732
+        },
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\classic\\coverage.json",
+          "sha256": "cafaf1ea50f6203b45172cfe790807314ab91ef5e185459bf064525e17ab3f84",
+          "bytes": 353
+        },
+        {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\classic\\run.json",
+          "sha256": "4756727302728ad387e9ee5f284b1f07073720ca7214381bbde4fd49042f9574",
+          "bytes": 832
+        }
+      ],
+      "phase_complete": true
+    }
+  ],
+  "first_publication": {
+    "result": {
+      "attempt": "365",
+      "outcome": "published",
+      "expected": "7",
+      "observed": "7",
+      "replace": "5",
+      "keep": "2",
+      "missing": "0",
+      "density": "12"
+    },
+    "commands": [
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "3",
+        "slot": "0",
+        "generation": "141",
+        "type": "0",
+        "sheet": "2",
+        "frame": "0",
+        "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+        "decision": "replace",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "4",
+        "slot": "42",
+        "generation": "278",
+        "type": "21",
+        "sheet": "149",
+        "frame": "0",
+        "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410",
+        "decision": "keep",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "5",
+        "slot": "1",
+        "generation": "142",
+        "type": "0",
+        "sheet": "2",
+        "frame": "0",
+        "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+        "decision": "replace",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "6",
+        "slot": "3",
+        "generation": "144",
+        "type": "0",
+        "sheet": "2",
+        "frame": "0",
+        "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+        "decision": "replace",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "7",
+        "slot": "4",
+        "generation": "145",
+        "type": "0",
+        "sheet": "3",
+        "frame": "0",
+        "key": "598da8efb9769c715bf38d7ecc8a1a834d74abfd2f19c46fdc3247f7337e256b",
+        "decision": "replace",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "8",
+        "slot": "2",
+        "generation": "143",
+        "type": "0",
+        "sheet": "2",
+        "frame": "0",
+        "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+        "decision": "replace",
+        "density": "12"
+      },
+      {
+        "attempt": "365",
+        "scene": "186",
+        "interval": "364",
+        "order": "9",
+        "slot": "13",
+        "generation": "154",
+        "type": "19",
+        "sheet": "152",
+        "frame": "0",
+        "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7",
+        "decision": "keep",
+        "density": "12"
+      }
+    ]
+  },
+  "first_missing": {
+    "result": {
+      "attempt": "599",
+      "outcome": "missing-variant",
+      "expected": "8",
+      "observed": "8",
+      "replace": "5",
+      "keep": "2",
+      "missing": "1",
+      "density": "12"
+    },
+    "commands": [
+      {
+        "attempt": "599",
+        "scene": "186",
+        "interval": "598",
+        "order": "9",
+        "slot": "21",
+        "generation": "162",
+        "type": "5",
+        "sheet": "84",
+        "frame": "0",
+        "key": "19a04cf62b5486e35710f8d51a8b4fc7a6154c546b9ed944023575dd4dd503f6",
+        "decision": "missing",
+        "density": "12"
+      }
+    ]
+  },
+  "initial_consecutive_eligible_publications": 117,
+  "kept": [
+    {
+      "type": 19,
+      "sheet": 152,
+      "frame": 0,
+      "count": 616
+    },
+    {
+      "type": 19,
+      "sheet": 152,
+      "frame": 1,
+      "count": 617
+    },
+    {
+      "type": 21,
+      "sheet": 124,
+      "frame": 0,
+      "count": 1794
+    },
+    {
+      "type": 21,
+      "sheet": 149,
+      "frame": 0,
+      "count": 2760
+    }
+  ],
+  "remaining_missing_by_type": [
+    {
+      "type": 0,
+      "command_presentations": 509,
+      "unique_keys": 29
+    },
+    {
+      "type": 2,
+      "command_presentations": 126,
+      "unique_keys": 5
+    },
+    {
+      "type": 3,
+      "command_presentations": 210,
+      "unique_keys": 4
+    },
+    {
+      "type": 4,
+      "command_presentations": 31,
+      "unique_keys": 1
+    },
+    {
+      "type": 5,
+      "command_presentations": 6695,
+      "unique_keys": 83
+    },
+    {
+      "type": 6,
+      "command_presentations": 5223,
+      "unique_keys": 25
+    },
+    {
+      "type": 12,
+      "command_presentations": 74,
+      "unique_keys": 8
+    },
+    {
+      "type": 14,
+      "command_presentations": 1183,
+      "unique_keys": 1
+    },
+    {
+      "type": 15,
+      "command_presentations": 523,
+      "unique_keys": 2
+    },
+    {
+      "type": 20,
+      "command_presentations": 928,
+      "unique_keys": 4
+    },
+    {
+      "type": 22,
+      "command_presentations": 1740,
+      "unique_keys": 2
+    },
+    {
+      "type": 23,
+      "command_presentations": 1791,
+      "unique_keys": 4
+    },
+    {
+      "type": 24,
+      "command_presentations": 508,
+      "unique_keys": 1
+    },
+    {
+      "type": 27,
+      "command_presentations": 1205,
+      "unique_keys": 1
+    },
+    {
+      "type": 35,
+      "command_presentations": 17,
+      "unique_keys": 1
+    },
+    {
+      "type": 37,
+      "command_presentations": 994,
+      "unique_keys": 1
+    },
+    {
+      "type": 39,
+      "command_presentations": 68,
+      "unique_keys": 3
+    },
+    {
+      "type": 47,
+      "command_presentations": 72,
+      "unique_keys": 2
+    },
+    {
+      "type": 48,
+      "command_presentations": 334,
+      "unique_keys": 4
+    }
+  ],
+  "focused_tests": {
+    "platform": "Windows LLVM 23.1.5 x64 ASan/UBSan",
+    "status": "PASS",
+    "asan_options": "detect_leaks=0:halt_on_error=1",
+    "ubsan_options": "halt_on_error=1:print_stacktrace=1",
+    "LSan": "PENDING Linux CI; unavailable in this Windows runtime",
+    "fixture": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\fixture.exe",
+      "sha256": "b3a7b97c86df71c4861df97ba93b732720cdd871fda24a37321c00b2e4982c1d",
+      "bytes": 2705920
+    },
+    "test_source": {
+      "path": "C:\\Users\\migue\\Projects\\openfodder\\tools\\modernization\\ordered_window_cases.inc",
+      "sha256": "3f3aaec5dbd7049d12c2bd5fa2d71f52ac7b08bd413831ed6a60d64fe8347a4a",
+      "bytes": 11320
+    },
+    "logs": [
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\fixture-build.log",
+        "sha256": "57658218baf536641a22040501ee843073a22acd6608d14aff1a45169e8e50f8",
+        "bytes": 13439
+      },
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\fixture-run.log",
+        "sha256": "7cb261705d984fccba23e7c393736fca338866da6b0693a5cc3610f0585a079f",
+        "bytes": 424
+      },
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\coverage-fixture-final.log",
+        "sha256": "32ba902f2c6b240a35c9bac7f0d3f2dae1439c863f7791d630fed51b3b168d91",
+        "bytes": 18473
+      }
+    ],
+    "direct_coverage_contract": {
+      "attempts": 33,
+      "outcomes": {
+        "classic-recovered": 2,
+        "interrupted": 2,
+        "manifest-invalid": 1,
+        "missing-variant": 8,
+        "no-body": 2,
+        "published": 16,
+        "recovery-failed": 2
+      },
+      "published_command_presentations": 24,
+      "unique_producer_commands": 3,
+      "unique_published_variant_commands": 4,
+      "unresolved_commands": 4
+    },
+    "temporary_directory_wrapper": {
+      "status": "BLOCKED_ENVIRONMENT_NOT_PASS",
+      "reason": "WinError 5 creating sandbox TEMP directory; operation stopped",
+      "log": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\coverage-integration.log",
+        "sha256": "26a5cf1692ecab92c26c7d161f9873212cba926da1c9099d42a31b2e12a7eb61",
+        "bytes": 3272
+      }
+    }
+  },
+  "ci": {
+    "d6_linux": {
+      "id": 42469760868,
+      "status": "completed",
+      "job_conclusion": "success",
+      "successful_steps": 57,
+      "total_steps": 58,
+      "rerun": false,
+      "applies_to_new_code": false
+    },
+    "implementation_windows": {
+      "id": 42484711149,
+      "status": "in_progress"
+    },
+    "implementation_linux": {
+      "id": 42484711218,
+      "status": "in_progress"
+    },
+    "implementation_densities": {
+      "id": 42484711137,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "final_handoff_CI": "Consult by final HEAD; not yet observed in this evidence"
+  },
+  "reproduction_scripts": [
+    {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\test.ps1",
+      "sha256": "f1c894db00d3ab44a23a74e3141ec52d6fcad0d5d29cdfc7b26824ec44417bc0",
+      "bytes": 1396
+    },
+    {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\replay_probe.py",
+      "sha256": "f037b629ffa0770703e7184b87dd935f53bcf4e695aa832099f402e7ffffef0c",
+      "bytes": 2679
+    },
+    {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\classic_probe.py",
+      "sha256": "5074d1d5b6714324403c09a902ee28527916f07ce5788e51991b32845e6d4e63",
+      "bytes": 2669
+    },
+    {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\verify_associated.py",
+      "sha256": "82d095b7007b1ab36021dff18d41acb53a8b6e5217ac6b1aae5fa644770c2579",
+      "bytes": 1745
+    },
+    {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\record_a1.py",
+      "sha256": "7e34d6a8fb522555b2db4adcdc2ee463a22ee14c822fe842da676d085160999e",
+      "bytes": 6983
+    }
+  ],
+  "preparation_script": {
+    "path": "C:\\Users\\migue\\Projects\\openfodder\\tools\\modernization\\prepare_demo_a1_manifest.py",
+    "sha256": "59e3898e02372e068182e22289e9ca9554f2b5c982636ad682b75d21c746f134",
+    "bytes": 2470
+  },
+  "intermediate": {
+    "three_binding_run": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\measured",
+    "published": 297,
+    "superseded": true
+  },
+  "discarded": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bb46-b87b-7671-82cd-0fdee66db3de\\a1\\measured-complete",
+    "reason": "Manifest was not prepared at launch; manifest-invalid results; excluded from validation"
+  },
+  "pending": [
+    "New Windows/Linux CI completion and Linux ASan/UBSan/LSan",
+    "Quiet 30-60s m1p2 patrol; no playable continuity demonstrated",
+    "Visual acceptance by Miguel, GPU, audio, CD32 and transitions"
+  ],
+  "next_task": "Reevaluate quiet 30-60s m1p2 patrol with multiple soldiers; consult new CI first; B blocked"
+}

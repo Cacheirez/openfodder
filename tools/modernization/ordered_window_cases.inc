@@ -113,7 +113,16 @@ for(const char* density:{"8","12"}){
                     assert(composed.background.pixels[size_t(v.offset)]==classic.pixels[size_t(v.offset)]);
                 }
             }
-            clear(renderer);assert(win.TryRenderMissionHD(&image,src,dst)==1);
+            std::vector<uint32_t> expectedPixels(96*64*d*d);
+            for(size_t y=0;y<64*d;++y)for(size_t x=0;x<96*d;++x){
+                const size_t n=(y/d)*96+x/d;const auto cell=composed.cells.find(n);
+                expectedPixels[y*96*d+x]=cell==composed.cells.end()?composed.background.pixels[n]:cell->second[(y%d)*d+x%d];
+            }
+            auto oracle=texture(renderer,expectedPixels,96*d,64*d);
+            SDL_FRect full{0,0,96.f*d,64.f*d};
+            clear(renderer);assert(SDL_RenderTexture(renderer,oracle,&full,&dst));const auto expected=read(renderer);
+            clear(renderer);assert(win.TryRenderMissionHD(&image,src,dst)==1&&read(renderer)==expected);
+            SDL_DestroyTexture(oracle);
             auto absent=associated;absent["bindings"].erase(absent["bindings"].begin());
             {std::ofstream file(absentPath);file<<absent.dump();}
             env("OPENFODDER_SOLDIER_ORDERED_MANIFEST",absentPath);
