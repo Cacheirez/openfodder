@@ -51,10 +51,36 @@ def check(a, out):
             p = candidates[0]
             rows.append(dict(row=json.loads(p.read_text()), directory=str(p.parent)))
         assert len(rows) == preparation['bindings']
-    # All four native groups have direction-0/1/2/3/4/5/7 walk keys. The two missing Amiga
-    # direction-6 keys remain excluded, never manufactured as observations.
-    assert directions == [0, 1, 2, 3, 4, 5, 7], 'this microblock covers only directions 0, 1, 2, 3, 4, 5 and 7'
+    assert directions == list(range(8)), 'all eight reviewed rocket directions required'
     expected = len(sequences) * 22 * 4 * 2
+    skipped_pairs = []
+    if native:
+        # Mirror the existing fixture's completeness check for both soldiers.
+        # Missing Amiga walk keys stay absent; rocket keys are reconstructed,
+        # never reported as replay observations.
+        groups = {}
+        for item in rows:
+            row = item['row']
+            group = (row['format'], row['resource_sha256'], tuple(row['colors']))
+            poses = groups.setdefault(group, set())
+            pose = (row['sheet'], row['frame'])
+            assert pose not in poses
+            poses.add(pose)
+        assert len(groups) == 4
+        for group_index, (group, poses) in enumerate(sorted(groups.items())):
+            missing = {(sheet, frame) for sheet in range(8) for frame in range(3)} - poses
+            assert not missing or (group[0] == 1 and missing == {(6, 0), (6, 2)})
+            for choice, sequence in enumerate(sequences):
+                other = sequences[(choice + 10) % len(sequences)]
+                required = {(r['sheet'], r['frame']) for r in sequence['rows'] + other['rows']}
+                if required - poses:
+                    skipped_pairs.append(dict(group=group_index, direction=sequence['direction'],
+                                              other_direction=other['direction'],
+                                              route=sequence['route'], initial_frame=sequence['initial_frame'],
+                                              missing_poses=sorted(required - poses)))
+        assert len(skipped_pairs) == 18, 'only the known incomplete Amiga group may skip paired sequences'
+        expected -= len(skipped_pairs) * 22 * 2
+    assert expected == (11880 if native else 12672)
     (out / 'art/transition-input.json').write_text(json.dumps(dict(
         native=native, rows=rows, directions=directions, sequences=sequences,
         sequence_length=22, other_choice_offset=10, expected_intervals=expected,
@@ -71,18 +97,20 @@ def check(a, out):
     assert census['outcomes'] == {'published': expected, 'missing-variant': 3}, census
     assert census['published_command_presentations'] == expected * 2 and census['verdict'] == 'PENDING'
     assert 'PASS rocket transition' in log.read_text()
-    result = dict(status='PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING',
+    result = dict(status='PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING',
                   mode='source-reconstructed real resources' if native else 'controlled metadata and test-only keys',
                   directions=directions, intervals=expected, bodies=expected * 2,
                   sequences=expected // 22, densities=[8, 12], timeout_seconds=timeout_seconds, selector_assertions=2703,
                   selector_samples=576, three_rejections=True, c01='exact',
+                  skipped_native_pairs=skipped_pairs,
                   log_sha256=hashlib.sha256(log.read_bytes()).hexdigest(), preparation=preparation,
                   limits=['geometry stubbed in selector fixture', 'prefix/suffix reuse prior walk/aim checks',
                           'reconstructed keys are not replay observations',
                           'CPU compositor reused as SDL expectation; no independent anatomical oracle',
                           'not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance'])
     (out / 'validation.json').write_text(json.dumps(result, indent=2) + '\n')
-    print({k: v for k, v in result.items() if k != 'preparation'})
+    print({k: v for k, v in result.items() if k not in ('preparation', 'skipped_native_pairs')})
+    print('Skipped native sequence pairs per density:', len(skipped_pairs))
     return result
 
 
