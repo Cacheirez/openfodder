@@ -33,30 +33,30 @@ python tools/modernization/check_rocket_art.py --exe /ruta/openfodder_external_a
 
 No publicar bytes, paletas ni rasters originales. Solo las 96 claves revisadas se vinculan. El visor ilustra retención de frame, no duración real del motor. La siguiente tarea está exclusivamente en el control operativo de PLAN_TRABAJO.md.
 
-## Microbloque A3-ROCKET-D0 â€” 6 de noviembre
+## Microbloque A3-ROCKET-D0 — 6 de noviembre
 
-DirecciÃ³n 0 recuperada byte a byte del commit local `3f23207`, sin regenerar arte ni incorporar las direcciones 1â€“6. El manifiesto conserva exactamente las tres descripciones de maestros, doce claves y seis derivados de direcciÃ³n 7. [Evidencia especÃ­fica](../../../docs/modernization/evidence/soldier-rocket-d0-validation.json). Los enlaces de validaciÃ³n/contacto de la primera direcciÃ³n son histÃ³ricos; el visor de aquel bloque incluÃ­a 0 y 7.
+Dirección 0 recuperada byte a byte del commit local `3f23207`, sin regenerar arte ni incorporar las direcciones 1–6. El manifiesto conserva exactamente las tres descripciones de maestros, doce claves y seis derivados de dirección 7. [Evidencia específica](../../../docs/modernization/evidence/soldier-rocket-d0-validation.json). Los enlaces de validación/contacto de la primera dirección son históricos; el visor de aquel bloque incluía 0 y 7.
 
-En el commit `b54e19f`, los comandos anteriores reproducen el lote 0/7 y ambos CTests; el selector de pareja usa desplazamiento 10 entre 18 secuencias para cruzar direcciones y variar ruta/frame. Pruebas controlada y reconstruida real: 3.168 intervalos y 6.336 cuerpos cada una, 8Ã—/12Ã—, tres rechazos transaccionales. Los datos reales siguen siendo privados. La siguiente tarea se consulta exclusivamente en el control operativo de PLAN_TRABAJO.md.
+En el commit `b54e19f`, los comandos anteriores reproducen el lote 0/7 y ambos CTests; el selector de pareja usa desplazamiento 10 entre 18 secuencias para cruzar direcciones y variar ruta/frame. Pruebas controlada y reconstruida real: 3.168 intervalos y 6.336 cuerpos cada una, 8×/12×, tres rechazos transaccionales. Los datos reales siguen siendo privados. La siguiente tarea se consulta exclusivamente en el control operativo de PLAN_TRABAJO.md.
 
-## Microbloque A3-ROCKET-D1 â€” 6 de noviembre
+## Microbloque A3-ROCKET-D1 — 6 de noviembre
 
-Solo direcciÃ³n 1 recuperada del commit local `3f23207`: tres maestros, seis derivados 8Ã—/12Ã— y doce claves reconstruidas. Las direcciones 2â€“6 permanecen en el respaldo; no se incorporan. [Evidencia D1](../../../docs/modernization/evidence/soldier-rocket-d1-validation.json).
+Solo dirección 1 recuperada del commit local `3f23207`: tres maestros, seis derivados 8×/12× y doce claves reconstruidas. Las direcciones 2–6 permanecen en el respaldo; no se incorporan. [Evidencia D1](../../../docs/modernization/evidence/soldier-rocket-d1-validation.json).
 
-En `fa413e0`, el mismo comando reproduce la matriz 0/1/7 de 27 secuencias: 4.752 intervalos y 9.504 cuerpos por modo, dos soldados con direcciones/rutas/fases independientes, recorte/oclusiÃ³n y tres rechazos transaccionales. El desplazamiento 10 cambia de direcciÃ³n y de caso en los tres grupos de nueve. Se comparan los 124 activos/246 vÃ­nculos de D0 con el nuevo resultado. No cambia cÃ³digo C++ ni selecciÃ³n: se reutiliza la fixture de D0; ASan/UBSan de D0 no se atribuye a D1. H3, campaÃ±a, GPU/CD32, LSan y aceptaciÃ³n jugando siguen pendientes de sus validaciones pertinentes.
+En `fa413e0`, el mismo comando reproduce la matriz 0/1/7 de 27 secuencias: 4.752 intervalos y 9.504 cuerpos por modo, dos soldados con direcciones/rutas/fases independientes, recorte/oclusión y tres rechazos transaccionales. El desplazamiento 10 cambia de dirección y de caso en los tres grupos de nueve. Se comparan los 124 activos/246 vínculos de D0 con el nuevo resultado. No cambia código C++ ni selección: se reutiliza la fixture de D0; ASan/UBSan de D0 no se atribuye a D1. H3, campaña, GPU/CD32, LSan y aceptación jugando siguen pendientes de sus validaciones pertinentes.
 
-## Microbloque A3-ROCKET-D2 â€” 6 de noviembre
+## Microbloque A3-ROCKET-D2 — 6 de noviembre
 
-Solo direcciÃ³n 2 recuperada exacta desde `3f23207`: tres maestros, seis derivados 8Ã—/12Ã— y doce claves reconstruidas. Direcciones 3â€“6 excluidas. [Evidencia D2](../../../docs/modernization/evidence/soldier-rocket-d2-validation.json). Se comparan los 130 activos/258 vÃ­nculos de D1 con el nuevo resultado por descriptor, bytes y clave.
+Solo dirección 2 recuperada exacta desde `3f23207`: tres maestros, seis derivados 8×/12× y doce claves reconstruidas. Direcciones 3–6 excluidas. [Evidencia D2](../../../docs/modernization/evidence/soldier-rocket-d2-validation.json). Se comparan los 130 activos/258 vínculos de D1 con el nuevo resultado por descriptor, bytes y clave.
 
-La CI Linux de D1 (`42212495681`, job `127874305751`) fallÃ³ en `soldier_rocket_art` durante la pasada ASan/UBSan: el watchdog fijo de 240 segundos expirÃ³. Windows y densidades de ese SHA finalizaron correctamente. Se conserva la matriz completa y se escala Ãºnicamente el lÃ­mite finito a `max(240, expected_intervals // 8)`: 792 segundos para los 6.336 intervalos actuales. No cambia cÃ³digo C++, aserciones, selecciÃ³n, reloj ni recuperaciÃ³n del producto.
+La CI Linux de D1 (`42212495681`, job `127874305751`) falló en `soldier_rocket_art` durante la pasada ASan/UBSan: el watchdog fijo de 240 segundos expiró. Windows y densidades de ese SHA finalizaron correctamente. Se conserva la matriz completa y se escala únicamente el límite finito a `max(240, expected_intervals // 8)`: 792 segundos para los 6.336 intervalos actuales. No cambia código C++, aserciones, selección, reloj ni recuperación del producto.
 
-Reproducir con los comandos anteriores; para sanitizadores usar el ejecutable de la misma fixture compilado con `-fsanitize=address,undefined -fno-omit-frame-pointer`. La prueba local establece `ASAN_OPTIONS=detect_leaks=0`; LSan queda PENDIENTE. La CI completa del cierre y aceptaciÃ³n jugando se consultan por separado.
+Reproducir con los comandos anteriores; para sanitizadores usar el ejecutable de la misma fixture compilado con `-fsanitize=address,undefined -fno-omit-frame-pointer`. La prueba local establece `ASAN_OPTIONS=detect_leaks=0`; LSan queda PENDIENTE. La CI completa del cierre y aceptación jugando se consultan por separado.
 
 Cierre D2: ASan/UBSan local PASS en la matriz controlada completa (6.336 intervalos), con `detect_leaks=0`; salida y hash del ejecutable contrastados. LSan y CI remota completa D2 PENDIENTES.
 
-## Microbloque A3-ROCKET-D5 â€” 8 de noviembre
+## Microbloque A3-ROCKET-D5 — 8 de noviembre
 
-Solo direcciÃ³n 5 recuperada exacta de `3f23207`: tres maestros con alfa, seis derivados 8Ã—/12Ã— y doce claves reconstruidas. D6 permanece excluida. Se conservan los 148 activos y 294 vÃ­nculos D4 por descriptor, PNG, RGBA y clave, en ambas plataformas. [Evidencia D5](../../../docs/modernization/evidence/soldier-rocket-d5-validation.json).
+Solo dirección 5 recuperada exacta de `3f23207`: tres maestros con alfa, seis derivados 8×/12× y doce claves reconstruidas. D6 permanece excluida. Se conservan los 148 activos y 294 vínculos D4 por descriptor, PNG, RGBA y clave, en ambas plataformas. [Evidencia D5](../../../docs/modernization/evidence/soldier-rocket-d5-validation.json).
 
-Windows LLVM23 x86/x64 ASan/UBSan y Linux Clang18 ASan/UBSan/LSan, controlado y real: 11.088 intervalos/22.176 cuerpos y tres rechazos por modo. Selector: 2.703 aserciones/576 muestras. Se reutilizan los binarios exactos validados de D3; Source, selecciÃ³n, simulaciÃ³n, referencias H3 y lanzador intactos. RevisiÃ³n interna favorable; aceptaciÃ³n jugando PENDIENTE. La siguiente tarea se consulta exclusivamente en el control operativo del plan.
+Windows LLVM23 x86/x64 ASan/UBSan y Linux Clang18 ASan/UBSan/LSan, controlado y real: 11.088 intervalos/22.176 cuerpos y tres rechazos por modo. Selector: 2.703 aserciones/576 muestras. Se reutilizan los binarios exactos validados de D3; Source, selección, simulación, referencias H3 y lanzador intactos. Revisión interna favorable; aceptación jugando PENDIENTE. La siguiente tarea se consulta exclusivamente en el control operativo del plan.

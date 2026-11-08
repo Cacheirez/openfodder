@@ -1393,10 +1393,36 @@
   "source_manifest_sha256": "bfed4827cc9a1158f3cb34d354839cc56d865d2855a49d3d18d98e137763de85",
   "derived_manifest_sha256": "fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1",
   "pending": [
-    "remote CI/publication",
+    "general Linux CI 42469760868 still running at handoff; check existing result without rerunning valid tests",
     "two ordinary Amiga D6 walk keys and incomplete paired transitions",
     "Miguel in-game acceptance",
     "campaign/audio/GPU/CD32/global soldier acceptance"
   ],
-  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D5, Linux/Windows zlib encoding differs"
+  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D5, Linux/Windows zlib encoding differs",
+  "implementation_commit": "28e469c2568148fbac9713f3691b464c690d817c",
+  "ci_d6": [
+    {
+      "id": 42469760932,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760932"
+    },
+    {
+      "id": 42469760868,
+      "name": "linux-build",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760868"
+    },
+    {
+      "id": 42469760879,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760879"
+    }
+  ],
+  "closure_basis": "D6 exit criteria satisfied by six focused local sanitizer runs, exact preservation and internal art review; full Windows and density CI PASS. General Linux CI still running at handoff, not claimed PASS. No new executable delivered; check this existing run first in the post-D6 review.",
+  "documentation_handoff": "Documentation-only follow-up; Windows/density implementation CI PASS, general Linux and handoff CI PENDING"
 }
