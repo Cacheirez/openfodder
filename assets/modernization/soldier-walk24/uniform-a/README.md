@@ -26,4 +26,4 @@ Las regresiones controladas de transición pasaron en el mismo SDL: apuntado (64
 
 Evidencias locales en `C:/Users/migue/.codex/visualizations/2026/11/11/01a1ccb7-f18f-7491-b7d5-0a64e7725590`. `walk-controlled/window.log` tiene SHA-256 `1862e8564965a66350fab36d8f0d33552bee39565eba6618255b0b01b1a05fb9` y `walk-native/window.log` tiene `ca31a8db4362501ca5359f1c9871fd2111713c36748449ee725965d7ab4de07a`. `marcha-7-comparativa.html` permite comparar el ciclo ilustrativo anterior y el verde A a 8×/12×.
 
-Valoración visual de Miguel sobre el ciclo, comparación con otras direcciones/familias, aceptación jugando, GPU y CD32 PENDIENTES.
+El 11 de noviembre Miguel valoró el verde A como «mucho mejor» al ver el ciclo comparativo. Comparación con otras direcciones/familias, aceptación jugando, GPU y CD32 PENDIENTES.

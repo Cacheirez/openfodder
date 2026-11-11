@@ -7,9 +7,9 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último avance comprobado:** opción A aplicada al candidato en marcha 7/0–2 a 8×/12×. Los seis derivados conservan alfa, recorte, colocación y claves nativas. C01 coincide píxel a píxel con la muestra A elegida por Miguel. SDL Windows PASS en marcha controlada y nativa y en las transiciones controladas de apuntado, granada y lanzacohetes. [Evidencia y recuperación](../../assets/modernization/soldier-walk24/uniform-a/README.md).
+- **Último microbloque cerrado:** opción A aplicada y verificada en marcha 7/0–2 a 8×/12× en `895f1c5`. El 11 de noviembre Miguel valoró positivamente el uniforme en el visor del ciclo y dio paso a continuar el ajuste con la aceptación jugando aún pendiente. [Evidencia técnica y valoración](../../assets/modernization/soldier-walk24/uniform-a/README.md).
 - **Propuesta PENDIENTE dentro de A:** conservar la insignia clásica mediante `keep-associated` solo para la clave exacta F4. Validar en escena controlada antes de pedir otra revisión jugable. La resolución de otros faltantes de escenario y enemigos, la aceptación jugando y la cobertura restante siguen abiertas. Sin cambios de implementación en la auditoría. B, activación, lanzador y paquete fuera del bloque.
-- **Siguiente tarea única:** **Completar la valoración visual de Miguel del verde A aplicado a la marcha de dirección 7, frames 0, 1 y 2, a 8×/12×.** Mantener abierto este microbloque de la etapa 3 y registrar el resultado antes de extender el ajuste. [Comparativa y recuperación](../../assets/modernization/soldier-walk24/uniform-a/README.md).
+- **Siguiente tarea única:** **Aplicar y validar el verde A en marcha de dirección 6, frames 0, 1 y 2, a 8×/12×.** Usar el ciclo de dirección 7 como referencia cromática contigua y seguir los criterios de la etapa 3. [Criterios de aplicación](#ajuste-del-verde-del-uniforme--programado).
 
 ## Ajuste del verde del uniforme — programado
 
@@ -22,6 +22,8 @@ Trabajo dentro de A, iniciado después de la auditoría del rango. Se conserva e
 3. **Aplicar la opción A al lote y validarla — PENDIENTE.** Usar una transformación reproducible y coherente en el lote vigente (hoy 80 poses/160 activos, 8×/12×), dividido en microbloques revisables por dirección/familia con commit y relevo. Conservar geometría, alfa, anclajes, selección original, claves nativas y comportamiento; actualizar los hashes/referencias de los activos derivados que correspondan. Comprobar consistencia cromática entre frames/direcciones/familias y ambas densidades, y publicación/composición SDL con las herramientas existentes, incluidos recortes/oclusiones pertinentes. Revisión visual de Miguel sobre el resultado aplicado; cualquier caso no ejercitado queda PENDIENTE. No repetir pruebas de simulación válidas sin necesidad concreta ni modificar referencias para hacerlas pasar.
 
 **Criterio de cierre de este ajuste:** tono elegido expresamente por Miguel, aplicación trazable al lote previsto y verificaciones técnicas pertinentes completadas, con valoración visual posterior registrada. Mantener recuperación de los originales. Este cierre no acredita cobertura global de soldados, continuidad jugable ni aceptación de la alternancia.
+
+Los microbloques del verde pueden avanzar con la aceptación jugando pendiente. La prueba en juego sigue siendo necesaria para la aceptación global del piloto.
 
 ## Dónde estamos
 
