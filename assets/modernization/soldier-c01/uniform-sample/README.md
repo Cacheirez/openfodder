@@ -18,7 +18,11 @@ La [herramienta](../../../../tools/modernization/prepare_c01_uniform_sample.py) 
 
 Alfa idéntico al maestro y al derivado original, con cambios RGB limitados al soporte de la máscara. Comparación exacta de píxeles en regiones de control de cara, ambas manos, correa, rifle y ambas botas. SHA-256 de la máscara L sin comprimir `0199b95e185885e09b8130a073608ab0ea0c986fdc98e2f75e6de556ae561e96`. SHA-256 RGBA de los maestros temporales A `380ad8461985b33ff724a8d2e9bc6527fcfc7044be33707aa88b0e8bb6128076`, B `3a198bd04073117155dc776555c4d908fa2c370acf10cfb7be452b5db5859435`.
 
-Los derivados actuales de C01 coinciden byte a byte con los `s7-f0-8.rgba` y `s7-f0-12.rgba` de `art-complete`. En PC Format, escena 815, la composición del actual en (155, 56) reproduce exactamente ambos parches SDL de la [exportación de diagnóstico](../../../../docs/modernization/H6_C01_DIAGNOSTICO_VISIBLE.md). A y B se componen fuera del juego sobre el mismo fondo y anclaje. La revisión de la muestra es estática. Elección de Miguel, validación en movimiento y aplicación al lote PENDIENTES.
+Los derivados actuales de C01 coinciden byte a byte con los `s7-f0-8.rgba` y `s7-f0-12.rgba` de `art-complete`. En PC Format, escena 815, la composición del actual en (155, 56) reproduce exactamente ambos parches SDL de la [exportación de diagnóstico](../../../../docs/modernization/H6_C01_DIAGNOSTICO_VISIBLE.md). A y B se componen fuera del juego sobre el mismo fondo y anclaje.
+
+## Elección del tono
+
+Miguel eligió la **opción A** el 11 de noviembre de 2026 tras la muestra estática. Aplicación al lote y validación en movimiento PENDIENTES.
 
 ## Reproducción
 
