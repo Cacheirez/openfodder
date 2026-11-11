@@ -54,7 +54,7 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     (out/'preparation.json').write_text(json.dumps(result, indent=2)+'\n')
     html = '''<!doctype html><html lang="es"><meta charset="utf-8"><title>Marcha · ocho direcciones</title>
 <style>body{font:17px system-ui;background:#18251e;color:#eee;padding:24px}button,select{font:inherit;margin:8px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}article{background:#354638;padding:12px}img{width:192px;height:168px}small{display:block}</style>
-<h1>Marcha del jugador · 24 claves</h1><p>Revisión interna. Verde A aplicado a la dirección 7, pendiente de valoración visual.</p>
+<h1>Marcha del jugador · 24 claves</h1><p>Revisión interna. Verde A aplicado a las direcciones 6 y 7.</p>
 <button id="play">Pausar</button><button id="step">Paso</button><label>Densidad <select id="density"><option>12</option><option>8</option></select></label><label><input id="turn" type="checkbox">Giro continuo</label><span id="label"></span><main id="gallery"></main>
 <p>Secuencia ilustrativa 0–1–2–1 a 180 ms por pose; el motor conserva sus contadores originales. Cambiar dirección no cambia el tamaño lógico.</p>
 <script>const images=IMAGES,sequence=[0,1,2,1],names=['Delante','Delante / izquierda','Izquierda','Izquierda / atrás','Atrás','Atrás / derecha','Derecha','Derecha / delante'];let step=0,running=true,direction=0;

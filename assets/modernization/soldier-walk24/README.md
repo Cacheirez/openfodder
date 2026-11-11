@@ -12,7 +12,7 @@ Lote artístico interno del plan 2.74, A3. Las siete direcciones pendientes tien
 | 3, izquierda/atrás | `s3-f0.png`, `s3-f1.png`, `s3-f2-v3.png` | Espalda diagonal; zancada duplicada descartada, inversión y longitud de pierna corregidas. |
 | 4, atrás | `s4-f0/1/2.png` | Espalda recta, correajes conservados, alternancia de apoyos. |
 | 5, atrás/derecha | `s5-f0.png`, `s5-f1.png`, `s5-f2-v3.png` | Espalda diagonal con luz conservada; zancada repetida descartada y altura ajustada. |
-| 6, derecha | `s6-f0/1/2.png` | Nuevo perfil derecho, sin reflejar iluminación/arma del izquierdo. |
+| 6, derecha | `s6-f0/1/2.png` | El candidato aplica el verde A a los tres frames del perfil derecho. [Verificación y recuperación](uniform-a/README.md#dirección-6). |
 | 7, derecha/delante | C01 y los dos maestros de `../soldier-walk-review/review.json` | El candidato aplica el verde A a los tres frames. [Verificación y recuperación](uniform-a/README.md). |
 
 Son **18 maestros nuevos seleccionados**, tres anteriores reutilizados en la diagonal correcta y los tres del ciclo C01. Los cuatro intentos descartados no se convierten en fotogramas válidos. [Prompts exactos y procedencia](generation.json). Herramienta integrada `image_gen`, con transparencia real; C01 como identidad/estilo, poses nativas de demos públicas como guía de orientación y maestros de espalda generados para conservar el equipo. No se usan datos comerciales CD32. No se retocan los PNG maestros con scripts ni se reflejan imágenes para obtener otra dirección.

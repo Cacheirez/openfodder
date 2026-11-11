@@ -1,4 +1,6 @@
-# Verde A en la marcha de dirección 7
+# Verde A en la marcha
+
+## Dirección 7
 
 11 de noviembre de 2026. Primer microbloque de aplicación del [verde oliva elegido por Miguel](../../soldier-c01/uniform-sample/README.md). El [manifiesto](../manifest.json) conserva los maestros originales, recortes, colocaciones y claves nativas. La entrada `uniform_a` selecciona cada nuevo maestro para el candidato y fija los SHA-256 de sus dos derivados RGBA.
 
@@ -26,4 +28,26 @@ Las regresiones controladas de transición pasaron en el mismo SDL: apuntado (64
 
 Evidencias locales en `C:/Users/migue/.codex/visualizations/2026/11/11/01a1ccb7-f18f-7491-b7d5-0a64e7725590`. `walk-controlled/window.log` tiene SHA-256 `1862e8564965a66350fab36d8f0d33552bee39565eba6618255b0b01b1a05fb9` y `walk-native/window.log` tiene `ca31a8db4362501ca5359f1c9871fd2111713c36748449ee725965d7ab4de07a`. `marcha-7-comparativa.html` permite comparar el ciclo ilustrativo anterior y el verde A a 8×/12×.
 
-El 11 de noviembre Miguel valoró el verde A como «mucho mejor» al ver el ciclo comparativo. Comparación con otras direcciones/familias, aceptación jugando, GPU y CD32 PENDIENTES.
+El 11 de noviembre Miguel valoró el verde A como «mucho mejor» al ver el ciclo comparativo. Aceptación jugando, GPU y CD32 PENDIENTES.
+
+## Dirección 6
+
+11 de noviembre de 2026. Los tres perfiles derechos usan los mismos factores RGB de A y el mismo filtro cromático que la dirección 7. Las máscaras siguen el casco, la manga, la camisa y las dos perneras de cada pose. Las comprobaciones de región conservan cara, manos, correa, cartuchera, rifle y botas. El [manifiesto](../manifest.json) fija los hashes de los tres maestros recoloreados y de los seis derivados, y conserva las rutas y hashes de los maestros originales.
+
+| Frame | Píxeles RGB modificados a 8× | Píxeles RGB modificados a 12× |
+|---|---:|---:|
+| 0 | 2.734 | 5.984 |
+| 1 | 2.615 | 5.745 |
+| 2 | 2.756 | 6.034 |
+
+Reproducción desde la raíz con Pillow 11.3.0. Los tres PNG coinciden byte a byte.
+
+```powershell
+python -B tools/modernization/prepare_walk6_uniform.py --out <directorio>
+```
+
+`prepare_rocket_art.py` reconstruyó el candidato de 160 activos. La comparación con `1e1be63` confirmó alfa exacto, las 318 vinculaciones intactas y cambios exclusivamente RGB en los seis derivados previstos. `check_walk24_art.py` pasó en Windows x64 con SDL por software. Publicó 256 intervalos controlados y 236 con 94 instantáneas nativas PC/Amiga. En ambos casos hubo dos cuerpos por intervalo, recorte, oclusión y tres rechazos comprobados.
+
+La prueba controlada de transiciones con `check_rocket_art.py` pasó en las ocho direcciones. Incluye marcha, apuntado, lanzacohetes y vuelta a marcha en 12.672 intervalos. SHA-256 de `transitions-controlled/window.log`: `cfb739ab48616ef4d334a3e9cfaeae7601e20c89a225d73681bda719da8122c5`. Se conserva la evidencia anterior de simulación H3 y sanitizadores.
+
+Evidencias locales en `C:/Users/migue/.codex/visualizations/2026/11/11/01a1ccca-3551-7c82-bc41-3abe70984c2e`. El visor `marcha-6-comparativa.html` muestra el original, el verde A de dirección 6 y la dirección 7 a 8×/12×. Las dos láminas PNG muestran las tres poses de cada variante. Los informes `walk-controlled/validation.json` y `walk-native/validation.json` registran el censo y los hashes de los logs. La comparación visual interna de ambas densidades está hecha. Quedan PENDIENTES la valoración de Miguel, la aceptación jugando, GPU, CD32 y las dos claves ordinarias Amiga que faltaban para 6/0 y 6/2.

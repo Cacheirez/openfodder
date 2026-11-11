@@ -1,0 +1,113 @@
+"""Reproduce the option A masters for walking direction 6. GPL-3.0-or-later."""
+import argparse
+import json
+from pathlib import Path
+
+from PIL import Image
+
+from prepare_c01_uniform_sample import (
+    OPTIONS, digest, recolour, uniform_mask, verify, verify_protected,
+)
+from prepare_walk24 import CONFIG, ROOT
+
+# Coordinates on the same 397 × 600 crop grid as C01. Trace the helmet,
+# sleeve, shirt and trousers separately around the weapon and leather.
+PANELS = (
+    (
+        ((118, 0), (276, 0), (275, 185), (252, 209), (232, 221),
+         (202, 233), (166, 231), (141, 217), (118, 192)),
+        ((145, 252), (163, 244), (180, 260), (192, 308), (210, 326),
+         (215, 361), (202, 386), (178, 396), (157, 389), (140, 364), (133, 308)),
+        ((193, 234), (208, 245), (231, 252), (248, 266), (252, 275),
+         (196, 275)),
+        ((136, 394), (149, 391), (149, 422), (143, 443), (126, 435)),
+        ((191, 410), (208, 402), (225, 393), (229, 420), (211, 435),
+         (184, 441)),
+        ((133, 429), (146, 433), (153, 447), (172, 456), (152, 490),
+         (137, 506), (118, 501), (104, 484), (108, 455)),
+        ((184, 441), (218, 421), (234, 434), (249, 474), (249, 501),
+         (238, 525), (218, 534), (199, 517), (188, 484), (168, 460)),
+    ),
+    (
+        ((118, 10), (276, 10), (274, 195), (252, 219), (231, 232),
+         (202, 244), (165, 241), (140, 226), (118, 202)),
+        ((145, 263), (163, 255), (180, 272), (193, 320), (210, 337),
+         (215, 372), (202, 397), (178, 407), (157, 400), (140, 375), (133, 319)),
+        ((193, 245), (208, 255), (231, 262), (248, 276), (252, 285),
+         (196, 285)),
+        ((136, 405), (149, 402), (150, 435), (144, 457), (129, 448)),
+        ((191, 420), (208, 412), (225, 403), (227, 432), (210, 446),
+         (181, 455)),
+        ((143, 445), (152, 451), (175, 464), (183, 481), (164, 515),
+         (149, 531), (132, 525), (126, 510), (130, 480)),
+        ((181, 456), (214, 437), (224, 442), (228, 478), (229, 500),
+         (216, 529), (199, 535), (180, 525), (173, 507), (175, 486)),
+    ),
+    (
+        ((118, 0), (276, 0), (275, 174), (252, 197), (232, 214),
+         (202, 222), (166, 221), (141, 207), (118, 182)),
+        ((145, 242), (163, 234), (180, 250), (193, 297), (210, 316),
+         (215, 350), (202, 376), (178, 386), (157, 379), (140, 354), (133, 298)),
+        ((193, 224), (208, 235), (231, 242), (248, 256), (252, 265),
+         (196, 265)),
+        ((136, 384), (149, 381), (150, 414), (144, 436), (129, 427)),
+        ((191, 400), (208, 392), (225, 383), (229, 409), (210, 425),
+         (183, 434)),
+        ((142, 422), (151, 430), (176, 443), (186, 458), (173, 477),
+         (159, 507), (146, 526), (127, 526), (113, 510), (111, 482),
+         (122, 461), (133, 450)),
+        ((182, 434), (213, 416), (226, 399), (239, 418), (252, 445),
+         (253, 470), (242, 490), (226, 498), (210, 483), (206, 467),
+         (185, 456)),
+    ),
+)
+
+PROTECTED = (
+    {
+        "face": (227, 227, 241, 242), "strap": (146, 233, 170, 244),
+        "pouch": (157, 401, 178, 440), "rifle": (245, 287, 280, 308),
+        "hands": (291, 310, 321, 330), "trigger hand": (217, 330, 239, 357),
+        "left boot": (103, 515, 137, 550), "right boot": (232, 539, 273, 570),
+    },
+    {
+        "face": (227, 237, 241, 251), "strap": (146, 244, 170, 255),
+        "pouch": (157, 412, 178, 451), "rifle": (245, 298, 280, 319),
+        "hands": (291, 321, 321, 341), "trigger hand": (217, 341, 239, 368),
+        "left boot": (130, 536, 161, 569), "right boot": (193, 542, 223, 577),
+    },
+    {
+        "face": (227, 213, 241, 231), "strap": (146, 223, 170, 234),
+        "pouch": (157, 391, 178, 430), "rifle": (245, 277, 280, 298),
+        "hands": (291, 300, 321, 320), "trigger hand": (217, 320, 239, 347),
+        "left boot": (109, 535, 146, 573), "right boot": (232, 505, 272, 531),
+    },
+)
+
+
+def prepare(out):
+    frames = json.loads(CONFIG.read_text())["frames"]
+    out.mkdir(parents=True, exist_ok=True)
+    for frame in frames:
+        if frame["sheet"] != 6:
+            continue
+        number = frame["frame"]
+        source_path = ROOT / "assets/modernization" / frame["asset"]
+        if digest(source_path.read_bytes()) != frame["source_sha256"]:
+            raise ValueError(f"Master hash mismatch: {source_path}")
+        with Image.open(source_path) as image:
+            source = image.convert("RGBA")
+        crop = frame["crop"]
+        mask = uniform_mask(source, crop, PANELS[number])
+        master = recolour(source, mask, OPTIONS["A"])
+        changes = verify(source, master, mask)
+        verify_protected(source, master, crop, PROTECTED[number])
+        path = out / f"s6-f{number}-verde-a.png"
+        with path.open("xb") as stream:
+            master.save(stream, format="PNG")
+        print(f"{path.name} {digest(path.read_bytes())} mask={digest(mask.tobytes())} pixels={changes}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, required=True)
+    prepare(parser.parse_args().out)
