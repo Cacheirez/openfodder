@@ -6,7 +6,7 @@ import base64
 import hashlib
 import json
 from pathlib import Path
-from prepare_walk_art_review import ROOT, derive_frame
+from prepare_walk_art_review import ROOT, derive_frame, verify_masters
 
 CONFIG = ROOT/'assets/modernization/soldier-walk24/manifest.json'
 
@@ -16,13 +16,7 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     assert [(f['sheet'], f['frame']) for f in config['frames']] == [(s, f) for s in range(8) for f in range(3)]
     assert config['sequence'] == [0, 1, 2, 1]
     for frame in config['frames']:
-        masters = [frame]
-        if 'uniform_a' in frame:
-            masters.append(frame['uniform_a'])
-        for master in masters:
-            source = ROOT/'assets/modernization'/master['asset']
-            if hashlib.sha256(source.read_bytes()).hexdigest() != master['source_sha256']:
-                raise ValueError('master hash mismatch: '+str(source))
+        verify_masters(frame)
     if hashlib.sha256((ROOT/config['native_evidence']).read_bytes()).hexdigest() != config['native_evidence_sha256']:
         raise ValueError('native evidence changed; inspect bindings')
     assert len(config['bindings']) == len({b['key'] for b in config['bindings']}) == 94
@@ -35,12 +29,8 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     manifest = dict(version=2, assets=[], bindings=[])
     pictures = {}
     for frame in config['frames']:
-        uniform = frame.get('uniform_a')
-        selected = {**frame, 'asset': uniform['asset']} if uniform else frame
         for density in (8, 12):
-            descriptor, image = derive_frame(out, selected, density, c01_builder, batch_builder, asset_builder)
-            if uniform and descriptor['sha256'] != uniform['rgba_sha256'][str(density)]:
-                raise ValueError('option A RGBA hash mismatch: '+descriptor['id'])
+            descriptor, image = derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder)
             manifest['assets'].append(descriptor)
             pictures[f"{frame['sheet']}/{frame['frame']}/{density}"] = base64.b64encode(image).decode()
     for b in config['bindings']:

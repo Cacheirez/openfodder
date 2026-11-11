@@ -2,12 +2,12 @@
 import argparse,base64,hashlib,json
 from pathlib import Path
 from prepare_aim_art import prepare as prepare_aim
-from prepare_walk_art_review import ROOT,derive_frame
+from prepare_walk_art_review import ROOT,derive_frame,verify_masters
 CONFIG=ROOT/'assets/modernization/soldier-grenade/manifest.json'
 def prepare(out,c01,batch,asset):
  c=json.loads(CONFIG.read_text());directions=sorted({f['sheet']-8 for f in c['frames']})
  assert [(f['sheet'],f['frame']) for f in c['frames']]==[(d+8,f) for d in directions for f in range(3)]
- for f in c['frames']:assert hashlib.sha256((ROOT/'assets/modernization'/f['asset']).read_bytes()).hexdigest()==f['source_sha256']
+ for f in c['frames']:verify_masters(f)
  previous=prepare_aim(out,c01,batch,asset);manifest=json.loads((out/'candidate-manifest.json').read_text())
  for f in c['frames']:
   for d in (8,12):descriptor,_=derive_frame(out,f,d,c01,batch,asset);manifest['assets'].append(descriptor)

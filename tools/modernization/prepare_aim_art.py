@@ -2,12 +2,12 @@
 import argparse,base64,hashlib,json
 from pathlib import Path
 from prepare_walk24 import prepare as prepare_walk
-from prepare_walk_art_review import ROOT,derive_frame
+from prepare_walk_art_review import ROOT,derive_frame,verify_masters
 CONFIG=ROOT/'assets/modernization/soldier-aim/manifest.json'
 def prepare(out,c01,batch,asset):
  config=json.loads(CONFIG.read_text());assert len(config['frames'])==8
  for frame in config['frames']:
-  assert hashlib.sha256((ROOT/'assets/modernization'/frame['asset']).read_bytes()).hexdigest()==frame['source_sha256']
+  verify_masters(frame)
  assert [f['sheet'] for f in config['frames']]==list(range(16,24))
  walk=prepare_walk(out,c01,batch,asset);manifest=json.loads((out/'candidate-manifest.json').read_text());images={}
  for frame in config['frames']:

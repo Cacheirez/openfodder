@@ -23,12 +23,22 @@ def png(width, height, rgba):
             + chunk(b'IDAT', zlib.compress(scan)) + chunk(b'IEND', b''))
 
 
+def verify_masters(frame):
+    for master in (frame, frame.get('uniform_a')):
+        if master is None:
+            continue
+        source = ROOT/'assets/modernization'/master['asset']
+        if hashlib.sha256(source.read_bytes()).hexdigest() != master['source_sha256']:
+            raise ValueError(f'master hash mismatch: {source}')
+
+
 def derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder):
     """Shared exact derivative/export path for diagonal and full walking sets."""
     sheet, f = frame['sheet'], frame['frame']
     name = f's{sheet}-f{f}-{density}'
     header = out/(name+'.hpp')
-    source = ROOT/'assets/modernization'/frame['asset']
+    uniform = frame.get('uniform_a')
+    source = ROOT/'assets/modernization'/(uniform or frame)['asset']
     if (sheet, f) == (7, 0):
         command = [c01_builder, source, header, density]
     else:
@@ -45,6 +55,8 @@ def derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder)
         out/(name+'.rgba'), name, 16, 14, density])), text=True))
     if (out/descriptor['file']).read_bytes() != rgba:
         raise ValueError('export changed derivative bytes')
+    if uniform and descriptor['sha256'] != uniform['rgba_sha256'][str(density)]:
+        raise ValueError(f'option A RGBA hash mismatch: {name}')
     return descriptor, image
 
 

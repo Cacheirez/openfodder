@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from prepare_grenade_art import prepare as prepare_previous
-from prepare_walk_art_review import ROOT, derive_frame
+from prepare_walk_art_review import ROOT, derive_frame, verify_masters
 
 CONFIG = ROOT / 'assets/modernization/soldier-rocket/manifest.json'
 
@@ -17,7 +17,7 @@ def prepare(out, c01, batch, asset):
     assert [(f['sheet'], f['frame']) for f in config['frames']] == [
         (0x39 + d, f) for d in directions for f in range(3)]
     for f in config['frames']:
-        assert hashlib.sha256((ROOT / 'assets/modernization' / f['asset']).read_bytes()).hexdigest() == f['source_sha256']
+        verify_masters(f)
     previous = prepare_previous(out, c01, batch, asset)
     manifest = json.loads((out / 'candidate-manifest.json').read_text())
     # Preserve every existing descriptor, file and binding; no prior pose regenerated differently.
@@ -36,9 +36,17 @@ def prepare(out, c01, batch, asset):
     assert len(manifest['bindings']) == len({b['key'] for b in manifest['bindings']}) == 222 + 12 * len(directions)
     assert manifest['assets'][:112] == old_assets and manifest['bindings'][:222] == old_bindings
     assert all(hashlib.sha256((out / name).read_bytes()).hexdigest() == digest for name, digest in old_hashes.items())
-    assert [f for f in config['frames'] if f['sheet'] == 64] == config['preserved_first_direction_frames']
+    first_frames = [f for f in config['frames'] if f['sheet'] == 64]
+    assert [{k: v for k, v in f.items() if k != 'uniform_a'} for f in first_frames] == config['preserved_first_direction_frames']
     assert [r for r in config['bindings'] if r['sheet'] == 64] == config['preserved_first_direction_bindings']
-    assert [a for a in manifest['assets'] if a['id'].startswith('s64-')] == config['preserved_first_direction_assets']
+    first_assets = []
+    for frame in first_frames:
+        for density in (8, 12):
+            original_id = f"s64-f{frame['frame']}-{density}"
+            descriptor = next(a for a in config['preserved_first_direction_assets'] if a['id'] == original_id)
+            uniform = frame.get('uniform_a')
+            first_assets.append({**descriptor, 'sha256': uniform['rgba_sha256'][str(density)]} if uniform else descriptor)
+    assert [a for a in manifest['assets'] if a['id'].startswith('s64-')] == first_assets
     (out / 'candidate-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     preview = {a['id']: base64.b64encode((out / (a['id'] + '.png')).read_bytes()).decode()
                for a in manifest['assets'] if int(a['id'].split('-')[0][1:]) in directions + [16 + d for d in directions] + [57 + d for d in directions]}

@@ -17,7 +17,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s8-f0-verde-a.png",
+        "source_sha256": "753a5473c5d3a3604cd7b4fc7446c58f24b04734a8b0f8b0699a2e6390e76fe3",
+        "rgba_sha256": {
+          "8": "5e8ca207516d6207b1691cceb58cc0b7d00ed5ee46090a9467ad9852dac58bc9",
+          "12": "008574c6cb5bb9742c712268a1cd56597789c7944d7beb063c9cac2409038190"
+        }
+      }
     },
     {
       "sheet": 8,
@@ -34,7 +42,15 @@
         3,
         9,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s8-f1-verde-a.png",
+        "source_sha256": "1b018bf4462abb8f76da7ba31fd0c595b29b1d7e23cec9a711642e394b193c1f",
+        "rgba_sha256": {
+          "8": "57dcf06e16445b411f94a29d2744999983800cef9169b58e539b5d70f4daa0e9",
+          "12": "33d34fbee86ad2870c61dba3467e4336dfc7306fb4c145f6168e9f21e66443e7"
+        }
+      }
     },
     {
       "sheet": 8,
@@ -51,7 +67,15 @@
         3,
         9,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s8-f2-verde-a.png",
+        "source_sha256": "e36cc41eda01d6e6db520089af2b373a3c55d886bbfb73753b1992ac61a2ae10",
+        "rgba_sha256": {
+          "8": "36d59c530ada5c0b4f9096cf63d75884fc44a7cc343198e8231ecae37aa2e25f",
+          "12": "43c2375f10fff499811b4b12b96d6d7c37a64a69b34a0089f53e78f36dbf8656"
+        }
+      }
     },
     {
       "sheet": 9,
@@ -68,7 +92,15 @@
         4,
         7,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s9-f0-verde-a.png",
+        "source_sha256": "016a2c34e9743d149c306beb3afda0b3dd17026ddc8402bcda4b2ab32f6dee74",
+        "rgba_sha256": {
+          "8": "e5e8465aaa7664d50ccd67f2b8d594f8c1ffd7022a189dfa9679d27558c438ad",
+          "12": "507c82ff6207f83dada90eff7ad4c2e565dbcb50200b62e52c573a282c16a896"
+        }
+      }
     },
     {
       "sheet": 9,
@@ -85,7 +117,15 @@
         4,
         7,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s9-f1-verde-a.png",
+        "source_sha256": "16b3ba6ac4763609ffe8bbf196e80a8e5965f1ff319dd3c7062a38d4ed5c9494",
+        "rgba_sha256": {
+          "8": "eee1b81cbbafd84ba1059872723588dc1ef7a91cb94cf32a48e814540e7a0c8c",
+          "12": "3315141990169ee1dba6e7ca888b9e27c223841b51856de0acf76ab1a793d1ce"
+        }
+      }
     },
     {
       "sheet": 9,
@@ -102,7 +142,15 @@
         2,
         12,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s9-f2-verde-a.png",
+        "source_sha256": "d105453148357475e71fe1c00ab9b006494c275655bbc684ffd3a3a6e44b4e37",
+        "rgba_sha256": {
+          "8": "5bfd1a64e76605a814ece994c75475c16278fac062494e146639e6263e7d7cb8",
+          "12": "ffd62baa4c68bcfb7895a184466f569b648b509fc4bedd82218245cac2c50b79"
+        }
+      }
     },
     {
       "sheet": 10,
@@ -119,7 +167,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s10-f0-verde-a.png",
+        "source_sha256": "9d03f2cb4c7ae6a0e21403f5bbd05d3c4c8899c38232bb697609bb0c71485eab",
+        "rgba_sha256": {
+          "8": "aba2c9f9becc91fa5badc1bc85b55ee1a850635ac094359d68999daab387307b",
+          "12": "642733a4316fe5a4af1967377e42ae8cfdc2c606243c6f4e1ab5b131f1585c72"
+        }
+      }
     },
     {
       "sheet": 10,
@@ -136,7 +192,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s10-f1-verde-a.png",
+        "source_sha256": "34816aba7b00ff476fbd78fd5d06193d763723e0adab7fe26b86ebb52ab4b212",
+        "rgba_sha256": {
+          "8": "d3c577ee5b7fffe42e1dc118151fa4b1c0bf40ee48d544bd25d537c5150f6771",
+          "12": "1667a55cbfe8d3de20ae015c0599d196154e2591787b1aee84be5186728802f4"
+        }
+      }
     },
     {
       "sheet": 10,
@@ -153,7 +217,15 @@
         2,
         11,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s10-f2-verde-a.png",
+        "source_sha256": "255db8af2f22513a676be088a674f17eea82a74d9ff1b9be788584d93615115b",
+        "rgba_sha256": {
+          "8": "073eb911b5563f526692673ebeed51078283597e2ad91a02aa3958b80858d26c",
+          "12": "739b7becc2732ec1889138f5a3dbed6a7c99aa3366876750eda81d6be49580b3"
+        }
+      }
     },
     {
       "sheet": 11,
@@ -170,7 +242,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s11-f0-verde-a.png",
+        "source_sha256": "6c04c1c80a36309db7cb4016c991457de945e6880dbaa90ee9f1b51af871ca2a",
+        "rgba_sha256": {
+          "8": "be3bdbad00a80eb8615e3062920a682d62e4ed2e0abbe65aeefd8953aa2ca913",
+          "12": "4ca5d8c0df8b716d562deb5c63c4eb2e61d959e6a6071d600d293fdc21cfb0b5"
+        }
+      }
     },
     {
       "sheet": 11,
@@ -187,7 +267,15 @@
         2,
         11,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s11-f1-verde-a.png",
+        "source_sha256": "ac62b0c27cccab98a9a693e28b6806c3bfde32a6d0ca022dd20e7a0e22228c50",
+        "rgba_sha256": {
+          "8": "0f91c268bafa397adf265c0e6b93f673900d40ba2d5ee91f2a55b23fde16b1c9",
+          "12": "58dd61d8ee8a135c8f2d6d45fbba18c177c09adc9dffbd897a35d56670e6d4fa"
+        }
+      }
     },
     {
       "sheet": 11,
@@ -204,7 +292,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s11-f2-verde-a.png",
+        "source_sha256": "0ad6ec3154975a21c4d31e8f71c86314e50ee39210966c6e1b2c277e8dd3b1b9",
+        "rgba_sha256": {
+          "8": "c6a440daf8b8566d63f195f7dda180b04f0354e3a8fd9935e6109e8443324bee",
+          "12": "3c4f36a7e7c27dc17a0edd24bc523b9be725ce0fab9081d11894d6dea59a320c"
+        }
+      }
     },
     {
       "sheet": 12,
@@ -221,7 +317,15 @@
         3,
         9,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s12-f0-verde-a.png",
+        "source_sha256": "adf2f684cc3301fd606b45608616f1202c2506e15d8889bef49fbb7e94809c5b",
+        "rgba_sha256": {
+          "8": "f7f599daf2dcf0019c8ccb8bd2a9b09f9dd8441a222ad04ffb3a49845803bc85",
+          "12": "dd917029c9b57cc8885bf63dd1bd1e670cb53f781fba037e4b3bef23582df2ed"
+        }
+      }
     },
     {
       "sheet": 12,
@@ -238,7 +342,15 @@
         2,
         11,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s12-f1-verde-a.png",
+        "source_sha256": "18c8aadf0be12cb78c39bb2339eecf08b03394faa2dcc26641fbb724f1bbfe37",
+        "rgba_sha256": {
+          "8": "ec7c71f451e04707479a3fda1199d4ea0724c595cd79dad44206e3ecc98d04d3",
+          "12": "e01fdd33e82f3964ec385b54ebc9cabeeca29d42c1af7d1ba46da8551cc9af42"
+        }
+      }
     },
     {
       "sheet": 12,
@@ -255,7 +367,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s12-f2-verde-a.png",
+        "source_sha256": "07f435fd004c9a070ecd644aaf2a5b0f57947cfca72afb022e7b85aa1a85b6cd",
+        "rgba_sha256": {
+          "8": "1f1b753f2ea1d8de14545be3f696f482ebac0e6a79e5cd80ee4db4863f4e6e13",
+          "12": "0d4387898665f19840f44dd1225246dc74ae6afe0ab06490b6edb98616aca3c5"
+        }
+      }
     },
     {
       "sheet": 13,
@@ -272,7 +392,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s13-f0-verde-a.png",
+        "source_sha256": "29f2ea4079e8d91919c92de8b66700336e84f2c867d0986311f7907c02905f1a",
+        "rgba_sha256": {
+          "8": "b111f866424850d75259f36283902883f379c8bb44fdae760a6754999e07a279",
+          "12": "33a694720c17f087cd29fae9df0206495941ce39c48a79dbc49228319162c05f"
+        }
+      }
     },
     {
       "sheet": 13,
@@ -289,7 +417,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s13-f1-verde-a.png",
+        "source_sha256": "70c86051201bcdc189ce8558f819b0f253af722cd201ebb6dc7a49b3afde9bb8",
+        "rgba_sha256": {
+          "8": "676ed233fefb441acd406a7537aa602e9766148b6cc835f71901edd0327cbcdf",
+          "12": "fb93a25cafc8c1e7d03dc1eca184e0259054de44dcc613e7fa1caa97b952c334"
+        }
+      }
     },
     {
       "sheet": 13,
@@ -306,7 +442,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s13-f2-verde-a.png",
+        "source_sha256": "747e5a78c43248416baf1f61b003b542107b259426c6b2b29b4050dfbb800383",
+        "rgba_sha256": {
+          "8": "2d684c199c1a2c64435ba94bdc35f93e62d88172af2318bdebf6de81b9c0a582",
+          "12": "dfa754bb5eb6f518868e5f6a8bb4feeb34dee05ea0811d0beddd5c9b722b35aa"
+        }
+      }
     },
     {
       "sheet": 14,
@@ -323,7 +467,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s14-f0-verde-a.png",
+        "source_sha256": "d1fc9f95f2739afcdea1fbf0b70f5b7a66b1a153360d7aa11897d98a96bd9c90",
+        "rgba_sha256": {
+          "8": "8eac13afd7fa8e5829e391671da551e8a91216c38e4a826dface69ae2553fe55",
+          "12": "1b4a43376c90286cfebeb38bc8e398a0ca3880f7448aeca5d473cfa02cdfde6a"
+        }
+      }
     },
     {
       "sheet": 14,
@@ -340,7 +492,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s14-f1-verde-a.png",
+        "source_sha256": "110fb8a86a319d7947ed10f6eea7e18f35ed651da47bb0fff6ad6321c7f9a072",
+        "rgba_sha256": {
+          "8": "8af7e258f33a20aa5838db0b3e12d749fc4b676aa32da233bbdaa727c34e742f",
+          "12": "c08b54950ee3d61d79855334cd0ae4ab9e4a0b421c99babdea5d041ed3f41b90"
+        }
+      }
     },
     {
       "sheet": 14,
@@ -357,7 +517,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s14-f2-verde-a.png",
+        "source_sha256": "690eb64c5d9f29bce9c1e4c4376c5c125b63182e77c3f6de36783e428a35c637",
+        "rgba_sha256": {
+          "8": "06860c7c1394bb42a4133f58892f0ea296a6b900af358c26b0a5c75821deb047",
+          "12": "49710e440742bb552dbcf0a9cc97e63618e444372981ac759ef73548ea6451b8"
+        }
+      }
     },
     {
       "sheet": 15,
@@ -374,7 +542,15 @@
         3,
         9,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s15-f0-verde-a.png",
+        "source_sha256": "0b44c221ac88f880ad748a44e91b61c33b4346144aea331d671d8db35b22a3f0",
+        "rgba_sha256": {
+          "8": "13afe50ffe2fe57bbd1db0a3f343626ba47d9a277e710b8e1509472503e77c1b",
+          "12": "283128f7479a42962edf2fac6057521c3480bd8b28d0fdcf194ed3d51fb7329a"
+        }
+      }
     },
     {
       "sheet": 15,
@@ -391,7 +567,15 @@
         3,
         10,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s15-f1-verde-a.png",
+        "source_sha256": "4b82f82c88de97f7c2d2642587a0d4319ce70bb0323b9b57c2d0babcb3383f35",
+        "rgba_sha256": {
+          "8": "a0616a91ac93a3bedd52194ca3644bb27e52a0606bcb07a28adb9fb9999d75b8",
+          "12": "4ed8ce177613d640f79fd44a17f758da80405087654bd5cbbd9cc3f954c7ad42"
+        }
+      }
     },
     {
       "sheet": 15,
@@ -408,7 +592,15 @@
         4,
         8,
         14
-      ]
+      ],
+      "uniform_a": {
+        "asset": "soldier-grenade/uniform-a/s15-f2-verde-a.png",
+        "source_sha256": "06474d4be3e43552f2fe8cab75297573d9bc2d19852bf571613d7e8f879f2293",
+        "rgba_sha256": {
+          "8": "e0ffe5cd4cdf696bcb125a590dd0cfb2449191bd1651003a485ece24e6046c00",
+          "12": "975e7520dd167ed13ba99b9da166e9a20e50646cfef9a0af7ef015c577ae9050"
+        }
+      }
     }
   ],
   "bindings": [

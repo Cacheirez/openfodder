@@ -25,7 +25,15 @@
         8,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s0-f0-verde-a.png",
+        "source_sha256": "c7aa5d0e082821a4a5c9cbe430ceb6e76d1a9b2cf6aafe5313e594201b54e21e",
+        "rgba_sha256": {
+          "8": "767b52bfa565cc9b784046a0b7cf9f7421f6e9682cac34beee47da50e8ad750b",
+          "12": "ba3365314b6e7a415e47fa0c9f85cdcd92a71613f06907107415d9e39aefc8ee"
+        }
+      }
     },
     {
       "sheet": 0,
@@ -43,7 +51,15 @@
         8,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s0-f1-verde-a.png",
+        "source_sha256": "1f5bdb3e7bba748e1365cfda4843f23f61b531cc58418d307e9c2e63c2754f4d",
+        "rgba_sha256": {
+          "8": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe",
+          "12": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057"
+        }
+      }
     },
     {
       "sheet": 0,
@@ -61,7 +77,15 @@
         8,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s0-f2-verde-a.png",
+        "source_sha256": "9a447ebdc0545ab220c66341b1dd54a91857299d2135072106f2e335283b4b5a",
+        "rgba_sha256": {
+          "8": "a655d4ee52e04598f914bfbd2c5464f21e06caa5ca58683daf817a2e70f8a8d4",
+          "12": "f8fcba2a243790d490d367bceebc9247836d59cd58e102a50bde8e9ea36d839a"
+        }
+      }
     },
     {
       "sheet": 1,
@@ -79,7 +103,15 @@
         14,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s1-f0-verde-a.png",
+        "source_sha256": "70048c9325f3f403cfbe53bb50aa063590d86a0b74dde77189ba4fe1f4a4899b",
+        "rgba_sha256": {
+          "8": "124b29ce08a0d798063b4e87c10bc0b46fb39215813ab5abc63393397b68347e",
+          "12": "48e0ba55300f4825fc6b50e51b14f8f06da1bafd4a83293c4ef48fc92bf17726"
+        }
+      }
     },
     {
       "sheet": 1,
@@ -97,7 +129,15 @@
         14,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s1-f1-verde-a.png",
+        "source_sha256": "bd048f9387ec80a4f960cb934fa23474fc7598887d1985db7e8c651f26556c0f",
+        "rgba_sha256": {
+          "8": "e63f382a732e4c079c799b10ecca2f4bf729039ba9602f27cbd31c6781cdd1ad",
+          "12": "e3279340143a43972f369dbb781fa35758544a2a0b8d0f0bdb9547f921dc5d15"
+        }
+      }
     },
     {
       "sheet": 1,
@@ -115,7 +155,15 @@
         14,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s1-f2-verde-a.png",
+        "source_sha256": "33e57f51941e9798debbcc25f2e7cd9a3d825fd9b0b642cd72da3c9bec2eccd5",
+        "rgba_sha256": {
+          "8": "c3ee25a9cf4a435aae2c9e4f161983770354350e9a91a6383dfc1c616efd9290",
+          "12": "610e8680c99a920064ec6cb6640dd5d9ea4a1ece8aa47642d27f7006818362b2"
+        }
+      }
     },
     {
       "sheet": 2,
@@ -133,7 +181,15 @@
         16,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s2-f0-verde-a.png",
+        "source_sha256": "fec1c2e4b774da2a3fa088507a8b8da050a95e3305467119175dd6ef647a69d6",
+        "rgba_sha256": {
+          "8": "3977c5a86616393f752dd2da392058e2045fe7de55c135d9a1954c1c5eaf68ed",
+          "12": "ff2d055ad2bef13ba9f2447e34eec84003cdd35dfc4c0fef4a6ff4545d2e412c"
+        }
+      }
     },
     {
       "sheet": 2,
@@ -151,7 +207,15 @@
         16,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s2-f1-verde-a.png",
+        "source_sha256": "d072b069d655ccf87fd5ba2c4bdf7164b8f0223f734496124a24f712c15a0eef",
+        "rgba_sha256": {
+          "8": "32884bedb2303f47be412160c2c803fa208205837cceb11ce823594e3a2a208f",
+          "12": "fa77d4be949cae558b41041a4010e74835d4ff4c99f2e07d03c1e7ad126b95b2"
+        }
+      }
     },
     {
       "sheet": 2,
@@ -169,7 +233,15 @@
         16,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s2-f2-verde-a.png",
+        "source_sha256": "fb9015d0f68551968f1e2223229ef14da227efdacf8530c0df436472b335e272",
+        "rgba_sha256": {
+          "8": "ff3e1ff20bd0e384536f7389818aac8584aec2feccf39973e03e7988cd72b73e",
+          "12": "cc814d9b76cbc8ebd81e302ce9c40f4c8f35ae791ff67c35d054bbb65c590ff6"
+        }
+      }
     },
     {
       "sheet": 3,
@@ -187,7 +259,15 @@
         10,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s3-f0-verde-a.png",
+        "source_sha256": "44f35510934da42dea136e5695a8024746d787d58340f4c9bd10bc6d6093bbd6",
+        "rgba_sha256": {
+          "8": "4bd9b052ceea5f2360278f182f36f5b2928ef440b670365e1f184606933a4818",
+          "12": "375d77896a5e4c46dd98e04c798c9572faa244f330d44655d1c3e305b977ea83"
+        }
+      }
     },
     {
       "sheet": 3,
@@ -205,7 +285,15 @@
         10,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s3-f1-verde-a.png",
+        "source_sha256": "a5179777cef6b23f7dbe811c0092875952535e2e166d32af51d59c866988e894",
+        "rgba_sha256": {
+          "8": "83987f0214bead68ddfde13a97ffa0bc82cbb192a78d8f0b84db3364abe4a8c2",
+          "12": "c3890b3e19a66377b89e3e53631690c18a64140bacf581f1bf712cd1ef606e62"
+        }
+      }
     },
     {
       "sheet": 3,
@@ -223,7 +311,15 @@
         10,
         14
       ],
-      "status": "internal-cycle-review-user-acceptance-pending"
+      "status": "internal-cycle-review-user-acceptance-pending",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s3-f2-verde-a.png",
+        "source_sha256": "b763155944deceb41fc605945a94b907bae52921401a3a899438c57250fcfc55",
+        "rgba_sha256": {
+          "8": "f5ea80638398c2e7e72a70628f770a1f0785c914b3eea160401c0b30e4c57381",
+          "12": "3a2e419ccbac38b2e994fa196998e98e8820af6439d882b14ce2bd50c842b0fb"
+        }
+      }
     },
     {
       "sheet": 4,
