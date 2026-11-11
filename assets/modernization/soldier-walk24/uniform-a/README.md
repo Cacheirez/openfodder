@@ -69,3 +69,21 @@ python -B tools/modernization/prepare_walk5_uniform.py --out <directorio>
 Los tres PNG se reprodujeron byte a byte con Pillow 11.3.0. El exportador compartido reprodujo también los tres PNG de dirección 6. `prepare_rocket_art.py` reconstruyó 160 activos y 318 vinculaciones. Frente a `f4e6707`, solo variaron los canales RGB de los seis derivados previstos. SDL Windows x64 PASS con 256 intervalos controlados y 236 nativos, dos cuerpos, recorte, oclusión y tres rechazos por pasada. Se conserva la evidencia anterior de transiciones, simulación y sanitizadores.
 
 En el directorio local de evidencia de dirección 6, `marcha-5-comparativa-8x.png` y `marcha-5-comparativa-12x.png` documentan la comparación visual interna con el original y la dirección 6. `w5-comparison.json`, `w5-controlled/validation.json` y `w5-native/validation.json` contienen los resultados. Los hashes de los maestros y derivados figuran en el [manifiesto](../manifest.json). Aceptación jugando, GPU y CD32 PENDIENTES.
+
+## Dirección 4
+
+12 de noviembre de 2026. Las máscaras de las tres poses de espalda recta cubren casco, mangas, espalda, faldón y pantalones con los factores RGB de la opción A. Las muestras de rifle, manos, correajes, cinturón, cartucheras y botas conservan sus píxeles. Se comprobó la consistencia cromática de los tres frames a 8× y 12× junto al original y la dirección 5.
+
+| Frame | Píxeles RGB modificados a 8× | Píxeles RGB modificados a 12× |
+|---|---:|---:|
+| 0 | 2.875 | 6.315 |
+| 1 | 2.937 | 6.458 |
+| 2 | 2.938 | 6.460 |
+
+```powershell
+python -B tools/modernization/prepare_walk4_uniform.py --out <directorio>
+```
+
+Los tres PNG se reprodujeron byte a byte con Pillow 11.3.0. `prepare_rocket_art.py` reconstruyó 160 activos y 318 vinculaciones. Frente a `1afb692`, solo cambió el RGB de los seis derivados de dirección 4, con alfa y vinculaciones exactos. `check_walk24_art.py` pasó en Windows x64 con SDL por software, con 256 intervalos controlados y 236 nativos a partir de 94 instantáneas PC/Amiga. Cada pasada ejercitó los tres frames de dirección 4 a ambas densidades, dos soldados, recorte, oclusión y tres rechazos sin publicación. Aceptación jugando, GPU y CD32 PENDIENTES. Se conserva la evidencia previa de transiciones, H3 y sanitizadores.
+
+Evidencia local en `C:/Users/migue/.codex/visualizations/2026/11/11/01a1cce3-3697-7a92-a0cd-3a8a9886d630`. Las láminas son `marcha-4-comparativa-8x.png` y `marcha-4-comparativa-12x.png`. Los resultados se guardaron en `w4-comparison.json`, `w4-sdl-controlled/validation.json` y `w4-sdl-native/validation.json`. Los hashes de maestros y derivados figuran en el [manifiesto](../manifest.json).
