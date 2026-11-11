@@ -61,7 +61,7 @@ for(unsigned density:{8u,12u})for(const auto& group:groups)for(int direction=0;d
    auto geometry=g;geometry.source=result.soldier.resource.source();result.soldier.draw=PrepareSpriteDraw(geometry);
    const auto art=registry.resolve(result.soldier,SoldierVariantKey(result.soldier,item.colors),density);
    assert(art.decision==SoldierArtDecision::Replace);
-   if(s.sheet==7 && s.frame==0)assert(*art.pixels==*SoldierBatchAsset(7,0,density).pixels);
+   if(s.sheet==7 && s.frame==0)checkWalkC01(*art.pixels,density);
    return result;
   };
   auto first=layer(firstPose,0),second=layer(secondPose,1);
@@ -93,4 +93,4 @@ for(int missing=0;missing<3;++missing){
 }
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","");
 if(!native)std::remove(selectedPath.c_str());
-std::cout<<"PASS aim transition "<<(native?"real-source":"controlled")<<": "<<steps<<" intervals; "<<sequences<<" sequences; two independently selected soldiers; C01 exact; three rejection cases\n";
+std::cout<<"PASS aim transition "<<(native?"real-source":"controlled")<<": "<<steps<<" intervals; "<<sequences<<" sequences; two independently selected soldiers; option A and C01 alpha; three rejection cases\n";

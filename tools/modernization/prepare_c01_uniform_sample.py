@@ -54,17 +54,17 @@ def ramp(value, start, end):
     return min(1, max(0, (value - start) / (end - start)))
 
 
-def source_point(x, y):
-    left, top, right, bottom = CROP
+def source_point(x, y, crop=CROP):
+    left, top, right, bottom = crop
     return (round(left + x * (right - left) / GRID[0]),
             round(top + y * (bottom - top) / GRID[1]))
 
 
-def uniform_mask(source):
+def uniform_mask(source, crop=CROP, panels=PANELS):
     outline = Image.new("L", source.size)
     draw = ImageDraw.Draw(outline)
-    for panel in PANELS:
-        draw.polygon([source_point(x, y) for x, y in panel], fill=255)
+    for panel in panels:
+        draw.polygon([source_point(x, y, crop) for x, y in panel], fill=255)
     outline = outline.filter(ImageFilter.GaussianBlur(2))
     hue, saturation, _ = source.convert("HSV").split()
     alpha = source.getchannel("A")
@@ -105,9 +105,9 @@ def verify(current, edited, mask):
     return changes
 
 
-def verify_protected(source, master):
-    for name, (left, top, right, bottom) in PROTECTED.items():
-        box = (*source_point(left, top), *source_point(right, bottom))
+def verify_protected(source, master, crop=CROP, regions=PROTECTED):
+    for name, (left, top, right, bottom) in regions.items():
+        box = (*source_point(left, top, crop), *source_point(right, bottom, crop))
         if source.crop(box).tobytes() != master.crop(box).tobytes():
             raise ValueError(f"Protected region changed: {name}")
 

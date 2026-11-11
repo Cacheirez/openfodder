@@ -70,7 +70,7 @@ for(unsigned d:{8u,12u})for(const auto& item:cases){
     auto geometry=g;geometry.source=first.soldier.resource.source();first.soldier.draw=PrepareSpriteDraw(geometry);
     const auto art=registry.resolve(first.soldier,SoldierVariantKey(first.soldier,item.colors),d);
     assert(art.decision==SoldierArtDecision::Replace);
-    if(s.sheet==7 && s.frame==0)assert(*art.pixels==*SoldierBatchAsset(7,0,d).pixels);
+    if(s.sheet==7 && s.frame==0)checkWalkC01(*art.pixels,d);
     auto second=first;second.soldier.soldier.slot=1;
     second.soldier.soldier.geometry.spriteX+=4;second.soldier.soldier.geometry.rowsToSkip=3;
     geometry=second.soldier.soldier.geometry;geometry.source=second.soldier.resource.source();second.soldier.draw=PrepareSpriteDraw(geometry);
@@ -107,4 +107,4 @@ for(int missing=0;missing<3;++missing){
 }
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","");
 if(!native)std::remove(selectedPath.c_str());
-std::cout<<"PASS walk24 "<<(native?"real":"controlled")<<": 24 artistic keys, "<<steps<<" published SDL intervals, C01 exact, three scope rejections\n";
+std::cout<<"PASS walk24 "<<(native?"real":"controlled")<<": 24 artistic keys, "<<steps<<" published SDL intervals, option A and C01 alpha, three scope rejections\n";

@@ -16,9 +16,13 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     assert [(f['sheet'], f['frame']) for f in config['frames']] == [(s, f) for s in range(8) for f in range(3)]
     assert config['sequence'] == [0, 1, 2, 1]
     for frame in config['frames']:
-        source = ROOT/'assets/modernization'/frame['asset']
-        if hashlib.sha256(source.read_bytes()).hexdigest() != frame['source_sha256']:
-            raise ValueError('master hash mismatch: '+str(source))
+        masters = [frame]
+        if 'uniform_a' in frame:
+            masters.append(frame['uniform_a'])
+        for master in masters:
+            source = ROOT/'assets/modernization'/master['asset']
+            if hashlib.sha256(source.read_bytes()).hexdigest() != master['source_sha256']:
+                raise ValueError('master hash mismatch: '+str(source))
     if hashlib.sha256((ROOT/config['native_evidence']).read_bytes()).hexdigest() != config['native_evidence_sha256']:
         raise ValueError('native evidence changed; inspect bindings')
     assert len(config['bindings']) == len({b['key'] for b in config['bindings']}) == 94
@@ -31,8 +35,12 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     manifest = dict(version=2, assets=[], bindings=[])
     pictures = {}
     for frame in config['frames']:
+        uniform = frame.get('uniform_a')
+        selected = {**frame, 'asset': uniform['asset']} if uniform else frame
         for density in (8, 12):
-            descriptor, image = derive_frame(out, frame, density, c01_builder, batch_builder, asset_builder)
+            descriptor, image = derive_frame(out, selected, density, c01_builder, batch_builder, asset_builder)
+            if uniform and descriptor['sha256'] != uniform['rgba_sha256'][str(density)]:
+                raise ValueError('option A RGBA hash mismatch: '+descriptor['id'])
             manifest['assets'].append(descriptor)
             pictures[f"{frame['sheet']}/{frame['frame']}/{density}"] = base64.b64encode(image).decode()
     for b in config['bindings']:
@@ -42,11 +50,11 @@ def prepare(out, c01_builder, batch_builder, asset_builder):
     result = dict(status='PENDING user artistic acceptance and full soldier coverage', frames=24,
         assets=manifest['assets'], observed_native_bindings=94, unobserved=config['unobserved'],
         source_manifest_sha256=hashlib.sha256(CONFIG.read_bytes()).hexdigest(),
-        scope=config['scope'], no_clock_changes=True, c01='original source and builder unchanged')
+        scope=config['scope'], no_clock_changes=True, c01='option A for the candidate; original preserved')
     (out/'preparation.json').write_text(json.dumps(result, indent=2)+'\n')
     html = '''<!doctype html><html lang="es"><meta charset="utf-8"><title>Marcha · ocho direcciones</title>
 <style>body{font:17px system-ui;background:#18251e;color:#eee;padding:24px}button,select{font:inherit;margin:8px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}article{background:#354638;padding:12px}img{width:192px;height:168px}small{display:block}</style>
-<h1>Marcha del jugador · 24 claves</h1><p>Revisión interna. C01 intacto; nuevas poses pendientes de aceptación artística. No incluye otros estados ni enemigos. No demuestra una campaña completa sin retornos al clásico.</p>
+<h1>Marcha del jugador · 24 claves</h1><p>Revisión interna. Verde A aplicado a la dirección 7, pendiente de valoración visual.</p>
 <button id="play">Pausar</button><button id="step">Paso</button><label>Densidad <select id="density"><option>12</option><option>8</option></select></label><label><input id="turn" type="checkbox">Giro continuo</label><span id="label"></span><main id="gallery"></main>
 <p>Secuencia ilustrativa 0–1–2–1 a 180 ms por pose; el motor conserva sus contadores originales. Cambiar dirección no cambia el tamaño lógico.</p>
 <script>const images=IMAGES,sequence=[0,1,2,1],names=['Delante','Delante / izquierda','Izquierda','Izquierda / atrás','Atrás','Atrás / derecha','Derecha','Derecha / delante'];let step=0,running=true,direction=0;

@@ -101,7 +101,7 @@ def check(a, out):
                   mode='source-reconstructed real resources' if native else 'controlled metadata and test-only keys',
                   directions=directions, intervals=expected, bodies=expected * 2,
                   sequences=expected // 22, densities=[8, 12], timeout_seconds=timeout_seconds, selector_assertions=2703,
-                  selector_samples=576, three_rejections=True, c01='exact',
+                  selector_samples=576, three_rejections=True, c01='option A verified; original alpha',
                   skipped_native_pairs=skipped_pairs,
                   log_sha256=hashlib.sha256(log.read_bytes()).hexdigest(), preparation=preparation,
                   limits=['geometry stubbed in selector fixture', 'prefix/suffix reuse prior walk/aim checks',

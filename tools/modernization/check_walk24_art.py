@@ -38,7 +38,7 @@ def check(args, out):
         mode='real unmodified native keys' if native else 'controlled keys explicitly rebound',
         artistic_keys=24, rgba_assets=48, published_intervals=published, published_bodies=published*2,
         published_variant_density_entries=variants, scope_rejections=3,
-        c01='byte-identical 8x/12x', log_sha256=hashlib.sha256(log.read_bytes()).hexdigest(),
+        c01='option A verified; original alpha at 8x/12x', log_sha256=hashlib.sha256(log.read_bytes()).hexdigest(),
         preparation=preparation, pending=['two unobserved Amiga ordinary keys', 'other states/enemies',
             'campaign-wide HD without normal fallback', 'transitions/GPU/CD32', 'user visual acceptance'])
     (out/'validation.json').write_text(json.dumps(result, indent=2)+'\n')

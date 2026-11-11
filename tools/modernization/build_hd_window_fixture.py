@@ -99,6 +99,12 @@ int main(){
     auto classic=RasterizeMissionLayers(image.scene,body.destination);image.tex=texture(renderer,classic.pixels,96,64);
     cWindow win;win.mRenderer=renderer;SDL_FRect src{0,0,96,64},dst{0,0,192,128};
 #ifdef OPENFODDER_EXTERNAL_ASSET_FIXTURE
+    const auto checkWalkC01 = [](const std::vector<uint32_t>& pixels, unsigned density) {
+        const auto original = SoldierBatchAsset(7, 0, density).pixels;
+        assert(original && pixels.size() == original->size() && pixels != *original);
+        for (size_t i = 0; i < pixels.size(); ++i)
+            assert((pixels[i] >> 24) == ((*original)[i] >> 24));
+    };
     if(std::getenv("OPENFODDER_ROCKET_ART")){
         #include "rocket_art_cases.inc"
     } else if(std::getenv("OPENFODDER_GRENADE_ART")){
