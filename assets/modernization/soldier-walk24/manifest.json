@@ -284,6 +284,14 @@
       "frame": 0,
       "asset": "soldier-walk24/s5-f0.png",
       "source_sha256": "cf0b5d932cb96fbc79e24f663dc125d5d6fd4746498da7e4b2a159643d2a2ac3",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s5-f0-verde-a.png",
+        "source_sha256": "b851e9297ee517cfb07060392527cc856f8c51425f04c55dd0ee2ab06737674f",
+        "rgba_sha256": {
+          "8": "3e619bacf4997a7757cab8f0987768f2df85d4de998fc00f36478d200eb48906",
+          "12": "f5642bea7ff1ade6b92fd362c554c103f042b04acdf139b873de28c77ea85d36"
+        }
+      },
       "crop": [
         435,
         153,
@@ -302,6 +310,14 @@
       "frame": 1,
       "asset": "soldier-walk24/s5-f1.png",
       "source_sha256": "987a845f4bda1329a4fe6786be549dcf6f5dec7085d46a35105b6cac6452efbd",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s5-f1-verde-a.png",
+        "source_sha256": "ce63ffd8572e65a3c8824839b9f10965a74f49b9ae5229ddc03e2f8d056fdf8a",
+        "rgba_sha256": {
+          "8": "b96ec2c0ddac4e79f914c5843f5d06466270d6f73202b8a358a75cb7714f0d77",
+          "12": "3f37ed6d581b1d41cfb1e0c03553fcda3c46082ea31aaa82ec451f5d0a595012"
+        }
+      },
       "crop": [
         434,
         96,
@@ -320,6 +336,14 @@
       "frame": 2,
       "asset": "soldier-walk24/s5-f2-v3.png",
       "source_sha256": "90e1824fdf3269ac5a5849bd12c475dbbd2d3f9c336b57edc636fe78815f1f26",
+      "uniform_a": {
+        "asset": "soldier-walk24/uniform-a/s5-f2-verde-a.png",
+        "source_sha256": "64583a9c5965c19ffe8c3c1a06823cc8b59fcbc2d07013ecd264ca1026605523",
+        "rgba_sha256": {
+          "8": "7f7a123d4e7a06568b76166d10695c269c006c3007388880e4a4cf407e25820f",
+          "12": "4b4b38ad119edb93b13b815103c02d2f85276a7cafc84c90a2df76c4fd87fc8a"
+        }
+      },
       "crop": [
         435,
         102,

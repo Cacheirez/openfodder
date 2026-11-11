@@ -11,7 +11,7 @@ Lote artístico interno del plan 2.74, A3. Las siete direcciones pendientes tien
 | 2, izquierda | `s2-f0/1/2.png` | Nuevo perfil izquierdo: torso y arma apuntan al lado, sin reutilizar la diagonal. |
 | 3, izquierda/atrás | `s3-f0.png`, `s3-f1.png`, `s3-f2-v3.png` | Espalda diagonal; zancada duplicada descartada, inversión y longitud de pierna corregidas. |
 | 4, atrás | `s4-f0/1/2.png` | Espalda recta, correajes conservados, alternancia de apoyos. |
-| 5, atrás/derecha | `s5-f0.png`, `s5-f1.png`, `s5-f2-v3.png` | Espalda diagonal con luz conservada; zancada repetida descartada y altura ajustada. |
+| 5, atrás/derecha | `s5-f0.png`, `s5-f1.png`, `s5-f2-v3.png` | El candidato aplica el verde A a los tres frames de espalda diagonal. [Verificación y recuperación](uniform-a/README.md#dirección-5). |
 | 6, derecha | `s6-f0/1/2.png` | El candidato aplica el verde A a los tres frames del perfil derecho. [Verificación y recuperación](uniform-a/README.md#dirección-6). |
 | 7, derecha/delante | C01 y los dos maestros de `../soldier-walk-review/review.json` | El candidato aplica el verde A a los tres frames. [Verificación y recuperación](uniform-a/README.md). |
 

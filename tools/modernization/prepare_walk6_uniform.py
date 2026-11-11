@@ -1,14 +1,8 @@
 """Reproduce the option A masters for walking direction 6. GPL-3.0-or-later."""
 import argparse
-import json
 from pathlib import Path
 
-from PIL import Image
-
-from prepare_c01_uniform_sample import (
-    OPTIONS, digest, recolour, uniform_mask, verify, verify_protected,
-)
-from prepare_walk24 import CONFIG, ROOT
+from prepare_walk_uniform import prepare
 
 # Coordinates on the same 397 × 600 crop grid as C01. Trace the helmet,
 # sleeve, shirt and trousers separately around the weapon and leather.
@@ -84,30 +78,7 @@ PROTECTED = (
 )
 
 
-def prepare(out):
-    frames = json.loads(CONFIG.read_text())["frames"]
-    out.mkdir(parents=True, exist_ok=True)
-    for frame in frames:
-        if frame["sheet"] != 6:
-            continue
-        number = frame["frame"]
-        source_path = ROOT / "assets/modernization" / frame["asset"]
-        if digest(source_path.read_bytes()) != frame["source_sha256"]:
-            raise ValueError(f"Master hash mismatch: {source_path}")
-        with Image.open(source_path) as image:
-            source = image.convert("RGBA")
-        crop = frame["crop"]
-        mask = uniform_mask(source, crop, PANELS[number])
-        master = recolour(source, mask, OPTIONS["A"])
-        changes = verify(source, master, mask)
-        verify_protected(source, master, crop, PROTECTED[number])
-        path = out / f"s6-f{number}-verde-a.png"
-        with path.open("xb") as stream:
-            master.save(stream, format="PNG")
-        print(f"{path.name} {digest(path.read_bytes())} mask={digest(mask.tobytes())} pixels={changes}")
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
-    prepare(parser.parse_args().out)
+    prepare(parser.parse_args().out, 6, PANELS, PROTECTED)
