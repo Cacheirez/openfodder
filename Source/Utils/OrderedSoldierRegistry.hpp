@@ -122,11 +122,12 @@ public:
             const bool bird=s.type==19 && s.sheet==0x98 && (s.frame==0||s.frame==1) &&
                 g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
                 !s.inVehicle && !s.pendingDestroy;
-            // The Amiga building roof stays in its original draw order.
-            const bool roof=s.type==15 && s.sheet==0x91 && s.frame==0 &&
+            // The Amiga roof and grenade box stay in their original draw order.
+            const bool retainedScenery=((s.type==15 && s.sheet==0x91) ||
+                (s.type==37 && s.sheet==0xc2)) && s.frame==0 &&
                 g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
                 !s.inVehicle && !s.pendingDestroy;
-            if(bird || roof || s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
+            if(bird || retainedScenery || s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }

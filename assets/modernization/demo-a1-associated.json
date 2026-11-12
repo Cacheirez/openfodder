@@ -126,6 +126,26 @@
       "effective_palette": 0,
       "native_rgba_sha256": "b12b1f987c818f7b2851a289651ecdc62b9b09de932aa94e81b955b3433a50c6",
       "decision": "keep-associated"
+    },
+    {
+      "key": "c967c720f08747d3eae8abb253c3ed16d3684ca547ca65df3627d275f9c3e6e5",
+      "type": 37,
+      "sheet": 194,
+      "frame": 0,
+      "animation": 0,
+      "person": 0,
+      "segment": 1,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "offset": 2578,
+      "columns": 2,
+      "rows": 13,
+      "mod_x": 0,
+      "mod_y": 0,
+      "table": "stru_8E308",
+      "table_palette": 13480,
+      "effective_palette": 0,
+      "native_rgba_sha256": "fe65a387e79d0fc034c567c96473bb301381c53dee10dbb40d6ebb169774df4b",
+      "decision": "keep-associated"
     }
   ]
 }
