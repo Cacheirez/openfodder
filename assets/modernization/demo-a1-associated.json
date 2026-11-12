@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "Reviewed Amiga The One m1p2 initial interval only; no body exemptions",
+  "scope": "Reviewed exact Amiga The One m1p2 associated keys; no body exemptions",
   "bindings": [
     {
       "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410",
@@ -22,6 +22,26 @@
       "table_palette": 13480,
       "effective_palette": 0,
       "native_rgba_sha256": "7255a67be84b80cfdc624c95375146a9a9850f21557d2e1899a8a7c7a855dd71"
+    },
+    {
+      "key": "84a0ee13d651ee9f27afe2d9284cacb3b3b53c18658c934effc0ba0942a0be5f",
+      "type": 21,
+      "sheet": 149,
+      "frame": 4,
+      "animation": 0,
+      "person": -1,
+      "segment": 1,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "offset": 9088,
+      "columns": 2,
+      "rows": 10,
+      "mod_x": 0,
+      "mod_y": 0,
+      "decision": "keep-associated",
+      "table": "stru_8D9F8",
+      "table_palette": 13480,
+      "effective_palette": 0,
+      "native_rgba_sha256": "e59d3f1c39d5f090eaa4d0c26fab9b530858908d7f7d0ec495f522abe2954610"
     },
     {
       "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7",

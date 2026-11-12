@@ -14,9 +14,21 @@
 
 La misma clave F4 falta una vez en cada uno de 4.162 intentos. Al agrupar por intento y cotejar con `missing` del resultado transaccional, F4 fue el único faltante en **2.127** de los 4.364 rechazos. Coincidió con otros faltantes en **2.035** y estuvo ausente del listado de faltantes en **202** rechazos. La clasificación mide la resolución registrada. La composición y la publicación HD tras una corrección siguen **PENDIENTES**.
 
-Propuesta pendiente de implementación en A: incorporar únicamente la clave exacta de F4 a los asociados de A.1 con `keep-associated`, conservando sus píxeles clásicos y el orden original. El registro consulta primero la clave completa y ya admite tipo 21/hoja 0x95 como asociado. Mantener el rechazo transaccional ante cualquier otro faltante. Para un futuro bloque de implementación, comprobar en una escena controlada que F4 conserva el raster y el orden con los cinco cuerpos a 8×/12×, que una clave alterada sigue faltando y que la presencia de otro faltante sigue devolviendo la vista al clásico. Se necesitará una prueba focalizada antes de pedir a Miguel que vuelva a jugar. Otras variantes de rango, escenario y enemigos quedan fuera de esta propuesta.
+La auditoría propuso incorporar únicamente la clave exacta de F4 a los asociados de A.1 con `keep-associated`, conservando sus píxeles clásicos y el orden original. El registro consulta primero la clave completa y ya admite tipo 21/hoja 0x95 como asociado. Cualquier otro faltante debe seguir provocando un rechazo transaccional.
 
-**Aceptación visual:** sigue vigente la no aceptación jugando de Miguel. El raster de la insignia se comprobó técnicamente. Quedan **PENDIENTES** la validación de la corrección, la continuidad jugando y las comprobaciones de GPU, audio, CD32, transiciones y cobertura restante. Los dos `input.ofd` de la sesión manual son inutilizables como replay.
+**Aceptación visual:** sigue vigente la no aceptación jugando de Miguel. Quedan **PENDIENTES** la continuidad jugando y las comprobaciones de GPU, audio, CD32, transiciones y cobertura restante. Los dos `input.ofd` de la sesión manual son inutilizables como replay.
+
+## Comprobación controlada de F4
+
+12 de noviembre de 2026, sobre `950dd7c`. Se añadió solo F4 a `demo-a1-associated.json`. El preparador acepta el manifiesto revisado del verde A además de D6, verifica los hashes de los 160 activos y conserva las 318 sustituciones. Resultado con verde A: 323 vínculos, cinco asociados. SHA-256 del manifiesto de salida en Windows `8d70ce397804ca998575239cd39704d5831b7d9b290f1567432c72001fb3979d`.
+
+- SDL 3.4.0 por software en Windows x64, Clang 23.1.5 con ASan/UBSan. A 8× y 12× el método real de WindowHD publicó los cinco cuerpos nativos y conservó F4 en el orden 4. Las 57 escrituras nativas de la insignia borraron celdas HD anteriores y coincidieron con el raster clásico en ese punto. El quinto cuerpo volvió a cubrir ocho y quedaron 49 visibles. La lectura de SDL coincidió píxel a píxel con el fotograma expandido.
+- A cada densidad, se alteró por separado la clave de F4 y la de un cuerpo. El método devolvió `-1` sin dibujar parcialmente. El dibujo clásico completo coincidió píxel a píxel con la referencia del intervalo y la escena válida volvió a publicar HD tras cada caso. Son claves y recursos nativos colocados en una escena construida, con cinco poses de marcha de la misma paleta. La medición de la cobertura con F4 vinculada en una nueva sesión de juego sigue pendiente.
+- H3 completo y LSan no se ejecutaron en este bloque de manifiesto y prueba focalizada. Se conserva la evidencia previa. Sin cambios en el motor ni activación de lanzadores.
+
+### Reproducción de la prueba controlada
+
+Directorio local `C:/Users/migue/.codex/visualizations/2026/11/12/01a1cf49-c857-76c0-8a70-1fc6c8adc098`. Usar `prepare_demo_a1_manifest.py --base <verde-A>/qa-rocket-native/art/candidate-manifest.json --out <directorio-local>/f4-candidate` con el [verde A verificado](DEMO_A1_VERDE_A.md#reproducción-y-recuperación). En ese directorio, `prepare_f4_input.py <auditoría> <a1> <verde-A> <directorio-local>` construye `f4-input.json` con el snapshot F4 de la auditoría y cinco claves de `qa-walk-native/native-input.json`. `run_f4.ps1 <checkout>` genera y compila el fixture y ejecuta el caso `OPENFODDER_A1_RANK_F4`. SHA-256 de `fixture-run.log` `636a973999deb66f7806c64b37f55d827eb4de6f09edd93dea8a0f18bbb7adb6`. Los recursos originales del juego se leen desde los directorios locales de snapshots.
 
 ## Recuperación local
 

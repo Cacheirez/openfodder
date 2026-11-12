@@ -7,8 +7,8 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** verde A en las 80 poses del candidato A.1 a 8×/12×. Por petición de Miguel, las 68 que faltaban se procesaron en un solo bloque con revisión visual interna y SDL Windows. Alfa de los 160 activos y 318 vinculaciones exactos. [Evidencia y recuperación](DEMO_A1_VERDE_A.md).
-- **Siguiente tarea única:** **Conservar la insignia clásica mediante `keep-associated` para la clave exacta F4 y validar la composición y el rechazo transaccional en una escena controlada a 8×/12×.** La resolución de otros faltantes, la aceptación jugando y la cobertura restante siguen PENDIENTES. [Criterios](DEMO_A1_AUDITORIA_RANGO_F4.md#impacto-y-propuesta-para-a).
+- **Último bloque cerrado:** clave exacta F4 en `keep-associated` sobre el candidato verde A. SDL Windows a 8×/12× comprobó el orden de la insignia con cinco cuerpos nativos, el retorno íntegro a clásico ante dos faltantes aislados y la recuperación de HD. [Prueba y recuperación](DEMO_A1_AUDITORIA_RANGO_F4.md#comprobación-controlada-de-f4).
+- **Siguiente tarea única:** **Identificar en `interactive-check-02` la clave faltante distinta de F4 que afecta a más intervalos y verificar su procedencia nativa.** Contar intentos afectados y documentar recurso, tabla, paleta y decisión propuesta para esa sola clave. La implementación de otras claves, la aceptación jugando y la cobertura restante siguen PENDIENTES. [Evidencia de la sesión](evidence/demo-a1-interactive.json).
 
 ## Ajuste del verde del uniforme — comprobado
 

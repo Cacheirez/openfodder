@@ -1,4 +1,4 @@
-"""Combine the exact D6 assets with the four reviewed m1p2 scenery keys.
+"""Combine reviewed D6 or green A assets with the exact m1p2 associated keys.
 
 No observation-driven approval, art generation or launcher activation.
 """
@@ -10,27 +10,31 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[2]
 D6_SHA256 = 'fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1'
+GREEN_A_SHA256 = '96c0dd694171c39b19ff44190931164b6a60696e962d1933ff7749d3ccb7eb39'
 
 
 def prepare(base, out):
-    if hashlib.sha256(base.read_bytes()).hexdigest() != D6_SHA256:
-        raise ValueError('Expected the exact reviewed D6 manifest')
-    manifest = json.loads(base.read_text())
+    source = base.read_bytes()
+    if (hashlib.sha256(source).hexdigest() != D6_SHA256
+            and hashlib.sha256(source.replace(b'\r\n', b'\n')).hexdigest() != GREEN_A_SHA256):
+        raise ValueError('Expected the reviewed D6 or green A manifest')
+    manifest = json.loads(source)
     additions = json.loads((ROOT / 'assets/modernization/demo-a1-associated.json').read_text())
     assert len(manifest['assets']) == 160 and len(manifest['bindings']) == 318
     assert all(b['decision'] == 'replace-art' for b in manifest['bindings'])
-    assert len(additions['bindings']) == 4
+    assert len(additions['bindings']) == 5
     assert {(b['type'], b['sheet'], b['frame']) for b in additions['bindings']} == {
-        (21, 0x95, 0), (21, 0x7c, 0), (19, 0x98, 0), (19, 0x98, 1)}
+        (21, 0x95, 0), (21, 0x95, 4), (21, 0x7c, 0), (19, 0x98, 0), (19, 0x98, 1)}
+    assert all(b['decision'] == 'keep-associated' for b in additions['bindings'])
     # Validate all existing bytes before creating an output directory.
     for asset in manifest['assets']:
         path = Path(asset['file'])
         if path.is_absolute() or '..' in path.parts:
             raise ValueError('Non-relative asset path')
         if hashlib.sha256((base.parent / path).read_bytes()).hexdigest() != asset['sha256']:
-            raise ValueError('Changed D6 asset: ' + str(path))
-    manifest['bindings'] += [dict(key=b['key'], decision='keep-associated') for b in additions['bindings']]
-    assert len({b['key'] for b in manifest['bindings']}) == 322
+            raise ValueError('Changed asset: ' + str(path))
+    manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in additions['bindings']]
+    assert len({b['key'] for b in manifest['bindings']}) == 323
     out.mkdir(parents=True, exist_ok=False)
     for asset in manifest['assets']:
         target = out / asset['file']
@@ -38,7 +42,7 @@ def prepare(base, out):
         shutil.copyfile(base.parent / asset['file'], target)
     path = out / 'candidate-manifest.json'
     path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-    return dict(assets=160, replace=318, keep=4, bindings=322,
+    return dict(assets=160, replace=318, keep=5, bindings=323,
                 manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
 
 
