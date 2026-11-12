@@ -7,8 +7,8 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** integrada la clave exacta del tejado 0x91/F0 en el candidato verde A con F4. 324 vínculos. SDL software a 8×/12× verificó orden, recorte superior, retorno completo a clásico y recuperación HD. [Pruebas y recuperación](DEMO_A1_AUDITORIA_TEJADO_F0.md#integración-del-candidato).
-- **Siguiente tarea única:** **Recalcular los faltantes de `interactive-check-02` frente a las 324 claves del candidato y auditar una sola clave nativa residual.** Priorizar la que quede como único faltante en más intentos y usar la frecuencia total para desempatar. Registrar impacto, procedencia nativa y recuperación. La incorporación de esa clave se decide tras la auditoría. La aceptación jugando y la cobertura restante siguen PENDIENTES. [Evidencia de partida](evidence/demo-a1-interactive.json).
+- **Último bloque cerrado:** recalculados los faltantes frente a 324 claves. De 4.456 intentos, 2.222 quedan sin faltantes y 1.755 tienen como único faltante la caja de granadas tipo 37, 0xC2/F0. Clave y raster nativos verificados. [Auditoría y recuperación](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md).
+- **Siguiente tarea única:** **Integrar en el candidato A.1 la conservación clásica de la caja de granadas 0xC2/F0 mediante su clave exacta.** Verificar en SDL software a 8×/12× su orden de dibujo y recogida, el retorno íntegro a clásico y la recuperación HD. La aceptación jugando y la cobertura restante siguen PENDIENTES. [Auditoría](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md).
 
 ## Ajuste del verde del uniforme — comprobado
 
