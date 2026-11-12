@@ -7,8 +7,8 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** caja clásica 0xC2/F0 por clave exacta, candidato de 325 vínculos. SDL software 8×/12× PASS con orden de dibujo, cuadro posterior a la recogida simulado y retorno íntegro a clásico con recuperación HD. El manejador real dio cuatro granadas y retiró la caja en una prueba aislada. [Integración y recuperación](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md#integración-y-comprobación).
-- **Siguiente tarea única:** **Auditar la primera clave residual de A.1 frente al candidato de 325 vínculos.** Recontar los faltantes de `interactive-check-02`, priorizar por intentos como único faltante y frecuencia total, e identificar el recurso y el estado nativos mediante recálculo exacto de la clave. La aceptación jugando y la cobertura restante siguen PENDIENTES.
+- **Último bloque cerrado:** auditoría del enemigo tumbado 0x59/F0 frente a 325 vínculos. Clave exacta confirmada con el recurso nativo. Aparece en 359 intentos y es el único faltante en 275. [Pruebas y recuperación](DEMO_A1_AUDITORIA_ENEMIGO_TUMBADO.md).
+- **Siguiente tarea única:** **Preparar y validar el reemplazo HD del enemigo tumbado 0x59/F0 en A.1.** Una pose, dirección 7 de la tabla nativa, estilo C y derivados 8×/12×. Integrar solo la clave auditada y comprobar en SDL software el orden con varios cuerpos, recortes y retorno a clásico ante un faltante. La aceptación jugando y la cobertura restante siguen PENDIENTES.
 
 ## Ajuste del verde del uniforme — comprobado
 
