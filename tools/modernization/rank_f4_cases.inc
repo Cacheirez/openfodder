@@ -201,6 +201,7 @@ for (unsigned density : {8u, 12u}) {
     const EnemyCase enemies[] = {
         {"enemy_prone", "0x59/F0", "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8"},
         {"enemy_walk", "0x45/F1", "77d34d3f0593010865c1185e626929f4491ff2303b6656397cd640fb0334356a"},
+        {"enemy_death", "0x71/F1", "f06b98d0debe93b676cd17ba89a9b76e2b91484a08507c83e8d66215dc8237fb"},
     };
     for (const auto& enemyCase : enemies) {
         if (!fixture.contains(enemyCase.field))

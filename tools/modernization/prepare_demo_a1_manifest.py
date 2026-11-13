@@ -13,10 +13,12 @@ D6_SHA256 = 'fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1'
 GREEN_A_SHA256 = '96c0dd694171c39b19ff44190931164b6a60696e962d1933ff7749d3ccb7eb39'
 ENEMY_PRONE_DIR = ROOT / 'assets/modernization/demo-a1-enemy-prone'
 ENEMY_WALK_DIR = ROOT / 'assets/modernization/demo-a1-enemy-walk-45-f1'
+ENEMY_DEATH_DIR = ROOT / 'assets/modernization/demo-a1-enemy-death-71-f1'
 
 
 def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False,
-            with_enemy_walk=False):
+            with_enemy_walk=False, with_enemy_death=False):
+    with_enemy_walk = with_enemy_walk or with_enemy_death
     with_enemy_prone = with_enemy_prone or with_enemy_walk
     with_grenade_box = with_grenade_box or with_enemy_prone
     source = base.read_bytes()
@@ -38,7 +40,9 @@ def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone
     kept = [b for b in additions['bindings'] if enabled.get(b['type'], True)]
     manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in kept]
     asset_sources = [(base.parent, asset) for asset in manifest['assets']]
-    for include, directory in ((with_enemy_prone, ENEMY_PRONE_DIR), (with_enemy_walk, ENEMY_WALK_DIR)):
+    for include, directory in ((with_enemy_prone, ENEMY_PRONE_DIR),
+                               (with_enemy_walk, ENEMY_WALK_DIR),
+                               (with_enemy_death, ENEMY_DEATH_DIR)):
         if not include:
             continue
         enemy = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
@@ -77,6 +81,8 @@ if __name__ == '__main__':
                         help='Replace the exact Amiga 0x59/F0 enemy on the green A candidate')
     parser.add_argument('--with-enemy-walk', action='store_true',
                         help='Replace the exact Amiga 0x45/F1 enemy on the green A candidate with 0x59/F0')
+    parser.add_argument('--with-enemy-death', action='store_true',
+                        help='Add the exact Amiga 0x71/F1 enemy to the green A candidate with 0x45/F1')
     args = parser.parse_args()
     print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box,
-                             args.with_enemy_prone, args.with_enemy_walk)))
+                             args.with_enemy_prone, args.with_enemy_walk, args.with_enemy_death)))
