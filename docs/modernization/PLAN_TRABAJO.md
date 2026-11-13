@@ -7,8 +7,8 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** reemplazo HD de muerte enemiga 0x71/F1 integrado en A.1. 328 vínculos, SDL software Windows x64 a 8×/12× con ASan/UBSan PASS. El recuento histórico deja 4.279 de 4.456 intentos sin faltantes y 38 claves residuales. [Pruebas y recuperación](DEMO_A1_AUDITORIA_MUERTE_ENEMIGA_71_F1.md#integración-y-comprobación).
-- **Siguiente tarea única:** **Auditar la clave residual 0x97/F1 de tipo 22 en A.1 frente al candidato de 328 vínculos.** Contrastar los 21 intentos como único faltante y los 69 totales en `interactive-check-02`, identificar el sprite y verificar la clave exacta con el recurso y el renderizador nativo. La aceptación jugando y la cobertura restante siguen PENDIENTES.
+- **Último bloque cerrado:** sombra del soldado 0x97/F1 (tipo 22) auditada frente a 328 vínculos. En `interactive-check-02` es el único faltante en 21 intentos y aparece en 69. Clave exacta confirmada con el recurso y el renderizador nativo. [Pruebas y recuperación](DEMO_A1_AUDITORIA_SOMBRA_97_F1.md).
+- **Siguiente tarea única:** **Integrar la sombra clásica 0x97/F1 como `keep-associated` en el candidato A.1 de 328 vínculos.** Verificar 329 vínculos y los mismos activos, el recuento histórico esperado de 4.300 de 4.456 intentos sin claves faltantes y un caso SDL software a 8×/12× con ASan/UBSan que cubra orden y oclusión de la sombra, recorte, retorno a clásico y recuperación HD. La aceptación jugando y la cobertura restante siguen PENDIENTES.
 
 ## Ajuste del verde del uniforme — comprobado
 
