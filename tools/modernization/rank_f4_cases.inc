@@ -229,7 +229,9 @@ for (unsigned density : {8u, 12u}) {
         const auto withoutEnemy = compose(withoutLast);
         assert(ordered.complete() && ordered.replaced == 6 && ordered.kept == 3);
         size_t overEarlier = 0, underLater = 0, visibleEnemy = 0;
-        for (const auto& [offset, cell] : enemyFrame.cells) {
+        for (const auto& entry : enemyFrame.cells) {
+            const auto offset = entry.first;
+            const auto& cell = entry.second;
             const auto previous = earlier.cells.find(offset);
             if (previous == earlier.cells.end() || previous->second == cell)
                 continue;
@@ -238,7 +240,9 @@ for (unsigned density : {8u, 12u}) {
                                        [background](auto pixel) { return pixel != background; });
             underLater += ordered.cells.at(offset) != cell;
         }
-        for (const auto& [offset, cell] : ordered.cells) {
+        for (const auto& entry : ordered.cells) {
+            const auto offset = entry.first;
+            const auto& cell = entry.second;
             const auto previous = withoutEnemy.cells.find(offset);
             visibleEnemy += previous == withoutEnemy.cells.end() || previous->second != cell;
         }
