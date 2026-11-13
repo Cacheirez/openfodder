@@ -49,7 +49,7 @@ Ejecutar `python -B tools/modernization/prepare_demo_a1_manifest.py --base <verd
 - `d615161944fbf97e9e07f29f4de6849c927c0d4e20087cbb981ec3c73e11dc45` aparece en 18 intentos y es el único faltante en 15. Los 18 comandos son de la ranura 21, generación 162, escena 186, entre los intentos 4903 y 4986. El intento 4958 (intervalo 4957, ocho comandos) tenía dos faltantes en el log original. El candidato ya resuelve la sombra 0x97/F1. Añadir la variante `Hit` dejaría 4.315 de 4.456 intentos históricos sin claves faltantes (96,84 %).
 - Python y el renderizador nativo C++ confirmaron la clave exacta. Enemigo tipo 5, persona IA (1), `eSprite_Anim_Hit` (1), fuera de vehículo y sin destrucción pendiente. Usa `stru_8D418`, `eGFX_IN_GAME` offset 8406, ambas paletas efectivas a 0. Frente al snapshot de `Die2`, solo difieren la clave y el estado de animación. Los 896 bytes RGBA del raster de 16 × 14 coinciden byte a byte, con 51 píxeles visibles y SHA-256 `9c69e3e0f4a672776be46a0f90d7acccf6629e74d9361236d5d82d81f8cedfbf`. [Tabla Amiga](../../Source/Amiga/SpriteData_Amiga.hpp) · [Estados](../../Source/Sprites.hpp) · [Renderizador](../../tools/modernization/render_walk_native.cpp).
 
-Integración del vínculo con los activos existentes, prueba SDL y aceptación jugando PENDIENTES. La proyección describe la resolución de claves del log histórico.
+La proyección describe la resolución de claves del log histórico. Los resultados de SDL figuran en [Integración de Hit](#integración-de-hit). La aceptación jugando sigue PENDIENTE.
 
 ### Reproducción de la auditoría Hit
 
@@ -60,3 +60,20 @@ Directorio `C:/Users/migue/.codex/visualizations/2026/11/13/01a1d63f-b3e8-7e81-a
 | `verify_residual_329.py` | `fd9adfee8c11f7180e75020ec84c2fb482ec453140acd18bb8a1b1eecd6a2edb` |
 | `enemy-death-71-f1-d615-derived.json` | `a347bd969d7d0211499faa16b95280c8be2d943b9f108a0e8a1924d9a46c9d3d` |
 | `enemy-death-71-f1-d615-verification.json` | `bf885de66c8d84bbf7e88650a53876429cf77457181292436595b008077fa130` |
+
+## Integración de Hit
+
+13 de noviembre de 2026. `--with-enemy-hit` añade al candidato de 329 vínculos un único `replace-art` para la clave exacta de `Hit` con los mismos identificadores de activos a 8× y 12× que `Die2`. Se verificaron los 329 vínculos anteriores en orden y los 166 activos byte a byte. Se reprodujo el manifiesto de 329 con `--with-player-shadow`. El de 330 (322 reemplazos y ocho asociados) tiene SHA-256 Windows `0688714a37fa96baa19997348269b109768f9a3aba9878db19c97217d648fa59`.
+
+- SDL 3.4.0 software Windows x64 con Clang 23.1.5 y ASan/UBSan **PASS** a 8× y 12×. Para cada variante se comprobó la clave nativa, la selección HD con seis cuerpos, 30 celdas sobre un cuerpo anterior, 44 afectadas por uno posterior y 66/65 visibles a 8×/12×. También se cotejaron los píxeles con cinco filas recortadas, el retorno íntegro a clásico ante una clave faltante y la recuperación HD. MSVC x64 en C++14 **PASS** con el mismo log. F4, tejado, caja de granadas, sombra, enemigo tumbado y marcha enemiga **PASS**.
+- Con el manifiesto de 330 vínculos quedan **4.315 de 4.456 intentos históricos sin faltantes**, 141 con faltantes y 36 claves residuales. La primera por número de intentos como único faltante y luego por apariciones, con desempate por clave, es `af38382eee31380c6ba6d0469c9237f48400fa21bdeb3e8f09efbdd149988d77`, tipo 5, 0x44/F1, con 12 y 15 respectivamente. Su identificación nativa queda pendiente.
+- Aceptación jugando, GPU, audio, CD32, H3 y LSan **PENDIENTES** en este bloque.
+
+### Reproducción de la integración de Hit
+
+Directorio `integracion-hit` dentro del [directorio de auditoría Hit](#reproducción-de-la-auditoría-hit). Desde el checkout ejecutar `python -B tools/modernization/prepare_demo_a1_manifest.py --base <verde-A>/qa-rocket-native/art/candidate-manifest.json --out <evidencia>/candidate --with-enemy-hit`. Repetir con `--out <evidencia>/compat-329 --with-player-shadow`. En el directorio de evidencia, `python -B prepare_hit_input.py <checkout> <integración-sombra> <auditoría-Hit> <evidencia>` compara ambos candidatos, recalcula los faltantes y prepara el caso SDL. Usar el directorio de [integración de la sombra](DEMO_A1_AUDITORIA_SOMBRA_97_F1.md#reproducción-de-la-integración). Ejecutar `run_enemy.ps1 <checkout>` y `run_enemy_msvc.ps1 <checkout>`.
+
+| Archivo | SHA-256 |
+|---|---|
+| `prepare_hit_input.py` | `7496cbe5ea690487c0a47a8b53fe4dcffff62f7c9d7c3a9f89a9159c993898cf` |
+| `fixture-run.log` y `fixture-msvc-run.log` | `7b443f60ee7c9414e139009ed31e18ad4eb241669352c0fa423dc1d4b5313035` |
