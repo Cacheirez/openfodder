@@ -7,8 +7,8 @@
 **Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
 
 - **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** reemplazo HD del enemigo tumbado 0x59/F0 en A.1. Una clave nueva, 326 vínculos en total. SDL software Windows x64 con ASan/UBSan PASS a 8×/12× con seis cuerpos, oclusiones, recorte superior y retorno a clásico con recuperación. [Pruebas y recuperación](DEMO_A1_AUDITORIA_ENEMIGO_TUMBADO.md#integración-y-comprobación).
-- **Siguiente tarea única:** **Auditar la clave residual prioritaria de A.1 frente al candidato de 326 vínculos.** Recontar `interactive-check-02`, priorizar por intentos donde sea el único faltante y comprobar su identidad exacta con el log y el recurso nativo. La aceptación jugando y la cobertura restante siguen PENDIENTES.
+- **Último bloque cerrado:** auditoría de marcha enemiga 0x45/F1 frente a 326 vínculos. Clave confirmada con el log y el renderizador nativo. Único faltante en 15 intentos, 18 en total. El recuento deja 4.252 de 4.456 intentos sin faltantes y 40 claves residuales. [Pruebas y recuperación](DEMO_A1_AUDITORIA_MARCHA_ENEMIGA_45_F1.md).
+- **Siguiente tarea única:** **Crear e integrar el reemplazo HD de marcha enemiga 0x45/F1 en A.1.** Una pose en estilo C — Pintado moderado, con derivados 8×/12× y una sola clave nueva. Comprobar composición SDL en orden con varios cuerpos, recorte, oclusión, retorno a clásico y recuperación HD. La aceptación jugando y la cobertura restante siguen PENDIENTES.
 
 ## Ajuste del verde del uniforme — comprobado
 
