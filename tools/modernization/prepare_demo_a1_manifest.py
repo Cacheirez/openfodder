@@ -1,4 +1,4 @@
-"""Combine reviewed D6 or green A assets with the exact m1p2 associated keys.
+"""Combine reviewed D6 or green A assets with exact m1p2 keys and optional art.
 
 No observation-driven approval, art generation or launcher activation.
 """
@@ -11,15 +11,17 @@ import shutil
 ROOT = Path(__file__).resolve().parents[2]
 D6_SHA256 = 'fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1'
 GREEN_A_SHA256 = '96c0dd694171c39b19ff44190931164b6a60696e962d1933ff7749d3ccb7eb39'
+ENEMY_PRONE_DIR = ROOT / 'assets/modernization/demo-a1-enemy-prone'
 
 
-def prepare(base, out, with_roof=False, with_grenade_box=False):
+def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False):
+    with_grenade_box = with_grenade_box or with_enemy_prone
     source = base.read_bytes()
     green_a = hashlib.sha256(source.replace(b'\r\n', b'\n')).hexdigest() == GREEN_A_SHA256
     if not green_a and hashlib.sha256(source).hexdigest() != D6_SHA256:
         raise ValueError('Expected the reviewed D6 or green A manifest')
     if (with_roof or with_grenade_box) and not green_a:
-        raise ValueError('The reviewed roof and grenade box require the green A manifest')
+        raise ValueError('The roof, grenade box and enemy prone options require the green A manifest')
     manifest = json.loads(source)
     additions = json.loads((ROOT / 'assets/modernization/demo-a1-associated.json').read_text())
     assert len(manifest['assets']) == 160 and len(manifest['bindings']) == 318
@@ -31,23 +33,30 @@ def prepare(base, out, with_roof=False, with_grenade_box=False):
     assert all(b['decision'] == 'keep-associated' for b in additions['bindings'])
     enabled = {15: with_roof or with_grenade_box, 37: with_grenade_box}
     kept = [b for b in additions['bindings'] if enabled.get(b['type'], True)]
+    manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in kept]
+    asset_sources = [(base.parent, asset) for asset in manifest['assets']]
+    if with_enemy_prone:
+        enemy = json.loads((ENEMY_PRONE_DIR / 'manifest.json').read_text(encoding='utf-8'))
+        asset_sources += [(ENEMY_PRONE_DIR, asset) for asset in enemy['assets']]
+        manifest['assets'] += enemy['assets']
+        manifest['bindings'] += enemy['bindings']
+    assert len({b['key'] for b in manifest['bindings']}) == len(manifest['bindings'])
     # Validate all existing bytes before creating an output directory.
-    for asset in manifest['assets']:
+    for directory, asset in asset_sources:
         path = Path(asset['file'])
         if path.is_absolute() or '..' in path.parts:
             raise ValueError('Non-relative asset path')
-        if hashlib.sha256((base.parent / path).read_bytes()).hexdigest() != asset['sha256']:
+        if hashlib.sha256((directory / path).read_bytes()).hexdigest() != asset['sha256']:
             raise ValueError('Changed asset: ' + str(path))
-    manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in kept]
-    assert len({b['key'] for b in manifest['bindings']}) == len(manifest['bindings'])
     out.mkdir(parents=True, exist_ok=False)
-    for asset in manifest['assets']:
+    for directory, asset in asset_sources:
         target = out / asset['file']
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(base.parent / asset['file'], target)
+        shutil.copyfile(directory / asset['file'], target)
     path = out / 'candidate-manifest.json'
     path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
-    return dict(assets=160, replace=318, keep=len(kept), bindings=len(manifest['bindings']),
+    return dict(assets=len(manifest['assets']), replace=len(manifest['bindings']) - len(kept),
+                keep=len(kept), bindings=len(manifest['bindings']),
                 manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
 
 
@@ -59,5 +68,8 @@ if __name__ == '__main__':
                         help='Retain the exact Amiga 0x91/F0 roof on green A with F4')
     parser.add_argument('--with-grenade-box', action='store_true',
                         help='Retain the exact Amiga 0xC2/F0 grenade box on green A with F4 and roof')
+    parser.add_argument('--with-enemy-prone', action='store_true',
+                        help='Replace the exact Amiga 0x59/F0 enemy on the green A candidate')
     args = parser.parse_args()
-    print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box)))
+    print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box,
+                             args.with_enemy_prone)))

@@ -1,4 +1,4 @@
-# Estado operativo — inicio rápido (12 de noviembre de 2026)
+# Estado operativo — inicio rápido (13 de noviembre de 2026)
 
 ## Arranque rápido — leer solo esta sección al empezar una sesión
 
@@ -21,7 +21,8 @@
 - **Caja de granadas 0xC2/F0 auditada:** frente a 324 claves, `interactive-check-02` deja 2.222 intentos sin faltantes y 42 claves residuales. La caja (tipo 37) es el único faltante en sus 1.755 intentos. `stru_8E308`, `eGFX_IN_GAME2` offset 2578, paleta efectiva 0. La clave del log coincide con el recálculo independiente y con el renderizador nativo (16 × 13). SHA del relevo mediante el comando del primer punto. Publicación HD efectiva y aceptación jugando PENDIENTES. [Pruebas y recuperación](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md).
 - **Caja de granadas comprobada:** 325 vínculos. SDL software Windows x64 con ASan/UBSan PASS a 8×/12× con 102 escrituras clásicas en orden, cinco cuerpos, HD tras la retirada simulada y dos retornos íntegros a clásico con recuperación por densidad. Manejador real aislado PASS (cuatro granadas y destrucción pendiente). F4 y tejado PASS. SHA mediante el comando del primer punto. Aceptación jugando, recogida en un recorrido integrado, GPU, audio, CD32 y LSan PENDIENTES. [Pruebas y recuperación](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md#integración-y-comprobación).
 - **Enemigo tumbado 0x59/F0 auditado:** con 325 vínculos, quedan 41 claves residuales y 3.977 de 4.456 intentos sin faltantes en el recuento. El enemigo tipo 5, IA, dirección 7 de la tabla, es el único faltante en 275 intentos y aparece en 359. `stru_8D118`, `eGFX_IN_GAME` offset 6750, paleta efectiva 0. Clave exacta confirmada con Python y el renderizador nativo. SHA del relevo mediante el comando del primer punto. Integración SDL y aceptación jugando PENDIENTES. [Pruebas y recuperación](DEMO_A1_AUDITORIA_ENEMIGO_TUMBADO.md).
-- **Siguiente tarea única:** **Preparar y validar el reemplazo HD del enemigo tumbado 0x59/F0 en A.1.** [Plan](PLAN_TRABAJO.md#control-operativo--siguiente-paso-lectura-inicial-obligatoria) · [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md).
+- **Enemigo tumbado 0x59/F0 comprobado:** 326 vínculos (319 reemplazos, siete asociados). SDL software Windows x64 con ASan/UBSan PASS a 8×/12× con seis cuerpos, oclusiones en ambos sentidos, recorte de cinco filas y recuperación HD tras un faltante. Derivados revisados internamente. Aceptación jugando, GPU, audio, CD32 y LSan PENDIENTES. SHA mediante el comando del primer punto. [Pruebas y recuperación](DEMO_A1_AUDITORIA_ENEMIGO_TUMBADO.md#integración-y-comprobación).
+- **Siguiente tarea única:** **Auditar la clave residual prioritaria de A.1 frente al candidato de 326 vínculos.** [Plan](PLAN_TRABAJO.md#control-operativo--siguiente-paso-lectura-inicial-obligatoria) · [PROMPT_NUEVO_HILO.md](PROMPT_NUEVO_HILO.md).
 
 ## Registro detallado conservado — 5 de noviembre de 2026
 

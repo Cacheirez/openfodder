@@ -193,6 +193,91 @@ for (unsigned density : {8u, 12u}) {
         assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == afterPickup);
         image.scene = scene;
     }
+    if (fixture.contains("enemy_prone")) {
+        assert(withBox);
+        const auto& row = fixture.at("enemy_prone");
+        const std::string enemyKey = "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8";
+        auto enemy = nativeLayer(row, fixture.at("enemy_snapshots"), 8, 39, 20);
+        assert(SoldierVariantKey(enemy.soldier, colors) == enemyKey);
+        const auto art = registry.resolve(enemy.soldier, enemyKey, density);
+        assert(art.decision == SoldierArtDecision::Replace && art.width == 16 && art.height == 14);
+
+        auto withoutLast = scene;
+        const auto lastBody = withoutLast.layers.back();
+        withoutLast.layers.pop_back();
+        auto withEnemy = withoutLast;
+        withEnemy.layers.push_back(enemy);
+        const auto earlier = compose(withoutLast);
+        const auto enemyFrame = compose(withEnemy);
+        withEnemy.layers.push_back(lastBody);
+        const auto ordered = compose(withEnemy);
+        assert(ordered.complete() && ordered.replaced == 6 && ordered.kept == 3);
+        size_t overEarlier = 0, underLater = 0, visibleEnemy = 0;
+        for (const auto& [offset, cell] : enemyFrame.cells) {
+            const auto previous = earlier.cells.find(offset);
+            if (previous == earlier.cells.end() || previous->second == cell)
+                continue;
+            ++overEarlier;
+            underLater += ordered.cells.at(offset) != cell;
+        }
+        for (const auto& [offset, cell] : ordered.cells) {
+            const auto withoutEnemy = frame.cells.find(offset);
+            visibleEnemy += withoutEnemy == frame.cells.end() || withoutEnemy->second != cell;
+        }
+        assert(overEarlier && underLater && visibleEnemy);
+        image.scene = withEnemy;
+        const auto orderedPixels = renderExpected(ordered);
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == orderedPixels);
+
+        auto& unresolved = image.scene.layers[image.scene.layers.size() - 2].soldier;
+        unresolved.soldier.frame = 99;
+        assert(compose(image.scene).missing == 1);
+        const auto fallback = renderClassic(image.scene);
+        clear(renderer);
+        const auto untouched = read(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == -1 && read(renderer) == untouched && live == 0);
+        assert(SDL_RenderTexture(renderer, image.tex, &src, &dst) && read(renderer) == fallback);
+        image.scene = withEnemy;
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == orderedPixels);
+
+        auto clipped = nativeLayer(row, fixture.at("enemy_snapshots"), 8, 39, -7);
+        const auto& clippedDraw = clipped.soldier.draw;
+        assert(clippedDraw.y == 0 && clippedDraw.rows == 9 && clippedDraw.sourceOffset == 200);
+        assert(SoldierVariantKey(clipped.soldier, colors) == enemyKey);
+        image.scene = scene;
+        image.scene.layers.push_back(clipped);
+        const auto clippedFrame = compose(image.scene);
+        assert(clippedFrame.complete() && clippedFrame.replaced == 6);
+        size_t painted = 0;
+        for (size_t y = 0; y < 9; ++y) {
+            for (size_t x = 0; x < 16; ++x) {
+                const size_t offset = y * 96 + clippedDraw.x + x;
+                const auto previous = frame.cells.find(offset);
+                const auto& cell = clippedFrame.cells.at(offset);
+                for (size_t sy = 0; sy < density; ++sy) {
+                    for (size_t sx = 0; sx < density; ++sx) {
+                        const auto source = ((y + 5) * density + sy) * 16 * density + x * density + sx;
+                        const auto i = sy * density + sx;
+                        const auto basePixel = previous == frame.cells.end()
+                            ? frame.background.pixels.at(offset) : previous->second.at(i);
+                        const auto pixel = SoldierBlend(art.pixels->at(source), basePixel);
+                        assert(cell.at(i) == pixel);
+                        painted += pixel != basePixel;
+                    }
+                }
+            }
+        }
+        assert(painted);
+        const auto clippedPixels = renderExpected(clippedFrame);
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == clippedPixels);
+        image.scene = scene;
+        std::cout << "PASS A.1 enemy 0x59/F0 SDL " << density << "x: 6 bodies, overlaps "
+                  << overEarlier << '/' << underLater << ", visible " << visibleEnemy
+                  << ", 5 rows clipped, classic fallback and recovery\n";
+    }
     const char* label = withBox ? "grenade box F0 + roof + F4" : withRoof ? "roof F0 + F4" : "F4";
     std::cout << "PASS A.1 " << label << " SDL " << density
               << "x: 5 native bodies, " << writes.size()

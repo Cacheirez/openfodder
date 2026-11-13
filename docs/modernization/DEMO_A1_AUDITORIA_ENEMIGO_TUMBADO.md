@@ -25,3 +25,17 @@ Directorio `C:/Users/migue/.codex/visualizations/2026/11/12/01a1d0cf-34dc-7bf2-8
 | `verify_residual_325.py` | `16ab7a4e639981acbc35e6125cc252c6ae3cbba6af151f6ce25a1a9a1ba247ab` |
 | `enemy-prone-derived.json` | `fbd0a80065fca86644378476e94fedb1653975a1b704473b1be55e1c062f507c` |
 | `enemy-prone-verification.json` | `08d90ea4873c2b68458f15db9124345fdee76bf36faa748fdfcb4ffaa09acdeb` |
+
+## Integración y comprobación
+
+13 de noviembre de 2026. Una pose en estilo C — Pintado moderado, con el casco y los acentos marrón rojizo de la referencia nativa. Maestro transparente de 1.339 × 1.174 generado con ImageGen integrado a partir del raster auditado y C01 verde A. Derivados de 128 × 112 y 192 × 168 revisados a ambas densidades. El encaje del arte usa la caja ocupada nativa de 10 × 11 en el lienzo de 16 × 14, con desplazamiento (4, 2). [Maestro, derivados y manifiesto](../../assets/modernization/demo-a1-enemy-prone/).
+
+- Candidato verde A con 162 activos y 326 vínculos (319 reemplazos y siete asociados). Los 160 activos y 325 vínculos anteriores conservan contenido y orden. Único vínculo nuevo: la clave auditada de 0x59/F0. SHA-256 del manifiesto generado en Windows `369b2943531860c8d2fbda7a69207d413c66f5de124c47f67bd850ede9507e75`.
+- SDL software Windows x64, Clang 23.1.5, SDL 3.4.0, ASan/UBSan PASS a 8× y 12×. Seis cuerpos en orden nativo de composición del fixture. El enemigo se superpone a cuerpos anteriores, queda parcialmente cubierto por el último y sigue visible. Se cotejaron los píxeles compuestos tras recortar cinco filas. Al cambiar su clave, el intento HD deja intacto el destino, clásico coincide con el raster nativo y HD se recupera al restaurar la clave. La caja, el tejado y F4 se ejercitaron en el mismo fixture.
+- PENDIENTES aceptación jugando, GPU, audio, CD32, LSan y cobertura restante. El recuento histórico de faltantes no mide publicación HD efectiva en una partida.
+
+### Reproducción
+
+Maestro SHA-256 `6378ee0023531c8045e196ff06f7897af18a6ad531e07fd8a90f8942c84783cf`. Con Pillow 11.3.0, recortar el maestro a la caja alfa ≥ 128, `(312, 141, 1132, 1091)`. Redimensionar con Lanczos a `(10*d, 11*d)` y pegar sin máscara en `(4*d, 2*d)` sobre el lienzo RGBA transparente de `(16*d, 14*d)`. Guardar PNG y bytes RGBA en orden de filas. Los SHA-256 de los dos derivados RGBA figuran en su [manifiesto](../../assets/modernization/demo-a1-enemy-prone/manifest.json).
+
+Generar el candidato con `python -B tools/modernization/prepare_demo_a1_manifest.py --base <verde-A>/qa-rocket-native/art/candidate-manifest.json --out <evidencia>/candidate --with-enemy-prone`. Usar el [verde A verificado](DEMO_A1_VERDE_A.md#reproducción-y-recuperación). En el [directorio local de evidencia](C:/Users/migue/.codex/visualizations/2026/11/13/01a1d4fa-5b29-7551-8509-724c0bb09f0c), `prepare_enemy_input.py <evidencia-caja> <auditoría-enemigo> <evidencia>` amplía el fixture conservado de la [caja](DEMO_A1_AUDITORIA_CAJA_GRANADAS.md#recuperación-local). `run_enemy.ps1 <checkout>` reutiliza su entorno SDL y sanitizadores. SHA-256 de `fixture-run.log` `eca6b2237102214d810d8c4fe61c81f817ad8231cf73ba47302620aedaa06a6e`.
