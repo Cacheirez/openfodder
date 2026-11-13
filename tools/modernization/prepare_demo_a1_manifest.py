@@ -12,16 +12,19 @@ ROOT = Path(__file__).resolve().parents[2]
 D6_SHA256 = 'fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1'
 GREEN_A_SHA256 = '96c0dd694171c39b19ff44190931164b6a60696e962d1933ff7749d3ccb7eb39'
 ENEMY_PRONE_DIR = ROOT / 'assets/modernization/demo-a1-enemy-prone'
+ENEMY_WALK_DIR = ROOT / 'assets/modernization/demo-a1-enemy-walk-45-f1'
 
 
-def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False):
+def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False,
+            with_enemy_walk=False):
+    with_enemy_prone = with_enemy_prone or with_enemy_walk
     with_grenade_box = with_grenade_box or with_enemy_prone
     source = base.read_bytes()
     green_a = hashlib.sha256(source.replace(b'\r\n', b'\n')).hexdigest() == GREEN_A_SHA256
     if not green_a and hashlib.sha256(source).hexdigest() != D6_SHA256:
         raise ValueError('Expected the reviewed D6 or green A manifest')
     if (with_roof or with_grenade_box) and not green_a:
-        raise ValueError('The roof, grenade box and enemy prone options require the green A manifest')
+        raise ValueError('The roof, grenade box and enemy options require the green A manifest')
     manifest = json.loads(source)
     additions = json.loads((ROOT / 'assets/modernization/demo-a1-associated.json').read_text())
     assert len(manifest['assets']) == 160 and len(manifest['bindings']) == 318
@@ -35,9 +38,11 @@ def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone
     kept = [b for b in additions['bindings'] if enabled.get(b['type'], True)]
     manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in kept]
     asset_sources = [(base.parent, asset) for asset in manifest['assets']]
-    if with_enemy_prone:
-        enemy = json.loads((ENEMY_PRONE_DIR / 'manifest.json').read_text(encoding='utf-8'))
-        asset_sources += [(ENEMY_PRONE_DIR, asset) for asset in enemy['assets']]
+    for include, directory in ((with_enemy_prone, ENEMY_PRONE_DIR), (with_enemy_walk, ENEMY_WALK_DIR)):
+        if not include:
+            continue
+        enemy = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
+        asset_sources += [(directory, asset) for asset in enemy['assets']]
         manifest['assets'] += enemy['assets']
         manifest['bindings'] += enemy['bindings']
     assert len({b['key'] for b in manifest['bindings']}) == len(manifest['bindings'])
@@ -70,6 +75,8 @@ if __name__ == '__main__':
                         help='Retain the exact Amiga 0xC2/F0 grenade box on green A with F4 and roof')
     parser.add_argument('--with-enemy-prone', action='store_true',
                         help='Replace the exact Amiga 0x59/F0 enemy on the green A candidate')
+    parser.add_argument('--with-enemy-walk', action='store_true',
+                        help='Replace the exact Amiga 0x45/F1 enemy on the green A candidate with 0x59/F0')
     args = parser.parse_args()
     print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box,
-                             args.with_enemy_prone)))
+                             args.with_enemy_prone, args.with_enemy_walk)))

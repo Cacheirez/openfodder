@@ -193,10 +193,21 @@ for (unsigned density : {8u, 12u}) {
         assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == afterPickup);
         image.scene = scene;
     }
-    if (fixture.contains("enemy_prone")) {
+    struct EnemyCase {
+        const char* field;
+        const char* label;
+        const char* key;
+    };
+    const EnemyCase enemies[] = {
+        {"enemy_prone", "0x59/F0", "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8"},
+        {"enemy_walk", "0x45/F1", "77d34d3f0593010865c1185e626929f4491ff2303b6656397cd640fb0334356a"},
+    };
+    for (const auto& enemyCase : enemies) {
+        if (!fixture.contains(enemyCase.field))
+            continue;
         assert(withBox);
-        const auto& row = fixture.at("enemy_prone");
-        const std::string enemyKey = "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8";
+        const auto& row = fixture.at(enemyCase.field);
+        const std::string enemyKey = enemyCase.key;
         auto enemy = nativeLayer(row, fixture.at("enemy_snapshots"), 8, 39, 20);
         assert(SoldierVariantKey(enemy.soldier, colors) == enemyKey);
         const auto art = registry.resolve(enemy.soldier, enemyKey, density);
@@ -205,24 +216,30 @@ for (unsigned density : {8u, 12u}) {
         auto withoutLast = scene;
         const auto lastBody = withoutLast.layers.back();
         withoutLast.layers.pop_back();
+        // Place an earlier body under the enemy as well as the later body over it.
+        withoutLast.layers[3] = nativeLayer(rows[1], fixture.at("body_snapshots"), 1, 37, 20);
         auto withEnemy = withoutLast;
         withEnemy.layers.push_back(enemy);
         const auto earlier = compose(withoutLast);
         const auto enemyFrame = compose(withEnemy);
         withEnemy.layers.push_back(lastBody);
         const auto ordered = compose(withEnemy);
+        withoutLast.layers.push_back(lastBody);
+        const auto withoutEnemy = compose(withoutLast);
         assert(ordered.complete() && ordered.replaced == 6 && ordered.kept == 3);
         size_t overEarlier = 0, underLater = 0, visibleEnemy = 0;
         for (const auto& [offset, cell] : enemyFrame.cells) {
             const auto previous = earlier.cells.find(offset);
             if (previous == earlier.cells.end() || previous->second == cell)
                 continue;
-            ++overEarlier;
+            const auto background = earlier.background.pixels.at(offset);
+            overEarlier += std::any_of(previous->second.begin(), previous->second.end(),
+                                       [background](auto pixel) { return pixel != background; });
             underLater += ordered.cells.at(offset) != cell;
         }
         for (const auto& [offset, cell] : ordered.cells) {
-            const auto withoutEnemy = frame.cells.find(offset);
-            visibleEnemy += withoutEnemy == frame.cells.end() || withoutEnemy->second != cell;
+            const auto previous = withoutEnemy.cells.find(offset);
+            visibleEnemy += previous == withoutEnemy.cells.end() || previous->second != cell;
         }
         assert(overEarlier && underLater && visibleEnemy);
         image.scene = withEnemy;
@@ -274,7 +291,7 @@ for (unsigned density : {8u, 12u}) {
         clear(renderer);
         assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == clippedPixels);
         image.scene = scene;
-        std::cout << "PASS A.1 enemy 0x59/F0 SDL " << density << "x: 6 bodies, overlaps "
+        std::cout << "PASS A.1 enemy " << enemyCase.label << " SDL " << density << "x: 6 bodies, overlaps "
                   << overEarlier << '/' << underLater << ", visible " << visibleEnemy
                   << ", 5 rows clipped, classic fallback and recovery\n";
     }
