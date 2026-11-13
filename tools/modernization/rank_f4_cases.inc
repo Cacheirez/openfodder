@@ -273,6 +273,7 @@ for (unsigned density : {8u, 12u}) {
         {"enemy_walk", "0x45/F1", "77d34d3f0593010865c1185e626929f4491ff2303b6656397cd640fb0334356a"},
         {"enemy_death", "0x71/F1", "f06b98d0debe93b676cd17ba89a9b76e2b91484a08507c83e8d66215dc8237fb"},
         {"enemy_hit", "0x71/F1 Hit", "d615161944fbf97e9e07f29f4de6849c927c0d4e20087cbb981ec3c73e11dc45"},
+        {"enemy_walk_44", "0x44/F1", "af38382eee31380c6ba6d0469c9237f48400fa21bdeb3e8f09efbdd149988d77"},
     };
     for (const auto& enemyCase : enemies) {
         if (!fixture.contains(enemyCase.field))
