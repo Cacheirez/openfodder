@@ -17,7 +17,8 @@ ENEMY_DEATH_DIR = ROOT / 'assets/modernization/demo-a1-enemy-death-71-f1'
 
 
 def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False,
-            with_enemy_walk=False, with_enemy_death=False):
+            with_enemy_walk=False, with_enemy_death=False, with_player_shadow=False):
+    with_enemy_death = with_enemy_death or with_player_shadow
     with_enemy_walk = with_enemy_walk or with_enemy_death
     with_enemy_prone = with_enemy_prone or with_enemy_walk
     with_grenade_box = with_grenade_box or with_enemy_prone
@@ -31,12 +32,12 @@ def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone
     additions = json.loads((ROOT / 'assets/modernization/demo-a1-associated.json').read_text())
     assert len(manifest['assets']) == 160 and len(manifest['bindings']) == 318
     assert all(b['decision'] == 'replace-art' for b in manifest['bindings'])
-    assert len(additions['bindings']) == 7
+    assert len(additions['bindings']) == 8
     assert {(b['type'], b['sheet'], b['frame']) for b in additions['bindings']} == {
         (21, 0x95, 0), (21, 0x95, 4), (21, 0x7c, 0), (19, 0x98, 0), (19, 0x98, 1),
-        (15, 0x91, 0), (37, 0xc2, 0)}
+        (15, 0x91, 0), (37, 0xc2, 0), (22, 0x97, 1)}
     assert all(b['decision'] == 'keep-associated' for b in additions['bindings'])
-    enabled = {15: with_roof or with_grenade_box, 37: with_grenade_box}
+    enabled = {15: with_roof or with_grenade_box, 37: with_grenade_box, 22: False}
     kept = [b for b in additions['bindings'] if enabled.get(b['type'], True)]
     manifest['bindings'] += [dict(key=b['key'], decision=b['decision']) for b in kept]
     asset_sources = [(base.parent, asset) for asset in manifest['assets']]
@@ -49,6 +50,10 @@ def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone
         asset_sources += [(directory, asset) for asset in enemy['assets']]
         manifest['assets'] += enemy['assets']
         manifest['bindings'] += enemy['bindings']
+    if with_player_shadow:
+        shadow = next(b for b in additions['bindings'] if b['type'] == 22)
+        kept.append(shadow)
+        manifest['bindings'].append(dict(key=shadow['key'], decision=shadow['decision']))
     assert len({b['key'] for b in manifest['bindings']}) == len(manifest['bindings'])
     # Validate all existing bytes before creating an output directory.
     for directory, asset in asset_sources:
@@ -83,6 +88,9 @@ if __name__ == '__main__':
                         help='Replace the exact Amiga 0x45/F1 enemy on the green A candidate with 0x59/F0')
     parser.add_argument('--with-enemy-death', action='store_true',
                         help='Add the exact Amiga 0x71/F1 enemy to the green A candidate with 0x45/F1')
+    parser.add_argument('--with-player-shadow', action='store_true',
+                        help='Retain the exact Amiga 0x97/F1 shadow on the green A candidate with 0x71/F1')
     args = parser.parse_args()
     print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box,
-                             args.with_enemy_prone, args.with_enemy_walk, args.with_enemy_death)))
+                             args.with_enemy_prone, args.with_enemy_walk, args.with_enemy_death,
+                             args.with_player_shadow)))

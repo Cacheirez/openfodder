@@ -163,12 +163,14 @@ for (unsigned density : {8u, 12u}) {
     assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == expected);
 
     // Change one key at a time while keeping drawable native pixels.
-    for (size_t slot : {retainedIndex, retainedIndex + 1}) {
+    auto checkFallback = [&](const MissionLayerSequence& orderedScene,
+                             size_t slot, const std::vector<uint32_t>& hdPixels) {
+        image.scene = orderedScene;
         auto& missing = image.scene.layers[slot].soldier;
         missing.soldier.frame = 99;
         assert(registry.resolve(missing, SoldierVariantKey(missing, colors), density).decision
                == SoldierArtDecision::Missing);
-        assert(!compose(image.scene).complete());
+        assert(compose(image.scene).missing == 1);
         const auto expectedClassic = renderClassic(image.scene);
         clear(renderer);
         const auto before = read(renderer);
@@ -177,9 +179,77 @@ for (unsigned density : {8u, 12u}) {
         // Same fallback draw as cWindow::Draw.
         assert(SDL_RenderTexture(renderer, image.tex, &src, &dst));
         assert(read(renderer) == expectedClassic);
-        image.scene = scene;
+        image.scene = orderedScene;
         clear(renderer);
-        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == expected);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == hdPixels);
+    };
+    for (size_t slot : {retainedIndex, retainedIndex + 1})
+        checkFallback(scene, slot, expected);
+    if (fixture.contains("player_shadow")) {
+        assert(withBox);
+        const auto& row = fixture.at("player_shadow");
+        const std::string shadowKey = "c7fcc929ce1739035307df6e6b084f2a5d05dea74dba4ec2c8487cf3cdef04e1";
+        const auto shadow = nativeLayer(row, fixture.at("rank_snapshots"), 9, 38, 16);
+        assert(SoldierVariantKey(shadow.soldier, colors) == shadowKey);
+        assert(registry.resolve(shadow.soldier, shadowKey, density).decision == SoldierArtDecision::KeepClassic);
+        auto shadowDraw = shadow.soldier.draw;
+        shadowDraw.source = shadow.soldier.resource.source();
+        const auto shadowWrites = CaptureSprite8Producer(shadowDraw, shadow.soldier.resource.layout, 96).writes;
+        assert(shadowWrites.size() == 24);
+
+        auto ordered = throughRetained;
+        ordered.layers.push_back(shadow);
+        const auto afterShadow = compose(ordered);
+        assert(afterShadow.complete() && afterShadow.replaced == 4 && afterShadow.kept == kept + 1);
+        const auto classicShadow = RasterizeMissionLayers(ordered, body.destination);
+        ordered.layers.push_back(scene.layers.back());
+        const auto orderedFrame = compose(ordered);
+        assert(orderedFrame.complete() && orderedFrame.replaced == 5 && orderedFrame.kept == kept + 1);
+        size_t overEarlier = 0, underLater = 0;
+        for (const auto& write : shadowWrites) {
+            const size_t offset = write.offset;
+            overEarlier += afterRetained.cells.count(offset);
+            underLater += orderedFrame.cells.count(offset);
+            assert(!afterShadow.cells.count(offset));
+            assert(afterShadow.background.pixels.at(offset) == classicShadow.pixels.at(offset));
+        }
+        assert(overEarlier && underLater && underLater < shadowWrites.size());
+        image.scene = ordered;
+        const auto orderedPixels = renderExpected(orderedFrame);
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == orderedPixels);
+        checkFallback(ordered, retainedIndex + 1, orderedPixels);
+
+        const auto clipped = nativeLayer(row, fixture.at("rank_snapshots"), 9, 38, -14);
+        auto clippedDraw = clipped.soldier.draw;
+        clippedDraw.source = clipped.soldier.resource.source();
+        assert(clippedDraw.y == 0 && clippedDraw.rows == 2);
+        assert(SoldierVariantKey(clipped.soldier, colors) == shadowKey);
+        const auto clippedWrites = CaptureSprite8Producer(clippedDraw, clipped.soldier.resource.layout, 96).writes;
+        size_t clippedCount = 0;
+        for (const auto& write : shadowWrites) {
+            const auto y = write.offset / 96 - shadowDraw.y;
+            if (y < 2)
+                continue;
+            const auto& actual = clippedWrites.at(clippedCount++);
+            assert(actual.offset == (y - 2) * 96 + write.offset % 96 && actual.value == write.value);
+        }
+        assert(clippedCount == clippedWrites.size() && clippedCount && clippedCount < shadowWrites.size());
+        image.scene = scene;
+        image.scene.layers.push_back(clipped);
+        const auto clippedFrame = compose(image.scene);
+        assert(clippedFrame.complete() && clippedFrame.replaced == 5 && clippedFrame.kept == kept + 1);
+        const auto clippedClassic = RasterizeMissionLayers(image.scene, body.destination);
+        for (const auto& write : clippedWrites)
+            assert(clippedFrame.background.pixels.at(write.offset) == clippedClassic.pixels.at(write.offset));
+        const auto clippedPixels = renderExpected(clippedFrame);
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == clippedPixels);
+        image.scene = scene;
+        std::cout << "PASS A.1 player shadow 0x97/F1 SDL " << density
+                  << "x: 24 writes, overlaps " << overEarlier << '/' << underLater
+                  << ", visible " << shadowWrites.size() - underLater << ", clipped " << clippedCount
+                  << " writes, whole-frame classic fallback and recovery\n";
     }
     if (withBox) {
         // The interval after pickup has no draw command for this slot.
