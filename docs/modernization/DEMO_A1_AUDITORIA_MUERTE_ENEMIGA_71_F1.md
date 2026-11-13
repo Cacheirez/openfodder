@@ -41,3 +41,22 @@ Directorio `C:/Users/migue/.codex/visualizations/2026/11/13/01a1d60e-bb33-7a93-a
 Maestro SHA-256 `c091f9328fcdcafb0bdb4b4a0b68120bc830de71420a9438ac8e7bb1c985928d`. Con Pillow 11.3.0, recortar a la caja alfa ≥ 128, `(317, 161, 1139, 880)`. Redimensionar con Lanczos a `(10*d, 9*d)` y pegar sin máscara en `(4*d, 2*d)` sobre el lienzo transparente RGBA de `(16*d, 14*d)`. Se reprodujeron byte a byte ambos PNG, sus RGBA y el [manifiesto](../../assets/modernization/demo-a1-enemy-death-71-f1/manifest.json).
 
 Ejecutar `python -B tools/modernization/prepare_demo_a1_manifest.py --base <verde-A>/qa-rocket-native/art/candidate-manifest.json --out <evidencia>/candidate --with-enemy-death`. En el subdirectorio local `integracion-71` del [directorio de auditoría](#recuperación-local), `prepare_death_input.py <checkout> <evidencia-integración-45-F1> <directorio-auditoría-71-F1> <evidencia>` contrasta los candidatos, recalcula el residual y añade 0x71/F1 al fixture anterior. `run_enemy.ps1 <checkout>` ejecuta la prueba SDL con sanitizadores. SHA-256 del log `8bee6c97b65fbcb44ae9141c80b781ffa0e439165702594a2e3a85aec9506218`. El mismo directorio conserva `prompt-imagegen.txt` y `derive_enemy_death.py`.
+
+## Variante residual Hit `d6151619`
+
+13 de noviembre de 2026. Entrada `e4a32a4e431df15b9fd77ee0b8a64f4f7367de51`. Se verificaron los SHA-256 del log `interactive-check-02` y de ambos manifiestos. Los comandos reproducen los 4.456 resultados originales a 12× (92 publicaciones HD y 4.364 rechazos). Frente al candidato de 329 vínculos quedan 4.300 intentos sin claves faltantes, 156 con faltantes y 37 claves residuales. [Evidencia de sesión](evidence/demo-a1-interactive.json) · [Candidato de 329 vínculos](DEMO_A1_AUDITORIA_SOMBRA_97_F1.md#integración-y-comprobación).
+
+- `d615161944fbf97e9e07f29f4de6849c927c0d4e20087cbb981ec3c73e11dc45` aparece en 18 intentos y es el único faltante en 15. Los 18 comandos son de la ranura 21, generación 162, escena 186, entre los intentos 4903 y 4986. El intento 4958 (intervalo 4957, ocho comandos) tenía dos faltantes en el log original. El candidato ya resuelve la sombra 0x97/F1. Añadir la variante `Hit` dejaría 4.315 de 4.456 intentos históricos sin claves faltantes (96,84 %).
+- Python y el renderizador nativo C++ confirmaron la clave exacta. Enemigo tipo 5, persona IA (1), `eSprite_Anim_Hit` (1), fuera de vehículo y sin destrucción pendiente. Usa `stru_8D418`, `eGFX_IN_GAME` offset 8406, ambas paletas efectivas a 0. Frente al snapshot de `Die2`, solo difieren la clave y el estado de animación. Los 896 bytes RGBA del raster de 16 × 14 coinciden byte a byte, con 51 píxeles visibles y SHA-256 `9c69e3e0f4a672776be46a0f90d7acccf6629e74d9361236d5d82d81f8cedfbf`. [Tabla Amiga](../../Source/Amiga/SpriteData_Amiga.hpp) · [Estados](../../Source/Sprites.hpp) · [Renderizador](../../tools/modernization/render_walk_native.cpp).
+
+Integración del vínculo con los activos existentes, prueba SDL y aceptación jugando PENDIENTES. La proyección describe la resolución de claves del log histórico.
+
+### Reproducción de la auditoría Hit
+
+Directorio `C:/Users/migue/.codex/visualizations/2026/11/13/01a1d63f-b3e8-7e81-a616-ccf50b3a42cb`. Ejecutar `python -B verify_residual_329.py <checkout> <a1> <candidato329/candidate-manifest.json> <renderer.exe>`. Usar el árbol `a1` del [Arranque rápido](CONTINUIDAD.md), el [candidato de 329 vínculos](DEMO_A1_AUDITORIA_SOMBRA_97_F1.md#reproducción-de-la-integración) y el [renderizador conservado de F4](DEMO_A1_AUDITORIA_RANGO_F4.md#recuperación-local) con su carpeta `native-snapshots`. El script localiza el log mediante la evidencia de sesión. Comparar el raster generado con `enemy-death-71-f1-native.rgba` del [directorio de auditoría Die2](#recuperación-local).
+
+| Archivo | SHA-256 |
+|---|---|
+| `verify_residual_329.py` | `fd9adfee8c11f7180e75020ec84c2fb482ec453140acd18bb8a1b1eecd6a2edb` |
+| `enemy-death-71-f1-d615-derived.json` | `a347bd969d7d0211499faa16b95280c8be2d943b9f108a0e8a1924d9a46c9d3d` |
+| `enemy-death-71-f1-d615-verification.json` | `bf885de66c8d84bbf7e88650a53876429cf77457181292436595b008077fa130` |
