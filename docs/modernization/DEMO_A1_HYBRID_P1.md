@@ -54,4 +54,15 @@ Cuando falta el vínculo exacto, el híbrido conserva F2 si coinciden identidad,
 
 - **PASS** en WSL con SDL software, ASan/UBSan/LSan. El caso integrado del método Window a 8×/12× verifica dos cuerpos HD, árbol e insignia por separado, oclusiones en ambos sentidos, transparencia, escrituras de cero e igual índice, Save/Restore y recuperación píxel a píxel tras fallo SDL. Comprueba rechazo de identidad, frame, offset, bytes truncados y geometría alterada. El modo estricto mantiene el rechazo sin vínculo y el censo previo.
 - **PASS** en H3 Windows: las 11 fases y 11.361 estados canónicos coinciden con la referencia fijada. El replay público Amiga M1P2 conserva 1.894 publicaciones HD, 2.660 faltantes, 526 publicaciones con árbol clásico y 1.546 estados H3. El replay usa la insignia F0.
-- **PENDIENTE** CI de esta ampliación y revisión jugable de Miguel.
+- **PASS** adicional con los bytes originales reconstruidos de F2 en WSL con ASan/UBSan/LSan: a 8×/12× se publicaron cinco soldados HD y se compararon las 70 escrituras de la insignia. Se observaron oclusiones en ambos sentidos, dos retornos completos forzados por densidad y recuperación. El registro local `f2-linux-run.log` conserva el rótulo F4 de la prueba reutilizada, con entrada F2 y 70 escrituras. SHA-256 `93464d15ca200ab44926f97774af0e76a30f40b4382d93f8b8a599f75e68a27d`. La compilación opcional de este fixture con Clang 23.1.5 para Windows quedó bloqueada al enlazar `stl_asan.lib`. El mismo caso se completó en WSL.
+- **PASS** CI de `4133a63`: Windows completa y revisión de densidades. En Linux pasaron CTest, H3, ASan/UBSan del motor, LSan sobre 29 demos y publicación activa y pausa con sanitizadores. El diagnóstico general TSan de la ejecución Linux seguía en curso al registrar el cierre focalizado. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43608997788) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43608992500) · [Densidades](https://github.com/Cacheirez/openfodder/actions/runs/43608997787).
+
+### Próxima prueba jugable
+
+En PowerShell:
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1da6a-54a2-7270-8fa9-5eb4a351446f/Probar-P1-F2.ps1'
+```
+
+El comando usa el binario local contrastado con H3, el mismo manifiesto de 333 vínculos y Amiga The One M1P2 a 12× con SDL software y sin sonido. Se comprobaron las dependencias y el hash del binario. La sesión interactiva es la revisión pendiente. Volver a caminar, girar y disparar cerca de los árboles. Facilitar la ruta del registro que imprime PowerShell y señalar si el pelotón sigue alternando entre HD y clásico. Basta con empezar por el modo híbrido. Para una pasada adicional de control, usar `-Modo estricto`.
