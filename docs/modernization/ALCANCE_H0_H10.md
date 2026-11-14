@@ -2,6 +2,9 @@
 
 Requisitos del proyecto conservados al limpiar la documentación el 02-11-2026. El orden y la tarea activa están únicamente en [PLAN_TRABAJO.md](PLAN_TRABAJO.md). Los avances fechados de esta lista son antecedentes técnicos, no instrucciones de siguiente paso. H7.3 exige ahora la sustitución completa definida en [SOLDADOS_COBERTURA_COMPLETA.md](SOLDADOS_COBERTURA_COMPLETA.md); el lote f72d6e7 no cumple ese cierre.
 
+**Actualización estratégica aprobada el 14-11-2026:** se autoriza un **prototipo híbrido y progresivo** donde recursos clásicos válidos, aún sin HD, coexisten temporalmente en su orden con recursos modernos. **No se reduce H7.3 ni el alcance H0–H10:** la cobertura artística final y la aceptación jugando siguen pendientes. La secuencia propuesta después de validar el prototipo es una escena modernizada, scroll/interpolación visual a 60 Hz y viewport 16:9 nativo (no mero estiramiento); esos hitos posteriores **no están autorizados aún**. El trabajo inmediato y sus límites figuran solo en el [control operativo](PLAN_TRABAJO.md).
+
+
 ## H0. Auditoría y preparación — completado
 
 - [x] **H0.1 — Asistente:** inspeccionar temporización, cámara, superficies, sprites, entrada y pruebas existentes.
