@@ -152,5 +152,84 @@ for(const char* density:{"8","12"}){
 }
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","nonexistent-ordered-bindings.json");
 assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
+    auto tree=body;
+    auto& p=tree.soldier;
+    auto& s=p.soldier;
+    auto& g=s.geometry;
+    s.slot=2;s.type=14;s.sheet=0x90;s.segment=1;
+    g.format=SpriteDrawFormat::Amiga8;g.columns=2;g.rows=28;
+    g.spriteX+=5;g.spriteY+=14;
+    p.resource.offset=1942;p.resource.layout={g.format,320,256,4};p.resource.generation=1;
+    auto treeBytes=std::make_shared<std::vector<uint8_t>>(40*256*4,0);
+    // One equal-index write and one transparent pixel in each first byte.
+    for(size_t y=0;y<28;++y)
+        for(size_t plane:{0u,2u}) (*treeBytes)[plane*40*256+1942+y*40]=0x80;
+    p.resource.bytes=treeBytes;
+    g.source=p.resource.source();p.draw=PrepareSpriteDraw(g);g.source=nullptr;
+    const auto treeKey=SoldierVariantKey(p,colors);
+    const auto tx=p.draw.x,ty=p.draw.y;
+    const size_t first=size_t(ty)*96+tx;
+    const size_t later=size_t(ty+7)*96+tx;
+    MissionLayer zero=cover;zero.pixels.writes.clear();zero.pixels.put(later+1,0);
+    auto save=cover;save.operation=MissionLayerOperation::Save;
+    auto restore=save;restore.operation=MissionLayerOperation::Restore;
+    auto afterSave=zero;afterSave.pixels.put(first+1,0);
+    env("OPENFODDER_SOLDIER_ORDERED_MANIFEST",path);
+    for(const char* density:{"8","12"}){
+        env("OPENFODDER_SOLDIER_HD",density);
+        const unsigned d=unsigned(std::stoi(density));
+        image.scene.layers={body,tree,second,cover,zero,save,afterSave,restore};
+        assert(registry.resolve(p,treeKey,d).decision==SoldierArtDecision::Missing);
+        clear(renderer);assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+        env("OPENFODDER_SOLDIER_ORDERED_HYBRID","1");
+        const auto mixed=ComposeOrderedSoldierArt(image.scene,body.destination,d,[&](const PreparedSpriteDraw& q){
+            return registry.resolve(q,SoldierVariantKey(q,colors),d,true);});
+        assert(mixed.complete() && mixed.replaced==2 && mixed.kept==1);
+        assert(!mixed.cells.count(first) && mixed.background.pixels[first]==colors[5]);
+        assert(mixed.cells.count(first+1)); // Transparent tree pixel leaves the first HD body.
+        assert(mixed.cells.count(later));   // Second HD body overlaps the tree's opaque run.
+        assert(!mixed.cells.count(later+1) && mixed.background.pixels[later+1]==0);
+        std::vector<uint32_t> expanded(96*64*d*d);
+        for(size_t y=0;y<64*d;++y)for(size_t x=0;x<96*d;++x){
+            const size_t n=(y/d)*96+x/d;
+            const auto cell=mixed.cells.find(n);
+            expanded[y*96*d+x]=cell==mixed.cells.end()?mixed.background.pixels[n]:cell->second[(y%d)*d+x%d];
+        }
+        auto oracle=texture(renderer,expanded,96*d,64*d);
+        SDL_FRect full{0,0,96.f*d,64.f*d};
+        clear(renderer);assert(SDL_RenderTexture(renderer,oracle,&full,&dst));const auto expected=read(renderer);
+        SDL_DestroyTexture(oracle);
+        const auto native=RasterizeMissionLayers(image.scene,body.destination);
+        assert(SDL_UpdateTexture(image.tex,nullptr,native.pixels.data(),96*4));
+        clear(renderer);assert(SDL_RenderTexture(renderer,image.tex,&src,&dst));const auto expectedClassic=read(renderer);
+        clear(renderer);callNumber=0;
+        assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==expected && expected!=expectedClassic);
+        const int lastDraw=callNumber;
+        clear(renderer);callNumber=0;failAt=lastDraw;
+        assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==expectedClassic && live==0);
+        failAt=0;
+        const auto expectRejection=[&](){
+            clear(renderer);callNumber=0;
+            assert(win.TryRenderMissionHD(&image,src,dst)==-1 && callNumber==0);
+        };
+        auto& retained=image.scene.layers[1].soldier;
+        retained.soldier.type=5;expectRejection();retained=p;
+        retained.resource.bytes=std::make_shared<const std::vector<uint8_t>>(1943,0);
+        expectRejection();
+        bool rejected=false;
+        try { RasterizeMissionLayers(image.scene,body.destination); }
+        catch(const std::out_of_range&) { rejected=true; }
+        assert(rejected);
+        retained=p;retained.draw.sourceOffset+=40000;expectRejection();
+        retained=p;retained.soldier.generation=0;expectRejection();
+        retained=p;
+        assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==expected);
+        env("OPENFODDER_SOLDIER_HD","0");expectRejection();
+        env("OPENFODDER_SOLDIER_ORDERED_HYBRID","0");
+    }
+    assert(SDL_UpdateTexture(image.tex,nullptr,classic.pixels.data(),96*4));
+    std::cout<<"PASS hybrid Window: two HD actors, native tree, ordered writes, Save/Restore and complete SDL recovery at 8x/12x\n";
+}
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","");std::remove(path);
 std::cout<<"PASS ordered Window: resource/palette identity, multiple bodies, water, occlusion, missing binding and load failure\n";

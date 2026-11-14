@@ -10,10 +10,28 @@ from ordered_soldier_coverage import report
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--exe', type=Path, required=True)
+    parser.add_argument('--hybrid', action='store_true')
     args = parser.parse_args()
     exe = args.exe.resolve()
     with tempfile.TemporaryDirectory(prefix='ordered-coverage-') as tmp:
         path = Path(tmp)/'engine.log'
+        if args.hybrid:
+            env = {**os.environ, 'OPENFODDER_ORDERED_COVERAGE': '1',
+                   'OPENFODDER_TEST_ORDERED_HYBRID': '1'}
+            with path.open('w') as log:
+                subprocess.run([str(exe)], cwd=tmp, env=env, stdout=log, stderr=subprocess.STDOUT,
+                               check=True, timeout=120)
+            result = report([path])
+            assert 'PASS hybrid Window:' in path.read_text(), result['outcomes']
+            assert result['outcomes']['published'] == 20, result['outcomes']
+            assert result['outcomes']['classic-recovered'] == 4, result['outcomes']
+            for density in (8, 12):
+                trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
+                assert len(trees) == 2, trees
+                assert sum(r.get('resolution_keep', 0) for r in trees) == 4, trees
+                assert sum(r['resolution_missing'] for r in trees) == 2, trees
+            print('PASS hybrid coverage: 8x/12x, two HD actors, native tree and complete recovery')
+            return
         for enabled in ('0', '1'):
             env = {**os.environ, 'OPENFODDER_ORDERED_COVERAGE': enabled}
             with path.open('w') as log:

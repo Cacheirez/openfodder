@@ -6,6 +6,8 @@
 #include "SidebarDraw.hpp"
 #include "ResolvedSpriteResource.hpp"
 #include "SoldierPose.hpp"
+#include <cstdlib>
+#include <cstring>
 #include <stdexcept>
 
 namespace openfodder {
@@ -39,6 +41,42 @@ struct MissionLayerComposition {
     std::vector<PresentationSurface> surfaces;
     std::vector<IndexedLayer> saved;
 };
+inline bool HybridMissionArtEnabled() {
+    const auto* hybrid = std::getenv("OPENFODDER_SOLDIER_ORDERED_HYBRID");
+    const auto* path = std::getenv("OPENFODDER_SOLDIER_ORDERED_MANIFEST");
+    const auto* density = std::getenv("OPENFODDER_SOLDIER_HD");
+    return hybrid && std::strcmp(hybrid, "1") == 0 && path && *path && density &&
+        (std::strcmp(density, "8") == 0 || std::strcmp(density, "12") == 0);
+}
+
+// Check the actual clipped reads and writes before the independent classic
+// replay invokes its unchecked native kernel. Amiga8 can span row edges.
+inline void ValidateMissionSpriteRaster(const SpriteDrawState& draw,
+        const ResolvedSpriteResource& resource, size_t width, size_t targetSize) {
+    const auto& layout = resource.layout;
+    const bool pc = draw.format == SpriteDrawFormat::PC;
+    if (draw.format != layout.format || draw.palette != resource.palette ||
+        (!pc && (draw.format != SpriteDrawFormat::Amiga8 || layout.width != 320 ||
+                 !layout.height || !layout.planes || layout.planes > 8)) ||
+        draw.sourceOffset < 0 || draw.rows <= 0 || draw.y < 0 || !width ||
+        width > targetSize)
+        throw std::invalid_argument("semantic soldier raster layout");
+
+    const auto registers = PrepareSpriteRasterRegisters(draw, layout, width);
+    const size_t stride = pc ? 160 : layout.width / 8;
+    if (registers.columns < 0 || size_t(registers.columns) > stride ||
+        (pc && size_t(registers.columns) * 2 > width))
+        throw std::invalid_argument("semantic soldier raster columns");
+    const size_t planeOffset = pc ? 0 : size_t(layout.planes - 1) * layout.height * 40;
+    const size_t sourceEnd = size_t(draw.sourceOffset) + size_t(draw.rows - 1) * stride +
+        size_t(registers.columns) + planeOffset;
+    const auto start = std::ptrdiff_t(width) * draw.y + draw.x;
+    const auto end = start + std::ptrdiff_t(width) * (draw.rows - 1) +
+        registers.columns * (pc ? 2 : 8);
+    if (sourceEnd > resource.available() || start < 0 || end > std::ptrdiff_t(targetSize))
+        throw std::out_of_range("semantic soldier raster bounds");
+}
+
 // Inputs obey the same clipped geometry/extents contracts as the retained
 // kernels. Identity is checked before invoking any kernel. Outputs are private;
 // no engine Save/Restore, registers, visibility, resource selection or SDL calls.
@@ -80,19 +118,12 @@ inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& 
             input.source = prepared.resource.source();
             const auto draw = PrepareSpriteDraw(input);
             const auto& classic = prepared.draw;
-            if (!draw.visible || draw.x != classic.x || draw.y != classic.y ||
+            if (!draw.visible || !classic.visible || draw.x != classic.x || draw.y != classic.y ||
                 draw.columns != classic.columns || draw.rows != classic.rows ||
                 draw.sourceOffset != classic.sourceOffset || draw.palette != classic.palette ||
                 draw.format != classic.format)
                 throw std::invalid_argument("semantic soldier geometry differs from classic preparation");
-            if (draw.format == SpriteDrawFormat::Amiga8) {
-                const auto width = result.surfaces[slot].indexed.width;
-                const auto regs = PrepareSpriteRasterRegisters(draw, prepared.resource.layout, width);
-                const auto start = std::ptrdiff_t(width) * draw.y + draw.x;
-                const auto end = start + std::ptrdiff_t(width) * (draw.rows - 1) + regs.columns * 8;
-                if (start < 0 || end > std::ptrdiff_t(target.size()))
-                    throw std::out_of_range("semantic soldier destination bounds");
-            }
+            ValidateMissionSpriteRaster(draw, prepared.resource, result.surfaces[slot].indexed.width, target.size());
             if (replacePose && TryRasterizeSoldierPose(layer.pose, prepared, target.data(),
                     result.surfaces[slot].indexed.width, result.surfaces[slot].indexed.height)) {
                 ++result.poseReplacements;

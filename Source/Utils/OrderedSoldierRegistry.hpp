@@ -109,10 +109,28 @@ public:
         const auto slash=path.find_last_of("/\\");
         return OrderedSoldierRegistry(root,slash==std::string::npos?"":path.substr(0,slash+1));
     }
-    OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,const std::string& key,unsigned density) const {
+    // The Window census derives key from the complete frozen resource and the
+    // current palette. Composition still validates the draw before rasterizing.
+    OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,const std::string& key,unsigned density,
+                                bool hybrid=false) const {
         OrderedSoldierAsset result;
-        const auto found=entries.find(key);if(found==entries.end())return result;
-        const auto& b=found->second;const auto& s=p.soldier;const auto& g=s.geometry;
+        const auto found=entries.find(key);
+        const auto& s=p.soldier;const auto& g=s.geometry;
+        if(found==entries.end()){
+            // Initial hybrid scope: the audited Amiga8 tree table entry.
+            // This is a native resource contract, independent of palette keys.
+            if(hybrid && s.valid && s.scene && s.generation && s.interval &&
+               !s.inVehicle && !s.pendingDestroy && !p.isCursor &&
+               s.type==14 && s.sheet==0x90 && s.frame==0 && s.segment==1 &&
+               g.format==SpriteDrawFormat::Amiga8 && g.columns==2 && g.rows==28 &&
+               g.modX==0 && g.modY==0 && g.palette==0 && p.resource.palette==0 &&
+               p.resource && p.resource.generation && p.resource.offset==1942 &&
+               p.resource.layout.format==g.format && p.resource.layout.width==320 &&
+               p.resource.layout.height==256 && p.resource.layout.planes==4)
+                result.decision=SoldierArtDecision::KeepClassic;
+            return result;
+        }
+        const auto& b=found->second;
         if(b.keep){
             // Explicit associated sheets only; never a body/civilian exemption.
             const bool effectType=s.type==2||s.type==3||s.type==6||s.type==21||s.type==22||s.type==23||

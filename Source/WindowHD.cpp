@@ -42,18 +42,20 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     if(!SDL_GetRenderScale(mRenderer,&sx,&sy) || sx!=1 || sy!=1)return classic("renderer-scale");
     if(!SDL_GetRenderLogicalPresentation(mRenderer,&w,&h,&logical) ||
        logical!=SDL_LOGICAL_PRESENTATION_DISABLED)return classic("renderer-logical-presentation");
-    // Verify the actual current interval and late palette, never a cached frame.
-    // Oracle mismatches propagate, not an artistic fallback.
-    const auto scene=image->VerifyMissionAudit(g_Fodder->mSurfaceFinal);
-    const auto current=image->CapturePresentation();
-    bool nonBlack=false;for(auto color:current.indexed.colors)nonBlack|=(color&0xffffffu)!=0;
-    if(!nonBlack)return classic("black-palette");
-    for(const auto& layer:scene.layers)
-        if(layer.operation==openfodder::MissionLayerOperation::Soldier &&
-           layer.soldier.soldier.scene!=g_Fodder->mPresentationScene)return classic("stale-scene");
     try {
+        // Verify the current interval and late palette before any SDL write.
+        // Oracle mismatches still propagate as runtime errors.
+        const auto scene=image->VerifyMissionAudit(g_Fodder->mSurfaceFinal);
+        if(scene.destinations.empty())return classic("ordered-invalid-audit");
+        const auto current=image->CapturePresentation();
+        bool nonBlack=false;for(auto color:current.indexed.colors)nonBlack|=(color&0xffffffu)!=0;
+        if(!nonBlack)return classic("black-palette");
+        for(const auto& layer:scene.layers)
+            if(layer.operation==openfodder::MissionLayerOperation::Soldier &&
+               layer.soldier.soldier.scene!=g_Fodder->mPresentationScene)return classic("stale-scene");
         const char* orderedPath=std::getenv("OPENFODDER_SOLDIER_ORDERED_MANIFEST");
         if(orderedPath && *orderedPath){
+            const bool hybrid=openfodder::HybridMissionArtEnabled();
             const unsigned density=std::string(option)=="12"?12:8;
             openfodder::OrderedSoldierCoverage coverage(scene,current.destination,density);
             // Exclusive route: missing bindings never fall into the pilot.
@@ -78,7 +80,7 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                 if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
                 const auto& command=layer.soldier;
                 const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
-                const auto resolved=registry->resolve(command,key,density);
+                const auto resolved=registry->resolve(command,key,density,hybrid);
                 coverage.resolved(order,key,resolved.decision);
                 if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
                     std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",

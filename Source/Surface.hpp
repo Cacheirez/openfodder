@@ -221,7 +221,19 @@ public:
             source.initial.indexed.colors = current.colors;
             actual.push_back(surface);
         }
-        const auto composed = openfodder::ComposeMissionLayers(scene);
+        openfodder::MissionLayerComposition composed;
+        try {
+            composed = openfodder::ComposeMissionLayers(scene);
+        } catch (const std::invalid_argument&) {
+            if (!openfodder::HybridMissionArtEnabled()) throw;
+            return {}; // Rejected retained data. The live classic surface is independent.
+        } catch (const std::out_of_range&) {
+            if (!openfodder::HybridMissionArtEnabled()) throw;
+            return {};
+        } catch (const std::bad_alloc&) {
+            if (!openfodder::HybridMissionArtEnabled()) throw;
+            return {};
+        }
         for (size_t i = 0; i < actual.size(); ++i) {
             const auto* surface = actual[i];
             if (*composed.surfaces[i].indexed.indices != *surface->CaptureDraw().indices ||
@@ -338,7 +350,7 @@ public:
             return false;
         }
         openfodder::PresentationTarget target;
-        VerifyMissionAudit(other, &target); // Divergences must propagate; never hide them in fallback.
+        if (VerifyMissionAudit(other, &target).destinations.empty()) return false;
         if (!ApplyPresentation(target))
             throw std::runtime_error("mission publication: destination changed after verification");
         static std::atomic<bool> announced{false};

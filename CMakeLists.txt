@@ -183,6 +183,9 @@ if(Python3_Interpreter_FOUND)
     add_test(NAME soldier_ordered_coverage COMMAND "${Python3_EXECUTABLE}"
         "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_coverage_integration.py"
         --exe $<TARGET_FILE:openfodder_hd_window_tests>)
+    add_test(NAME soldier_ordered_hybrid COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_ordered_coverage_integration.py"
+        --exe $<TARGET_FILE:openfodder_hd_window_tests> --hybrid)
     add_executable(openfodder_external_asset_tests "${_hd_window_fixture}")
     target_compile_definitions(openfodder_external_asset_tests PRIVATE OPENFODDER_EXTERNAL_ASSET_FIXTURE)
     add_dependencies(openfodder_external_asset_tests openfodder_hd_window_tests)

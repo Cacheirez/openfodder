@@ -5,8 +5,8 @@
 #include <functional>
 namespace openfodder {
 // A resolver must match the complete retained resource/variant key, not just a
-// sheet number. KeepClassic is an explicit out-of-scope classification (effects,
-// civilians, etc.); it must never be used to excuse a missing soldier asset.
+// sheet number. KeepClassic is an explicit native classification; only the
+// resolver can authorize it for a verified resource.
 enum class SoldierArtDecision { Replace, KeepClassic, Missing };
 struct OrderedSoldierAsset {
     SoldierArtDecision decision = SoldierArtDecision::Missing;
