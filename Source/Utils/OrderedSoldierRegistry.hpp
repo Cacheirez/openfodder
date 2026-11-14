@@ -125,11 +125,13 @@ public:
             // Only the audited tree variant can stay in its original draw order.
             const bool tree=s.type==14 && s.sheet==0x90 &&
                 key=="a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d";
-            const bool retainedScenery=(tree || (s.type==15 && s.sheet==0x91) ||
+            const bool bullet=s.type==6 && s.sheet==0x7f &&
+                key=="6c2cdf76311d72391780febb69499a2f1b94325ed1509838b7af65f3141d5981";
+            const bool retainedNative=(tree || bullet || (s.type==15 && s.sheet==0x91) ||
                 (s.type==37 && s.sheet==0xc2)) && s.frame==0 &&
                 g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
                 !s.inVehicle && !s.pendingDestroy;
-            if(bird || retainedScenery || s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
+            if(bird || retainedNative || s.sheet==0x7c || (effectType && (s.sheet==0x8d||s.sheet==0x97||s.sheet==0x95||s.sheet==0xe5||s.sheet==0xe6)))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }

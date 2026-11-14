@@ -266,6 +266,85 @@ for (unsigned density : {8u, 12u}) {
                   << coversBody << " occlude HD and " << coveredByBody << " are occluded by HD, "
                   << "whole-frame classic fallback and HD recovery\n";
     }
+    if (fixture.contains("bullet_7f")) {
+        const std::string key = "6c2cdf76311d72391780febb69499a2f1b94325ed1509838b7af65f3141d5981";
+        const auto& row = fixture.at("bullet_7f");
+        const auto& snapshots = fixture.at("bullet_7f_snapshots");
+        const auto bullet = nativeLayer(row, snapshots, 12, 32, 20);
+        assert(SoldierVariantKey(bullet.soldier, colors) == key);
+        assert(registry.resolve(bullet.soldier, key, density).decision == SoldierArtDecision::KeepClassic);
+        auto other = bullet.soldier;
+        ++other.soldier.animation;
+        const auto otherKey = SoldierVariantKey(other, colors);
+        assert(otherKey != key);
+        const OrderedSoldierRegistry unapproved(nlohmann::json{
+            {"version", 1}, {"bindings", {{{"key", otherKey}, {"decision", "keep-associated"}}}}
+        });
+        assert(unapproved.resolve(other, otherKey, density).decision == SoldierArtDecision::Missing);
+
+        auto withBullet = scene;
+        withBullet.layers.push_back(bullet);
+        const auto bulletLast = compose(withBullet);
+        assert(bulletLast.complete() && bulletLast.replaced == 5 && bulletLast.kept == kept + 1);
+        assert(bulletLast.observations.back().decision == SoldierArtDecision::KeepClassic);
+        auto draw = bullet.soldier.draw;
+        draw.source = bullet.soldier.resource.source();
+        const auto bulletWrites = CaptureSprite8Producer(draw, bullet.soldier.resource.layout, 96).writes;
+        const auto nativeBullet = RasterizeMissionLayers(withBullet, body.destination);
+        assert(bulletWrites.size() == 6);
+        size_t occluded = 0;
+        for (const auto& write : bulletWrites) {
+            occluded += frame.cells.count(write.offset);
+            assert(!bulletLast.cells.count(write.offset));
+            assert(bulletLast.background.pixels.at(write.offset) == nativeBullet.pixels.at(write.offset));
+        }
+        assert(occluded > 0 && occluded < bulletWrites.size());
+        const auto bulletLastPixels = renderExpected(bulletLast);
+        image.scene = withBullet;
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == bulletLastPixels);
+        checkFallback(withBullet, withBullet.layers.size() - 1, bulletLastPixels);
+
+        auto bulletFirst = scene;
+        bulletFirst.layers.insert(bulletFirst.layers.begin(), bullet);
+        const auto behind = compose(bulletFirst);
+        assert(behind.complete() && behind.replaced == 5 && behind.kept == kept + 1);
+        assert(behind.observations.front().decision == SoldierArtDecision::KeepClassic);
+        for (const auto& write : bulletWrites)
+            assert(behind.cells.count(write.offset) == frame.cells.count(write.offset));
+        const auto behindPixels = renderExpected(behind);
+        assert(behindPixels != bulletLastPixels);
+        image.scene = bulletFirst;
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == behindPixels);
+
+        const auto clipped = nativeLayer(row, snapshots, 12, 32, -14);
+        auto clippedDraw = clipped.soldier.draw;
+        clippedDraw.source = clipped.soldier.resource.source();
+        assert(clippedDraw.y == 0 && clippedDraw.rows == 2 && clippedDraw.sourceOffset == 160);
+        assert(SoldierVariantKey(clipped.soldier, colors) == key);
+        const auto clippedWrites = CaptureSprite8Producer(clippedDraw, clipped.soldier.resource.layout, 96).writes;
+        assert(clippedWrites.size() == 2);
+        for (size_t i = 0; i < clippedWrites.size(); ++i) {
+            const auto& original = bulletWrites.at(4 + i);
+            assert(clippedWrites[i].offset + size_t(draw.y + 4) * 96 == original.offset);
+            assert(clippedWrites[i].value == original.value);
+        }
+        image.scene = scene;
+        image.scene.layers.push_back(clipped);
+        const auto clippedFrame = compose(image.scene);
+        assert(clippedFrame.complete() && clippedFrame.replaced == 5 && clippedFrame.kept == kept + 1);
+        const auto clippedClassic = RasterizeMissionLayers(image.scene, body.destination);
+        for (const auto& write : clippedWrites)
+            assert(clippedFrame.background.pixels.at(write.offset) == clippedClassic.pixels.at(write.offset));
+        const auto clippedPixels = renderExpected(clippedFrame);
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == clippedPixels);
+        image.scene = scene;
+        std::cout << density << "x bullet 0x7F/F0: " << bulletWrites.size() << " native writes, "
+                  << occluded << " overlapping HD in both orders, " << clippedWrites.size()
+                  << " clipped writes, whole-frame classic fallback and HD recovery\n";
+    }
     if (fixture.contains("player_shadow")) {
         assert(withBox);
         const auto& row = fixture.at("player_shadow");

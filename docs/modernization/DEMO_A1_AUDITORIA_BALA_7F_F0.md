@@ -33,3 +33,31 @@ python -B "$work/verify_bullet_7f_f0.py" . $session $manifest $ref $renderer
 | `bullet-derived.json` | `81f45c6a3a05fe6940d2674cb5ef90166a137179908ec03caf435c4fbc0be1dc` |
 | `bullet-native.rgba` | `90f52dc87b9c093b4fc34d0892f9b98fe3c34f670d542b19d2f63887635263bb` |
 | `bullet-verification.json` | `d3d2672787db720becd833e89af4391fe0304bd31165c1c3941342878d9cd2dd` |
+
+## Integración y prueba SDL
+
+`--with-bullet-7f` añade al candidato de 333 vínculos un solo `keep-associated` para la clave auditada. El de 334 contiene 323 reemplazos y 11 dibujos asociados. Los 333 vínculos anteriores conservan su orden y los 168 activos coinciden byte a byte. `--with-tree-90` reproduce el manifiesto anterior con el mismo SHA-256.
+
+SDL software Windows x64 con Clang 23.1.5, SDL 3.4.0 y ASan/UBSan **PASS** a 8×/12×. En ambas densidades la bala hace seis escrituras nativas, cinco de ellas en celdas ocupadas por HD. El orden decide qué dibujo queda visible. Al recortar cuatro filas por arriba quedan dos escrituras con el valor y el desplazamiento esperados. El framebuffer SDL coincide con el oráculo del compositor, incluida la recuperación HD tras el retorno íntegro a clásico por un faltante. Otra clave de bala se rechaza incluso con un vínculo `keep-associated` explícito. Pasan también las regresiones del fixture.
+
+El primer pase detectó una coordenada de recorte incorrecta en el fixture. Se corrigió el estímulo conforme al anclaje del motor y el pase siguiente completó todas las aserciones. El log inicial se conserva como `bullet-sdl-clipping-fixture-failed.log`. GPU, audio, CD32, LSan local y aceptación jugando PENDIENTES.
+
+Desde la raíz del checkout, con `$work` y `$ref` de la sección anterior:
+
+```powershell
+$base = 'C:/Users/migue/.codex/visualizations/2026/11/11/01a1ccf2-ba36-78a2-8403-b24f50437a5c/qa-rocket-native/art/candidate-manifest.json'
+$previous = 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1d953-1f86-7b42-854d-607cc2d2194e'
+python -B tools/modernization/prepare_demo_a1_manifest.py --base $base --out "$work/candidate334" --with-bullet-7f
+python -B tools/modernization/prepare_demo_a1_manifest.py --base $base --out "$work/candidate333-regression" --with-tree-90
+python -B "$work/prepare_bullet_integration.py" $previous "$work/candidate334" "$work/candidate333-regression" $ref
+& "$work/run_bullet_sdl.ps1"
+```
+
+Para repetirlo sin sobrescribir la evidencia, copiar `bullet-derived.json` y los dos scripts de integración a un directorio de trabajo nuevo.
+
+| Evidencia | SHA-256 |
+|---|---|
+| Manifiesto Windows de 334 vínculos | `7ad4ba2c28208a107ff98651a414692059ca7fdd0e4381de2e2d257f167b7882` |
+| `prepare_bullet_integration.py` | `f08f4bff7c69e6c664acfaea25983fa5485ea203e0a0b89d43abecda9352beb3` |
+| `run_bullet_sdl.ps1` | `43724ac411f460e698316b4495b48720c67c4de9b2407ff78d48012ceeaf450c` |
+| `tree-sdl.log` (salida del fixture) | `d322ee281c00e16f6eb22a6d1e4346f320445035f3d884f13105da78c0357052` |
