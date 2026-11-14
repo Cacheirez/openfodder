@@ -17,7 +17,7 @@ ARRANQUE LIGERO:
 5. Consulta exclusivamente los fragmentos de código, contratos y evidencias necesarios para ejecutar la tarea seleccionada.
 
 TRABAJO DE ESTA SESIÓN:
-Ejecuta UNA sola tarea verificable indicada por el control operativo del plan. No elijas tareas por el historial del chat, no amplíes el alcance ni empieces automáticamente la siguiente. Para arte, un lote pequeño (máximo una dirección/familia por hilo); para código, un cambio acotado con pruebas.
+Mantén UNA sola tarea activa cada vez, siempre del control operativo del plan. Al validarla, publicar cambios y sincronizar plan/continuidad; si la tarea siguiente sigue dentro del MISMO hito autorizado y no requiere decisión humana, continuar automáticamente con otro microbloque. No elegir tareas del historial, no cambiar de hito/familia por iniciativa propia ni comenzar una fase no autorizada. Para arte, un lote pequeño por microbloque; para código, un cambio acotado y probado. Si está autorizado A.1-HYBRID-P1, trabajar en el prototipo de compositor híbrido seguro, no en completar individualmente cientos de variantes del antiguo modo estricto.
 
 PROTECCIÓN DEL CONTEXTO:
 No pegues ni imprimas binarios, imágenes en Base64, HTML con data:image, manifiestos completos, grandes diffs o logs extensos. Trabaja sobre archivos y resume rutas, SHA-256, contadores y fallos concretos. Evita lecturas y pruebas repetitivas, e interrumpe los bucles sin progreso. Saturación del contexto = relevo corto, no motivo para cambiar a Astra.
@@ -27,9 +27,9 @@ CIERRE OBLIGATORIO:
 - Publica cambios válidos mediante commits coherentes en la rama, sin fusionar PR #1. Si `git push` falla por credenciales, **NO intentes volcar PNG/Base64 ni reconstruir el commit binario por el conector de GitHub**. Conserva el SHA local, proporciona una ruta de recuperación y detente; no des el trabajo por publicado.
 - Tras CADA paso terminado, actualiza el apartado «Control operativo» de PLAN_TRABAJO.md con el último paso terminado y la siguiente tarea única, y «Arranque rápido» de CONTINUIDAD.md con resultados, SHA y pendientes. No cambies la versión/alcance del plan si no hace falta.
 - Si el paso queda incompleto o bloqueado, NO avances el plan: mantén esa tarea pendiente y documenta el bloqueo y la recuperación.
-- Verifica que ambos documentos coinciden con GitHub, publica el relevo y DETENTE.
+- Verifica que ambos documentos coinciden con GitHub y publica el relevo. **Continúa solo si el siguiente microbloque pertenece al mismo hito autorizado**. Detente si el hito termina, hay que valorar el resultado jugando o artísticamente, cambia el alcance, la CI obligatoria falla, falta autorización/credenciales, se agota el presupuesto de reintentos o la plataforma impone un límite. No afirmes que puedes trabajar en segundo plano si no existe esa capacidad.
 
-Finaliza con: Hecho / Estado del plan / Commit publicado / Trabajo no guardado / Próximos pasos / Escalado (NO o recomendación de Astra con motivo).
+Al detenerte, finaliza con: Hecho / Estado del plan / Commits publicados / Trabajo no guardado / Próximos pasos / Escalado (NO o recomendación de Astra con motivo) / Nuevo hilo (recomendado al terminar un hito o degradarse el contexto). Respeta el límite de AGENTS.md: a lo sumo un reintento idéntico justificado; tras dos hipótesis diferentes sin progreso, documenta y detén la investigación.
 ```
 
 ## Acceso y adjuntos
