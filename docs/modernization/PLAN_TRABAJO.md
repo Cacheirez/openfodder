@@ -4,14 +4,17 @@
 
 ## Control operativo — siguiente paso (lectura inicial obligatoria)
 
-**Este bloque es la única fuente de verdad sobre la próxima tarea.** Plan 2.74 y garantías conservados. Demostración provisional dividida en A (viabilidad) y B (activación/paquete); **B no autorizado**.
+**Única autoridad sobre el trabajo inmediato.** Plan 2.74 y alcance final H0–H10 conservados. **Cambio de estrategia autorizado por Miguel el 14 de noviembre de 2026:** no seguir priorizando una por una las claves residuales del enfoque «todo o nada». La entrega B (lanzador/paquete provisional), la generación masiva de nuevas familias y los hitos posteriores **NO están autorizados**.
 
-- **Bloque activo:** A.1. Miguel **NO ACEPTÓ** la prueba manual a velocidad normal del 8 de noviembre por la aparición minoritaria e intermitente de los diseños. 4.456 intentos, 92 publicaciones HD (2,06 %) y 4.364 retornos por faltantes. La racha más larga duró 0,409 s entre extremos. La patrulla técnica anterior sigue válida para su replay acotado. [Prueba manual](DEMO_A1_PRUEBA_MANUAL.md) · [Patrulla técnica](DEMO_A1_PATRULLA.md).
-- **Último bloque cerrado:** corregidos los retornos por borde de fila Amiga8. En el replay público de 334 vínculos publican los 88 intentos antes interrumpidos. Total 1.894/4.554, racha máxima 859 y 1.546 estados lógicos exactos. Quedan 2.660 faltantes. [Pruebas](DEMO_A1_CONTINUIDAD_334.md#corrección-del-compositor).
-- **Prueba manual de 334 vínculos:** Miguel observó retornos frecuentes al clásico. Continuidad **NO ACEPTADA**. 4.664 de 10.987 publicaciones HD (42,45 %), 6.263 faltantes, 60 interrupciones y 18,074 s de racha máxima. [Prueba y recuperación](DEMO_A1_CONTINUIDAD_334.md#prueba-manual-del-14-de-noviembre).
-- **Prueba manual del 14 de noviembre:** candidato de 331 vínculos, 2.133 publicaciones HD de 3.986 intentos (53,51 %) y racha máxima de 10,645 s. Miguel observó una mejora y retornos frecuentes al clásico. La continuidad visual sigue PENDIENTE. La auditoría solicitada de `GroundHole 0x7C/F0` confirmó un raster totalmente transparente y 801 rechazos en los que era el único faltante. [Auditoría y reproducción](DEMO_A1_AUDITORIA_GROUNDHOLE.md).
-- **Diagnóstico cerrado:** el replay público con 334 vínculos reproduce 88 rechazos de geometría por el enemigo `0x59/F0` junto a los bordes. El primer retorno manual registra esa variante y el mismo aviso. [Evidencia](DEMO_A1_CONTINUIDAD_334.md#diagnóstico-del-primer-retorno).
-- **Siguiente tarea única:** **Acordar con Miguel la cobertura del próximo recorrido de A.1.** El registro manual contiene 248 claves residuales y una sola clave cubriría como máximo 140 de los 6.263 retornos por faltantes. Proponer un recorrido de 30–60 s con acciones acordadas como objetivo verificable antes de elegir qué familias y variantes cubrir. La continuidad jugando sigue **NO ACEPTADA**.
+- **Hito activo aprobado:** `A.1-HYBRID-P1` — prototipo técnico **acotado** de composición híbrida progresiva, segura y **opt-in**. Un solo microbloque activo cada vez; se pueden encadenar dentro de este hito según `AGENTS.md`.
+- **Último resultado comprobado (estrategia estricta):** en la sesión manual de 334 vínculos del 14-11 hubo **4.664/10.987 publicaciones HD (42,45 %)**, **6.263 retornos por faltantes**, 60 interrupciones y 18,074 s de racha máxima; **NO ACEPTADA** por Miguel. En 5.312 retornos faltaban varias claves; una sola clave nueva resolvería como máximo 140. La corrección posterior del recorte Amiga8 pasó pruebas focalizadas: replay público **1.894/4.554 publicaciones**, 2.660 faltantes y cero interrupciones, con H3 de la fase conservado. Esto **no acredita una nueva aceptación jugando**. [Evidencia](DEMO_A1_CONTINUIDAD_334.md).
+- **Siguiente tarea única:** `A.1-HYBRID-P1.1` — analizar los contratos y **diseñar e implementar un primer corte mínimo** que permita representar **un recurso clásico válido sin equivalente HD entre soldados HD**, en su orden original, sin devolver toda la escena al clásico **solo por ausencia de arte HD**. Reutilizar `OrderedSoldierArt.hpp`, `OrderedSoldierSDL.hpp`, `OrderedSoldierRegistry.hpp`, `MissionLayers.hpp` y `WindowHD.cpp`. Si no puede demostrarse seguro con pruebas acotadas, documentar el bloqueo y detenerse: no relajar los guards a ciegas.
+- **Contrato provisional:** (a) HD válido → reemplazar; (b) recurso clásico completo, verificable y todavía sin HD → dibujo clásico **provisional** en el orden original; (c) geometría/bytes/identidad inválidos, error SDL, presupuesto agotado u otro fallo real → protección y recuperación clásica coherente, sin publicación parcial corrupta. No promover indiscriminadamente cuerpos desconocidos a «aceptados»; registrar por entidad/estado las representaciones clásicas y posibles cambios de aspecto del mismo actor.
+- **Criterio de salida P1:** evidencia reproducible con **al menos dos soldados HD y un objeto o enemigo clásico válido**, oclusiones en ambos sentidos, escrituras de cero y mismo color, transparencias, recortes/bordes, Save/Restore si interviene; pruebas negativas de recurso inválido y fallo SDL con recuperación íntegra. Probar regresiones de modo clásico y estricto, ASan/UBSan y H3/CI pertinentes, sin declarar PASS no observado. GPU, CD32, audio, campaña y aceptación jugando quedan **PENDIENTES** si no se ejercitan. No basta con contadores de cobertura.
+- **Límites:** sin nuevas imágenes, sin alterar IA, simulación, RNG, reloj ni referencias H3; modo híbrido no activado por defecto y modo clásico recuperable; sin iniciar B, escena completa, scroll o viewport 16:9. Tras cada microbloque validado, publicar commit/evidencias y relevo. Aplicar límites de reintentos de `AGENTS.md`; **detenerse al completar P1** y presentar el resultado a Miguel.
+- **Hitos posteriores propuestos, NO autorizados aún:** (2) demostración jugable y modernización progresiva de terreno, objetos, enemigos, interfaz/cursor; (3) scroll/interpolación visual a 60 Hz conservando tiempo lógico; (4) viewport **16:9 real** con cámara, ratón, HUD y visibilidad lógica separados. CD32 permanece como edición objetivo. [Criterios finales de soldados](SOLDADOS_COBERTURA_COMPLETA.md) · [Alcance H0–H10](ALCANCE_H0_H10.md).
+
+**Vigencia:** toda referencia a «próxima clave», «completar variantes antes de avanzar», «siguiente cohete» u órdenes secuenciales que aparezca **más abajo** es **histórica**, no una tarea vigente. El control operativo de arriba manda.
 
 ## Ajuste del verde del uniforme — comprobado
 
@@ -27,7 +30,7 @@ Trabajo dentro de A, iniciado después de la auditoría del rango. Se conserva e
 
 Los microbloques del verde pueden avanzar con la aceptación jugando pendiente. La prueba en juego sigue siendo necesaria para la aceptación global del piloto.
 
-## Dónde estamos
+## Situación histórica anterior — 5 de noviembre (no operativa)
 
 Estado base contrastado con `b617168`, ampliado por el bloque de reposo/apuntado descrito abajo, el **5 de noviembre de 2026**. Se conserva la versión 2.74: esta revisión actualiza avance y criterios operativos, sin cambiar alcance ni orden.
 
@@ -63,11 +66,11 @@ Las funciones originales mantienen la secuencia de lanzamiento 0,0,1,1,2,2 y su 
 
 El arreglo `1e1f021` trae la referencia clásica antes de compilar; queda verificado por la CI completa de `8d09a28` indicada arriba.
 
-## Siguiente bloque verificable
+## Siguiente bloque verificable — histórico de noviembre, sustituido por el control operativo
 
 **A3: lanzamiento de cohetes del jugador.** Selección en offset `0x38` y retorno ya contrastados: entrada directa en frame 0; los llamadores con restauración conservan 0/1/2. [Contrato y evidencia](ROCKET_SELECTION.md). Dirección 7 ya preparada (tres poses), con transición en WindowHD/SDL a 8×/12× y dos soldados/oclusiones. [Fuentes y pruebas](../../assets/modernization/soldier-rocket/README.md). Ampliar ahora las siete direcciones restantes sin rehacer las familias previas. La cuarta entrada de una dirección no se selecciona en las rutas normales probadas, sin afirmar inalcanzabilidad universal. Después, agua, daño/muerte y enemigos. Reutilizar marcha, apuntado, granadas y diagnóstico sin regenerarlos salvo regresión. Mantener pendientes las variantes Amiga no observadas, transiciones, GPU/CD32 y cobertura continua; clasificar por separado proyectiles y otros elementos asociados.
 
-## Orden de trabajo
+## Orden de trabajo original — referencia histórica, no secuencia operativa vigente
 
 | Paso | Trabajo | Cierre |
 |---|---|---|
