@@ -45,3 +45,13 @@ Registros locales en `%LOCALAPPDATA%/Temp`:
 | --- | --- |
 | `OpenFodder-P1-hibrido-20261114-152042.log` | `70df55415d3b36df801b4b4c39c967bfc5ab3e5ffa2540d5b943f9752a77684f` |
 | `OpenFodder-P1-estricto-20261114-152215.log` | `9deca969bcbb7375f8a092f58eb181ca6f70fa8910fbbf94b83bc4160351debf9` |
+
+## Ampliación de la insignia 0x95/F2
+
+Miguel autorizó la ampliación y los pasos técnicos hasta la próxima revisión jugable. La fila F2 de `stru_8D9F8` selecciona `eGFX_IN_GAME2` en el offset 9084, con dos columnas de tabla y diez filas. Se reconstruyó la clave `5c7e974f5135721496bf24d37d5f3515ba86e2f70517f47d28624b3bb5ff72c2` con los bytes y la paleta de la [auditoría F4](DEMO_A1_AUDITORIA_RANGO_F4.md). Coincide con la única clave F2 del registro híbrido manual. El renderizador nativo confirmó el raster 16 × 10, SHA-256 RGBA `24f8d139f258774a643f2dcfd9431d5b8655791659e806a949bf3a411bcb088b`.
+
+Cuando falta el vínculo exacto, el híbrido conserva F2 si coinciden identidad, fila nativa y metadatos del recurso retenido. La composición sigue verificando el recorte y el respaldo clásico. Los vínculos explícitos conservan su precedencia. F2 fue el único faltante con reemplazos disponibles en 780 de los 1.545 rechazos de la partida híbrida anterior. Es un recuento del registro anterior.
+
+- **PASS** en WSL con SDL software, ASan/UBSan/LSan. El caso integrado del método Window a 8×/12× verifica dos cuerpos HD, árbol e insignia por separado, oclusiones en ambos sentidos, transparencia, escrituras de cero e igual índice, Save/Restore y recuperación píxel a píxel tras fallo SDL. Comprueba rechazo de identidad, frame, offset, bytes truncados y geometría alterada. El modo estricto mantiene el rechazo sin vínculo y el censo previo.
+- **PASS** en H3 Windows: las 11 fases y 11.361 estados canónicos coinciden con la referencia fijada. El replay público Amiga M1P2 conserva 1.894 publicaciones HD, 2.660 faltantes, 526 publicaciones con árbol clásico y 1.546 estados H3. El replay usa la insignia F0.
+- **PENDIENTE** CI de esta ampliación y revisión jugable de Miguel.

@@ -23,14 +23,18 @@ def main():
                                check=True, timeout=120)
             result = report([path])
             assert 'PASS hybrid Window:' in path.read_text(), result['outcomes']
-            assert result['outcomes']['published'] == 20, result['outcomes']
-            assert result['outcomes']['classic-recovered'] == 4, result['outcomes']
+            assert result['outcomes']['published'] == 24, result['outcomes']
+            assert result['outcomes']['classic-recovered'] == 6, result['outcomes']
             for density in (8, 12):
                 trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
                 assert len(trees) == 2, trees
                 assert sum(r.get('resolution_keep', 0) for r in trees) == 4, trees
                 assert sum(r['resolution_missing'] for r in trees) == 2, trees
-            print('PASS hybrid coverage: 8x/12x, two HD actors, native tree and complete recovery')
+                ranks = [r for r in result['entity_states'] if r['type'] == 21 and r['density'] == density
+                         and r['sheet'] == 0x95 and r['frame'] == 2]
+                assert sum(r.get('resolution_keep', 0) for r in ranks) == 4, ranks
+                assert sum(r['resolution_missing'] for r in ranks) == 3, ranks
+            print('PASS hybrid coverage: 8x/12x, two HD actors, native tree and rank, complete recovery')
             return
         for enabled in ('0', '1'):
             env = {**os.environ, 'OPENFODDER_ORDERED_COVERAGE': enabled}

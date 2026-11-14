@@ -9,6 +9,28 @@ class OrderedSoldierRegistry {
     struct Binding {bool keep=false;int sheet=0,frame=0;std::map<unsigned,std::string> assets;};
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
+    static bool isAuditedNativeAmigaDraw(const PreparedSpriteDraw& draw) {
+        const auto& state = draw.soldier;
+        const auto& geometry = state.geometry;
+        const auto& resource = draw.resource;
+        if (!state.valid || !state.scene || !state.generation || !state.interval ||
+            state.inVehicle || state.pendingDestroy || draw.isCursor || state.segment != 1 ||
+            geometry.format != SpriteDrawFormat::Amiga8 || geometry.columns != 2 ||
+            geometry.modX != 0 || geometry.modY != 0 || geometry.palette != 0 ||
+            !resource || !resource.generation || resource.palette != 0 ||
+            resource.layout.format != geometry.format || resource.layout.width != 320 ||
+            resource.layout.height != 256 || resource.layout.planes != 4)
+            return false;
+
+        // Amiga native table entries. Window still checks the retained bytes
+        // and clipped raster against the independent classic draw.
+        const bool tree = state.type == 14 && state.sheet == 0x90 && state.frame == 0 &&
+                          geometry.rows == 28 && resource.offset == 1942;
+        const bool rank = state.type == 21 && state.sheet == 0x95 && state.frame == 2 &&
+                          state.personType == -1 && state.animation == 0 &&
+                          geometry.rows == 10 && resource.offset == 9084;
+        return tree || rank;
+    }
     static bool validHash(const std::string& hash) {
         return hash.size()==64 && hash.find_first_not_of("0123456789abcdef")==std::string::npos;
     }
@@ -117,16 +139,7 @@ public:
         const auto found=entries.find(key);
         const auto& s=p.soldier;const auto& g=s.geometry;
         if(found==entries.end()){
-            // Initial hybrid scope: the audited Amiga8 tree table entry.
-            // This is a native resource contract, independent of palette keys.
-            if(hybrid && s.valid && s.scene && s.generation && s.interval &&
-               !s.inVehicle && !s.pendingDestroy && !p.isCursor &&
-               s.type==14 && s.sheet==0x90 && s.frame==0 && s.segment==1 &&
-               g.format==SpriteDrawFormat::Amiga8 && g.columns==2 && g.rows==28 &&
-               g.modX==0 && g.modY==0 && g.palette==0 && p.resource.palette==0 &&
-               p.resource && p.resource.generation && p.resource.offset==1942 &&
-               p.resource.layout.format==g.format && p.resource.layout.width==320 &&
-               p.resource.layout.height==256 && p.resource.layout.planes==4)
+            if(hybrid && isAuditedNativeAmigaDraw(p))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }
