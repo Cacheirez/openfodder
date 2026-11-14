@@ -185,6 +185,35 @@ for (unsigned density : {8u, 12u}) {
     };
     for (size_t slot : {retainedIndex, retainedIndex + 1})
         checkFallback(scene, slot, expected);
+    if (fixture.contains("ground_hole")) {
+        const std::string key = "b27064e821fb760e4ec5e37a830ac2e35b81b46490abf208da81cc928cf63cf4";
+        const auto hole = nativeLayer(fixture.at("ground_hole"), fixture.at("ground_hole_snapshots"),
+                                      10, 38, 20);
+        assert(SoldierVariantKey(hole.soldier, colors) == key);
+        assert(registry.resolve(hole.soldier, key, density).decision == SoldierArtDecision::KeepClassic);
+        auto draw = hole.soldier.draw;
+        draw.source = hole.soldier.resource.source();
+        assert(draw.visible && draw.columns == 2 && draw.rows == 1);
+        assert(CaptureSprite8Producer(draw, hole.soldier.resource.layout, 96).writes.empty());
+
+        auto ordered = scene;
+        const size_t holeIndex = ordered.layers.size() - 1;
+        assert(frame.cells.count(size_t(draw.y) * 96 + size_t(draw.x)));
+        ordered.layers.insert(ordered.layers.begin() + holeIndex, hole);
+        const auto withHole = compose(ordered);
+        assert(withHole.complete() && withHole.replaced == frame.replaced && withHole.kept == kept + 1);
+        assert(withHole.observations.at(holeIndex).decision == SoldierArtDecision::KeepClassic);
+        assert(withHole.observations.at(holeIndex + 1).decision == SoldierArtDecision::Replace);
+        assert(withHole.cells == frame.cells && withHole.background.pixels == frame.background.pixels);
+        assert(renderClassic(ordered) == classic);
+        image.scene = ordered;
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == expected);
+        checkFallback(ordered, holeIndex, expected);
+        image.scene = scene;
+        std::cout << density << "x GroundHole 0x7C/F0: zero writes, identical SDL pixels, "
+                  << "whole-frame classic fallback and HD recovery\n";
+    }
     if (fixture.contains("player_shadow")) {
         assert(withBox);
         const auto& row = fixture.at("player_shadow");

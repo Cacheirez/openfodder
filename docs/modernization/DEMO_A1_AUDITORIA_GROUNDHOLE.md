@@ -51,3 +51,36 @@ Desde la raíz del checkout, ejecutar `& 'C:/Users/migue/.codex/visualizations/2
 | `probe_groundhole.cpp` | `1b0401bf27c84778ed57d2b28aa45d7147fb42df6a720cb197b1bcbb2fcf7530` |
 | `run_groundhole_probe.ps1` | `926d603b8b49a349473950f85cab8b53d3b16266e53f434e410f9960b30675f2` |
 | `probe-run.log` | `3be9e15621e2f8c448fa9d0c84116952dd1806f3e2243f509d7f3bd85db4afb4` |
+
+## Integración y comprobación
+
+`--with-ground-hole` genera el candidato de 332 vínculos (323 reemplazos y nueve asociados) añadiendo la clave auditada al final. Se compararon los 331 vínculos anteriores en orden y los 168 activos byte a byte con el candidato de la partida. La opción anterior `--with-enemy-walk-44` reprodujo su manifiesto exacto.
+
+- SDL software Windows x64, Clang 23.1.5, SDL 3.4.0 y ASan/UBSan PASS a 8× y 12×. GroundHole se dibujó entre cuerpos HD en una escena con cinco cuerpos nativos. Cero escrituras, mismo resultado clásico y HD píxel a píxel y mismo orden de dibujo. Otra clave para GroundHole provocó el retorno íntegro a clásico. Restaurar la clave exacta recuperó HD. Las regresiones del fixture de 331 vínculos pasaron.
+- El log del 14 de noviembre conserva 2.133 publicaciones observadas. La proyección con 332 vínculos suma 801 publicaciones potenciales (2.934 de 3.986, 73,61 %). Quedan 1.046 intentos con faltantes, seis interrupciones y 60 claves residuales. El árbol tipo 14, hoja 0x90/F0, clave `a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d`, es el único faltante en las 247 apariciones registradas.
+- Aceptación jugando, GPU, audio, CD32, H3 y LSan PENDIENTES en este bloque.
+
+### Reproducción de la integración
+
+Desde la raíz del checkout, con la [base verde A verificada](DEMO_A1_VERDE_A.md#reproducción-y-recuperación) y los archivos locales de la auditoría:
+
+```powershell
+$work = 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1d935-9486-7263-8dfc-1773e4420637'
+$prev = 'C:/Users/migue/.codex/visualizations/2026/11/13/01a1d70e-e9d1-74f0-9951-5079b656d5e3'
+$audit = 'C:/Users/migue/.codex/visualizations/2026/11/13/01a1d73b-c7f6-7d50-b9da-34a33fff21c4'
+$snapshots = 'C:/Users/migue/.codex/visualizations/2026/11/08/01a1bb46-b87b-7671-82cd-0fdee66db3de/a1/snapshots'
+$base = 'C:/Users/migue/.codex/visualizations/2026/11/11/01a1ccf2-ba36-78a2-8403-b24f50437a5c/qa-rocket-native/art/candidate-manifest.json'
+python -B tools/modernization/prepare_demo_a1_manifest.py --base $base --out "$work/candidate332" --with-ground-hole
+python -B tools/modernization/prepare_demo_a1_manifest.py --base $base --out "$work/candidate331-regression" --with-enemy-walk-44
+python -B "$work/prepare_groundhole_integration.py" . $prev $audit $snapshots $work
+& "$work/run_groundhole_sdl.ps1"
+```
+
+La generación necesita directorios de salida nuevos. Los dos scripts y la evidencia de esta ejecución se conservan en `$work`.
+
+| Evidencia | SHA-256 |
+|---|---|
+| Manifiesto Windows de 332 vínculos | `6cb423f96c8b0b698430d2cf0dcfe19c3dbb92734edbf9d0089ab7950b7fba11` |
+| `prepare_groundhole_integration.py` | `584e9664c393cac1e799ee3a3e21c3b47e8286507880bfc71c788a2f7223228d` |
+| `run_groundhole_sdl.ps1` | `0184ec22b6c910770908d85d5bf41d18043e20bc0c1c0efc3589a31e64524dde` |
+| `groundhole-sdl.log` | `f2694b262d85a1a24214becb7c01436eb2a6dda93ed23600080ac20854625457` |
