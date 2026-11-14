@@ -17,6 +17,11 @@ El primer corte admite de forma provisional el árbol Amiga8 0x90/F0 con los met
 
 La racha cuenta publicaciones consecutivas del replay acelerado. En cada pasada hubo cero interrupciones de transacción. Los soldados siguen sujetos a la cobertura del manifiesto. La mejora de 526 publicaciones mide la recuperación de escenas con el árbol clásico válido cuando falta su vínculo.
 
-CI Windows/Linux del commit, GPU, CD32, audio, campaña manual y aceptación visual/jugable **PENDIENTES**.
+GPU, CD32, audio, campaña manual y aceptación visual/jugable **PENDIENTES**.
 
-La primera CI Linux de `c4dfbfc` pasó el bloque CTest que contiene el caso híbrido. El paso posterior de productores falló porque el recurso sintético omitía la paleta usada en su dibujo. Se sincronizó la paleta en las pruebas de productores y poses. Ambos contratos pasaron después en WSL con ASan/UBSan/LSan. La CI del ajuste queda pendiente.
+## Cierre P1.2
+
+La primera CI Linux de `c4dfbfc` pasó el bloque CTest que contiene el caso híbrido. El paso posterior de productores falló porque el recurso sintético omitía la paleta usada en su dibujo. `fc51fb3` sincroniza la paleta en las pruebas de productores y poses. Ambos contratos pasaron después en WSL con ASan/UBSan/LSan y en CI Linux.
+
+- Windows `fc51fb3` completó toda la ejecución, con CTest y H3. [GitHub Actions](https://github.com/Cacheirez/openfodder/actions/runs/43596272488).
+- Linux `fc51fb3` pasó CTest, H3, ASan/UBSan, LSan sobre 29 demos públicas y publicación activa y pausa SDL con sanitizadores. El diagnóstico general de TSan seguía en curso en el momento de registrar el cierre focalizado de P1. [GitHub Actions](https://github.com/Cacheirez/openfodder/actions/runs/43596272506).

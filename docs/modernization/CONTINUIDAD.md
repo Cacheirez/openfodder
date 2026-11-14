@@ -3,7 +3,8 @@
 ## Arranque rápido — leer solo esta sección al empezar una sesión
 
 - **Decisión operativa de Miguel (14-11-2026):** priorizar el compositor híbrido opt-in `A.1-HYBRID-P1`. **P1.1 comprobado localmente:** dos soldados HD y árbol Amiga8 0x90/F0, con oclusión en ambos sentidos y recuperación clásica completa. H3 Windows conserva los 11.361 estados de las 11 fases públicas. [Evidencia](DEMO_A1_HYBRID_P1.md) · [Control operativo](PLAN_TRABAJO.md).
-- **Siguiente tarea única vigente:** `A.1-HYBRID-P1.2`, verificar CI Windows/Linux y cerrar el prototipo con la evidencia pública y sus límites. Al cerrar P1, detenerse para revisión de Miguel.
+- **P1.2 comprobado:** `fc51fb3` pasó CTest/H3 Windows y Linux, CI completa Windows y ASan/UBSan/LSan pertinentes de Linux. En el replay público Amiga a 12× se midieron 526 publicaciones HD adicionales con el árbol clásico. [Evidencia](DEMO_A1_HYBRID_P1.md).
+- **Siguiente tarea única vigente:** revisión de Miguel del prototipo técnico. Trabajo detenido al cerrar P1. GPU, CD32, audio, campaña manual y aceptación jugando pendientes.
 - **Última aceptación real:** sesión manual de 334 vínculos del 14-11 **NO ACEPTADA**: 4.664/10.987 publicaciones HD (42,45 %), 6.263 faltantes, 60 interrupciones, racha máxima 18,074 s. La corrección Amiga8 posterior pasó en el replay público (1.894/4.554, 2.660 faltantes, sin interrupciones), **no se ha convertido en aceptación jugando**. [Evidencia](DEMO_A1_CONTINUIDAD_334.md).
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
