@@ -1,6 +1,14 @@
 # Sustitución completa de soldados — revisión del 02-11-2026
 
-## Decisión de Miguel
+## Decisión operativa posterior — 14 de noviembre de 2026
+
+Miguel ha aprobado **cambiar la estrategia de implementación**, no rebajar la aceptación final. En desarrollo se sustituye la condición de **tener todas las variantes visibles en HD para publicar cualquier soldado moderno** por un **compositor híbrido progresivo y ordenado**. HD válido se sustituye; un recurso clásico válido, aún sin equivalente HD, puede conservar sus píxeles originales **en su turno real**; los recursos inválidos, errores de composición y fallos SDL mantienen protección y recuperación clásica completa.
+
+**Esta mezcla es exclusivamente instrumental y provisional.** No significa que soldados o enemigos clásicos intercalados sean aceptables en el juego terminado ni justifica que el mismo actor alterne arbitrariamente de estilo. Los contadores de publicación no sustituyen aceptación visual ni cobertura global.
+
+**Prioridad inmediata:** prototipo técnico `A.1-HYBRID-P1` indicado por el [control operativo del plan](PLAN_TRABAJO.md). Los pasos de implementación planteados el 02-11 quedan como **historial técnico**, no como la siguiente tarea. Se conservan catálogos, máscaras, pruebas y la exigencia final de H7/H8, pero dejamos de perseguir indefinidamente claves individuales para satisfacer la antigua política «todo o nada». H3, orden de capas, oclusiones, recortes, SDL y rollback ante fallos reales siguen siendo obligatorios.
+
+## Decisión de Miguel — requisito final (02-11-2026)
 
 El lote f72d6e7 aparece intercalado con el soldado antiguo. Esa mezcla no es aceptable como resultado final. Hay que reproducir los sprites, direcciones, estados y secuencias del original con arte moderno, no mantener una selección parcial durante el juego normal. La entrega A sigue abierta. CI verde demuestra sus pruebas técnicas, no aceptación visual ni cobertura completa.
 
@@ -53,7 +61,7 @@ Hay limitaciones independientes, comprobables en el código de f72d6e7:
 
 El log aportado por Miguel confirma `later-layer-overlap` y `no-eligible-batch-key`, además de `palette-transition` y `black-palette`; registra únicamente las seis claves del piloto. No incluye tiempos por frame, así que no permite asignar cada alternancia visual a una línea concreta.
 
-## Implementación que sigue
+## Implementación originalmente planteada (02-11-2026; orden operativo sustituido)
 
 1. Completar la matriz estática con rutas especiales y variantes efectivas de recurso/paleta; crear casos sintéticos y recorridos que ejerciten cada estado. Registrar por entidad, clave, recurso y motivo: intentos, sustituciones, faltantes, recortes y errores. La puerta actual «se publicaron seis claves alguna vez» es insuficiente.
 2. Ampliar captura a todos los soldados previstos, conservando identidad/generación y bytes propios; procesar cada comando relevante en su posición original. Sustituir el parche único por composición ordenada capaz de varios cuerpos, oclusiones y recortes de agua/bordes. Mantener la referencia clásica independiente. **No quitar las protecciones para hacer aparecer HD encima de obstáculos.**
