@@ -111,11 +111,17 @@ inline OrderedSoldierFrame ComposeOrderedSoldierArt(const MissionLayerSequence& 
             throw std::invalid_argument("ordered art asset/geometry mismatch");
         const size_t cropY=size_t(d.sourceOffset)/stride,cropX=(size_t(d.sourceOffset)%stride)*factor;
         const size_t columns=size_t(regs.columns)*factor;
-        if(cropX+columns>a.width || cropY+size_t(d.rows)>a.height || d.x<0 || d.y<0 ||
-           size_t(d.x)+columns>w || size_t(d.y)+size_t(d.rows)>h)
+        if(cropX+columns>a.width || cropY+size_t(d.rows)>a.height || d.rows<=0 || d.y<0 ||
+           size_t(d.y)+size_t(d.rows)>h || (pc && (d.x<0 || size_t(d.x)+columns>w)))
+            throw std::out_of_range("ordered art clipped geometry");
+        // Amiga's word-oriented clipper can leave pixels across a row edge.
+        // The native renderer addresses the backing store linearly in that case.
+        const auto start=std::ptrdiff_t(w)*d.y+d.x;
+        const auto end=start+std::ptrdiff_t(w)*(d.rows-1)+std::ptrdiff_t(columns);
+        if(start<0 || end>std::ptrdiff_t(indices.size()))
             throw std::out_of_range("ordered art clipped geometry");
         for(size_t y=0;y<size_t(d.rows);++y)for(size_t x=0;x<columns;++x){
-            const size_t n=(size_t(d.y)+y)*w+size_t(d.x)+x;if(!visible(n))continue;
+            const size_t n=size_t(start)+y*w+x;if(!visible(n))continue;
             auto found=out.cells.find(n);
             if(found==out.cells.end()){
                 budget(out.cells.size()+1,savedCells.size());

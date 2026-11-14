@@ -69,3 +69,20 @@ Desde el checkout del commit de integración `b496e6b` ejecutar `& "$work/build_
 | `build_bullet_replay.ps1` | `28e0a9795f2405f12a992d3a5ca9049ffade52dfac52238f54b635fb4e642578` |
 | `measure_bullet_replay.py` | `42d5a83b26f0508741298d3c824bf214b530116c83ed903268ae33a06104d0a5` |
 | `run_manual_334.py` | `272875710c0cb07e2b8a1b731b1c7ccb0739a110f0efe3d883f19317fb9cd008` |
+
+## Corrección del compositor
+
+Los cuerpos Amiga8 usan el mismo direccionamiento lineal que el clásico cuando un recorte por palabras deja píxeles al otro lado de un borde de fila. El compositor conserva el desplazamiento de origen y comprueba que el intervalo escrito cabe en el respaldo. La referencia semántica también rechaza el intervalo inválido antes de acceder al búfer. La selección de poses y el raster original permanecen en sus rutas existentes.
+
+- Windows x64, Clang 23.1.5 con ASan/UBSan PASS. Compositor: 156 escenarios, incluidos los dos bordes Amiga8, recorte superior combinado y rechazo fuera del respaldo en ambos extremos. Regresiones SDL software a 8×/12× PASS. LSan local, GPU y CD32 PENDIENTES.
+- Replay público a 12× y 334 vínculos: **1.894 de 4.554 publicaciones efectivas (41,59 %)**, 2.660 faltantes y cero interrupciones. Los 88 intentos interrumpidos antes son los únicos cambios y todos publican. Racha máxima **859** (intentos 2267–3983) frente a 685. Los 1.546 estados lógicos siguen coincidiendo con la referencia de la fase.
+- La prueba manual anterior sigue **NO ACEPTADA**. El resto de faltantes exige decidir la cobertura del próximo recorrido de A.1. Una sola clave cubriría como máximo 140 de los 6.263 retornos por faltantes del registro manual.
+
+Desde la raíz del checkout, con el fixture de la integración preparado en `$work`, ejecutar `& "$work/test_ordered_edges.ps1"` y `& "$work/run_edges_sdl.ps1"`. Para el replay, recompilar con `& "$work/build_bullet_replay.ps1"` y ejecutar `python -B "$work/run_ordered_bounds.py" replay-edges-fixed`, usando un nombre de salida nuevo para otra ejecución.
+
+| Evidencia | SHA-256 |
+|---|---|
+| `ordered-edges.log` | `a02d52b0ffae4e10f4a9784d0d3b2b7acc3534502edd98035111078efcedb9c3` |
+| `edges-sdl.log` | `d322ee281c00e16f6eb22a6d1e4346f320445035f3d884f13105da78c0357052` |
+| `replay-edges-fixed/engine.log` | `4ac4ca8e51ce354e583756d2fb5297101cc72646e82d724aed04b3f373241787` |
+| Ejecutable de diagnóstico corregido | `740379f2f89c6a7dd20e7b51d71085f3dd3d220278d461823d6ffabc6551b600` |

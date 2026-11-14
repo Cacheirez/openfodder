@@ -85,6 +85,14 @@ inline MissionLayerComposition ComposeMissionLayers(const MissionLayerSequence& 
                 draw.sourceOffset != classic.sourceOffset || draw.palette != classic.palette ||
                 draw.format != classic.format)
                 throw std::invalid_argument("semantic soldier geometry differs from classic preparation");
+            if (draw.format == SpriteDrawFormat::Amiga8) {
+                const auto width = result.surfaces[slot].indexed.width;
+                const auto regs = PrepareSpriteRasterRegisters(draw, prepared.resource.layout, width);
+                const auto start = std::ptrdiff_t(width) * draw.y + draw.x;
+                const auto end = start + std::ptrdiff_t(width) * (draw.rows - 1) + regs.columns * 8;
+                if (start < 0 || end > std::ptrdiff_t(target.size()))
+                    throw std::out_of_range("semantic soldier destination bounds");
+            }
             if (replacePose && TryRasterizeSoldierPose(layer.pose, prepared, target.data(),
                     result.surfaces[slot].indexed.width, result.surfaces[slot].indexed.height)) {
                 ++result.poseReplacements;

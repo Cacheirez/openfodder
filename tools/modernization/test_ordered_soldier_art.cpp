@@ -77,6 +77,31 @@ int main(){
         auto left=body(false,id,-3,20);scene.layers={left};f=compose();assert(at(f,0,20)==0xffff0000&&at(f,12,20)==0xff112233);
         auto right=body(false,id,84,20);right.soldier.soldier.geometry.viewWidth=64;prepare(right);
         scene.layers={right};f=compose();assert(at(f,83,20)==0xff112233&&at(f,95,20)==0xffff0000);
+    } else {
+        auto edge=body(true,id,-1,20);
+        scene.layers={edge};
+        f=ComposeOrderedSoldierArt(scene,id,density,[&](const PreparedSpriteDraw&){return gradient;});
+        assert(f.complete() && f.cells.size()==224);
+        assert(at(f,95,19)==(*pixels)[0] && at(f,0,20)==(*pixels)[density]);
+        assert(at(f,14,20)==(*pixels)[15*density] && at(f,15,20)==0xff112233);
+        edge=body(true,id,86,-3);
+        edge.soldier.soldier.geometry.viewWidth=64;
+        prepare(edge);
+        scene.layers={edge};
+        f=ComposeOrderedSoldierArt(scene,id,density,[&](const PreparedSpriteDraw&){return gradient;});
+        const size_t first=3*density*16*density;
+        assert(f.complete() && f.cells.size()==176);
+        assert(at(f,95,0)==(*pixels)[first+9*density]);
+        assert(at(f,0,1)==(*pixels)[first+10*density] && at(f,5,1)==(*pixels)[first+15*density]);
+        assert(at(f,6,1)==0xff112233);
+        for (auto outside : {body(true,id,-1,0),body(true,id,86,50)}) {
+            outside.soldier.soldier.geometry.viewWidth=64;
+            prepare(outside);
+            scene.layers={outside};
+            bool rejected=false;
+            try { compose(); } catch(const std::out_of_range&) { rejected=true; }
+            assert(rejected);
+        }
     }
     scene.layers={a};
     // Transparent margins remove the old body, partial alpha blends once.
@@ -98,7 +123,7 @@ int main(){
     MissionLayer sidebar;sidebar.destination=id;sidebar.operation=MissionLayerOperation::Sidebar;
     sidebar.sidebar={std::make_shared<const std::vector<uint8_t>>(48,7),20*96,96,1};
     scene.layers={a,sidebar};assert(at(compose(),20,20)==0xff778899&&at(compose(),20,21)==0xffff0000);
-    cases+=17+(amiga?0:2);
+    cases+=17+(amiga?4:2);
  }
  std::cout<<"PASS ordered compositor: "<<cases<<" scenarios; PC/Amiga 1x/8x/12x, multiple/repeated bodies, alpha, water/top crop, destinations, same-color/zero/OR, Save/Restore/Clear, terrain/HUD, missing coverage, budget\n";
 }
