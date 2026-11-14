@@ -61,6 +61,7 @@ struct cFodder {
   p.draw.palette=cursor?0xF0:0x20;p.isCursor=cursor;
   if(!cursor) {
    p.resource.bytes=std::make_shared<const std::vector<uint8>>(sprite);
+   p.resource.palette=p.draw.palette;
    p.draw.source=p.resource.source();
    auto& v=p.soldier;v.valid=true;v.scene=1;v.generation=2;
    v.geometry.spriteX=p.draw.x-64;v.geometry.spriteY=p.draw.y+p.draw.rows-16;

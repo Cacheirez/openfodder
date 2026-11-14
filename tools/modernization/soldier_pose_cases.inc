@@ -15,6 +15,7 @@ int main() {
         auto& g = s.geometry;
         g.format = format; g.columns = format == SpriteDrawFormat::PC ? 8 : 2;
         g.rows = 6; g.spriteX = 20; g.spriteY = 30; g.xBias = 0; g.palette = 32;
+        p.resource.palette = g.palette;
         g.modX = -2; g.modY = 3;
         auto prepare = [](PreparedSpriteDraw& v) {
             auto input = v.soldier.geometry; input.source = v.resource.source();

@@ -18,3 +18,5 @@ El primer corte admite de forma provisional el árbol Amiga8 0x90/F0 con los met
 La racha cuenta publicaciones consecutivas del replay acelerado. En cada pasada hubo cero interrupciones de transacción. Los soldados siguen sujetos a la cobertura del manifiesto. La mejora de 526 publicaciones mide la recuperación de escenas con el árbol clásico válido cuando falta su vínculo.
 
 CI Windows/Linux del commit, GPU, CD32, audio, campaña manual y aceptación visual/jugable **PENDIENTES**.
+
+La primera CI Linux de `c4dfbfc` pasó el bloque CTest que contiene el caso híbrido. El paso posterior de productores falló porque el recurso sintético omitía la paleta usada en su dibujo. Se sincronizó la paleta en las pruebas de productores y poses. Ambos contratos pasaron después en WSL con ASan/UBSan/LSan. La CI del ajuste queda pendiente.
