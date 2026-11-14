@@ -25,3 +25,23 @@ La primera CI Linux de `c4dfbfc` pasó el bloque CTest que contiene el caso híb
 
 - Windows `fc51fb3` completó toda la ejecución, con CTest y H3. [GitHub Actions](https://github.com/Cacheirez/openfodder/actions/runs/43596272488).
 - Linux `fc51fb3` pasó CTest, H3, ASan/UBSan, LSan sobre 29 demos públicas y publicación activa y pausa SDL con sanitizadores. El diagnóstico general de TSan seguía en curso en el momento de registrar el cierre focalizado de P1. [GitHub Actions](https://github.com/Cacheirez/openfodder/actions/runs/43596272506).
+
+## Revisión manual de P1
+
+El 14-11-2026 Miguel jugó Amiga The One M1P2 en ambos modos a 12× con SDL software y sin sonido, usando el binario del cierre P1 y el manifiesto de 333 vínculos sin el árbol. Observó alternancia entre soldados HD y clásicos en ambas partidas sin un patrón claro durante el juego. **Continuidad jugable NO ACEPTADA.**
+
+| Modo | Publicaciones HD | Retornos por variantes ausentes | Transiciones HD→clásico con el mismo soldado presente |
+| --- | ---: | ---: | ---: |
+| Híbrido | 811 | 1.545 | 21 |
+| Estricto | 1.952 | 5.554 | 24 |
+
+En híbrido, el compositor resolvió conservar el árbol tipo 14 `0x90/F0` en clásico en 255 intentos. En 42 se publicó junto a al menos dos soldados HD identificados por ranura y generación. En estricto, el árbol figuró como faltante en 2.165 intentos y todos volvieron al clásico. Todos los rechazos registrados fueron `missing-variant`. Los recorridos de distinta duración sirven para comprobar el comportamiento en cada modo. La comparación controlada de frecuencia permanece en el replay público.
+
+Para recotejar las transiciones, cruzar `SOLDIER_ORDERED_RESULT` y `SOLDIER_ORDERED_COMMAND` por intento. Contar pares adyacentes `published` → `missing-variant` con salto de uno o dos y al menos un soldado tipo 0 común por ranura y generación. En los 45 pares, los faltantes eran de otros elementos. Catorce de los 21 pares en híbrido contenían el tipo 21 `0x95/F2`. El primer retorno híbrido identificado fue 565 → 567, con cinco soldados comunes y el tipo 6 `0x9D/F2` como único faltante.
+
+Registros locales en `%LOCALAPPDATA%/Temp`:
+
+| Fichero | SHA-256 |
+| --- | --- |
+| `OpenFodder-P1-hibrido-20261114-152042.log` | `70df55415d3b36df801b4b4c39c967bfc5ab3e5ffa2540d5b943f9752a77684f` |
+| `OpenFodder-P1-estricto-20261114-152215.log` | `9deca969bcbb7375f8a092f58eb181ca6f70fa8910fbbf94b83bc4160351debf9` |
