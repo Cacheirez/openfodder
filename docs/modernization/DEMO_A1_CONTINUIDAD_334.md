@@ -16,7 +16,24 @@ La racha máxima abarca los intentos 2267–3635 en ambos casos. Se corta ante c
 
 De los 24 intentos que dejan de tener faltantes, 20 publican en HD y cuatro se interrumpen (7039, 7041, 7044 y 7052). Ambos logs registran `ordered-resource-bounds`; el aviso aparece una vez por proceso y no identifica por sí solo la causa exacta de cada interrupción. Ninguna publicación previa se pierde. Los 2.580 comandos de la bala pasan de `missing` a `keep`. Con una mejora de 0,44 puntos porcentuales y la misma racha máxima, el siguiente paso es contrastar la continuidad jugando a velocidad normal antes de añadir más claves.
 
-## Prueba manual pendiente
+## Prueba manual del 14 de noviembre
+
+Miguel observó que el juego seguía volviendo con frecuencia al soldado clásico. La continuidad jugando queda **NO ACEPTADA**. El punto de control usó el candidato de 334 vínculos, Amiga The One m1p2 a 12×, reloj normal y sin replay. La sesión duró 262,66 s desde el lanzamiento y terminó con código 0.
+
+El censo de transacciones coincide con el registro del lanzador y sus marcas de tiempo. Hubo **4.664 publicaciones HD de 10.987 intentos (42,45 %)**, 6.263 retornos por faltantes y 60 interrupciones. Entre intentos consecutivos registrados hubo 32 transiciones de HD a faltante y 15 de HD a interrupción. La mayor racha tuvo 878 publicaciones, **18,074 s** entre marcas del log (intentos 366–2120, paso serial de dos). El primer retorno registrado, intento 2122 a los 21,392 s desde lanzamiento, fue una interrupción con los siete comandos censados y cero faltantes. A continuación aparece `ordered-resource-bounds`.
+
+La bala se resolvió como dibujo asociado en sus 6.673 comandos. Quedaron 248 claves distintas entre los rechazos por faltantes. En 5.312 rechazos coexistían varias; en 951 había una sola. La clave con más casos como único faltante, `75d5c70c` (tipo 27, hoja 0x9E/F0), cubriría como máximo 140 intentos por sí sola en este registro (1,27 puntos porcentuales). Se prioriza aislar el retorno por límites que cortó la primera racha.
+
+La sesión local es `manual-334-20261114-105752`, bajo `$work`. Se puede recotejar el censo con `python -B tools/modernization/ordered_soldier_coverage.py --log "$session/engine.log" --out <salida-nueva.json>`, donde `$session` señala esa carpeta. Las rachas se calculan sobre los registros `SOLDIER_ORDERED_RESULT` de `presentation-times.jsonl` y se cortan al primer resultado distinto de `published`.
+
+| Registro manual | SHA-256 |
+|---|---|
+| `engine.log` | `802e3e850423dcf5dfdb6f2f772a081c00e1334c80ab3ee72904492b32860dc0` |
+| `presentation-times.jsonl` | `946fd2a468da94b16af033959f68f9324c9c0eaf7e7704eda9a1fa881d6d62a5` |
+| `session.json` | `a92b894a13c0ddd584abd92e077efba6deab254e356fd458684f422e7882d88b` |
+| `coverage.json` | `f10837ac7f9fa437ed347da8ee55f0d8bdf9e485394fd66981a14ea7e320691a` |
+
+### Lanzamiento de la prueba
 
 Abrir PowerShell y ejecutar:
 
@@ -26,7 +43,7 @@ $out = Join-Path $work ('manual-334-' + (Get-Date -Format 'yyyyMMdd-HHmmss'))
 python -B "$work/run_manual_334.py" --source "$work/manual-334-source" --out $out
 ```
 
-Hacer un recorrido de 30–60 s con los cinco soldados, alternando desplazamientos y paradas cerca del claro inicial. Si hay un retorno temprano al clásico, anotar cuándo ocurre y qué estaba pasando. Cerrar con la X y facilitar la ruta «Evidencia» que imprime PowerShell, junto con la valoración de continuidad. El lanzador local reutiliza el del candidato de 331 vínculos con hashes actualizados. `--prepare-only` verificó los archivos y el comando a cadencia normal, sin abrir la ventana. La aceptación jugando sigue PENDIENTE.
+El lanzador local reutiliza el del candidato de 331 vínculos con hashes actualizados. Antes de la sesión, `--prepare-only` verificó los archivos y el comando a cadencia normal.
 
 ## Reproducción técnica
 
