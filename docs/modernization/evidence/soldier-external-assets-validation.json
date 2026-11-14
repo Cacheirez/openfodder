@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "base_commit": "344fb9e14f12831fbf63ab05a09b36172714e894",
+  "plan": "2.74",
+  "scope": "A3 external artwork contract alongside A2; no new artistic poses or corrected launcher",
+  "source_sha256": {
+    "Source/Utils/OrderedSoldierRegistry.hpp": "58554e2f0a4fa53bdc532402980bc04697d3316a779ba7c76be4522e1851ea8b",
+    "CMakeLists.txt": "8deae6a3d5ff958b1438a6e20e29949ec7c627987c3f780527200d58b3ad9adc",
+    ".github/workflows/linux-build.yml": "ee925baa9d487efec38e5b5826357aa98eaecb8d40529320a6c58bbf14a7c1c2",
+    ".github/workflows/windows-build.yml": "6fded8130c53bf4bffdce05dd7814bede30b1db1ecd510845905ca6a6c8511b9",
+    "tools/modernization/build_hd_window_fixture.py": "bb39b84da7190f1612278909d79ee201cbf305ac9cb097becb29df13464bfc7c",
+    "tools/modernization/build_ordered_soldier_asset.cpp": "9be4051315dd27f9d1ae0c153292f66fa76cf54da2502033ccca977921bad3cc",
+    "tools/modernization/check_ordered_asset_builder.py": "339da992c2eaee3e4151d5b0ee92033b3607b8ec099f81b1399c1950662f9bf1",
+    "tools/modernization/check_ordered_asset_integration.py": "7217f9b3ecd3c265b53b98f1dfc1f1cfb742cc003935c52ee1ae72317e498531",
+    "tools/modernization/ordered_asset_cases.inc": "d1a747c14c1b5703de2c8773a8dcaef99198e4fa62b070195a2306b42cf01f72",
+    "tools/modernization/ordered-empty-assets.json": "6cb59b24b5aac261258a08356a348e0bbc485fed441067dbe222d4fa9835c9c1",
+    "tools/modernization/test_soldier_coverage.py": "61fef8a6d294053fa3fef300341a392b8a36cfb81ed1e09b86b0d8aa43829ac9"
+  },
+  "build": "GCC C++14 -O2, 70 translation units, local no-mixer engine; SDL3 release-3.4.0 a962f40bbba175e9716557a25d5d7965f134a3d3; preserved generated pilot headers, assets unchanged",
+  "tests": {
+    "python": "42 PASS; committed walk24 fixture compared with current original engine tables",
+    "external_assets": "PASS ASan/UBSan actual Window/SDL: 128 published intervals, 256 commands, 96 key/density combinations; all 24 PC/Amiga walking keys at 8x/12x, sequence 0-1-2-1, water, two bodies, occlusion, straight alpha",
+    "external_asset_negatives": "PASS hash/size/dimensions/path/reference/density/duplicate failures, missing density, immutable ownership, relative manifest paths, 64 MiB preflight; variable geometry/state enemy, explicit civilian, hidden marker rejected",
+    "legacy": "PASS ASan/UBSan actual Window/SDL v1 and ordered transaction diagnostics off/on",
+    "exporter": "PASS exact PNG-to-RGBA bytes, SHA and alpha at 8x/12x; invalid dimensions/input rejected, differing existing output/master preserved, identical export idempotent",
+    "ctest": "Two new tests registered: soldier_external_assets and soldier_external_asset_export; underlying commands PASS locally, full CTest Windows/Linux pending new CI",
+    "lsan": "PENDING locally; no leak-free claim beyond SDL texture counters"
+  },
+  "h3": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 1,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": null,
+      "coverage": "11 reference phases",
+      "ordered_manifest_sha256": "6cb59b24b5aac261258a08356a348e0bbc485fed441067dbe222d4fa9835c9c1",
+      "ordered_density": 12,
+      "art_coverage": "PENDING; replay PASS validates integration and H3 only",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 635,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 97.259,
+        "executable_sha256": "0da7b9aa7caf24bf1a69736b2a0e1a61c4c74dd04d243d2b3657cbb3d01b1247"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 508,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 72.026,
+        "executable_sha256": "0da7b9aa7caf24bf1a69736b2a0e1a61c4c74dd04d243d2b3657cbb3d01b1247"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+  "log_sha256": {
+    "assets": "b20a299f17b4c445c7ddd2d7a907d25e78302dd94541bd1edcea88e089218184",
+    "legacy": "b45314c8eb0edd93c5e2e151df7a51506930d7b2a5902f9c8e7554871281b1dd",
+    "export": "8b04bf6d15c739966cd3bc969b6cb6ee0c8abb8a4a90e6421090aa3a6cd1ee42",
+    "python": "4bc93a56fa614208a0569210f5771546dc272a8ee4234056067df3e1489aeb4f",
+    "h3_pc": "129cdde0da1b1e76a8d5a7644f2d8ffb65ff140229f0b8bf5984d21a7e7cacbf",
+    "h3_amiga": "b4f0fb771b60df8d1542bfb2605f4df7fb6f3c856487c4824c3bd55fb4f8a977"
+  },
+  "previous_commit_ci": {
+    "commit": "344fb9e14f12831fbf63ab05a09b36172714e894",
+    "windows": 41817267846,
+    "linux": 41817267875,
+    "density": 41817269613,
+    "verdict": "PASS"
+  },
+  "new_commit_ci": "PENDING at publication; consult live checks; base CI is not the new commit CI",
+  "pending": [
+    "24 artistic poses and reviewed derivatives/bindings",
+    "all other states, enemies and resource/palette variants",
+    "positive ordered publication on a real campaign with sufficient art",
+    "pause/map/palette/renderer transitions",
+    "GPU/CD32 visual validation and user acceptance; no ZIP delivered"
+  ]
+}

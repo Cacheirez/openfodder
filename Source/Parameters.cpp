@@ -363,8 +363,11 @@ bool sFodderParameters::SaveIni() {
 	INI<> ini("openfodder.ini", false);
 
 	ini.parse();
+    for (const char* section : {"openfodder", "engine", "skip"})
+        if (!ini.select(section)) ini.create(section);
 
 	if (ini.select("openfodder")) {
+		ini.set("presentation", mFitPresentation ? "fit" : "classic");
 		ini.set("window", mWindowMode ? "true" : "false");
 		ini.set("cheats", mCheatsEnabled ? "true" : "false");
 
@@ -424,7 +427,14 @@ bool sFodderParameters::SaveIni() {
 	// }
 	//
 
-	return ini.save();
+    // Never truncate the last confirmed configuration while testing a change.
+    const char* temporary = "openfodder.ini.pending";
+    if (!ini.save(temporary)) { SDL_RemovePath(temporary); return false; }
+    if (!SDL_RenamePath(temporary, "openfodder.ini")) {
+        SDL_RemovePath(temporary);
+        return false;
+    }
+    return true;
 }
 
 
@@ -438,6 +448,7 @@ bool sFodderParameters::ProcessINI() {
 	// Section: Openfodder
 	{
 		if (ini.select("openfodder")) {
+			mFitPresentation = ini.get("presentation", "classic") == "fit";
 			if (ini.get("window", "false") == "true")
 				mWindowMode = true;
 			else

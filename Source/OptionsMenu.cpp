@@ -4,6 +4,13 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iostream>
+
+// Opt-in, flushed breadcrumbs: no paths, settings contents or private data.
+static void OptionsTrace(const char* stage) {
+    if (std::getenv("OPENFODDER_OPTIONS_TRACE"))
+        std::cerr << "[options] " << stage << std::endl;
+}
 
 static int clamp_int(int v, int lo, int hi) {
     if (v < lo) return lo;
@@ -11,7 +18,6 @@ static int clamp_int(int v, int lo, int hi) {
     return v;
 }
 
-static void ApplyWindowSizingLive();
 
 static std::string trunc_label_px(const std::string& s, int maxPx) {
     if (maxPx <= 0) return "";
@@ -95,6 +101,7 @@ void cOptionsMenu::Open() {
     mApplied = false;
     mCurrentIndex = 0;
     mCurrentPage = 0;
+    mConfirmation.Clear(); mPreviewApplied=false; mStatus.clear();
 
     // Reset input limiter state
     mLastInputMs = 0;
@@ -103,6 +110,8 @@ void cOptionsMenu::Open() {
 
     if (g_Fodder && g_Fodder->mStartParams) {
         mSnapshot = *g_Fodder->mStartParams;
+        mDraft = mSnapshot;
+        if (g_Fodder->mWindow) mDraft.mWindowMode = !g_Fodder->mWindow->isFullscreen();
         mSnapshotValid = true;
     }
     else {
@@ -156,6 +165,7 @@ void cOptionsMenu::BuildItems() {
     // -------------------------------------------------------------------------
     // Video / Window
     // -------------------------------------------------------------------------
+    mItems.push_back({ eOptType::Toggle, eOptSection::Video, "Presentation", OPT_PRESENTATION });
     mItems.push_back({ eOptType::Toggle, eOptSection::Video, "Window mode",     OPT_WINDOW_MODE });
     mItems.push_back({ eOptType::IntRange, eOptSection::Video, "Window scale",    OPT_WINDOW_SCALE, 0, 6, 1 });
     mItems.push_back({ eOptType::Toggle, eOptSection::Video, "Integer scaling", OPT_INTEGER_SCALING });
@@ -242,229 +252,158 @@ void cOptionsMenu::ChangePage(int pageIndex) {
 }
 
 void cOptionsMenu::RestoreSnapshot() {
-    if (!mSnapshotValid || !g_Fodder || !g_Fodder->mStartParams)
-        return;
-
-    *g_Fodder->mStartParams = mSnapshot;
-    if (g_Fodder->mParams)
-        *g_Fodder->mParams = mSnapshot;
-
-    ApplyWindowSizingLive();
-    if (g_Fodder->mWindow) {
-        const bool enable = !g_Fodder->mStartParams->mMouseAlternative ||
-            (g_Fodder->mStartParams->mMouseAlternative && g_Fodder->mStartParams->mMouseLocked);
-        g_Fodder->mWindow->SetRelativeMouseMode(enable);
-        g_Fodder->mWindow->SetMouseSpeed(g_Fodder->mStartParams->mMouseSpeed);
+    mConfirmation.Clear();
+    if (mPreviewApplied) {
+        *g_Fodder->mStartParams=mSnapshot;
+        *g_Fodder->mParams=mRuntimeSnapshot;
+        const bool restored=g_Fodder->mWindow->ApplyPresentation(mWindowSnapshot);
+        g_Fodder->mWindow->SetMouseSpeed(mSnapshot.mMouseSpeed);
+        if (!restored) mStatus="RESTORE FAILED";
+        // Keep the recovery snapshot alive and prevent saving until recovery succeeds.
+        mPreviewApplied=!restored;
     }
-    if (g_Fodder->mVersions) {
-        g_Fodder->VersionSwitch(g_Fodder->mVersions->GetRetail(g_Fodder->mStartParams->mDefaultPlatform, g_Fodder->mStartParams->mDefaultGame));
-        g_Fodder->mVersionDefault = g_Fodder->mVersionCurrent;
+    mDraft=mSnapshot;
+    mApplied=false;
+}
+
+bool cOptionsMenu::PresentationChanged() const {
+    return mDraft.mFitPresentation!=mSnapshot.mFitPresentation ||
+        mDraft.mWindowMode!=!g_Fodder->mWindow->isFullscreen() ||
+        mDraft.mWindowScale!=mSnapshot.mWindowScale ||
+        mDraft.mIntegerScaling!=mSnapshot.mIntegerScaling ||
+        mDraft.mMouseAlternative!=mSnapshot.mMouseAlternative ||
+        mDraft.mMouseLocked!=mSnapshot.mMouseLocked;
+}
+
+void cOptionsMenu::SaveOrPreview() {
+    if (mPreviewApplied) { RestoreSnapshot(); return; }
+    OptionsTrace("SAVE begin");
+    mStatus.clear();
+    if (!PresentationChanged()) { Confirm(); return; }
+    if (!g_Fodder->mWindow->CapturePresentation(mWindowSnapshot)) {
+        mStatus="WINDOW ERROR"; return;
     }
+    OptionsTrace("SAVE window captured");
+    mRuntimeSnapshot=*g_Fodder->mParams;
+    mPreviewApplied=true;
+    *g_Fodder->mStartParams=mDraft;
+    g_Fodder->mParams->mFitPresentation=mDraft.mFitPresentation;
+    g_Fodder->mParams->mWindowMode=mDraft.mWindowMode;
+    g_Fodder->mParams->mIntegerScaling=mDraft.mIntegerScaling;
+    g_Fodder->mParams->mMouseAlternative=mDraft.mMouseAlternative;
+    g_Fodder->mParams->mMouseLocked=mDraft.mMouseLocked;
+    const bool fit=mDraft.ScreenTransformEnabled() && mDraft.ScreenFitEnabled() &&
+        mDraft.mMouseAlternative && !mDraft.mMouseLocked;
+    OptionsTrace("SAVE applying preview");
+    if (!g_Fodder->mWindow->PreviewPresentation(mDraft.mWindowMode,int(mDraft.mWindowScale),fit,
+            !mDraft.mMouseAlternative || mDraft.mMouseLocked)) {
+        mStatus="WINDOW ERROR"; RestoreSnapshot(); return;
+    }
+    OptionsTrace("SAVE preview applied");
+    if (!g_Fodder->mWindow->CapturePresentation(mPreviewState)) {
+        mStatus="WINDOW ERROR"; RestoreSnapshot(); return;
+    }
+    mConfirmation.Begin(now_ms_u32());
+    mTracePreviewDrawn=false;
+    OptionsTrace("SAVE confirmation pending");
+}
+
+void cOptionsMenu::Confirm() {
+    OptionsTrace("KEEP or direct SAVE begin");
+    if (mConfirmation.Expired(now_ms_u32())) {
+        mStatus="TIME EXPIRED"; RestoreSnapshot(); return;
+    }
+    if (mConfirmation.pending) {
+        cWindow::PresentationState actual;
+        if (!g_Fodder->mWindow->CapturePresentation(actual) ||
+            actual.fullscreen!=mPreviewState.fullscreen || actual.maximized!=mPreviewState.maximized ||
+            actual.w!=mPreviewState.w || actual.h!=mPreviewState.h ||
+            actual.relative!=mPreviewState.relative || actual.resizable!=mPreviewState.resizable) {
+            mStatus="WINDOW CHANGED"; RestoreSnapshot(); return;
+        }
+    }
+    // Write only an explicitly confirmed candidate. Save failure leaves the
+    // last confirmed file intact and restores the live preview.
+    OptionsTrace("SAVE writing INI");
+    if (!mDraft.SaveIni()) { mStatus="SAVE FAILED"; RestoreSnapshot(); return; }
+    *g_Fodder->mStartParams=mDraft;
+    g_Fodder->mParams->mCopyProtection=mDraft.mCopyProtection;
+    g_Fodder->mWindow->SetMouseSpeed(mDraft.mMouseSpeed);
+    mConfirmation.Clear(); mPreviewApplied=false;
+    mApplied=true; mDone=true;
+    OptionsTrace("SAVE committed");
 }
 
 int cOptionsMenu::GetInt(int optId) const {
     switch (optId) {
+    case OPT_PRESENTATION: return mDraft.mFitPresentation ? 1 : 0;
     case OPT_WINDOW_MODE:
-        if (g_Fodder->mWindow)
-            return g_Fodder->mWindow->isFullscreen() ? 0 : 1;
-        return g_Fodder->mStartParams->mWindowMode ? 1 : 0;
+        return mDraft.mWindowMode ? 1 : 0;
     case OPT_WINDOW_SCALE:
-        if (g_Fodder->mWindow && !g_Fodder->mWindow->isFullscreen())
-            return g_Fodder->mWindow->GetScaler();
-        return (int)g_Fodder->mStartParams->mWindowScale;
-    case OPT_INTEGER_SCALING:  return g_Fodder->mStartParams->mIntegerScaling ? 1 : 0;
+        return (int)mDraft.mWindowScale;
+    case OPT_INTEGER_SCALING:  return mDraft.mIntegerScaling ? 1 : 0;
 
-    case OPT_WINDOW_COLUMNS:   return (int)g_Fodder->mStartParams->mWindowColumns;
-    case OPT_WINDOW_ROWS:      return (int)g_Fodder->mStartParams->mWindowRows;
-    case OPT_COPY_PROTECTION:  return g_Fodder->mStartParams->mCopyProtection ? 1 : 0;
+    case OPT_WINDOW_COLUMNS:   return (int)mDraft.mWindowColumns;
+    case OPT_WINDOW_ROWS:      return (int)mDraft.mWindowRows;
+    case OPT_COPY_PROTECTION:  return mDraft.mCopyProtection ? 1 : 0;
 
-    case OPT_ALTERNATE_MOUSE:  return g_Fodder->mStartParams->mMouseAlternative ? 1 : 0;
-    case OPT_MOUSE_LOCKED:     return g_Fodder->mStartParams->mMouseLocked ? 1 : 0;
-    case OPT_MOUSE_SPEED:      return (int)(g_Fodder->mStartParams->mMouseSpeed * 10.0f + 0.5f);
+    case OPT_ALTERNATE_MOUSE:  return mDraft.mMouseAlternative ? 1 : 0;
+    case OPT_MOUSE_LOCKED:     return mDraft.mMouseLocked ? 1 : 0;
+    case OPT_MOUSE_SPEED:      return (int)(mDraft.mMouseSpeed * 10.0f + 0.5f);
 
-    case OPT_DISABLE_SOUND:    return g_Fodder->mStartParams->mDisableSound ? 1 : 0;
-    case OPT_CHEATS:           return g_Fodder->mStartParams->mCheatsEnabled ? 1 : 0;
+    case OPT_DISABLE_SOUND:    return mDraft.mDisableSound ? 1 : 0;
+    case OPT_CHEATS:           return mDraft.mCheatsEnabled ? 1 : 0;
 
-    case OPT_SKIP_INTRO:       return g_Fodder->mStartParams->mSkipIntro ? 1 : 0;
-    case OPT_DISABLE_INTRO_VIDEO: return g_Fodder->mStartParams->mDisableIntroVideo ? 1 : 0;
-    case OPT_SKIP_BRIEFING:    return g_Fodder->mStartParams->mSkipBriefing ? 1 : 0;
-    case OPT_SKIP_SERVICE:     return g_Fodder->mStartParams->mSkipService ? 1 : 0;
-    case OPT_SKIP_RECRUIT:     return g_Fodder->mStartParams->mSkipRecruit ? 1 : 0;
+    case OPT_SKIP_INTRO:       return mDraft.mSkipIntro ? 1 : 0;
+    case OPT_DISABLE_INTRO_VIDEO: return mDraft.mDisableIntroVideo ? 1 : 0;
+    case OPT_SKIP_BRIEFING:    return mDraft.mSkipBriefing ? 1 : 0;
+    case OPT_SKIP_SERVICE:     return mDraft.mSkipService ? 1 : 0;
+    case OPT_SKIP_RECRUIT:     return mDraft.mSkipRecruit ? 1 : 0;
 
-    case OPT_SLEEP_DELTA:      return (int)g_Fodder->mStartParams->mSleepDelta;
-    case OPT_MAX_SPRITES:      return (int)g_Fodder->mStartParams->mSpritesMax;
-    case OPT_MAX_SPAWN:        return (int)g_Fodder->mStartParams->mSpawnEnemyMax;
+    case OPT_SLEEP_DELTA:      return (int)mDraft.mSleepDelta;
+    case OPT_MAX_SPRITES:      return (int)mDraft.mSpritesMax;
+    case OPT_MAX_SPAWN:        return (int)mDraft.mSpawnEnemyMax;
 
-    case OPT_DEFAULT_PLATFORM: return (g_Fodder->mStartParams->mDefaultPlatform == ePlatform::PC) ? 1 : 0;
-    case OPT_DEFAULT_GAME:     return (g_Fodder->mStartParams->mDefaultGame == eGame::CF2) ? 1 : 0;
+    case OPT_DEFAULT_PLATFORM: return (mDraft.mDefaultPlatform == ePlatform::PC) ? 1 : 0;
+    case OPT_DEFAULT_GAME:     return (mDraft.mDefaultGame == eGame::CF2) ? 1 : 0;
 
     default: return 0;
     }
 }
 
-static inline void ApplyWindowSizingLive() {
-    if (!g_Fodder || !g_Fodder->mWindow || !g_Fodder->mStartParams)
-        return;
-
-    const size_t scale = g_Fodder->mStartParams->mWindowScale;
-
-    g_Fodder->Window_UpdateScreenSize();
-
-    if (scale == 0) {
-        g_Fodder->mWindow->CalculateWindowSize();
-        return;
-    }
-
-    g_Fodder->mWindow->SetWindowSize((int)scale);
-}
-
 void cOptionsMenu::SetInt(int optId, int v) {
     switch (optId) {
-    case OPT_WINDOW_MODE: {
-        const bool wantWindowed = (v != 0);
-        g_Fodder->mStartParams->mWindowMode = wantWindowed;
-        if (g_Fodder->mParams)
-            g_Fodder->mParams->mWindowMode = wantWindowed;
-
-        if (g_Fodder->mWindow) {
-            const bool isFullscreen = g_Fodder->mWindow->isFullscreen();
-            if ((wantWindowed && isFullscreen) || (!wantWindowed && !isFullscreen))
-                g_Fodder->mWindow->ToggleFullscreen();
-        }
-        break;
-    }
-
-    case OPT_WINDOW_SCALE: {
-        const int clamped = clamp_int(v, 0, 6);
-        g_Fodder->mStartParams->mWindowScale = (uint32)clamped;
-        ApplyWindowSizingLive();
-        break;
-    }
-
-    case OPT_WINDOW_COLUMNS: {
-        const int clamped = clamp_int(v, 0, 80);
-        g_Fodder->mStartParams->mWindowColumns = (uint32)clamped;
-        ApplyWindowSizingLive();
-        break;
-    }
-
-    case OPT_WINDOW_ROWS: {
-        const int clamped = clamp_int(v, 0, 60);
-        g_Fodder->mStartParams->mWindowRows = (uint32)clamped;
-        ApplyWindowSizingLive();
-        break;
-    }
-
-    case OPT_INTEGER_SCALING:
-        g_Fodder->mStartParams->mIntegerScaling = (v != 0);
-        break;
-
-    case OPT_COPY_PROTECTION:
-        g_Fodder->mStartParams->mCopyProtection = (v != 0);
-        if (g_Fodder->mParams)
-            g_Fodder->mParams->mCopyProtection = g_Fodder->mStartParams->mCopyProtection;
-        break;
-
-    case OPT_ALTERNATE_MOUSE:
-        g_Fodder->mStartParams->mMouseAlternative = (v != 0);
-        if (g_Fodder->mParams)
-            g_Fodder->mParams->mMouseAlternative = g_Fodder->mStartParams->mMouseAlternative;
-        if (g_Fodder->mWindow) {
-            const bool enable = !g_Fodder->mStartParams->mMouseAlternative ||
-                (g_Fodder->mStartParams->mMouseAlternative && g_Fodder->mStartParams->mMouseLocked);
-            g_Fodder->mWindow->SetRelativeMouseMode(enable);
-        }
-        break;
-
-    case OPT_MOUSE_LOCKED:
-        g_Fodder->mStartParams->mMouseLocked = (v != 0);
-        if (g_Fodder->mParams)
-            g_Fodder->mParams->mMouseLocked = g_Fodder->mStartParams->mMouseLocked;
-        if (g_Fodder->mWindow) {
-            const bool enable = !g_Fodder->mStartParams->mMouseAlternative ||
-                (g_Fodder->mStartParams->mMouseAlternative && g_Fodder->mStartParams->mMouseLocked);
-            g_Fodder->mWindow->SetRelativeMouseMode(enable);
-        }
-        break;
-
-    case OPT_MOUSE_SPEED: {
-        const int clamped = clamp_int(v, 5, 100);
-        const float speed = (float)clamped / 10.0f;
-        g_Fodder->mStartParams->mMouseSpeed = speed;
-        if (g_Fodder->mWindow)
-            g_Fodder->mWindow->SetMouseSpeed(speed);
-        break;
-    }
-
-    case OPT_DISABLE_SOUND:
-        g_Fodder->mStartParams->mDisableSound = (v != 0);
-        break;
-
-    case OPT_CHEATS:
-        g_Fodder->mStartParams->mCheatsEnabled = (v != 0);
-        break;
-
-    case OPT_SKIP_INTRO:
-        g_Fodder->mStartParams->mSkipIntro = (v != 0);
-        break;
-
-    case OPT_DISABLE_INTRO_VIDEO:
-        g_Fodder->mStartParams->mDisableIntroVideo = (v != 0);
-        break;
-
-    case OPT_SKIP_BRIEFING:
-        g_Fodder->mStartParams->mSkipBriefing = (v != 0);
-        break;
-
-    case OPT_SKIP_SERVICE:
-        g_Fodder->mStartParams->mSkipService = (v != 0);
-        break;
-
-    case OPT_SKIP_RECRUIT:
-        g_Fodder->mStartParams->mSkipRecruit = (v != 0);
-        break;
-
-    case OPT_SLEEP_DELTA:
-        g_Fodder->mStartParams->mSleepDelta = (uint32)clamp_int(v, 5, 40);
-        break;
-
-    case OPT_MAX_SPRITES:
-        g_Fodder->mStartParams->mSpritesMax = (uint32)clamp_int(v, 16, 100000);
-        break;
-
-    case OPT_MAX_SPAWN:
-        g_Fodder->mStartParams->mSpawnEnemyMax = (uint32)clamp_int(v, 0, 1000);
-        break;
-
-    case OPT_DEFAULT_PLATFORM: {
-        const int sel = clamp_int(v, 0, 1);
-        g_Fodder->mStartParams->mDefaultPlatform = (sel == 1) ? ePlatform::PC : ePlatform::Amiga;
-        if (g_Fodder->mVersions) {
-            g_Fodder->VersionSwitch(g_Fodder->mVersions->GetRetail(g_Fodder->mStartParams->mDefaultPlatform, g_Fodder->mStartParams->mDefaultGame));
-            g_Fodder->mVersionDefault = g_Fodder->mVersionCurrent;
-        }
-        break;
-    }
-
-    case OPT_DEFAULT_GAME: {
-        const int sel = clamp_int(v, 0, 1);
-        g_Fodder->mStartParams->mDefaultGame = (sel == 1) ? eGame::CF2 : eGame::CF1;
-        if (g_Fodder->mVersions) {
-            g_Fodder->VersionSwitch(g_Fodder->mVersions->GetRetail(g_Fodder->mStartParams->mDefaultPlatform, g_Fodder->mStartParams->mDefaultGame));
-            g_Fodder->mVersionDefault = g_Fodder->mVersionCurrent;
-        }
-        break;
-    }
-
+    case OPT_PRESENTATION: mDraft.mFitPresentation=(v!=0); break;
+    case OPT_WINDOW_MODE: mDraft.mWindowMode=(v!=0); break;
+    case OPT_INTEGER_SCALING: mDraft.mIntegerScaling=(v!=0); break;
+    case OPT_COPY_PROTECTION: mDraft.mCopyProtection=(v!=0); break;
+    case OPT_ALTERNATE_MOUSE: mDraft.mMouseAlternative=(v!=0); break;
+    case OPT_MOUSE_LOCKED: mDraft.mMouseLocked=(v!=0); break;
+    case OPT_DISABLE_SOUND: mDraft.mDisableSound=(v!=0); break;
+    case OPT_CHEATS: mDraft.mCheatsEnabled=(v!=0); break;
+    case OPT_SKIP_INTRO: mDraft.mSkipIntro=(v!=0); break;
+    case OPT_DISABLE_INTRO_VIDEO: mDraft.mDisableIntroVideo=(v!=0); break;
+    case OPT_SKIP_BRIEFING: mDraft.mSkipBriefing=(v!=0); break;
+    case OPT_SKIP_SERVICE: mDraft.mSkipService=(v!=0); break;
+    case OPT_SKIP_RECRUIT: mDraft.mSkipRecruit=(v!=0); break;
+    case OPT_WINDOW_SCALE: mDraft.mWindowScale=clamp_int(v,0,6); break;
+    case OPT_WINDOW_COLUMNS: mDraft.mWindowColumns=clamp_int(v,0,80); break;
+    case OPT_WINDOW_ROWS: mDraft.mWindowRows=clamp_int(v,0,60); break;
+    case OPT_SLEEP_DELTA: mDraft.mSleepDelta=clamp_int(v,5,40); break;
+    case OPT_MAX_SPRITES: mDraft.mSpritesMax=clamp_int(v,45,100000); break;
+    case OPT_MAX_SPAWN: mDraft.mSpawnEnemyMax=clamp_int(v,0,1000); break;
+    case OPT_MOUSE_SPEED: mDraft.mMouseSpeed=clamp_int(v,5,100)/10.0f; break;
+    case OPT_DEFAULT_PLATFORM: mDraft.mDefaultPlatform=v==1 ? ePlatform::PC : ePlatform::Amiga; break;
+    case OPT_DEFAULT_GAME: mDraft.mDefaultGame=v==1 ? eGame::CF2 : eGame::CF1; break;
     default: break;
     }
-
-    mApplied = true;
+    mStatus.clear();
 }
 
 std::string cOptionsMenu::FormatValue(const sOptItem& it) const {
     const int v = GetInt(it.id);
 
+    if (it.id == OPT_PRESENTATION) return v ? "FIT" : "CLASSIC";
     if (it.type == eOptType::Toggle)
         return v ? "ON" : "OFF";
 
@@ -504,9 +443,23 @@ void cOptionsMenu::Draw() {
     g_Fodder->GUI_Element_Reset();
 
     g_Fodder->mString_GapCharID = 0x25;
-    g_Fodder->String_Print_Large("OPTIONS", false, 0x01);
+    g_Fodder->String_Print_Large(mStatus.empty() ? "OPTIONS" : mStatus, false, 0x01);
     g_Fodder->mString_GapCharID = 0;
 
+    if (mConfirmation.pending) {
+        if (!mTracePreviewDrawn) OptionsTrace("confirmation draw begin");
+        // Briefing font has only 37 glyphs; question mark maps to absent frame 54.
+        const std::string question="KEEP CHANGES " + std::to_string(mConfirmation.Seconds(now_ms_u32()));
+        g_Fodder->String_Print_Small_LeftInBox(question,32,288,64);
+        g_Fodder->String_Print_Small_LeftInBox("REVERTS AFTER 15 SECONDS",32,288,88);
+        g_Fodder->GUI_Button_Draw_SmallBoxAt("KEEP",48,144,120,0xB2,0xB3,eTextAlign::Centre);
+        g_Fodder->GUI_Button_Setup_New(Gui_OptionsMenu_Click,this,GUIACT_OPT_SAVE,0);
+        g_Fodder->GUI_Button_Draw_SmallBoxAt("REVERT",160,256,120,0xB2,0xB3,eTextAlign::Centre);
+        g_Fodder->GUI_Button_Setup_New(Gui_OptionsMenu_Click,this,GUIACT_OPT_CANCEL,0);
+        if (!mTracePreviewDrawn) OptionsTrace("confirmation draw complete");
+        mTracePreviewDrawn=true;
+        return;
+    }
     const int tabY = PLATFORM_BASED(0x1A, 0x18);
     const int rowBaseY = tabY + 0x18;
     const int rowH = RowH();
@@ -607,6 +560,12 @@ void cOptionsMenu::Draw() {
         g_Fodder->GUI_Button_Setup_New(Gui_OptionsMenu_Click, this, GUIACT_OPT_ROW_PRIMARY, (int16)idx);
     }
 
+    if (mCurrentPage==0) {
+        const bool overridden=std::getenv("OPENFODDER_MISSION_SCREEN_TRANSFORM") || std::getenv("OPENFODDER_MISSION_SCREEN_FIT");
+        const char* hint=overridden ? "LAUNCHER OVERRIDES PRESENTATION" :
+            "FIT: FREE ALTERNATE MOUSE";
+        g_Fodder->String_Print_Small_LeftInBox(hint,32,288,158);
+    }
     // Bottom actions (fixed to bottom of the screen)
     {
         const size_t screenH = (size_t)g_Fodder->mWindow->GetScreenSize().getHeight();
@@ -633,7 +592,11 @@ void cOptionsMenu::Draw() {
     }
 }
 
-void cOptionsMenu::Tick() {}
+void cOptionsMenu::Tick() {
+    if (mConfirmation.Expired(now_ms_u32())) {
+        mStatus="TIME EXPIRED"; RestoreSnapshot();
+    }
+}
 
 void cOptionsMenu::OnUp() {
     if (mCurrentIndex > 0) --mCurrentIndex;
@@ -643,7 +606,11 @@ void cOptionsMenu::OnDown() {
     if (mCurrentIndex + mShownItems < mCount) ++mCurrentIndex;
 }
 
-void cOptionsMenu::OnBack() { mDone = true; }
+void cOptionsMenu::OnBack() {
+    const bool testing=mConfirmation.pending || mPreviewApplied;
+    RestoreSnapshot();
+    if (!testing && !mPreviewApplied) mDone=true;
+}
 
 int cOptionsMenu::MouseToItemIndex() const {
     const int my = (int)g_Fodder->mMouseY;
@@ -689,9 +656,7 @@ void cOptionsMenu::Adjust(sOptItem& it, int dir) {
 }
 
 void cOptionsMenu::ResetDefaults() {
-    g_Fodder->mStartParams->clear();
-    mApplied = true;
-    g_Fodder->mStartParams->SaveIni();
+    mDraft.clear(); mStatus.clear();
 }
 
 void cOptionsMenu::OnRowClick(int16 action, int16 arg) {
@@ -699,17 +664,23 @@ void cOptionsMenu::OnRowClick(int16 action, int16 arg) {
     if (!AllowInput(action, arg))
         return;
 
+    if (mPreviewApplied && !mConfirmation.pending) { RestoreSnapshot(); return; }
+    if (mConfirmation.pending) {
+        if (action==GUIACT_OPT_SAVE) Confirm();
+        else if (action==GUIACT_OPT_CANCEL || action==GUIACT_OPT_BACK) RestoreSnapshot();
+        return;
+    }
     if (action == GUIACT_OPT_UP) { OnUp(); return; }
     if (action == GUIACT_OPT_DOWN) { OnDown(); return; }
     if (action == GUIACT_OPT_BACK) { OnBack(); return; }
     if (action == GUIACT_OPT_TAB) { ChangePage(arg); return; }
-    if (action == GUIACT_OPT_SAVE) { g_Fodder->mStartParams->SaveIni(); mApplied = true; mDone = true; return; }
+    if (action == GUIACT_OPT_SAVE) { SaveOrPreview(); return; }
     if (action == GUIACT_OPT_CANCEL) { RestoreSnapshot(); mApplied = false; mDone = true; return; }
 
     if (action == GUIACT_OPT_ACTION) {
         const int actionId = (int)arg;
         if (actionId == OPT_DEFAULTS) { ResetDefaults(); return; }
-        if (actionId == OPT_BACK) { mDone = true; return; }
+        if (actionId == OPT_BACK) { OnBack(); return; }
         return;
     }
 
@@ -736,22 +707,28 @@ bool cFodder::Options_Menu_Run() {
     mMap_Destroy_Tiles.clear();
     mMouse_Button_Left_Toggle = 0;
 
-    const auto prevInterruptCallback = mInterruptCallback;
+    std::function<void()> prevInterruptCallback;
     mGraphics->PaletteSet();
     mSurface->palette_FadeTowardNew();
 
+    {
+    std::lock_guard<std::mutex> lock(mSurfaceMtx);
+    prevInterruptCallback=mInterruptCallback;
     mInterruptCallback = [this]() {
         Sprites_Draw();
         mOptionsMenu->Draw();
         mGraphics->SetActiveSpriteSheet(eGFX_IN_GAME);
         Mouse_DrawCursor();
         };
+    }
 
     while (!mOptionsMenu->IsDone()) {
 
         if (mSurface->isPaletteAdjusting())
             mSurface->palette_FadeTowardNew();
 
+        {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
         // Mouse wheel scroll (one "tick" per frame)
         if (mMouse_EventLastWheel.mY > 0) {
             mOptionsMenu->OnUp();
@@ -762,8 +739,10 @@ bool cFodder::Options_Menu_Run() {
             mMouse_EventLastWheel.mY = 0;
         }
 
+        // Consume the press edge once. A held button is +1 after consumption,
+        // not another click; release rearms it in Mouse_UpdateButtons.
         // Mouse click processing
-        if (mMouse_Button_Left_Toggle)
+        if (Mouse_Button_Left_Toggled() > 0)
             GUI_Handle_Element_Mouse_Check(mGUI_Elements);
 
         if (mPhase_EscapeKeyAbort || mPhase_Aborted) {
@@ -773,19 +752,25 @@ bool cFodder::Options_Menu_Run() {
         }
 
         mOptionsMenu->Tick();
+        }
 
         Video_Sleep();
     }
 
     const bool applied = mOptionsMenu->WasApplied();
 
-    mInterruptCallback = prevInterruptCallback;
-    mOptionsMenu->Close();
-    mOptionsMenu.reset();
+    {
+        std::lock_guard<std::mutex> lock(mSurfaceMtx);
+        mInterruptCallback = prevInterruptCallback;
+        mOptionsMenu->Close();
+        mOptionsMenu.reset();
+    }
 
     //Image_FadeOut();
-    if (applied)
-        mStartParams->SaveIni();
+    if (applied && mVersions) {
+        VersionSwitch(mVersions->GetRetail(mStartParams->mDefaultPlatform,mStartParams->mDefaultGame));
+        mVersionDefault=mVersionCurrent;
+    }
     mMouse_Button_Left_Toggle = 0;
     mMouse_EventLastButtonsPressed = 0;
     mKeyCode = 0;

@@ -1,0 +1,68 @@
+{
+  "code_commit": "f72d6e792c359cec2f53d006d167738c2104bc66",
+  "tree": "7f61665cded83a25387795a409abf24e002b0cca",
+  "verdict": "PASS",
+  "artifact_id": 13106475504,
+  "zip_sha256": "fa51c8055c42998d80fb143a5af799668c7b3d4a95f5dcfb08548a4fac1e360a",
+  "exe_sha256": "591e1831badce7bf1e18494d176f63840d06b30542379d31caff72d5d6d891e1",
+  "files": 303,
+  "package_version": "ffb71a573932919a6fb0199934c1a439400080ff",
+  "batch": {
+    "verdict": "PASS",
+    "keys": [
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        7,
+        2
+      ]
+    ],
+    "h3": "PASS: 3 demo phases, 3405 canonical states match pinned baseline",
+    "exe_sha256": "591e1831badce7bf1e18494d176f63840d06b30542379d31caff72d5d6d891e1",
+    "command": [
+      "D:\\a\\openfodder\\openfodder\\Run\\openfodder.exe",
+      "--appveyor",
+      "--unit-test",
+      "--nosound",
+      "--window",
+      "--alternate-mouse",
+      "--campaign",
+      "Amiga The One"
+    ],
+    "scope": "SDL software/dummy, full Amiga campaign, actual published keys; no GPU/FPS claim"
+  },
+  "phases_passed": 29,
+  "skipped": 0,
+  "ci": {
+    "windows": 41359306896,
+    "linux": 41359307009,
+    "density": 41359306892
+  },
+  "checks": [
+    "ZIP integrity",
+    "CI artifact digest",
+    "batch and replay reports match executable",
+    "six published keys",
+    "preview matches repository after CRLF normalization",
+    "normal-speed m1p2 launcher"
+  ],
+  "ci_merge_tree_verified": true
+}

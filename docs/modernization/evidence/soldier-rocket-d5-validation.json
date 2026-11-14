@@ -1,0 +1,493 @@
+{
+  "task": "A3-ROCKET-D5",
+  "status": "PASS bounded internal review; in-game acceptance PENDING",
+  "date": "2026-11-08",
+  "base_commit": "8319b696d78e6f79c4b1888b20a174d0bb02a9dd",
+  "recovered_from_local_commit": "3f23207",
+  "scope": "Only rocket direction 5 frames 0/1/2, no regeneration; D6 excluded",
+  "poses": 77,
+  "assets": 154,
+  "bindings": 306,
+  "preserved": {
+    "windows-x64": {
+      "assets": 148,
+      "bindings": 294,
+      "descriptors_PNG_RGBA_keys": "exact against D4, both modes"
+    },
+    "windows-llvm23-x86": {
+      "assets": 148,
+      "bindings": 294,
+      "descriptors_PNG_RGBA_keys": "exact against D4, both modes"
+    },
+    "linux": {
+      "assets": 148,
+      "bindings": 294,
+      "descriptors_PNG_RGBA_keys": "exact against D4, both modes"
+    }
+  },
+  "crop_review": {
+    "scope": "D5 crops and six derivatives reviewed and integrated",
+    "source_commit": "3f23207",
+    "alpha_threshold": 16,
+    "frames": [
+      {
+        "frame": 0,
+        "crop": [
+          436,
+          153,
+          1064,
+          1046
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "a827b15804ca498f742abd9345f2c985e976d0714369ebdc8a5fcdaf5821c37c",
+        "significant_bbox": [
+          436,
+          153,
+          1064,
+          1046
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 226,
+            "rgba_sha256": "609337db14863f9b0d645265d460cf542149b93239fc384814d69655b4b6603c",
+            "png_sha256": "d04eeb7bf10d286eff59f86d4fb563bb2e33934c6336bd617d58229f4ccba567"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 222,
+            "rgba_sha256": "3c05a2ff674e198d5f8c85a133360695cb5de5c7c9a871d9eb1bdcbb433acaec",
+            "png_sha256": "a1ab8dbd5cbce5e47e74f102492801f92a4e849bfddec50c38565bd54f9f7502"
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "crop": [
+          236,
+          141,
+          988,
+          1222
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "07514477140cee20fa377be064f597712b3bed2128e1b374f74f85443f90f08f",
+        "significant_bbox": [
+          236,
+          141,
+          988,
+          1222
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 227,
+            "rgba_sha256": "1e7f79eb91e538f1ec57142dfa9e9e6ceea2a4d4f0f8adc699a9820b87c1cfc1",
+            "png_sha256": "b66564f4f6a255b668a183dc9b8a660400ff6c37cfc57aefc78b01078eb61178"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 215,
+            "rgba_sha256": "770cc986a77558162e2145c46fd54551e5e99f5f613113a1740ff102c5031da1",
+            "png_sha256": "7a2e96b89bceb017d1727ca20374f75a1962d1ffc80c1be1c006bda281ebec97"
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "crop": [
+          465,
+          151,
+          1066,
+          996
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "source_sha256": "b253743cad22b6198701b9fb1f94bc9b88b179f675d7282b86a5611f74a843c9",
+        "significant_bbox": [
+          465,
+          151,
+          1066,
+          996
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              24,
+              0,
+              104,
+              112
+            ],
+            "edge_alpha_max": 232,
+            "rgba_sha256": "2a6559fda6d0ec8998d1db7f057365857228588b0db938d55dc5879591356473",
+            "png_sha256": "a46a01ef3ce4a0052cebfac429176b6acc99bf2677eda77527d5695238a1ce84"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              36,
+              0,
+              156,
+              168
+            ],
+            "edge_alpha_max": 227,
+            "rgba_sha256": "ba0b68dd03655e7fb5408ebc1f0ee6f86c117499140305c0fd0f32812cbc888e",
+            "png_sha256": "c3cd2f817af2e294f2ff2f6354913341b33a6bbbd22df45f0f104db85e8ec37e"
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "Internal review only; Miguel in-game acceptance pending"
+    ]
+  },
+  "review": "Internal favorable: C01 style/identity, walk D5 legs and facing, three source masters/six derivatives, four native groups. Amiga captured palettes support silhouette only. Derived top/bottom retain alpha; no transparent padding claim.",
+  "tests": {
+    "windows-x64": {
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "e629155ba5accfee15a5989c28626445bb5923a2dd8da07033e21cff50944691",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "6e8a338c5f347def876a53c67887ff2aef3eff807ca6a3f5e81b1d343b1ffa1a",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    },
+    "windows-llvm23-x86": {
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "e629155ba5accfee15a5989c28626445bb5923a2dd8da07033e21cff50944691",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "6e8a338c5f347def876a53c67887ff2aef3eff807ca6a3f5e81b1d343b1ffa1a",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    },
+    "linux": {
+      "controlled": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "1a6bfaeae1e6de7a1846ba5fe5f656f8ab443b4e0388c5d5ca55dd3d7626ef8f",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded directions 0, 1, 2, 3, 4, 5 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "intervals": 11088,
+        "bodies": 22176,
+        "sequences": 504,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1386,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "log_sha256": "cb7ac576f57f342cf3176d4c0dc167cbda269be20a9734cbfcdbc03c6d7e0e56",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    }
+  },
+  "binaries": {
+    "x86": {
+      "fixture.exe": "7effc60733a91dc45a8a86039336e483eaa373fdbdea841216ef0b25e7f3cc0a",
+      "selector.exe": "e052e86aab215e2942e0be02fe0766ed4fc69204252641b10d0b78607e0e2aaa",
+      "SDL3.dll": "e299cfa2e035455eec92a5f8aae672acad1604025caa20fb12f931b99a2c2581"
+    },
+    "x64": {
+      "fixture.exe": "dcd690b650b7b75c7f0a02aa0079cbe5a1406e128d9dcd657907b545a8c0f38b",
+      "selector.exe": "16ebdff6e979bcaed7b0a730d5fce6504f38e6b55c56969297a3e80dc49af10d",
+      "SDL3.dll": "2632e21625861a0dc106f2b1abb649e610d8be88534ba74c76a763abe5aefaa3"
+    }
+  },
+  "linux_binary_hashes": {
+    "openfodder_external_asset_sanitized": "bd013ac546335807b8b224c63560c5cbedfc6dd67217bc0f01650a224a9011f8",
+    "openfodder_rocket_selector_sanitized": "b2506b5dfdaeb19a8b500f4e21205a1513a071624da8dae84d37a5f4a498558b"
+  },
+  "environment": {
+    "windows": "LLVM23.1.5 /MD ASan/UBSan x86+x64; existing validated D3 binaries reused by hash",
+    "linux": "WSL OpenFodderD3 Ubuntu24.04 Clang18.1.3 ASan/UBSan/LSan; existing D3 binaries hashes independently checked",
+    "ASAN_OPTIONS_windows": "detect_leaks=0:halt_on_error=1",
+    "ASAN_OPTIONS_linux": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "SDL": "3.4.0 software; dummy video/audio",
+    "positive_controls": "D3 controls valid for exact reused binaries/runtime; not repeated"
+  },
+  "invariants": {
+    "Source": "unchanged",
+    "selector": "unchanged",
+    "simulation": "unchanged",
+    "launcher": "unchanged",
+    "C01": "exact",
+    "H3": "D3 11 phases/11361 states preserved; not rerun locally for art-only"
+  },
+  "local_artifacts": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1b8ab-82a6-7a63-bac7-7f9d8d1c82d8\\rocket-d5",
+  "reproduction": {
+    "scripts": [
+      "run_windows_x64.ps1",
+      "run_windows_llvm23_x86.ps1",
+      "run_linux.sh",
+      "review_d5.py",
+      "review_native_d5.py",
+      "record_d5.py"
+    ],
+    "prior_build_cache": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops",
+    "public_recipe": "assets/modernization/soldier-rocket/README.md"
+  },
+  "source_manifest_sha256": "01d28e694dd3ae0d8dabf1fc431e47206a09fd824b618b00703833ac2353103f",
+  "derived_manifest_sha256": "60d411b4ba92cf19c31869bec0d609d072698e41a5b66bf6a04bc13b41dbc836",
+  "pending": [
+    "direction 6",
+    "Miguel in-game acceptance",
+    "campaign/audio/GPU/CD32/global soldier acceptance"
+  ],
+  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D4, Linux/Windows zlib encoding differs",
+  "implementation_commit": "1f5aa2c6ef0ba390fbb5967d9d8658df75b047d6",
+  "ci_d5": [
+    {
+      "id": 42433145209,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145209"
+    },
+    {
+      "id": 42433145281,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145281"
+    },
+    {
+      "id": 42433145198,
+      "name": "linux-build",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42433145198"
+    }
+  ],
+  "documentation_handoff": "Documentation-only follow-up; implementation CI PASS, handoff CI checked separately"
+}

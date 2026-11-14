@@ -20,6 +20,11 @@
  *
  */
 
+#include "Utils/IndexedProducer.hpp"
+#include "Utils/ResolvedSpriteResource.hpp"
+#include "Utils/TerrainDraw.hpp"
+#include "Utils/SidebarDraw.hpp"
+
 class cFodder;
 
 struct sILBM_BMHD {
@@ -181,7 +186,16 @@ public:
 	virtual				~cGraphics() { };
 
 	virtual uint8*		GetSpriteData( uint16 pSegment ) = 0;
+    virtual tSharedBuffer GetSpriteResourceStorage(uint16 segment) const = 0;
+    openfodder::FrozenSpriteResources mFrozenSpriteResources;
+    openfodder::ResolvedSpriteResource ResolveSpriteResource(uint16 segment,
+                                                            size_t frameOffset, uint8 tablePalette);
+    void Video_Draw_8_Resolved(const openfodder::PreparedSpriteDraw& prepared,
+                               cSurface* target = nullptr);
 	virtual void		Mouse_DrawCursor() = 0;
+    virtual openfodder::PreparedSpriteDraw Cursor_PrepareLegacyDraw() = 0;
+    openfodder::PreparedSpriteDraw CaptureCursorDraw();
+    openfodder::SidebarDraw CaptureSidebarDraw(int16 startY, bool offsetSource) const;
 	virtual void		Load_pStuff() = 0;
 
 	virtual void		Load_Sprite_Font() = 0;
@@ -198,8 +212,11 @@ public:
 
 	virtual void		Map_Tile_Draw(cSurface *pTarget, uint16 pTile, uint16 pX, uint16 pY, uint16 pOffset) = 0;
 	virtual void		MapTiles_Draw() = 0;
+    virtual openfodder::TerrainDraw CaptureVisibleTerrain() = 0;
+    openfodder::TerrainAtlasCache mTerrainAtlas;
 	virtual void		Map_Load_Resources() = 0;
 
+	virtual openfodder::IndexedProducerDraw CaptureOverviewTile(uint16 tile,uint16 x,uint16 y) const = 0;
 	virtual void		MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) = 0;
 
 	virtual void		PaletteSetOverview() = 0;
@@ -207,7 +224,10 @@ public:
 	virtual void		PaletteLoad( const uint8  *pBuffer, uint32 pColors, uint32 pColorID = 0 ) = 0;
 
 	virtual void		Video_Draw_16(const uint8* RowPallete = 0) = 0;
-	virtual void		Video_Draw_8(cSurface *pTarget = 0, const uint8* RowPallete = 0) = 0;
+	virtual void		Video_Draw_8(cSurface *pTarget = 0, const uint8* RowPallete = 0);
+    virtual openfodder::SpriteRasterLayout GetSpriteRasterLayout() const = 0;
+    void Video_Draw_8_Prepared(const openfodder::SpriteDrawState& draw,
+                              cSurface* target = nullptr, const uint8* rowPalette = nullptr);
 
 	virtual void		SetActiveSpriteSheet( eGFX_Types pSpriteType ) = 0;
 	virtual void		SetImage( cSurface* pImage );

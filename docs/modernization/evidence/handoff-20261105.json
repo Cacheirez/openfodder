@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-05",
+  "repository": "Cacheirez/openfodder",
+  "branch": "modernization/windows-foundation",
+  "implementation_commit": "8d09a28dd24573789619ce71af94649451d51ca8",
+  "pr": {
+    "number": 1,
+    "state": "open",
+    "draft": true,
+    "merged": false
+  },
+  "verification": "Remote existing results only; no tests rerun",
+  "workflow_runs": [
+    {
+      "id": 42034593717,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 278,
+      "jobs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593717/jobs",
+      "logs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593717/logs",
+      "workflow_id": 390975670
+    },
+    {
+      "id": 42034593520,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 34,
+      "jobs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593520/jobs",
+      "logs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593520/logs",
+      "workflow_id": 400085126
+    },
+    {
+      "id": 42034593370,
+      "name": "linux-build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 278,
+      "jobs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593370/jobs",
+      "logs_url": "https://api.github.com/repos/Cacheirez/openfodder/actions/runs/42034593370/logs",
+      "workflow_id": 390975669
+    }
+  ],
+  "job_steps_reviewed": [
+    42034593717,
+    42034593370
+  ],
+  "source_engine_changes_in_implementation_commit": false,
+  "scope": "24 walk + 8 low aim + 24 grenade player body poses; 112 assets and 222 bindings; not full campaign coverage or user visual acceptance",
+  "existing_local_evidence": "soldier-grenade-validation.json",
+  "local_environment": {
+    "available": false,
+    "git_status": "NOT CHECKED",
+    "unknown_unpublished_changes": "NOT VERIFIED OR NEWLY BACKED UP",
+    "new_local_code_created": false,
+    "previous_checkout": "/workspace/scratch/a4e0bfdd2e06/openfodder",
+    "recovery_instructions": "CONTINUIDAD.md#recuperación-y-continuación"
+  },
+  "decisions": [
+    "Keep plan 2.74 and A1/A2/A3/A4/A-H7 open.",
+    "Preserve documented mode-0 audit; no new normal posture artwork without reachable CF1 route.",
+    "Do not regenerate walk/aim/grenade or repeat completed tests without regression.",
+    "Next block: native rocket launcher offset 0x38 selection, frames/directions and return before art.",
+    "Existing Linux CI LSan PASS does not certify local new grenade fixtures leak-free."
+  ],
+  "documentation_review": [
+    "CONTINUIDAD.md",
+    "PLAN_TRABAJO.md",
+    "PROMPT_NUEVO_HILO.md",
+    "README.md",
+    "SOLDADOS_COBERTURA_COMPLETA.md"
+  ],
+  "documentation_commit_ci": "Check separately after publication; do not attribute implementation CI to a new SHA."
+}

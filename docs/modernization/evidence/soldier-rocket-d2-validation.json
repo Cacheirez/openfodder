@@ -1,0 +1,182 @@
+{
+  "task": "A3-ROCKET-D2",
+  "base_commit": "fa413e0e6fcbb2252f64fff7c59d487009c9f8a4",
+  "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
+  "scope": "direction 2 only; 0/1/7 regression; directions 3-6 excluded",
+  "poses": 68,
+  "assets": 136,
+  "bindings": 270,
+  "preserved": {
+    "assets": 130,
+    "bindings": 258,
+    "result": "exact descriptors/files/bindings against tested D1 output"
+  },
+  "review": "three alpha masters inspected internally; density-12 derivatives reviewed; in-game acceptance PENDING",
+  "tests": {
+    "controlled": {
+      "status": "PASS bounded directions 0, 1, 2 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "controlled metadata and test-only keys",
+      "directions": [
+        0,
+        1,
+        2,
+        7
+      ],
+      "intervals": 6336,
+      "bodies": 12672,
+      "sequences": 288,
+      "densities": [
+        8,
+        12
+      ],
+      "timeout_seconds": 792,
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_130_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "69222e787ab9a848e6f6d4111bf107b33dc2f96774a48c9475ec5247e9fc0bad",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "e387e7cad213a65e54ec1bb25e0d772b0bfc013f139158aff1594fb930f4a6c3"
+    },
+    "native": {
+      "status": "PASS bounded directions 0, 1, 2 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "source-reconstructed real resources",
+      "directions": [
+        0,
+        1,
+        2,
+        7
+      ],
+      "intervals": 6336,
+      "bodies": 12672,
+      "sequences": 288,
+      "densities": [
+        8,
+        12
+      ],
+      "timeout_seconds": 792,
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_130_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "46bcb02e14b179e581a246ae411f00e217a3440622c36aac9d7a78eefbc488c9",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "e387e7cad213a65e54ec1bb25e0d772b0bfc013f139158aff1594fb930f4a6c3"
+    },
+    "asan_ubsan": {
+      "result": "PASS controlled D2 matrix; existing completed output verified at closure",
+      "validation": {
+        "status": "PASS bounded directions 0, 1, 2 and 7; other directions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          7
+        ],
+        "intervals": 6336,
+        "bodies": 12672,
+        "sequences": 288,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 792,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "previous_130_assets": "exact",
+        "c01": "exact",
+        "log_sha256": "69222e787ab9a848e6f6d4111bf107b33dc2f96774a48c9475ec5247e9fc0bad",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "binary_sha256": "61a96b75d6d290ed5d781dd0aa0c7919ebd745e34e56e6ecb9abb78c6db27329",
+      "confirmed_log_sha256": "69222e787ab9a848e6f6d4111bf107b33dc2f96774a48c9475ec5247e9fc0bad",
+      "asan_options": "detect_leaks=0",
+      "lsan": "PENDING; not measured"
+    }
+  },
+  "not_run": [
+    "full local Windows/Linux build",
+    "full H3",
+    "campaign",
+    "GPU",
+    "CD32",
+    "LSan",
+    "Miguel in-game acceptance"
+  ],
+  "ci_base": {
+    "sha": "fa413e0e6fcbb2252f64fff7c59d487009c9f8a4",
+    "density": {
+      "run_id": 42212495891,
+      "conclusion": "success"
+    },
+    "windows": {
+      "run_id": 42212495804,
+      "conclusion": "success"
+    },
+    "linux": {
+      "run_id": 42212495681,
+      "job_id": 127874305751,
+      "conclusion": "failure",
+      "failed_test": "soldier_rocket_art (17/27), during full game-engine ASan/UBSan diagnostic",
+      "cause": "subprocess.TimeoutExpired after 239.999971587 seconds; one of 27 CTests failed",
+      "repair": "finite watchdog max(240, expected_intervals // 8); 792 seconds for 6336 intervals; no assertion or case removed",
+      "remote_reverification": "PENDING on D2 SHA"
+    }
+  },
+  "recovery": {
+    "url": "https://chatgpt.com/library?file_id=libfile_a040196c2a608191856a972395a23b36&account_id=personal",
+    "remaining_unpublished_directions": [
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "masters": [
+    {
+      "file": "r2-f0.png",
+      "sha256": "fe8ecb14a8d2915bb0d5d6cf25ee3d9e9bcfc5dfe48b13dd6fc0a8aee49aacba"
+    },
+    {
+      "file": "r2-f1.png",
+      "sha256": "f71301e537092578ec9add2c6a97a8cbe81142b830b3f13646e450af0c0e8348"
+    },
+    {
+      "file": "r2-f2.png",
+      "sha256": "96acbd8880feab5298c7b51a75279eae8f9036a8459e3a3eca4616eec5d9407d"
+    }
+  ],
+  "reused_fixture": {
+    "reason": "Source, fixture generator, C++ cases and generated pilot headers unchanged from D0",
+    "binary_sha256": "8c9073b680e4755ccba5f0fa1e7f33068ebac3f079dff47005a8380c74f43cfc",
+    "asan_binary_sha256": "61a96b75d6d290ed5d781dd0aa0c7919ebd745e34e56e6ecb9abb78c6db27329"
+  },
+  "closure_verification": {
+    "masters": "exact git bytes from 3f23207; RGBA with alpha 0..255",
+    "previous": "all 130 descriptors and 258 bindings preserved in controlled/native manifests; previous derived files preserved",
+    "visual": "internal D2 derivatives reviewed alongside C01 and D1; user in-game acceptance PENDING",
+    "ci": "D1 checked live: Windows/density success; Linux failure confirmed in full engine ASan/UBSan step; D2 full remote CI PENDING"
+  }
+}

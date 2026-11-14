@@ -1,0 +1,561 @@
+{
+  "schema": 1,
+  "task": "DEMO-A-FEASIBILITY",
+  "date": "2026-11-08",
+  "base_commit": "43bd54af77ec7cb92d371ac22b5b9ad726f5a5ee",
+  "verdict": "NOT_READY_FOR_B",
+  "scope": "Two existing public replays; no manual playable acceptance",
+  "decision": "Alternative 1 approved, plan 2.74 unchanged; microblock A only",
+  "artifact": {
+    "run": 42469760932,
+    "artifact_id": 13613699909,
+    "implementation_commit": "28e469c2568148fbac9713f3691b464c690d817c",
+    "version_stamp": "6e4e89c1b6feb085d4393fb429ef985265761369",
+    "zip_sha256": "23ec4363f2c37bae81b80cb0857db0407b285368956ce7aad119501c02891ea1",
+    "exe_sha256": "ef5914c6f644e3611bf67588db90e445d83fa4c4fe724be417742c25e4c98eb6",
+    "packaged_evidence_matches_exe": true
+  },
+  "manifest": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1ba8e-a4c3-78f2-8e87-0b833681e8fb\\rocket-d6\\windows-x64-controlled\\art\\candidate-manifest.json",
+    "sha256": "fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1",
+    "assets": 160,
+    "bindings": 318,
+    "decisions": {
+      "replace-art": 318
+    },
+    "exact_same_as_real_mode": true
+  },
+  "baseline": {
+    "path": "tools/modernization/reference-gameplay-v1.json",
+    "sha256": "ae1bcaf6b006d8e41bc0de3fcf7e908d48b786ac427f1620ff69eecc9ff9e819",
+    "changed": false
+  },
+  "local_recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility",
+  "diagnostic_scripts": {
+    "replay_probe.py": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\replay_probe.py",
+      "sha256": "04403aeab1ef0262f35d3cdee617813d70d261d07e060eea04193a90dde0185e"
+    },
+    "record_feasibility.py": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\record_feasibility.py",
+      "sha256": "a50e614fb55c02cb1b38899e0584542edd042b56f64ab6ce2af4ad42c426766a"
+    }
+  },
+  "environment": {
+    "platform": "Windows x64",
+    "renderer": "SDL software/dummy",
+    "density": 12,
+    "playback": "existing public inputs; test mode without wall-clock throttle",
+    "timing": "nominal demo ticks / 50 Hz; not measured interactive runtime",
+    "publication": "production cadence; no presentation-count override",
+    "wsl": "Access denied; operation stopped, no retry or bypass"
+  },
+  "ci_linux_d6": {
+    "id": 42469760868,
+    "status": "in_progress",
+    "conclusion": null,
+    "head_sha": "28e469c2568148fbac9713f3691b464c690d817c",
+    "html_url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760868",
+    "updated_at": "2026-11-08T10:03:18Z",
+    "checked_at_utc": "2026-11-08 11:46:06 UTC",
+    "completed_successful_steps": 47,
+    "pending": "Active publication ASan/UBSan/LSan; pause sanitizers; TSan suites; evidence/package"
+  },
+  "runs": [
+    {
+      "campaign": "Amiga The One",
+      "mission": 1,
+      "phase": 2,
+      "command": [
+        "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\existing-d6\\openfodder.exe",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse",
+        "--campaign",
+        "Amiga The One",
+        "--mission",
+        "1",
+        "--phase",
+        "2"
+      ],
+      "returncode": 0,
+      "wall_seconds": 27.592,
+      "exe_sha256": "ef5914c6f644e3611bf67588db90e445d83fa4c4fe724be417742c25e4c98eb6",
+      "manifest_sha256": "fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1",
+      "trace_files": [
+        "Amiga_The_One_m1_p2.jsonl"
+      ],
+      "attempts": 4554,
+      "outcomes": {
+        "missing-variant": 4554
+      },
+      "unique_producer_commands": 46053,
+      "published_command_presentations": 0,
+      "unresolved_commands": 0,
+      "scope": "full existing phase replay; first 30 nominal seconds inspected from trace",
+      "trace_samples": 1546,
+      "demo_tick_range": [
+        5,
+        4640
+      ],
+      "nominal_end_seconds": 92.8,
+      "h3_subset": {
+        "samples": 1546,
+        "expected_samples": 1546,
+        "logical_sha256": "5996aea99df370416989b49ed5ca4b6129f6b0ff380f8398490a4de95c3f5259",
+        "matches_pinned_baseline": true
+      },
+      "first_missing": [
+        {
+          "slot": "42",
+          "type": "21",
+          "sheet": "149",
+          "frame": "0",
+          "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410"
+        },
+        {
+          "slot": "13",
+          "type": "19",
+          "sheet": "152",
+          "frame": "0",
+          "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7"
+        }
+      ],
+      "first_drawn_enemy_nominal_seconds": 4.06,
+      "player_draw_flags_first_30s": {
+        "5": 499
+      },
+      "player_positions_start": [
+        {
+          "slot": 0,
+          "x": 824,
+          "y": 73
+        },
+        {
+          "slot": 1,
+          "x": 832,
+          "y": 69
+        },
+        {
+          "slot": 2,
+          "x": 843,
+          "y": 66
+        },
+        {
+          "slot": 3,
+          "x": 848,
+          "y": 76
+        },
+        {
+          "slot": 4,
+          "x": 860,
+          "y": 64
+        }
+      ],
+      "player_positions_30s_or_end": [
+        {
+          "slot": 0,
+          "x": 278,
+          "y": 317
+        },
+        {
+          "slot": 1,
+          "x": 289,
+          "y": 305
+        },
+        {
+          "slot": 2,
+          "x": 295,
+          "y": 288
+        },
+        {
+          "slot": 3,
+          "x": 297,
+          "y": 276
+        },
+        {
+          "slot": 4,
+          "x": 290,
+          "y": 267
+        }
+      ],
+      "command_presentations_by_type": [
+        {
+          "type": 0,
+          "decision": "missing",
+          "count": 509,
+          "unique_keys": 29
+        },
+        {
+          "type": 0,
+          "decision": "replace",
+          "count": 18035,
+          "unique_keys": 24
+        },
+        {
+          "type": 2,
+          "decision": "missing",
+          "count": 126,
+          "unique_keys": 5
+        },
+        {
+          "type": 3,
+          "decision": "missing",
+          "count": 210,
+          "unique_keys": 4
+        },
+        {
+          "type": 4,
+          "decision": "missing",
+          "count": 31,
+          "unique_keys": 1
+        },
+        {
+          "type": 5,
+          "decision": "missing",
+          "count": 6695,
+          "unique_keys": 83
+        },
+        {
+          "type": 6,
+          "decision": "missing",
+          "count": 5223,
+          "unique_keys": 25
+        },
+        {
+          "type": 12,
+          "decision": "missing",
+          "count": 74,
+          "unique_keys": 8
+        },
+        {
+          "type": 14,
+          "decision": "missing",
+          "count": 1183,
+          "unique_keys": 1
+        },
+        {
+          "type": 15,
+          "decision": "missing",
+          "count": 523,
+          "unique_keys": 2
+        },
+        {
+          "type": 19,
+          "decision": "missing",
+          "count": 1233,
+          "unique_keys": 2
+        },
+        {
+          "type": 20,
+          "decision": "missing",
+          "count": 928,
+          "unique_keys": 4
+        },
+        {
+          "type": 21,
+          "decision": "missing",
+          "count": 4554,
+          "unique_keys": 2
+        },
+        {
+          "type": 22,
+          "decision": "missing",
+          "count": 1740,
+          "unique_keys": 2
+        },
+        {
+          "type": 23,
+          "decision": "missing",
+          "count": 1791,
+          "unique_keys": 4
+        },
+        {
+          "type": 24,
+          "decision": "missing",
+          "count": 508,
+          "unique_keys": 1
+        },
+        {
+          "type": 27,
+          "decision": "missing",
+          "count": 1205,
+          "unique_keys": 1
+        },
+        {
+          "type": 35,
+          "decision": "missing",
+          "count": 17,
+          "unique_keys": 1
+        },
+        {
+          "type": 37,
+          "decision": "missing",
+          "count": 994,
+          "unique_keys": 1
+        },
+        {
+          "type": 39,
+          "decision": "missing",
+          "count": 68,
+          "unique_keys": 3
+        },
+        {
+          "type": 47,
+          "decision": "missing",
+          "count": 72,
+          "unique_keys": 2
+        },
+        {
+          "type": 48,
+          "decision": "missing",
+          "count": 334,
+          "unique_keys": 4
+        }
+      ],
+      "guard_reasons": [
+        "palette-transition density=12",
+        "black-palette density=12",
+        "ordered-missing-variant density=12"
+      ],
+      "phase_complete": true,
+      "recovery_files": {
+        "engine.log": {
+          "sha256": "2af4254a13264080499da51195865548e146050ec8b1e6f53e4cc4de0fe65cd8",
+          "bytes": 10508999
+        },
+        "coverage.json": {
+          "sha256": "622ba4613cfd55f7b018b51440d475b7fada4868a5779276e2b7f756859f8f3c",
+          "bytes": 701917
+        },
+        "run.json": {
+          "sha256": "7f6d8a3d3939eb702035ccedc4d61057e1c7b919ce6dc5c8c2a2b343558c6ed1",
+          "bytes": 893
+        }
+      },
+      "trace_file": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\amiga-m1p2-replay\\traces\\Amiga_The_One_m1_p2.jsonl",
+        "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf",
+        "bytes": 21337099
+      },
+      "replay_input_sha256": "b9d3ea3ec77d88f0bfabb647bd06f2d25c52968d55e86d0c21ae1bedae1f0116"
+    },
+    {
+      "campaign": "Amiga The One",
+      "mission": 1,
+      "phase": 1,
+      "command": [
+        "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\existing-d6\\openfodder.exe",
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse",
+        "--campaign",
+        "Amiga The One",
+        "--mission",
+        "1",
+        "--phase",
+        "1"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.603,
+      "exe_sha256": "ef5914c6f644e3611bf67588db90e445d83fa4c4fe724be417742c25e4c98eb6",
+      "manifest_sha256": "fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1",
+      "trace_files": [
+        "Amiga_The_One_m1_p1.jsonl"
+      ],
+      "attempts": 363,
+      "outcomes": {
+        "missing-variant": 363
+      },
+      "unique_producer_commands": 3723,
+      "published_command_presentations": 0,
+      "unresolved_commands": 0,
+      "scope": "full existing phase replay; first 30 nominal seconds inspected from trace",
+      "trace_samples": 149,
+      "demo_tick_range": [
+        6,
+        450
+      ],
+      "nominal_end_seconds": 9.0,
+      "h3_subset": {
+        "samples": 149,
+        "expected_samples": 149,
+        "logical_sha256": "b8dffa513ff48ba0fed450d4bc42c253005a1c4defde7a0ce176f55b6b9e3e4d",
+        "matches_pinned_baseline": true
+      },
+      "first_missing": [
+        {
+          "slot": "3",
+          "type": "5",
+          "sheet": "84",
+          "frame": "0",
+          "key": "19a04cf62b5486e35710f8d51a8b4fc7a6154c546b9ed944023575dd4dd503f6"
+        },
+        {
+          "slot": "2",
+          "type": "5",
+          "sheet": "89",
+          "frame": "0",
+          "key": "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8"
+        },
+        {
+          "slot": "4",
+          "type": "5",
+          "sheet": "85",
+          "frame": "0",
+          "key": "6875f22825b3e4dc668c04d322fab6a9872a54830ba3dac25895818b7b72797e"
+        },
+        {
+          "slot": "5",
+          "type": "13",
+          "sheet": "143",
+          "frame": "0",
+          "key": "9db32a32a12b037ca0b7ea4d39d73cfeb1fc08d6f047b705d28ffa88649489a9"
+        },
+        {
+          "slot": "6",
+          "type": "14",
+          "sheet": "144",
+          "frame": "0",
+          "key": "a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d"
+        },
+        {
+          "slot": "42",
+          "type": "21",
+          "sheet": "149",
+          "frame": "0",
+          "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410"
+        }
+      ],
+      "first_drawn_enemy_nominal_seconds": 0.12,
+      "player_draw_flags_first_30s": {
+        "2": 149
+      },
+      "player_positions_start": [
+        {
+          "slot": 0,
+          "x": 155,
+          "y": 213
+        },
+        {
+          "slot": 1,
+          "x": 170,
+          "y": 220
+        }
+      ],
+      "player_positions_30s_or_end": [
+        {
+          "slot": 0,
+          "x": 203,
+          "y": 26
+        },
+        {
+          "slot": 1,
+          "x": 195,
+          "y": 32
+        }
+      ],
+      "command_presentations_by_type": [
+        {
+          "type": 0,
+          "decision": "missing",
+          "count": 4,
+          "unique_keys": 1
+        },
+        {
+          "type": 0,
+          "decision": "replace",
+          "count": 722,
+          "unique_keys": 18
+        },
+        {
+          "type": 5,
+          "decision": "missing",
+          "count": 789,
+          "unique_keys": 33
+        },
+        {
+          "type": 6,
+          "decision": "missing",
+          "count": 624,
+          "unique_keys": 13
+        },
+        {
+          "type": 13,
+          "decision": "missing",
+          "count": 363,
+          "unique_keys": 1
+        },
+        {
+          "type": 14,
+          "decision": "missing",
+          "count": 363,
+          "unique_keys": 1
+        },
+        {
+          "type": 21,
+          "decision": "missing",
+          "count": 363,
+          "unique_keys": 2
+        },
+        {
+          "type": 22,
+          "decision": "missing",
+          "count": 285,
+          "unique_keys": 2
+        },
+        {
+          "type": 23,
+          "decision": "missing",
+          "count": 210,
+          "unique_keys": 4
+        }
+      ],
+      "guard_reasons": [
+        "palette-transition density=12",
+        "ordered-missing-variant density=12"
+      ],
+      "phase_complete": true,
+      "recovery_files": {
+        "engine.log": {
+          "sha256": "8c1941b4133c340899d051e2545edf71b58662a94a6c57e173fe4f4917c9f9d6",
+          "bytes": 850954
+        },
+        "coverage.json": {
+          "sha256": "566b9619342bf3597c596f65a71e5c9026b35457ac64463edc3e492e0b3b39f3",
+          "bytes": 97231
+        },
+        "run.json": {
+          "sha256": "6539620a34a84a72fa9beb606a906bb51c64bf3a38896b3d9b7b31529210f1a2",
+          "bytes": 889
+        }
+      },
+      "trace_file": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\amiga-m1p1-alternative\\traces\\Amiga_The_One_m1_p1.jsonl",
+        "sha256": "3b60df296779a243ae017a1bd1735eb03f5fabb64730302888001a0efcf39d6b",
+        "bytes": 850509
+      },
+      "replay_input_sha256": "c2539d58135fce8a6b48a0f3ffea48c23c397df672a9c6eaead575f3089ba66f"
+    }
+  ],
+  "discarded_attempt": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1baeb-e1ff-7942-98c0-64cf248935d3\\demo-feasibility\\amiga-m1p2",
+    "attempts": 0,
+    "reason": "Existing playable artifact omits replay inputs. No test found / skipped; not coverage. Reused existing public Tests inputs for both actual runs."
+  },
+  "not_exercised": [
+    "manual 30-60s safe patrol",
+    "GPU",
+    "8x in these replays",
+    "pause/map/resume probes",
+    "CD32",
+    "audio",
+    "whole campaign modern art acceptance",
+    "new sanitizer run"
+  ],
+  "next_proposal": "A.1, pending Miguel decision: explicit full-key rank bindings using current keep-associated plus narrowly audited non-body Bird2_Left preservation (type 19 / sheet 0x98, two frames); keep missing bodies/enemies rejected. Reassess safe patrol after first publication is possible. Do not start B."
+}

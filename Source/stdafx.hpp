@@ -33,6 +33,7 @@
 #include <cassert>
 #include <map>
 #include <mutex>
+#include <atomic>
 #include <cmath>
 
 #include <SDL3/SDL.h>
@@ -85,15 +86,14 @@ inline uint32 readBEDWord( const void *buffer ) {
 	return uint32((bytes[0] << 24) + (bytes[1] << 16) + (bytes[2] << 8) + (bytes[3]));
 }
 
-// Read little endian from the buffer
+// Aligned or unaligned: parse little-endian byte order explicitly.
+#include "Utils/EndianIO.hpp"
 template <class tRet> inline tRet readLE(const void *pBuffer) {
-    const tRet* data = (const tRet*)pBuffer;
-    return *data;
+    return readUnalignedLE<tRet>(pBuffer);
 }
 
 inline void writeLEWord( const void *buffer, uint16 pValue ) {
-	uint16* wordBytes = (uint16 *) buffer;
-	*wordBytes = pValue;
+    writeUnalignedLE16(const_cast<void*>(buffer), pValue);
 }
 
 #ifndef _WIN32

@@ -235,7 +235,7 @@ void cScriptingEngine::init() {
 	dukglue_register_method(mContext, &cScriptFileIO::isOpen, "isOpen");
 
 	// cPosition
-	dukglue_register_constructor<cPosition>(mContext, "cPosition");
+	dukglue_register_constructor_managed<cPosition>(mContext, "cPosition");
 
 	dukglue_register_property(mContext, &cPosition::getX, &cPosition::setX, "x");
 	dukglue_register_property(mContext, &cPosition::getY, &cPosition::setY, "y");

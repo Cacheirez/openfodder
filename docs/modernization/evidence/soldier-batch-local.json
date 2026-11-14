@@ -1,0 +1,42 @@
+{
+  "verdict": "PASS",
+  "keys": [
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      7,
+      2
+    ]
+  ],
+  "h3": "PASS: 3 demo phases, 3405 canonical states match pinned baseline",
+  "exe_sha256": "03d8076a693446e72f77edc9e127acf6c15b5c28d9d9fbd430e39137f213c0e3",
+  "command": [
+    "/workspace/scratch/aa523e15d6d8/engine-pilot/openfodder",
+    "--appveyor",
+    "--unit-test",
+    "--nosound",
+    "--window",
+    "--alternate-mouse",
+    "--campaign",
+    "Amiga The One"
+  ],
+  "scope": "SDL software/dummy, full Amiga campaign, actual published keys; no GPU/FPS claim"
+}

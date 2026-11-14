@@ -1,0 +1,122 @@
+{
+  "base_head": "5f0d7b19b22f9299604a34a6abe8080df1485327",
+  "plan": "2.74",
+  "scope": "A1/A2 internal step; not SDL replacement, no new user ZIP, no complete soldier acceptance",
+  "source_sha256": {
+    "Source/Sprites/Sprite_Core.cpp": "23d45dd02224eda108f5f3067f5ef2660fd017e0d4ed0314c3b6fadf51f25d63",
+    "Source/Surface.hpp": "404d320915fec00527d894cf49449371f524d2b149e08525a3ce8440a3983226",
+    "Source/Utils/SoldierSemantic.hpp": "ce2ff5ff94d357d301f9386f442fa63c7a78eb8e19f362d1ccf3675b06f257d3",
+    "Source/Utils/OrderedSoldierArt.hpp": "4ef7ad5cfa50dbe790ad2f047a7be1ca13c745fdf46e983e167fb4fa1c5738be",
+    "tools/modernization/test_ordered_soldier_art.cpp": "fbb12991c4558a3e64691561f64774db33ea76ff4d027b6db9da9b80a21ff449",
+    "tools/modernization/check_soldier_semantic.py": "fd30ee9a64c96c733a83c70d8037d4197bd47440643f5da0097de52a52d7e0f7",
+    "tools/modernization/soldier_coverage.py": "d7e2c0487ca8318b7e60134ff04ba0d64ff3d84aa9c9334c0fe36a36770ffa9c",
+    "tools/modernization/test_soldier_coverage.py": "6f5c4be9ee2b569515f7dda2ce469c83dd89007988bb04be8f295549ca46f3a9"
+  },
+  "local_build": "GCC C++14 O3, local SDL3 static, OPENFODDER_NO_MIXER; not the Windows/release build",
+  "checks": {
+    "ordered_compositor": "PASS: 144 scenario counts, ASan/UBSan; PC/Amiga 1x/8x/12x; synthetic colors",
+    "capture": "PASS actual extracted producer incl. auxiliary slot, all types, facing, vehicle/destroy, scene reset; ASan/UBSan",
+    "matrix": "PASS 4 tests and negative --require-complete exit 1",
+    "existing_contracts": "PASS C01 64 fallback cases, pose 46 cases, mission layers 192 schedules/384 outputs",
+    "real_replay": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": false,
+        "soldier_probe": true,
+        "pose_probe": false,
+        "art_probe": false,
+        "hd_probe": null,
+        "coverage": "11 reference phases"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 8,
+          "pause_transitions": 0,
+          "soldier_scenes": 8,
+          "pose_scenes": 0,
+          "art_scenes": 0,
+          "hd_published": false,
+          "seconds": 74.509,
+          "executable_sha256": "89797de8e4ac263fec3f577a0d6dfe6a45a07090afb0afc3098e65f247292b91"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 3,
+          "pause_transitions": 0,
+          "soldier_scenes": 3,
+          "pose_scenes": 0,
+          "art_scenes": 0,
+          "hd_published": false,
+          "seconds": 52.997,
+          "executable_sha256": "89797de8e4ac263fec3f577a0d6dfe6a45a07090afb0afc3098e65f247292b91"
+        }
+      ],
+      "canonical_states": 11361
+    },
+    "python_suite": "PASS 37 tests after reviewed CD32 manifest refresh"
+  },
+  "trace_incident": "First scratch replay traces truncated mid-JSON: rejected. Repeated in /tmp, all 11361 original states match. No reference changed.",
+  "coverage": {
+    "status": "PENDING",
+    "unique_captured_commands": 532749,
+    "duplicate_audits": 399471,
+    "entities": 3865,
+    "observed_variants": 20196,
+    "classification_counts": {
+      "enemy": 76515,
+      "floating_dead_soldier": 3139,
+      "enemy_rocket": 3554,
+      "hidden_or_placeholder": 21132,
+      "civilian_or_hostage": 2234,
+      "other_or_unclassified": 129831,
+      "player": 149165,
+      "associated_effect": 147179
+    },
+    "captured_keys": {
+      "PC": {
+        "player": 75,
+        "enemy": 68
+      },
+      "Amiga": {
+        "player": 70,
+        "enemy": 64
+      }
+    },
+    "scenarios": {
+      "continuous_turn": "pending",
+      "walk_0_1_2_1": "pending",
+      "aim_independent_of_motion": "pending",
+      "fire": "pending",
+      "grenade": "pending",
+      "water": "pending",
+      "damage_death": "pending",
+      "multiple_players_and_enemies": "pending",
+      "occlusions": "pending",
+      "viewport_edges": "pending",
+      "vehicle_transition": "pending",
+      "palette_transition": "pending",
+      "pause_resume": "pending",
+      "phase_transition": "pending",
+      "civilian_hostage": "pending",
+      "resource_variants_cd32": "pending"
+    },
+    "blockers": [
+      "HD publication not instrumented for ordered compositor",
+      "Full artwork/state/resource coverage pending",
+      "Continuous visual/CD32 validation pending"
+    ]
+  },
+  "ci": "b418959 Windows run 41497745520 failed before build: static CD32 whole-file hash stale after capture change. Listed vehicle functions verified unchanged; manifest corrected. Follow-up CI pending."
+}

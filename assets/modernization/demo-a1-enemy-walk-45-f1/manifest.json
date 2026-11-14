@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "id": "enemy-walk-45-f1-8x",
+      "file": "enemy-walk-45-f1-8x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 8,
+      "sha256": "12cdd3c9727c38c83b437b48cf1e507e7d836f4774ce533399cde71fa8e0032a"
+    },
+    {
+      "id": "enemy-walk-45-f1-12x",
+      "file": "enemy-walk-45-f1-12x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 12,
+      "sha256": "c3e62bfcbe674c8203f3c121b50ac884f9d80a6f890748c4a16d450c2596f807"
+    }
+  ],
+  "bindings": [
+    {
+      "key": "77d34d3f0593010865c1185e626929f4491ff2303b6656397cd640fb0334356a",
+      "decision": "replace-art",
+      "assets": {
+        "8": "enemy-walk-45-f1-8x",
+        "12": "enemy-walk-45-f1-12x"
+      }
+    }
+  ]
+}

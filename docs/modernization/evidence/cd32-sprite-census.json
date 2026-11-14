@@ -1,0 +1,3406 @@
+{
+  "schema": 1,
+  "scope": "CF1 authored SPT records, including Null placeholders; not runtime coverage",
+  "campaign_sha256": "415a31f23bc4101de7b40c519b8ec9e272855ce715574c4874d987fd6fa99403",
+  "phase_count": 72,
+  "mission_count": 24,
+  "authored_records": 1951,
+  "null_records": 167,
+  "distinct_authored_types": 72,
+  "phases": [
+    {
+      "mission": 1,
+      "phase": 1,
+      "map": "mapm1",
+      "spt_sha256": "4e73c8dd0fdb74366b2baad463f0db0830c987cab97c1df5997d62c051cf1b38",
+      "map_sha256": "879a47a8571945dbbf13223f48c302c259a70f76d2eb7237c3e45a2967f540b8",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "5": 3,
+        "13": 1,
+        "14": 1,
+        "66": 1
+      }
+    },
+    {
+      "mission": 2,
+      "phase": 1,
+      "map": "mapm2",
+      "spt_sha256": "fa0f76d4707d8862986b411ba25c98f9a3110f355ee8d241c13df6ec2bb2ea44",
+      "map_sha256": "f6133c12c0fbe40998348943f764c0ca84f7b0cd9d488d8587acb09c468df618",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 17,
+        "13": 3,
+        "14": 5,
+        "67": 1
+      }
+    },
+    {
+      "mission": 2,
+      "phase": 2,
+      "map": "mapm3",
+      "spt_sha256": "fa39e4a33313a27ff6fe5e08a994549c3c0f8fcfe4e3d05c94469e6ac05570ed",
+      "map_sha256": "e91d131532c36e42d728b5413d7ba47f886c6bbe6378fd60e020efd7e5c68bb3",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 16,
+        "14": 1,
+        "15": 1,
+        "20": 1,
+        "27": 1,
+        "37": 1,
+        "66": 1,
+        "67": 5
+      }
+    },
+    {
+      "mission": 3,
+      "phase": 1,
+      "map": "mapm4",
+      "spt_sha256": "c31540b47cc6b115da2803da46d9c8ccb92e21330b1df7785a2aacdc6fe71985",
+      "map_sha256": "ae90ccd4a02c2b54eca0ae6add9c567994f36f952ba58ed5e58c6e03ff7baa68",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 4,
+        "15": 4,
+        "20": 4,
+        "37": 5,
+        "66": 1,
+        "67": 1
+      }
+    },
+    {
+      "mission": 4,
+      "phase": 1,
+      "map": "mapm5",
+      "spt_sha256": "0f5193d1a363430c612b6b12b5f1c90642d106880f79dd4e641f15e53724c32a",
+      "map_sha256": "00ed5513b580f1e68b5dbade6d10924789c444308894cf674bae85a8a62818d7",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 11,
+        "14": 2,
+        "15": 4,
+        "20": 4,
+        "27": 1,
+        "37": 2,
+        "66": 1,
+        "67": 1
+      }
+    },
+    {
+      "mission": 4,
+      "phase": 2,
+      "map": "mapm6",
+      "spt_sha256": "51bc4883cf74284389c25cfa2d2df81be1cd73676353857db5bb51aec20093c2",
+      "map_sha256": "4adc9dd331bbc429b71cafec03a0e370bf14941945b635256f10a842a0f208e9",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 12,
+        "15": 1,
+        "20": 1,
+        "66": 1
+      }
+    },
+    {
+      "mission": 4,
+      "phase": 3,
+      "map": "mapm7",
+      "spt_sha256": "28e3aaff4b71aaef8ad7680b2f60adb099021b59fe9a3f36fee5597ec8d7090a",
+      "map_sha256": "d8de567dc0de0d1f96bb711ee1ffb7ed3ff31d9fd46ad2e4921430efdceadc27",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "4": 1,
+        "5": 10,
+        "14": 1,
+        "15": 2,
+        "20": 1,
+        "24": 1,
+        "25": 1,
+        "27": 1,
+        "37": 3,
+        "60": 1,
+        "61": 2,
+        "66": 1
+      }
+    },
+    {
+      "mission": 4,
+      "phase": 4,
+      "map": "mapm8",
+      "spt_sha256": "174c7a7b4fe8a1ce21317ca963345ab12e3e2f9f9cff7d9526100a7561f156c3",
+      "map_sha256": "a559f2946318769001da0c1e491ede7007a6e692979ba0d0fd96486b6b73b825",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "5": 14,
+        "13": 3,
+        "14": 3,
+        "20": 1,
+        "37": 1,
+        "38": 1,
+        "55": 2
+      }
+    },
+    {
+      "mission": 5,
+      "phase": 1,
+      "map": "mapm9",
+      "spt_sha256": "7e5a4a91b3b178f0e17ede5f70cf662ee5af538494a8feebb515e19db0442291",
+      "map_sha256": "202f104be88c904de58de38619f8ac305cc3fb1e7895395bc7904a7e010b75ce",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 7,
+        "15": 5,
+        "16": 1,
+        "20": 5,
+        "36": 4,
+        "37": 3,
+        "38": 1,
+        "66": 1
+      }
+    },
+    {
+      "mission": 5,
+      "phase": 2,
+      "map": "mapm10",
+      "spt_sha256": "f799a6d94bd8624e52ea6c1fa9e11db2474d41d7f75e57ebf76ed6b131a51244",
+      "map_sha256": "dd6d1ebd33ccbc9c0ddb11c475374c4c20f76b5e52c070ebedc7f90c618356ac",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 3,
+        "15": 3,
+        "20": 4,
+        "24": 1,
+        "36": 8,
+        "38": 3,
+        "66": 1
+      }
+    },
+    {
+      "mission": 5,
+      "phase": 3,
+      "map": "mapm11",
+      "spt_sha256": "c92fd406585d83a35e86a7aa7a733e626b8df99b70dc4704423bff5067b8b648",
+      "map_sha256": "a6cfb23b6d1d0f36123cbfdab14de9edfabe5348859f41fb2b6fd271fd02cdbc",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 1,
+        "5": 9,
+        "15": 3,
+        "20": 3,
+        "36": 8,
+        "38": 1,
+        "63": 1
+      }
+    },
+    {
+      "mission": 6,
+      "phase": 1,
+      "map": "mapm12",
+      "spt_sha256": "7995a0fd7308dcde7855193870cfdf985f237c646f3b0d5be1b4254fbd1792b7",
+      "map_sha256": "b65b95c121d4f6b2d8a7a8c3bbaf96a4e3a3cfab2c325e15d3934a0be28c8ab3",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 9,
+        "15": 3,
+        "20": 3,
+        "36": 2,
+        "37": 3,
+        "38": 4
+      }
+    },
+    {
+      "mission": 6,
+      "phase": 2,
+      "map": "mapm13",
+      "spt_sha256": "10e59069059d6a1014b0400386db509f775f182547def31cbb488242f8172170",
+      "map_sha256": "d70b9cd24c357b413f8d212e91128b853b08073b2f6142187891f9b2f842025b",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 8,
+        "13": 1,
+        "14": 1,
+        "15": 2,
+        "17": 1,
+        "20": 2,
+        "25": 1,
+        "36": 2,
+        "37": 2,
+        "38": 1,
+        "61": 3,
+        "62": 1,
+        "75": 1
+      }
+    },
+    {
+      "mission": 7,
+      "phase": 1,
+      "map": "mapm14",
+      "spt_sha256": "3d9b4fa00ba4b6127a038cb7f7a0eaaabae1ab38192790a09a0da85b2ab20f95",
+      "map_sha256": "1b4da721b71329c41afc4db1834e45fbdd5cedd74ad85cc809cbe4407a17bbdd",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "14": 1,
+        "20": 5,
+        "24": 1,
+        "27": 1,
+        "36": 6,
+        "37": 1
+      }
+    },
+    {
+      "mission": 7,
+      "phase": 2,
+      "map": "mapm15",
+      "spt_sha256": "297313a427984f80ca7551d2070e179ef9f882d214c2f26a98047e7962e29931",
+      "map_sha256": "bc7ece2305012c75828a9844c2e90d13c863b0e959d77965d057d191168bfd10",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 1,
+        "13": 4,
+        "15": 1,
+        "20": 1,
+        "24": 3,
+        "25": 3,
+        "36": 2,
+        "61": 1,
+        "62": 1,
+        "66": 1,
+        "68": 2,
+        "75": 2
+      }
+    },
+    {
+      "mission": 7,
+      "phase": 3,
+      "map": "mapm16",
+      "spt_sha256": "3c1263a17dbdac6f6b14c93b98fa9c9e6f27e8538d95d421e9ea35cf4b6d1cef",
+      "map_sha256": "4c2ecbb81c9ef5b51e73ef0c2b2d0bee07982f38c791b3599adf140d79e59b4b",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 3,
+        "5": 1,
+        "13": 1,
+        "15": 2,
+        "20": 2,
+        "25": 1,
+        "36": 7,
+        "41": 1,
+        "64": 1,
+        "68": 1,
+        "70": 1
+      }
+    },
+    {
+      "mission": 8,
+      "phase": 1,
+      "map": "mapm17",
+      "spt_sha256": "51e2aed158df58990ca1a38933015a95386a1e1b50fd68cd754ee0acea8e2e9c",
+      "map_sha256": "0dd63cbd61f57655de943573fe260ea523a5034d395931c8502b474d4fbb3279",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 8,
+        "13": 1,
+        "14": 2,
+        "15": 2,
+        "20": 2,
+        "36": 2,
+        "37": 1,
+        "38": 1,
+        "55": 1,
+        "56": 6,
+        "62": 1
+      }
+    },
+    {
+      "mission": 8,
+      "phase": 2,
+      "map": "mapm18",
+      "spt_sha256": "f0039c53278265ac04dfb04370b5ee1e560e695b04fcfec5ae7d09d2c0e07ea5",
+      "map_sha256": "5bc7bef67dbc58c6d8e59a30ec1afe1ad8703ef3e5e49812de4e974867473399",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 5,
+        "14": 2,
+        "36": 10,
+        "78": 1,
+        "88": 5
+      }
+    },
+    {
+      "mission": 8,
+      "phase": 3,
+      "map": "mapm19",
+      "spt_sha256": "3e713598a6f0454302f4387674a1cea6e0111e9a0ce4e5617fac75e07f73b391",
+      "map_sha256": "3541e59738ff30d4d0bcd30506279f4b0348f99eeeaa55992483c28593358675",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "5": 6,
+        "13": 1,
+        "14": 1,
+        "20": 5,
+        "36": 3,
+        "55": 1,
+        "56": 4,
+        "62": 2,
+        "70": 1,
+        "93": 1,
+        "94": 1
+      }
+    },
+    {
+      "mission": 8,
+      "phase": 4,
+      "map": "mapm20",
+      "spt_sha256": "07a883d0af383b582634b360f9f2db2c18f145bb59b092f05d20c20664ea4cf5",
+      "map_sha256": "ac435fd5eff200ab52a8f44260a2f981c4bf7e555af7147c18daa2a2c31bd761",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 3,
+        "15": 1,
+        "20": 3,
+        "24": 1,
+        "36": 5,
+        "41": 2,
+        "63": 1,
+        "75": 1,
+        "76": 1,
+        "78": 1,
+        "80": 2,
+        "88": 3
+      }
+    },
+    {
+      "mission": 9,
+      "phase": 1,
+      "map": "mapm21",
+      "spt_sha256": "d797063d0881a6c30f5eed4a876d291cd3632b05ae3fd252bdb86c8ecc0efba0",
+      "map_sha256": "35c2f41b15bc086463ac8aff2c493a7777fb8a955a77c73638e4fe63a6fdad40",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 2,
+        "5": 1,
+        "13": 1,
+        "15": 4,
+        "16": 1,
+        "20": 4,
+        "24": 3,
+        "36": 3,
+        "37": 1,
+        "41": 3,
+        "64": 1,
+        "74": 1,
+        "81": 1,
+        "84": 2
+      }
+    },
+    {
+      "mission": 9,
+      "phase": 2,
+      "map": "mapm22",
+      "spt_sha256": "0fdd1df2d7b46a0adfd2bad6618886c270a9e73f96ea7ea13e5b36be357e93ae",
+      "map_sha256": "b64d68d84182828407d955ed878e318d6f6e49f76256df24a8fc593cfcc5245b",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "24": 1,
+        "37": 2,
+        "38": 1,
+        "41": 10,
+        "68": 1,
+        "78": 1,
+        "84": 10,
+        "88": 1
+      }
+    },
+    {
+      "mission": 10,
+      "phase": 1,
+      "map": "mapm23",
+      "spt_sha256": "44a2d4b773335f4337fc4039a67ddd90f8b9ac9558d126c4952a365d86b4ba8c",
+      "map_sha256": "5de56388e0022fcb2adfecfa4bb6325efd05959cdb4db805ea7a2f2a5de57061",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 2,
+        "5": 5,
+        "14": 2,
+        "15": 4,
+        "17": 1,
+        "20": 4,
+        "36": 2,
+        "37": 1,
+        "38": 2,
+        "41": 1,
+        "42": 1,
+        "66": 1
+      }
+    },
+    {
+      "mission": 10,
+      "phase": 2,
+      "map": "mapm24",
+      "spt_sha256": "84065b17bfe63b09d01ac3c65a7fe111c57d3ee2c82e0dee6ce7e2af8d047a45",
+      "map_sha256": "b48e2cc5a84662c9ed77fdc58a911bc4b720ffbd6f482f1819ccce1c61bf0ea9",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 1,
+        "20": 6,
+        "36": 1,
+        "38": 1,
+        "41": 4,
+        "56": 3,
+        "60": 1,
+        "76": 1,
+        "85": 4
+      }
+    },
+    {
+      "mission": 10,
+      "phase": 3,
+      "map": "mapm25",
+      "spt_sha256": "90603d9c1979e62b3950fca0481b1eb36adc10e855e6b7e9df035b9c7026daf4",
+      "map_sha256": "355cc655c3da8b763c2ad32b9eaa6157024e655c994a1fd73c9b3d7649ecda34",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 5,
+        "5": 3,
+        "20": 4,
+        "24": 1,
+        "37": 1,
+        "41": 4,
+        "61": 1,
+        "64": 1,
+        "69": 1,
+        "76": 1,
+        "79": 1,
+        "85": 3
+      }
+    },
+    {
+      "mission": 10,
+      "phase": 4,
+      "map": "mapm26",
+      "spt_sha256": "e10e69f04f24c031528bd8e05c313c1b27ecc851c89a66d09e0316396d919262",
+      "map_sha256": "a564986ddcc33ce5bd8cda696ca8a4d7c795e3abb4abfd9137f9d3bdb3f1f963",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 2,
+        "5": 3,
+        "14": 1,
+        "15": 2,
+        "20": 2,
+        "24": 3,
+        "36": 4,
+        "41": 2,
+        "54": 2,
+        "69": 2,
+        "79": 1,
+        "88": 1
+      }
+    },
+    {
+      "mission": 10,
+      "phase": 5,
+      "map": "mapm27",
+      "spt_sha256": "7dea18e56c0de2ced03b64a4622a755d4ccb897aec491da43f1c06a09a7495f3",
+      "map_sha256": "fee01ce627957bb7d65cdcaa031f0681aac9213717e28bfb0afc3369565d56d4",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 1,
+        "5": 2,
+        "15": 2,
+        "20": 10,
+        "41": 4,
+        "65": 1,
+        "85": 4
+      }
+    },
+    {
+      "mission": 11,
+      "phase": 1,
+      "map": "mapm28",
+      "spt_sha256": "a9b903d7c262fed79ea75ffe5873b5d1af169593574eb9ae140d2ed55540265c",
+      "map_sha256": "6f51c1ec05e0d4dbb82fdf8df6c4ac3e646b1a4d2934ee08ea7d18dfc2395810",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 3,
+        "5": 9,
+        "14": 1,
+        "15": 1,
+        "18": 1,
+        "20": 1,
+        "25": 2,
+        "36": 2,
+        "41": 2,
+        "42": 1,
+        "60": 1,
+        "75": 1,
+        "84": 1
+      }
+    },
+    {
+      "mission": 11,
+      "phase": 2,
+      "map": "mapm29",
+      "spt_sha256": "2805bc5dc9fd36d08a747a0b1989e27e4b280d2147e0f555a34d4faf8bf641d1",
+      "map_sha256": "8772cd0950165f42785d472cdae4b8c2a89ff582a54ebf7f3d8682de8333cfd1",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 4,
+        "5": 1,
+        "24": 1,
+        "40": 1,
+        "41": 7,
+        "56": 2,
+        "65": 1,
+        "69": 1,
+        "70": 1,
+        "84": 5,
+        "88": 1,
+        "90": 1
+      }
+    },
+    {
+      "mission": 11,
+      "phase": 3,
+      "map": "mapm30",
+      "spt_sha256": "332bf6b4dca123def864dd952a9c071c1823c4fbb5e1389fd4c0bc298fe5d8e5",
+      "map_sha256": "9320bf078ad1723db93d9e7e4145515500388a6c13398fa52a18610fcbc63363",
+      "resources": {
+        "base_tileset": "jun",
+        "sub_tileset": "jun",
+        "ingame2": "juncopt.lbm",
+        "ingame1": "junarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "4": 5,
+        "38": 1,
+        "40": 1,
+        "41": 7,
+        "50": 1,
+        "56": 1,
+        "60": 1,
+        "62": 2,
+        "84": 6
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 1,
+      "map": "mapm31",
+      "spt_sha256": "cff6c4f76c71a716841fdcc2fba683c17423727cf390ab3f3c75d81d6a080d2d",
+      "map_sha256": "a5be30e469937010f40b2381e3c99ca0323aef5bda9e1aec70628605d6f54408",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "4": 4,
+        "13": 1,
+        "16": 1,
+        "24": 2,
+        "36": 1,
+        "40": 1,
+        "41": 3,
+        "65": 1,
+        "66": 1,
+        "68": 4,
+        "74": 1,
+        "78": 1,
+        "81": 1,
+        "84": 1,
+        "88": 3,
+        "91": 1
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 2,
+      "map": "mapm32",
+      "spt_sha256": "2e36c50db29f2481a97d62f5239871753fb05d40c5d3170b38cc6abc0df71c9a",
+      "map_sha256": "b15ff6d872fa29870b796736fb6311bb0122aefc8eb9528469b4b9497422f1d7",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "4": 2,
+        "13": 2,
+        "15": 1,
+        "16": 1,
+        "20": 1,
+        "24": 2,
+        "36": 1,
+        "41": 3,
+        "65": 1,
+        "69": 1,
+        "74": 1,
+        "84": 2,
+        "88": 5,
+        "91": 1
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 3,
+      "map": "mapm33",
+      "spt_sha256": "3c4c0c6afb220e7f2a2bbebd627ff352f37637dd2289789460e76bab8b98d64a",
+      "map_sha256": "479d398d680a26248ef6d67b885c7bece060d6dce8ae8cb0afde18fbbd000af9",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 4,
+        "20": 1,
+        "36": 1,
+        "41": 4,
+        "50": 1,
+        "54": 2,
+        "64": 1,
+        "65": 1,
+        "78": 1,
+        "84": 4,
+        "88": 3,
+        "92": 4
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 4,
+      "map": "mapm34",
+      "spt_sha256": "09d963e829f0309093ffb83762a7aecf29346b433b151c53a2ea87e51a352084",
+      "map_sha256": "5dd4b051593a1f1be8c9d53a06701a6cbefbfb94a1aa4f60d905b5adf2bd6e6c",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 3,
+        "16": 2,
+        "20": 2,
+        "36": 2,
+        "41": 6,
+        "50": 1,
+        "65": 1,
+        "84": 6,
+        "88": 2,
+        "95": 1
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 5,
+      "map": "mapm35",
+      "spt_sha256": "7af0876634329c5850acd771e2abb5aac22df95ef0e397770b3a299273e493e8",
+      "map_sha256": "3cb8bd4ff692b33ccb6b7ecaa0d1d55c7d1da1ad7de82babda908fbe0f93e0d9",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 3,
+        "5": 1,
+        "20": 1,
+        "41": 8,
+        "50": 1,
+        "69": 1,
+        "72": 1,
+        "73": 1,
+        "78": 1,
+        "84": 7
+      }
+    },
+    {
+      "mission": 12,
+      "phase": 6,
+      "map": "mapm36",
+      "spt_sha256": "f09b1265db52e22a6d0224b94fa1fe6a73cf2858bdfc10f92f7d165ce8228835",
+      "map_sha256": "7b0d1a7579cacb4e9cc47fde11e31ae2436288dea10950dd3ecb19f8e7bf16a5",
+      "resources": {
+        "base_tileset": "ice",
+        "sub_tileset": "ice",
+        "ingame2": "icecopt.lbm",
+        "ingame1": "icearmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 4,
+        "40": 1,
+        "41": 5,
+        "79": 2,
+        "85": 4,
+        "88": 3,
+        "99": 3,
+        "100": 1,
+        "102": 1
+      }
+    },
+    {
+      "mission": 13,
+      "phase": 1,
+      "map": "mapm37",
+      "spt_sha256": "037ca6ac6f97684ac325661e4e09d5944d6f735b85d37b32a37fc1d8b1bbb636",
+      "map_sha256": "89bf540a24401e2ef777fb776d39df0863da942691d1f87d645234491f0cfba9",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "4": 1,
+        "5": 2,
+        "20": 1,
+        "24": 1,
+        "25": 1,
+        "36": 1,
+        "41": 3,
+        "68": 3,
+        "78": 2,
+        "81": 1,
+        "84": 2
+      }
+    },
+    {
+      "mission": 14,
+      "phase": 1,
+      "map": "mapm38",
+      "spt_sha256": "bfb2c5b3ccd4957f2d7b7edcd49189fb0d562c162bdc296541a68a302e113d5b",
+      "map_sha256": "417153572b95b4469d150e97f07e1e686bea5497b090cc3aa67c88791c604da4",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 2,
+        "36": 1,
+        "41": 3,
+        "52": 1,
+        "54": 11,
+        "75": 1,
+        "79": 2,
+        "85": 3,
+        "88": 4
+      }
+    },
+    {
+      "mission": 14,
+      "phase": 2,
+      "map": "mapm39",
+      "spt_sha256": "d7008cce04b70d7abeef3c99ef73711df1692b584385d9dcb9deb226d4791f94",
+      "map_sha256": "b86fd37ff0748818b56ed630b52945303e73a89f849e152c4721b9675d99676b",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 3,
+        "15": 4,
+        "20": 4,
+        "41": 4,
+        "43": 1,
+        "54": 5,
+        "64": 1,
+        "79": 2,
+        "85": 3
+      }
+    },
+    {
+      "mission": 14,
+      "phase": 3,
+      "map": "mapm40",
+      "spt_sha256": "b434f1e7b9154305c85c1773f7e8bc8d6abc025e6e3044de5ccdddb4c19d4e5e",
+      "map_sha256": "b54dae7d22e5f6847244f9e27f3c33a3e1374a18cc2feac8e4d07b9304026126",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 2,
+        "5": 3,
+        "14": 1,
+        "15": 3,
+        "20": 3,
+        "41": 4,
+        "50": 1,
+        "72": 3,
+        "73": 1,
+        "85": 4
+      }
+    },
+    {
+      "mission": 15,
+      "phase": 1,
+      "map": "mapm41",
+      "spt_sha256": "aee77610d60dc8f884ccaa5377659d1fabf327efc0214feb95778fa16e70ab3d",
+      "map_sha256": "e2758218e9cf9fd7cc904f445e323e157a75e2ee6e100ed178cf5fbd34be4387",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 4,
+        "24": 1,
+        "41": 3,
+        "50": 1,
+        "56": 3,
+        "65": 2,
+        "68": 6,
+        "70": 1,
+        "75": 1,
+        "84": 3,
+        "88": 1
+      }
+    },
+    {
+      "mission": 15,
+      "phase": 2,
+      "map": "mapm42",
+      "spt_sha256": "d2120b1bd4952d72ac56307e14a63ee297b041fdb8aebe37e2bf320670a5bdba",
+      "map_sha256": "1ece4bcd18a0e0a45f5e4998205c1354b5c5a7a8514f5407f447090aac85d691",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 2,
+        "20": 1,
+        "36": 9,
+        "37": 1,
+        "41": 1,
+        "49": 1,
+        "54": 2,
+        "68": 1,
+        "78": 1,
+        "84": 1,
+        "88": 3,
+        "91": 1
+      }
+    },
+    {
+      "mission": 15,
+      "phase": 3,
+      "map": "mapm43",
+      "spt_sha256": "9d5ed3ff9a89174618e499cdf9521d920af55d48dacf28b7ad5b7e3e58a24da9",
+      "map_sha256": "bae6129557a9de828a88f9f7b907cf9b42b3b7ba4b2123a124fef59a9368d120",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 4,
+        "20": 1,
+        "24": 1,
+        "41": 3,
+        "50": 1,
+        "69": 1,
+        "70": 1,
+        "76": 3,
+        "78": 4,
+        "81": 1,
+        "84": 1,
+        "88": 1
+      }
+    },
+    {
+      "mission": 16,
+      "phase": 1,
+      "map": "mapm44",
+      "spt_sha256": "44051bf0f1b4c4b91f178dc772ccd3246340e2fdd5c358eeefe6050a22f9a65f",
+      "map_sha256": "a6cfadff745ec7f4bf1e64f3e22d4c5f737eaeb07dbfa9a79b9c248c113374c7",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "5": 5,
+        "20": 3,
+        "36": 7,
+        "37": 3,
+        "38": 2,
+        "54": 5
+      }
+    },
+    {
+      "mission": 16,
+      "phase": 2,
+      "map": "mapm45",
+      "spt_sha256": "d5d59c0cd7a44627c41cbf7800877ab2667eda49aecbfc90add7aa52cae0d2e0",
+      "map_sha256": "41e797a558178fb6f393453f9c630b0662c0b5adc9839f5487bd9752fb8a58db",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 2,
+        "16": 2,
+        "18": 6,
+        "20": 1,
+        "36": 2,
+        "79": 1,
+        "88": 2,
+        "93": 1
+      }
+    },
+    {
+      "mission": 17,
+      "phase": 1,
+      "map": "mapm46",
+      "spt_sha256": "772174ea73b06dc10d044da22c29b2cb00fc85f7a96eea78ce50d36c7eb8e436",
+      "map_sha256": "36d87b0dbd1b55dc213ab03325edcac7bb9c72fa034fa0b740b43eb46a00c6cc",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 1,
+        "5": 10,
+        "20": 2,
+        "25": 2,
+        "36": 3,
+        "41": 1,
+        "56": 1,
+        "65": 1,
+        "68": 2,
+        "72": 1,
+        "73": 1,
+        "84": 1
+      }
+    },
+    {
+      "mission": 18,
+      "phase": 1,
+      "map": "mapm47",
+      "spt_sha256": "eb92848453b60a7bf11edbe40b3b7b7e9913aaea2fa565e3fb37f1d0f295cf46",
+      "map_sha256": "7c495a56226809ffaaf46767382d4e12d38390f9c90a15dc5659a81eca695859",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "5": 2,
+        "36": 4,
+        "38": 4,
+        "41": 2,
+        "54": 1,
+        "72": 2,
+        "73": 1,
+        "78": 4,
+        "84": 2,
+        "88": 5
+      }
+    },
+    {
+      "mission": 18,
+      "phase": 2,
+      "map": "mapm48",
+      "spt_sha256": "6330181489553ca67864cc7c5ad59fc5db82cf9a4986e5e5a993b561d359f370",
+      "map_sha256": "8e7b28c43a4ba1db581891eec5dff3ba0acac5c163bb0294f04d3e6513c58921",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 1,
+        "20": 1,
+        "61": 2,
+        "64": 1,
+        "76": 5,
+        "78": 1,
+        "88": 2
+      }
+    },
+    {
+      "mission": 18,
+      "phase": 3,
+      "map": "mapm49",
+      "spt_sha256": "3bb2ae405982f1216df67ffa7a91873eba627432e420c187ecec632b1a1618b1",
+      "map_sha256": "d9b42243ce861e0374f5f96a497f3281d4e50ce241e76478bbe06ef2e5bef621",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "4": 4,
+        "5": 2,
+        "36": 1,
+        "38": 2,
+        "41": 3,
+        "51": 1,
+        "72": 3,
+        "73": 1,
+        "80": 1,
+        "81": 1,
+        "84": 1,
+        "88": 5
+      }
+    },
+    {
+      "mission": 18,
+      "phase": 4,
+      "map": "mapm50",
+      "spt_sha256": "10fef0626f00428fae2091e3831e73bf5f206312df4ae3c2f7220df3b4c69e5e",
+      "map_sha256": "8e0ea11319ba4c3262104209344b718c4a80b3cb59507d81ef07974f8d7e4ea5",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 1,
+        "5": 2,
+        "18": 1,
+        "20": 2,
+        "41": 6,
+        "64": 1,
+        "72": 1,
+        "73": 1,
+        "78": 1,
+        "84": 6,
+        "88": 2
+      }
+    },
+    {
+      "mission": 18,
+      "phase": 5,
+      "map": "mapm51",
+      "spt_sha256": "a1a0465265508aa53da84e816e276604d396902ba6c622454c30f7159afd3fff",
+      "map_sha256": "b518219d525b4c5c2b1d556543f93185c704a4d3b65c79ada081e3af23a3cd45",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 5,
+        "41": 2,
+        "51": 1,
+        "64": 1,
+        "69": 2,
+        "88": 4
+      }
+    },
+    {
+      "mission": 19,
+      "phase": 1,
+      "map": "mapm52",
+      "spt_sha256": "78dd520b56064425dd1d018d08e610985aacf5fa186854bec28be422d0542933",
+      "map_sha256": "0adccb308442d2b8495532cecf8aea96598d50db7d3a482373689f210fdd2d7d",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 5,
+        "40": 1,
+        "41": 4,
+        "54": 2,
+        "81": 1,
+        "84": 2,
+        "88": 3,
+        "99": 3,
+        "103": 1
+      }
+    },
+    {
+      "mission": 20,
+      "phase": 1,
+      "map": "mapm53",
+      "spt_sha256": "371202b4f3021d6f3f3d3381214b1d9e8d838a10ae7d74c0e8935bc20ff0a08a",
+      "map_sha256": "38b52851678cce85c01e32e2c0d03584ecabd1182eb74ab3c0eddbff70fe0379",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 1,
+        "20": 4,
+        "36": 4,
+        "41": 1,
+        "56": 2,
+        "65": 1,
+        "84": 1,
+        "88": 2,
+        "96": 1
+      }
+    },
+    {
+      "mission": 20,
+      "phase": 2,
+      "map": "mapm54",
+      "spt_sha256": "eff511d76515a6c56a5c23effa2c79f5534ffef512635cf93853a328995954d7",
+      "map_sha256": "4cba5ff0bed5d644000e7c7d6f7de538082ea6066859d561b13742957b4013c8",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 5,
+        "20": 3,
+        "25": 4,
+        "36": 1,
+        "41": 5,
+        "65": 1,
+        "69": 4,
+        "74": 2,
+        "84": 1
+      }
+    },
+    {
+      "mission": 20,
+      "phase": 3,
+      "map": "mapm55",
+      "spt_sha256": "5d195c6c84278906acb9e60f6953517baaa62e8200794186b0f03832c793c26e",
+      "map_sha256": "2aabd60dfec9fae03c167c96cdd36e819efa379d3dbfdbecd4fb1d8aa3e65901",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 6,
+        "20": 1,
+        "36": 1,
+        "41": 6,
+        "43": 1,
+        "49": 1,
+        "65": 1,
+        "69": 1,
+        "70": 1,
+        "84": 4,
+        "88": 2,
+        "90": 1
+      }
+    },
+    {
+      "mission": 20,
+      "phase": 4,
+      "map": "mapm56",
+      "spt_sha256": "c84055ec6f47466c96d2793cb056ad99812c7ce3ad4eccb309662c446872fc5c",
+      "map_sha256": "005a18421c3367b2078ce5534338c88e9e4c49f2b2f8bd56c4ff17eb906276a2",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 3,
+        "36": 3,
+        "41": 2,
+        "52": 1,
+        "63": 1,
+        "75": 1,
+        "78": 1,
+        "84": 2,
+        "88": 6
+      }
+    },
+    {
+      "mission": 21,
+      "phase": 1,
+      "map": "mapm57",
+      "spt_sha256": "a90c6f81ec5d67050c83379a68dc12deb25b189cbb80279dda6015e41dea6e79",
+      "map_sha256": "0a8e6542d958fd6dd73041496e36e10e725f81a0b24ae67aa547154607499db9",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "5": 7,
+        "54": 1,
+        "79": 1,
+        "88": 4
+      }
+    },
+    {
+      "mission": 22,
+      "phase": 1,
+      "map": "mapm58",
+      "spt_sha256": "c712ff59517b7b6336abd65728823fa4a03d3ff0b832bded4d1ce6de7eeab155",
+      "map_sha256": "9b7216f3068516aa0489cf667ce0886428c05a3e160fb2a34dc7b23f8099db24",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 4,
+        "5": 2,
+        "41": 9,
+        "43": 1,
+        "51": 1,
+        "72": 2,
+        "73": 1,
+        "85": 8
+      }
+    },
+    {
+      "mission": 22,
+      "phase": 2,
+      "map": "mapm59",
+      "spt_sha256": "5d5b3e3551f5e9575ebdf88741cb6adcb959e154b0059a55a5e5893efa9a8d8c",
+      "map_sha256": "0d929f0f3c910237dc61f0a9ee2fc5a450905eb8663dd4c8205f24bb18cb809e",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 2,
+        "20": 1,
+        "25": 2,
+        "36": 1,
+        "37": 2,
+        "41": 2,
+        "43": 1,
+        "54": 6,
+        "56": 1,
+        "70": 2,
+        "74": 1,
+        "75": 1,
+        "76": 1,
+        "79": 1,
+        "98": 1,
+        "105": 1
+      }
+    },
+    {
+      "mission": 22,
+      "phase": 3,
+      "map": "mapm60",
+      "spt_sha256": "1d4d712be886ccf1f02c4bf2a1074634928ed9c3ce0de4772b3a137ff825a3af",
+      "map_sha256": "020b3f85210fb788b8345629f3c92246ddd9b0003ff0bfb66fcc48514d23a990",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 2,
+        "41": 1,
+        "61": 4,
+        "64": 1,
+        "66": 1,
+        "74": 1,
+        "79": 1,
+        "82": 1,
+        "83": 1
+      }
+    },
+    {
+      "mission": 22,
+      "phase": 4,
+      "map": "mapm61",
+      "spt_sha256": "5e43bb23c642fa38c58650684bbe48d0f16ae2338ef2511ec869ca001f9a2cf2",
+      "map_sha256": "808a32e51965c1ff66f23b0da1ebcaf19261c2632c8ecb4ea36e6d166ffd5971",
+      "resources": {
+        "base_tileset": "des",
+        "sub_tileset": "des",
+        "ingame2": "descopt.lbm",
+        "ingame1": "desarmy.lbm"
+      },
+      "counts": {
+        "0": 1,
+        "4": 6,
+        "20": 1,
+        "36": 1,
+        "41": 9,
+        "43": 1,
+        "52": 1,
+        "69": 1,
+        "80": 1,
+        "85": 6,
+        "88": 2
+      }
+    },
+    {
+      "mission": 23,
+      "phase": 1,
+      "map": "mapm62",
+      "spt_sha256": "c2772ce55159d699d5570ce02d59a454076bd876bf4d17bc1e1af5016c26cddc",
+      "map_sha256": "9f0f89a850cd34bb3ce91333ad01df8db5a434c32581ecfa0adecdeeb5a7dcc8",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 2,
+        "4": 5,
+        "41": 2,
+        "50": 1,
+        "61": 1,
+        "62": 2,
+        "65": 1,
+        "68": 8,
+        "69": 2,
+        "78": 1,
+        "88": 1,
+        "91": 2
+      }
+    },
+    {
+      "mission": 23,
+      "phase": 2,
+      "map": "mapm63",
+      "spt_sha256": "b45032d969bb434b755423b54160b73ecd9c7f9889d64e91b026c70af969d181",
+      "map_sha256": "bd522393bafd1a9d3357ef1276e3c2c173ba2b62529cb94534f911ca15ecd03d",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 3,
+        "4": 4,
+        "5": 5,
+        "36": 1,
+        "41": 3,
+        "42": 1,
+        "51": 1,
+        "78": 3,
+        "84": 2,
+        "88": 1
+      }
+    },
+    {
+      "mission": 23,
+      "phase": 3,
+      "map": "mapm64",
+      "spt_sha256": "c90478076f38db1a9059710851ddfc0a6fd93e55fb770490baf5a81602f78aed",
+      "map_sha256": "cecfa8a26dab949764cb1f56bf26439019aacad641104b9484b81a2f8a65d4d3",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 6,
+        "41": 2,
+        "42": 1,
+        "44": 1,
+        "49": 1,
+        "66": 1,
+        "67": 1,
+        "68": 9,
+        "78": 4,
+        "91": 3
+      }
+    },
+    {
+      "mission": 23,
+      "phase": 4,
+      "map": "mapm65",
+      "spt_sha256": "105cc24121060e7954b60d4da284df72cf57658f54d761dec75ff1abb19cbba4",
+      "map_sha256": "75b8f5979406d359482182418dd79a26f49d0426f4f5555ffb2f01ab87eea229",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 6,
+        "36": 6,
+        "41": 3,
+        "49": 1,
+        "50": 1,
+        "52": 1,
+        "76": 1,
+        "84": 3,
+        "88": 4
+      }
+    },
+    {
+      "mission": 23,
+      "phase": 5,
+      "map": "mapm66",
+      "spt_sha256": "f95ac538b46e2a22dd07f0f02b5194b93a51f5d73b96b77e636fd35193c2ba2a",
+      "map_sha256": "08ce4431500ad52c655f0b11abdb3d5581bb564cd43f2a0bcd5435480858e08f",
+      "resources": {
+        "base_tileset": "mor",
+        "sub_tileset": "mor",
+        "ingame2": "morcopt.lbm",
+        "ingame1": "morarmy.lbm"
+      },
+      "counts": {
+        "0": 6,
+        "4": 6,
+        "41": 4,
+        "43": 1,
+        "44": 1,
+        "52": 1,
+        "54": 4,
+        "56": 5,
+        "84": 2
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 1,
+      "map": "mapm67",
+      "spt_sha256": "241176c920c58e41f03a6421c0dbecb17e7c9ffe441ddfc371b1eef1b4e68f94",
+      "map_sha256": "b3dc0234627328affc49c3d343bc3ca96f0f373a72865b01700212e3e3d2b933",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 1,
+        "18": 2,
+        "41": 8,
+        "65": 1,
+        "70": 1,
+        "76": 5,
+        "84": 8
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 2,
+      "map": "mapm68",
+      "spt_sha256": "7e166967f5942f18b170db372861e13c8683c691e42a8ee7c708feca45eff430",
+      "map_sha256": "bddf346d98066fdfbfc39aa1f6d98353d8cb895129678d9e31543438107b3aa1",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 6,
+        "5": 4,
+        "36": 4,
+        "49": 1,
+        "50": 1,
+        "52": 1,
+        "88": 6
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 3,
+      "map": "mapm69",
+      "spt_sha256": "40af6c4909ba9e8c62800a8fbb760920cb5389d888476b55d4b3181716522080",
+      "map_sha256": "f492d9de083c909cbe756de35e20b77f5bd4fdd3da16ec72546427e887e8ac20",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 2,
+        "18": 3,
+        "20": 2,
+        "36": 1,
+        "50": 1,
+        "92": 14
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 4,
+      "map": "mapm70",
+      "spt_sha256": "12acb8300f6c01edee14e320470c5fb867a412b63049700580f63d53d59b7890",
+      "map_sha256": "d5b8a7417b4e28b212fcef85a839bf490c00bd74a0ce6053f2b13823cf3308d9",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 4,
+        "4": 6,
+        "41": 6,
+        "43": 2,
+        "52": 1,
+        "78": 2,
+        "88": 4,
+        "105": 4,
+        "108": 1
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 5,
+      "map": "mapm71",
+      "spt_sha256": "a5e3dee415534fa8286705169ad20d52a59a3993fe4307be11560a22b8b37768",
+      "map_sha256": "eedb3139342dda70e550ec27519e74cc052a06a8348d3ea1968b8cd90f8f4648",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "4": 4,
+        "41": 7,
+        "52": 1,
+        "63": 1,
+        "65": 1,
+        "73": 1,
+        "84": 3,
+        "88": 2,
+        "105": 3,
+        "106": 1,
+        "109": 1
+      }
+    },
+    {
+      "mission": 24,
+      "phase": 6,
+      "map": "mapm72",
+      "spt_sha256": "c1ccbc982346f8e276cf4c443e5b59f625678dd9dc7f47193ecd3f6401283245",
+      "map_sha256": "1614e3d897735fae93854afbafc0b0c6213a6f0b48ac3a73acdf6924b5c2be2f",
+      "resources": {
+        "base_tileset": "int",
+        "sub_tileset": "int",
+        "ingame2": "intcopt.lbm",
+        "ingame1": "intarmy.lbm"
+      },
+      "counts": {
+        "0": 5,
+        "4": 4,
+        "18": 1,
+        "38": 1,
+        "41": 3,
+        "54": 1,
+        "76": 1,
+        "78": 1,
+        "84": 2,
+        "88": 4,
+        "92": 1,
+        "99": 3,
+        "104": 1,
+        "107": 1,
+        "110": 1
+      }
+    }
+  ],
+  "types": [
+    {
+      "id": 0,
+      "name": "Player",
+      "authored_count": 254,
+      "maps": [
+        "mapm1",
+        "mapm2",
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm6",
+        "mapm7",
+        "mapm8",
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm14",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm18",
+        "mapm19",
+        "mapm20",
+        "mapm21",
+        "mapm22",
+        "mapm23",
+        "mapm24",
+        "mapm25",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm29",
+        "mapm30",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm36",
+        "mapm37",
+        "mapm38",
+        "mapm39",
+        "mapm40",
+        "mapm41",
+        "mapm42",
+        "mapm43",
+        "mapm44",
+        "mapm45",
+        "mapm46",
+        "mapm47",
+        "mapm48",
+        "mapm49",
+        "mapm50",
+        "mapm51",
+        "mapm52",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm56",
+        "mapm57",
+        "mapm58",
+        "mapm59",
+        "mapm60",
+        "mapm61",
+        "mapm62",
+        "mapm63",
+        "mapm64",
+        "mapm65",
+        "mapm66",
+        "mapm67",
+        "mapm68",
+        "mapm69",
+        "mapm70",
+        "mapm71",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 4,
+      "name": "Null",
+      "authored_count": 167,
+      "maps": [
+        "mapm7",
+        "mapm11",
+        "mapm16",
+        "mapm20",
+        "mapm21",
+        "mapm23",
+        "mapm24",
+        "mapm25",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm29",
+        "mapm30",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm36",
+        "mapm37",
+        "mapm38",
+        "mapm39",
+        "mapm40",
+        "mapm41",
+        "mapm42",
+        "mapm43",
+        "mapm46",
+        "mapm48",
+        "mapm49",
+        "mapm50",
+        "mapm51",
+        "mapm52",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm56",
+        "mapm58",
+        "mapm59",
+        "mapm60",
+        "mapm61",
+        "mapm62",
+        "mapm63",
+        "mapm64",
+        "mapm65",
+        "mapm66",
+        "mapm67",
+        "mapm68",
+        "mapm69",
+        "mapm70",
+        "mapm71",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 5,
+      "name": "Enemy",
+      "authored_count": 215,
+      "maps": [
+        "mapm1",
+        "mapm2",
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm6",
+        "mapm7",
+        "mapm8",
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm18",
+        "mapm19",
+        "mapm21",
+        "mapm23",
+        "mapm25",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm29",
+        "mapm35",
+        "mapm37",
+        "mapm40",
+        "mapm44",
+        "mapm45",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm50",
+        "mapm57",
+        "mapm58",
+        "mapm63",
+        "mapm68"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 13,
+      "name": "Shrub",
+      "authored_count": 19,
+      "maps": [
+        "mapm1",
+        "mapm2",
+        "mapm8",
+        "mapm13",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm19",
+        "mapm21",
+        "mapm31",
+        "mapm32"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 14,
+      "name": "Tree",
+      "authored_count": 25,
+      "maps": [
+        "mapm1",
+        "mapm2",
+        "mapm3",
+        "mapm5",
+        "mapm7",
+        "mapm8",
+        "mapm13",
+        "mapm14",
+        "mapm17",
+        "mapm18",
+        "mapm19",
+        "mapm23",
+        "mapm26",
+        "mapm28",
+        "mapm40"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 15,
+      "name": "BuildingRoof",
+      "authored_count": 55,
+      "maps": [
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm6",
+        "mapm7",
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm20",
+        "mapm21",
+        "mapm23",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm32",
+        "mapm39",
+        "mapm40"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 16,
+      "name": "Snowman",
+      "authored_count": 8,
+      "maps": [
+        "mapm9",
+        "mapm21",
+        "mapm31",
+        "mapm32",
+        "mapm34",
+        "mapm45"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 17,
+      "name": "Shrub2",
+      "authored_count": 2,
+      "maps": [
+        "mapm13",
+        "mapm23"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 18,
+      "name": "Waterfall",
+      "authored_count": 14,
+      "maps": [
+        "mapm28",
+        "mapm45",
+        "mapm50",
+        "mapm67",
+        "mapm69",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 20,
+      "name": "BuildingDoor",
+      "authored_count": 114,
+      "maps": [
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm6",
+        "mapm7",
+        "mapm8",
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm14",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm19",
+        "mapm20",
+        "mapm21",
+        "mapm23",
+        "mapm24",
+        "mapm25",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm37",
+        "mapm39",
+        "mapm40",
+        "mapm42",
+        "mapm43",
+        "mapm44",
+        "mapm45",
+        "mapm46",
+        "mapm48",
+        "mapm50",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm59",
+        "mapm61",
+        "mapm69"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 24,
+      "name": "GroundHole",
+      "authored_count": 23,
+      "maps": [
+        "mapm7",
+        "mapm10",
+        "mapm14",
+        "mapm15",
+        "mapm20",
+        "mapm21",
+        "mapm22",
+        "mapm25",
+        "mapm26",
+        "mapm29",
+        "mapm31",
+        "mapm32",
+        "mapm37",
+        "mapm41",
+        "mapm43"
+      ],
+      "handler": "Source/Sprites/Sprite_Effects.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 25,
+      "name": "BuildingDoor2",
+      "authored_count": 17,
+      "maps": [
+        "mapm7",
+        "mapm13",
+        "mapm15",
+        "mapm16",
+        "mapm28",
+        "mapm37",
+        "mapm46",
+        "mapm54",
+        "mapm59"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 27,
+      "name": "Floating_Dead_Soldier",
+      "authored_count": 4,
+      "maps": [
+        "mapm3",
+        "mapm5",
+        "mapm7",
+        "mapm14"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 36,
+      "name": "Enemy_Rocket",
+      "authored_count": 127,
+      "maps": [
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm14",
+        "mapm15",
+        "mapm16",
+        "mapm17",
+        "mapm18",
+        "mapm19",
+        "mapm20",
+        "mapm21",
+        "mapm23",
+        "mapm24",
+        "mapm26",
+        "mapm28",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm37",
+        "mapm38",
+        "mapm42",
+        "mapm44",
+        "mapm45",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm56",
+        "mapm59",
+        "mapm61",
+        "mapm63",
+        "mapm65",
+        "mapm68",
+        "mapm69"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 37,
+      "name": "GrenadeBox",
+      "authored_count": 33,
+      "maps": [
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm7",
+        "mapm8",
+        "mapm9",
+        "mapm12",
+        "mapm13",
+        "mapm14",
+        "mapm17",
+        "mapm21",
+        "mapm22",
+        "mapm23",
+        "mapm25",
+        "mapm42",
+        "mapm44",
+        "mapm59"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 38,
+      "name": "RocketBox",
+      "authored_count": 26,
+      "maps": [
+        "mapm8",
+        "mapm9",
+        "mapm10",
+        "mapm11",
+        "mapm12",
+        "mapm13",
+        "mapm17",
+        "mapm22",
+        "mapm23",
+        "mapm24",
+        "mapm30",
+        "mapm44",
+        "mapm47",
+        "mapm49",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 40,
+      "name": "Helicopter_Grenade_Enemy",
+      "authored_count": 5,
+      "maps": [
+        "mapm29",
+        "mapm30",
+        "mapm31",
+        "mapm36",
+        "mapm52"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 41,
+      "name": "Flashing_Light",
+      "authored_count": 188,
+      "maps": [
+        "mapm16",
+        "mapm20",
+        "mapm21",
+        "mapm22",
+        "mapm23",
+        "mapm24",
+        "mapm25",
+        "mapm26",
+        "mapm27",
+        "mapm28",
+        "mapm29",
+        "mapm30",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm36",
+        "mapm37",
+        "mapm38",
+        "mapm39",
+        "mapm40",
+        "mapm41",
+        "mapm42",
+        "mapm43",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm50",
+        "mapm51",
+        "mapm52",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm56",
+        "mapm58",
+        "mapm59",
+        "mapm60",
+        "mapm61",
+        "mapm62",
+        "mapm63",
+        "mapm64",
+        "mapm65",
+        "mapm66",
+        "mapm67",
+        "mapm70",
+        "mapm71",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Effects.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 42,
+      "name": "Helicopter_Unarmed_Enemy",
+      "authored_count": 4,
+      "maps": [
+        "mapm23",
+        "mapm28",
+        "mapm63",
+        "mapm64"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 43,
+      "name": "Helicopter_Missile_Enemy",
+      "authored_count": 8,
+      "maps": [
+        "mapm39",
+        "mapm55",
+        "mapm58",
+        "mapm59",
+        "mapm61",
+        "mapm66",
+        "mapm70"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 44,
+      "name": "Helicopter_Homing_Enemy",
+      "authored_count": 2,
+      "maps": [
+        "mapm64",
+        "mapm66"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 49,
+      "name": "Helicopter_Grenade_Human",
+      "authored_count": 5,
+      "maps": [
+        "mapm42",
+        "mapm55",
+        "mapm64",
+        "mapm65",
+        "mapm68"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 50,
+      "name": "Helicopter_Unarmed_Human",
+      "authored_count": 11,
+      "maps": [
+        "mapm30",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm40",
+        "mapm41",
+        "mapm43",
+        "mapm62",
+        "mapm65",
+        "mapm68",
+        "mapm69"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 51,
+      "name": "Helicopter_Missile_Human",
+      "authored_count": 4,
+      "maps": [
+        "mapm49",
+        "mapm51",
+        "mapm58",
+        "mapm63"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 52,
+      "name": "Helicopter_Homing_Human",
+      "authored_count": 8,
+      "maps": [
+        "mapm38",
+        "mapm56",
+        "mapm61",
+        "mapm65",
+        "mapm66",
+        "mapm68",
+        "mapm70",
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 54,
+      "name": "Mine",
+      "authored_count": 42,
+      "maps": [
+        "mapm26",
+        "mapm33",
+        "mapm38",
+        "mapm39",
+        "mapm42",
+        "mapm44",
+        "mapm47",
+        "mapm52",
+        "mapm57",
+        "mapm59",
+        "mapm66",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 55,
+      "name": "Mine2",
+      "authored_count": 4,
+      "maps": [
+        "mapm8",
+        "mapm17",
+        "mapm19"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 56,
+      "name": "Spike",
+      "authored_count": 28,
+      "maps": [
+        "mapm17",
+        "mapm19",
+        "mapm24",
+        "mapm29",
+        "mapm30",
+        "mapm41",
+        "mapm46",
+        "mapm53",
+        "mapm59",
+        "mapm66"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 60,
+      "name": "BoilingPot",
+      "authored_count": 4,
+      "maps": [
+        "mapm7",
+        "mapm24",
+        "mapm28",
+        "mapm30"
+      ],
+      "handler": "Source/Sprites/Sprite_Effects.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 61,
+      "name": "Civilian",
+      "authored_count": 14,
+      "maps": [
+        "mapm7",
+        "mapm13",
+        "mapm15",
+        "mapm25",
+        "mapm48",
+        "mapm60",
+        "mapm62"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 62,
+      "name": "Civilian2",
+      "authored_count": 9,
+      "maps": [
+        "mapm13",
+        "mapm15",
+        "mapm17",
+        "mapm19",
+        "mapm30",
+        "mapm62"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 63,
+      "name": "VehicleNoGun_Human",
+      "authored_count": 4,
+      "maps": [
+        "mapm11",
+        "mapm20",
+        "mapm56",
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 64,
+      "name": "VehicleGun_Human",
+      "authored_count": 9,
+      "maps": [
+        "mapm16",
+        "mapm21",
+        "mapm25",
+        "mapm33",
+        "mapm39",
+        "mapm48",
+        "mapm50",
+        "mapm51",
+        "mapm60"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 65,
+      "name": "Tank_Human",
+      "authored_count": 15,
+      "maps": [
+        "mapm27",
+        "mapm29",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm41",
+        "mapm46",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm62",
+        "mapm67",
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 66,
+      "name": "Bird_Left",
+      "authored_count": 13,
+      "maps": [
+        "mapm1",
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm6",
+        "mapm7",
+        "mapm9",
+        "mapm10",
+        "mapm15",
+        "mapm23",
+        "mapm31",
+        "mapm60",
+        "mapm64"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 67,
+      "name": "Bird_Right",
+      "authored_count": 9,
+      "maps": [
+        "mapm2",
+        "mapm3",
+        "mapm4",
+        "mapm5",
+        "mapm64"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 68,
+      "name": "Seal",
+      "authored_count": 37,
+      "maps": [
+        "mapm15",
+        "mapm16",
+        "mapm22",
+        "mapm31",
+        "mapm37",
+        "mapm41",
+        "mapm42",
+        "mapm46",
+        "mapm62",
+        "mapm64"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 69,
+      "name": "Tank_Enemy",
+      "authored_count": 17,
+      "maps": [
+        "mapm25",
+        "mapm26",
+        "mapm29",
+        "mapm32",
+        "mapm35",
+        "mapm43",
+        "mapm51",
+        "mapm54",
+        "mapm55",
+        "mapm61",
+        "mapm62"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 70,
+      "name": "Civilian_Spear",
+      "authored_count": 9,
+      "maps": [
+        "mapm16",
+        "mapm19",
+        "mapm29",
+        "mapm41",
+        "mapm43",
+        "mapm55",
+        "mapm59",
+        "mapm67"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 72,
+      "name": "Hostage",
+      "authored_count": 13,
+      "maps": [
+        "mapm35",
+        "mapm40",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm50",
+        "mapm58"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 73,
+      "name": "Hostage_Rescue_Tent",
+      "authored_count": 8,
+      "maps": [
+        "mapm35",
+        "mapm40",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm50",
+        "mapm58",
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 74,
+      "name": "Door_Civilian",
+      "authored_count": 7,
+      "maps": [
+        "mapm21",
+        "mapm31",
+        "mapm32",
+        "mapm54",
+        "mapm59",
+        "mapm60"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 75,
+      "name": "Door2_Civilian",
+      "authored_count": 9,
+      "maps": [
+        "mapm13",
+        "mapm15",
+        "mapm20",
+        "mapm28",
+        "mapm38",
+        "mapm41",
+        "mapm56",
+        "mapm59"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 76,
+      "name": "Door_Civilian_Spear",
+      "authored_count": 19,
+      "maps": [
+        "mapm20",
+        "mapm24",
+        "mapm25",
+        "mapm43",
+        "mapm48",
+        "mapm59",
+        "mapm65",
+        "mapm67",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 78,
+      "name": "Turret_Missile_Human",
+      "authored_count": 31,
+      "maps": [
+        "mapm18",
+        "mapm20",
+        "mapm22",
+        "mapm31",
+        "mapm33",
+        "mapm35",
+        "mapm37",
+        "mapm42",
+        "mapm43",
+        "mapm47",
+        "mapm48",
+        "mapm50",
+        "mapm56",
+        "mapm62",
+        "mapm63",
+        "mapm64",
+        "mapm70",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 79,
+      "name": "Turret_Missile2_Human",
+      "authored_count": 12,
+      "maps": [
+        "mapm25",
+        "mapm26",
+        "mapm36",
+        "mapm38",
+        "mapm39",
+        "mapm45",
+        "mapm57",
+        "mapm59",
+        "mapm60"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 80,
+      "name": "VehicleNoGun_Enemy",
+      "authored_count": 4,
+      "maps": [
+        "mapm20",
+        "mapm49",
+        "mapm61"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 81,
+      "name": "VehicleGun_Enemy",
+      "authored_count": 6,
+      "maps": [
+        "mapm21",
+        "mapm31",
+        "mapm37",
+        "mapm43",
+        "mapm49",
+        "mapm52"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 82,
+      "name": "Vehicle_Unk_Enemy",
+      "authored_count": 1,
+      "maps": [
+        "mapm60"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 83,
+      "name": "Civilian_Invisible",
+      "authored_count": 1,
+      "maps": [
+        "mapm60"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 84,
+      "name": "Turret_Missile_Enemy",
+      "authored_count": 91,
+      "maps": [
+        "mapm21",
+        "mapm22",
+        "mapm28",
+        "mapm29",
+        "mapm30",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm35",
+        "mapm37",
+        "mapm41",
+        "mapm42",
+        "mapm43",
+        "mapm46",
+        "mapm47",
+        "mapm49",
+        "mapm50",
+        "mapm52",
+        "mapm53",
+        "mapm54",
+        "mapm55",
+        "mapm56",
+        "mapm63",
+        "mapm65",
+        "mapm66",
+        "mapm67",
+        "mapm71",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 85,
+      "name": "Turret_Missile2_Enemy",
+      "authored_count": 39,
+      "maps": [
+        "mapm24",
+        "mapm25",
+        "mapm27",
+        "mapm36",
+        "mapm38",
+        "mapm39",
+        "mapm40",
+        "mapm58",
+        "mapm61"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 88,
+      "name": "BuildingDoor3",
+      "authored_count": 97,
+      "maps": [
+        "mapm18",
+        "mapm20",
+        "mapm22",
+        "mapm26",
+        "mapm29",
+        "mapm31",
+        "mapm32",
+        "mapm33",
+        "mapm34",
+        "mapm36",
+        "mapm38",
+        "mapm41",
+        "mapm42",
+        "mapm43",
+        "mapm45",
+        "mapm47",
+        "mapm48",
+        "mapm49",
+        "mapm50",
+        "mapm51",
+        "mapm52",
+        "mapm53",
+        "mapm55",
+        "mapm56",
+        "mapm57",
+        "mapm61",
+        "mapm62",
+        "mapm63",
+        "mapm65",
+        "mapm68",
+        "mapm70",
+        "mapm71",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 90,
+      "name": "Door_Civilian_Rescue",
+      "authored_count": 2,
+      "maps": [
+        "mapm29",
+        "mapm55"
+      ],
+      "handler": "Source/Sprites/Sprite_Civilian.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 91,
+      "name": "Seal_Mine",
+      "authored_count": 8,
+      "maps": [
+        "mapm31",
+        "mapm32",
+        "mapm42",
+        "mapm62",
+        "mapm64"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 92,
+      "name": "Spider_Mine",
+      "authored_count": 19,
+      "maps": [
+        "mapm33",
+        "mapm69",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 93,
+      "name": "Bonus_RankToGeneral",
+      "authored_count": 2,
+      "maps": [
+        "mapm19",
+        "mapm45"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 94,
+      "name": "Bonus_Rockets",
+      "authored_count": 1,
+      "maps": [
+        "mapm19"
+      ],
+      "handler": "Source/Sprites/Sprite_Projectiles.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 95,
+      "name": "Bonus_Armour",
+      "authored_count": 1,
+      "maps": [
+        "mapm34"
+      ],
+      "handler": "Source/Sprites/Sprite_Effects.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 96,
+      "name": "Bonus_RankHomingInvin_SquadLeader",
+      "authored_count": 1,
+      "maps": [
+        "mapm53"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 98,
+      "name": "Bonus_RankHomingInvin_Squad",
+      "authored_count": 1,
+      "maps": [
+        "mapm59"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 99,
+      "name": "Helicopter_CallPad",
+      "authored_count": 9,
+      "maps": [
+        "mapm36",
+        "mapm52",
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 100,
+      "name": "BuildingDoor_Reinforced",
+      "authored_count": 1,
+      "maps": [
+        "mapm36"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 102,
+      "name": "Helicopter_Unarmed_Human_Called",
+      "authored_count": 1,
+      "maps": [
+        "mapm36"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 103,
+      "name": "Helicopter_Missile_Human_Called",
+      "authored_count": 1,
+      "maps": [
+        "mapm52"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 104,
+      "name": "Helicopter_Homing_Human_Called",
+      "authored_count": 1,
+      "maps": [
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 105,
+      "name": "Turret_HomingMissile_Enemy",
+      "authored_count": 8,
+      "maps": [
+        "mapm59",
+        "mapm70",
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Vehicle.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 106,
+      "name": "Enemy_Leader",
+      "authored_count": 1,
+      "maps": [
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Troop.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 107,
+      "name": "Helicopter_Homing_Enemy2",
+      "authored_count": 1,
+      "maps": [
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Helicopter.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 108,
+      "name": "Computer_1",
+      "authored_count": 1,
+      "maps": [
+        "mapm70"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 109,
+      "name": "Computer_2",
+      "authored_count": 1,
+      "maps": [
+        "mapm71"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    },
+    {
+      "id": 110,
+      "name": "Computer_3",
+      "authored_count": 1,
+      "maps": [
+        "mapm72"
+      ],
+      "handler": "Source/Sprites/Sprite_Core.cpp",
+      "capabilities_status": "Needs handler/state/terrain review; not inferred from the name"
+    }
+  ],
+  "declared_types_absent_from_spt": [
+    {
+      "id": 2,
+      "name": "Grenade"
+    },
+    {
+      "id": 3,
+      "name": "ShadowSmall"
+    },
+    {
+      "id": 6,
+      "name": "Bullet"
+    },
+    {
+      "id": 12,
+      "name": "Explosion"
+    },
+    {
+      "id": 19,
+      "name": "Bird2_Left"
+    },
+    {
+      "id": 21,
+      "name": "Player_Rank"
+    },
+    {
+      "id": 22,
+      "name": "Player_Shadow"
+    },
+    {
+      "id": 23,
+      "name": "BloodTrail"
+    },
+    {
+      "id": 28,
+      "name": "Text_Complete"
+    },
+    {
+      "id": 29,
+      "name": "Text_Mission"
+    },
+    {
+      "id": 30,
+      "name": "Text_Phase"
+    },
+    {
+      "id": 33,
+      "name": "Rocket"
+    },
+    {
+      "id": 34,
+      "name": "Text_GameOver"
+    },
+    {
+      "id": 35,
+      "name": "Shadow"
+    },
+    {
+      "id": 39,
+      "name": "Building_Explosion"
+    },
+    {
+      "id": 45,
+      "name": "Missile"
+    },
+    {
+      "id": 46,
+      "name": "MissileHoming"
+    },
+    {
+      "id": 47,
+      "name": "Sparks"
+    },
+    {
+      "id": 48,
+      "name": "FireTrail"
+    },
+    {
+      "id": 53,
+      "name": "Helicopter_PropCrash"
+    },
+    {
+      "id": 57,
+      "name": "Smoke"
+    },
+    {
+      "id": 58,
+      "name": "Text_Try"
+    },
+    {
+      "id": 59,
+      "name": "Text_Again"
+    },
+    {
+      "id": 71,
+      "name": "Civilian_Spear2"
+    },
+    {
+      "id": 77,
+      "name": "Cannon"
+    },
+    {
+      "id": 86,
+      "name": "Vehicle_Sinking_1"
+    },
+    {
+      "id": 87,
+      "name": "Vehicle_Sinking_2"
+    },
+    {
+      "id": 89,
+      "name": "Explosion2"
+    },
+    {
+      "id": 97,
+      "name": "MissileHoming2"
+    },
+    {
+      "id": 101,
+      "name": "Helicopter_Grenade_Human_Called"
+    },
+    {
+      "id": 111,
+      "name": "UFO_Callpad"
+    },
+    {
+      "id": 112,
+      "name": "Turret_Cannon_Invulnerable"
+    },
+    {
+      "id": 113,
+      "name": "Turret_Missile_Invulnerable"
+    },
+    {
+      "id": 114,
+      "name": "Looping_Vehicle_Left"
+    },
+    {
+      "id": 115,
+      "name": "Looping_Vehicle_Right"
+    },
+    {
+      "id": 116,
+      "name": "Looping_Vehicle_Up"
+    },
+    {
+      "id": 117,
+      "name": "Looping_Vehicle_Down"
+    }
+  ],
+  "limitations": [
+    "SPT absence does not mean absence at runtime",
+    "Destructibility and control are conditional, not SPT boolean fields",
+    "CF2-only declarations are not CD32 assets",
+    "Does not enumerate terrain tiles or all animation states"
+  ]
+}

@@ -9,6 +9,12 @@
 #ifndef RNC_DERNC_H
 #define RNC_DERNC_H
 
+#include <cstddef>
+
+// RNC-1 decoder with physically bounded input and output buffers.
+long rnc_unpack_bounded(const void* packed, std::size_t packedCapacity,
+                        void* unpacked, std::size_t unpackedCapacity);
+
 /*
  * Routines
  */

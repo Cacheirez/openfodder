@@ -38,10 +38,10 @@ loc_23E2F:;
 
     pSprite->mDirection = pSprite->mFaceDirection;
     pData0 = mDirectionMod;
-    pData0 <<= 3;
+    pData0 = wrapShiftLeft16(pData0, 3);
 
     if (pSprite->mSpeed > 0x18)
-        pData0 <<= 1;
+        pData0 = wrapShiftLeft16(pData0, 1);
     pSprite->mDirection = pData0;
     pSprite->mDirection &= 0x1FE;
 

@@ -1,0 +1,254 @@
+{
+  "assertions": 2703,
+  "sample_count": 576,
+  "classic_base": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8",
+  "tables": {
+    "PC": [
+      {
+        "direction": 0,
+        "sheet": 57,
+        "array": "stru_3380C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 1,
+        "sheet": 58,
+        "array": "stru_3383C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 2,
+        "sheet": 59,
+        "array": "stru_3386C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 3,
+        "sheet": 60,
+        "array": "stru_3389C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 4,
+        "sheet": 61,
+        "array": "stru_338CC",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 5,
+        "sheet": 62,
+        "array": "stru_338FC",
+        "declared_frames": 4,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 6,
+        "sheet": 63,
+        "array": "stru_3393C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 7,
+        "sheet": 64,
+        "array": "stru_3396C",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "Amiga": [
+      {
+        "direction": 0,
+        "sheet": 57,
+        "array": "stru_8CBB8",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 1,
+        "sheet": 58,
+        "array": "stru_8CBE8",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 2,
+        "sheet": 59,
+        "array": "stru_8CC18",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 3,
+        "sheet": 60,
+        "array": "stru_8CC48",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 4,
+        "sheet": 61,
+        "array": "stru_8CC78",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 5,
+        "sheet": 62,
+        "array": "stru_8CCA8",
+        "declared_frames": 4,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 6,
+        "sheet": 63,
+        "array": "stru_8CCE8",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "direction": 7,
+        "sheet": 64,
+        "array": "stru_8CD18",
+        "declared_frames": 3,
+        "tested_body_frames": [
+          0,
+          1,
+          2
+        ]
+      }
+    ]
+  },
+  "limits": [
+    "geometry stubbed; no full player handler or projectile allocation execution",
+    "selector invocation counts are not game ticks or display frames",
+    "frame 3 not selected in tested ordinary entry/retention paths; not a global reachability proof",
+    "no HD publication, new art, campaign, GPU/CD32 or user acceptance claim"
+  ],
+  "schema": 1,
+  "base_commit": "67ccf1b821f809abda0368afa4f63eef95392093",
+  "scope": "CF1 player rocket body selection and retained callers; no new art or HD publication",
+  "validation": {
+    "status": "PASS",
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "flags": [
+      "-std=c++14",
+      "-O1",
+      "-DNDEBUG",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all"
+    ],
+    "assertions_enabled_in_release": true,
+    "samples_sha256": "d1d3b3550b670916e0c947836667ec24ae53d50e74f0d380964cf14c7752b250",
+    "source_functions_equal_to_classic": true,
+    "creation_function_equal_to_classic": "source audit only; not executed"
+  },
+  "findings": {
+    "direct_entry": "frame 0 for seven selector calls, native return on call 8",
+    "retained_mouse_and_weapon_target": "initial frames 0, 1, 2 preserved for seven calls; restored also on return",
+    "direction_change": "sheet change restarts weapon tick at zero",
+    "stationary_target": "aim branch precedes rocket and leaves weapon tick unchanged",
+    "water": "rocket branch precedes swim; swim posture selected on native return",
+    "two_actors": "independent face/frame/tick across interleaved caller tests",
+    "declared_frame_3": "only direction 5 has a fourth table entry; not selected by tested normal entry/retention paths; do not infer global unreachability"
+  },
+  "recovered_checkout": {
+    "previous_head": "8d09a28dd24573789619ce71af94649451d51ca8",
+    "tracked_changes_before_update": 0,
+    "untracked_nonignored_files_before_update": 0,
+    "local_commits_absent_from_remote": 0,
+    "fast_forward_to": "67ccf1b821f809abda0368afa4f63eef95392093",
+    "ignored_files": "existing build products and native captures retained; not audited as deliverable source"
+  },
+  "ci": {
+    "handoff_commit": "67ccf1b821f809abda0368afa4f63eef95392093",
+    "windows": {
+      "id": 42062245413,
+      "conclusion": "success"
+    },
+    "linux": {
+      "id": 42062245967,
+      "conclusion": "success"
+    },
+    "density": {
+      "id": 42062245567,
+      "conclusion": "success"
+    },
+    "new_selector_commit": "PENDING publication; local UBSan PASS; full local CMake/CTest not run"
+  },
+  "next": "First rocket artistic direction, frames 0/1/2, native placement and transition in WindowHD/SDL at 8x/12x; then remaining directions",
+  "source_sha256": {
+    "tools/modernization/check_rocket_selection.py": "3b28b0cf4afef21efa2e31ac5e84e7d8a29798affedd1ac078c8c399cfec067d",
+    "Source/Sprites.cpp": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",
+    "Source/Sprites/Sprite_Troop.cpp": "ef0ba41fd7c531e9bb61c559fb1f6981091fbb82783c957fa951f2c3f8af224b",
+    "Source/Sprites/Sprite_Projectiles.cpp": "2ea6ad6b45864fb686f0304e9e0fcdf8b19d02f11e3e66c6c7503955d1d2e832",
+    "Source/PC/SpriteData_PC.hpp": "6ffe13e86a5d83c4793f68d762e4f23ebe582b045be1cc6e5e9dd8cae66818ea",
+    "Source/Amiga/SpriteData_Amiga.hpp": "72d283d5186d48f568dd02924bf2e2dd37569d5e30fe52f977a50a1aad112241",
+    "CMakeLists.txt": "df0494ab5c0abd82b7f3ac03908102523877961d981ba11bd9ec9d9f637ea09d"
+  }
+}

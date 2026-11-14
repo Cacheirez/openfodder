@@ -1,0 +1,170 @@
+{
+  "status": "experimental-opt-in",
+  "campaign": "Amiga The One",
+  "mission": 1,
+  "phase": 2,
+  "scope": "First live player only; six body keys, not full soldier coverage",
+  "density": {
+    "work": 12,
+    "alternative": 8,
+    "final": false
+  },
+  "native_frame": [
+    16,
+    14
+  ],
+  "legacy_mod": [
+    0,
+    0
+  ],
+  "legacy_logical_anchor": [
+    0,
+    14
+  ],
+  "timing": "Use captured native sheet/frame and original counters; no independent animation clock. Frame number does not imply idle versus walking.",
+  "frames": [
+    {
+      "sheet": 2,
+      "frame": 0,
+      "amiga_offset": 12,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": "soldier-pilot/s2-f0.png",
+      "status": "generated-pending-animation-review",
+      "pc_offset": 48,
+      "source_sha256": "6a112ef0b711916aad5b97aedc57aa19f30edafd4837bf53c0c8f0c1f433aef8",
+      "source_dimensions": [
+        1353,
+        1162
+      ],
+      "crop": [
+        340,
+        171,
+        966,
+        1029
+      ],
+      "placement": [
+        1,
+        11,
+        14
+      ]
+    },
+    {
+      "sheet": 2,
+      "frame": 1,
+      "amiga_offset": 14,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": "soldier-pilot/s2-f1.png",
+      "status": "generated-pending-animation-review",
+      "pc_offset": 56,
+      "source_sha256": "03eaed7d69660907bf547a6dbaf77456fef5ac044f16a3b23f0425b5f482dd10",
+      "source_dimensions": [
+        1353,
+        1162
+      ],
+      "crop": [
+        278,
+        165,
+        942,
+        1030
+      ],
+      "placement": [
+        1,
+        11,
+        14
+      ]
+    },
+    {
+      "sheet": 2,
+      "frame": 2,
+      "amiga_offset": 16,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Left",
+      "asset": "soldier-pilot/s2-f2.png",
+      "status": "generated-pending-animation-review",
+      "pc_offset": 64,
+      "source_sha256": "009d15f887c41d9f2c75d03c89ee4ef64b3978b89286cdc8c1f5a489e201bd36",
+      "source_dimensions": [
+        1353,
+        1162
+      ],
+      "crop": [
+        277,
+        163,
+        954,
+        1037
+      ],
+      "placement": [
+        1,
+        11,
+        14
+      ]
+    },
+    {
+      "sheet": 7,
+      "frame": 0,
+      "amiga_offset": 562,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": "soldier-c01/source.png",
+      "status": "accepted-existing",
+      "pc_offset": 2248
+    },
+    {
+      "sheet": 7,
+      "frame": 1,
+      "amiga_offset": 564,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": "soldier-pilot/s7-f1.png",
+      "status": "generated-pending-animation-review",
+      "pc_offset": 2256,
+      "source_sha256": "41df2fb73290a1d604060253c54c7aa8b6dff4d45945288800ca457269e44592",
+      "source_dimensions": [
+        1353,
+        1162
+      ],
+      "crop": [
+        404,
+        173,
+        971,
+        1013
+      ],
+      "placement": [
+        3,
+        10,
+        14
+      ]
+    },
+    {
+      "sheet": 7,
+      "frame": 2,
+      "amiga_offset": 566,
+      "segment": "eGFX_IN_GAME",
+      "direction": "Face Right + Forward",
+      "asset": "soldier-pilot/s7-f2.png",
+      "status": "generated-pending-animation-review",
+      "pc_offset": 2264,
+      "source_sha256": "0c69425a1389b78ebc382d2173230c0dd2c83c43ae96f83b4e0242be3224332b",
+      "source_dimensions": [
+        1353,
+        1162
+      ],
+      "crop": [
+        404,
+        172,
+        982,
+        1114
+      ],
+      "placement": [
+        3,
+        10,
+        14
+      ]
+    }
+  ],
+  "fallback": "All uncovered keys and failed contrast, anchor, occlusion or publication checks remain classic. Preserve original shadows.",
+  "acceptance": "C01 accepted; new batch generated and internally reviewed, user animation acceptance pending. Cycle uses native counters; preview is illustrative.",
+  "generation": "Built-in image_gen; reference C01 only; original generated masters retained; no commercial graphics as generation inputs."
+}

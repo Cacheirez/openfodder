@@ -114,6 +114,12 @@ const sSpriteSheet mSpriteSheet_Font_PC[83] = {
 const sSpriteSheet* mSpriteSheetTypes_Font_PC[] = {
 	mSpriteSheet_Font_PC
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_Font_PC_FrameCounts[] = {
+    sizeof(mSpriteSheet_Font_PC) / sizeof(mSpriteSheet_Font_PC[0]), // 0
+};
+static_assert(sizeof(mSpriteSheetTypes_Font_PC_FrameCounts)/sizeof(mSpriteSheetTypes_Font_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_Font_PC)/sizeof(mSpriteSheetTypes_Font_PC[0]), "Frame metadata mismatch");
+
 
 const sSpriteSheet mRecruitSpriteFrames_Graves_PC[9] =
 {
@@ -627,6 +633,37 @@ const sSpriteSheet* mSpriteSheetTypes_Recruit_PC[] = {
 /* 0x18 */	mRecruitSpriteFrames_Disk_Load_PC,
 /* 0x19 */	mRecruitSpriteFrames_Disk_Save_PC
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_Recruit_PC_FrameCounts[] = {
+    sizeof(mRecruitSpriteFrames_Graves_PC) / sizeof(mRecruitSpriteFrames_Graves_PC[0]), // 0
+    sizeof(stru_32420) / sizeof(stru_32420[0]), // 1
+    sizeof(stru_32440) / sizeof(stru_32440[0]), // 2
+    sizeof(stru_32460) / sizeof(stru_32460[0]), // 3
+    sizeof(stru_32480) / sizeof(stru_32480[0]), // 4
+    sizeof(stru_324A0) / sizeof(stru_324A0[0]), // 5
+    sizeof(stru_324C0) / sizeof(stru_324C0[0]), // 6
+    sizeof(stru_324E0) / sizeof(stru_324E0[0]), // 7
+    sizeof(stru_32500) / sizeof(stru_32500[0]), // 8
+    sizeof(stru_32520) / sizeof(stru_32520[0]), // 9
+    sizeof(stru_32540) / sizeof(stru_32540[0]), // 10
+    sizeof(stru_32560) / sizeof(stru_32560[0]), // 11
+    sizeof(stru_32580) / sizeof(stru_32580[0]), // 12
+    sizeof(mRecruitSpriteFrames_AlphaNum_PC) / sizeof(mRecruitSpriteFrames_AlphaNum_PC[0]), // 13
+    sizeof(stru_327E0) / sizeof(stru_327E0[0]), // 14
+    sizeof(stru_327F0) / sizeof(stru_327F0[0]), // 15
+    sizeof(stru_32800) / sizeof(stru_32800[0]), // 16
+    sizeof(stru_32810) / sizeof(stru_32810[0]), // 17
+    sizeof(stru_32980) / sizeof(stru_32980[0]), // 18
+    sizeof(stru_32990) / sizeof(stru_32990[0]), // 19
+    sizeof(stru_329A0) / sizeof(stru_329A0[0]), // 20
+    sizeof(mRecruitSpriteFrames_Truck_PC) / sizeof(mRecruitSpriteFrames_Truck_PC[0]), // 21
+    sizeof(mRecruitSpriteFrames_Disk_PC) / sizeof(mRecruitSpriteFrames_Disk_PC[0]), // 22
+    sizeof(mRecruitSpriteFrames_Disk_Part_PC) / sizeof(mRecruitSpriteFrames_Disk_Part_PC[0]), // 23
+    sizeof(mRecruitSpriteFrames_Disk_Load_PC) / sizeof(mRecruitSpriteFrames_Disk_Load_PC[0]), // 24
+    sizeof(mRecruitSpriteFrames_Disk_Save_PC) / sizeof(mRecruitSpriteFrames_Disk_Save_PC[0]), // 25
+};
+static_assert(sizeof(mSpriteSheetTypes_Recruit_PC_FrameCounts)/sizeof(mSpriteSheetTypes_Recruit_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_Recruit_PC)/sizeof(mSpriteSheetTypes_Recruit_PC[0]), "Frame metadata mismatch");
+
 
 const sSpriteSheet* mSpriteSheetTypes_Hill_PC[] = {
 	stru_35ECE,
@@ -665,6 +702,46 @@ const sSpriteSheet* mSpriteSheetTypes_Hill_PC[] = {
 	stru_3661E,
 	stru_3664E
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_Hill_PC_FrameCounts[] = {
+    sizeof(stru_35ECE) / sizeof(stru_35ECE[0]), // 0
+    sizeof(stru_35F1E) / sizeof(stru_35F1E[0]), // 1
+    sizeof(stru_35F6E) / sizeof(stru_35F6E[0]), // 2
+    sizeof(stru_35FBE) / sizeof(stru_35FBE[0]), // 3
+    sizeof(stru_3600E) / sizeof(stru_3600E[0]), // 4
+    sizeof(stru_3605E) / sizeof(stru_3605E[0]), // 5
+    sizeof(stru_360AE) / sizeof(stru_360AE[0]), // 6
+    sizeof(stru_360FE) / sizeof(stru_360FE[0]), // 7
+    sizeof(stru_3614E) / sizeof(stru_3614E[0]), // 8
+    sizeof(stru_3619E) / sizeof(stru_3619E[0]), // 9
+    sizeof(stru_361CE) / sizeof(stru_361CE[0]), // 10
+    sizeof(stru_361FE) / sizeof(stru_361FE[0]), // 11
+    sizeof(stru_3622E) / sizeof(stru_3622E[0]), // 12
+    sizeof(stru_3625E) / sizeof(stru_3625E[0]), // 13
+    sizeof(stru_3628E) / sizeof(stru_3628E[0]), // 14
+    sizeof(stru_362BE) / sizeof(stru_362BE[0]), // 15
+    sizeof(stru_362EE) / sizeof(stru_362EE[0]), // 16
+    sizeof(stru_3631E) / sizeof(stru_3631E[0]), // 17
+    sizeof(stru_3634E) / sizeof(stru_3634E[0]), // 18
+    sizeof(stru_3637E) / sizeof(stru_3637E[0]), // 19
+    sizeof(stru_363AE) / sizeof(stru_363AE[0]), // 20
+    sizeof(stru_363DE) / sizeof(stru_363DE[0]), // 21
+    sizeof(stru_3640E) / sizeof(stru_3640E[0]), // 22
+    sizeof(stru_3643E) / sizeof(stru_3643E[0]), // 23
+    sizeof(stru_3646E) / sizeof(stru_3646E[0]), // 24
+    sizeof(stru_3649E) / sizeof(stru_3649E[0]), // 25
+    sizeof(stru_364CE) / sizeof(stru_364CE[0]), // 26
+    sizeof(stru_364FE) / sizeof(stru_364FE[0]), // 27
+    sizeof(stru_3652E) / sizeof(stru_3652E[0]), // 28
+    sizeof(stru_3655E) / sizeof(stru_3655E[0]), // 29
+    sizeof(stru_3658E) / sizeof(stru_3658E[0]), // 30
+    sizeof(stru_365BE) / sizeof(stru_365BE[0]), // 31
+    sizeof(stru_365EE) / sizeof(stru_365EE[0]), // 32
+    sizeof(stru_3661E) / sizeof(stru_3661E[0]), // 33
+    sizeof(stru_3664E) / sizeof(stru_3664E[0]), // 34
+};
+static_assert(sizeof(mSpriteSheetTypes_Hill_PC_FrameCounts)/sizeof(mSpriteSheetTypes_Hill_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_Hill_PC)/sizeof(mSpriteSheetTypes_Hill_PC[0]), "Frame metadata mismatch");
+
 
 sSpriteSheet stru_42928[37] =
 {
@@ -801,6 +878,15 @@ const sSpriteSheet* mSpriteSheetTypes_Briefing_PC[] = {
 	stru_42DD8,
 	stru_42DE8
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_Briefing_PC_FrameCounts[] = {
+    sizeof(stru_42928) / sizeof(stru_42928[0]), // 0
+    sizeof(stru_42B78) / sizeof(stru_42B78[0]), // 1
+    sizeof(stru_42DD8) / sizeof(stru_42DD8[0]), // 2
+    sizeof(stru_42DE8) / sizeof(stru_42DE8[0]), // 3
+};
+static_assert(sizeof(mSpriteSheetTypes_Briefing_PC_FrameCounts)/sizeof(mSpriteSheetTypes_Briefing_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_Briefing_PC)/sizeof(mSpriteSheetTypes_Briefing_PC[0]), "Frame metadata mismatch");
+
 
 sSpriteSheet stru_32FAC[3] =
 {
@@ -2585,6 +2671,243 @@ const sSpriteSheet* mSpriteSheetTypes_InGame_PC[] = {
 	/* 0x00 */ stru_35C1C,
 	/* 0x00 */ stru_35C2C
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_InGame_PC_FrameCounts[] = {
+    sizeof(stru_32FAC) / sizeof(stru_32FAC[0]), // 0
+    sizeof(stru_32FDC) / sizeof(stru_32FDC[0]), // 1
+    sizeof(stru_3300C) / sizeof(stru_3300C[0]), // 2
+    sizeof(stru_3303C) / sizeof(stru_3303C[0]), // 3
+    sizeof(stru_3306C) / sizeof(stru_3306C[0]), // 4
+    sizeof(stru_3309C) / sizeof(stru_3309C[0]), // 5
+    sizeof(stru_330CC) / sizeof(stru_330CC[0]), // 6
+    sizeof(stru_330FC) / sizeof(stru_330FC[0]), // 7
+    sizeof(stru_3312C) / sizeof(stru_3312C[0]), // 8
+    sizeof(stru_3315C) / sizeof(stru_3315C[0]), // 9
+    sizeof(stru_3318C) / sizeof(stru_3318C[0]), // 10
+    sizeof(stru_331BC) / sizeof(stru_331BC[0]), // 11
+    sizeof(stru_331EC) / sizeof(stru_331EC[0]), // 12
+    sizeof(stru_3321C) / sizeof(stru_3321C[0]), // 13
+    sizeof(stru_3324C) / sizeof(stru_3324C[0]), // 14
+    sizeof(stru_3327C) / sizeof(stru_3327C[0]), // 15
+    sizeof(stru_332AC) / sizeof(stru_332AC[0]), // 16
+    sizeof(stru_332BC) / sizeof(stru_332BC[0]), // 17
+    sizeof(stru_332CC) / sizeof(stru_332CC[0]), // 18
+    sizeof(stru_332DC) / sizeof(stru_332DC[0]), // 19
+    sizeof(stru_332EC) / sizeof(stru_332EC[0]), // 20
+    sizeof(stru_332FC) / sizeof(stru_332FC[0]), // 21
+    sizeof(stru_3330C) / sizeof(stru_3330C[0]), // 22
+    sizeof(stru_3331C) / sizeof(stru_3331C[0]), // 23
+    sizeof(stru_3332C) / sizeof(stru_3332C[0]), // 24
+    sizeof(stru_3334C) / sizeof(stru_3334C[0]), // 25
+    sizeof(stru_3336C) / sizeof(stru_3336C[0]), // 26
+    sizeof(stru_3338C) / sizeof(stru_3338C[0]), // 27
+    sizeof(stru_333AC) / sizeof(stru_333AC[0]), // 28
+    sizeof(stru_333CC) / sizeof(stru_333CC[0]), // 29
+    sizeof(stru_333EC) / sizeof(stru_333EC[0]), // 30
+    sizeof(stru_3340C) / sizeof(stru_3340C[0]), // 31
+    sizeof(stru_3342C) / sizeof(stru_3342C[0]), // 32
+    sizeof(stru_3344C) / sizeof(stru_3344C[0]), // 33
+    sizeof(stru_3346C) / sizeof(stru_3346C[0]), // 34
+    sizeof(stru_3348C) / sizeof(stru_3348C[0]), // 35
+    sizeof(stru_334AC) / sizeof(stru_334AC[0]), // 36
+    sizeof(stru_334CC) / sizeof(stru_334CC[0]), // 37
+    sizeof(stru_334EC) / sizeof(stru_334EC[0]), // 38
+    sizeof(stru_3350C) / sizeof(stru_3350C[0]), // 39
+    sizeof(stru_3352C) / sizeof(stru_3352C[0]), // 40
+    sizeof(stru_3354C) / sizeof(stru_3354C[0]), // 41
+    sizeof(stru_3356C) / sizeof(stru_3356C[0]), // 42
+    sizeof(stru_3358C) / sizeof(stru_3358C[0]), // 43
+    sizeof(stru_335AC) / sizeof(stru_335AC[0]), // 44
+    sizeof(stru_335CC) / sizeof(stru_335CC[0]), // 45
+    sizeof(stru_335EC) / sizeof(stru_335EC[0]), // 46
+    sizeof(stru_3360C) / sizeof(stru_3360C[0]), // 47
+    sizeof(stru_3362C) / sizeof(stru_3362C[0]), // 48
+    sizeof(stru_3365C) / sizeof(stru_3365C[0]), // 49
+    sizeof(stru_3368C) / sizeof(stru_3368C[0]), // 50
+    sizeof(stru_336BC) / sizeof(stru_336BC[0]), // 51
+    sizeof(stru_336EC) / sizeof(stru_336EC[0]), // 52
+    sizeof(stru_3371C) / sizeof(stru_3371C[0]), // 53
+    sizeof(stru_3374C) / sizeof(stru_3374C[0]), // 54
+    sizeof(stru_3377C) / sizeof(stru_3377C[0]), // 55
+    sizeof(stru_337AC) / sizeof(stru_337AC[0]), // 56
+    sizeof(stru_3380C) / sizeof(stru_3380C[0]), // 57
+    sizeof(stru_3383C) / sizeof(stru_3383C[0]), // 58
+    sizeof(stru_3386C) / sizeof(stru_3386C[0]), // 59
+    sizeof(stru_3389C) / sizeof(stru_3389C[0]), // 60
+    sizeof(stru_338CC) / sizeof(stru_338CC[0]), // 61
+    sizeof(stru_338FC) / sizeof(stru_338FC[0]), // 62
+    sizeof(stru_3393C) / sizeof(stru_3393C[0]), // 63
+    sizeof(stru_3396C) / sizeof(stru_3396C[0]), // 64
+    sizeof(stru_3399C) / sizeof(stru_3399C[0]), // 65
+    sizeof(stru_339FC) / sizeof(stru_339FC[0]), // 66
+    sizeof(stru_33A2C) / sizeof(stru_33A2C[0]), // 67
+    sizeof(stru_33A5C) / sizeof(stru_33A5C[0]), // 68
+    sizeof(stru_33A8C) / sizeof(stru_33A8C[0]), // 69
+    sizeof(stru_33ABC) / sizeof(stru_33ABC[0]), // 70
+    sizeof(stru_33AEC) / sizeof(stru_33AEC[0]), // 71
+    sizeof(stru_33B1C) / sizeof(stru_33B1C[0]), // 72
+    sizeof(stru_33B4C) / sizeof(stru_33B4C[0]), // 73
+    sizeof(stru_33B7C) / sizeof(stru_33B7C[0]), // 74
+    sizeof(stru_33BAC) / sizeof(stru_33BAC[0]), // 75
+    sizeof(stru_33BDC) / sizeof(stru_33BDC[0]), // 76
+    sizeof(stru_33C0C) / sizeof(stru_33C0C[0]), // 77
+    sizeof(stru_33C3C) / sizeof(stru_33C3C[0]), // 78
+    sizeof(stru_33C6C) / sizeof(stru_33C6C[0]), // 79
+    sizeof(stru_33C9C) / sizeof(stru_33C9C[0]), // 80
+    sizeof(stru_33CCC) / sizeof(stru_33CCC[0]), // 81
+    sizeof(stru_33CFC) / sizeof(stru_33CFC[0]), // 82
+    sizeof(stru_33D0C) / sizeof(stru_33D0C[0]), // 83
+    sizeof(stru_33D1C) / sizeof(stru_33D1C[0]), // 84
+    sizeof(stru_33D2C) / sizeof(stru_33D2C[0]), // 85
+    sizeof(stru_33D3C) / sizeof(stru_33D3C[0]), // 86
+    sizeof(stru_33D4C) / sizeof(stru_33D4C[0]), // 87
+    sizeof(stru_33D5C) / sizeof(stru_33D5C[0]), // 88
+    sizeof(stru_33D6C) / sizeof(stru_33D6C[0]), // 89
+    sizeof(stru_33D7C) / sizeof(stru_33D7C[0]), // 90
+    sizeof(stru_33D9C) / sizeof(stru_33D9C[0]), // 91
+    sizeof(stru_33DBC) / sizeof(stru_33DBC[0]), // 92
+    sizeof(stru_33DDC) / sizeof(stru_33DDC[0]), // 93
+    sizeof(stru_33DFC) / sizeof(stru_33DFC[0]), // 94
+    sizeof(stru_33E1C) / sizeof(stru_33E1C[0]), // 95
+    sizeof(stru_33E3C) / sizeof(stru_33E3C[0]), // 96
+    sizeof(stru_33E5C) / sizeof(stru_33E5C[0]), // 97
+    sizeof(stru_33E7C) / sizeof(stru_33E7C[0]), // 98
+    sizeof(stru_33E9C) / sizeof(stru_33E9C[0]), // 99
+    sizeof(stru_33EBC) / sizeof(stru_33EBC[0]), // 100
+    sizeof(stru_33EDC) / sizeof(stru_33EDC[0]), // 101
+    sizeof(stru_33EFC) / sizeof(stru_33EFC[0]), // 102
+    sizeof(stru_33F1C) / sizeof(stru_33F1C[0]), // 103
+    sizeof(stru_33F3C) / sizeof(stru_33F3C[0]), // 104
+    sizeof(stru_33F5C) / sizeof(stru_33F5C[0]), // 105
+    sizeof(stru_33F8C) / sizeof(stru_33F8C[0]), // 106
+    sizeof(stru_33FAC) / sizeof(stru_33FAC[0]), // 107
+    sizeof(stru_33FCC) / sizeof(stru_33FCC[0]), // 108
+    sizeof(stru_33FEC) / sizeof(stru_33FEC[0]), // 109
+    sizeof(stru_3400C) / sizeof(stru_3400C[0]), // 110
+    sizeof(stru_3402C) / sizeof(stru_3402C[0]), // 111
+    sizeof(stru_3404C) / sizeof(stru_3404C[0]), // 112
+    sizeof(stru_3406C) / sizeof(stru_3406C[0]), // 113
+    sizeof(stru_3408C) / sizeof(stru_3408C[0]), // 114
+    sizeof(stru_340BC) / sizeof(stru_340BC[0]), // 115
+    sizeof(stru_340EC) / sizeof(stru_340EC[0]), // 116
+    sizeof(stru_3411C) / sizeof(stru_3411C[0]), // 117
+    sizeof(stru_3414C) / sizeof(stru_3414C[0]), // 118
+    sizeof(stru_3417C) / sizeof(stru_3417C[0]), // 119
+    sizeof(stru_341AC) / sizeof(stru_341AC[0]), // 120
+    sizeof(stru_341DC) / sizeof(stru_341DC[0]), // 121
+    sizeof(stru_3420C) / sizeof(stru_3420C[0]), // 122
+    sizeof(stru_3426C) / sizeof(stru_3426C[0]), // 123
+    sizeof(stru_3426C) / sizeof(stru_3426C[0]), // 124
+    sizeof(stru_342EC) / sizeof(stru_342EC[0]), // 125
+    sizeof(stru_3432C) / sizeof(stru_3432C[0]), // 126
+    sizeof(stru_3436C) / sizeof(stru_3436C[0]), // 127
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 128
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 129
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 130
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 131
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 132
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 133
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 134
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 135
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 136
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 137
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 138
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 139
+    sizeof(stru_344EC) / sizeof(stru_344EC[0]), // 140
+    sizeof(stru_3452C) / sizeof(stru_3452C[0]), // 141
+    sizeof(stru_3455C) / sizeof(stru_3455C[0]), // 142
+    sizeof(stru_345CC) / sizeof(stru_345CC[0]), // 143
+    sizeof(stru_345DC) / sizeof(stru_345DC[0]), // 144
+    sizeof(stru_345EC) / sizeof(stru_345EC[0]), // 145
+    sizeof(stru_345FC) / sizeof(stru_345FC[0]), // 146
+    sizeof(stru_3460C) / sizeof(stru_3460C[0]), // 147
+    sizeof(stru_3461C) / sizeof(stru_3461C[0]), // 148
+    sizeof(stru_3464C) / sizeof(stru_3464C[0]), // 149
+    sizeof(stru_3474C) / sizeof(stru_3474C[0]), // 150
+    sizeof(stru_3478C) / sizeof(stru_3478C[0]), // 151
+    sizeof(stru_347AC) / sizeof(stru_347AC[0]), // 152
+    sizeof(stru_347CC) / sizeof(stru_347CC[0]), // 153
+    sizeof(stru_347DC) / sizeof(stru_347DC[0]), // 154
+    sizeof(stru_3481C) / sizeof(stru_3481C[0]), // 155
+    sizeof(stru_3482C) / sizeof(stru_3482C[0]), // 156
+    sizeof(stru_3486C) / sizeof(stru_3486C[0]), // 157
+    sizeof(stru_348EC) / sizeof(stru_348EC[0]), // 158
+    sizeof(stru_3490C) / sizeof(stru_3490C[0]), // 159
+    sizeof(stru_3494C) / sizeof(stru_3494C[0]), // 160
+    sizeof(stru_3495C) / sizeof(stru_3495C[0]), // 161
+    sizeof(stru_3496C) / sizeof(stru_3496C[0]), // 162
+    sizeof(stru_3497C) / sizeof(stru_3497C[0]), // 163
+    sizeof(stru_34A7C) / sizeof(stru_34A7C[0]), // 164
+    sizeof(stru_34AFC) / sizeof(stru_34AFC[0]), // 165
+    sizeof(stru_34BFC) / sizeof(stru_34BFC[0]), // 166
+    sizeof(stru_34BFC) / sizeof(stru_34BFC[0]), // 167
+    sizeof(stru_34C7C) / sizeof(stru_34C7C[0]), // 168
+    sizeof(stru_34CAC) / sizeof(stru_34CAC[0]), // 169
+    sizeof(stru_34CDC) / sizeof(stru_34CDC[0]), // 170
+    sizeof(stru_34D0C) / sizeof(stru_34D0C[0]), // 171
+    sizeof(stru_34D3C) / sizeof(stru_34D3C[0]), // 172
+    sizeof(stru_34D6C) / sizeof(stru_34D6C[0]), // 173
+    sizeof(stru_34DAC) / sizeof(stru_34DAC[0]), // 174
+    sizeof(stru_34DDC) / sizeof(stru_34DDC[0]), // 175
+    sizeof(stru_34E0C) / sizeof(stru_34E0C[0]), // 176
+    sizeof(stru_34E1C) / sizeof(stru_34E1C[0]), // 177
+    sizeof(stru_34E2C) / sizeof(stru_34E2C[0]), // 178
+    sizeof(stru_34E3C) / sizeof(stru_34E3C[0]), // 179
+    sizeof(stru_34E4C) / sizeof(stru_34E4C[0]), // 180
+    sizeof(stru_34E5C) / sizeof(stru_34E5C[0]), // 181
+    sizeof(stru_34E6C) / sizeof(stru_34E6C[0]), // 182
+    sizeof(stru_34E7C) / sizeof(stru_34E7C[0]), // 183
+    sizeof(stru_34E8C) / sizeof(stru_34E8C[0]), // 184
+    sizeof(stru_34E9C) / sizeof(stru_34E9C[0]), // 185
+    sizeof(stru_34EAC) / sizeof(stru_34EAC[0]), // 186
+    sizeof(stru_34EBC) / sizeof(stru_34EBC[0]), // 187
+    sizeof(stru_34ECC) / sizeof(stru_34ECC[0]), // 188
+    sizeof(stru_34EDC) / sizeof(stru_34EDC[0]), // 189
+    sizeof(stru_34EEC) / sizeof(stru_34EEC[0]), // 190
+    sizeof(stru_34EFC) / sizeof(stru_34EFC[0]), // 191
+    sizeof(stru_34F0C) / sizeof(stru_34F0C[0]), // 192
+    sizeof(stru_34F4C) / sizeof(stru_34F4C[0]), // 193
+    sizeof(stru_34F5C) / sizeof(stru_34F5C[0]), // 194
+    sizeof(stru_34F6C) / sizeof(stru_34F6C[0]), // 195
+    sizeof(stru_34F7C) / sizeof(stru_34F7C[0]), // 196
+    sizeof(stru_34FBC) / sizeof(stru_34FBC[0]), // 197
+    sizeof(stru_34FEC) / sizeof(stru_34FEC[0]), // 198
+    sizeof(stru_3502C) / sizeof(stru_3502C[0]), // 199
+    sizeof(stru_3503C) / sizeof(stru_3503C[0]), // 200
+    sizeof(stru_3504C) / sizeof(stru_3504C[0]), // 201
+    sizeof(stru_3509C) / sizeof(stru_3509C[0]), // 202
+    sizeof(SpriteSheet_Text_Again) / sizeof(SpriteSheet_Text_Again[0]), // 203
+    sizeof(stru_350BC) / sizeof(stru_350BC[0]), // 204
+    sizeof(stru_3510C) / sizeof(stru_3510C[0]), // 205
+    sizeof(stru_3514C) / sizeof(stru_3514C[0]), // 206
+    sizeof(stru_351BC) / sizeof(stru_351BC[0]), // 207
+    sizeof(stru_351BC) / sizeof(stru_351BC[0]), // 208
+    sizeof(stru_352BC) / sizeof(stru_352BC[0]), // 209
+    sizeof(stru_353BC) / sizeof(stru_353BC[0]), // 210
+    sizeof(stru_354BC) / sizeof(stru_354BC[0]), // 211
+    sizeof(stru_3551C) / sizeof(stru_3551C[0]), // 212
+    sizeof(stru_3557C) / sizeof(stru_3557C[0]), // 213
+    sizeof(stru_355AC) / sizeof(stru_355AC[0]), // 214
+    sizeof(stru_3564C) / sizeof(stru_3564C[0]), // 215
+    sizeof(stru_356CC) / sizeof(stru_356CC[0]), // 216
+    sizeof(stru_3584C) / sizeof(stru_3584C[0]), // 217
+    sizeof(stru_359CC) / sizeof(stru_359CC[0]), // 218
+    sizeof(stru_359FC) / sizeof(stru_359FC[0]), // 219
+    sizeof(stru_35A9C) / sizeof(stru_35A9C[0]), // 220
+    sizeof(stru_35AAC) / sizeof(stru_35AAC[0]), // 221
+    sizeof(stru_35ABC) / sizeof(stru_35ABC[0]), // 222
+    sizeof(stru_35B0C) / sizeof(stru_35B0C[0]), // 223
+    sizeof(stru_35B6C) / sizeof(stru_35B6C[0]), // 224
+    sizeof(stru_35B7C) / sizeof(stru_35B7C[0]), // 225
+    sizeof(stru_35BBC) / sizeof(stru_35BBC[0]), // 226
+    sizeof(stru_35BEC) / sizeof(stru_35BEC[0]), // 227
+    sizeof(stru_35BFC) / sizeof(stru_35BFC[0]), // 228
+    sizeof(stru_35C0C) / sizeof(stru_35C0C[0]), // 229
+    sizeof(stru_35C1C) / sizeof(stru_35C1C[0]), // 230
+    sizeof(stru_35C2C) / sizeof(stru_35C2C[0]), // 231
+};
+static_assert(sizeof(mSpriteSheetTypes_InGame_PC_FrameCounts)/sizeof(mSpriteSheetTypes_InGame_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_InGame_PC)/sizeof(mSpriteSheetTypes_InGame_PC[0]), "Frame metadata mismatch");
+
 
 const sSpriteSheet* mSpriteSheetTypes_InGame_PC2[] = {
     /* 0x00 */ stru_32FAC,		// Soldier Walk		Face Forward
@@ -2839,6 +3162,244 @@ const sSpriteSheet* mSpriteSheetTypes_InGame_PC2[] = {
     /* 0x00 */ stru_35C2C,
     /* 0x00 */ stru_1B108
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_InGame_PC2_FrameCounts[] = {
+    sizeof(stru_32FAC) / sizeof(stru_32FAC[0]), // 0
+    sizeof(stru_32FDC) / sizeof(stru_32FDC[0]), // 1
+    sizeof(stru_3300C) / sizeof(stru_3300C[0]), // 2
+    sizeof(stru_3303C) / sizeof(stru_3303C[0]), // 3
+    sizeof(stru_3306C) / sizeof(stru_3306C[0]), // 4
+    sizeof(stru_3309C) / sizeof(stru_3309C[0]), // 5
+    sizeof(stru_330CC) / sizeof(stru_330CC[0]), // 6
+    sizeof(stru_330FC) / sizeof(stru_330FC[0]), // 7
+    sizeof(stru_3312C) / sizeof(stru_3312C[0]), // 8
+    sizeof(stru_3315C) / sizeof(stru_3315C[0]), // 9
+    sizeof(stru_3318C) / sizeof(stru_3318C[0]), // 10
+    sizeof(stru_331BC) / sizeof(stru_331BC[0]), // 11
+    sizeof(stru_331EC) / sizeof(stru_331EC[0]), // 12
+    sizeof(stru_3321C) / sizeof(stru_3321C[0]), // 13
+    sizeof(stru_3324C) / sizeof(stru_3324C[0]), // 14
+    sizeof(stru_3327C) / sizeof(stru_3327C[0]), // 15
+    sizeof(stru_332AC) / sizeof(stru_332AC[0]), // 16
+    sizeof(stru_332BC) / sizeof(stru_332BC[0]), // 17
+    sizeof(stru_332CC) / sizeof(stru_332CC[0]), // 18
+    sizeof(stru_332DC) / sizeof(stru_332DC[0]), // 19
+    sizeof(stru_332EC) / sizeof(stru_332EC[0]), // 20
+    sizeof(stru_332FC) / sizeof(stru_332FC[0]), // 21
+    sizeof(stru_3330C) / sizeof(stru_3330C[0]), // 22
+    sizeof(stru_3331C) / sizeof(stru_3331C[0]), // 23
+    sizeof(stru_3332C) / sizeof(stru_3332C[0]), // 24
+    sizeof(stru_3334C) / sizeof(stru_3334C[0]), // 25
+    sizeof(stru_3336C) / sizeof(stru_3336C[0]), // 26
+    sizeof(stru_3338C) / sizeof(stru_3338C[0]), // 27
+    sizeof(stru_333AC) / sizeof(stru_333AC[0]), // 28
+    sizeof(stru_333CC) / sizeof(stru_333CC[0]), // 29
+    sizeof(stru_333EC) / sizeof(stru_333EC[0]), // 30
+    sizeof(stru_3340C) / sizeof(stru_3340C[0]), // 31
+    sizeof(stru_3342C) / sizeof(stru_3342C[0]), // 32
+    sizeof(stru_3344C) / sizeof(stru_3344C[0]), // 33
+    sizeof(stru_3346C) / sizeof(stru_3346C[0]), // 34
+    sizeof(stru_3348C) / sizeof(stru_3348C[0]), // 35
+    sizeof(stru_334AC) / sizeof(stru_334AC[0]), // 36
+    sizeof(stru_334CC) / sizeof(stru_334CC[0]), // 37
+    sizeof(stru_334EC) / sizeof(stru_334EC[0]), // 38
+    sizeof(stru_3350C) / sizeof(stru_3350C[0]), // 39
+    sizeof(stru_3352C) / sizeof(stru_3352C[0]), // 40
+    sizeof(stru_3354C) / sizeof(stru_3354C[0]), // 41
+    sizeof(stru_3356C) / sizeof(stru_3356C[0]), // 42
+    sizeof(stru_3358C) / sizeof(stru_3358C[0]), // 43
+    sizeof(stru_335AC) / sizeof(stru_335AC[0]), // 44
+    sizeof(stru_335CC) / sizeof(stru_335CC[0]), // 45
+    sizeof(stru_335EC) / sizeof(stru_335EC[0]), // 46
+    sizeof(stru_3360C) / sizeof(stru_3360C[0]), // 47
+    sizeof(stru_3362C) / sizeof(stru_3362C[0]), // 48
+    sizeof(stru_3365C) / sizeof(stru_3365C[0]), // 49
+    sizeof(stru_3368C) / sizeof(stru_3368C[0]), // 50
+    sizeof(stru_336BC) / sizeof(stru_336BC[0]), // 51
+    sizeof(stru_336EC) / sizeof(stru_336EC[0]), // 52
+    sizeof(stru_3371C) / sizeof(stru_3371C[0]), // 53
+    sizeof(stru_3374C) / sizeof(stru_3374C[0]), // 54
+    sizeof(stru_3377C) / sizeof(stru_3377C[0]), // 55
+    sizeof(stru_337AC) / sizeof(stru_337AC[0]), // 56
+    sizeof(stru_3380C) / sizeof(stru_3380C[0]), // 57
+    sizeof(stru_3383C) / sizeof(stru_3383C[0]), // 58
+    sizeof(stru_3386C) / sizeof(stru_3386C[0]), // 59
+    sizeof(stru_3389C) / sizeof(stru_3389C[0]), // 60
+    sizeof(stru_338CC) / sizeof(stru_338CC[0]), // 61
+    sizeof(stru_338FC) / sizeof(stru_338FC[0]), // 62
+    sizeof(stru_3393C) / sizeof(stru_3393C[0]), // 63
+    sizeof(stru_3396C) / sizeof(stru_3396C[0]), // 64
+    sizeof(stru_3399C) / sizeof(stru_3399C[0]), // 65
+    sizeof(stru_339FC) / sizeof(stru_339FC[0]), // 66
+    sizeof(stru_33A2C) / sizeof(stru_33A2C[0]), // 67
+    sizeof(stru_33A5C) / sizeof(stru_33A5C[0]), // 68
+    sizeof(stru_33A8C) / sizeof(stru_33A8C[0]), // 69
+    sizeof(stru_33ABC) / sizeof(stru_33ABC[0]), // 70
+    sizeof(stru_33AEC) / sizeof(stru_33AEC[0]), // 71
+    sizeof(stru_33B1C) / sizeof(stru_33B1C[0]), // 72
+    sizeof(stru_33B4C) / sizeof(stru_33B4C[0]), // 73
+    sizeof(stru_33B7C) / sizeof(stru_33B7C[0]), // 74
+    sizeof(stru_33BAC) / sizeof(stru_33BAC[0]), // 75
+    sizeof(stru_33BDC) / sizeof(stru_33BDC[0]), // 76
+    sizeof(stru_33C0C) / sizeof(stru_33C0C[0]), // 77
+    sizeof(stru_33C3C) / sizeof(stru_33C3C[0]), // 78
+    sizeof(stru_33C6C) / sizeof(stru_33C6C[0]), // 79
+    sizeof(stru_33C9C) / sizeof(stru_33C9C[0]), // 80
+    sizeof(stru_33CCC) / sizeof(stru_33CCC[0]), // 81
+    sizeof(stru_33CFC) / sizeof(stru_33CFC[0]), // 82
+    sizeof(stru_33D0C) / sizeof(stru_33D0C[0]), // 83
+    sizeof(stru_33D1C) / sizeof(stru_33D1C[0]), // 84
+    sizeof(stru_33D2C) / sizeof(stru_33D2C[0]), // 85
+    sizeof(stru_33D3C) / sizeof(stru_33D3C[0]), // 86
+    sizeof(stru_33D4C) / sizeof(stru_33D4C[0]), // 87
+    sizeof(stru_33D5C) / sizeof(stru_33D5C[0]), // 88
+    sizeof(stru_33D6C) / sizeof(stru_33D6C[0]), // 89
+    sizeof(stru_33D7C) / sizeof(stru_33D7C[0]), // 90
+    sizeof(stru_33D9C) / sizeof(stru_33D9C[0]), // 91
+    sizeof(stru_33DBC) / sizeof(stru_33DBC[0]), // 92
+    sizeof(stru_33DDC) / sizeof(stru_33DDC[0]), // 93
+    sizeof(stru_33DFC) / sizeof(stru_33DFC[0]), // 94
+    sizeof(stru_33E1C) / sizeof(stru_33E1C[0]), // 95
+    sizeof(stru_33E3C) / sizeof(stru_33E3C[0]), // 96
+    sizeof(stru_33E5C) / sizeof(stru_33E5C[0]), // 97
+    sizeof(stru_33E7C) / sizeof(stru_33E7C[0]), // 98
+    sizeof(stru_33E9C) / sizeof(stru_33E9C[0]), // 99
+    sizeof(stru_33EBC) / sizeof(stru_33EBC[0]), // 100
+    sizeof(stru_33EDC) / sizeof(stru_33EDC[0]), // 101
+    sizeof(stru_33EFC) / sizeof(stru_33EFC[0]), // 102
+    sizeof(stru_33F1C) / sizeof(stru_33F1C[0]), // 103
+    sizeof(stru_33F3C) / sizeof(stru_33F3C[0]), // 104
+    sizeof(stru_33F5C) / sizeof(stru_33F5C[0]), // 105
+    sizeof(stru_33F8C) / sizeof(stru_33F8C[0]), // 106
+    sizeof(stru_33FAC) / sizeof(stru_33FAC[0]), // 107
+    sizeof(stru_33FCC) / sizeof(stru_33FCC[0]), // 108
+    sizeof(stru_33FEC) / sizeof(stru_33FEC[0]), // 109
+    sizeof(stru_3400C) / sizeof(stru_3400C[0]), // 110
+    sizeof(stru_3402C) / sizeof(stru_3402C[0]), // 111
+    sizeof(stru_3404C) / sizeof(stru_3404C[0]), // 112
+    sizeof(stru_3406C) / sizeof(stru_3406C[0]), // 113
+    sizeof(stru_3408C) / sizeof(stru_3408C[0]), // 114
+    sizeof(stru_340BC) / sizeof(stru_340BC[0]), // 115
+    sizeof(stru_340EC) / sizeof(stru_340EC[0]), // 116
+    sizeof(stru_3411C) / sizeof(stru_3411C[0]), // 117
+    sizeof(stru_3414C) / sizeof(stru_3414C[0]), // 118
+    sizeof(stru_3417C) / sizeof(stru_3417C[0]), // 119
+    sizeof(stru_341AC) / sizeof(stru_341AC[0]), // 120
+    sizeof(stru_341DC) / sizeof(stru_341DC[0]), // 121
+    sizeof(stru_3420C) / sizeof(stru_3420C[0]), // 122
+    sizeof(stru_3426C) / sizeof(stru_3426C[0]), // 123
+    sizeof(stru_3426C) / sizeof(stru_3426C[0]), // 124
+    sizeof(stru_342EC) / sizeof(stru_342EC[0]), // 125
+    sizeof(stru_3432C) / sizeof(stru_3432C[0]), // 126
+    sizeof(stru_3436C) / sizeof(stru_3436C[0]), // 127
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 128
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 129
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 130
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 131
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 132
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 133
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 134
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 135
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 136
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 137
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 138
+    sizeof(stru_343EC) / sizeof(stru_343EC[0]), // 139
+    sizeof(stru_344EC) / sizeof(stru_344EC[0]), // 140
+    sizeof(stru_3452C) / sizeof(stru_3452C[0]), // 141
+    sizeof(stru_3455C) / sizeof(stru_3455C[0]), // 142
+    sizeof(stru_345CC) / sizeof(stru_345CC[0]), // 143
+    sizeof(stru_345DC) / sizeof(stru_345DC[0]), // 144
+    sizeof(stru_345EC) / sizeof(stru_345EC[0]), // 145
+    sizeof(stru_345FC) / sizeof(stru_345FC[0]), // 146
+    sizeof(stru_3460C) / sizeof(stru_3460C[0]), // 147
+    sizeof(stru_3461C) / sizeof(stru_3461C[0]), // 148
+    sizeof(stru_3464C) / sizeof(stru_3464C[0]), // 149
+    sizeof(stru_3474C) / sizeof(stru_3474C[0]), // 150
+    sizeof(stru_3478C) / sizeof(stru_3478C[0]), // 151
+    sizeof(stru_347AC) / sizeof(stru_347AC[0]), // 152
+    sizeof(stru_347CC) / sizeof(stru_347CC[0]), // 153
+    sizeof(stru_347DC) / sizeof(stru_347DC[0]), // 154
+    sizeof(stru_3481C) / sizeof(stru_3481C[0]), // 155
+    sizeof(stru_3482C) / sizeof(stru_3482C[0]), // 156
+    sizeof(stru_3486C) / sizeof(stru_3486C[0]), // 157
+    sizeof(stru_348EC) / sizeof(stru_348EC[0]), // 158
+    sizeof(stru_3490C) / sizeof(stru_3490C[0]), // 159
+    sizeof(stru_3494C) / sizeof(stru_3494C[0]), // 160
+    sizeof(stru_3495C) / sizeof(stru_3495C[0]), // 161
+    sizeof(stru_3496C) / sizeof(stru_3496C[0]), // 162
+    sizeof(stru_3497C) / sizeof(stru_3497C[0]), // 163
+    sizeof(stru_34A7C) / sizeof(stru_34A7C[0]), // 164
+    sizeof(stru_34AFC) / sizeof(stru_34AFC[0]), // 165
+    sizeof(stru_34BFC) / sizeof(stru_34BFC[0]), // 166
+    sizeof(stru_34BFC) / sizeof(stru_34BFC[0]), // 167
+    sizeof(stru_34C7C) / sizeof(stru_34C7C[0]), // 168
+    sizeof(stru_34CAC) / sizeof(stru_34CAC[0]), // 169
+    sizeof(stru_34CDC) / sizeof(stru_34CDC[0]), // 170
+    sizeof(stru_34D0C) / sizeof(stru_34D0C[0]), // 171
+    sizeof(stru_34D3C) / sizeof(stru_34D3C[0]), // 172
+    sizeof(stru_34D6C) / sizeof(stru_34D6C[0]), // 173
+    sizeof(stru_34DAC) / sizeof(stru_34DAC[0]), // 174
+    sizeof(stru_34DDC) / sizeof(stru_34DDC[0]), // 175
+    sizeof(stru_34E0C) / sizeof(stru_34E0C[0]), // 176
+    sizeof(stru_34E1C) / sizeof(stru_34E1C[0]), // 177
+    sizeof(stru_34E2C) / sizeof(stru_34E2C[0]), // 178
+    sizeof(stru_34E3C) / sizeof(stru_34E3C[0]), // 179
+    sizeof(stru_34E4C) / sizeof(stru_34E4C[0]), // 180
+    sizeof(stru_34E5C) / sizeof(stru_34E5C[0]), // 181
+    sizeof(stru_34E6C) / sizeof(stru_34E6C[0]), // 182
+    sizeof(stru_34E7C) / sizeof(stru_34E7C[0]), // 183
+    sizeof(stru_34E8C) / sizeof(stru_34E8C[0]), // 184
+    sizeof(stru_34E9C) / sizeof(stru_34E9C[0]), // 185
+    sizeof(stru_34EAC) / sizeof(stru_34EAC[0]), // 186
+    sizeof(stru_34EBC) / sizeof(stru_34EBC[0]), // 187
+    sizeof(stru_34ECC) / sizeof(stru_34ECC[0]), // 188
+    sizeof(stru_34EDC) / sizeof(stru_34EDC[0]), // 189
+    sizeof(stru_34EEC) / sizeof(stru_34EEC[0]), // 190
+    sizeof(stru_34EFC) / sizeof(stru_34EFC[0]), // 191
+    sizeof(stru_34F0C) / sizeof(stru_34F0C[0]), // 192
+    sizeof(stru_34F4C) / sizeof(stru_34F4C[0]), // 193
+    sizeof(stru_34F5C) / sizeof(stru_34F5C[0]), // 194
+    sizeof(stru_34F6C) / sizeof(stru_34F6C[0]), // 195
+    sizeof(stru_34F7C) / sizeof(stru_34F7C[0]), // 196
+    sizeof(stru_34FBC) / sizeof(stru_34FBC[0]), // 197
+    sizeof(stru_34FEC) / sizeof(stru_34FEC[0]), // 198
+    sizeof(stru_3502C) / sizeof(stru_3502C[0]), // 199
+    sizeof(stru_3503C) / sizeof(stru_3503C[0]), // 200
+    sizeof(stru_3504C) / sizeof(stru_3504C[0]), // 201
+    sizeof(stru_3509C) / sizeof(stru_3509C[0]), // 202
+    sizeof(SpriteSheet_Text_Again_CF2) / sizeof(SpriteSheet_Text_Again_CF2[0]), // 203
+    sizeof(stru_350BC) / sizeof(stru_350BC[0]), // 204
+    sizeof(stru_3510C) / sizeof(stru_3510C[0]), // 205
+    sizeof(stru_3514C) / sizeof(stru_3514C[0]), // 206
+    sizeof(stru_351BC) / sizeof(stru_351BC[0]), // 207
+    sizeof(stru_351BC) / sizeof(stru_351BC[0]), // 208
+    sizeof(stru_352BC) / sizeof(stru_352BC[0]), // 209
+    sizeof(stru_353BC) / sizeof(stru_353BC[0]), // 210
+    sizeof(stru_354BC) / sizeof(stru_354BC[0]), // 211
+    sizeof(stru_3551C) / sizeof(stru_3551C[0]), // 212
+    sizeof(stru_3557C) / sizeof(stru_3557C[0]), // 213
+    sizeof(stru_355AC) / sizeof(stru_355AC[0]), // 214
+    sizeof(stru_3564C) / sizeof(stru_3564C[0]), // 215
+    sizeof(stru_356CC) / sizeof(stru_356CC[0]), // 216
+    sizeof(stru_3584C) / sizeof(stru_3584C[0]), // 217
+    sizeof(stru_359CC) / sizeof(stru_359CC[0]), // 218
+    sizeof(stru_359FC) / sizeof(stru_359FC[0]), // 219
+    sizeof(stru_35A9C) / sizeof(stru_35A9C[0]), // 220
+    sizeof(stru_35AAC) / sizeof(stru_35AAC[0]), // 221
+    sizeof(stru_35ABC) / sizeof(stru_35ABC[0]), // 222
+    sizeof(stru_35B0C) / sizeof(stru_35B0C[0]), // 223
+    sizeof(stru_35B6C) / sizeof(stru_35B6C[0]), // 224
+    sizeof(stru_35B7C) / sizeof(stru_35B7C[0]), // 225
+    sizeof(stru_35BBC) / sizeof(stru_35BBC[0]), // 226
+    sizeof(stru_35BEC) / sizeof(stru_35BEC[0]), // 227
+    sizeof(stru_35BFC) / sizeof(stru_35BFC[0]), // 228
+    sizeof(stru_35C0C) / sizeof(stru_35C0C[0]), // 229
+    sizeof(stru_35C1C) / sizeof(stru_35C1C[0]), // 230
+    sizeof(stru_35C2C) / sizeof(stru_35C2C[0]), // 231
+    sizeof(stru_1B108) / sizeof(stru_1B108[0]), // 232
+};
+static_assert(sizeof(mSpriteSheetTypes_InGame_PC2_FrameCounts)/sizeof(mSpriteSheetTypes_InGame_PC2_FrameCounts[0]) == sizeof(mSpriteSheetTypes_InGame_PC2)/sizeof(mSpriteSheetTypes_InGame_PC2[0]), "Frame metadata mismatch");
+
 
 /**
  * Service Screen
@@ -3023,3 +3584,18 @@ const sSpriteSheet* mSpriteSheetTypes_Service_PC[] = {
 	stru_441DB,	// service
 	stru_441EB
 };
+// Derived from the actual array extents (H2.3).
+const std::size_t mSpriteSheetTypes_Service_PC_FrameCounts[] = {
+    sizeof(stru_4398B) / sizeof(stru_4398B[0]), // 0
+    sizeof(stru_4399B) / sizeof(stru_4399B[0]), // 1
+    sizeof(stru_439AB) / sizeof(stru_439AB[0]), // 2
+    sizeof(stru_43B4B) / sizeof(stru_43B4B[0]), // 3
+    sizeof(stru_43CEB) / sizeof(stru_43CEB[0]), // 4
+    sizeof(stru_441AB) / sizeof(stru_441AB[0]), // 5
+    sizeof(stru_441BB) / sizeof(stru_441BB[0]), // 6
+    sizeof(stru_441CB) / sizeof(stru_441CB[0]), // 7
+    sizeof(stru_441DB) / sizeof(stru_441DB[0]), // 8
+    sizeof(stru_441EB) / sizeof(stru_441EB[0]), // 9
+};
+static_assert(sizeof(mSpriteSheetTypes_Service_PC_FrameCounts)/sizeof(mSpriteSheetTypes_Service_PC_FrameCounts[0]) == sizeof(mSpriteSheetTypes_Service_PC)/sizeof(mSpriteSheetTypes_Service_PC[0]), "Frame metadata mismatch");
+

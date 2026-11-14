@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "id": "enemy-death-71-f1-8x",
+      "file": "enemy-death-71-f1-8x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 8,
+      "sha256": "419aa13ec909eb268cf8db1e06c6bc511055a8a8af4f908976fd95d61fcf7a0b"
+    },
+    {
+      "id": "enemy-death-71-f1-12x",
+      "file": "enemy-death-71-f1-12x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 12,
+      "sha256": "945af734af1198aae4f054805681930d1edf2c0005bf14945b5cb30dcadb0966"
+    }
+  ],
+  "bindings": [
+    {
+      "key": "f06b98d0debe93b676cd17ba89a9b76e2b91484a08507c83e8d66215dc8237fb",
+      "decision": "replace-art",
+      "assets": {
+        "8": "enemy-death-71-f1-8x",
+        "12": "enemy-death-71-f1-12x"
+      }
+    }
+  ]
+}

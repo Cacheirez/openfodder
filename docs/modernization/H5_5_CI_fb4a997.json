@@ -1,0 +1,21 @@
+{
+  "observed_at": "2026-10-27T14:02:05.303Z",
+  "commit": "fb4a997fd5385a1ed02b7611a37ef6e5f85822e8",
+  "linux": {
+    "run_id": 40516260527,
+    "job_id": 122230843178,
+    "build": "success",
+    "screen_probe": "success",
+    "canonical_states": 301,
+    "global": "failure",
+    "failure": "HUD guard required whole Source/Mouse.cpp to match baseline; explicit new adapter was not normalized."
+  },
+  "windows": {
+    "run_id": 40516260926,
+    "job_id": 122230845682,
+    "build": "success",
+    "screen_probe": "success",
+    "global": "in_progress"
+  },
+  "next": "Narrow the legacy HUD guard to remove exactly the approved screen adapter, preserving all other Mouse.cpp and GUI_Element.cpp bytes. No engine changes in the correction."
+}

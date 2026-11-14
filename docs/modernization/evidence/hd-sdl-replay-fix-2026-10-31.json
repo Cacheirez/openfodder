@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-31",
+  "source_commit": "4856a8f657ce6505855bbe016a21cc2b73c3bd97",
+  "environment": "Linux local, SDL 3.4.0 static software, no mixer; not Windows/GPU",
+  "original_failed_runs": {
+    "windows": 41095340402,
+    "linux": 41095340185
+  },
+  "cause": "Absolute engine ticks 8/16 are skipped by seven restored replay phases with nonzero initial clocks.",
+  "python_tests": 31,
+  "hd8": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 1,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": 8,
+      "coverage": "11 reference phases",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": true,
+        "seconds": 148.038,
+        "executable_sha256": "9a54b91d84f5f9ed62981b1f81bd3393ca1644d878f307602b4860677eb56144"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": true,
+        "seconds": 104.096,
+        "executable_sha256": "9a54b91d84f5f9ed62981b1f81bd3393ca1644d878f307602b4860677eb56144"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "hd12": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 5,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": 12,
+      "coverage": "11 reference phases",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": true,
+        "seconds": 495.474,
+        "executable_sha256": "9a54b91d84f5f9ed62981b1f81bd3393ca1644d878f307602b4860677eb56144"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": true,
+        "seconds": 346.465,
+        "executable_sha256": "9a54b91d84f5f9ed62981b1f81bd3393ca1644d878f307602b4860677eb56144"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "windows_4856a8f": {
+    "run": 41194788492,
+    "conclusion": "cancelled",
+    "reason": "35-minute job budget exhausted during HD12 Amiga",
+    "hd8": "PASS: 11 phases, 22 pauses, 11361 states",
+    "hd12_pc": "PASS: 8 phases; overall HD12 incomplete",
+    "exe_sha256": "c24de602daaf4b0d37d00e7906ea1a317982736c5affcbfa902c0dbdd7f561cc",
+    "evidence_artifact": 13041342706,
+    "evidence_sha256": "2c2f5021363c1a150e71f19442da281445f6acf2aa67bed39d9259e553b25f7a"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "status": "PASS controlled publication; visual/campaign acceptance PENDING",
+  "preparation": {
+    "status": "PENDING",
+    "scope": "direction 7 only, three art keys, not full soldier coverage",
+    "source_config_sha256": "fc0f3ce774788f345f685b8d7a0d5524721e9b6a4e45d323bfa41c385c983ea8",
+    "source_frames": [
+      {
+        "sheet": 7,
+        "frame": 0,
+        "asset": "soldier-c01/source.png",
+        "source_sha256": "9fb5dd519e8589de6c6420e4385c8eb2e12ac1f24c83f9a64678a2d943e31c77",
+        "crop": [
+          406,
+          176,
+          969,
+          1026
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "status": "accepted-master"
+      },
+      {
+        "sheet": 7,
+        "frame": 1,
+        "asset": "soldier-pilot/s7-f1.png",
+        "source_sha256": "41df2fb73290a1d604060253c54c7aa8b6dff4d45945288800ca457269e44592",
+        "crop": [
+          404,
+          173,
+          971,
+          1023
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "status": "candidate-not-accepted"
+      },
+      {
+        "sheet": 7,
+        "frame": 2,
+        "asset": "soldier-walk-review/s7-f2-v2.png",
+        "source_sha256": "12895cc925d676ebb3b77a29eede5d3bc56e057f2a44c7fb1b3b196f4404565f",
+        "crop": [
+          405,
+          174,
+          969,
+          1024
+        ],
+        "placement": [
+          3,
+          10,
+          14
+        ],
+        "status": "candidate-not-accepted"
+      }
+    ],
+    "candidate_bindings": [
+      {
+        "platform": "PC",
+        "key": "29effe88bcd701970a20c6e4c7255ba5b9da0e779bf76911070ef7b0fc0cf881",
+        "sheet": 7,
+        "frame": 2,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "87e0af2e624443fbeeec40082d0b09bcf2e6ffa48bf2c133241b2ee6e420c397",
+        "sheet": 7,
+        "frame": 2,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "94e14a98d443a72c5eef5fc0311f465c5e41fb402ee9132db0e1a690d62ebe0c",
+        "sheet": 7,
+        "frame": 0,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "adfda6349037bf93286bca94ecf6ac5eccc729e62d70e7327a51f4471748c718",
+        "sheet": 7,
+        "frame": 2,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "aefd7343289cbff9125bb7d4d6b383fce6e98d5a7d4f9a1ad9a979537655d3da",
+        "sheet": 7,
+        "frame": 1,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "c6785c4c6c6ce7bbfbc57fcca6fed026a8cd1b82fa2a5a75dc3a7b435d8997e0",
+        "sheet": 7,
+        "frame": 1,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "PC",
+        "key": "cd1d3f7f72a06de38d608f67aa29e108d5fa8bc38044cb28b583101e999b75bd",
+        "sheet": 7,
+        "frame": 0,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
+        "sheet": 7,
+        "frame": 0,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "29446d182424162a0e905366b62d12c0bb2b7290833c52206440d65dfd209e06",
+        "sheet": 7,
+        "frame": 2,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "29c8f9efacbe54fc2102deba281fe286ed2778999f4e74be7eaa6958cf8240ca",
+        "sheet": 7,
+        "frame": 1,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "5f1228f6df5d1bd412ade7595398a9050b36382013b5c2f6a7950cbfec87c515",
+        "sheet": 7,
+        "frame": 0,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "829de99ac763bcf357493634493d72e9a8949a2163ef41262575fb2fde5b4c4c",
+        "sheet": 7,
+        "frame": 1,
+        "status": "candidate-resource-review-pending"
+      },
+      {
+        "platform": "Amiga",
+        "key": "95393641765c5f3ef9ff5fb8d980b748ef3c4c0a0537121f065ce824e119b92f",
+        "sheet": 7,
+        "frame": 2,
+        "status": "candidate-resource-review-pending"
+      }
+    ],
+    "assets": [
+      {
+        "density": 8,
+        "file": "s7-f0-8.rgba",
+        "height": 14,
+        "id": "s7-f0-8",
+        "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s7-f0-12.rgba",
+        "height": 14,
+        "id": "s7-f0-12",
+        "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+        "width": 16
+      },
+      {
+        "density": 8,
+        "file": "s7-f1-8.rgba",
+        "height": 14,
+        "id": "s7-f1-8",
+        "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s7-f1-12.rgba",
+        "height": 14,
+        "id": "s7-f1-12",
+        "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+        "width": 16
+      },
+      {
+        "density": 8,
+        "file": "s7-f2-8.rgba",
+        "height": 14,
+        "id": "s7-f2-8",
+        "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "s7-f2-12.rgba",
+        "height": 14,
+        "id": "s7-f2-12",
+        "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+        "width": 16
+      }
+    ],
+    "sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "native_anchor": [
+      0,
+      14
+    ],
+    "vertical_source_extent": 850,
+    "previous_f2_vertical_source_extent": 942,
+    "c01": "original builder and source unchanged; exact derivative bytes retained",
+    "limitations": "PENDING: native pose correspondence, resource/palette appearance, continuous campaign and user review"
+  },
+  "outcomes": {
+    "published": 32
+  },
+  "published_bodies": 64,
+  "controlled_variant_density_entries": 24,
+  "c01_byte_comparison": "PASS 8x/12x",
+  "scope": "3 keys direction 7; controlled PC/Amiga resources, two person/palette variants, water/occlusion",
+  "campaign_bindings": "13 explicit observed candidates prepared, NOT exercised by controlled fixture",
+  "pending": [
+    "other 21 walk keys",
+    "native pose correspondence",
+    "campaign resource/palette review",
+    "other states/enemies/transitions",
+    "GPU/CD32",
+    "user visual acceptance"
+  ],
+  "base_commit": "db8a9106c997c6ed5dee1caddc17f352793ac658",
+  "environment": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "SDL": "release-3.4.0 a962f40bbba175e9716557a25d5d7965f134a3d3",
+    "sanitizers": "address,undefined; fno-sanitize-recover=all; ASAN_OPTIONS=detect_leaks=0",
+    "renderer": "SDL software; controlled scene and resource bytes; not GPU or campaign"
+  },
+  "checks": {
+    "walk_art_window": "PASS 32 intervals / 64 bodies",
+    "python_coverage": "PASS 9 tests",
+    "legacy_asset_rules": "PASS unchanged",
+    "source_review": "internal contact sheet inspected; user acceptance PENDING",
+    "H3": "NOT REPEATED; no engine/source gameplay or baseline changes",
+    "CI_new_commit": "PENDING at publication",
+    "external_assets_regression": "PASS 128 SDL intervals, 256 commands, 96 variant/density entries; ASan/UBSan",
+    "exact_exporter": "PASS 8x/12x byte order/alpha/SHA and negative inputs"
+  },
+  "sha256": {
+    "assets/modernization/soldier-walk-review/review.json": "fc0f3ce774788f345f685b8d7a0d5524721e9b6a4e45d323bfa41c385c983ea8",
+    "assets/modernization/soldier-walk-review/s7-f2-v2.png": "12895cc925d676ebb3b77a29eede5d3bc56e057f2a44c7fb1b3b196f4404565f",
+    "tools/modernization/prepare_walk_art_review.py": "bf9d284b14e2a2c00a55ffd5f140ace66c84b014b460ea34e877881aad7a8b76",
+    "tools/modernization/check_walk_art_review.py": "7fb3e52fc94d8735947af2350198d89dd3158a84c07cdbc7314d2b13a60c5d1a",
+    "tools/modernization/walk_art_cases.inc": "d19fe9a2d999444647ed66ec13a7b04b8ab1b8501b32e416c4b444731da2a0d5",
+    "tools/modernization/build_hd_window_fixture.py": "97122659244be45ceb75bab48de24b15da95381ab95da04421f2437948bd7159",
+    "CMakeLists.txt": "f1262cdf0b47f24742310660afe5f027109ae661c7745b8b5e9fe14606bb3381"
+  },
+  "trace_sha256": "7317c4b7376fb078d1bab5baa71f4a2545e3689cf34f40c7ea79b1d806fcdb8a"
+}
