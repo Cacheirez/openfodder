@@ -47,6 +47,16 @@ El lanzador local reutiliza el del candidato de 331 vínculos con hashes actuali
 
 ## Reproducción técnica
 
+### Diagnóstico del primer retorno
+
+Una copia local de `WindowHD.cpp` registra el mensaje de la excepción y los datos del último comando resuelto antes de volver a lanzar la misma excepción. Con el replay público a 12× y 334 vínculos conserva el censo anterior. Las 88 interrupciones nacen de `ordered art clipped geometry` en el enemigo tipo 5, hoja `0x59/F0`: tres por el borde izquierdo y 85 por el derecho. El primer caso tiene `x=-1`, `y=91`, 16 × 14 píxeles y respaldo de 352 píxeles de ancho. El primer caso por la derecha tiene `x=342`, `y=225`, 16 × 14. El compositor HD exige que todo el rectángulo quepa en cada fila; el raster clásico direcciona el destino por desplazamientos lineales y admite estas geometrías cuando las escrituras caben dentro del respaldo.
+
+El intento manual 2122 registra esa misma variante de enemigo como último comando, cero faltantes y el mismo aviso general. El log manual carece de coordenadas, por lo que la geometría exacta se acredita en el replay público. El caso mínimo reutiliza una superficie de 96 × 64 y un cuerpo Amiga8 de 16 × 14, probado en `(-1, 20)` y `(86, 20)`; las huellas lineales caben en el respaldo en ambos casos.
+
+En el directorio `$work`, con el proyecto diagnóstico preparado, ejecutar `python -B "$work/diagnose_ordered_bounds.py"` y `python -B "$work/run_ordered_bounds.py"` una vez desde la raíz del checkout. El log resultante se conserva en `replay-bounds/engine.log` (SHA-256 `8d3e52978c8dd08acaf946013bd2117160d3f1fa95c076e6b3c6b4ca885ce707`).
+
+### Replay comparativo original
+
 Desde el checkout del commit de integración `b496e6b` ejecutar `& "$work/build_bullet_replay.ps1"` y `python -B "$work/measure_bullet_replay.py"`, con los candidatos de la [integración](DEMO_A1_AUDITORIA_BALA_7F_F0.md#integración-y-prueba-sdl). Para una repetición, copiar los dos scripts y las carpetas de ambos candidatos a un directorio nuevo. Los logs conservados permiten repetir el análisis sin ejecutar de nuevo el replay. La compilación inicial del proyecto diagnóstico rechazó una ruta con separadores de Windows. Tras normalizarla completó la compilación. La primera medición registró la pasada de 333 válida; se conservó y se corrigió el análisis para contabilizar las interrupciones antes de ejecutar la de 334.
 
 | Evidencia | SHA-256 |
