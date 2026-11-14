@@ -122,8 +122,10 @@ public:
             const bool bird=s.type==19 && s.sheet==0x98 && (s.frame==0||s.frame==1) &&
                 g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
                 !s.inVehicle && !s.pendingDestroy;
-            // The Amiga roof and grenade box stay in their original draw order.
-            const bool retainedScenery=((s.type==15 && s.sheet==0x91) ||
+            // Only the audited tree variant can stay in its original draw order.
+            const bool tree=s.type==14 && s.sheet==0x90 &&
+                key=="a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d";
+            const bool retainedScenery=(tree || (s.type==15 && s.sheet==0x91) ||
                 (s.type==37 && s.sheet==0xc2)) && s.frame==0 &&
                 g.format==SpriteDrawFormat::Amiga8 && s.valid && p.resource &&
                 !s.inVehicle && !s.pendingDestroy;

@@ -18,11 +18,14 @@ ENEMY_WALK_44_DIR = ROOT / 'assets/modernization/demo-a1-enemy-walk-44-f1'
 ENEMY_DEATH_KEY = 'f06b98d0debe93b676cd17ba89a9b76e2b91484a08507c83e8d66215dc8237fb'
 ENEMY_HIT_KEY = 'd615161944fbf97e9e07f29f4de6849c927c0d4e20087cbb981ec3c73e11dc45'
 GROUND_HOLE_KEY = 'b27064e821fb760e4ec5e37a830ac2e35b81b46490abf208da81cc928cf63cf4'
+TREE_90_KEY = 'a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d'
 
 
 def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone=False,
             with_enemy_walk=False, with_enemy_death=False, with_player_shadow=False,
-            with_enemy_hit=False, with_enemy_walk_44=False, with_ground_hole=False):
+            with_enemy_hit=False, with_enemy_walk_44=False, with_ground_hole=False,
+            with_tree_90=False):
+    with_ground_hole = with_ground_hole or with_tree_90
     with_enemy_walk_44 = with_enemy_walk_44 or with_ground_hole
     with_enemy_hit = with_enemy_hit or with_enemy_walk_44
     with_player_shadow = with_player_shadow or with_enemy_hit
@@ -74,6 +77,10 @@ def prepare(base, out, with_roof=False, with_grenade_box=False, with_enemy_prone
         ground_hole = dict(key=GROUND_HOLE_KEY, decision='keep-associated')
         kept.append(ground_hole)
         manifest['bindings'].append(ground_hole)
+    if with_tree_90:
+        tree = dict(key=TREE_90_KEY, decision='keep-associated')
+        kept.append(tree)
+        manifest['bindings'].append(tree)
     assert len({b['key'] for b in manifest['bindings']}) == len(manifest['bindings'])
     # Validate all existing bytes before creating an output directory.
     for directory, asset in asset_sources:
@@ -116,8 +123,10 @@ if __name__ == '__main__':
                         help='Add the exact Amiga 0x44/F1 enemy to the green A candidate with Hit')
     parser.add_argument('--with-ground-hole', action='store_true',
                         help='Retain the exact Amiga GroundHole 0x7C/F0 on the green A candidate with 0x44/F1')
+    parser.add_argument('--with-tree-90', action='store_true',
+                        help='Retain the exact Amiga tree 0x90/F0 on the green A candidate with GroundHole')
     args = parser.parse_args()
     print(json.dumps(prepare(args.base, args.out, args.with_roof, args.with_grenade_box,
                              args.with_enemy_prone, args.with_enemy_walk, args.with_enemy_death,
                              args.with_player_shadow, args.with_enemy_hit, args.with_enemy_walk_44,
-                             args.with_ground_hole)))
+                             args.with_ground_hole, args.with_tree_90)))

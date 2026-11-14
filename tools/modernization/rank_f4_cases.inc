@@ -214,6 +214,58 @@ for (unsigned density : {8u, 12u}) {
         std::cout << density << "x GroundHole 0x7C/F0: zero writes, identical SDL pixels, "
                   << "whole-frame classic fallback and HD recovery\n";
     }
+    if (fixture.contains("tree_90")) {
+        const std::string key = "a835b7ae71451ea0a37ea0a0c1e77da13a45f003b0cf218314edc6e0c79a1a2d";
+        const auto tree = nativeLayer(fixture.at("tree_90"), fixture.at("tree_90_snapshots"),
+                                      11, 38, 20);
+        assert(SoldierVariantKey(tree.soldier, colors) == key);
+        assert(registry.resolve(tree.soldier, key, density).decision == SoldierArtDecision::KeepClassic);
+        auto otherTree = tree.soldier;
+        ++otherTree.soldier.animation;
+        const auto otherKey = SoldierVariantKey(otherTree, colors);
+        assert(otherKey != key);
+        const OrderedSoldierRegistry unapproved(nlohmann::json{
+            {"version", 1}, {"bindings", {{{"key", otherKey}, {"decision", "keep-associated"}}}}
+        });
+        assert(unapproved.resolve(otherTree, otherKey, density).decision == SoldierArtDecision::Missing);
+
+        auto draw = tree.soldier.draw;
+        draw.source = tree.soldier.resource.source();
+        const auto treeWrites = CaptureSprite8Producer(draw, tree.soldier.resource.layout, 96).writes;
+        assert(treeWrites.size() == 299);
+        auto throughTree = throughRetained;
+        throughTree.layers.push_back(tree);
+        auto ordered = throughTree;
+        ordered.layers.push_back(scene.layers.back());
+        const auto afterTree = compose(throughTree);
+        const auto withTree = compose(ordered);
+        const auto nativeTree = RasterizeMissionLayers(throughTree, body.destination);
+        assert(afterTree.complete() && afterTree.replaced == 4 && afterTree.kept == kept + 1);
+        assert(withTree.complete() && withTree.replaced == 5 && withTree.kept == kept + 1);
+        assert(withTree.observations.at(throughTree.layers.size() - 1).decision == SoldierArtDecision::KeepClassic);
+        assert(withTree.observations.back().decision == SoldierArtDecision::Replace);
+        size_t coversBody = 0, coveredByBody = 0, treeVisible = 0;
+        for (const auto& write : treeWrites) {
+            const auto offset = write.offset;
+            coversBody += afterRetained.cells.count(offset);
+            coveredByBody += withTree.cells.count(offset);
+            treeVisible += !withTree.cells.count(offset);
+            assert(!afterTree.cells.count(offset));
+            assert(afterTree.background.pixels.at(offset) == nativeTree.pixels.at(offset));
+        }
+        assert(coversBody && coveredByBody && treeVisible);
+
+        const auto expectedTree = renderExpected(withTree);
+        assert(expectedTree != expected && expectedTree != renderClassic(ordered));
+        image.scene = ordered;
+        clear(renderer);
+        assert(win.TryRenderMissionHD(&image, src, dst) == 1 && read(renderer) == expectedTree);
+        checkFallback(ordered, throughTree.layers.size() - 1, expectedTree);
+        image.scene = scene;
+        std::cout << density << "x tree 0x90/F0: " << treeWrites.size() << " native writes, "
+                  << coversBody << " occlude HD and " << coveredByBody << " are occluded by HD, "
+                  << "whole-frame classic fallback and HD recovery\n";
+    }
     if (fixture.contains("player_shadow")) {
         assert(withBox);
         const auto& row = fixture.at("player_shadow");
