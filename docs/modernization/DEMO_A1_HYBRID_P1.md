@@ -66,3 +66,11 @@ En PowerShell:
 ```
 
 El comando usa el binario local contrastado con H3, el mismo manifiesto de 333 vínculos y Amiga The One M1P2 a 12× con SDL software y sin sonido. Se comprobaron las dependencias y el hash del binario. La sesión interactiva es la revisión pendiente. Volver a caminar, girar y disparar cerca de los árboles. Facilitar la ruta del registro que imprime PowerShell y señalar si el pelotón sigue alternando entre HD y clásico. Basta con empezar por el modo híbrido. Para una pasada adicional de control, usar `-Modo estricto`.
+
+### Revisión jugable tras la ampliación
+
+El 15-11-2026 Miguel ejecutó `Probar-P1-F2.ps1` en modo híbrido y siguió observando alternancia. **Continuidad jugable NO ACEPTADA.** El registro contiene 5.588 publicaciones HD y 6.532 retornos por `missing-variant`. En los 324 intentos con la insignia F2 se resolvió `keep`, pero cada transacción tenía otros faltantes y se mostró en clásico. La partida anterior siguió otro recorrido.
+
+Con el mismo método de recuento de la primera revisión, se observaron 30 pares HD→clásico con al menos un mismo soldado presente. Los faltantes en esos pares eran siempre de otros elementos. Las variantes más repetidas en los retornos fueron tipo 6 `0x7F/F3` (cinco) y tipo 5 `0x7C/F1` (cuatro). Esta dispersión motiva comprobar un contrato reutilizable antes de plantear otra excepción de una sola variante.
+
+Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-F2-hibrido-20261115-202104.log`, SHA-256 `e643ab194a7bf679e774569bb7b43789b0b934eea376b7f544ee090e64fb70e9`.
