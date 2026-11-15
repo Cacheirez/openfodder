@@ -125,3 +125,23 @@ El replay a 12× usa el mismo manifiesto de 333 vínculos y conserva los 1.546 e
 - **PASS CI focalizada de `1c1f48b`** en Windows y Linux para CTest y A2/H3. En Linux pasaron también procedencia y geometría de destinos, pausa y grabación de misión. Las baterías completas seguían en ejecución al cerrar este bloque. La comprobación local adicional de C01 en WSL encontró una diferencia CRLF/LF y luego dependencias ausentes en la copia temporal. La revisión automática bloqueó otro intento por el límite de diagnóstico. GPU, CD32, audio, campaña manual y aceptación jugando siguen pendientes. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43761306232) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43761306218).
 
 **Recuperación local.** En el directorio de la prueba jugable, usar el binario de `amiga8-contract/h3-build/Release` y ejecutar `python -B validate-amiga8-replay.py <directorio-nuevo>`. SHA-256 del script `4c0f2344ed7e5c546f8b2bc28ccfae4764674efac0492bfb2124b93ec82ea39c`, del log híbrido final `d7517497891995b94630befad409485818c7d88c64286169bd623a4d38a5926b`. El lanzador local `Probar-P1-Amiga8.ps1` tiene verificados los requisitos de arranque con `-Comprobar`. La prueba interactiva no se ha ejecutado.
+
+## Continuidad del mismo soldado
+
+Análisis autorizado sobre `37b1ca0`, comparando los dos registros del mismo replay con correspondencia exacta de intentos, comandos ordenados, identidades y claves. Para cada pareja adyacente con salto serial de uno o dos, se cuenta el paso HD→clásico cuando algún jugador tipo 0 reemplazado en el primer intento sigue presente en el siguiente. La identidad usa escena, ranura y generación. Se cuentan también las incidencias por soldado, de modo que un mismo retorno puede afectar a varios.
+
+De los 17 retornos de F2, uno desapareció y 16 persistieron. Los 23 retornos nuevos terminan una racha que incluye al menos una publicación añadida por Amiga8. Diez de esas rachas tienen un solo fotograma HD, doce tienen tres y una llega a 924. Los 39 retornos del candidato afectan a 177 incidencias por soldado, frente a 77 en F2. Son publicaciones del replay acelerado.
+
+**Bala 0x9D.** `Sprite_Create_Bullet` selecciona esta hoja y toma el frame de la dirección del tirador. La tabla activa de Amiga The One remite a las ocho filas de `stru_8DC18`, segmento `eGFX_IN_GAME2`, con dos columnas de tabla y siete filas. La hoja congelada de F2 permitió reproducir las 11 claves ausentes observadas para los ocho frames de tipo 6/0x9D. El renderizador nativo confirmó un ejemplo F6 de 16 × 7, clave `12bcea3883edff9ca7c6a4ced22299a342853397359d156b63df6ac91d7fd69d`, SHA-256 RGBA `58fa02ffc398fa37b023df11cccf31e58ded61fbfa32fcfdc6c9f28b4a007670`.
+
+| Escenario del mismo replay | Publicaciones HD | Retornos con el mismo soldado | Incidencias por soldado |
+| --- | ---: | ---: | ---: |
+| Contrato Amiga8 observado | 2.136 | 39 | 177 |
+| Proyección admitiendo solo 0x9D/F6 | 2.160 | 33 | 153 |
+| Proyección admitiendo los ocho frames de 0x9D | 2.190 | 24 | 116 |
+
+La simulación pasa un intento a HD solo si tiene un reemplazo de jugador y todos sus faltantes corresponden a la hipótesis. Luego recalcula los cambios sobre toda la secuencia. Para la hoja completa desaparecerían 17 retornos y aparecerían dos. Admitir todos los del tipo 6 proyecta el mismo resultado en este replay. Se propone la hoja 0x9D acotada porque aprovecha el contrato existente y tiene evidencia de los ocho frames.
+
+**Criterios de un eventual ajuste.** Conservar las 2.136 publicaciones previas y reducir los 39 retornos de referencia en el mismo replay. Como objetivo medible, contrastar las cifras proyectadas 2.190 y 24. En prueba focalizada, verificar el orden de dibujo, los rechazos ante procedencia o bytes incompatibles y la recuperación íntegra. Mantener modo estricto, clásico, H3 y pruebas pertinentes. La proyección sigue pendiente de implementación, verificación SDL y aceptación jugando.
+
+**Reproducción local.** En el directorio de la prueba jugable, ejecutar `python -B analizar-cambios-amiga8.py replay-rank-f2/hybrid/engine.log amiga8-contract/replay-final/hybrid/engine.log`. SHA-256 del script `1b7ea1a38ed111f1359346456f793805e5d391e1fbd0fdc895f63763e1216537`, del lector `audit_reader.py` `fef62eb40e068766949069b41a39fa0a29d8ae151566082e647fbfc360462c5e`. Desde la raíz del repositorio, `python -B <directorio>/reconstruir-bala-9d.py <directorio> <log-híbrido-final>` repite la comprobación de las claves. SHA-256 `64857034163d6107f851a7a82250eb25654f7475d18305a46b5105a1def8fe95`.
