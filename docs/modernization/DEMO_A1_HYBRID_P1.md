@@ -74,3 +74,33 @@ El 15-11-2026 Miguel ejecutó `Probar-P1-F2.ps1` en modo híbrido y siguió obse
 Con el mismo método de recuento de la primera revisión, se observaron 30 pares HD→clásico con al menos un mismo soldado presente. Los faltantes en esos pares eran siempre de otros elementos. Las variantes más repetidas en los retornos fueron tipo 6 `0x7F/F3` (cinco) y tipo 5 `0x7C/F1` (cuatro). Esta dispersión motiva comprobar un contrato reutilizable antes de plantear otra excepción de una sola variante.
 
 Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-F2-hibrido-20261115-202104.log`, SHA-256 `e643ab194a7bf679e774569bb7b43789b0b934eea376b7f544ee090e64fb70e9`.
+
+## Auditoría acotada del contrato nativo
+
+Auditado sobre `0fb556e` con los datos locales de Amiga The One M1P2. Los 30 cambios observados del mismo soldado abarcan 18 claves faltantes. Una sola variante aparece como máximo en cinco de esos cambios. Se cruzaron la tabla activa `mSpriteSheetTypes_InGame_Amiga_TheOne`, los comandos del registro y la hoja Amiga8 congelada de la auditoría F2.
+
+| Caso | Procedencia | Evidencia en esta auditoría |
+| --- | --- | --- |
+| Bala tipo 6 `0x7F/F3` | `stru_8D718`, offset 2230, 16 × 6 | Se reconstruyó una de dos claves ausentes. El renderizador nativo verificó seis píxeles opacos. |
+| Puerta tipo 20 `0x99/F0` | `stru_8DB78`, offset 5970, 16 × 15 | Se reconstruyeron las tres claves ausentes, con animaciones 0, 5 y 6. El renderizador verificó un raster con la misma geometría. |
+| Insignia tipo 21 `0x95/F0` | `stru_8D9F8`, offset 9080, 16 × 10 | Fila original comprobada. La clave faltante de esta partida sigue sin reconstruirse con la paleta retenida de F2. |
+| Tipo 5 `0x7C/F1` y tipo 21 `0x7C/F0` | `stru_8D618`, offset 560, 16 × 1 | Ocho bytes planares cero y raster transparente para la clave reconstruida de tipo 5 (una de dos). La clave tipo 21 del registro queda sin reconstruir. |
+
+**Comparación reproducible.** Se trató cada rechazo `missing-variant` con censo completo y algún soldado tipo 0 resuelto a HD. Un grupo solo despeja el intento si contiene todos sus faltantes, agrupados por tipo y hoja. La última columna aplica el mismo filtro a los cambios HD→clásico ya identificados en la partida; no simula las transiciones que se producirían con una ruta nueva.
+
+| Hipótesis de cobertura | Intentos manuales despejados | Intentos de replay despejados | Cambios manuales observados que podrían evitarse |
+| --- | ---: | ---: | ---: |
+| Bala tipo 6/0x7F | 79 | 27 | 5 |
+| Insignia tipo 21/0x95 | 507 | 0 | 0 |
+| Puerta tipo 20/0x99 | 462 | 176 | 2 |
+| Tres grupos visibles juntos | 1.087 | 203 | 7 |
+| 0x7C para tipos 5, 20, 21 y 24, condicionado a cero escrituras | 411 | 27 | 4 |
+| Grupos visibles y 0x7C juntos | 1.513 | 242 | 11 |
+
+Son techos del censo para estos grupos, con 5.588 publicaciones previas sobre 12.120 intentos manuales y 1.894 sobre 4.554 en el replay. El replay permite medir, con los mismos datos y 1.546 estados fijados, una futura integración. F2 y las muestras exactas de esta partida requieren además una prueba controlada con recursos originales. Los tipos corporales con escrituras visibles quedan fuera de esta propuesta. Sigue habiendo retornos por otras variantes.
+
+**Contrato propuesto.** Validar la procedencia en el productor contra la fila seleccionada por la tabla activa y conservar los metadatos junto a los bytes inmutables de `ResolvedSpriteResource`. La generación identifica la copia retenida, con alcance local al productor. Reutilizar `ValidateMissionSpriteRaster` y la comparación de índices, Save/Restore y presentación clásica de `VerifyMissionAudit`. Conservar la precedencia de vínculos explícitos. Para un dibujo visible sin vínculo, exigir tipo y hoja autorizados, identidad de escena y actor, y coincidencia de segmento, offset, layout, paleta efectiva y geometría con el dibujo capturado. Para `0x7C`, exigir además que el productor del raster recortado emita cero escrituras. Una escritura a índice cero o al mismo índice cuenta como escritura y debe mantener su efecto sobre las celdas HD. Los errores de validación conservan la recuperación íntegra. El log de cobertura contiene claves y decisiones; para demostrar estas condiciones en ejecución se necesita la captura del motor.
+
+**Criterio para una integración posterior.** Mantener los modos clásico y estricto, probar oclusión en ambos sentidos y rechazo de bytes, fila o geometría incorrectos con recuperación íntegra. Comparar base y candidato sobre el mismo replay con H3 fijado, pruebas focalizadas 8×/12× y sanitizadores pertinentes. Pasar otra revisión jugable cuando exista una mejora medida. La auditoría conserva el comportamiento actual del motor.
+
+**Recuperación local.** En el directorio de la prueba jugable, ejecutar `python -B auditar-continuidad-p1.py <registro-manual> replay-rank-f2/hybrid/engine.log`. SHA-256 del script `b8bbb49bfd29284685bf36b785178f4b6319583bc081909b1fc3c3124e081be7`, del replay `603fa725a688a1423c459f096cc6d3477fb32825d03d53d91e2de43247964f05`. `python -B reconstruir-auditoria-p1.py <directorio-de-la-prueba>` repite el cotejo de claves con la hoja local de la auditoría F2. SHA-256 `2fbfe7d67edd7429680d1bf6df5ed9ef750793c9007f056688cd520f79c7302e`.
