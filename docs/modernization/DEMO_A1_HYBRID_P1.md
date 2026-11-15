@@ -152,6 +152,17 @@ La bala tipo 6/0x9D usa el mismo contrato de procedencia nativa que 0x7F. El mod
 
 - **PASS replay controlado:** Amiga The One M1P2, SDL software a 12×, mismo manifiesto y las mismas 4.554 transacciones. El híbrido pasa de 2.136 a 2.190 publicaciones HD y de 39 a 24 retornos con el mismo soldado. Se conservan las 2.136 publicaciones previas, desaparecen 17 retornos y aparecen dos. Las incidencias por soldado pasan de 177 a 116. La racha máxima queda en 924. El resultado coincide intento por intento con la proyección. La fase conserva sus 1.546 estados lógicos y el modo estricto conserva sus 1.368 publicaciones y 3.186 rechazos.
 - **PASS pruebas focalizadas:** Windows H3, 11 fases y 11.361 estados fijados. WSL con ASan/UBSan/LSan, SDL software 8×/12×, caso F6 entre dos soldados HD, rechazo por offset, identidad o copia incompatible y regresiones de orden, transparencia y recuperación SDL. Pasaron también los 42 tests Python.
-- **PENDIENTE:** CI focalizada de esta ampliación y revisión jugable de Miguel. GPU, CD32, audio y campaña completa siguen pendientes.
+- **PASS CI focalizada** de `3a97793` en Windows y Linux para CTest y A2/H3. Las baterías completas seguían en ejecución al cerrar. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43772392998) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43772393001).
+- **PENDIENTE:** revisión jugable de Miguel, GPU, CD32, audio y campaña completa.
 
 **Reproducción local.** Desde el directorio de la prueba, ejecutar `python -B validate-amiga8-9d-replay.py <directorio-nuevo>`. Comparar con `python -B check-amiga8-9d-replay.py amiga8-contract/replay-final/hybrid/engine.log <directorio-nuevo>/hybrid/engine.log`. SHA-256 del registro de la medición `25159e3b07ceb0c4cba7a6196aec4e5230967c764f9830fe243cddf26c3ccfb0`.
+
+### Revisión jugable de 0x9D
+
+En PowerShell:
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1da6a-54a2-7270-8fa9-5eb4a351446f/Probar-P1-9D.ps1'
+```
+
+Abre Amiga The One M1P2 a 12×, híbrido y SDL software sin sonido. Se comprobaron el ejecutable, su hash, el manifiesto y las dependencias con `-Comprobar`. Queda pendiente el lanzamiento interactivo. Jugar con normalidad, moviendo y girando al pelotón y disparando. Facilitar la ruta del registro que imprime PowerShell e indicar si los mismos soldados siguen alternando entre HD y clásico y si el cambio se nota respecto a la prueba anterior.
