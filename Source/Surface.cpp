@@ -25,19 +25,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "Utils/stb_image.h"
 
-openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
-        const openfodder::PreparedSpriteDraw& prepared) {
-    const auto& state = prepared.soldier;
-    if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() || state.segment != eGFX_IN_GAME2)
-        return {};
-    const auto* row = g_Fodder->Sprite_Get_Sheet(state.sheet, state.frame);
-    if (!row)
-        return {};
-    return {state.type, state.sheet, state.frame, row->mLoadSegment, row->mLoadOffset,
-        row->mColCount, row->mRowCount, row->mModX, row->mModY,
-        state.scene, state.generation, state.slot, prepared.resource.generation, prepared.resource.bytes};
-}
-
 cSurface::cSurface( size_t pWidth, size_t pHeight ) {
     mIsLoadedImage = false;
 	mWidth = pWidth; 

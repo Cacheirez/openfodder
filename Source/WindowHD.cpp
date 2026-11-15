@@ -10,6 +10,19 @@
 #include "Utils/OrderedSoldierCoverage.hpp"
 #include <set>
 
+openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
+        const openfodder::PreparedSpriteDraw& prepared) {
+    const auto& state = prepared.soldier;
+    if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() || state.segment != eGFX_IN_GAME2)
+        return {};
+    const auto* row = g_Fodder->Sprite_Get_Sheet(state.sheet, state.frame);
+    if (!row)
+        return {};
+    return {state.type, state.sheet, state.frame, row->mLoadSegment, row->mLoadOffset,
+        row->mColCount, row->mRowCount, row->mModX, row->mModY,
+        state.scene, state.generation, state.slot, prepared.resource.generation, prepared.resource.bytes};
+}
+
 int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_FRect& dst) {
     const char* option=std::getenv("OPENFODDER_SOLDIER_HD");
     if(!option || (std::string(option)!="8" && std::string(option)!="12"))return -1;

@@ -36,6 +36,9 @@ cSurface::cSurface(size_t w,size_t h){
  mSDLSurface=new SDL_Surface{int(w),int(h),int((w+pad)*4),1,new uint32[(w+pad)*h]};
 }
 cSurface::~cSurface(){delete[] mSurfaceBuffer;delete[] mSurfaceBufferSaved;delete[] static_cast<uint32*>(mSDLSurface->pixels);delete mSDLSurface;}
+openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw&){
+ throw std::logic_error("This fixture does not configure the Amiga The One table");
+}
 '''
  for sig in ['void cSurface::'+n+'(' for n in ['draw','clearSDLSurface','surfaceSetToPalette','surfaceSetToPaletteNew','palette_SetFromNew','paletteNew_SetDimmed','Save','Restore','mergeSurfaceBuffer']]+['bool cSurface::ApplyPresentation(','bool cSurface::CommitPauseBacking(','bool cSurface::PresentationDestinationMatches(','bool cSurface::palette_FadeTowardNew(','inline void cSurface::paletteSDLColorSet(','openfodder::SurfaceDraw cSurface::CaptureDraw(','openfodder::RGBLayer cSurface::CaptureRGBLayer(','openfodder::PresentationSurface cSurface::CapturePresentation(']:
   code+=function(source,sig)+'\n'
