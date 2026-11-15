@@ -132,6 +132,17 @@ bool cFodder::Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 p
     auto& draw = prepared.draw;
     draw = openfodder::PrepareSpriteDraw(input);
     CaptureSoldierSemantic(pDi, pSpriteType, pFrame, input, prepared);
+    const auto& state = prepared.soldier;
+    if (state.valid && input.format == openfodder::SpriteDrawFormat::Amiga8 &&
+        SheetData->mLoadSegment == eGFX_IN_GAME2 && mVersionCurrent->isAmigaTheOne() &&
+        (openfodder::IsNativeAmiga8AssociatedCandidate(state.type, state.sheet) ||
+         openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet)) &&
+        openfodder::HybridMissionArtEnabled()) {
+        prepared.nativeAmiga8 = {state.type, pSpriteType, pFrame, SheetData->mLoadSegment,
+            SheetData->mLoadOffset, SheetData->mColCount, SheetData->mRowCount,
+            SheetData->mModX, SheetData->mModY, state.scene, state.generation, state.slot,
+            prepared.resource.generation, prepared.resource.bytes};
+    }
 
     // Only the compatibility adapter publishes legacy registers. The pure
     // preparation above can be repeated without writing engine/sprite state.

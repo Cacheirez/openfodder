@@ -104,3 +104,22 @@ Son techos del censo para estos grupos, con 5.588 publicaciones previas sobre 12
 **Criterio para una integración posterior.** Mantener los modos clásico y estricto, probar oclusión en ambos sentidos y rechazo de bytes, fila o geometría incorrectos con recuperación íntegra. Comparar base y candidato sobre el mismo replay con H3 fijado, pruebas focalizadas 8×/12× y sanitizadores pertinentes. Pasar otra revisión jugable cuando exista una mejora medida. La auditoría conserva el comportamiento actual del motor.
 
 **Recuperación local.** En el directorio de la prueba jugable, ejecutar `python -B auditar-continuidad-p1.py <registro-manual> replay-rank-f2/hybrid/engine.log`. SHA-256 del script `b8bbb49bfd29284685bf36b785178f4b6319583bc081909b1fc3c3124e081be7`, del replay `603fa725a688a1423c459f096cc6d3477fb32825d03d53d91e2de43247964f05`. `python -B reconstruir-auditoria-p1.py <directorio-de-la-prueba>` repite el cotejo de claves con la hoja local de la auditoría F2. SHA-256 `2fbfe7d67edd7429680d1bf6df5ed9ef750793c9007f056688cd520f79c7302e`.
+
+## Contrato Amiga8
+
+Miguel autorizó la implementación acotada. En el híbrido de Amiga The One, el productor conserva la fila activa de `eGFX_IN_GAME2` y su asociación con la copia inmutable y la identidad del dibujo. El registro usa esa procedencia para resolver faltantes de tipo 6/0x7F, 20/0x99 y 21/0x95. Para 0x7C en tipos 5, 20, 21 y 24, un dibujo sin vínculo se admite si el productor recortado emite cero escrituras. La auditoría clásica e independiente sigue comprobando geometría, composición y respaldo antes de publicar. El registro consulta los vínculos explícitos primero. Las discrepancias de procedencia y las escrituras de un supuesto dibujo transparente rechazan la publicación y activan el retorno clásico.
+
+| Métrica en Amiga The One M1P2 | Estricto | Híbrido F2 | Híbrido Amiga8 |
+| --- | ---: | ---: | ---: |
+| Publicaciones HD | 1.368 | 1.894 | 2.136 |
+| Retornos por variantes ausentes | 3.186 | 2.660 | 2.418 |
+| Racha de publicaciones más larga | 628 | 859 | 924 |
+| Cambios HD→clásico con el mismo soldado presente | — | 17 | 39 |
+
+El replay a 12× usa el mismo manifiesto de 333 vínculos y conserva los 1.546 estados lógicos de la fase. El cotejo por intento, orden, escena, intervalo, ranura, generación y clave confirma 242 cambios a publicación HD y conserva todas las publicaciones anteriores. El mismo método de pares adyacentes de la auditoría cuenta 17 → 39 cambios del mismo actor en el replay acelerado. El aumento de publicaciones crea tramos HD intercalados donde antes persistía el clásico. La comparación no establece aceptación visual ni cuantifica la alternancia a cadencia normal.
+
+- **PASS** en WSL con ASan/UBSan/LSan y SDL software: método Window a 8×/12×, dos soldados HD, dibujo auxiliar en su orden, hoja transparente sin escrituras y rechazo de offset, identidad, copia incompatible y transparencia con escrituras. Pasaron también las comprobaciones previas de oclusión, Save/Restore y recuperación completa tras fallo SDL.
+- **PASS** en H3 Windows: 11 fases y 11.361 estados canónicos idénticos a la referencia fijada. El modo estricto repite exactamente el censo del replay anterior.
+- **PENDIENTE** CI focalizada de esta ampliación. GPU, CD32, audio, campaña manual y aceptación jugando siguen pendientes.
+
+**Recuperación local.** En el directorio de la prueba jugable, usar `amiga8-contract/validate-h3.ps1` y luego `python -B validate-amiga8-replay.py` con directorios de salida nuevos. SHA-256 del script de replay `eebe8777d1d7f90c4175b7331bdfa28e06f9e3738a56637a1c81d6f7495b2887`, del log híbrido `6fc3a24665e4332c9d76070ed5be39b04846f35295018626c270273213254a15`. El lanzador local `Probar-P1-Amiga8.ps1` tiene verificados los requisitos de arranque con `-Comprobar`. La prueba interactiva no se ha ejecutado.

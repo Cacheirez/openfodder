@@ -236,6 +236,85 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
         }
     }
     assert(SDL_UpdateTexture(image.tex,nullptr,classic.pixels.data(),96*4));
+    // Exercise the producer evidence used by the real Window resolver, with
+    // two HD soldiers on either side of each native operation.
+    struct NativeCase { int16_t type, sheet, frame, rows; uint16_t offset; };
+    for (const auto& native : {NativeCase{6,0x7f,3,6,2230}, NativeCase{20,0x99,0,15,5970},
+                              NativeCase{21,0x95,0,10,9080}, NativeCase{5,0x7c,1,1,560}}) {
+        auto layer = body;
+        auto& p = layer.soldier;
+        auto& state = p.soldier;
+        auto& g = state.geometry;
+        state.slot = 2;
+        state.type = native.type;
+        state.sheet = native.sheet;
+        state.frame = native.frame;
+        state.segment = 1;
+        g.format = SpriteDrawFormat::Amiga8;
+        g.columns = 2;
+        g.rows = native.rows;
+        g.spriteX += 5;
+        g.spriteY += g.rows - 12;
+        const bool transparent = native.sheet == 0x7c;
+        auto bytes = std::make_shared<std::vector<uint8_t>>(40*256*4,0);
+        if (!transparent)
+            (*bytes)[native.offset] = 0x80;
+        p.resource = {bytes,native.offset,{g.format,320,256,4},0,1};
+        g.source = p.resource.source();
+        p.draw = PrepareSpriteDraw(g);
+        g.source = nullptr;
+        p.draw.source = nullptr;
+        p.nativeAmiga8 = {state.type,state.sheet,state.frame,1,native.offset,2,native.rows,0,0,
+            state.scene,state.generation,state.slot,p.resource.generation,p.resource.bytes};
+        const auto nativeKey = SoldierVariantKey(p,colors);
+        for (const char* density : {"8","12"}) {
+            const auto d = unsigned(std::stoi(density));
+            const auto resolve = [&](const PreparedSpriteDraw& draw) {
+                return registry.resolve(draw,SoldierVariantKey(draw,colors),d,true,96,96*64);
+            };
+            assert(registry.resolve(p,nativeKey,d).decision == SoldierArtDecision::Missing);
+            env("OPENFODDER_SOLDIER_HD",density);
+            env("OPENFODDER_SOLDIER_ORDERED_HYBRID","1");
+            image.scene.layers = {body,layer,second};
+            const auto composed = ComposeOrderedSoldierArt(image.scene,body.destination,d,resolve);
+            assert(composed.complete() && composed.replaced == 2 && composed.kept == 1);
+            const auto at = size_t(p.draw.y)*96+p.draw.x;
+            if (transparent) {
+                auto without = image.scene;
+                without.layers.erase(without.layers.begin()+1);
+                const auto bare = ComposeOrderedSoldierArt(without,body.destination,d,resolve);
+                assert(composed.cells == bare.cells && composed.background.pixels == bare.background.pixels);
+            } else {
+                assert(!composed.cells.count(at) && composed.background.pixels[at] == colors[1]);
+                assert(composed.cells.count(at+1));
+            }
+            clear(renderer);
+            assert(win.TryRenderMissionHD(&image,src,dst) == 1);
+            auto expectInvalid = [&](PreparedSpriteDraw invalid) {
+                image.scene.layers[1].soldier = std::move(invalid);
+                clear(renderer);
+                callNumber = 0;
+                assert(win.TryRenderMissionHD(&image,src,dst) == -1 && callNumber == 0);
+            };
+            auto invalid = p;
+            invalid.resource.offset++;
+            expectInvalid(invalid);
+            invalid = p;
+            invalid.soldier.slot++;
+            expectInvalid(invalid);
+            invalid = p;
+            if (transparent) {
+                auto visible = std::make_shared<std::vector<uint8_t>>(*bytes);
+                (*visible)[native.offset] = 0x80;
+                invalid.resource.bytes = visible;
+                invalid.nativeAmiga8.bytes = visible;
+            } else {
+                invalid.resource.bytes = std::make_shared<const std::vector<uint8_t>>(*bytes);
+            }
+            expectInvalid(invalid);
+        }
+    }
+    env("OPENFODDER_SOLDIER_ORDERED_HYBRID","0");
     std::cout<<"PASS hybrid Window: two HD actors, native tree and rank, ordered writes, Save/Restore and complete SDL recovery at 8x/12x\n";
 }
 env("OPENFODDER_SOLDIER_ORDERED_MANIFEST","");std::remove(path);

@@ -71,6 +71,26 @@ public:
     }
 };
 
+// Captured from the active Amiga The One table when preparing an eligible draw.
+struct NativeAmiga8Frame {
+    int16_t type = 0, sheet = 0, frame = 0;
+    uint16_t segment = 0, offset = 0;
+    int16_t columns = 0, rows = 0, modX = 0, modY = 0;
+    uint64_t scene = 0, generation = 0;
+    size_t slot = 0;
+    uint64_t resourceGeneration = 0;
+    std::shared_ptr<const std::vector<uint8_t>> bytes;
+};
+
+inline bool IsNativeAmiga8TransparentCandidate(int16_t type, int16_t sheet) {
+    return sheet == 0x7c && (type == 5 || type == 20 || type == 21 || type == 24);
+}
+
+inline bool IsNativeAmiga8AssociatedCandidate(int16_t type, int16_t sheet) {
+    return (type == 6 && sheet == 0x7f) || (type == 20 && sheet == 0x99) ||
+           (type == 21 && sheet == 0x95);
+}
+
 // Copying/moving this object retains the bytes referenced by draw.source.
 // This covers a sprite command, not a complete frame or publication protocol.
 struct PreparedSpriteDraw {
@@ -79,5 +99,6 @@ struct PreparedSpriteDraw {
     SpriteDrawState draw;
     SoldierSemantic soldier;
     bool isCursor = false; // Presentation provenance only; never a sorting key.
+    NativeAmiga8Frame nativeAmiga8;
 };
 } // namespace openfodder

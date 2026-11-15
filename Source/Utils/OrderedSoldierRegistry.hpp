@@ -1,5 +1,6 @@
 // GPL-3.0-or-later. Explicit bindings; observing a key never approves it.
 #pragma once
+#include "MissionLayers.hpp"
 #include "SoldierVariant.hpp"
 #include "SoldierArtBatch.hpp"
 #include "json.hpp"
@@ -9,6 +10,41 @@ class OrderedSoldierRegistry {
     struct Binding {bool keep=false;int sheet=0,frame=0;std::map<unsigned,std::string> assets;};
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
+    static bool canKeepNativeAmiga8(const PreparedSpriteDraw& prepared,
+                                   size_t targetWidth, size_t targetSize) {
+        const auto& state = prepared.soldier;
+        const auto& native = prepared.nativeAmiga8;
+        const auto& geometry = state.geometry;
+        const auto& resource = prepared.resource;
+        if (!native.bytes)
+            return isAuditedNativeAmigaDraw(prepared);
+
+        if (!state.valid || !state.scene || !state.generation || !state.interval || prepared.isCursor ||
+            state.type != native.type || state.sheet != native.sheet || state.frame != native.frame ||
+            state.scene != native.scene || state.slot != native.slot || state.generation != native.generation ||
+            state.segment != native.segment || native.segment != 1 || resource.offset != native.offset ||
+            !resource || resource.bytes != native.bytes || !resource.generation ||
+            resource.generation != native.resourceGeneration ||
+            geometry.format != SpriteDrawFormat::Amiga8 || geometry.palette != 0 ||
+            geometry.columns != native.columns || geometry.rows != native.rows ||
+            geometry.modX != native.modX || geometry.modY != native.modY ||
+            resource.palette != geometry.palette || resource.layout.format != geometry.format ||
+            resource.layout.width != 320 || resource.layout.height != 256 || resource.layout.planes != 4)
+            throw std::invalid_argument("ordered native Amiga8 provenance");
+
+        if (state.inVehicle || state.pendingDestroy)
+            return false;
+        const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet);
+        if (!transparent && !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))
+            return false;
+
+        auto draw = prepared.draw;
+        draw.source = resource.source();
+        ValidateMissionSpriteRaster(draw, resource, targetWidth, targetSize);
+        if (transparent && !CaptureSprite8Producer(draw, resource.layout, targetWidth).writes.empty())
+            throw std::invalid_argument("ordered transparent Amiga8 draw writes pixels");
+        return true;
+    }
     static bool isAuditedNativeAmigaDraw(const PreparedSpriteDraw& draw) {
         const auto& state = draw.soldier;
         const auto& geometry = state.geometry;
@@ -134,12 +170,12 @@ public:
     // The Window census derives key from the complete frozen resource and the
     // current palette. Composition still validates the draw before rasterizing.
     OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,const std::string& key,unsigned density,
-                                bool hybrid=false) const {
+                                bool hybrid=false, size_t targetWidth=0, size_t targetSize=0) const {
         OrderedSoldierAsset result;
         const auto found=entries.find(key);
         const auto& s=p.soldier;const auto& g=s.geometry;
         if(found==entries.end()){
-            if(hybrid && isAuditedNativeAmigaDraw(p))
+            if(hybrid && canKeepNativeAmiga8(p,targetWidth,targetSize))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }

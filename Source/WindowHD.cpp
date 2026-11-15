@@ -80,7 +80,8 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                 if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
                 const auto& command=layer.soldier;
                 const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
-                const auto resolved=registry->resolve(command,key,density,hybrid);
+                const auto resolved=registry->resolve(command,key,density,hybrid,
+                    current.indexed.width,current.indexed.indices->size());
                 coverage.resolved(order,key,resolved.decision);
                 if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
                     std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",
