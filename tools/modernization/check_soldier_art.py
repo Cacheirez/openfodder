@@ -9,7 +9,11 @@ def main():
         source=(root/file).read_text()
         rows=re.search(r'\b'+name+r'\[[^\]]*\]\s*=\s*\{\s*\{([^}]+)',source).group(1)
         assert rows.strip()==expected, 'Original anchor contract changed: '+name
-    code=build_code(root).split('struct Window{')[0]+(root/'tools/modernization/soldier_art_cases.inc').read_text()
+    code=build_code(root).split('struct Window{')[0]+'''
+openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw&){
+    throw std::logic_error("The C01 pilot fixture does not configure the Amiga The One table");
+}
+'''+(root/'tools/modernization/soldier_art_cases.inc').read_text()
     with tempfile.TemporaryDirectory(prefix='soldier-art-') as td:
         generator=Path(td)/'prepare';header=Path(td)/'pixels.hpp'
         subprocess.run(['g++','-std=c++14','-O2','-I',str(root/'Source'),str(root/'tools/modernization/build_soldier_art.cpp'),'-o',str(generator)],check=True)

@@ -131,6 +131,7 @@ public:
         openfodder::MissionLayer layer; layer.role = role;
         layer.pixels = pixels; RecordMissionLayer(std::move(layer));
     }
+    static openfodder::NativeAmiga8Frame CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw& prepared);
     void RecordMissionSoldier(const openfodder::PreparedSpriteDraw& prepared) {
         const auto recording = std::atomic_load(&mMissionAudit);
         if (!recording) return;
@@ -140,6 +141,12 @@ public:
         layer.operation = openfodder::MissionLayerOperation::Soldier;
         layer.soldier = prepared;
         layer.soldier.soldier.interval = recording->interval;
+        const auto& state = prepared.soldier;
+        if (state.geometry.format == openfodder::SpriteDrawFormat::Amiga8 &&
+            (openfodder::IsNativeAmiga8AssociatedCandidate(state.type, state.sheet) ||
+             openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet)) &&
+            openfodder::HybridMissionArtEnabled())
+            layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared);
         // No borrowed draw pointer is needed by the semantic consumer.
         layer.soldier.draw.source = nullptr;
         std::lock_guard<std::mutex> lock(recording->mutex);
