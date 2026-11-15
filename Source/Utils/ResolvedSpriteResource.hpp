@@ -87,7 +87,7 @@ inline bool IsNativeAmiga8TransparentCandidate(int16_t type, int16_t sheet) {
 }
 
 inline bool IsNativeAmiga8AssociatedCandidate(int16_t type, int16_t sheet) {
-    return (type == 6 && sheet == 0x7f) || (type == 20 && sheet == 0x99) ||
+    return (type == 6 && (sheet == 0x7f || sheet == 0x9d)) || (type == 20 && sheet == 0x99) ||
            (type == 21 && sheet == 0x95);
 }
 

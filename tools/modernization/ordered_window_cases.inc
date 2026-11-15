@@ -239,7 +239,8 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
     // Exercise the producer evidence used by the real Window resolver, with
     // two HD soldiers on either side of each native operation.
     struct NativeCase { int16_t type, sheet, frame, rows; uint16_t offset; };
-    for (const auto& native : {NativeCase{6,0x7f,3,6,2230}, NativeCase{20,0x99,0,15,5970},
+    for (const auto& native : {NativeCase{6,0x7f,3,6,2230}, NativeCase{6,0x9d,6,7,3116},
+                              NativeCase{20,0x99,0,15,5970},
                               NativeCase{21,0x95,0,10,9080}, NativeCase{5,0x7c,1,1,560}}) {
         auto layer = body;
         auto& p = layer.soldier;

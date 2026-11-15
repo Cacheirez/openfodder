@@ -12,7 +12,7 @@
 - **Contrato Amiga8 implementado:** ASan/UBSan/LSan focalizados a 8×/12× y H3 Windows comprobados. En el mismo replay 1.894 → 2.136 publicaciones HD y 17 → 39 retornos al clásico del mismo soldado. La continuidad jugable sigue sin aceptar. [Medición y recuperación](DEMO_A1_HYBRID_P1.md#contrato-amiga8).
 - **CI focalizada de `1c1f48b`:** PASS CTest y A2/H3 en Windows/Linux, geometría y grabación en Linux. [Comprobaciones y límites](DEMO_A1_HYBRID_P1.md#contrato-amiga8).
 - **Análisis de continuidad completado:** de 39 retornos, 16 persisten desde F2 y 23 aparecieron al publicar tramos nuevos. Se reconstruyeron las 11 claves observadas de la bala 0x9D y se proyectan 54 publicaciones HD adicionales y 24 retornos en el mismo replay. [Datos y recuperación](DEMO_A1_HYBRID_P1.md#continuidad-del-mismo-soldado).
-- **Siguiente tarea única vigente:** decisión de Miguel sobre extender el contrato Amiga8 a la bala 0x9D y medir el resultado. [Control operativo](PLAN_TRABAJO.md).
+- **Siguiente tarea única vigente:** validar en CI focalizada la ampliación a la bala 0x9D. Miguel autoriza completar los pasos técnicos del hito de continuidad hasta la próxima valoración jugable. [Control operativo](PLAN_TRABAJO.md).
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
 - **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta, en borrador y sin fusionar. Base de la muestra `d8102da`. SHA del relevo: `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`. La autoridad sobre la siguiente tarea es el control operativo de [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.

@@ -23,7 +23,7 @@ def main():
                                check=True, timeout=120)
             result = report([path])
             assert 'PASS hybrid Window:' in path.read_text(), result['outcomes']
-            assert result['outcomes']['published'] == 32, result['outcomes']
+            assert result['outcomes']['published'] == 34, result['outcomes']
             assert result['outcomes']['classic-recovered'] == 6, result['outcomes']
             for density in (8, 12):
                 trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
@@ -34,7 +34,8 @@ def main():
                          and r['sheet'] == 0x95 and r['frame'] == 2]
                 assert sum(r.get('resolution_keep', 0) for r in ranks) == 4, ranks
                 assert sum(r['resolution_missing'] for r in ranks) == 3, ranks
-                for kind, sheet, frame in ((6, 0x7f, 3), (20, 0x99, 0), (21, 0x95, 0), (5, 0x7c, 1)):
+                for kind, sheet, frame in ((6, 0x7f, 3), (6, 0x9d, 6), (20, 0x99, 0),
+                                           (21, 0x95, 0), (5, 0x7c, 1)):
                     native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
                               and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
                     assert sum(r.get('resolution_keep', 0) for r in native) == 1, native
