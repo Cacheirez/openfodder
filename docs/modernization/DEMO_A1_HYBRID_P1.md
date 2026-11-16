@@ -166,3 +166,20 @@ En PowerShell:
 ```
 
 Abre Amiga The One M1P2 a 12×, híbrido y SDL software sin sonido. Se comprobaron el ejecutable, su hash, el manifiesto y las dependencias con `-Comprobar`. Queda pendiente el lanzamiento interactivo. Jugar con normalidad, moviendo y girando al pelotón y disparando. Facilitar la ruta del registro que imprime PowerShell e indicar si los mismos soldados siguen alternando entre HD y clásico y si el cambio se nota respecto a la prueba anterior.
+
+### Resultado jugable y continuidad de los enemigos
+
+El 16-11-2026 Miguel observó menos alternancia que en las pruebas anteriores, con retornos que aún se perciben. La partida híbrida de Amiga The One M1P2 tuvo 4.388 publicaciones HD de 8.105 intentos registrados y 3.717 retornos `missing-variant`. La bala tipo 6/0x9D resolvió `keep` en los 1.113 comandos en que apareció; 82 se publicaron con la escena HD. Los recorridos manuales son distintos. La comparación cuantitativa antes/después está fijada por el replay.
+
+El censo con el mismo soldado presente identifica 27 retornos, con 135 incidencias por soldado y 16 claves faltantes distintas. En 24 retornos todos los faltantes eran enemigos tipo 5. Los tres casos más frecuentes fueron `0x64/F1` (ocho), `0x6A/F1` (cuatro) y `0x6B/F1` (cuatro). Otro retorno combinó enemigo y bala, uno combinó jugador, granada y sombra pequeña, y otro correspondió al tipo 27.
+
+| Muestra | Publicaciones HD observadas → proyectadas | Retornos del pelotón observados → proyectados | Enemigos con HD y nuevo clásico dentro de publicaciones HD |
+| --- | ---: | ---: | ---: |
+| Partida de Miguel | 4.388 → 4.565 | 27 → 13 | 3 |
+| Replay de control 0x9D | 2.190 → 2.340 | 24 → 12 | 5 |
+
+Se proyectó admitir únicamente las tres poses F1 anteriores. Se exige algún jugador resuelto a HD y que todos los faltantes del intento pertenezcan al grupo. Después se recalculan los retornos y las representaciones de cada enemigo por escena, ranura y generación. En el replay se proyecta un cambio directo del mismo enemigo de HD a clásico en dos publicaciones HD adyacentes. Las proyecciones proceden del censo y quedan pendientes de validación de bytes, geometría y composición. En la partida, admitir indiscriminadamente todos los enemigos proyectaría 5.629 publicaciones, pero conservaría 26 retornos con el mismo soldado. La cobertura por sí sola es insuficiente para resolver continuidad.
+
+**Estado.** La mejora percibida de 0x9D queda registrada. La próxima ampliación de dibujos visibles afectaría a cuerpos enemigos con cobertura parcial. Se necesita un tratamiento que preserve la representación de cada actor antes de integrar esas poses. La aceptación jugable permanece pendiente.
+
+**Recuperación.** Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-9D-hibrido-20261116-111148.log`, SHA-256 `b532bf0d9c15f763c44269e8385e66230030c4ed6db349dea23c020aed5fc033`. En el directorio de la prueba, ejecutar `python -B analizar-partida-9d.py <registro-manual>`. El script usa el replay validado de 0x9D y el lector anterior. SHA-256 `6f0fea2fd310dcf216bd5197b4a89a2d1d2ec8af0e8a15bca157fca0efe65b08`.
