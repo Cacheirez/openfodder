@@ -11,17 +11,19 @@ class OrderedSoldierRegistry {
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
     static bool canKeepNativeAmiga8(const PreparedSpriteDraw& prepared,
-                                   size_t targetWidth, size_t targetSize, bool classicEnemyExperiment = false) {
+                                   size_t targetWidth, size_t targetSize, bool classicEnemies) {
         const auto& state = prepared.soldier;
         const auto& native = prepared.nativeAmiga8;
         const auto& geometry = state.geometry;
         const auto& resource = prepared.resource;
-        if (!native.bytes && classicEnemyExperiment)
-            throw std::invalid_argument("ordered classic enemy experiment requires native provenance");
+        const bool forceClassic = IsClassicEnemyExperimentDraw(state.type, state.sheet) && classicEnemies;
+        const bool combatEffect = IsNativeAmiga8CombatEffect(state.type, state.sheet, state.frame) && classicEnemies;
+        if (!native.bytes && (forceClassic || combatEffect))
+            throw std::invalid_argument("ordered M1P2 classic draw requires native provenance");
         if (!native.bytes)
             return isAuditedNativeAmigaDraw(prepared);
 
-        const bool firstSheet = classicEnemyExperiment && state.type == 5 && native.segment == 0;
+        const bool firstSheet = forceClassic && state.type == 5 && native.segment == 0;
         if (!state.valid || !state.scene || !state.generation || !state.interval || prepared.isCursor ||
             state.type != native.type || state.sheet != native.sheet || state.frame != native.frame ||
             state.scene != native.scene || state.slot != native.slot || state.generation != native.generation ||
@@ -36,11 +38,12 @@ class OrderedSoldierRegistry {
             resource.layout.planes != 4)
             throw std::invalid_argument("ordered native Amiga8 provenance");
 
-        if (!classicEnemyExperiment && (state.inVehicle || state.pendingDestroy))
+        if (!forceClassic && (state.inVehicle || state.pendingDestroy))
             return false;
         const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
-            (classicEnemyExperiment && state.type == 4);
-        if (!classicEnemyExperiment && !transparent && !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))
+            (forceClassic && state.type == 4);
+        if (!forceClassic && !combatEffect && !transparent &&
+            !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))
             return false;
 
         auto draw = prepared.draw;
@@ -186,7 +189,7 @@ public:
         }
         const auto found=entries.find(key);
         if(found==entries.end()){
-            if(hybrid && canKeepNativeAmiga8(p,targetWidth,targetSize))
+            if(hybrid && canKeepNativeAmiga8(p,targetWidth,targetSize,classicEnemies))
                 result.decision=SoldierArtDecision::KeepClassic;
             return result;
         }

@@ -95,6 +95,11 @@ inline bool IsClassicEnemyExperimentDraw(int16_t type, int16_t sheet) {
     return type == 5 || (type == 4 && sheet == 0x7c);
 }
 
+inline bool IsNativeAmiga8CombatEffect(int16_t type, int16_t sheet, int16_t frame) {
+    return ((type == 6 || type == 23) && sheet == 0x96 && frame >= 0 && frame < 4) ||
+           (type == 22 && sheet == 0x97 && frame == 0);
+}
+
 // Copying/moving this object retains the bytes referenced by draw.source.
 // This covers a sprite command, not a complete frame or publication protocol.
 struct PreparedSpriteDraw {

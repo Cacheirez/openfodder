@@ -147,7 +147,9 @@ public:
         if (state.geometry.format == openfodder::SpriteDrawFormat::Amiga8 &&
             (openfodder::IsNativeAmiga8AssociatedCandidate(state.type, state.sheet) ||
              openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
-             (recording->scene.classicEnemies && openfodder::IsClassicEnemyExperimentDraw(state.type, state.sheet))) &&
+             (recording->scene.classicEnemies &&
+              (openfodder::IsClassicEnemyExperimentDraw(state.type, state.sheet) ||
+               openfodder::IsNativeAmiga8CombatEffect(state.type, state.sheet, state.frame)))) &&
             openfodder::HybridMissionArtEnabled())
             layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared, recording->scene.classicEnemies);
         // No borrowed draw pointer is needed by the semantic consumer.

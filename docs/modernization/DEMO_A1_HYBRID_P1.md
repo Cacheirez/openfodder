@@ -312,3 +312,13 @@ Se compararon los dos manifiestos con el mismo binario diagnóstico. El verifica
 **Siguiente paso autorizado.** Integrar el grupo en el modo opcional existente de M1P2 mediante el contrato de procedencia y conservar vinculaciones explícitas, enemigo clásico y recuperación ante fallos. Repetir control y candidato con registro completo de presentaciones, H3, pruebas focalizadas y CI pertinentes. La compilación diagnóstica no se entrega para jugar.
 
 **Recuperación local.** En `combate-tramo`: `reconstruir-tramo.py`, `preparar-manifiesto.py`, `check-tramo.py` y `check-presentaciones.py`. Este último recibe `replay-calls/control/engine.log` y `replay-calls/classic-enemies/engine.log`. SHA-256 de esos dos registros `6d10204a81219f599e4958d98382e983c645f1d661a1c624ec744558337a76de` y `1e03949624974ab9362392bfbdc93576d528ce279932c2cb86578108143ed232`. SHA-256 del verificador `f7e2a1a9e415125f1f74ee4c55a2c972d5e7bc9ca7778fae90639b1c4ffee9fb`.
+
+### Grupo de combate integrado
+
+En el modo opcional de enemigos clásicos de M1P2, los nueve dibujos de impacto, sangre y sombra que carecen de vínculo pasan el contrato de procedencia Amiga8 antes de conservarse en clásico. Se mantiene la precedencia de los vínculos explícitos para estos efectos y la recuperación ante fallos de datos o SDL.
+
+- **PASS replay con el manifiesto original:** 3.186 publicaciones HD (281 adicionales), siete retornos con el mismo soldado (antes diez), cero rachas HD de uno a tres fotogramas (antes tres). Las cuatro secuencias tienen 50/50, 74/74, 71/71 y 35/35 publicaciones HD. El recuento de 4.640 llamadas del motor coincide con el diagnóstico anterior y conserva los 1.546 estados lógicos de la fase.
+- **PASS pruebas focalizadas:** Windows H3, 11 fases y 11.361 estados fijados. WSL con ASan/UBSan/LSan, métodos reales de Window y SDL software a 8×/12×, conservación de efectos en su orden, rechazo de procedencia ausente, offset, identidad, bytes y recorte incorrectos, más recuperación íntegra ante fallo SDL. Pasaron los 42 tests Python.
+- **PENDIENTE:** CI focalizada de la integración y valoración jugable. GPU, CD32, audio y campaña completa pendientes.
+
+**Reproducción local.** `validate-grupo-combate.py <directorio-nuevo>` usa el binario de `combate-grupo/h3-build/Release`. La variante diagnóstica `validate-grupo-presentaciones.py` conserva la lógica integrada y añade el recuento de cada llamada. Sus resultados se contrastan con `combate-tramo/check-presentaciones.py`. SHA-256 del registro instrumentado `b308749543a254ac360228e7e49c5a1119335cf5135cd7ac4f2931d9e8f6cef2`.
