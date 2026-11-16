@@ -295,3 +295,20 @@ De los 5.116 comandos faltantes del replay, 471 no emiten escrituras y 140 solo 
 **Punto de decisión.** Conviene definir un tramo de combate con cobertura coherente de los estados del pelotón y efectos visibles, verificable de principio a fin, antes de considerar otra familia artística o una ampliación del compositor. El modo opt-in publicado sigue como referencia. La revisión visual de una nueva versión queda pendiente de una mejora medible.
 
 **Reproducción local.** Desde el directorio de la prueba, ejecutar `python -B check-combate-visibilidad.py combate-visibilidad/replay/classic-enemies/engine.log`. El log se generó con `validate-combate-visibilidad.py` y la copia diagnóstica en `combate-visibilidad/project/WindowHD.cpp`. SHA-256 del log `7462a75733a03b8fd46bba8996aa14095e9996e2f393e44c0e140036d32a794c`, del verificador `dd0c210b8d94d39bc412229d82ad3d7396ce726b6f87a82834ae74f022190842`.
+
+### Tramos de combate completos
+
+Con el alcance autorizado por Miguel se agruparon los faltantes desde cada retorno hasta la siguiente publicación HD. Cuatro encuentros comparten los mismos nueve dibujos: impacto tipo 6/0x96 F0–F3, sangre tipo 23/0x96 F0–F3 y sombra de jugador tipo 22/0x97 F0. Los primeros censos por recurso aislado omitían los frames F1–F3 de impacto porque siempre aparecían con otros faltantes. Se reconstruyeron las nueve claves del registro a partir de la tabla y los bytes originales y se verificaron los nueve rasters con el renderizador nativo. La copia diagnóstica usó nueve vínculos `keep-associated` y el mismo arte, en el orden nativo del compositor.
+
+| Encuentro por intentos | HD previo / llamadas de presentación | HD con el grupo / llamadas |
+| --- | ---: | ---: |
+| 1436–1537 | 5 / 50 | 50 / 50 |
+| 4317–4470 | 5 / 74 | 74 / 74 |
+| 5555–5706 | 2 / 71 | 71 / 71 |
+| 7148–7223 | 2 / 35 | 35 / 35 |
+
+Se compararon los dos manifiestos con el mismo binario diagnóstico. El verificador cruza cada retorno de `TryRenderMissionHD` con su resultado de cobertura y cuenta también las 86 llamadas sin censo. Las dos pasadas hacen las mismas 4.640 llamadas y conservan los 1.546 estados H3. El grupo conserva las 2.905 publicaciones previas y añade 281. Los retornos con el mismo soldado que se pueden atribuir por identidad bajan de diez a siete. En las llamadas reales se eliminan las tres rachas de uno a tres fotogramas HD, y la mayor pasa de 1.074 a 1.317 publicaciones. Cada uno de los cuatro encuentros da HD en todas sus llamadas. El número serial también se usa fuera del censo y puede saltar entre dos presentaciones HD consecutivas, por lo que el recuento basado en sus huecos es conservador. La partida manual archivada no registra todas las llamadas y queda como contraste, sin inferir la duración real de sus rachas.
+
+**Siguiente paso autorizado.** Integrar el grupo en el modo opcional existente de M1P2 mediante el contrato de procedencia y conservar vinculaciones explícitas, enemigo clásico y recuperación ante fallos. Repetir control y candidato con registro completo de presentaciones, H3, pruebas focalizadas y CI pertinentes. La compilación diagnóstica no se entrega para jugar.
+
+**Recuperación local.** En `combate-tramo`: `reconstruir-tramo.py`, `preparar-manifiesto.py`, `check-tramo.py` y `check-presentaciones.py`. Este último recibe `replay-calls/control/engine.log` y `replay-calls/classic-enemies/engine.log`. SHA-256 de esos dos registros `6d10204a81219f599e4958d98382e983c645f1d661a1c624ec744558337a76de` y `1e03949624974ab9362392bfbdc93576d528ce279932c2cb86578108143ed232`. SHA-256 del verificador `f7e2a1a9e415125f1f74ee4c55a2c972d5e7bc9ca7778fae90639b1c4ffee9fb`.
