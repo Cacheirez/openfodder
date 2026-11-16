@@ -251,3 +251,20 @@ Las proyecciones recalculan las secuencias completas y suponen que los nuevos di
 Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-EnemigosClasicos-hibrido-20261116-123933.log`, SHA-256 `5843cd3e18b51b6558b8eadffeb79b68ae45d0eb8afbc942fa6866d4b88b951b`. Desde el directorio de la prueba, ejecutar `python -B analizar-combate-enemigos-clasicos.py <directorio> <registro-manual>`. SHA-256 del script `069db9b3c06c556e219d3938a7e3d2ecf7517621a8fbdd6280b424f6edcb6795`.
 
 **Caso de combate fijado y comprobado.** `python -B check-combate-p1-replay.py classic-enemies/replay/classic-enemies/engine.log` verifica los diez pares HD→clásico, sus causas y las 13 rachas de hasta tres publicaciones. Comprueba los 1.546 estados del fichero de traza de la fase. Ventanas de referencia: 1436→1438 (impacto), 1493→1495 (sangre), 2014→2016 (jugador), 4801→4803 (jugador, granada y sombra) y 7229→7231 (impacto y sangre). Se reprodujo la comprobación con los registros retenidos. SHA-256 del script `f6ec1ca2856afde1f296325fbeeb812c1334edcf695cb2421d1516f07b8873f8`.
+
+### Búsqueda de un ajuste de combate
+
+Sobre `4d57eb2` se evaluaron los doce dibujos auxiliares (tipo, hoja y frame) que aparecían en los retornos o eran el único faltante con algún jugador HD disponible. Se añadió el caso potencialmente transparente jugador `0x7C/F1`, condicionado a verificar cero escrituras. Se probaron todas las combinaciones no vacías (8.191). Para cada una se recorrió la secuencia completa de los dos registros conservando las publicaciones existentes. Un intento solo ganaba HD cuando quedaba al menos un jugador con reemplazo y la combinación despejaba todos sus faltantes. Se volvieron a contar los cambios del mismo actor y las rachas de uno a tres fotogramas. Esto mide el efecto proyectado de admitir dibujos ya validados y no prueba que el recurso pase el contrato.
+
+| Muestra | Caso | Publicaciones HD | Retornos con el mismo soldado | Rachas HD cortas |
+| --- | --- | ---: | ---: | ---: |
+| Replay fijado | Prototipo observado | 2.905 | 10 | 13 |
+| Replay fijado | Sangre tipo 23/0x96, F0–F3 | 2.989 | 9 | 11 |
+| Partida manual | Prototipo observado | 5.178 | 9 | 24 |
+| Partida manual | Sangre tipo 23/0x96, F0–F3 | 5.295 | 11 | 35 |
+
+Treinta y dos combinaciones reducen ambas métricas de continuidad en el replay, todas incluyen las cuatro poses de sangre. Ninguna reduce ambas métricas en los dos registros. La combinación mínima aporta 84 publicaciones HD al replay, pero en la partida elimina pocos cortes y crea más tramos cortos. Los estados del pelotón con dibujo visible sin HD quedaron fuera de la simulación. La versión que Miguel probó sigue como referencia.
+
+**Siguiente paso.** Preparar una segunda muestra reproducible de combate con datos públicos que cubra impacto, sangre y una pose faltante del pelotón. Comparar cada propuesta con su control sobre la misma secuencia. Para avanzar se exige conservar las publicaciones previas y reducir los cambios por actor y las rachas cortas en las muestras reproducibles, con el registro manual como contraste. La implementación y la nueva valoración jugable quedan pendientes.
+
+**Reproducción local.** En el directorio de la prueba ejecutar `python -B buscar-ajuste-combate.py <registro-manual> --include-noop`. Usa los registros y lectores de la prueba anterior. SHA-256 del script `397b5245ba0a5971ada13362188092975905889df73d73bff8266ac42f710fce`.

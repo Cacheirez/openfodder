@@ -19,7 +19,8 @@
 - **CI focalizada de `1f19c6c`:** PASS CTest y A2/H3 en Windows/Linux, destinos y grabación de misión en Linux. [Evidencia](DEMO_A1_HYBRID_P1.md#prototipo-con-enemigos-clásicos).
 - **Prueba jugable de enemigos clásicos (16-11):** mejora leve percibida. 5.178 publicaciones HD, nueve retornos con el mismo soldado y ocho de ellos con impacto de bala ausente. Todos los dibujos de enemigo resolvieron como clásicos. Incluir el impacto aislado aumenta las rachas HD cortas en ambas muestras. [Evidencia](DEMO_A1_HYBRID_P1.md#revisión-del-combate-con-enemigos-clásicos).
 - **Caso de combate preparado:** diez retornos, 13 rachas HD cortas y H3 de M1P2 fijados sobre el replay existente. [Reproducción](DEMO_A1_HYBRID_P1.md#revisión-del-combate-con-enemigos-clásicos).
-- **Siguiente tarea única vigente:** aislar un ajuste de combate que reduzca retornos y rachas HD cortas. [Control operativo](PLAN_TRABAJO.md).
+- **Búsqueda de combate completada:** 32 de 8.191 combinaciones mejoran retornos y rachas cortas en el replay y ninguna los mejora en ambas muestras. Los cuatro frames de sangre constituyen el mínimo del replay, con regresión proyectada en la partida. [Método y recuperación](DEMO_A1_HYBRID_P1.md#búsqueda-de-un-ajuste-de-combate).
+- **Siguiente tarea única vigente:** preparar un segundo caso reproducible de combate con datos públicos. [Control operativo](PLAN_TRABAJO.md).
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
 - **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta, en borrador y sin fusionar. Base de la muestra `d8102da`. SHA del relevo: `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`. La autoridad sobre la siguiente tarea es el control operativo de [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.
