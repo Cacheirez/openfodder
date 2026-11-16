@@ -11,31 +11,36 @@ class OrderedSoldierRegistry {
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
     static bool canKeepNativeAmiga8(const PreparedSpriteDraw& prepared,
-                                   size_t targetWidth, size_t targetSize) {
+                                   size_t targetWidth, size_t targetSize, bool classicEnemyExperiment = false) {
         const auto& state = prepared.soldier;
         const auto& native = prepared.nativeAmiga8;
         const auto& geometry = state.geometry;
         const auto& resource = prepared.resource;
+        if (!native.bytes && classicEnemyExperiment)
+            throw std::invalid_argument("ordered classic enemy experiment requires native provenance");
         if (!native.bytes)
             return isAuditedNativeAmigaDraw(prepared);
 
+        const bool firstSheet = classicEnemyExperiment && state.type == 5 && native.segment == 0;
         if (!state.valid || !state.scene || !state.generation || !state.interval || prepared.isCursor ||
             state.type != native.type || state.sheet != native.sheet || state.frame != native.frame ||
             state.scene != native.scene || state.slot != native.slot || state.generation != native.generation ||
-            state.segment != native.segment || native.segment != 1 || resource.offset != native.offset ||
+            state.segment != native.segment || (native.segment != 1 && !firstSheet) || resource.offset != native.offset ||
             !resource || resource.bytes != native.bytes || !resource.generation ||
             resource.generation != native.resourceGeneration ||
             geometry.format != SpriteDrawFormat::Amiga8 || geometry.palette != 0 ||
             geometry.columns != native.columns || geometry.rows != native.rows ||
             geometry.modX != native.modX || geometry.modY != native.modY ||
             resource.palette != geometry.palette || resource.layout.format != geometry.format ||
-            resource.layout.width != 320 || resource.layout.height != 256 || resource.layout.planes != 4)
+            resource.layout.width != 320 || resource.layout.height != (firstSheet ? 336 : 256) ||
+            resource.layout.planes != 4)
             throw std::invalid_argument("ordered native Amiga8 provenance");
 
-        if (state.inVehicle || state.pendingDestroy)
+        if (!classicEnemyExperiment && (state.inVehicle || state.pendingDestroy))
             return false;
-        const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet);
-        if (!transparent && !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))
+        const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
+            (classicEnemyExperiment && state.type == 4);
+        if (!classicEnemyExperiment && !transparent && !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))
             return false;
 
         auto draw = prepared.draw;
@@ -170,10 +175,16 @@ public:
     // The Window census derives key from the complete frozen resource and the
     // current palette. Composition still validates the draw before rasterizing.
     OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,const std::string& key,unsigned density,
-                                bool hybrid=false, size_t targetWidth=0, size_t targetSize=0) const {
+                                bool hybrid=false, size_t targetWidth=0, size_t targetSize=0,
+                                bool classicEnemies=false) const {
         OrderedSoldierAsset result;
-        const auto found=entries.find(key);
         const auto& s=p.soldier;const auto& g=s.geometry;
+        if (hybrid && classicEnemies && IsClassicEnemyExperimentDraw(s.type, s.sheet)) {
+            if (canKeepNativeAmiga8(p, targetWidth, targetSize, true))
+                result.decision=SoldierArtDecision::KeepClassic;
+            return result;
+        }
+        const auto found=entries.find(key);
         if(found==entries.end()){
             if(hybrid && canKeepNativeAmiga8(p,targetWidth,targetSize))
                 result.decision=SoldierArtDecision::KeepClassic;

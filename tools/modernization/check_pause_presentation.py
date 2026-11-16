@@ -36,7 +36,8 @@ cSurface::cSurface(size_t w,size_t h){
  mSDLSurface=new SDL_Surface{int(w),int(h),int((w+pad)*4),1,new uint32[(w+pad)*h]};
 }
 cSurface::~cSurface(){delete[] mSurfaceBuffer;delete[] mSurfaceBufferSaved;delete[] static_cast<uint32*>(mSDLSurface->pixels);delete mSDLSurface;}
-openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw&){
+bool cSurface::ClassicEnemyExperimentEnabled(){ return false; }
+openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw&, bool){
  throw std::logic_error("This fixture does not configure the Amiga The One table");
 }
 '''

@@ -35,6 +35,7 @@ struct MissionLayerDestination {
 struct MissionLayerSequence {
     std::vector<MissionLayerDestination> destinations;
     std::vector<MissionLayer> layers; // global production order, including other targets
+    bool classicEnemies = false;
 };
 struct MissionLayerComposition {
     size_t poseReplacements = 0, poseFallbacks = 0;

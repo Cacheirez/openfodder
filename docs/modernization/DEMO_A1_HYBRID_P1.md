@@ -202,3 +202,22 @@ Las tres últimas filas son proyecciones. Un intento adicional solo puede public
 **Criterio de salida.** Antes de otra partida, verificar con recursos originales que los enemigos se dibujan en orden clásico, con oclusiones en ambos sentidos y continuidad por escena, ranura y generación. Probar fila, bytes y recorte inválidos, escritura inesperada en tipo 4 y fallo SDL. Comparar con 0x9D en el mismo replay a igual manifiesto y densidad. Deben disminuir los retornos y las rachas HD cortas en el replay, conservarse las publicaciones anteriores de los soldados y estar ausente la alternancia de enemigos dentro de la escena híbrida. Contrastar la proyección manual antes de pedir otra valoración. H3, CI focalizada y sanitizadores pertinentes siguen siendo criterios.
 
 **Reproducción.** En el directorio de la prueba, ejecutar `python -B comparar-rutas-continuidad.py <directorio> <registro-manual>` y `python -B proyectar-escena-clasica-enemigos.py <directorio> <registro-manual>`. Usan el replay de 0x9D y los lectores anteriores. SHA-256 de los scripts `0ca13ff84beaf4591b7ef73032998d93797bf7f707ff7c0b5d6bb7b277f4b21c` y `e1c990371522ce7063bdede14bf05a829e07d349676d552cae006636c0f5b8f4`.
+
+## Prototipo con enemigos clásicos
+
+`OPENFODDER_SOLDIER_ORDERED_CLASSIC_ENEMIES=1` activa el ensayo sobre el híbrido para Amiga The One M1P2. La selección del proceso se captura de forma fija y la grabación de cada intervalo conserva la política de la fase. El tipo 5 se dibuja en clásico en su turno, incluidas las poses con vínculo HD. La validación usa la fila de la tabla activa, el recurso retenido, los dos segmentos de juego de Amiga8 y los límites del raster. El tipo 4/0x7C exige cero escrituras. Una discrepancia rechaza el intervalo completo.
+
+| Mismo replay M1P2, 4.554 intentos a 12× | Híbrido 0x9D | Prototipo |
+| --- | ---: | ---: |
+| Publicaciones HD | 2.190 | 2.905 |
+| Retornos con el mismo soldado | 24 | 10 |
+| Incidencias de retorno por soldado | 116 | 47 |
+| Rachas HD de hasta tres publicaciones | 20 | 13 |
+| Mayor racha HD | 924 | 1.007 |
+
+- **PASS replay:** se conserva cada una de las publicaciones anteriores de soldados HD. La proyección coincide con los intentos publicados y los retornos. Diez identidades de enemigo se publicaron siempre en clásico. El tipo 4/0x7C se conservó en 31 comandos, seis intentos publicados. Todos los rechazos registrados fueron por variantes ausentes. El modo estricto con el interruptor presente conserva 1.368 publicaciones y 3.186 faltantes. El híbrido 0x9D con el interruptor apagado conserva su censo.
+- **PASS focalizado en WSL:** ASan/UBSan/LSan, SDL software a 8×/12×, errores de fila, identidad, bytes, recorte y escritura inesperada, más recuperación íntegra ante fallo SDL. En la prueba del recurso original `0x59/F0` con vínculo HD, sus 67 escrituras cubren HD anterior y 48 quedan cubiertas por un soldado posterior. El resultado SDL coincide píxel a píxel y se recupera el clásico tras un rechazo. Los 42 tests Python pasaron.
+- **PASS H3 Windows:** 11 fases y 11.361 estados iguales a la referencia fijada. Las tres pasadas del replay conservan los 1.546 estados de M1P2.
+- **PENDIENTE:** CI focalizada, valoración jugable, GPU, CD32, audio y campaña completa. El registro manual anterior no equivale a un replay y sus métricas proyectadas quedan como referencia de la valoración.
+
+**Reproducción local.** Desde el directorio de la prueba, ejecutar `python -B validate-classic-enemies-replay.py <directorio-nuevo>`, luego `python -B check-classic-enemies-replay.py <directorio-nuevo>/hybrid/engine.log <directorio-nuevo>/classic-enemies/engine.log`. SHA-256 del registro del prototipo `d3c7fe8afa558249b34246818823f069d8e3276b609117dd63a21b41d306b2fa`. La prueba con el recurso original queda en `classic-enemies/run-native-enemy.sh` y el registro `classic-enemies/enemy-run.log`.

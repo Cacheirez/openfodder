@@ -10,10 +10,24 @@
 #include "Utils/OrderedSoldierCoverage.hpp"
 #include <set>
 
+bool cSurface::ClassicEnemyExperimentEnabled() {
+    static const bool enabled = [] {
+        const auto* option = std::getenv("OPENFODDER_SOLDIER_ORDERED_CLASSIC_ENEMIES");
+        return option && std::strcmp(option, "1") == 0;
+    }();
+    if (!enabled || !g_Fodder->mVersionCurrent->isAmigaTheOne())
+        return false;
+    const auto& game = g_Fodder->mGame_Data;
+    return game.mMission_Number == 1 && game.mMission_Phase == 2 &&
+        game.mCampaign.getName() == "Amiga The One";
+}
+
 openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
-        const openfodder::PreparedSpriteDraw& prepared) {
+        const openfodder::PreparedSpriteDraw& prepared, bool classicEnemies) {
     const auto& state = prepared.soldier;
-    if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() || state.segment != eGFX_IN_GAME2)
+    const bool firstSheet = classicEnemies && state.type == eSprite_Enemy && state.segment == eGFX_IN_GAME;
+    if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() ||
+        (state.segment != eGFX_IN_GAME2 && !firstSheet))
         return {};
     const auto* row = g_Fodder->Sprite_Get_Sheet(state.sheet, state.frame);
     if (!row)
@@ -94,7 +108,7 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                 const auto& command=layer.soldier;
                 const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
                 const auto resolved=registry->resolve(command,key,density,hybrid,
-                    current.indexed.width,current.indexed.indices->size());
+                    current.indexed.width,current.indexed.indices->size(),scene.classicEnemies);
                 coverage.resolved(order,key,resolved.decision);
                 if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
                     std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",

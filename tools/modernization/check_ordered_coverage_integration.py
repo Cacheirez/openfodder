@@ -23,8 +23,8 @@ def main():
                                check=True, timeout=120)
             result = report([path])
             assert 'PASS hybrid Window:' in path.read_text(), result['outcomes']
-            assert result['outcomes']['published'] == 34, result['outcomes']
-            assert result['outcomes']['classic-recovered'] == 6, result['outcomes']
+            assert result['outcomes']['published'] == 38, result['outcomes']
+            assert result['outcomes']['classic-recovered'] == 10, result['outcomes']
             for density in (8, 12):
                 trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
                 assert len(trees) == 2, trees
@@ -39,6 +39,10 @@ def main():
                     native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
                               and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
                     assert sum(r.get('resolution_keep', 0) for r in native) == 1, native
+                for kind, sheet, frame in ((5, 0x64, 1), (4, 0x7c, 0)):
+                    native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
+                              and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
+                    assert sum(r.get('resolution_keep', 0) for r in native) == 2, native
             print('PASS hybrid coverage: 8x/12x, two HD actors, native tree and rank, complete recovery')
             return
         for enabled in ('0', '1'):

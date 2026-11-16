@@ -131,7 +131,9 @@ public:
         openfodder::MissionLayer layer; layer.role = role;
         layer.pixels = pixels; RecordMissionLayer(std::move(layer));
     }
-    static openfodder::NativeAmiga8Frame CaptureNativeAmiga8Frame(const openfodder::PreparedSpriteDraw& prepared);
+    static bool ClassicEnemyExperimentEnabled();
+    static openfodder::NativeAmiga8Frame CaptureNativeAmiga8Frame(
+        const openfodder::PreparedSpriteDraw& prepared, bool classicEnemies);
     void RecordMissionSoldier(const openfodder::PreparedSpriteDraw& prepared) {
         const auto recording = std::atomic_load(&mMissionAudit);
         if (!recording) return;
@@ -144,9 +146,10 @@ public:
         const auto& state = prepared.soldier;
         if (state.geometry.format == openfodder::SpriteDrawFormat::Amiga8 &&
             (openfodder::IsNativeAmiga8AssociatedCandidate(state.type, state.sheet) ||
-             openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet)) &&
+             openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
+             (recording->scene.classicEnemies && openfodder::IsClassicEnemyExperimentDraw(state.type, state.sheet))) &&
             openfodder::HybridMissionArtEnabled())
-            layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared);
+            layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared, recording->scene.classicEnemies);
         // No borrowed draw pointer is needed by the semantic consumer.
         layer.soldier.draw.source = nullptr;
         std::lock_guard<std::mutex> lock(recording->mutex);
@@ -186,6 +189,7 @@ public:
         if (!eligible || isLoadedImage() ||
             (!MissionPublicationEnabled() && (!enabled || std::string(enabled) != "1"))) return;
         const auto recording = std::make_shared<MissionAuditRecording>();
+        recording->scene.classicEnemies = openfodder::HybridMissionArtEnabled() && ClassicEnemyExperimentEnabled();
         const char* artOption = std::getenv("OPENFODDER_SOLDIER_ART");
         recording->soldierArt = artOption && std::string(artOption) == "1";
         const char* poseOption = std::getenv("OPENFODDER_REPLACE_SOLDIER_POSE");
