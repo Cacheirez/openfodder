@@ -332,4 +332,12 @@ En PowerShell:
 & 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1da6a-54a2-7270-8fa9-5eb4a351446f/Probar-P1-Combate.ps1'
 ```
 
-Amiga The One M1P2 a 12×, híbrido con enemigos clásicos, SDL software y sin sonido. El ejecutable, el manifiesto y las dependencias se comprobaron con `-Comprobar`. Queda pendiente el arranque interactivo. Jugar una partida con movimiento y disparos cerca de enemigos. Facilitar la ruta del registro y decir si el pelotón mantiene mejor el aspecto al combatir y si aún aparecen cambios breves a clásico.
+Amiga The One M1P2 a 12×, híbrido con enemigos clásicos, SDL software y sin sonido. El ejecutable, el manifiesto y las dependencias se comprobaron con `-Comprobar`.
+
+### Resultado jugable del grupo de combate
+
+El 16-11 Miguel observó un cambio breve a clásico al superar un obstáculo durante la primera parte. En la parte final vio a los soldados en clásico prácticamente todo el tiempo, con el pelotón a la derecha de la pantalla. **Continuidad jugable no aceptada.**
+
+- El verificador `tools/modernization/ordered_soldier_coverage.py` validó 9.753 intentos y 97.813 comandos sin registros incompletos: 6.741 publicaciones HD y 3.012 rechazos por variantes ausentes. El censo no incluye todas las llamadas de presentación ni registra coordenadas, por lo que la posición a la derecha y el momento del obstáculo quedan como observaciones de Miguel. Las primeras interrupciones registradas incluyen hojas del jugador `0xB0–0xB2/F0`.
+- Los tramos de 721, 387 y 1.331 rechazos desde los intentos 12881, 14541 y 17880 comienzan con el tipo 27 `0x9E/F0` como único faltante, mientras siguen presentes cuatro, tres y un jugador HD del intento anterior. El tipo 27 corresponde al soldado muerto flotando. En el tramo final es faltante en los 1.331 intentos. En 963 es el único faltante y hay un jugador con sustitución HD disponible. En toda la partida se cumplen esas dos condiciones en 1.960 intentos. Es un máximo proyectado y queda pendiente verificar el dibujo nativo y las transiciones resultantes.
+- Se observaron dos claves del tipo 27: `75d5c70c84d90a5d6db937d8bd8c2b76a89dad53d9cbca5a228a0fad32ec3566` y `67e7d8c379701379772ff97144f098afb25b9cb6e148f8326f428d554ad9331e`. El registro permanece local en `%TEMP%\OpenFodder-P1-Combate-hibrido-20261116-185238.log` (SHA-256 `c1bbdce79d192f95418a3d9d30e474e37cda7b8615a7d27a941c71b4e71deede`).
