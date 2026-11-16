@@ -375,3 +375,17 @@ El 16-11 Miguel percibió menos cambios a clásico. Señaló saltos desde altura
 Las proyecciones retienen la secuencia de intentos y solo suman publicaciones cuando todos los faltantes pertenecen al grupo evaluado y el intento ya tiene alguna sustitución. El registro carece de coordenadas y de las llamadas excluidas del censo. Las rachas son de intentos registrados. La mejora percibida corresponde a Miguel. La aceptación jugable del pelotón sigue pendiente.
 
 **Recuperación.** Registro local `%TEMP%\OpenFodder-P1-Flotante-hibrido-20261116-192458.log`, SHA-256 `acbc1791699ac656010b424aa279e6b666b26c4202422660542b1ca34900d1e1`. Para volver a medir, validar el censo y agrupar las transiciones de publicado a rechazado por escena, ranura y generación del jugador. El replay de disparo desplazado en `flotante-replay-disparo` contiene tres intentos con `0xB0/F0` ausente.
+
+### Piloto de caída hacia delante
+
+[Maestro, prompt y manifiesto](../../assets/modernization/demo-a1-player-fall-b0-f0/README.md). Una pose nueva `0xB0/F0`, estilo C, ligada a la clave observada en M1P2. Se verificaron la clave y la geometría con la fila 2808 y la paleta nativa. La figura conserva la base de la silueta original y queda dos píxeles nativos más ancha. La revisión humana debe valorar esa diferencia en movimiento.
+
+- **PASS exportación:** los PNG de 128×112 y 192×168 producen los RGBA exactos declarados por el manifiesto.
+- **PASS replay diagnóstico a 8×/12×:** 4.416 intentos por pasada, 3.856→3.859 publicaciones HD, 10→9 retornos del mismo jugador y cero rachas HD de hasta tres intentos. Solo cambian los intentos 2177, 2179 y 2181 de faltante a publicado. La traza de 1.500 estados coincide byte a byte con el mismo tramo sin la pose. El replay diagnóstico termina sin superar la fase en las dos configuraciones. Se reutiliza el ejecutable `52e12f2` con H3 completo, CI focalizada Windows/Linux y sanitizadores ya comprobados.
+- **Recuperación local:** `caida-b0/candidate/candidate-manifest.json` contiene 170 activos y 334 vínculos. Los registros en `caida-b0/replay-8x` y `caida-b0/replay-12x` tienen SHA-256 `7acfb07235d83192afa5652c2dac0dfe29b50163bdd2b38a3c4efeeb7899ae54` y `cc1a4f68eccf7d519ca27f4f7dea34f9d91a7d7e3d9a003feb5e5d58586e2cbd`.
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/Probar-P1-Caida-B0.ps1'
+```
+
+Lanzador comprobado con `-Comprobar`. Probar M1P2 al bajar desde un desnivel hacia la parte inferior de la pantalla. Facilitar el registro e indicar si el soldado conserva el aspecto HD y si el casco o el cuerpo dan un salto de tamaño o posición al caer o al recuperar la marcha. La aceptación visual y jugable queda pendiente.
