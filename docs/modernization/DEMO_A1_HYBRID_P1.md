@@ -268,3 +268,18 @@ Treinta y dos combinaciones reducen ambas métricas de continuidad en el replay,
 **Siguiente paso.** Preparar una segunda muestra reproducible de combate con datos públicos que cubra impacto, sangre y una pose faltante del pelotón. Comparar cada propuesta con su control sobre la misma secuencia. Para avanzar se exige conservar las publicaciones previas y reducir los cambios por actor y las rachas cortas en las muestras reproducibles, con el registro manual como contraste. La implementación y la nueva valoración jugable quedan pendientes.
 
 **Reproducción local.** En el directorio de la prueba ejecutar `python -B buscar-ajuste-combate.py <registro-manual> --include-noop`. Usa los registros y lectores de la prueba anterior. SHA-256 del script `397b5245ba0a5971ada13362188092975905889df73d73bff8266ac42f710fce`.
+
+### Muestras adicionales de combate
+
+Se ejecutó el replay público M1P3 a 12× con enemigos clásicos en una copia diagnóstica del binario que selecciona esa fase. El modo publicado mantiene su límite M1P2. Se conservaron el fichero público M1P3 y el manifiesto de 333 vínculos. **PASS** de los 1.710 estados H3 fijados. Se observaron faltantes de impacto, sangre y jugador. La cobertura del pelotón resultó baja (145/5.046 publicaciones), con tres retornos distintos de los causados por el impacto o la sangre y ninguna racha de hasta tres publicaciones. Para la comparación se exige mantener ese cero y disminuir los retornos.
+
+En una copia local independiente de la entrada pública M1P2 se desplazó el primer disparo cuatro ticks de entrada. Se conservaron las semillas y los ficheros fijados. La variante terminó con `Phase Failed` y queda como tramo diagnóstico, sin equipararlo a un replay de fase completo o a un nuevo PASS de H3. Registró 2.889 publicaciones, diez retornos del mismo soldado y diez rachas cortas. La comparación complementaria incluye la sangre y los estados de caída que aparecieron en ese tramo.
+
+| Muestra adicional | Control, HD / retornos / rachas cortas | Sangre 0x96, proyección |
+| --- | ---: | ---: |
+| M1P3 público | 145 / 3 / 0 | 178 / 3 / 0 |
+| Tramo M1P2 con disparo desplazado | 2.889 / 10 / 10 | 2.968 / 12 / 10 |
+
+Ninguna de las 8.191 combinaciones mejora ambas métricas en el replay original y en alguna de las dos muestras adicionales. Se conserva el motor publicado. Los dos enfoques diagnósticos no justifican otra prueba manual del mismo binario.
+
+**Recuperación local.** Ejecutar `python -B comparar-dos-replays-combate.py <registro-manual> <registro-adicional>`, en el directorio de la prueba. SHA-256 del script `f332580a27a202ef972fbc8c7bee2904f5dcce9af141747069b9e387cb7e1505`. Registros: `combate-m1p3/replay/classic-enemies/engine.log` (SHA-256 `3fd92c2ba806bbd49adbed7b54b118e515e33a3ae2e77fca833e65be232dcb01`) y `combate-m1p2-disparo/run1/classic-enemies/engine.log` (SHA-256 `5400e10e3093816b60e6ae49d03cc47877676352ef4e0a6e34c1230587982b99`). La copia M1P2 se prepara con `combate-m1p2-disparo/desplazar-disparo.py`, aplicado a una copia nueva del fichero público.
