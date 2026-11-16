@@ -232,3 +232,22 @@ En PowerShell:
 ```
 
 Abre Amiga The One M1P2 a 12× con híbrido, enemigos clásicos, SDL software y sin sonido. Se comprobaron el binario, su hash y las dependencias con `-Comprobar`. El arranque interactivo queda pendiente. Jugar con normalidad, con movimiento y disparos cerca de enemigos. Facilitar la ruta del registro y señalar si el pelotón alterna menos y si los enemigos conservan el mismo aspecto durante la fase.
+
+### Revisión del combate con enemigos clásicos
+
+El 16-11-2026 Miguel apreció algo menos de alternancia y señaló que sigue siendo más visible cuando hay enemigos en pantalla y se interactúa con ellos. Se registraron 5.178 publicaciones HD de 7.503 intentos y 2.325 rechazos por `missing-variant`. Los 8.606 comandos de enemigo tipo 5 resolvieron `keep`. Catorce identidades distintas de enemigo aparecieron en publicaciones HD con su dibujo clásico.
+
+Se observaron nueve pares consecutivos HD→clásico con el mismo soldado en escena, 35 incidencias por soldado. Siete tenían como único faltante el impacto de bala tipo 6 `0x96/F0`. En otro faltaba también una pose de jugador. En el noveno faltaban jugador, granada y sombra pequeña. `Sprite_Handle_Bullet` selecciona `0x96/F0` al entrar en su animación de impacto. El log permite identificar el recurso faltante, sin atribuir el impacto a un enemigo concreto.
+
+| Política simulada | Publicaciones HD manual / replay | Retornos manual / replay | Rachas HD de una a tres publicaciones manual / replay |
+| --- | ---: | ---: | ---: |
+| Prototipo observado | 5.178 / 2.905 | 9 / 10 | 24 / 13 |
+| Admitir impacto tipo 6/0x96 | 5.199 / 2.923 | 9 / 11 | 31 / 20 |
+| Admitir sangre tipo 23/0x96 | 5.295 / 2.989 | 11 / 9 | 35 / 11 |
+| Admitir impacto y sangre | 5.415 / 3.029 | 8 / 10 | 47 / 19 |
+
+Las proyecciones recalculan las secuencias completas y suponen que los nuevos dibujos pasarían la validación nativa. El impacto aislado elimina siete retornos manuales antiguos y añade otros siete al abrir tramos HD nuevos. Se propone un caso reproducible de combate que conserve el comportamiento de los enemigos clásicos y separe los efectos de impacto, sangre y los faltantes del pelotón. La hipótesis siguiente debe reducir la alternancia, conservar las publicaciones HD anteriores y mantener la recuperación clásica.
+
+Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-EnemigosClasicos-hibrido-20261116-123933.log`, SHA-256 `5843cd3e18b51b6558b8eadffeb79b68ae45d0eb8afbc942fa6866d4b88b951b`. Desde el directorio de la prueba, ejecutar `python -B analizar-combate-enemigos-clasicos.py <directorio> <registro-manual>`. SHA-256 del script `069db9b3c06c556e219d3938a7e3d2ecf7517621a8fbdd6280b424f6edcb6795`.
+
+**Caso de combate fijado y comprobado.** `python -B check-combate-p1-replay.py classic-enemies/replay/classic-enemies/engine.log` verifica los diez pares HD→clásico, sus causas y las 13 rachas de hasta tres publicaciones. Comprueba los 1.546 estados del fichero de traza de la fase. Ventanas de referencia: 1436→1438 (impacto), 1493→1495 (sangre), 2014→2016 (jugador), 4801→4803 (jugador, granada y sombra) y 7229→7231 (impacto y sangre). Se reprodujo la comprobación con los registros retenidos. SHA-256 del script `f6ec1ca2856afde1f296325fbeeb812c1334edcf695cb2421d1516f07b8873f8`.
