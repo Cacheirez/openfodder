@@ -218,6 +218,17 @@ Las tres últimas filas son proyecciones. Un intento adicional solo puede public
 - **PASS replay:** se conserva cada una de las publicaciones anteriores de soldados HD. La proyección coincide con los intentos publicados y los retornos. Diez identidades de enemigo se publicaron siempre en clásico. El tipo 4/0x7C se conservó en 31 comandos, seis intentos publicados. Todos los rechazos registrados fueron por variantes ausentes. El modo estricto con el interruptor presente conserva 1.368 publicaciones y 3.186 faltantes. El híbrido 0x9D con el interruptor apagado conserva su censo.
 - **PASS focalizado en WSL:** ASan/UBSan/LSan, SDL software a 8×/12×, errores de fila, identidad, bytes, recorte y escritura inesperada, más recuperación íntegra ante fallo SDL. En la prueba del recurso original `0x59/F0` con vínculo HD, sus 67 escrituras cubren HD anterior y 48 quedan cubiertas por un soldado posterior. El resultado SDL coincide píxel a píxel y se recupera el clásico tras un rechazo. Los 42 tests Python pasaron.
 - **PASS H3 Windows:** 11 fases y 11.361 estados iguales a la referencia fijada. Las tres pasadas del replay conservan los 1.546 estados de M1P2.
-- **PENDIENTE:** CI focalizada, valoración jugable, GPU, CD32, audio y campaña completa. El registro manual anterior no equivale a un replay y sus métricas proyectadas quedan como referencia de la valoración.
+- **PASS CI focalizada** de `1f19c6c` en Windows y Linux para CTest y A2/H3. En Linux pasaron también la identidad y geometría de destinos, la grabación de misión y la detección de escrituras ausentes. Las baterías completas seguían en ejecución al cerrar. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43851388485) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43851388454).
+- **PENDIENTE:** valoración jugable, GPU, CD32, audio y campaña completa. El registro manual anterior no equivale a un replay y sus métricas proyectadas quedan como referencia de la valoración.
 
 **Reproducción local.** Desde el directorio de la prueba, ejecutar `python -B validate-classic-enemies-replay.py <directorio-nuevo>`, luego `python -B check-classic-enemies-replay.py <directorio-nuevo>/hybrid/engine.log <directorio-nuevo>/classic-enemies/engine.log`. SHA-256 del registro del prototipo `d3c7fe8afa558249b34246818823f069d8e3276b609117dd63a21b41d306b2fa`. La prueba con el recurso original queda en `classic-enemies/run-native-enemy.sh` y el registro `classic-enemies/enemy-run.log`.
+
+### Revisión jugable con enemigos clásicos
+
+En PowerShell:
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1da6a-54a2-7270-8fa9-5eb4a351446f/Probar-P1-EnemigosClasicos.ps1'
+```
+
+Abre Amiga The One M1P2 a 12× con híbrido, enemigos clásicos, SDL software y sin sonido. Se comprobaron el binario, su hash y las dependencias con `-Comprobar`. El arranque interactivo queda pendiente. Jugar con normalidad, con movimiento y disparos cerca de enemigos. Facilitar la ruta del registro y señalar si el pelotón alterna menos y si los enemigos conservan el mismo aspecto durante la fase.
