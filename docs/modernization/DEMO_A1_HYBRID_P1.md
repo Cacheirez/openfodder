@@ -363,3 +363,15 @@ El híbrido opt-in de Amiga The One M1P2 conserva el tipo 27 `0x9E/F0` con la pr
 ```
 
 Lanzador comprobado con `-Comprobar`. Al jugar, anotar si los supervivientes conservan el HD en la parte final, especialmente con el pelotón a la derecha como en la partida anterior. Si hay retornos breves, indicar en qué situación aparecen y aportar la ruta del registro. Aceptación jugable, GPU, CD32, audio y campaña manual completa quedan pendientes.
+
+### Resultado jugable y poses del pelotón
+
+El 16-11 Miguel percibió menos cambios a clásico. Señaló saltos desde altura, cruces de río y encuentros directos con enemigos, estos últimos con menor frecuencia. El verificador validó 9.544 intentos y 92.275 comandos: 7.852 publicaciones HD, 1.605 rechazos por variantes ausentes y 87 sin cuerpo sustituible. La anterior partida registró 6.741 publicaciones de 9.753 intentos y 34 retornos con el mismo jugador. Son recorridos manuales distintos.
+
+- **Caída:** diez de los 23 retornos empiezan con una pose del jugador `0xB0/F0`, `0xB6/F0` o `0xB7/F0` como faltante. `Sprite_Update_Direction_Anim` selecciona esta familia al caer. `0xB0/F0` explica cinco retornos y es observable en el replay de disparo desplazado. Cubrir solo ese frame proyecta 30 publicaciones más, 23→18 retornos y 3→1 rachas HD de hasta tres intentos. Cubrir las tres poses observadas proyecta 23→13 retornos y conserva una racha breve.
+- **Agua:** siete retornos empiezan con poses de nado del jugador de la familia `0x18–0x1F`. Las 14 poses observadas bloquean 783 intentos sin otros faltantes. Cubrirlas proyecta 765 publicaciones más, 23→18 retornos y 3→2 rachas HD breves. Es un alcance artístico mayor que el piloto de caída.
+- **Combate:** hay un enemigo en la escena al inicio de siete retornos. Las 15.226 órdenes de enemigo y 4.244 de soldado flotante quedaron resueltas en clásico dentro del compositor. En 22 de los 23 retornos iniciales faltan exclusivamente poses del jugador. El otro mezcla una pose del jugador y dos dibujos asociados. Admitir hipotéticamente todos los faltantes de entidades distintas al jugador sumaría 189 intentos HD y conservaría los 23 retornos y las tres rachas breves.
+
+Las proyecciones retienen la secuencia de intentos y solo suman publicaciones cuando todos los faltantes pertenecen al grupo evaluado y el intento ya tiene alguna sustitución. El registro carece de coordenadas y de las llamadas excluidas del censo. Las rachas son de intentos registrados. La mejora percibida corresponde a Miguel. La aceptación jugable del pelotón sigue pendiente.
+
+**Recuperación.** Registro local `%TEMP%\OpenFodder-P1-Flotante-hibrido-20261116-192458.log`, SHA-256 `acbc1791699ac656010b424aa279e6b666b26c4202422660542b1ca34900d1e1`. Para volver a medir, validar el censo y agrupar las transiciones de publicado a rechazado por escena, ranura y generación del jugador. El replay de disparo desplazado en `flotante-replay-disparo` contiene tres intentos con `0xB0/F0` ausente.
