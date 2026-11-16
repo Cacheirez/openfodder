@@ -319,6 +319,17 @@ En el modo opcional de enemigos clásicos de M1P2, los nueve dibujos de impacto,
 
 - **PASS replay con el manifiesto original:** 3.186 publicaciones HD (281 adicionales), siete retornos con el mismo soldado (antes diez), cero rachas HD de uno a tres fotogramas (antes tres). Las cuatro secuencias tienen 50/50, 74/74, 71/71 y 35/35 publicaciones HD. El recuento de 4.640 llamadas del motor coincide con el diagnóstico anterior y conserva los 1.546 estados lógicos de la fase.
 - **PASS pruebas focalizadas:** Windows H3, 11 fases y 11.361 estados fijados. WSL con ASan/UBSan/LSan, métodos reales de Window y SDL software a 8×/12×, conservación de efectos en su orden, rechazo de procedencia ausente, offset, identidad, bytes y recorte incorrectos, más recuperación íntegra ante fallo SDL. Pasaron los 42 tests Python.
-- **PENDIENTE:** CI focalizada de la integración y valoración jugable. GPU, CD32, audio y campaña completa pendientes.
+- **PASS CI completa** de `05bd05b` en Windows y Linux. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43880617284) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43880617302).
+- **PENDIENTE:** valoración jugable, GPU, CD32, audio y campaña manual completa.
 
 **Reproducción local.** `validate-grupo-combate.py <directorio-nuevo>` usa el binario de `combate-grupo/h3-build/Release`. La variante diagnóstica `validate-grupo-presentaciones.py` conserva la lógica integrada y añade el recuento de cada llamada. Sus resultados se contrastan con `combate-tramo/check-presentaciones.py`. SHA-256 del registro instrumentado `b308749543a254ac360228e7e49c5a1119335cf5135cd7ac4f2931d9e8f6cef2`.
+
+### Revisión jugable del grupo de combate
+
+En PowerShell:
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/14/01a1da6a-54a2-7270-8fa9-5eb4a351446f/Probar-P1-Combate.ps1'
+```
+
+Amiga The One M1P2 a 12×, híbrido con enemigos clásicos, SDL software y sin sonido. El ejecutable, el manifiesto y las dependencias se comprobaron con `-Comprobar`. Queda pendiente el arranque interactivo. Jugar una partida con movimiento y disparos cerca de enemigos. Facilitar la ruta del registro y decir si el pelotón mantiene mejor el aspecto al combatir y si aún aparecen cambios breves a clásico.
