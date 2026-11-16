@@ -95,9 +95,10 @@ inline bool IsClassicEnemyExperimentDraw(int16_t type, int16_t sheet) {
     return type == 5 || (type == 4 && sheet == 0x7c);
 }
 
-inline bool IsNativeAmiga8CombatEffect(int16_t type, int16_t sheet, int16_t frame) {
+inline bool IsNativeAmiga8M1P2AssociatedDraw(int16_t type, int16_t sheet, int16_t frame) {
     return ((type == 6 || type == 23) && sheet == 0x96 && frame >= 0 && frame < 4) ||
-           (type == 22 && sheet == 0x97 && frame == 0);
+           (type == 22 && sheet == 0x97 && frame == 0) ||
+           (type == 27 && sheet == 0x9e && frame == 0); // Floating casualty.
 }
 
 // Copying/moving this object retains the bytes referenced by draw.source.

@@ -244,7 +244,7 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
                               NativeCase{21,0x95,0,10,9080}, NativeCase{5,0x7c,1,1,560},
                               NativeCase{5,0x64,1,14,7314}, NativeCase{4,0x7c,0,1,560},
                               NativeCase{6,0x96,3,6,2278}, NativeCase{23,0x96,0,6,2272},
-                              NativeCase{22,0x97,0,3,2748}}) {
+                              NativeCase{22,0x97,0,3,2748}, NativeCase{27,0x9e,0,10,6566}}) {
         auto layer = body;
         auto& p = layer.soldier;
         auto& state = p.soldier;
@@ -254,8 +254,8 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
         state.sheet = native.sheet;
         state.frame = native.frame;
         const bool visibleEnemy = native.type == 5 && native.sheet != 0x7c;
-        const bool combatEffect = IsNativeAmiga8CombatEffect(state.type, state.sheet, state.frame);
-        const bool experiment = visibleEnemy || native.type == 4 || combatEffect;
+        const bool associatedDraw = IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame);
+        const bool experiment = visibleEnemy || native.type == 4 || associatedDraw;
         state.segment = visibleEnemy ? 0 : 1;
         g.format = SpriteDrawFormat::Amiga8;
         g.columns = 2;
@@ -281,7 +281,7 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
                 return registry.resolve(draw,SoldierVariantKey(draw,colors),d,true,96,96*64,experiment);
             };
             assert(registry.resolve(p,nativeKey,d).decision == SoldierArtDecision::Missing);
-            if (combatEffect)
+            if (associatedDraw)
                 assert(registry.resolve(p,nativeKey,d,true,96,96*64).decision == SoldierArtDecision::Missing);
             env("OPENFODDER_SOLDIER_HD",density);
             env("OPENFODDER_SOLDIER_ORDERED_HYBRID","1");

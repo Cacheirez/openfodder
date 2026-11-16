@@ -149,7 +149,7 @@ public:
              openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
              (recording->scene.classicEnemies &&
               (openfodder::IsClassicEnemyExperimentDraw(state.type, state.sheet) ||
-               openfodder::IsNativeAmiga8CombatEffect(state.type, state.sheet, state.frame)))) &&
+               openfodder::IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame)))) &&
             openfodder::HybridMissionArtEnabled())
             layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared, recording->scene.classicEnemies);
         // No borrowed draw pointer is needed by the semantic consumer.
