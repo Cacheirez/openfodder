@@ -352,3 +352,14 @@ El híbrido opt-in de Amiga The One M1P2 conserva el tipo 27 `0x9E/F0` con la pr
 - **Proyección sobre la partida de Miguel:** 6.741→8.701 publicaciones HD y 963 adicionales en los 1.331 intentos finales. Quedan 34 retornos con el mismo jugador y 15 rachas de hasta tres intentos HD. La proyección se aplica al censo existente. Persiste el riesgo de retornos por poses faltantes del jugador u otros dibujos.
 
 **Recuperación local.** En `C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/` están `proyectar-soldado-flotante.py`, `validar-flotante-wsl.sh`, los registros de `flotante-replay` y `flotante-replay-disparo`, y el ejecutable `flotante-build/Release/native_probe.exe`. El lanzador local `Probar-P1-Flotante.ps1` comprueba el hash del ejecutable y reutiliza los datos y el manifiesto de la revisión anterior.
+
+- **PASS H3 completo en Windows:** las 11 fases y los 11.361 estados canónicos coinciden con la referencia fijada. Evidencia local en `flotante-h3-pc` y `flotante-h3-amiga`.
+- **PASS CI focalizada de `52e12f2`:** CTest y A2 con H3 original. El resto de las ejecuciones completas queda pendiente al cerrar este relevo. [Windows](https://github.com/Cacheirez/openfodder/actions/runs/43925846079) · [Linux](https://github.com/Cacheirez/openfodder/actions/runs/43925846329).
+
+### Revisión jugable del soldado flotante
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/Probar-P1-Flotante.ps1'
+```
+
+Lanzador comprobado con `-Comprobar`. Al jugar, anotar si los supervivientes conservan el HD en la parte final, especialmente con el pelotón a la derecha como en la partida anterior. Si hay retornos breves, indicar en qué situación aparecen y aportar la ruta del registro. Aceptación jugable, GPU, CD32, audio y campaña manual completa quedan pendientes.
