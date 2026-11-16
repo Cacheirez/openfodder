@@ -183,3 +183,22 @@ Se proyectó admitir únicamente las tres poses F1 anteriores. Se exige algún j
 **Estado.** La mejora percibida de 0x9D queda registrada. La próxima ampliación de dibujos visibles afectaría a cuerpos enemigos con cobertura parcial. Se necesita un tratamiento que preserve la representación de cada actor antes de integrar esas poses. La aceptación jugable permanece pendiente.
 
 **Recuperación.** Registro local `%LOCALAPPDATA%/Temp/OpenFodder-P1-9D-hibrido-20261116-111148.log`, SHA-256 `b532bf0d9c15f763c44269e8385e66230030c4ed6db349dea23c020aed5fc033`. En el directorio de la prueba, ejecutar `python -B analizar-partida-9d.py <registro-manual>`. El script usa el replay validado de 0x9D y el lector anterior. SHA-256 `6f0fea2fd310dcf216bd5197b4a89a2d1d2ec8af0e8a15bca157fca0efe65b08`.
+
+### Siguiente prototipo de continuidad
+
+Miguel encargó elegir la ruta más rápida y efectiva y convertirla en el siguiente paso del plan. Se compararon las políticas sobre el registro manual y el replay controlado de 0x9D. Cada celda indica publicaciones HD y retornos a clásico con el mismo soldado presente.
+
+| Política | Partida de Miguel | Replay | Aspecto del enemigo |
+| --- | ---: | ---: | --- |
+| 0x9D actual, observado | 4.388 / 27 | 2.190 / 24 | Retornos de escena completa |
+| Admitir las tres poses enemigas más frecuentes | 4.565 / 13 | 2.340 / 12 | Tres identidades con HD y clásico en la partida, cinco en el replay |
+| Mantener todos los enemigos tipo 5 en clásico durante la fase | 5.629 / 26 | 2.899 / 11 | Clásico fijo, 11 identidades ceden HD en la partida y 10 en el replay |
+| Enemigos en clásico fijo y admitir tipo 4/0x7C si emite cero escrituras | 5.671 / 20 | 2.905 / 10 | Clásico fijo |
+
+Las tres últimas filas son proyecciones. Un intento adicional solo puede publicarse si todos sus faltantes pertenecen a la política y queda al menos un soldado jugador HD. En la ruta elegida, las rachas HD de una a tres publicaciones pasan de 34 a 61 en el registro manual y de 20 a 13 en el replay. Este indicador ayuda a distinguir una escena con más HD de una mejora de continuidad que se note jugando. La opción de fijar un estilo por clase de enemigo con cobertura demostrada queda para cuando exista un criterio de selección comprobable antes de dibujarlo.
+
+**Microbloque elegido.** Prototipo opt-in en Amiga The One M1P2. Seleccionar el modo al empezar la fase y conservar a los enemigos tipo 5 en clásico incluso en poses con vínculo HD dentro de este modo. Es una decisión provisional para comprobar continuidad del pelotón y de los enemigos con una regla fija. Reutilizar el registro de procedencia de la tabla activa, extender la comprobación a `eGFX_IN_GAME` para los enemigos que lo usan y comprobar el segmento real de cada fila. La rama de tipo 4/0x7C debe verificar la procedencia y comprobar con el productor recortado que hay cero escrituras. Los errores de integridad y publicación requieren recuperación clásica íntegra. Se conservan las garantías del modo clásico y estricto y el alcance final de H7/H8.
+
+**Criterio de salida.** Antes de otra partida, verificar con recursos originales que los enemigos se dibujan en orden clásico, con oclusiones en ambos sentidos y continuidad por escena, ranura y generación. Probar fila, bytes y recorte inválidos, escritura inesperada en tipo 4 y fallo SDL. Comparar con 0x9D en el mismo replay a igual manifiesto y densidad. Deben disminuir los retornos y las rachas HD cortas en el replay, conservarse las publicaciones anteriores de los soldados y estar ausente la alternancia de enemigos dentro de la escena híbrida. Contrastar la proyección manual antes de pedir otra valoración. H3, CI focalizada y sanitizadores pertinentes siguen siendo criterios.
+
+**Reproducción.** En el directorio de la prueba, ejecutar `python -B comparar-rutas-continuidad.py <directorio> <registro-manual>` y `python -B proyectar-escena-clasica-enemigos.py <directorio> <registro-manual>`. Usan el replay de 0x9D y los lectores anteriores. SHA-256 de los scripts `0ca13ff84beaf4591b7ef73032998d93797bf7f707ff7c0b5d6bb7b277f4b21c` y `e1c990371522ce7063bdede14bf05a829e07d349676d552cae006636c0f5b8f4`.
