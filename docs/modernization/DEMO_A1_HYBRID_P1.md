@@ -413,3 +413,17 @@ El candidato acumula las tres poses de caída. La proyección en el censo del so
 Se evaluaron los 256 subconjuntos de ocho direcciones sobre los dos censos manuales, con las tres claves exactas de caída incluidas como punto de partida. La proyección conserva la secuencia y admite un intento cuando están cubiertos todos sus faltantes. Compara publicaciones HD, retornos con el mismo jugador y rachas HD de hasta tres intentos. Cuatro subconjuntos ganan publicaciones y reducen retornos en ambos registros con rachas cortas iguales o menores.
 
 El mínimo consta de seis direcciones y 12 claves observadas: `0x18, 0x19, 0x1A, 0x1D, 0x1E, 0x1F`. En la partida del flotante proyecta 7.912→8.572 publicaciones, 13→10 retornos y 1→0 rachas cortas. En la última proyecta 6.205→6.874, 5→3 y cero rachas cortas. La dirección derecha por sí sola aumenta de 13 a 17 y de cinco a ocho los retornos, aunque añade publicaciones. Sus dos frames servirán para establecer la forma y la línea de agua antes de montar el conjunto jugable. El análisis se reproduce con `proyectar-nado.py` y las dos rutas de registro documentadas.
+
+### Ciclo de nado a la derecha
+
+[Maestros, prompts y preparación](../../assets/modernization/demo-a1-player-swim-1e-f0/README.md). Una dirección, dos frames `0x1E/F0–F1`, con la misma escala, posición del casco y línea de agua. Se reconstruyeron las dos claves con las filas nativas 1696 y 1698. PASS exportación exacta y Window/SDL software con ASan/UBSan/LSan a 8×/12×, dos soldados HD, rechazo de otra clave y recuperación clásica completa ante fallo forzado. El fixture usa una escena controlada y datos originales; la valoración del cruce de río en juego queda pendiente.
+
+**Recuperación local.** `nado-1e-f0/` y `nado-1e-f1/` contienen las claves reconstruidas, los logs y el candidato técnico acumulado. Se reproduce con `validar-caida-wsl.sh nado-1e-f0` y `validar-caida-wsl.sh nado-1e-f1`. El lanzador de revisión jugable usa el candidato `caida-b6/candidate`, con 174 activos y 336 vínculos.
+
+### Revisión conjunta de caídas y nado
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/Probar-P1-Caidas.ps1'
+```
+
+M1P2, lanzador comprobado con `-Comprobar`. Repetir un salto hacia la derecha o hacia abajo y a la derecha, y observar si el pelotón conserva el HD y si las dos poses nuevas encajan con la caída delante. Facilitar la ruta del registro. Para preparar el resto del nado, valorar proporciones y línea de agua en [F0](../../assets/modernization/demo-a1-player-swim-1e-f0/player-swim-1e-f0-12x.png) y [F1](../../assets/modernization/demo-a1-player-swim-1e-f1/player-swim-1e-f1-12x.png).
