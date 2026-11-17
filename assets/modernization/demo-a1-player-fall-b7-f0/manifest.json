@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-fall-b7-f0-8x.rgba",
+      "height": 14,
+      "id": "player-fall-b7-f0-8x",
+      "sha256": "5ee7606c109ee38347a7336e57724af5943a692a685abe5ff0ed8554986877b9",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-fall-b7-f0-12x.rgba",
+      "height": 14,
+      "id": "player-fall-b7-f0-12x",
+      "sha256": "53bf46f767cc18a6ce104b246a635bd699e39c77b5784e54d994abbfbb1ec5c1",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "3c6759a809960b5786a1aab9d5520c1ac39e6e95763030819f5d09090bc63b8e",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-fall-b7-f0-8x",
+        "12": "player-fall-b7-f0-12x"
+      }
+    }
+  ]
+}

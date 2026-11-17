@@ -395,3 +395,9 @@ Lanzador comprobado con `-Comprobar`. Probar M1P2 al bajar desde un desnivel hac
 El 17-11 Miguel aprobó la forma y el tamaño de `0xB0/F0`. En tres saltos del pelotón percibió una mejora parcial y todavía vio retornos a clásico. El verificador validó 7.530 intentos: 6.184 publicaciones HD, 1.224 faltantes y 122 sin cuerpo sustituible. Los 99 dibujos de `0xB0/F0` se sustituyeron en escenas publicadas. Los 21 dibujos de `0xB7/F0` fueron faltantes y esa dirección inició cuatro de los nueve retornos con el mismo jugador. La continuidad del pelotón sigue pendiente.
 
 Registro local `%TEMP%\OpenFodder-P1-Caida-B0-hibrido-20261117-154331.log`, SHA-256 `d0127f5026cf58560c2652460642a67fa0ad326c9518798d05a69e1392b27788`. La nueva tarea mantiene el alcance de las poses adicionales ya autorizado.
+
+### Caída delante y derecha
+
+[Maestro, prompt y manifiesto](../../assets/modernization/demo-a1-player-fall-b7-f0/README.md). Se validó la clave exacta de `0xB7/F0` a partir de los bytes originales y la paleta de misión. PASS exportación PNG→RGBA y fixture de Window/SDL con ASan/UBSan/LSan a 8×/12×: dos jugadores HD, rechazo de clave distinta y recuperación clásica completa al forzar un fallo de SDL. El fixture emplea una escena controlada con el recurso original; la partida interactiva queda pendiente.
+
+Sobre el último censo, la proyección al resolver únicamente la nueva clave pasa de 6.184 a 6.205 publicaciones, de nueve a cinco retornos con el mismo jugador y conserva cero rachas HD de hasta tres intentos. El binario de juego sigue siendo `52e12f2`. Recuperación local en `caida-b7/`, incluido el candidato de 172 activos y 335 vínculos y `fixture.log`. El verificador es `validar-caida-wsl.sh caida-b7` en la carpeta de la revisión anterior.
