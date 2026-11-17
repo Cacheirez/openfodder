@@ -1,0 +1,193 @@
+{
+  "date": "2026-11-18",
+  "source_head": "410f233ee85a3c39e3ea07ddd0ce981ca7765ed8",
+  "sheet": 47,
+  "native_verified": [
+    {
+      "file": "f1-a1.json",
+      "key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+      "frame": 1,
+      "animation": 1,
+      "rgba_sha256": "6380a1e09a7e6ad8337f4a9de19a86815e1c6f640fe7db03c29c0b2261c59092",
+      "bbox": [
+        4,
+        2,
+        14,
+        11
+      ]
+    },
+    {
+      "file": "f0-a1.json",
+      "key": "cfc4129f926e8891601de01fc0cf252647fc5c4fad49f33d5589f0643386b1b3",
+      "frame": 0,
+      "animation": 1,
+      "rgba_sha256": "86a7e271086032726d8a9affdb5aaaa0b24ec989daa6a86ee50a39bdfc25f9b2",
+      "bbox": [
+        4,
+        1,
+        14,
+        11
+      ]
+    }
+  ],
+  "pending_native_keys": [
+    {
+      "key": "1dad590515582904c9fecd3d3b8685a56c84cbb4cd8d804fd614d3f9321d2d4d",
+      "type": "0",
+      "sheet": "47",
+      "frame": "1"
+    }
+  ],
+  "masters": [
+    {
+      "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2f-f0-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2f-f0-8x",
+          "sha256": "fa236e79d2cdfcb338a606f3ecc151d640d16a1448b8f14b7694422a1a4b5863",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2f-f0-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2f-f0-12x",
+          "sha256": "05d036a55cb13e12e130f1b1d10d7699a58e539f3b42dd73322b5f24ea0278de",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "cfc4129f926e8891601de01fc0cf252647fc5c4fad49f33d5589f0643386b1b3",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2f-f0-8x",
+            "12": "player-hitdeath-2f-f0-12x"
+          }
+        }
+      ],
+      "source": {
+        "file": "source.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "038e467f3541b602af471ff576ca20dbcb14ce02234ef24a16f2afb7e8533038",
+        "generator": "built-in image_gen, transparent referenced-image workflow"
+      },
+      "native": [
+        {
+          "file": "f0-a1.json",
+          "key": "cfc4129f926e8891601de01fc0cf252647fc5c4fad49f33d5589f0643386b1b3",
+          "frame": 0,
+          "animation": 1,
+          "rgba_sha256": "86a7e271086032726d8a9affdb5aaaa0b24ec989daa6a86ee50a39bdfc25f9b2",
+          "bbox": [
+            4,
+            1,
+            14,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2f-f1-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2f-f1-8x",
+          "sha256": "6c77ca5fdede22d0f1419fa1ab5d96b61a3116ab0b39a1680893c68e8f5d1d8d",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2f-f1-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2f-f1-12x",
+          "sha256": "f1291176e5bba65f9405f5d6f9f3723232700fe8654d5c3e91c105155cbb26fc",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2f-f1-8x",
+            "12": "player-hitdeath-2f-f1-12x"
+          }
+        }
+      ],
+      "source": {
+        "file": "source.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "a45d0d34b21f0775be25557bf99c18e72c2486ba6c419e9a45119f8a334f00d1",
+        "generator": "built-in image_gen, transparent referenced-image workflow"
+      },
+      "native": [
+        {
+          "file": "f1-a1.json",
+          "key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+          "frame": 1,
+          "animation": 1,
+          "rgba_sha256": "6380a1e09a7e6ad8337f4a9de19a86815e1c6f640fe7db03c29c0b2261c59092",
+          "bbox": [
+            4,
+            2,
+            14,
+            11
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "windows": "PASS SDL 8x/12x ASan/UBSan",
+    "linux": "PASS SDL 8x/12x ASan/UBSan/LSan",
+    "shadow_cases": 16,
+    "heights": [
+      0,
+      12
+    ],
+    "independent_shadow_F0_F1": true,
+    "whole_classic_recovery": true,
+    "replay": "NOT RUN: isolated artwork, no engine/normal-launcher changes",
+    "visual": "PENDING grouped review of new directions; 0x2D pilot accepted"
+  },
+  "candidate": {
+    "assets": 230,
+    "bindings": 386,
+    "isolated": true
+  },
+  "logs": [
+    {
+      "file": "hitdeath-2f-f1-a1\\shadow-fixture-win.log",
+      "sha256": "5fb630e333e532409a7a23f881d9600763f98b56d795b6e238496bbb1b34bd2c"
+    },
+    {
+      "file": "hitdeath-2f-f1-a1\\shadow-fixture-linux.log",
+      "sha256": "bd5f1400beb34f00c5f44d4b06b518772a796ea9e984b3be388c55cdc09b1db5"
+    },
+    {
+      "file": "hitdeath-2f-f0-a1\\shadow-fixture-win.log",
+      "sha256": "a0d2e23b695d0be83a3aede90a7ecafe315d170268d4ceeb2f4cdffce85ae6ec"
+    },
+    {
+      "file": "hitdeath-2f-f0-a1\\shadow-fixture-linux.log",
+      "sha256": "c04da7b7eed8da3cec70a0755bcea3ee4420e55f525d0d8d7ad6ea8fecb78bf0"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "prompts_file": "prompts-2f.json"
+}

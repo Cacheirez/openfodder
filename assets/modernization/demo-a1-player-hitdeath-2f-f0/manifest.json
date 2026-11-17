@@ -1,0 +1,56 @@
+{
+  "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-hitdeath-2f-f0-8x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2f-f0-8x",
+      "sha256": "fa236e79d2cdfcb338a606f3ecc151d640d16a1448b8f14b7694422a1a4b5863",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-hitdeath-2f-f0-12x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2f-f0-12x",
+      "sha256": "05d036a55cb13e12e130f1b1d10d7699a58e539f3b42dd73322b5f24ea0278de",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "cfc4129f926e8891601de01fc0cf252647fc5c4fad49f33d5589f0643386b1b3",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2f-f0-8x",
+        "12": "player-hitdeath-2f-f0-12x"
+      }
+    }
+  ],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "038e467f3541b602af471ff576ca20dbcb14ce02234ef24a16f2afb7e8533038",
+    "generator": "built-in image_gen, transparent referenced-image workflow"
+  },
+  "native": [
+    {
+      "file": "f0-a1.json",
+      "key": "cfc4129f926e8891601de01fc0cf252647fc5c4fad49f33d5589f0643386b1b3",
+      "frame": 0,
+      "animation": 1,
+      "rgba_sha256": "86a7e271086032726d8a9affdb5aaaa0b24ec989daa6a86ee50a39bdfc25f9b2",
+      "bbox": [
+        4,
+        1,
+        14,
+        11
+      ]
+    }
+  ]
+}
