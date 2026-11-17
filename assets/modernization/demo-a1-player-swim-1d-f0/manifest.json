@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-swim-1d-f0-8x.rgba",
+      "height": 14,
+      "id": "player-swim-1d-f0-8x",
+      "sha256": "e2fbde7bfc71eaca6fe89bc78682091bb46aab082c4d49f38fd3c48d60b39a3e",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-swim-1d-f0-12x.rgba",
+      "height": 14,
+      "id": "player-swim-1d-f0-12x",
+      "sha256": "08d777ea4b44614124f34efafefbd1a4f3ce3e890964102052568e9465c6605f",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "eaeb79431aa1a86f2bd702d310b4555a8d26e400c14bd1ae7aa413a325defd86",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-swim-1d-f0-8x",
+        "12": "player-swim-1d-f0-12x"
+      }
+    }
+  ]
+}
