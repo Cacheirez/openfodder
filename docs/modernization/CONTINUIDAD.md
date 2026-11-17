@@ -36,7 +36,8 @@
 - **Proyección de nado comprobada:** seis direcciones son el mínimo que mejora retornos y mantiene o reduce rachas HD cortas en ambas partidas. Con `0x1E` aislado aparecen más retornos. [Método](DEMO_A1_HYBRID_P1.md#proyección-de-direcciones-de-nado).
 - **Ciclo de nado a la derecha `0x1E/F0–F1`:** dos frames provisionales con el mismo anclaje, PASS SDL y ASan/UBSan/LSan a 8×/12×. El lanzador local de juego incluye las tres caídas y el agua queda para revisión visual por separado. [Recuperación](DEMO_A1_HYBRID_P1.md#ciclo-de-nado-a-la-derecha).
 - **Revisión de caídas (17-11):** buena continuidad percibida al saltar. 87 dibujos de caída en escenas HD, 7.541 publicaciones y ocho retornos con el mismo jugador. Persisten nado y muerte del pelotón. [Registro y recuperación](DEMO_A1_HYBRID_P1.md#resultado-de-la-revisión-de-caídas).
-- **Siguiente tarea única vigente:** nado a la izquierda `0x1A/F0–F1`, para el conjunto de seis direcciones autorizado. La aceptación visual del nado sigue pendiente.
+- **Nado a la izquierda comprobado:** `0x1A/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-1a).
+- **Siguiente tarea única vigente:** preparar el nado hacia delante y a la derecha `0x1F/F0–F1` del mismo conjunto.
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
 - **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta, en borrador y sin fusionar. Base de la muestra `d8102da`. SHA del relevo: `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`. La autoridad sobre la siguiente tarea es el control operativo de [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.
