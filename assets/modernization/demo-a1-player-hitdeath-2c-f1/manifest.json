@@ -1,0 +1,77 @@
+{
+  "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-hitdeath-2c-f1-8x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2c-f1-8x",
+      "sha256": "7036ab133472e6c8ef397f1c2785fe08659a24b0ba08d2f5c726063906ac3e96",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-hitdeath-2c-f1-12x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2c-f1-12x",
+      "sha256": "4f2cfcc65345088f546e398f21b772e8302865c8d5f274c3b3c49d728459d3ab",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2c-f1-8x",
+        "12": "player-hitdeath-2c-f1-12x"
+      }
+    },
+    {
+      "key": "8e6f770fb8e6e388e82540704cc9b89fa5871e61b0b5a468f647e1df587d6a70",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2c-f1-8x",
+        "12": "player-hitdeath-2c-f1-12x"
+      }
+    }
+  ],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "f5191b10c457e4c3c5d11635841c198487d708757bc14dc6a4d728bc0ba49eee",
+    "generator": "built-in image_gen, transparent referenced-image workflow"
+  },
+  "native": [
+    {
+      "file": "f1-a1.json",
+      "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+      "frame": 1,
+      "animation": 1,
+      "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+      "bbox": [
+        3,
+        1,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "f1-a6.json",
+      "key": "8e6f770fb8e6e388e82540704cc9b89fa5871e61b0b5a468f647e1df587d6a70",
+      "frame": 1,
+      "animation": 6,
+      "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+      "bbox": [
+        3,
+        1,
+        12,
+        13
+      ]
+    }
+  ]
+}
