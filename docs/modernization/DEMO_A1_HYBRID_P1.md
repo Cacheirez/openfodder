@@ -401,3 +401,9 @@ Registro local `%TEMP%\OpenFodder-P1-Caida-B0-hibrido-20261117-154331.log`, SHA-
 [Maestro, prompt y manifiesto](../../assets/modernization/demo-a1-player-fall-b7-f0/README.md). Se validó la clave exacta de `0xB7/F0` a partir de los bytes originales y la paleta de misión. PASS exportación PNG→RGBA y fixture de Window/SDL con ASan/UBSan/LSan a 8×/12×: dos jugadores HD, rechazo de clave distinta y recuperación clásica completa al forzar un fallo de SDL. El fixture emplea una escena controlada con el recurso original; la partida interactiva queda pendiente.
 
 Sobre el último censo, la proyección al resolver únicamente la nueva clave pasa de 6.184 a 6.205 publicaciones, de nueve a cinco retornos con el mismo jugador y conserva cero rachas HD de hasta tres intentos. El binario de juego sigue siendo `52e12f2`. Recuperación local en `caida-b7/`, incluido el candidato de 172 activos y 335 vínculos y `fixture.log`. El verificador es `validar-caida-wsl.sh caida-b7` en la carpeta de la revisión anterior.
+
+### Caída lateral derecha
+
+[Maestro, prompt y manifiesto](../../assets/modernization/demo-a1-player-fall-b6-f0/README.md). PASS exportación exacta y fixture controlado de Window/SDL a 8×/12× con ASan/UBSan/LSan. El fixture usa la clave, el recurso y la paleta nativos de `0xB6/F0` y ejercita dos jugadores, una clave errónea y la recuperación clásica completa. La pose apareció en seis intentos de la partida del soldado flotante y no se seleccionó en la última partida.
+
+El candidato acumula las tres poses de caída. La proyección en el censo del soldado flotante es 7.852→7.912 publicaciones HD, 23→13 retornos con el mismo jugador y 3→1 rachas de hasta tres intentos. Sobre el último censo quedan los resultados proyectados de `0xB7/F0`. Recuperación local en `caida-b6/`, con candidato de 174 activos y 336 vínculos y `fixture.log`. El verificador es `validar-caida-wsl.sh caida-b6`.
