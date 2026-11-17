@@ -14,3 +14,45 @@ Cada dirección conserva maestro, prompts, derivados 8×/12× y claves verificad
 | 0x28 | F0–F1 | 3 / 0 | 24 | 222 / 381 | [Datos](evidence/dano-28-20261118.json) |
 | 0x2E | F0–F1 | 3 / 1 | 24 | 226 / 384 | [Datos](evidence/dano-2e-20261118.json) |
 | 0x2F | F0–F1 | 2 / 1 | 16 | 230 / 386 | [Datos](evidence/dano-2f-20261118.json) |
+
+## Punto de control agrupado — 18-11-2026
+
+**Hecho:** las ocho direcciones tienen F0/F1: 16 maestros y 32 activos a 8×/12×, 23 vínculos exactos y **184 casos de pareja cuerpo/sombra** entre Windows y Linux. Arte preparado y publicado por dirección; hito de continuidad **en curso**, sin aceptación jugable. Candidato acumulado aislado `hitdeath-2f-candidate/`: **230 activos / 386 vínculos**. Conserva íntegra la base de granadas 198/363. La simulación y el lanzador normal no se modifican.
+
+![Derivados exactos a 12×, sin retoques ni sombras fusionadas](evidence/dano-ocho-direcciones-12x.png)
+
+Orden de la lámina: frontal, delante/izquierda, izquierda, atrás/izquierda; atrás, atrás/derecha, derecha, delante/derecha. Cada pareja muestra F0/F1. La lámina utiliza los PNG exportados, no los maestros grandes; permite valorar proporciones y transición a la densidad de juego. No acredita todavía oclusiones o animación jugando. Solo el piloto 0x2D tiene valoración favorable explícita de Miguel; las siete direcciones nuevas esperan su revisión conjunta.
+
+### Cobertura medida del candidato real
+
+Se recalculan las tres muestras completas con **las 23 claves verificadas**, no suponiendo cubiertas las nueve antiguas pendientes. Se comprueban primero las métricas base contra el censo anterior. [Evidencia y SHA-256 de entradas](evidence/dano-conjunto-20261118.json).
+
+| Muestra | Base granadas: publicaciones / retornos / rachas ≤3 | Solo arte verificado | Arte + dos dependencias verificadas |
+|---|---|---|---|
+| Caídas 16:13 | 8.012 / 8 / 0 | 8.393 / 20 / 13 | 8.438 / 5 / 0 |
+| Nado 17:32 | 12.937 / 13 / 5 | 13.267 / 16 / 7 | 13.294 / 7 / 0 |
+| Impacto 19:54 | 7.276 / 4 / 0 | 7.732 / 13 / 13 | 7.777 / 0 / 4 |
+
+**No activar el arte solo:** empeora la continuidad en las tres muestras. Las dos dependencias son caída 0xB0/F0 animación 1 (mismos bytes/geometría/paleta que la caída aprobada) y jugador 0x7C/F1 animación 6 sin escrituras. Su procedencia y raster ya están reconstruidos, pero **su integración, pruebas de composición y recuperación siguen pendientes**. La última columna es una proyección condicionada; no forma parte del candidato 230/386 ni demuestra que el juego publique esos números.
+
+Las cuatro rachas breves de Impacto terminan en `no-body`, con cero jugadores y sin faltantes, según el análisis retenido del piloto; no se oculta su cuenta bruta ni se confunden con retorno del mismo actor. Las nueve claves antiguas de daño y el marcador invisible antiguo no reconstruido permanecen pendientes. No impiden obtener esta proyección con las claves verificadas y no se aprueban por semejanza.
+
+### Pruebas y límites
+
+- **PASS local:** SDL software a 8×/12×, dos cuerpos HD, sombra independiente F0/F1 a alturas 0/12, composición completa contrastada, clave incorrecta rechazada y recuperación clásica íntegra ante fallo SDL. ASan/UBSan Windows; ASan/UBSan/LSan Linux. Evidencias por dirección en la tabla.
+- **PASS conservado:** H3 del binario de granadas, 11 fases / 11.361 estados, sin nueva entrega de ejecutable. No se repite por arte aislado sin activación.
+- **CI observada del código/piloto `a0e49174a1cdae76fd5fcf85dde9f2bd827dbb1b`:** [Windows 44184891805](https://github.com/Cacheirez/openfodder/actions/runs/44184891805) y [densidades 44184891793](https://github.com/Cacheirez/openfodder/actions/runs/44184891793) completadas con éxito. [Linux 44184891758](https://github.com/Cacheirez/openfodder/actions/runs/44184891758) seguía en ejecución al consultar, sin paso fallido comunicado; **CI completa Linux PENDIENTE**, sin atribuir verde global ni a los commits artísticos posteriores.
+- **PENDIENTE:** valoración agrupada de Miguel; integración de las dos dependencias; publicación real del conjunto/replay; sombras en vuelo por explosión y aceptación jugando; GPU, CD32 y audio. La sombra clásica separada es una convivencia provisional, no coherencia artística final aceptada.
+
+### Relevo y próximos pasos
+
+Commits publicados por dirección: `a0e4917` (piloto), `6273e31` (izquierda y valoración del piloto), `2384ecd` (atrás), `15e5a50` (delante/izquierda), `351ffa7` (atrás/izquierda), `7b26d1b` (frontal), `410f233` (derecha), `6d25dd6` (delante/derecha). El SHA del presente relevo se obtiene con `git log -1 --format=%H -- docs/modernization/DEMO_A1_DANO_DIRECCIONES.md`.
+
+1. **Revisión agrupada de las ocho direcciones — AUTORIZADO, pendiente de valoración visual de Miguel.** Siguiente tarea única: valorar los derivados y la relación F0/F1; señalar direcciones que requieran corrección antes de integrar. No se pide ampliar el hito.
+2. **Dependencias del daño — AUTORIZADO dentro del hito, tras la revisión.** Incorporar el alias exacto de caída y el marcador sin escrituras; probar procedencia, composición/orden, negativos y recuperación. Resultado esperado: candidato coherente sin activar el arte solo.
+3. **Conjunto en ejecución — AUTORIZADO dentro del hito, depende del punto anterior.** Cargar el manifiesto completo, comprobar recursos/presupuesto, medir publicaciones y retornos reales, H3 y CI pertinente antes de entregar la prueba jugable.
+4. **Revisión jugando y sombras — AUTORIZADO, requiere prueba de Miguel.** Daño directo y granadas con varios aliados, caída/vuelo, agua y oclusiones; registrar cualquier alternancia restante. Nuevos escenarios, fase B, scroll y 16:9 siguen fuera de este hito.
+
+**Siguiente acción recomendada:** revisar ahora la lámina conjunta, porque evita integrar y ensayar poses que necesiten corrección artística. Autorización técnica adicional: **no necesaria**. La valoración visual está reservada a Miguel. No hay bloqueo técnico ni escalado de modelo/subagentes. Nuevo hilo: no necesario.
+
+**Recuperación:** originales y derivados versionados en `assets/modernization/demo-a1-player-hitdeath-*/`; prompts exactos en cada README. Se empleó `image_gen` integrado. Scripts, fuentes nativas privadas y logs locales en `C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150/`: `prepare_hitdeath_native.py`, `export_hitdeath_direction.py`, `finish_hitdeath_direction.py`, `review_damage_group.py`, `run-hitdeath-direction-{win.ps1,linux.sh}`, `death-*-native/` y `hitdeath-*-f*-a*/`. El lanzador comprobado sigue siendo `Probar-P1-Granadas.ps1`; el candidato nuevo no se activa. La copia ZIP previa no relacionada se conserva sin tocar.
