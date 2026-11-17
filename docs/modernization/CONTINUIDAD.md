@@ -40,7 +40,8 @@
 - **Nado hacia delante y a la derecha comprobado:** `0x1F/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-1f).
 - **Nado hacia atrás y a la derecha comprobado:** `0x1D/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-1d).
 - **Nado hacia delante comprobado:** `0x18/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-18).
-- **Siguiente tarea única vigente:** preparar el nado hacia delante y a la izquierda `0x19/F0–F1`, última dirección del conjunto.
+- **Nado hacia delante y a la izquierda comprobado:** `0x19/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-19).
+- **Siguiente tarea única vigente:** verificar el manifiesto conjunto de seis direcciones y preparar el lanzador de M1P2. Antes de entregarlo, acotar las variantes de muerte que siguen provocando el retorno en los registros.
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
 - **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta, en borrador y sin fusionar. Base de la muestra `d8102da`. SHA del relevo: `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`. La autoridad sobre la siguiente tarea es el control operativo de [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.

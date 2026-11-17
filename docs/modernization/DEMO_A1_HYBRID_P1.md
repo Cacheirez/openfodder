@@ -449,3 +449,7 @@ La proyección de las seis direcciones de nado sigue mejorando las tres partidas
 ### nado-18
 
 [Maestros, preparación y prompts](../../assets/modernization/demo-a1-player-swim-18-f0/README.md). F0 y F1 se validaron con su clave original de M1P2. PASS exportación exacta y Window/SDL software a 8×/12× con ASan/UBSan/LSan, dos jugadores HD, rechazo de clave distinta y recuperación clásica completa. Evidencia local en `nado-18-f0/` y `nado-18-f1/`. Arte provisional.
+
+### nado-19
+
+[Maestros, preparación y prompts](../../assets/modernization/demo-a1-player-swim-19-f0/README.md). F0 y F1 se validaron con su clave original de M1P2. PASS exportación exacta y Window/SDL software a 8×/12× con ASan/UBSan/LSan, dos jugadores HD, rechazo de clave distinta y recuperación clásica completa. Evidencia local en `nado-19-f0/` y `nado-19-f1/`. Arte provisional.
