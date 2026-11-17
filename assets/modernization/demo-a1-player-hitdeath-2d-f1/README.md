@@ -1,10 +1,10 @@
-# Piloto 0x2D/F1 — daño/muerte hacia atrás y a la derecha
+# Piloto 0x2D/F1 â€” daÃ±o/muerte hacia atrÃ¡s y a la derecha
 
-17-11-2026. Estilo C — Pintado moderado. **PROVISIONAL, pendiente de aceptación visual de Miguel.** No incorporado al lanzador de juego ni aceptado como solución parcial de continuidad.
+17-11-2026. Estilo C â€” Pintado moderado. **ValoraciÃ³n visual favorable de Miguel (17-11-2026), F0/F1.** No incorporado al lanzador de juego; continuidad del conjunto pendiente.
 
-`source.png` es la copia inmutable del maestro generado mediante la herramienta integrada `image_gen`, con alfa real. Maestro F0 provisional de esta dirección y referencia nativa local `death-2d-native/f1-native.png`. No se refleja arte. Los gráficos nativos se conservan fuera de Git. [Contexto, pruebas y anclajes](../../../docs/modernization/DEMO_A1_DANO_2D.md).
+`source.png` es la copia inmutable del maestro generado mediante la herramienta integrada `image_gen`, con alfa real. Maestro F0 provisional de esta direcciÃ³n y referencia nativa local `death-2d-native/f1-native.png`. No se refleja arte. Los grÃ¡ficos nativos se conservan fuera de Git. [Contexto, pruebas y anclajes](../../../docs/modernization/DEMO_A1_DANO_2D.md).
 
-Los derivados tienen celda lógica de 16×14, a 8× (128×112) y 12× (192×168). Se exportan con `build_soldier_batch.cpp` y `build_ordered_soldier_asset.cpp`, sin retocar los píxeles del maestro. La colocación sigue el bbox nativo: [4, 1, 15, 12]. No contiene sombra proyectada; las sombras tipo 22 se mantienen como comandos nativos separados. `manifest.json` registra claves, hashes y estado.
+Los derivados tienen celda lÃ³gica de 16Ã—14, a 8Ã— (128Ã—112) y 12Ã— (192Ã—168). Se exportan con `build_soldier_batch.cpp` y `build_ordered_soldier_asset.cpp`, sin retocar los pÃ­xeles del maestro. La colocaciÃ³n sigue el bbox nativo: [4, 1, 15, 12]. No contiene sombra proyectada; las sombras tipo 22 se mantienen como comandos nativos separados. `manifest.json` registra claves, hashes y estado.
 
 ## Prompt
 

@@ -1,5 +1,5 @@
 {
-  "status": "Provisional visual pilot; technical SDL 8x/12x and independent native shadows verified Windows/Linux sanitizers; not in gameplay launcher; Miguel approval pending",
+  "status": "Visual pilot F0/F1 accepted by Miguel on 2026-11-17; technical SDL/shadow fixtures verified; gameplay continuity and full group activation pending",
   "assets": [
     {
       "density": 8,
