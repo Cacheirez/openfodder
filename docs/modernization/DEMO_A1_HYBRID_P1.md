@@ -453,3 +453,15 @@ La proyección de las seis direcciones de nado sigue mejorando las tres partidas
 ### nado-19
 
 [Maestros, preparación y prompts](../../assets/modernization/demo-a1-player-swim-19-f0/README.md). F0 y F1 se validaron con su clave original de M1P2. PASS exportación exacta y Window/SDL software a 8×/12× con ASan/UBSan/LSan, dos jugadores HD, rechazo de clave distinta y recuperación clásica completa. Evidencia local en `nado-19-f0/` y `nado-19-f1/`. Arte provisional.
+
+### Revisión jugable del conjunto de nado
+
+El candidato conserva los 174 activos y 336 vínculos de las caídas y añade 24 activos y 12 vínculos de nado. Todos los bytes se contrastaron con sus hashes y tamaños. Cada frame se validó con sus bytes nativos en una escena controlada de Window/SDL a 8×/12×, con ASan/UBSan/LSan. Se reutiliza el binario de `52e12f2` con H3 y CI focalizada ya comprobados. Queda pendiente una nueva partida con el grupo integrado.
+
+En los tres censos, la proyección del conjunto añade 660, 669 y 279 publicaciones sobre la base de caídas y pasa de 13→10, 5→3 y 8→6 retornos. Son proyecciones. Las escenas controladas verifican la publicación real de las claves individuales. La forma del nado y las transiciones entre direcciones quedan pendientes de Miguel. Las direcciones `0x1B` y `0x1C` conservan el estado previo. La muerte del jugador sigue pendiente; `0x2C/F1` figura como faltante único en 201 intentos de la última partida.
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/Probar-P1-Nado.ps1'
+```
+
+Lanzador comprobado con `-Comprobar`, candidato local `nado-19-f1/candidate/candidate-manifest.json`. Jugar M1P2, cruzar un río y girar durante el cruce. Valorar el tamaño del casco, la línea de agua y el movimiento de los brazos. Facilitar el registro y señalar retornos, especialmente al morir un aliado. Maestros, prompts y RGBA se conservan en las carpetas `assets/modernization/demo-a1-player-swim-*`. Los registros privados, originales nativos y datos comerciales permanecen locales.
