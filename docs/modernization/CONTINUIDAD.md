@@ -42,7 +42,8 @@
 - **Nado hacia delante comprobado:** `0x18/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-18).
 - **Nado hacia delante y a la izquierda comprobado:** `0x19/F0–F1` PASS SDL y sanitizadores a 8×/12×. [Recuperación](DEMO_A1_HYBRID_P1.md#nado-19).
 - **Conjunto de nado comprobado:** candidato de 198 activos y 348 vínculos con las 12 claves del grupo seleccionado. PASS exportación exacta y fixtures SDL con sanitizadores a 8×/12×. El resto del manifiesto conserva descriptores y bytes. [Lanzador](DEMO_A1_HYBRID_P1.md#revisión-jugable-del-conjunto-de-nado).
-- **Siguiente tarea única vigente:** revisión jugable del conjunto de nado en M1P2. Queda pendiente la muerte del jugador, especialmente `0x2C/F1`, antes de ampliar con otras poses.
+- **Revisión del nado (17-11):** presencia HD confirmada por Miguel; los 264 dibujos registrados a izquierda y derecha se publicaron. M1P2 suma 12.490 publicaciones y 1.295 faltantes, con 12 retornos del mismo jugador. Cinco comienzan por `0x2C/F1`. [Registro](DEMO_A1_HYBRID_P1.md#resultado-del-conjunto-de-nado).
+- **Siguiente tarea única vigente:** auditar y preparar la dirección de muerte de espaldas `0x2C/F0–F1` dentro del hito autorizado.
 - **Lectura de historial:** los puntos que siguen conservan evidencia y acciones de la estrategia estricta. La siguiente tarea vigente se lee en el control operativo. El criterio final de H7/H8 permanece.
 
 - **Fuente:** rama `modernization/windows-foundation`, PR #1 abierta, en borrador y sin fusionar. Base de la muestra `d8102da`. SHA del relevo: `git log -1 --format=%H -- docs/modernization/CONTINUIDAD.md`. La autoridad sobre la siguiente tarea es el control operativo de [PLAN_TRABAJO.md](PLAN_TRABAJO.md), versión 2.74.

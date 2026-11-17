@@ -465,3 +465,11 @@ En los tres censos, la proyección del conjunto añade 660, 669 y 279 publicacio
 ```
 
 Lanzador comprobado con `-Comprobar`, candidato local `nado-19-f1/candidate/candidate-manifest.json`. Jugar M1P2, cruzar un río y girar durante el cruce. Valorar el tamaño del casco, la línea de agua y el movimiento de los brazos. Facilitar el registro y señalar retornos, especialmente al morir un aliado. Maestros, prompts y RGBA se conservan en las carpetas `assets/modernization/demo-a1-player-swim-*`. Los registros privados, originales nativos y datos comerciales permanecen locales.
+
+### Resultado del conjunto de nado
+
+Miguel confirmó que aparecen los soldados nadando. El censo validó 14.450 intentos y 129.661 comandos completos. La escena 186 de M1P2 tiene 12.490 publicaciones y 1.295 rechazos por faltantes. Los 264 dibujos de nado (138 a derecha y 126 a izquierda) se sustituyeron y publicaron. Ningún retorno comienza por nado. Queda pendiente la valoración detallada de forma, tamaño y transiciones, y el ejercicio de las otras cuatro direcciones.
+
+En M1P2 hay 12 retornos con el mismo jugador y cinco rachas HD de hasta tres intentos registrados. Cinco retornos empiezan por `0x2C/F1` como único faltante. Se observaron dos claves de ese frame y una de F0. La escena posterior 29326 aporta otros 665 rechazos y queda fuera del experimento de M1P2. Los enemigos de M1P2 se resolvieron en clásico en sus 17.825 dibujos.
+
+Registro local `%TEMP%\OpenFodder-P1-Nado-hibrido-20261117-173234.log`, SHA-256 `732cc7377cd9065e0cb0ec65fd2f91377822a64ce3ae96657b0b51fdddaa203c`. La siguiente tarea autorizada es comprobar la dirección de muerte de espaldas antes de incorporarla al candidato.
