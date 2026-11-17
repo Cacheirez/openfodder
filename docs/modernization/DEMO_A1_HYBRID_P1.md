@@ -427,3 +427,9 @@ El mínimo consta de seis direcciones y 12 claves observadas: `0x18, 0x19, 0x1A,
 ```
 
 M1P2, lanzador comprobado con `-Comprobar`. Repetir un salto hacia la derecha o hacia abajo y a la derecha, y observar si el pelotón conserva el HD y si las dos poses nuevas encajan con la caída delante. Facilitar la ruta del registro. Para preparar el resto del nado, valorar proporciones y línea de agua en [F0](../../assets/modernization/demo-a1-player-swim-1e-f0/player-swim-1e-f0-12x.png) y [F1](../../assets/modernization/demo-a1-player-swim-1e-f1/player-swim-1e-f1-12x.png).
+
+### Resultado de la revisión de caídas
+
+El 17-11 Miguel vio una mejora clara y ningún retorno al saltar. Vio clásico al morir algún soldado del pelotón y durante el nado. El verificador validó 8.704 intentos: 7.541 publicaciones HD, 1.044 rechazos por faltantes y 119 sin cuerpo sustituible. Los 72 dibujos de `0xB0/F0` y 15 de `0xB7/F0` se publicaron en HD; `0xB6/F0` no aparece en esa partida. Dos de los ocho retornos con el mismo jugador empiezan por nado, uno por `0x1E/F0` y otro por `0x1A/F1`. La clave de muerte del jugador `0x2C/F1` es el faltante único en 201 intentos; se conserva como diagnóstico pendiente tras el nado.
+
+La proyección de las seis direcciones de nado sigue mejorando las tres partidas: en esta añade 279 publicaciones, reduce 8→6 retornos y conserva cero rachas HD de hasta tres intentos. El arte de nado sigue provisional hasta la revisión jugando. Registro local `%TEMP%\OpenFodder-P1-Caidas-hibrido-20261117-161344.log`, SHA-256 `02554918af3f9796ecdcbe15cc760277856bd43b7a3bd3e000b1d9a40ea3f284`.
