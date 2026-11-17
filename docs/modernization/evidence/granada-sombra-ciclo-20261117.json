@@ -17,7 +17,7 @@
       "lost": 0,
       "added": 96
     },
-    "ci": "PENDING at publication",
+    "ci": "First 703bbd0 runs FAIL at stale hybrid census expectation, 28/29 CTests pass in both OS; corrective CI pending",
     "visual": "PENDING",
     "cd32": "PENDING",
     "gpu": "PENDING",
@@ -255,6 +255,62 @@
       "file": "native-0a-f2\\fixture-linux.log",
       "bytes": 479,
       "sha256": "d8cc591f29cf875c5eac8136e8aa668a70101d36c4d5189224dbcad6ca5a4995"
+    },
+    {
+      "file": "compare_grenade_samples.py",
+      "sha256": "61ef9f0da99913e015f457697c4495962b570538f9eb2f9452bd1f8aee86e65f"
+    }
+  ],
+  "coverage_gate_correction": {
+    "added_cases": 38,
+    "observed_published": 122,
+    "observed_classic_recovered": 94,
+    "local_windows": "PASS hybrid and strict with ASan/UBSan",
+    "local_linux": "PASS hybrid and strict with ASan/UBSan/LSan",
+    "verifier_sha256": "1e4b8215096a64e04d4f437b4676a2381d9f9209b2b50947e3868b2ed8256592"
+  },
+  "multi_sample_projection": [
+    {
+      "log": "OpenFodder-P1-Caidas-hibrido-20261117-161344.log",
+      "sha256": "02554918af3f9796ecdcbe15cc760277856bd43b7a3bd3e000b1d9a40ea3f284",
+      "baseline": {
+        "published": 7829,
+        "returns": 6,
+        "short_attempt_runs": 0
+      },
+      "candidate": {
+        "published": 8012,
+        "returns": 8,
+        "short_attempt_runs": 0
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Nado-hibrido-20261117-173234.log",
+      "sha256": "732cc7377cd9065e0cb0ec65fd2f91377822a64ce3ae96657b0b51fdddaa203c",
+      "baseline": {
+        "published": 12499,
+        "returns": 12,
+        "short_attempt_runs": 5
+      },
+      "candidate": {
+        "published": 12937,
+        "returns": 13,
+        "short_attempt_runs": 5
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Impacto-hibrido-20261117-195437.log",
+      "sha256": "f802e5e0eed9b45b7a6496403b8fea4ce659485f77c68c5635015fc4e9983336",
+      "baseline": {
+        "published": 6994,
+        "returns": 6,
+        "short_attempt_runs": 0
+      },
+      "candidate": {
+        "published": 7276,
+        "returns": 4,
+        "short_attempt_runs": 0
+      }
     }
   ]
 }

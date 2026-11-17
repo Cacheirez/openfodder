@@ -48,3 +48,17 @@ Carpeta `C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac
 - Lanzador `Probar-P1-Granadas.ps1`: comprobación de hash/rutas PASS sin abrir el juego. Puede probar híbrido, estricto y clásico. La entrega para jugar espera la CI relevante y el punto de revisión del hito.
 
 [Evidencia documental y hashes](evidence/granada-sombra-ciclo-20261117.json). Tras la CI, la siguiente tarea técnica autorizada es reevaluar daño/muerte con este ciclo resuelto; antes de ampliar direcciones, preparar solo el piloto que necesite revisión de Miguel. Esta hoja de ruta no acepta visualmente nuevas poses.
+
+## CI y contraste entre partidas
+
+Las primeras ejecuciones de `703bbd0` fallaron en `soldier_ordered_hybrid`, dentro de CTest: [Windows](https://github.com/Cacheirez/openfodder/actions/runs/44159368027) y [Linux](https://github.com/Cacheirez/openfodder/actions/runs/44159367951), 28/29 pruebas correctas. El verificador de cobertura seguía esperando 46 publicaciones y 18 recuperaciones del fixture anterior; los 38 casos añadidos aportan 76 de cada una a 8×/12×: resultado observado 122/94. Se corrigió el cálculo y se exigen además dos resoluciones clásicas por cada tipo/hoja/frame nuevo y densidad. No se cambia el motor para satisfacer el contador. El verificador híbrido y el estricto pasan localmente en ambos sistemas, con los sanitizadores existentes. Nueva CI pendiente; no se cierra el bloque hasta observar sus pasos pertinentes.
+
+Contraste condicional con la misma base de 360 vínculos, normalizando las claves ya disponibles antes del ciclo. Son **proyecciones de los registros retenidos**, no nuevas partidas ni aceptación visual:
+
+| Registro del 17-11 | Publicaciones antes→después | Retornos del mismo jugador | Rachas de 1–3 intentos |
+|---|---|---|---|
+| Caídas, 16:13:44 | 7.829→8.012 | 6→8 | 0→0 |
+| Nado, 17:32:34 | 12.499→12.937 | 12→13 | 5→5 |
+| Impacto, 19:54:37 | 6.994→7.276 | 6→4 | 0→0 |
+
+La ganancia de publicaciones no acredita una mejora uniforme de continuidad: en dos muestras aparecen más retornos al abrir tramos HD antes bloqueados. No ocultar esta limitación ni presentar granadas/daño como resueltos jugando. La nueva partida contiene dos escenas (186 y 13877); ambas tienen enemigos y sombra F0 conservados sin vínculo explícito, evidencia del experimento activo. El contraste incluye ambas y solo proyecta los nuevos asociados en escenas con esa evidencia; filtrar únicamente 186 habría omitido la segunda escena. Recuperación: `compare_grenade_samples.py` y `granada-samples-projection.json` en la carpeta local actual. La reevaluación de daño/muerte debe partir de estas tres muestras.
