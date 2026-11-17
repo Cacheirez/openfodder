@@ -1,0 +1,88 @@
+{
+  "source_head": "60d447dce1440b0feb0429cf5386b0066589c8e4",
+  "date": "2026-11-17",
+  "log_sha256": "f802e5e0eed9b45b7a6496403b8fea4ce659485f77c68c5635015fc4e9983336",
+  "captured_snapshots": 31,
+  "new_aliases": 5,
+  "total_aliases": 12,
+  "assets": 198,
+  "bindings": 360,
+  "projection": {
+    "baseline": {
+      "published": 6991,
+      "returns": 6,
+      "short_attempt_runs": 0
+    },
+    "candidate": {
+      "published": 6994,
+      "returns": 6,
+      "short_attempt_runs": 0
+    }
+  },
+  "native_renderer": "PASS, five native rasters and keys",
+  "tests": {
+    "new_replay": "NOT RUN, manifest-only block",
+    "visual": "PENDING",
+    "linux": "PASS SDL 8x/12x ASan/UBSan/LSan, Clang 18.1.3",
+    "windows": "PASS SDL 8x/12x ASan/UBSan, Clang 23.1.5"
+  },
+  "recovery_directory": "C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "artifacts": [
+    {
+      "sha256": "a6b415d72ae2d6f8f2f74388144b77acc9d501a67a82f5da0ac8a6da9543d0f6",
+      "file": "prepare_hit_aliases.py"
+    },
+    {
+      "sha256": "b5e3059b8bc92ed203ef6282f15a6358d0eb11a2376c0115d36b94d8139d4333",
+      "file": "continuity_followup.py"
+    },
+    {
+      "sha256": "4b79143205759ff5c772d488878178e170ae156df959186b9ddc900ff97c77b5",
+      "file": "hit-fixture.cpp"
+    },
+    {
+      "sha256": "ab35fa2285d0215059e7e056af7c56e84e196ef266ed92d0bf9def04a31a4ee3",
+      "file": "run-hit-linux.sh"
+    },
+    {
+      "sha256": "938ce4eb1d308b67cef7995207fd5be9b4bce5aade35c5032880fb768b504e09",
+      "file": "hit-01ec4faff67d\\fixture-linux.log"
+    },
+    {
+      "sha256": "f17681d16f23911c6562652e9c29cd4f72c765bc4f975be491bd45a8196b101f",
+      "file": "hit-01ec4faff67d\\fixture-win.log"
+    },
+    {
+      "sha256": "6ca099397456d9e39dec4a2f39c91459a79a8c250f1be698fdaa2c48d36a487a",
+      "file": "hit-18436d5668a0\\fixture-linux.log"
+    },
+    {
+      "sha256": "5c730956aa13aa4fe1ffbf644b0f2462fa93e0d55b2f8d39107d6f2c54b19d8e",
+      "file": "hit-18436d5668a0\\fixture-win.log"
+    },
+    {
+      "sha256": "2d32e2d6f3430421afc58882d31e1f39d549d37209633bc971f3fce8b35e0dfe",
+      "file": "hit-26a5eaf180bb\\fixture-linux.log"
+    },
+    {
+      "sha256": "87dd407f1162538316ff4a0acab745b1adf99f72f127a92b6aa520783e65c78f",
+      "file": "hit-26a5eaf180bb\\fixture-win.log"
+    },
+    {
+      "sha256": "c689a505c662721a298ed246bf4e3efedb851c7caa6be72c05137726735646f6",
+      "file": "hit-e6c773b72491\\fixture-linux.log"
+    },
+    {
+      "sha256": "9b49d095ff0eb5b732f2c01961d23d50d9c3d5e7b979089bb2d7d0e0df5b5cc9",
+      "file": "hit-e6c773b72491\\fixture-win.log"
+    },
+    {
+      "sha256": "b9dbee6bc67ffffa233442526aed7804657d4b5ec3b2d46c9f9f116205347604",
+      "file": "hit-f9a52b1744b1\\fixture-linux.log"
+    },
+    {
+      "sha256": "249d85d3bf36f6283b0d8089bb79f76d2352eaf9fd6d279c2682948d6c9d09a8",
+      "file": "hit-f9a52b1744b1\\fixture-win.log"
+    }
+  ]
+}

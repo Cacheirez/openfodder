@@ -503,3 +503,13 @@ Ejecutable local `impacto-probe-build/Release/native_probe.exe`, SHA-256 `f6f3f4
 ```
 
 Jugar M1P2 y permitir daño al pelotón como en la última partida; anotar si el retorno ocurre al recibir el impacto o al caer el soldado. El lanzador muestra un log en `%TEMP%` y una carpeta local `impacto-snapshots-<fecha>`. Facilitar ambas rutas. Los recursos nativos capturados quedan en esa carpeta local. Con sus bytes y geometría se podrán verificar las tres claves pendientes antes de elegir la siguiente ampliación.
+
+### Segunda captura de impacto
+
+17-11-2026. Miguel confirma retornos al recibir daño y lanzar granadas y autoriza su resolución, incluidas las sombras relacionadas, dentro del hito de continuidad. Log local `OpenFodder-P1-Impacto-hibrido-20261117-195437.log`: 6.991 publicaciones HD, 786 faltantes, 134 intervalos sin cuerpo y seis retornos con el mismo jugador. No es aceptación jugable. Se conservan 31 snapshots y un recurso nativo local en `impacto-snapshots-20261117-195437`, carpeta de trabajo del 16-11.
+
+Las cinco claves faltantes capturadas corresponden a `0x01/F0`, `0x06/F1` y `0x05/F0–F2`, animación 1. Se contrastaron las 31 claves y hashes; el renderizador nativo C++ verifica los cinco rasters nuevos. Sus claves de animación 0 ya tienen arte: se reutilizan esos mismos archivos sin crear imágenes. [Vínculos](../../assets/modernization/demo-a1-player-hit-walk.json), ahora 12; candidato de 198 activos y 360 vínculos, conserva los 355 anteriores y todos los activos.
+
+PASS WindowHD/SDL software a 8×/12× con dos jugadores y recuperación clásica íntegra en cada caso: Windows Clang 23.1.5 ASan/UBSan y WSL Clang 18.1.3 ASan/UBSan/LSan. Se reutilizan las dependencias existentes; el enlace Windows necesitó la biblioteca `stl_asan.lib` y el runtime locales ya usados en los fixtures anteriores. Sin hallazgos de ejecución. Proyección sobre la partida: 6.991→6.994 publicaciones, seis retornos y cero rachas de uno a tres intentos. Es una proyección, no un nuevo replay ni aceptación visual; las poses de muerte y granada/sombra impiden mejoras mayores.
+
+Recuperación actual en `C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150`: `continuity_followup.py`, `prepare_hit_aliases.py`, `hit-*/fixture-{win,linux}.log`, `hit-projection.json` e `impacto-12-candidate/`. Recursos originales fuera de Git. [Hashes y resultados](evidence/impacto-segunda-captura-20261117.json). Siguiente tarea única: verificar el contrato de granada/sombra y las poses asociadas al lanzamiento, sin convertir faltantes en recursos transparentes ni publicar cuerpos clásicos desconocidos.
