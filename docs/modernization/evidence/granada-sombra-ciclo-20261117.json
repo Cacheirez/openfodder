@@ -17,7 +17,15 @@
       "lost": 0,
       "added": 96
     },
-    "ci": "First 703bbd0 runs FAIL at stale hybrid census expectation, 28/29 CTests pass in both OS; corrective CI pending",
+    "ci": {
+      "commit": "2795b36a8c693af78509061b0aa7b0063e9652dd",
+      "windows_run": 44177040158,
+      "linux_run": 44177040180,
+      "ctest": "PASS both platforms",
+      "a2_h3": "PASS both platforms",
+      "linux_ordered_composition_steps": "PASS observed",
+      "complete_workflow": "IN PROGRESS at technical handoff, no new failure observed"
+    },
     "visual": "PENDING",
     "cd32": "PENDING",
     "gpu": "PENDING",
