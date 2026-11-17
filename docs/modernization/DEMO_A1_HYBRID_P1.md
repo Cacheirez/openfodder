@@ -389,3 +389,9 @@ Las proyecciones retienen la secuencia de intentos y solo suman publicaciones cu
 ```
 
 Lanzador comprobado con `-Comprobar`. Probar M1P2 al bajar desde un desnivel hacia la parte inferior de la pantalla. Facilitar el registro e indicar si el soldado conserva el aspecto HD y si el casco o el cuerpo dan un salto de tamaño o posición al caer o al recuperar la marcha. La aceptación visual y jugable queda pendiente.
+
+### Revisión jugable de la caída hacia delante
+
+El 17-11 Miguel aprobó la forma y el tamaño de `0xB0/F0`. En tres saltos del pelotón percibió una mejora parcial y todavía vio retornos a clásico. El verificador validó 7.530 intentos: 6.184 publicaciones HD, 1.224 faltantes y 122 sin cuerpo sustituible. Los 99 dibujos de `0xB0/F0` se sustituyeron en escenas publicadas. Los 21 dibujos de `0xB7/F0` fueron faltantes y esa dirección inició cuatro de los nueve retornos con el mismo jugador. La continuidad del pelotón sigue pendiente.
+
+Registro local `%TEMP%\OpenFodder-P1-Caida-B0-hibrido-20261117-154331.log`, SHA-256 `d0127f5026cf58560c2652460642a67fa0ad326c9518798d05a69e1392b27788`. La nueva tarea mantiene el alcance de las poses adicionales ya autorizado.
