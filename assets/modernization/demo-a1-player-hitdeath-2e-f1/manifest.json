@@ -1,0 +1,77 @@
+{
+  "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-hitdeath-2e-f1-8x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2e-f1-8x",
+      "sha256": "9861dca3c0b031b8a5ec4b38bf99da12ce8bdd71de834c51efb1d03330b587a1",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-hitdeath-2e-f1-12x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2e-f1-12x",
+      "sha256": "ae0c266d13589c97d03417e3d49579ad4665a08b1720b941d30364d102a055ee",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "5aaa302873a673083bee058984e2b9cb1c5c5e92a71037e4e28ad9cb966a10f3",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2e-f1-8x",
+        "12": "player-hitdeath-2e-f1-12x"
+      }
+    },
+    {
+      "key": "e8e208bfd9a3ba2a44a0da768821a54c700b9f90057f43adf882bab87bd6e95d",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2e-f1-8x",
+        "12": "player-hitdeath-2e-f1-12x"
+      }
+    }
+  ],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "35ae204300d581c85d8010d34d1760f5e3b2301e6b3c15898b73bf4a3bbb52c2",
+    "generator": "built-in image_gen, transparent referenced-image workflow"
+  },
+  "native": [
+    {
+      "file": "f1-a1.json",
+      "key": "5aaa302873a673083bee058984e2b9cb1c5c5e92a71037e4e28ad9cb966a10f3",
+      "frame": 1,
+      "animation": 1,
+      "rgba_sha256": "eabf206e51e13a70bc4109ffa11385fb588b8d999a964c4323eb9a3ca15f5568",
+      "bbox": [
+        3,
+        1,
+        15,
+        9
+      ]
+    },
+    {
+      "file": "f1-a6.json",
+      "key": "e8e208bfd9a3ba2a44a0da768821a54c700b9f90057f43adf882bab87bd6e95d",
+      "frame": 1,
+      "animation": 6,
+      "rgba_sha256": "eabf206e51e13a70bc4109ffa11385fb588b8d999a964c4323eb9a3ca15f5568",
+      "bbox": [
+        3,
+        1,
+        15,
+        9
+      ]
+    }
+  ]
+}
