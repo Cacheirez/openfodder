@@ -1,0 +1,56 @@
+{
+  "status": "Provisional visual pilot; technical SDL 8x/12x and independent native shadows verified Windows/Linux sanitizers; not in gameplay launcher; Miguel approval pending",
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-hitdeath-2d-f0-8x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2d-f0-8x",
+      "sha256": "7e705e43cf7045a9dbbeaee3b8bd292a97ada9d3606b99bd998a9d44c929fbb0",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-hitdeath-2d-f0-12x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-2d-f0-12x",
+      "sha256": "373c6d78da7532efdf07c2823119d39a8857c9397d86fc8cb22440629e627342",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "ac6db4a0c4872f67c4a55c03f7b9c6790e56527f2bfe21bbe39e3a4e3b7dffca",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-2d-f0-8x",
+        "12": "player-hitdeath-2d-f0-12x"
+      }
+    }
+  ],
+  "source": {
+    "file": "source.png",
+    "sha256": "8e84d5b2a4362fcca900c7f1c8cb9aa2123d50cf64d33095fcb24e4dee779f68",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "generator": "built-in image_gen, referenced-image editing, transparent background"
+  },
+  "native": [
+    {
+      "file": "f0-a1.json",
+      "key": "ac6db4a0c4872f67c4a55c03f7b9c6790e56527f2bfe21bbe39e3a4e3b7dffca",
+      "frame": 0,
+      "animation": 1,
+      "rgba_sha256": "c68fba50e1898b40dba4da06a09c8842a169ec43d4120b2cbaa7a989625596e1",
+      "bbox": [
+        3,
+        0,
+        13,
+        12
+      ]
+    }
+  ]
+}

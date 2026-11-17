@@ -1,0 +1,368 @@
+{
+  "date": "2026-11-17",
+  "source_head": "5b949a914ac78dfe2fbb97147beb857cab034319",
+  "scope": "One direction 0x2D, two provisional hit/death poses; no engine or gameplay launcher change",
+  "status": "technical PASS, visual/jugable PENDING",
+  "assets": [
+    {
+      "directory": "assets\\modernization\\demo-a1-player-hitdeath-2d-f0",
+      "source": {
+        "file": "source.png",
+        "sha256": "8e84d5b2a4362fcca900c7f1c8cb9aa2123d50cf64d33095fcb24e4dee779f68",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "generator": "built-in image_gen, referenced-image editing, transparent background"
+      },
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2d-f0-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2d-f0-8x",
+          "sha256": "7e705e43cf7045a9dbbeaee3b8bd292a97ada9d3606b99bd998a9d44c929fbb0",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2d-f0-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2d-f0-12x",
+          "sha256": "373c6d78da7532efdf07c2823119d39a8857c9397d86fc8cb22440629e627342",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "ac6db4a0c4872f67c4a55c03f7b9c6790e56527f2bfe21bbe39e3a4e3b7dffca",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2d-f0-8x",
+            "12": "player-hitdeath-2d-f0-12x"
+          }
+        }
+      ],
+      "native": [
+        {
+          "file": "f0-a1.json",
+          "key": "ac6db4a0c4872f67c4a55c03f7b9c6790e56527f2bfe21bbe39e3a4e3b7dffca",
+          "frame": 0,
+          "animation": 1,
+          "rgba_sha256": "c68fba50e1898b40dba4da06a09c8842a169ec43d4120b2cbaa7a989625596e1",
+          "bbox": [
+            3,
+            0,
+            13,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "directory": "assets\\modernization\\demo-a1-player-hitdeath-2d-f1",
+      "source": {
+        "file": "source.png",
+        "sha256": "ac972d051b6839634529a78be118ab0e94ee59376c99cd12a0241d72e77f790d",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "generator": "built-in image_gen, referenced-image editing, transparent background"
+      },
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2d-f1-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2d-f1-8x",
+          "sha256": "09cd45d88340083e9fd065e71e2e75dee5e8e787d0408db565efda25ed2bcb79",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2d-f1-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2d-f1-12x",
+          "sha256": "dd4e99c16989c5a572747f75d5b357c62abe6259a995b3dd6ddb2091624260f3",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "dcc9a41e76612dbb52b9b515869c0bd882af4d5bfec4660c5cecf73185e1bdc2",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2d-f1-8x",
+            "12": "player-hitdeath-2d-f1-12x"
+          }
+        },
+        {
+          "key": "28c2e29982d4008613e53b4d33dd07b15af90bad48264350e1443815d0282c72",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2d-f1-8x",
+            "12": "player-hitdeath-2d-f1-12x"
+          }
+        }
+      ],
+      "native": [
+        {
+          "file": "f1-a1.json",
+          "key": "dcc9a41e76612dbb52b9b515869c0bd882af4d5bfec4660c5cecf73185e1bdc2",
+          "frame": 1,
+          "animation": 1,
+          "rgba_sha256": "639cb6bee592abd55fd4ef8bb3ed91bd6905fb6add553cece912e7cb7017132b",
+          "bbox": [
+            4,
+            1,
+            15,
+            12
+          ]
+        },
+        {
+          "file": "f1-a6.json",
+          "key": "28c2e29982d4008613e53b4d33dd07b15af90bad48264350e1443815d0282c72",
+          "frame": 1,
+          "animation": 6,
+          "rgba_sha256": "639cb6bee592abd55fd4ef8bb3ed91bd6905fb6add553cece912e7cb7017132b",
+          "bbox": [
+            4,
+            1,
+            15,
+            12
+          ]
+        }
+      ]
+    }
+  ],
+  "candidate": {
+    "assets": 202,
+    "bindings": 366,
+    "isolated": true
+  },
+  "gameplay_launcher": {
+    "candidate": "granada-candidate",
+    "assets": 198,
+    "bindings": 363,
+    "unchanged": true
+  },
+  "tests": {
+    "export": "PASS deterministic native bboxes, alpha, dimensions and hashes",
+    "windows": "PASS SDL 8x/12x ASan/UBSan Clang 23.1.5",
+    "linux": "PASS SDL 8x/12x ASan/UBSan/LSan Clang 18.1.3",
+    "shadow_pairs": {
+      "result": "PASS",
+      "cases": 24,
+      "body_state_keys": 3,
+      "heights": [
+        0,
+        12
+      ],
+      "densities": [
+        8,
+        12
+      ],
+      "native_shadow_writes": {
+        "F0": 11,
+        "F1": 24
+      },
+      "independent_commands": true,
+      "whole_classic_recovery": true
+    },
+    "h3": "Not rerun for isolated art; prior grenade binary PASS 11 phases/11361 states, engine unchanged",
+    "replay": "Pilot NOT exercised in gameplay",
+    "gpu": "PENDING",
+    "cd32": "PENDING",
+    "audio": "PENDING",
+    "visual": "PENDING Miguel",
+    "code_ci_at_publication": {
+      "commit": "5b949a914ac78dfe2fbb97147beb857cab034319",
+      "linux_run": 44179186357,
+      "windows_run": 44179186470,
+      "ctest_a2_h3": "PASS observed both platforms",
+      "complete_runs": "IN PROGRESS at optional SDL HD 8x/12x with H3/pause, no observed failures",
+      "pilot_art_ci": "Not yet published at this snapshot"
+    }
+  },
+  "dependencies": [
+    {
+      "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+      "source_key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+      "sheet": 124,
+      "frame": 1,
+      "animation": 6,
+      "directory": "invisible-82a12b8640bd"
+    },
+    {
+      "key": "8ccb9e19db5e7d636ca42a2cbe39f1c7614ed4fb1ed84bf845e51c2e31f4b0ad",
+      "sheet": 124,
+      "frame": 1,
+      "status": "PENDING: current native template does not reconstruct older key; no wider guessing"
+    },
+    {
+      "key": "f62237ff841552359982d169df42a32f8c9270f598af5e624f6cf7db3a3abb06",
+      "source_key": "f2ddf9c44ea41ae03770069e9ce9566d32af64ddf1708b2f2a7c373f0b487270",
+      "sheet": 176,
+      "frame": 0,
+      "animation": 1,
+      "directory": "fall-during-hit"
+    }
+  ],
+  "prospective_group": {
+    "scope": "Death directions with the verified invisible key and existing fall alias; unknown older invisible key remains blocked",
+    "baseline": [
+      {
+        "published": 8012,
+        "returns": 8,
+        "short_attempt_runs": 0
+      },
+      {
+        "published": 12937,
+        "returns": 13,
+        "short_attempt_runs": 5
+      },
+      {
+        "published": 7276,
+        "returns": 4,
+        "short_attempt_runs": 0
+      }
+    ],
+    "all_death": [
+      {
+        "published": 8438,
+        "returns": 5,
+        "short_attempt_runs": 0
+      },
+      {
+        "published": 13294,
+        "returns": 7,
+        "short_attempt_runs": 0
+      },
+      {
+        "published": 7777,
+        "returns": 0,
+        "short_attempt_runs": 4
+      }
+    ],
+    "improving_subsets": 0,
+    "minimum": []
+  },
+  "prospective_short_runs": [
+    {
+      "attempts": [
+        "13478",
+        "13480",
+        "13482"
+      ],
+      "ended_at": "13484",
+      "observed_outcome": "no-body",
+      "remaining_missing": [],
+      "same_modern_player": false,
+      "players": 0
+    },
+    {
+      "attempts": [
+        "13490",
+        "13492",
+        "13494"
+      ],
+      "ended_at": "13496",
+      "observed_outcome": "no-body",
+      "remaining_missing": [],
+      "same_modern_player": false,
+      "players": 0
+    },
+    {
+      "attempts": [
+        "13502",
+        "13504",
+        "13506"
+      ],
+      "ended_at": "13508",
+      "observed_outcome": "no-body",
+      "remaining_missing": [],
+      "same_modern_player": false,
+      "players": 0
+    },
+    {
+      "attempts": [
+        "13514",
+        "13516",
+        "13518"
+      ],
+      "ended_at": "13520",
+      "observed_outcome": "no-body",
+      "remaining_missing": [],
+      "same_modern_player": false,
+      "players": 0
+    }
+  ],
+  "recovery_directory": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "logs": [
+    {
+      "file": "hitdeath-2d-f0-a1\\shadow-fixture-win.log",
+      "sha256": "52bdabc55a2b25f8c8eb5a5dc07d5cd59a2beda31da7e9d82387822fc933a0ac"
+    },
+    {
+      "file": "hitdeath-2d-f0-a1\\shadow-fixture-linux.log",
+      "sha256": "d7efcb45c6f738255629a7de1ee964bdf983a553022cfad61f8d9ae6cc3ca9a9"
+    },
+    {
+      "file": "hitdeath-2d-f1-a1\\shadow-fixture-win.log",
+      "sha256": "f7fc39feb25a0d82b22635b37d6f4689b84402e3f6d1efa7bb36ba2b24cae7c1"
+    },
+    {
+      "file": "hitdeath-2d-f1-a1\\shadow-fixture-linux.log",
+      "sha256": "a0df034b1fb334266e1747a7ef9317ae2771930986046c9b09e6d90bdd518950"
+    },
+    {
+      "file": "hitdeath-2d-f1-a6\\shadow-fixture-win.log",
+      "sha256": "f7fc39feb25a0d82b22635b37d6f4689b84402e3f6d1efa7bb36ba2b24cae7c1"
+    },
+    {
+      "file": "hitdeath-2d-f1-a6\\shadow-fixture-linux.log",
+      "sha256": "a0df034b1fb334266e1747a7ef9317ae2771930986046c9b09e6d90bdd518950"
+    }
+  ],
+  "tools": [
+    {
+      "file": "prepare_death_2d_native.py",
+      "sha256": "49cb4dadb8e41f248315de4394f9b06d0f3ae215e8c508cd47be4547db196e67"
+    },
+    {
+      "file": "export_hitdeath_2d.py",
+      "sha256": "10088d8f4e25c05420f948140b6ecbb99cc966fe3840a76e4d4b6699ccc770b4"
+    },
+    {
+      "file": "project_death_after_grenades.py",
+      "sha256": "002035dcfc4d1574b8e40004ecebd41fadcbc62fd0c16b0745125c7554dd3f8a"
+    },
+    {
+      "file": "inspect_damage_dependencies.py",
+      "sha256": "e2fe6349020754bf1f4a9ac8d9b2deb832e5f9adc40d1a7d25c784859f8225ba"
+    },
+    {
+      "file": "hitdeath-shadow.cpp",
+      "sha256": "01d8651779fb8eca49a577b6a2ea59a6345b0e74c5c4f89bb89159b285555d1d"
+    },
+    {
+      "file": "hitdeath-shadow.inc",
+      "sha256": "161b18465ced0a185517f2ab397ce5862be6cd2a4e5426e097bc2f8843ccc6ab"
+    },
+    {
+      "file": "run-hitdeath-shadow-win.ps1",
+      "sha256": "3307c2efddc21a7ed08dccf2d978e34711ff73ca11c016270b6cac30a331c410"
+    },
+    {
+      "file": "run-hitdeath-shadow-linux.sh",
+      "sha256": "19bcbe3edcaad5999457951498c34ad2e0a9b405631ced2d2a38c4f443df570c"
+    },
+    {
+      "file": "run-hitdeath-linux.sh",
+      "sha256": "6aa7ce096796c452a1bc77a363c541e0f7816ad7ba94c8660a413357e92c86fd"
+    }
+  ]
+}
