@@ -10,3 +10,4 @@ Cada dirección conserva maestro, prompts, derivados 8×/12× y claves verificad
 | 0x22 | F0–F1 | 3 / 1 | 24 | 206 / 369 | [Datos](evidence/dano-22-20261117.json) |
 | 0x2C | F0–F1 | 3 / 1 | 24 | 210 / 372 | [Datos](evidence/dano-2c-20261117.json) |
 | 0x29 | F0–F1 | 3 / 1 | 24 | 214 / 375 | [Datos](evidence/dano-29-20261117.json) |
+| 0x2B | F0–F1 | 3 / 2 | 24 | 218 / 378 | [Datos](evidence/dano-2b-20261118.json) |
