@@ -97,6 +97,18 @@ inline bool IsClassicEnemyExperimentDraw(int16_t type, int16_t sheet) {
 
 inline bool IsNativeAmiga8M1P2AssociatedDraw(int16_t type, int16_t sheet, int16_t frame) {
     return ((type == 6 || type == 23) && sheet == 0x96 && frame >= 0 && frame < 4) ||
+           // Grenade body and its separate ground shadow retain their native
+           // commands, height-selected frames and original drawing order.
+           (type == 2 && sheet == 0x7d && frame >= 0 && frame < 4) ||
+           (type == 3 && sheet == 0x7e && frame >= 0 && frame < 4) ||
+           (type == 2 && sheet == 0x7c && frame == 0) ||
+           // A grenade changes type before the next explosion update selects
+           // its new sheet. Keep that verified transitional draw as well.
+           (type == 12 && sheet == 0x7d && frame >= 0 && frame < 4) ||
+           ((type == 12 || type == 39) && sheet == 0x8e && frame >= 0 && frame < 7) ||
+           (type == 12 && sheet == 0xc0 && frame >= 0 && frame < 4) ||
+           (type == 47 && sheet == 0xc5 && frame >= 0 && frame < 3) ||
+           (type == 48 && sheet == 0xc6 && frame >= 0 && frame < 4) ||
            (type == 22 && sheet == 0x97 && frame == 0) ||
            (type == 27 && sheet == 0x9e && frame == 0); // Floating casualty.
 }

@@ -238,12 +238,33 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
     assert(SDL_UpdateTexture(image.tex,nullptr,classic.pixels.data(),96*4));
     // Exercise the producer evidence used by the real Window resolver, with
     // two HD soldiers on either side of each native operation.
-    struct NativeCase { int16_t type, sheet, frame, rows; uint16_t offset; };
+    struct NativeCase { int16_t type, sheet, frame, rows; uint16_t offset; int16_t columns = 2; };
     for (const auto& native : {NativeCase{6,0x7f,3,6,2230}, NativeCase{6,0x9d,6,7,3116},
                               NativeCase{20,0x99,0,15,5970},
                               NativeCase{21,0x95,0,10,9080}, NativeCase{5,0x7c,1,1,560},
                               NativeCase{5,0x64,1,14,7314}, NativeCase{4,0x7c,0,1,560},
                               NativeCase{6,0x96,3,6,2278}, NativeCase{23,0x96,0,6,2272},
+                              NativeCase{2,0x7d,0,6,1984}, NativeCase{2,0x7d,1,6,1986},
+                              NativeCase{2,0x7d,2,6,1988}, NativeCase{2,0x7d,3,6,1990},
+                              NativeCase{3,0x7e,0,6,1992}, NativeCase{3,0x7e,1,6,1994},
+                              NativeCase{3,0x7e,2,6,1996}, NativeCase{3,0x7e,3,6,1998},
+                              NativeCase{2,0x7c,0,1,560},
+                              NativeCase{12,0x7d,0,6,1984}, NativeCase{12,0x7d,1,6,1986},
+                              NativeCase{12,0x7d,2,6,1988}, NativeCase{12,0x7d,3,6,1990},
+                              NativeCase{12,0x8e,0,15,0}, NativeCase{12,0x8e,1,25,2,3},
+                              NativeCase{12,0x8e,2,28,30,3}, NativeCase{12,0x8e,3,38,34,4},
+                              NativeCase{12,0x8e,4,43,1000,4}, NativeCase{12,0x8e,5,44,1366,4},
+                              NativeCase{12,0x8e,6,42,1692,4},
+                              NativeCase{39,0x8e,0,15,0}, NativeCase{39,0x8e,1,25,2,3},
+                              NativeCase{39,0x8e,2,28,30,3}, NativeCase{39,0x8e,3,38,34,4},
+                              NativeCase{39,0x8e,4,43,1000,4}, NativeCase{39,0x8e,5,44,1366,4},
+                              NativeCase{39,0x8e,6,42,1692,4},
+                              NativeCase{12,0xc0,0,34,6,4}, NativeCase{12,0xc0,1,42,12,4},
+                              NativeCase{12,0xc0,2,48,18,4}, NativeCase{12,0xc0,3,48,24,4},
+                              NativeCase{47,0xc5,0,6,6070}, NativeCase{47,0xc5,1,6,6310},
+                              NativeCase{47,0xc5,2,6,6312},
+                              NativeCase{48,0xc6,0,6,6072}, NativeCase{48,0xc6,1,6,6074},
+                              NativeCase{48,0xc6,2,6,6076}, NativeCase{48,0xc6,3,6,6078},
                               NativeCase{22,0x97,0,3,2748}, NativeCase{27,0x9e,0,10,6566}}) {
         auto layer = body;
         auto& p = layer.soldier;
@@ -258,10 +279,16 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
         const bool experiment = visibleEnemy || native.type == 4 || associatedDraw;
         state.segment = visibleEnemy ? 0 : 1;
         g.format = SpriteDrawFormat::Amiga8;
-        g.columns = 2;
+        g.columns = native.columns;
         g.rows = native.rows;
         g.spriteX += 5;
         g.spriteY += g.rows - 12;
+        // This fixture's backing is 96x64 including the 32-pixel legacy
+        // margins. Large explosion frames must clip to that actual backing.
+        g.viewWidth = 64;
+        // Amiga8 can spill across a scanline's right edge; reserve the last
+        // backing row as well instead of treating the viewport as a tight box.
+        g.viewHeight = 31;
         const bool transparent = native.sheet == 0x7c;
         const uint16_t height = visibleEnemy ? 336 : 256;
         auto bytes = std::make_shared<std::vector<uint8_t>>(40*height*4,0);
@@ -272,7 +299,7 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
         p.draw = PrepareSpriteDraw(g);
         g.source = nullptr;
         p.draw.source = nullptr;
-        p.nativeAmiga8 = {state.type,state.sheet,state.frame,state.segment,native.offset,2,native.rows,0,0,
+        p.nativeAmiga8 = {state.type,state.sheet,state.frame,state.segment,native.offset,native.columns,native.rows,0,0,
             state.scene,state.generation,state.slot,p.resource.generation,p.resource.bytes};
         const auto nativeKey = SoldierVariantKey(p,colors);
         for (const char* density : {"8","12"}) {

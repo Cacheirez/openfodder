@@ -42,6 +42,7 @@ class OrderedSoldierRegistry {
         if (!forceClassic && (state.inVehicle || state.pendingDestroy))
             return false;
         const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
+            (associatedDraw && state.type == 2 && state.sheet == 0x7c) ||
             (forceClassic && state.type == 4);
         if (!forceClassic && !associatedDraw && !transparent &&
             !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))

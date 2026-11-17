@@ -1,0 +1,260 @@
+{
+  "date": "2026-11-17",
+  "source_head": "ae1b6bd",
+  "scope": "M1P2 opt-in native grenade/shadow/explosion cycle and three explicit approved-art palette variants; no new artwork or simulation changes",
+  "assets": 198,
+  "bindings": 363,
+  "native_associated_snapshots_verified": 26,
+  "tests": {
+    "windows": "PASS SDL 8x/12x ASan/UBSan Clang 23.1.5",
+    "linux": "PASS SDL 8x/12x ASan/UBSan/LSan Clang 18.1.3",
+    "h3": "PASS 11 phases, 11361 canonical states, Windows local diagnostic binary",
+    "replay": {
+      "published": 4096,
+      "missing": 458,
+      "h3_states": 1546,
+      "old_published": 4000,
+      "lost": 0,
+      "added": 96
+    },
+    "ci": "PENDING at publication",
+    "visual": "PENDING",
+    "cd32": "PENDING",
+    "gpu": "PENDING",
+    "audio": "PENDING"
+  },
+  "manual_projection": {
+    "baseline": {
+      "published": 6991,
+      "returns": 6,
+      "short_attempt_runs": 0,
+      "remaining_returns": [
+        {
+          "attempt": "7256",
+          "missing": [
+            [
+              "0",
+              "0xa",
+              "2"
+            ],
+            [
+              "2",
+              "0x7c",
+              "0"
+            ],
+            [
+              "3",
+              "0x7e",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "8650",
+          "missing": [
+            [
+              "0",
+              "0xa",
+              "0"
+            ],
+            [
+              "2",
+              "0x7c",
+              "0"
+            ],
+            [
+              "3",
+              "0x7e",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "10815",
+          "missing": [
+            [
+              "2",
+              "0x7d",
+              "0"
+            ],
+            [
+              "3",
+              "0x7e",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "13273",
+          "missing": [
+            [
+              "0",
+              "0x1",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "16114",
+          "missing": [
+            [
+              "0",
+              "0x29",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "16550",
+          "missing": [
+            [
+              "0",
+              "0x2c",
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "published": 7276,
+      "returns": 4,
+      "short_attempt_runs": 0,
+      "remaining_returns": [
+        {
+          "attempt": "10990",
+          "missing": [
+            [
+              "0",
+              "0x22",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "13282",
+          "missing": [
+            [
+              "0",
+              "0x2d",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "16114",
+          "missing": [
+            [
+              "0",
+              "0x29",
+              "0"
+            ]
+          ]
+        },
+        {
+          "attempt": "16550",
+          "missing": [
+            [
+              "0",
+              "0x2c",
+              "0"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "recovery_directory": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "artifacts": [
+    {
+      "file": "grenade-window.cpp",
+      "bytes": 19968,
+      "sha256": "a129f3d9c76cff71106b6660c4289b8ab97b48c268131039b01f301fa91a519c"
+    },
+    {
+      "file": "run-grenade-win.ps1",
+      "bytes": 1443,
+      "sha256": "ba953d45cc6994b11686948cecd094c2f9b34d4ec17deaeba1fe623187a238ee"
+    },
+    {
+      "file": "run-grenade-linux.sh",
+      "bytes": 1184,
+      "sha256": "17e3f102f8bdd4beada057ae5b6d563e973f8db8d0515bb53e4aeb238ba1d738"
+    },
+    {
+      "file": "grenade-window-win.log",
+      "bytes": 547,
+      "sha256": "bcb7c26ccc5a80faa9194a5bac34082c9128b86b08defd15c7608804d6ebce1f"
+    },
+    {
+      "file": "grenade-window-linux.log",
+      "bytes": 542,
+      "sha256": "6460a3eace0cf6716fbb26c7cdfed27b2493fb62fbeb90b68dfd6c57e55b041d"
+    },
+    {
+      "file": "run-palette-win.ps1",
+      "bytes": 1708,
+      "sha256": "3f5d9d7b56b7008ede7102ad58fe8afb99e5331fbc4fa14396b0943d06fa8ea6"
+    },
+    {
+      "file": "run-palette-linux.sh",
+      "bytes": 1279,
+      "sha256": "f7636780d8906418209acd2295e96f150455283669806abe3ecb952bec8fe2f7"
+    },
+    {
+      "file": "prepare_grenade_palette.py",
+      "bytes": 2824,
+      "sha256": "0c6d2dc8f9aca7ddd02883ee0ed4b710797fa818e663af91f4cbbae294f9143a"
+    },
+    {
+      "file": "Probar-P1-Granadas.ps1",
+      "bytes": 3201,
+      "sha256": "3efbc9282ab126022f68a83c871d74f6547753e4ed5efe45266d9a109982110c"
+    },
+    {
+      "file": "grenade-probe-build\\Release\\native_probe.exe",
+      "bytes": 2947584,
+      "sha256": "ad05c26a3fe828997e3787f29694c833b2c91736055a2ffc5773f3bc01617e37"
+    },
+    {
+      "file": "grenade-complete-replay\\engine.log",
+      "bytes": 10375379,
+      "sha256": "76e436fb5af7fb188c5fc2c8556a3be1e1528a1124966200d35cabebcf99c77a"
+    },
+    {
+      "file": "grenade-complete-replay\\traces\\Amiga_The_One_m1_p2.jsonl",
+      "bytes": 21337099,
+      "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf"
+    },
+    {
+      "file": "native-0a-f0\\fixture-win.log",
+      "bytes": 484,
+      "sha256": "a690c6bb094149fa75bf9732bbc987de238ca0da0ace7af749a6bc76dc1ed021"
+    },
+    {
+      "file": "native-0a-f0\\fixture-linux.log",
+      "bytes": 479,
+      "sha256": "257cdfaf70b4bc66ff0d3c31849de696d5ef041bb795f028a1c11f768f3834be"
+    },
+    {
+      "file": "native-0a-f1\\fixture-win.log",
+      "bytes": 484,
+      "sha256": "d871e9c079abb24681b470427f7ed48294be6cba62a4a9f5f8c7f951b21c337f"
+    },
+    {
+      "file": "native-0a-f1\\fixture-linux.log",
+      "bytes": 479,
+      "sha256": "d21ea8dab946650299f9f635b2816e903233b6c051aa3a1d5cc1d0dc7cc6c96f"
+    },
+    {
+      "file": "native-0a-f2\\fixture-win.log",
+      "bytes": 484,
+      "sha256": "20f3a3a4570dbb5336128f87e086a04f7daa7686509d696c7d9a7d60eeccba48"
+    },
+    {
+      "file": "native-0a-f2\\fixture-linux.log",
+      "bytes": 479,
+      "sha256": "d8cc591f29cf875c5eac8136e8aa668a70101d36c4d5189224dbcad6ca5a4995"
+    }
+  ]
+}
