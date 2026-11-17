@@ -473,3 +473,17 @@ Miguel confirmó que aparecen los soldados nadando. El censo validó 14.450 inte
 En M1P2 hay 12 retornos con el mismo jugador y cinco rachas HD de hasta tres intentos registrados. Cinco retornos empiezan por `0x2C/F1` como único faltante. Se observaron dos claves de ese frame y una de F0. La escena posterior 29326 aporta otros 665 rechazos y queda fuera del experimento de M1P2. Los enemigos de M1P2 se resolvieron en clásico en sus 17.825 dibujos.
 
 Registro local `%TEMP%\OpenFodder-P1-Nado-hibrido-20261117-173234.log`, SHA-256 `732cc7377cd9065e0cb0ec65fd2f91377822a64ce3ae96657b0b51fdddaa203c`. La siguiente tarea autorizada es comprobar la dirección de muerte de espaldas antes de incorporarla al candidato.
+
+### Auditoría de muerte y marcha durante impacto
+
+Las claves `f3571e74…` de `0x2C/F0`, `2def47db…` y `8e6f770f…` de F1 corresponden a los bytes originales del segundo grupo de muerte, con animaciones 1 (impacto) y 6 (muerte). Los dos F1 tienen el mismo raster nativo. Se contrastaron las tres claves con recurso y paleta locales.
+
+El análisis usa exclusivamente la escena 186 de M1P2, aplicando antes las 12 claves exactas del candidato de nado. En la partida de caídas, la base de comparación tiene 7.564 publicaciones y seis retornos. `0x2C` sola proyecta 7.774 publicaciones y 19 retornos, con 11 rachas HD de hasta tres intentos. En la nueva partida proyecta 12.490→12.556 publicaciones, conserva 12 retornos y reduce cinco a tres las rachas breves. Ninguno de los 512 subconjuntos de las ocho direcciones `0x28–0x2F` y el marcador `0x7C` reduce retornos y mantiene o mejora las rachas cortas en ambas muestras. El análisis previo del nado sumaba escenas posteriores en sus cifras globales; las comparaciones de esta auditoría se restringen a M1P2.
+
+[Siete claves verificadas de marcha durante impacto](../../assets/modernization/demo-a1-player-hit-walk.json) reutilizan exactamente los activos existentes de marcha. Se reconstruyeron fuente, offset, filas, columnas, paleta, persona y clave. La única diferencia respecto a su vínculo de origen es la animación 0→1. PASS Window/SDL con el recurso original a 8×/12×, dos jugadores y recuperación clásica completa, bajo ASan/UBSan/LSan. El candidato conserva los 198 activos y añade siete vínculos (355 en total). Proyecta nueve publicaciones adicionales en cada registro y conserva sus retornos y rachas breves. La combinación con muerte sigue sin dar una mejora conjunta.
+
+Tres claves permanecen sin reconstruir: `dd4ee1f9…` (1/F0), `a73a3781…` (1/F2), `d4114b87…` (5/F1). Se probaron dos búsquedas acotadas sobre las fuentes y paletas disponibles, primero con estados ordinarios y después incluyendo vehículo y destrucción. No se aplican vínculos a esas claves. Para resolverlas se prepara captura nativa directa, sin continuar las hipótesis.
+
+**Corrección del instrumento local.** El fixture heredaba un sesgo horizontal de 64 al preparar la posición de los soldados, que podía desplazarlos hasta x=96. La prueba de la primera clave de impacto lo detectó porque la publicación dejaba la captura sin cambios. Se fijó `xBias=0` y las siete claves pasaron en la vista visible. Se revalidan también las caídas y el nado con esa posición corregida. Esta incidencia afectó al fixture local.
+
+**Recuperación local.** `proyectar-muerte.py`, `preparar-impacto-marcha.py`, `impacto-marcha-aliases.json`, `impacto-marcha-candidate/` y carpetas `impacto-marcha-*` conservan la auditoría, el candidato, las claves nativas y los logs. Los recursos originales permanecen locales.
