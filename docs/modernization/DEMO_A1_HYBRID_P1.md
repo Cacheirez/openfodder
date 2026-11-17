@@ -487,3 +487,19 @@ Tres claves permanecen sin reconstruir: `dd4ee1f9…` (1/F0), `a73a3781…` (1/F
 **Corrección del instrumento local.** El fixture heredaba un sesgo horizontal de 64 al preparar la posición de los soldados, que podía desplazarlos hasta x=96. La prueba de la primera clave de impacto lo detectó porque la publicación dejaba la captura sin cambios. Se fijó `xBias=0` y las siete claves pasaron en la vista visible. Se revalidan también las caídas y el nado con esa posición corregida. Esta incidencia afectó al fixture local.
 
 **Recuperación local.** `proyectar-muerte.py`, `preparar-impacto-marcha.py`, `impacto-marcha-aliases.json`, `impacto-marcha-candidate/` y carpetas `impacto-marcha-*` conservan la auditoría, el candidato, las claves nativas y los logs. Los recursos originales permanecen locales.
+
+### Prueba diagnóstica de daño del pelotón
+
+El generador existente `build_walk_native_probe.py` produjo una copia diagnóstica de WindowHD. Se condicionó su llamada de exportación a `scene.classicEnemies`, lo que acota las capturas a M1P2 con el experimento activo. Se captura fuente, geometría, paleta y estado de dibujos del jugador en hojas 0–7. El límite existente es de 512 claves y un MiB por recurso. La copia local tiene SHA-256 `b099d39ab96aa5be4da2814511e1b9eeac0a362b15592e4ed690bc6d402c9a91`. Se usa el manifiesto del nado con los siete vínculos verificados de impacto.
+
+- **PASS H3 local Windows:** 11 fases y 11.361 estados canónicos idénticos a la referencia fijada. Evidencia en `impacto-probe-h3-pc/` y `impacto-probe-h3-amiga/`.
+- **PASS replay M1P2 con captura activa:** 4.554 intentos y 1.546 estados H3, 3.997→4.000 publicaciones HD. Solo cambian a sustitución las claves de impacto verificadas. Las 28 instantáneas y su recurso original pasaron `render_walk_native.cpp`, que vuelve a comprobar los hashes del recurso y la clave. Las tres claves pendientes no aparecieron en este replay. Log SHA-256 `37b083aefb9c6c56a6ff1eb11dd76e325312649ffd03d072c0b1dc0ad9d03fe8`.
+- **PASS revalidación del fixture corregido:** las dos caídas nuevas y los 12 frames de nado a 8×/12×, con el sesgo horizontal fijado a cero y ASan/UBSan/LSan activos.
+
+Ejecutable local `impacto-probe-build/Release/native_probe.exe`, SHA-256 `f6f3f4ed1ede03e248d8d8c8b3d44d122fe120a3a044b57aaf52d2226d10ee45`. Proyecto en `impacto-probe-project/`; los logs de configuración y compilación están en la carpeta de trabajo del 16-11. El lanzador comprueba ese hash. Este diagnóstico local se valida con H3 y captura activa; la CI de esa copia local queda pendiente.
+
+```powershell
+& 'C:/Users/migue/.codex/visualizations/2026/11/16/01a1e578-b4e6-7bc2-add9-1f79c31a6e09/Probar-P1-Impacto.ps1'
+```
+
+Jugar M1P2 y permitir daño al pelotón como en la última partida; anotar si el retorno ocurre al recibir el impacto o al caer el soldado. El lanzador muestra un log en `%TEMP%` y una carpeta local `impacto-snapshots-<fecha>`. Facilitar ambas rutas. Los recursos nativos capturados quedan en esa carpeta local. Con sus bytes y geometría se podrán verificar las tres claves pendientes antes de elegir la siguiente ampliación.
