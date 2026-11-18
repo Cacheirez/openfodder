@@ -2,6 +2,8 @@
 
 18-11-2026. Hito de continuidad **en curso**. La aprobación visual de Miguel de las siete direcciones nuevas de daño cierra esa revisión; registrada en `b6a7171`. Este piloto mínimo estaba autorizado por el plan `ea730de`. **Muestra preparada y comprobada técnicamente; aceptación artística pendiente.** No se activa en el juego normal ni se extiende a otras poses.
 
+**Valoración posterior:** Miguel rechaza la posición de la primera muestra y considera que la intensidad puede ser adecuada. La versión vigente para revisión es [V2, cola inferior derecha](#revisión-2--posición-inferior-derecha). La primera muestra y sus pruebas se conservan como referencia histórica.
+
 ## Pose y evidencia nativa
 
 Aliado Amiga The One, marcha frontal `0x00/F1`, animación 0, paleta 0, celda 16×14 y ancla `[0,14]`. Clave exacta `7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670`, reconstruida mediante el renderizador C++ a partir de una captura real del replay retenido. El fichero y el recurso completo permanecen locales; sus hashes constan en la [evidencia](evidence/sombras-hd-piloto-20261118.json).
@@ -63,3 +65,36 @@ Secuencia reproducible con las herramientas existentes: compilar `compose.cpp` u
 | 5. Revisar jugando | Verificar varios aliados, granadas, caída, agua y duplicados/pérdidas reales | Candidato coherente comprobado | AUTORIZADO; valoración humana pendiente |
 
 **Siguiente tarea única:** valoración visual de esta muestra por Miguel. Hace falta esa decisión artística; no una autorización técnica rutinaria. El hito sigue en curso. Escalado: NO. Nuevo hilo: no necesario. Fase B, nuevas escenas/familias, scroll y 16:9 continúan fuera del alcance.
+
+## Revisión 2 — posición inferior derecha
+
+**Observación de Miguel:** la sombra debe salir hacia la derecha y abajo, mientras que V1 aparecía alta, detrás de los tobillos. La intensidad puede ser adecuada. Se corrige solo esta muestra, sin generación nueva ni extensión del lote.
+
+La causa de V1 era mezclar toda la componente oscura inferior del original —que también incluye contacto/pies— con un cuerpo HD cuyo apoyo ya llega al borde inferior de la celda. Respetar esa componente en coordenadas absolutas no garantizaba una dirección equivalente respecto al pie HD. **La división exacta pie/contacto/sombra es una interpretación artística, no una etiqueta de los datos nativos.**
+
+La revisión final **conserva tamaño, colocación y píxeles opacos del cuerpo**, y reutiliza la misma pintura/alfa de sombra. Retira el lóbulo superior: queda la mitad inferior de la fila 12 en columnas 9–11 y la fila 13 en columnas 8–10, dentro de la componente nativa verificada. No hay ampliación de la celda ni cambio de motor, ancla o selector. Al reducir la superficie pintada cambia el volumen total de sombra; conservar pintura/alfa no acredita idéntica intensidad percibida.
+
+Se comprobó y descartó una alternativa local de reducción corporal. **No forma parte de V2**: el cuerpo final mantiene escala 1:1. El único cambio visual final está en la cola de sombra.
+
+La sombra nueva solo modifica píxeles desde `Y=12,5` lógico. El centro de la parte expuesta queda aproximadamente en `(10,31; 13,07)`, frente a `(7,92; 12,42)` de la franja inferior del cuerpo usada como referencia de apoyo: derecha y abajo en ambas densidades. Son medidas de imagen, no cambios de coordenadas del actor ni una aceptación visual automática. La extensión inferior sigue limitada al marco nativo de 16×14; no se promete una sombra completa fuera de ese marco.
+
+[Activos V2 y compositor offline](../../assets/modernization/demo-a1-shadow-walk-00-f1-v2/README.md) · [Evidencia V2](evidence/sombras-hd-piloto-v2-20261118.json).
+
+Comparación local **original / V1 rechazada / V2**, a 8×/12× sobre el mismo fondo retenido:
+
+`C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150/shadow-walk-pilot-v2/comparativa-revision-8x-12x.png`
+
+**PASS V2:** exportación y alfa, cuerpo opaco intacto y cambios limitados a la cola; 56 casos Window/SDL Windows-Linux con ASan/UBSan y LSan en Linux; bytes del compositor iguales entre plataformas; clásico independiente, estricto/híbrido, dos actores, oclusión, bordes, Save/Restore y recuperación ante error SDL. En el recorte inferior de tres filas, el resultado vuelve a ser idéntico al **HD original a tamaño completo**. Se reutilizan los mismos ejecutables de fixture con el candidato nuevo: no se atribuye a V2 un PASS sobre una alternativa de escala distinta.
+
+**PENDIENTE:** valoración visual de V2; transiciones jugables completas, explosión/vuelo, CD32, GPU y audio. No se repite H3 ni se entrega un ejecutable nuevo por esta revisión aislada. V1 queda marcada como rechazada en posición y permanece recuperable; el lanzador normal y el candidato de daño no se activan ni modifican.
+
+Recuperación final: carpeta local `shadow-walk-pilot-v2/`, scripts `prepare-shadow-v2.py`, `build-shadow-v2.ps1`, **`export-shadow-v2-final.py`**, `test-shadow-v2-{win.ps1,linux.sh}` y **`finish-shadow-v2-final.py`** en el directorio padre. Los scripts antiguos sin sufijo `final` pertenecen a la alternativa de escala descartada y **no reproducen el candidato vigente**. Maestro de pintura, cuerpo de origen y fixtures se reutilizan desde V1, con hashes registrados. No ejecutar las recetas descartadas sobre los activos finales.
+
+| Paso | Objetivo y resultado esperado | Dependencia | Estado |
+|---|---|---|---|
+| 1. Valorar V2 | Confirmar posición inferior derecha de esta muestra | Comparativa final | REQUIERE VALORACIÓN DE MIGUEL |
+| 2. Resolver el piloto | Aceptarlo o corregir solo la muestra; delimitar cualquier extensión | Paso 1 | AUTORIZADO para el piloto; extensión PROPUESTA, requiere aprobación |
+| 3. Integrar daño | Incorporar dependencias y medir continuidad del conjunto coherente | Resolver prioridad del piloto | AUTORIZADO |
+| 4. Revisar jugando | Confirmar continuidad y sombras en estados reales | Candidato comprobado | AUTORIZADO; valoración humana pendiente |
+
+**Siguiente acción única:** valorar la cola inferior derecha de V2, con el tamaño corporal conservado. Autorización técnica adicional: no necesaria para esta corrección. No hay bloqueo técnico ni trabajo artístico extendido. Escalado: NO. Nuevo hilo: no necesario.
