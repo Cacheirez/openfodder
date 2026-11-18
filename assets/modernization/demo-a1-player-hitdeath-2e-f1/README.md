@@ -11,3 +11,5 @@ f1
 ```text
 Create hit/death companion F1 sheet0x2E. Reference1 is F0 identity/material/style, reference2 exact native F1 silhouette. Same soldier facing screen RIGHT profile with olive helmet, green fatigues, tan straps and brown boots, C01 moderate painted steep overhead view. Change pose to compact falling/collapsed recoil: helmet and upper body towards upper-right, one bent leg tucked across bottom toward left, other knee extends low right, elbows close with hands forward-right, compact upright dark rifle held near face as native grey bar. Retain helmet/head size relative to body, DO NOT stretch long straight legs or convert to running. Small irregular dark red fabric scuff at lower torso, no gore/badges. No cast shadow or ground. Single complete figure centered in square transparent canvas with clear padding.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

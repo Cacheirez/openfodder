@@ -11,3 +11,5 @@ f0
 ```text
 Create one OpenFodder damage/death F0 sprite sheet0x2F, facing screen DOWN-RIGHT/front-right diagonally. Reference1 exact native hit pose; reference2 same-direction C01 walk is identity and paint style only. Moderate painted sprite, steep overhead oblique view, olive helmet, green fatigues, tan straps/pouches, brown boots. Recoiling/collapsing pose, helmet upper centre-right, torso drawn back, elbows tucked, bent knees with one foot lower-left and other lower-right; short compact figure. Small compact dark grey rifle held close almost upright/diagonal near chest, as native grey detail, no long aiming weapon. Small irregular dark red fabric scuff at lower abdomen/hip matching native red accent, no gore or geometric markings. Preserve large helmet-to-body proportions, no walk stride. One complete figure centred with square clear transparent padding. No cast shadow, floor, text or extra objects.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

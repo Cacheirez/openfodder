@@ -11,3 +11,5 @@ f1
 ```text
 Create F1 hit/death companion for OpenFodder sheet0x2F. Reference1 newly made F0 defines same soldier style/clothes; reference2 native F1 defines the precise compact pose. Facing screen DOWN-RIGHT diagonal, steep overhead oblique view. Lower and bunch torso, helmet upper-right, knees folded close underneath, elbows close and fists around a compact nearly upright/diagonal rifle beside chest. Preserve helmet size relative to body, no long leg extension or walk stride. C01 moderate painted olive helmet/fatigues, tan webbing, brown boots. Small irregular dark red fabric scuff at hip/low torso, no gore or badges. One whole figure centered in square genuine transparent canvas with clear padding. No ground, cast shadow, text or scene. Change native recoil pose only, retain F0 materials/proportions.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

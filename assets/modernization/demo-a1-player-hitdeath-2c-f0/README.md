@@ -11,3 +11,5 @@ f0
 ```text
 Use case: style-transfer. One transparent RGBA OpenFodder player hit/death sprite 0x2C/F0, facing directly away/up. Reference 1 fixes the native pose and silhouette. Reference 2 is the approved same-direction model/style, not a walk pose. Keep its dark olive helmet/uniform, tan webbing, brown boots and moderate painted C01 facets, same overhead oblique camera and head/body proportions. Show the back, no face: helmet at top centre, torso recoiling, elbows lifted out to both sides with compact hands near shoulder height, legs separated and slightly bent beneath the hips exactly as the native. No weapon, since none is visible in this native pose. Preserve the small native lower-back hit accent as one subtle irregular dark red cloth scuff; no badges, red bands, glow or blood effects. A compact unbalanced impact pose, not walking. Both boots and hands complete, genuine alpha, generous square padding. No ground, cast shadow, text, scenery or extra poses. Do not mirror.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

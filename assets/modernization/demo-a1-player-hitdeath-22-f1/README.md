@@ -17,3 +17,5 @@ correctionF1
 ```text
 Use case: precise-object-edit / identity-preserve. Correct only the lower-body pose of image 1 (0x22/F1). Its legs are too straight and stretched: bend both knees more, tuck the boots closer to the hips, and make the total body footprint more compact, following image 3's native second-frame silhouette. The soldier still recoils/falls backwards to screen-right, face points screen-left, helmet stays at the upper-right and boots toward lower-left. Image 2 is F0 and establishes the same character/head scale: preserve the absolute helmet/head size and all upper-body identity from image 1, without shrinking the whole figure. Keep face, hands, helmet, torso, olive/tan palette, tiny chest scuff, painting style, camera and alpha unchanged apart from natural hip/knee attachment adjustments. No weapon, red armband, badge, ground, cast shadow, text, glow or added effects. One sprite, same transparent square canvas and generous padding.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

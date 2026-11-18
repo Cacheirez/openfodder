@@ -11,3 +11,5 @@ f1
 ```text
 Create F1 companion sprite to reference1 (new F0 soldier), following exact compact pose in reference2 (native F1 sheet0x28). Same identity, clothing olive/tan/brown, moderate painted C01 style and steep overhead camera. Facing screen DOWN/front. Collapse/recoil continuation: helmet lowered, torso hunched, knees folded/tucked beneath body, elbows close to sides, hands low at waist. Short compact silhouette, head stays same proportional size as F0, no elongated legs. Small irregular dark red fabric scuff near lower abdomen, no badge/band, no gore. No weapon. Single complete figure, genuine transparent background with square clear padding; no ground or cast shadow, no text. Preserve all F0 material/style cues, change only native collapsing pose.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

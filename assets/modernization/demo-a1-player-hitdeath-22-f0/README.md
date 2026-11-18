@@ -17,3 +17,5 @@ correctionF0
 ```text
 Use case: precise-object-edit. Preserve this exact OpenFodder hit-pose sprite, its anatomy, left-facing orientation, silhouette, camera, dark olive palette, helmet, tan equipment, boots, hands, padding and genuine alpha. Change ONLY the two red rectangular markings: remove the red armband and square chest badge completely, restore the ordinary olive fabric, and replace them with one tiny irregular subdued dark red fabric scuff near the upper chest/shoulder where the native hit accent belongs. It must look like a small impact stain, never a badge, uniform insignia, armband, glow or bright light. Do not redraw the pose, add equipment, weapons, ground or cast shadow.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

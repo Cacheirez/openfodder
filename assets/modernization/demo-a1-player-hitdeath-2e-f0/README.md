@@ -11,3 +11,5 @@ f0
 ```text
 Create one OpenFodder hit/death F0 sprite, sheet0x2E facing screen RIGHT in profile, no mirroring. Reference1 exact native pose; reference2 same-direction walk master is clothing/style only. C01 moderate painted olive helmet, green fatigues, tan webbing, brown boots, steep overhead oblique view. Native hit pose: recoiling upright, helmet upper-right, torso leaning back left, one bent leg projecting lower-left, second knee tucked, elbows and hands close in front toward right. NOT a walk or firing pose. Compact dark grey rifle held nearly upright close to chest/face as narrow native grey mark, not long horizontal aim. Small irregular dark red fabric scuff at lower torso/hip matching native red, no gore or geometric badge. Same large helmet proportions as C01. Single complete figure centred on square genuine transparent background with padding. No projected shadow, ground, text or effects; shadow rendered independently by game.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.

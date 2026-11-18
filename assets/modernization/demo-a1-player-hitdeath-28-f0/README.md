@@ -11,3 +11,5 @@ f0
 ```text
 Create one OpenFodder damage/death sprite master F0 sheet0x28, facing screen DOWN/front. Reference1 is exact native pose silhouette; reference2 C01 is identity/style only. Moderate painted game sprite, steep overhead oblique view, olive helmet and green fatigues, tan straps, brown boots. Recoil hit pose: helmet high centred, elbows bent beside trunk, hands near belt/abdomen, compact bent legs, front face mostly hidden under helmet. Follow native stance and compact head-to-body proportions, NOT reference2 walking/rifle pose. Small irregular dark red fabric scuff at lower abdomen/upper thigh matching native red accent, no gore, no geometric badge/band. No rifle because native shows none. Genuine transparent background, single whole figure centred with ample clear padding, square canvas, no ground or cast shadow; native shadow remains independent. Same C01 soft painted texture and restrained detail.
 ```
+
+**Valoración posterior (18-11-2026):** Miguel aprueba esta dirección en la revisión agrupada. No equivale a aceptación jugando ni activa el candidato.
