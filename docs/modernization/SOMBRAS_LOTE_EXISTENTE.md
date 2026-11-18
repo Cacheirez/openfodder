@@ -37,3 +37,23 @@ La clasificación delimita **83 poses normales candidatas** y 32 poses especiale
 4. **Conjunto comprobado y revisión jugando — AUTORIZADO**, tras las poses disponibles. Medir publicaciones/retornos, verificar transición de suelo a daño, altura y agua, H3/CI pertinentes y revisión de Miguel. No declarar aceptación jugando a partir del piloto o de pruebas automáticas.
 
 Hito en curso. No se amplía a B, nuevas escenas/familias, scroll ni 16:9. No se usan subagentes ni escalado de modelo. El plan y Arranque rápido registrarán cada punto comprobado y una única tarea siguiente.
+
+## Contrato de sombra de suelo — comprobaciones locales
+
+**Implementado:** componente opcional `ground_shadow` por descriptor corporal, con referencia SHA-256 a pintura de la misma densidad, desplazamiento de pantalla en cuartos y tipo de propietario 0/5. Se mantiene la comprobación original `art.width/height == geometría nativa`: el cuerpo no se convierte en un recurso lógico más grande. La pintura se emite antes del cuerpo, **en el mismo comando**, sobre las celdas HD que correspondan, incluidos los márgenes visuales permitidos. No se superpone una sombra sobre la captura final.
+
+La extensión se recorta a vista/superficie, respeta skip/bordes, oclusiones en ambos sentidos, escrituras de cero/igual color, terreno, Save/Restore y el presupuesto conjunto de celdas. Las referencias anidadas, identidad/densidad/tipo/coordenadas/huella inválidos se rechazan. La posición parte del ancla completa anterior al recorte nativo, evitando que el redondeo PC/Amiga del borde izquierdo desplace la sombra.
+
+El vínculo solo se activa para las familias normales existentes verificables: aliado hojas 0–23 y 57–64, enemigo preparado 0x44/0x45/0x59, animación 0, sin vehículo/destrucción, altura cero y cero filas omitidas. En otro estado se conserva el cuerpo que su vínculo exacto ya autorizaba y se omite la componente de suelo. Los alias de impacto de animación 1 no heredan la sombra. Los enemigos del experimento clásico continúan resolviéndose por su ruta clásica anterior.
+
+**PASS local observado:**
+
+- CPU: cuatro grupos PC/Amiga a 8×/12× para contrato nuevo, con dimensiones, negativos de manifiesto, recortes, presupuesto, altura/agua/estado, terreno y orden; 156 escenarios del compositor anterior conservados.
+- SDL: 388 casos de publicación, recorte, fallos y reentrada con sombras extendidas, en ambos sistemas. ASan/UBSan Windows y ASan/UBSan/LSan Linux.
+- Window real: 56 casos del piloto con componente separada, dos cuerpos, estricto/híbrido, bordes, oclusión, Save/Restore, recorte inferior idéntico al cuerpo sin sombra y recuperación íntegra por error SDL. La compatibilidad con el candidato anterior también se recompiló/comprobó.
+- H3 Windows con nuevo binario aislado: **11 fases / 11.361 estados**, referencias originales intactas.
+- Replay real público M1P2, manifiesto opt-in de 200 activos/363 vínculos: **4.096 publicaciones y 458 faltantes**, conservando los 1.546 estados H3. Solo el cuerpo piloto tiene aquí la componente; **no es aún el lote completo ni aceptación jugando**.
+
+**PENDIENTE:** CI focalizada Windows/Linux del contrato y H3 pertinente en Linux. No se marca cerrado el bloque ni se inicia la propagación artística hasta satisfacerla. La CI completa, GPU, CD32, audio y aceptación jugando no se declaran PASS. El lanzador habitual y su ejecutable anterior permanecen intactos.
+
+[Evidencia local del contrato](evidence/sombras-contrato-suelo-20261118.json). Recuperación: carpeta local del 17-11 `01a1ea7b-b727-78f2-a6ac-a4b32dc39150`, subdirectorios `ground-contract/`, `ground-probe-build/`, `ground-runtime-pilot-20261118/` y `ground-shadow-h3-20261118-{pc,amiga}/`; scripts `prepare-ground-contract-pilot.py`, `run-ground-contract-{win.ps1,linux.sh}`, `run-ground-pilot-linux.sh`, `check_ground_contract_h3.py`, `run-ground-runtime-pilot.py`. Fuentes y recursos nativos privados permanecen locales.

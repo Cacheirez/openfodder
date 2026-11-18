@@ -51,7 +51,13 @@ int main(){
         auto pixels=std::make_shared<std::vector<uint32_t>>(224*d*d);
         for(size_t y=0;y<14*d;++y)for(size_t x=0;x<16*d;++x)
             (*pixels)[y*16*d+x]=0xff000000u|uint32_t((x*3)%256)<<16|uint32_t((y*5)%256)<<8|uint32_t(p.soldier.slot*255);
-        art.pixels=pixels;return art;
+        art.pixels=pixels;
+        if(OrderedGroundShadowEligible(p,0)){
+            art.groundShadow.width=3;art.groundShadow.height=3;art.groundShadow.density=d;
+            art.groundShadow.xQuarters=13;art.groundShadow.yQuarters=52;
+            art.groundShadow.pixels=std::make_shared<const std::vector<uint32_t>>(9*d*d,0x80000000u);
+        }
+        return art;
     });
     auto classicPixels=RasterizeMissionLayers(scene,id).pixels;
     auto output=SDL_CreateSurface(240,180,SDL_PIXELFORMAT_XRGB8888);assert(output);
@@ -102,5 +108,5 @@ int main(){
     }
     SDL_DestroyTexture(oracle);SDL_DestroyTexture(classic);SDL_DestroyRenderer(r);SDL_DestroySurface(output);cases+=7;
  }
- std::cout<<"PASS ordered SDL: "<<cases<<" failure/crop/coverage/re-entry cases, PC/Amiga at 8x/12x\n";
+ std::cout<<"PASS ordered SDL: "<<cases<<" failure/crop/coverage/re-entry cases with extended ground shadows, PC/Amiga at 8x/12x\n";
 }

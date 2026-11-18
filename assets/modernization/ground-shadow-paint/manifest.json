@@ -1,0 +1,32 @@
+{
+  "status": "Approved paint reused as ground-shadow component; referenced by exact body descriptors, no new actor key",
+  "source": {
+    "file": "../demo-a1-shadow-walk-00-f1/shadow-source.png",
+    "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+    "crop": [
+      373,
+      540,
+      916,
+      751
+    ]
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "ground-shadow-7x3-8x.rgba",
+      "height": 3,
+      "id": "ground-shadow-7x3-8x",
+      "sha256": "17cc48ab2a1958161d98201966e28f8bb8df7ba0ea72d054ae454df4968ba71c",
+      "width": 7
+    },
+    {
+      "density": 12,
+      "file": "ground-shadow-7x3-12x.rgba",
+      "height": 3,
+      "id": "ground-shadow-7x3-12x",
+      "sha256": "648960c54fd4fa5d6246f21e2aad053a2c5275e7b83b51a196f5263c85504734",
+      "width": 7
+    }
+  ],
+  "bindings": []
+}

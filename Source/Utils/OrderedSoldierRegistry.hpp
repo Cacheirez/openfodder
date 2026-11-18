@@ -5,6 +5,7 @@
 #include "SoldierArtBatch.hpp"
 #include "json.hpp"
 #include <fstream>
+#include <set>
 namespace openfodder {
 class OrderedSoldierRegistry {
     struct Binding {bool keep=false;int sheet=0,frame=0;std::map<unsigned,std::string> assets;};
@@ -137,6 +138,36 @@ class OrderedSoldierRegistry {
                 (*pixels)[i]=(uint32_t(p[3])<<24)|(uint32_t(p[0])<<16)|(uint32_t(p[1])<<8)|p[2];}
             asset.pixels=pixels;artwork.emplace(id,std::move(asset));
         }
+        std::set<std::string> decorated;
+        for(const auto& row:assets)if(row.count("ground_shadow"))decorated.insert(row.at("id").get<std::string>());
+        for(const auto& row:assets){
+            if(!row.count("ground_shadow"))continue;
+            auto& body=artwork.at(row.at("id").get<std::string>());
+            const auto& config=row.at("ground_shadow");
+            if(!config.is_object() || config.size()!=4)
+                throw std::invalid_argument("ordered ground shadow fields");
+            const auto name=config.at("asset").get<std::string>();const auto found=artwork.find(name);
+            if(found==artwork.end() || decorated.count(name) || found->second.density!=body.density)
+                throw std::invalid_argument("ordered ground shadow reference");
+            auto coordinate=[&](const char* key){
+                const auto& v=config.at(key);
+                if(!v.is_number_integer() || (v.is_number_unsigned() && v.get<uint64_t>()>1536) ||
+                   v.get<int64_t>() < -128 || v.get<int64_t>()>1536)
+                    throw std::invalid_argument("ordered ground shadow coordinate");
+                return v.get<int>();
+            };
+            const auto& type=config.at("owner_type");
+            if(!type.is_number_integer() || (type.get<int64_t>()!=0 && type.get<int64_t>()!=5))
+                throw std::invalid_argument("ordered ground shadow owner");
+            const auto& paint=found->second;auto& shadow=body.groundShadow;
+            shadow.width=paint.width;shadow.height=paint.height;shadow.density=paint.density;
+            shadow.xQuarters=coordinate("x_quarters");shadow.yQuarters=coordinate("y_quarters");
+            shadow.ownerType=type.get<int>();shadow.pixels=paint.pixels;
+            if(!shadow.width || !shadow.height || shadow.width>64 || shadow.height>32 ||
+               shadow.xQuarters+int(shadow.width)*4>int(body.width+32)*4 ||
+               shadow.yQuarters+int(shadow.height)*4>int(body.height+32)*4)
+                throw std::invalid_argument("ordered ground shadow extent");
+        }
     }
 public:
     explicit OrderedSoldierRegistry(const nlohmann::json& root,const std::string& directory="") {
@@ -227,7 +258,14 @@ public:
                width<=0 || g.rows<=0 || art.width!=size_t(width) || art.height!=size_t(g.rows))return result;
             // The caller supplies the full content/state/palette key. Position,
             // facing, animation phase, offsets and cropping remain engine-owned.
-            return art;
+            auto selectedArt=art;
+            if(selectedArt.groundShadow.pixels){
+                const auto& shadow=selectedArt.groundShadow;
+                if(s.type!=shadow.ownerType)return result;
+                if(!OrderedGroundShadowEligible(p,shadow.ownerType))
+                    selectedArt.groundShadow=OrderedSoldierGroundShadow{};
+            }
+            return selectedArt;
         }
         // Six existing 16x14 masters only; clipping is handled by composition.
         if(s.type!=0 || s.animation!=0 || s.sheet!=b.sheet || s.frame!=b.frame ||

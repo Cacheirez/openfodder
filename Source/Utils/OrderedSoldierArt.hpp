@@ -8,12 +8,28 @@ namespace openfodder {
 // sheet number. KeepClassic is an explicit native classification; only the
 // resolver can authorize it for a verified resource.
 enum class SoldierArtDecision { Replace, KeepClassic, Missing };
+// Optional presentation-only ground component, emitted in the body's turn.
+// Coordinates are screen-space quarters, independent of the actor's facing.
+struct OrderedSoldierGroundShadow {
+    size_t width = 0, height = 0;
+    unsigned density = 1;
+    int xQuarters = 0, yQuarters = 0, ownerType = 0;
+    std::shared_ptr<const std::vector<uint32_t>> pixels;
+};
 struct OrderedSoldierAsset {
     SoldierArtDecision decision = SoldierArtDecision::Missing;
     size_t width = 0, height = 0;
     unsigned density = 1;
     std::shared_ptr<const std::vector<uint32_t>> pixels;
+    OrderedSoldierGroundShadow groundShadow;
 };
+inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerType) {
+    const auto& s=p.soldier;const auto& g=s.geometry;
+    const bool normal=s.type==0 ? ((s.sheet>=0 && s.sheet<=23) || (s.sheet>=57 && s.sheet<=64))
+        : (s.type==5 && (s.sheet==0x44 || s.sheet==0x45 || s.sheet==0x59));
+    return (ownerType==0 || ownerType==5) && s.type==ownerType && normal &&
+        s.animation==0 && !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
+}
 struct SoldierArtObservation {
     size_t order = 0;
     PreparedSpriteDraw command; // Owns bytes and identity; no borrowed source.
@@ -120,6 +136,42 @@ inline OrderedSoldierFrame ComposeOrderedSoldierArt(const MissionLayerSequence& 
         const auto end=start+std::ptrdiff_t(w)*(d.rows-1)+std::ptrdiff_t(columns);
         if(start<0 || end>std::ptrdiff_t(indices.size()))
             throw std::out_of_range("ordered art clipped geometry");
+        if(a.groundShadow.pixels){
+            const auto& shadow=a.groundShadow;
+            if((density!=8 && density!=12) || shadow.density!=density || !shadow.width || !shadow.height ||
+               shadow.width>64 || shadow.height>32 ||
+               shadow.pixels->size()!=shadow.width*shadow.height*density*density ||
+               shadow.xQuarters < -128 || shadow.yQuarters < -128 ||
+               shadow.xQuarters>1536 || shadow.yQuarters>1536 ||
+               shadow.xQuarters+int(shadow.width)*4>int(a.width+32)*4 ||
+               shadow.yQuarters+int(shadow.height)*4>int(a.height+32)*4 ||
+               !OrderedGroundShadowEligible(p,shadow.ownerType))
+                throw std::invalid_argument("ordered ground shadow contract");
+            // Use the original pose anchor, not the word-rounded native source
+            // crop. PC/Amiga left clipping can round those by different amounts.
+            const auto originX=std::ptrdiff_t(int16_t(g.modX+g.spriteX-g.mapX+g.xBias));
+            const auto originY=std::ptrdiff_t(int16_t(int16_t(g.modY+g.spriteY-g.rows-g.height-g.mapY)+16));
+            const auto left=originX*density+shadow.xQuarters*int(density)/4;
+            const auto top=originY*density+shadow.yQuarters*int(density)/4;
+            // Keep the native logical eligibility and crop the extra visual
+            // footprint to the same view/backing. No new native reads/writes.
+            const auto maxX=std::min<std::ptrdiff_t>(w,std::ptrdiff_t(g.viewWidth)+32)*density;
+            const auto maxY=std::min<std::ptrdiff_t>(h,std::ptrdiff_t(g.viewHeight)+31)*density;
+            for(size_t sy=0;sy<shadow.height*density;++sy)for(size_t sx=0;sx<shadow.width*density;++sx){
+                const auto pixel=(*shadow.pixels)[sy*shadow.width*density+sx];
+                if(!(pixel>>24))continue;
+                const auto x=left+std::ptrdiff_t(sx),y=top+std::ptrdiff_t(sy);
+                if(x<0 || y<0 || x>=maxX || y>=maxY)continue;
+                const size_t n=size_t(y/density)*w+size_t(x/density);if(!visible(n))continue;
+                auto found=out.cells.find(n);
+                if(found==out.cells.end()){
+                    budget(out.cells.size()+1,savedCells.size());
+                    found=out.cells.emplace(n,std::vector<uint32_t>(density*density,color(n))).first;
+                }
+                const size_t at=size_t(y%density)*density+size_t(x%density);
+                found->second[at]=SoldierBlend(pixel,found->second[at]);
+            }
+        }
         for(size_t y=0;y<size_t(d.rows);++y)for(size_t x=0;x<columns;++x){
             const size_t n=size_t(start)+y*w+x;if(!visible(n))continue;
             auto found=out.cells.find(n);
