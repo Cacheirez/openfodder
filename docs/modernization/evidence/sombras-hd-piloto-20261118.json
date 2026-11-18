@@ -1,0 +1,353 @@
+{
+  "date": "2026-11-18",
+  "source_head": "b6a71716ba8826fd115ac643ab07dd8ba3d16c65",
+  "milestone": "SOMBRAS-HD-PILOTO",
+  "status": "Prepared, pending visual review; continuity milestone ongoing",
+  "native": {
+    "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+    "snapshot": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\grenade-complete-replay\\snapshots\\7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670.json",
+    "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+    "palette": 0,
+    "sheet": 0,
+    "frame": 1,
+    "animation": 0,
+    "cell": [
+      16,
+      14
+    ],
+    "native_anchor": [
+      0,
+      14
+    ],
+    "source_rgba_sha256": "fbc869db180540d287a53a5d0e7d273114b255d109348fe30563a594885f8ab5",
+    "mask": {
+      "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+      "sheet": 0,
+      "frame": 1,
+      "animation": 0,
+      "mask": [
+        [
+          5,
+          11
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          10,
+          12
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          8,
+          13
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          10,
+          13
+        ]
+      ],
+      "mask_color": [
+        16,
+        32,
+        0,
+        255
+      ],
+      "scope": "Observed lower dark component; exact separation at feet remains artistic interpretation"
+    }
+  },
+  "asset": {
+    "version": 2,
+    "status": "Single-pose pilot technically verified; PENDING Miguel visual acceptance; no normal-launcher activation",
+    "source": {
+      "file": "shadow-source.png",
+      "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_crop": [
+        373,
+        540,
+        916,
+        751
+      ],
+      "generator": "built-in image_gen"
+    },
+    "native": {
+      "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+      "sheet": 0,
+      "frame": 1,
+      "animation": 0,
+      "mask": [
+        [
+          5,
+          11
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          10,
+          12
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          8,
+          13
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          10,
+          13
+        ]
+      ],
+      "mask_color": [
+        16,
+        32,
+        0,
+        255
+      ],
+      "scope": "Observed lower dark component; exact separation at feet remains artistic interpretation"
+    },
+    "assets": [
+      {
+        "density": 8,
+        "file": "shadow-walk-00-f1-8x.rgba",
+        "height": 14,
+        "id": "shadow-walk-00-f1-8x",
+        "sha256": "2fb3faeeb051aacef94ba5ff90352f4b2b4efc33be39277c57f4a24941c805a1",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "shadow-walk-00-f1-12x.rgba",
+        "height": 14,
+        "id": "shadow-walk-00-f1-12x",
+        "sha256": "676b9730aaf0b3c5da0301369c7cc8d4c830086739715c9580e1c282d7299a8e",
+        "width": 16
+      }
+    ],
+    "bindings": [
+      {
+        "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+        "decision": "replace-art",
+        "assets": {
+          "8": "shadow-walk-00-f1-8x",
+          "12": "shadow-walk-00-f1-12x"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "density": 8,
+        "changed_pixels": 882,
+        "new_exposed_shadow_pixels": 438,
+        "body_rgba_sha256": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe",
+        "unchanged_opaque_body": true,
+        "unchanged_outside_native_mask": true
+      },
+      {
+        "density": 12,
+        "changed_pixels": 1959,
+        "new_exposed_shadow_pixels": 991,
+        "body_rgba_sha256": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057",
+        "unchanged_opaque_body": true,
+        "unchanged_outside_native_mask": true
+      }
+    ],
+    "prompt": "Generate ONLY one painted ground-contact SHADOW PLATE for a moderate painted overhead tactical game sprite. Reference1 is exact native frontal soldier with its dark shadow visible below/right; reference2 is the HD body, for scale/context ONLY and must NOT be redrawn. Output NO SOLDIER, no body, boots, gun, objects or ground. Only an isolated flattened irregular shadow silhouette, about 7 units wide by 3 units high, skewed to right: upper edge widest, left edge starts a little to the left of centre; rounded right edge, narrower short lower tip towards right. Match the dark patch under the native feet in reference1, not a generic symmetrical ellipse. Soft restrained hand-painted olive-black translucent contact shadow, denser central contact and slightly softened perimeter, no glow, blur cloud or directional long drop shadow. Single compact shape in centre of square truly transparent canvas with generous padding, no checkerboard pixels. Native mask and placement will be applied by the deterministic game asset builder; this is only the shadow paint master. It will be composited behind the unchanged HD body in the SAME native sprite command.",
+    "composition_tests": {
+      "windows": "PASS SDL software ASan UBSan",
+      "linux": "PASS SDL software ASan UBSan LSan",
+      "window_cases": 56,
+      "strict_and_hybrid": true,
+      "classic_independent": true,
+      "opaque_body_preserved": true,
+      "water_rows_to_skip_3_identical_to_original_HD": true,
+      "scope": "One exact ordinary key only; state changes excluded, no independent shadow commands changed"
+    }
+  },
+  "comparison": {
+    "method": "Reanalysis of retained native simulation trace, not a new replay",
+    "trace": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\16\\01a1e578-b4e6-7bc2-add9-1f79c31a6e09\\impacto-probe-replay\\classic-enemies\\traces\\Amiga_The_One_m1_p2.jsonl",
+    "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf",
+    "ordinary_all_samples": 6170,
+    "ordinary_has_shadow": {
+      "0": 6170
+    },
+    "available_state_fields": [
+      "action_cooldown",
+      "ai_aggression",
+      "anim_state",
+      "direction",
+      "draw_order",
+      "face_direction",
+      "fired_weapon_type",
+      "frame",
+      "has_shadow",
+      "in_vehicle",
+      "in_water",
+      "pending_destroy",
+      "person_type",
+      "rows_to_skip",
+      "sinking",
+      "slot",
+      "target_x",
+      "target_y",
+      "terrain_type",
+      "type",
+      "vehicle_enabled",
+      "was_drawn",
+      "weapon_anim_tick",
+      "weapon_cooldown",
+      "weapon_fire_timer",
+      "x",
+      "x_frac",
+      "y",
+      "y_frac"
+    ],
+    "pilot_specific_shadow_owner_height": "PENDING: retained trace lacks sheet, height and owner identity; do not infer exact pose or pair by proximity",
+    "background": {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-west-loop\\data\\C01_12_fondo.bmp",
+      "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483",
+      "crop": [
+        110,
+        90,
+        138,
+        112
+      ]
+    },
+    "comparison": {
+      "file": "comparativa-sombras-8x-12x.png",
+      "sha256": "a40e38fe201e2e7251b5d8ebfd17222cafa4ef420cc3c00fa6836626faa87750",
+      "kind": "Offline layout over a retained game background; not live gameplay"
+    }
+  },
+  "logs": [
+    {
+      "platform": "win",
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot\\window-win.log",
+      "sha256": "39be5dd840e663c9c06d9052177979ea7c61f5366d9e53376394b769056403e6",
+      "window_cases": 28,
+      "scope_groups": 4
+    },
+    {
+      "platform": "linux",
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot\\window-linux.log",
+      "sha256": "0edd81f9a20b12894522387ed01e70a4c9cb4a8e78fc901c4521099e7cb8f20c",
+      "window_cases": 28,
+      "scope_groups": 4
+    }
+  ],
+  "composer_cross_platform_byte_equality": true,
+  "source_files": [
+    {
+      "file": "assets\\modernization\\demo-a1-shadow-walk-00-f1\\compose.cpp",
+      "sha256": "3c4417c515cc4f00f10f02f8a150c4d2eb3a813cbb780b5464d0daa01917c9ff"
+    },
+    {
+      "file": "assets\\modernization\\demo-a1-shadow-walk-00-f1\\window-cases.inc",
+      "sha256": "418be0ba1976c6b2e49f003c7a1ecf096795a34dfac9dd5a39215e1dd7ab0f1e"
+    },
+    {
+      "file": "assets\\modernization\\demo-a1-shadow-walk-00-f1\\shadow-source.png",
+      "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0"
+    }
+  ],
+  "limitations": [
+    "No new full simulation replay or H3: isolated asset only, unchanged engine and references",
+    "Retained trace has no sheet, height or owner identity; does not prove per-actor pairing",
+    "State/selector exclusions and water clipping verified in fixtures; complete explosion/flight/gameplay transition pending",
+    "CD32, GPU, audio and gameplay acceptance pending",
+    "Pilot only: no mass correction, no normal launcher changes, no activation of damage artwork"
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot"
+}
