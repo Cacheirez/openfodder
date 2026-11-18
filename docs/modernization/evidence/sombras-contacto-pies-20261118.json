@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-18",
+  "source_head": "7e895437940262be5ebc1fe250425b36f9227169",
+  "feedback": "Overall down-right position and appearance good; shadow too far away, both feet must stand on it",
+  "proposal": {
+    "status": "VISUAL PROPOSAL ONLY; feet contact revised; no runtime bindings",
+    "date": "2026-11-18",
+    "direction_rule": "Fixed screen-space down-right; light upper-left; independent of actor facing",
+    "feedback": "Miguel approves overall position/direction and appearance but requests feet on shadow, without gap",
+    "shadow_source": "../demo-a1-shadow-walk-00-f1/shadow-source.png",
+    "shadow_source_sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+    "assets": [
+      {
+        "density": 8,
+        "file": "projection-preview-8x.rgba",
+        "height": 18,
+        "id": "projection-preview-8x",
+        "sha256": "41ac2b6b20a175a8c1dc270ca17c33e3f9eacc82e832117918e9a7be71018728",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "projection-preview-12x.rgba",
+        "height": 18,
+        "id": "projection-preview-12x",
+        "sha256": "cffd12ba80f1090fd49079d459b4546d089b7379f10eaf634ce50fd0abc8becc",
+        "width": 16
+      }
+    ],
+    "checks": [
+      {
+        "density": 8,
+        "body_input_sha256": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe",
+        "body_scale": [
+          1,
+          1
+        ],
+        "body_placement_unchanged": true,
+        "opaque_body_byte_identical": true,
+        "body_composited_over_shadow": true,
+        "all_shadow_pixels_retained": true,
+        "shadow_pixels": 1014,
+        "shadow_pixels_under_body": 179,
+        "screen_translation": [
+          0.75,
+          2
+        ],
+        "shadow_center": [
+          9.515763154679792,
+          14.36648101816738
+        ],
+        "foot_contact_test": {
+          "band_y": [
+            13.5,
+            14
+          ],
+          "minimum_body_alpha": 128,
+          "minimum_shadow_alpha": 16,
+          "left": {
+            "pixels": 39,
+            "shadowed": 39,
+            "min_alpha": 170
+          },
+          "right": {
+            "pixels": 38,
+            "shadowed": 38,
+            "min_alpha": 235
+          }
+        }
+      },
+      {
+        "density": 12,
+        "body_input_sha256": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057",
+        "body_scale": [
+          1,
+          1
+        ],
+        "body_placement_unchanged": true,
+        "opaque_body_byte_identical": true,
+        "body_composited_over_shadow": true,
+        "all_shadow_pixels_retained": true,
+        "shadow_pixels": 2236,
+        "shadow_pixels_under_body": 387,
+        "screen_translation": [
+          0.75,
+          2
+        ],
+        "shadow_center": [
+          9.515537382385448,
+          14.366789300720322
+        ],
+        "foot_contact_test": {
+          "band_y": [
+            13.5,
+            14
+          ],
+          "minimum_body_alpha": 128,
+          "minimum_shadow_alpha": 16,
+          "left": {
+            "pixels": 84,
+            "shadowed": 84,
+            "min_alpha": 149
+          },
+          "right": {
+            "pixels": 84,
+            "shadowed": 84,
+            "min_alpha": 231
+          }
+        }
+      }
+    ],
+    "runtime_bindings": [],
+    "acceptance": "PENDING review of contact only; no approval inferred for engine change",
+    "implementation": "Visual extent 16x18 still requires an explicit compositor-contract change; guard retained.",
+    "offline_tests": "PASS Windows ASan/UBSan and Linux ASan/UBSan/LSan; same bytes at 8x/12x, both foot-contact bands covered"
+  },
+  "preview_source_sha256": "2e60624d6728496e5a5c0bbe8c44a882fb8ad9f858838e971faa9a3cf8030fdf",
+  "comparison": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-projection-preview\\comparativa-contacto-pies-8x-12x.png",
+    "sha256": "9e527bfd61e43e52d2233ad88033caa60308c1fc9ed499b5ca429f906d89c075"
+  },
+  "runtime": "NOT IMPLEMENTED; compositor extension remains proposed, no engine authorization inferred from visual feedback",
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-projection-preview"
+}

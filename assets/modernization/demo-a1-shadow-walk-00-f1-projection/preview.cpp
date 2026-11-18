@@ -15,7 +15,7 @@ int main(int argc,char**argv){
  for(int y=0;y<visualHeight;++y)for(int x=0;x<width;++x){
   const size_t n=4*(y*width+x);uint8_t b[4]={0,0,0,0},s[4]={0,0,0,0};
   if(y<bodyHeight)for(int k=0;k<4;++k)b[k]=body[n+k];
-  const int px=x-2*d,py=y-3*d;
+  const int px=x-3*d/4,py=y-2*d;
   if(px>=0&&px<width&&py>=0&&py<bodyHeight)for(int k=0;k<4;++k)s[k]=paint[4*(py*width+px)+k];
   if(!s[3]){for(int k=0;k<4;++k)out[n+k]=b[k];continue;}
   const unsigned a=b[3]*255+s[3]*(255-b[3]);if(!a)continue;

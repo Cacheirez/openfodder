@@ -2,7 +2,7 @@
 
 18-11-2026. Hito de continuidad **en curso**. La aprobación visual de Miguel de las siete direcciones nuevas de daño cierra esa revisión; registrada en `b6a7171`. Este piloto mínimo estaba autorizado por el plan `ea730de`. **Muestra preparada y comprobada técnicamente; aceptación artística pendiente.** No se activa en el juego normal ni se extiende a otras poses.
 
-**Valoración posterior:** Miguel rechaza las posiciones de V1 y V2 y precisa una proyección completa hacia abajo-derecha, fija en pantalla aunque el actor gire. La versión vigente para revisión es la [propuesta de proyección completa](#dirección-fija-de-luz--propuesta-de-proyección-completa). Las muestras anteriores y sus pruebas se conservan como referencia histórica.
+**Valoración posterior:** Miguel rechaza V1/V2 y precisa una proyección completa hacia abajo-derecha, fija en pantalla aunque el actor gire. Valora favorablemente la dirección y apariencia de la propuesta completa, pero pide eliminar la separación: ambos pies deben estar sobre la sombra. La versión vigente es la [corrección de contacto](#corrección-de-contacto--ambos-pies-sobre-la-sombra). Las muestras anteriores y sus pruebas se conservan como referencia histórica.
 
 ## Pose y evidencia nativa
 
@@ -144,3 +144,25 @@ Recuperación: carpeta local `shadow-projection-preview/`, `prepare-shadow-proje
 | 4. Retomar continuidad | Integrar dependencias del daño y revisar jugando | Resolver prioridad del piloto | AUTORIZADO dentro del hito; pendiente |
 
 **Siguiente acción única:** valorar esta proyección completa y decidir el alcance gráfico necesario para llevarla al juego. Hito en curso; sin nuevo ejecutable ni cambio de simulación. Escalado: NO. Nuevo hilo: no necesario.
+
+## Corrección de contacto — ambos pies sobre la sombra
+
+**Valoración de Miguel (18-11):** la dirección/posición general y el resto de la propuesta están bien; la sombra está demasiado alejada y los pies deben apoyarse sobre ella. No se interpreta esa valoración parcial como autorización del cambio de compositor.
+
+La corrección acerca la misma pintura: traslación provisional de **+0,75 X / +2 Y**, en lugar de +2/+3. El cuerpo conserva recurso de origen, escala, posición y píxeles opacos; se compone por encima de la sombra. Esta sigue proyectándose hacia la parte inferior derecha de pantalla, independientemente del giro del actor. No se regenera, recorta ni altera el color/alfa de la pintura. La parte tapada por los pies permanece en la capa de sombra, como corresponde al contacto.
+
+Comparativa local **propuesta separada / corrección de contacto**, a 8×/12× sobre el mismo fondo retenido:
+
+`C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150/shadow-projection-preview/comparativa-contacto-pies-8x-12x.png`
+
+Es un montaje de propuesta, no una captura jugable. Los activos y `proposal.json` del directorio de proyección contienen ahora esta corrección; la versión anterior sigue recuperable en Git (`7e89543`) y en los PNG locales `separated-8x.png` / `separated-12x.png`.
+
+**PASS offline:** exportación a ambas densidades, pintura completa sin pérdida por límites, cuerpo opaco idéntico, composición cuerpo-sobre-sombra y bytes idénticos entre Windows/Linux con ASan/UBSan/LSan pertinentes. Prueba de contacto: en la franja inferior de las botas Y=13,5–14, todos los píxeles corporales de alfa ≥128 tienen debajo pintura de sombra de alfa ≥16. A 8×: 39/39 izquierda y 38/38 derecha; a 12×: 84/84 en cada pie. Los mínimos de alfa bajo el apoyo son 170/235 y 149/231 respectivamente. Es una comprobación acotada del apoyo, no segmentación anatómica universal ni aceptación visual.
+
+El recurso corporal de entrada no cambia. Al haber contacto, la sombra puede aparecer bajo los bordes semitransparentes: no se mantiene la afirmación anterior de igualdad de **todo** el rectángulo RGBA final. Los píxeles opacos sí permanecen idénticos, sin reducción ni desplazamiento corporal. [Evidencia de contacto](evidence/sombras-contacto-pies-20261118.json).
+
+**PENDIENTE:** valoración visual del contacto; decisión sobre el microbloque gráfico de huella extendida ya propuesto; implementación y pruebas de motor, recorridos reales y CD32. Sigue sin vínculos de ejecución y no se atribuyen PASS SDL/H3 de otras muestras. El contrato actual 16×14 y sus protecciones permanecen intactos.
+
+Reproducción vigente: compilar `preview.cpp` con `build-shadow-projection.ps1`; ejecutar **`export-shadow-contact.py`** y `test-shadow-projection-linux.sh`. No ejecutar el exportador anterior `export-shadow-projection.py` sobre la revisión actual: corresponde a la muestra separada. Scripts y comparativas están en la carpeta local del 17-11 indicada antes. Maestro de pintura y cuerpo originales se reutilizan; no hay nueva generación de imágenes ni extensión a otras poses.
+
+Próximos pasos: (1) **valorar el contacto**, REQUIERE VALORACIÓN de Miguel; (2) **decidir el microbloque gráfico de huella extendida**, PROPUESTO / REQUIERE APROBACIÓN, tras cerrar la muestra; (3) **implementar y validar esa huella**, PROPUESTO, depende de esa autorización; (4) **retomar daño y revisión jugando**, AUTORIZADO dentro del hito tras resolver la prioridad del piloto. Siguiente acción única: valorar si los pies ya están apoyados como se pretende. Hito en curso, sin cambio del juego normal. Escalado: NO. Nuevo hilo: no necesario.
