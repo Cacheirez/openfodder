@@ -2,7 +2,7 @@
 
 18-11-2026. Hito de continuidad **en curso**. La aprobación visual de Miguel de las siete direcciones nuevas de daño cierra esa revisión; registrada en `b6a7171`. Este piloto mínimo estaba autorizado por el plan `ea730de`. **Muestra preparada y comprobada técnicamente; aceptación artística pendiente.** No se activa en el juego normal ni se extiende a otras poses.
 
-**Valoración posterior:** Miguel rechaza la posición de la primera muestra y considera que la intensidad puede ser adecuada. La versión vigente para revisión es [V2, cola inferior derecha](#revisión-2--posición-inferior-derecha). La primera muestra y sus pruebas se conservan como referencia histórica.
+**Valoración posterior:** Miguel rechaza las posiciones de V1 y V2 y precisa una proyección completa hacia abajo-derecha, fija en pantalla aunque el actor gire. La versión vigente para revisión es la [propuesta de proyección completa](#dirección-fija-de-luz--propuesta-de-proyección-completa). Las muestras anteriores y sus pruebas se conservan como referencia histórica.
 
 ## Pose y evidencia nativa
 
@@ -98,3 +98,49 @@ Recuperación final: carpeta local `shadow-walk-pilot-v2/`, scripts `prepare-sha
 | 4. Revisar jugando | Confirmar continuidad y sombras en estados reales | Candidato comprobado | AUTORIZADO; valoración humana pendiente |
 
 **Siguiente acción única:** valorar la cola inferior derecha de V2, con el tamaño corporal conservado. Autorización técnica adicional: no necesaria para esta corrección. No hay bloqueo técnico ni trabajo artístico extendido. Escalado: NO. Nuevo hilo: no necesario.
+
+## Dirección fija de luz — propuesta de proyección completa
+
+**Corrección de requisito de Miguel (18-11):** el sentido es el inferior-derecho del joystick de ocho posiciones. Coordenadas de pantalla: luz ↖, sombra ↘. Se mantiene al mirar en cualquiera de las ocho direcciones; **no rota con `mFaceDirection` ni se refleja con el cuerpo**. No significa que todos los recursos deban tener sombra ni que su longitud, forma o ancla sean universales. Las sombras independientes de vuelo, proyectiles, objetos y agua conservan su semántica nativa hasta una comprobación específica.
+
+V2 vuelve a ser rechazada. Haber retirado la parte alta y obtenido un centroide algo inferior/derecho no satisfacía una proyección completa. El problema no se resuelve etiquetando esa medición como aceptación visual ni continuando los recortes dentro de la misma celda.
+
+### Material concreto para revisión
+
+[Propuesta y generador offline](../../assets/modernization/demo-a1-shadow-walk-00-f1-projection/README.md). Una sola marcha frontal, a 8×/12×; **cuerpo completo idéntico byte a byte**, mismo tamaño, colocación y ancla. Toda la pintura de sombra se conserva, sin recortar, reflejar o regenerar; se traslada en pantalla +2 X / +3 Y dentro de una imagen de presentación 16×18. Los valores numéricos son una decisión provisional de esta comparación, no un offset universal aceptado. El centro de la sombra es aproximadamente `(10,77; 15,37)`, por debajo del cuerpo cuya celda termina en Y=14.
+
+Comparativa local **HD actual sin sombra / V2 rechazada / propuesta completa**, en ambas densidades:
+
+`C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150/shadow-projection-preview/comparativa-proyeccion-fija-8x-12x.png`
+
+Montaje diagnóstico sobre el fondo retenido del juego; **no una captura de la propuesta publicada jugando**. No se generan ocho cuerpos ni nuevas familias para ilustrar la regla de luz fija. El cuerpo sigue siendo el aprobado; la intensidad por píxel de pintura/alfa se mantiene, aunque la huella completa cambia la percepción del volumen de sombra.
+
+### Límite técnico y cambio gráfico propuesto
+
+**Comprobado en fuente:** `OrderedSoldierRegistry::resolve` exige `art.height == g.rows` y ancho coincidente con la geometría nativa; esta pose tiene 14 filas. `ComposeOrderedSoldierArt` recorre esas filas/columnas recortadas. Por tanto, un recurso visual de 16×18 no se puede enlazar como si fuera un 16×14 sin cambiar el contrato. Los ficheros publicados son una **propuesta sin vínculos de ejecución**, y esas protecciones permanecen intactas.
+
+El piloto vigente exige «no modificar el motor» en el control operativo. Preparar la comparación es parte de la corrección visual autorizada; implementar una huella extendida necesita decidir expresamente ese alcance gráfico. Propuesta de microbloque mínimo para revisar:
+
+1. Separar la geometría/recurso lógico nativo de un rectángulo visual HD explícito, con origen y límites verificados. Mantener el ancla nativa y la elegibilidad/visibilidad lógica del actor; no ampliar campo lógico, colisiones, físicas o reloj.
+2. Componer esa huella **en el turno del mismo comando nativo corporal** cuando la sombra esté embebida; no añadirla sobre la captura clásica terminada ni fusionar sombras independientes. La dirección de luz de pantalla será fija; orientación y frame del cuerpo seguirán siendo los del motor.
+3. Mantener orden, recorte de vista, terreno y oclusiones en ambos sentidos, escrituras de cero/igual color y Save/Restore sobre todas las celdas visuales afectadas. No eliminar el control de dimensiones: añadir un contrato explícito y acotado para la extensión autorizada, con límites de memoria y procedencia.
+4. Conservar clásico independiente y recuperación completa ante error real; probar estricto/híbrido, SDL negativo y sanitizadores, H3/CI pertinentes por el cambio gráfico. Antes de extender a otras poses, comprobar daño, altura, caída y agua para evitar duplicados o sombras residuales.
+
+Esto es una **propuesta técnica delimitada**, no código de compositor implementado ni autorización para corregir masivamente poses. B, nuevas escenas/familias, scroll y 16:9 siguen excluidos.
+
+### Evidencia, estado y recuperación
+
+**PASS offline:** dos densidades, identidad completa del rectángulo corporal, todos los píxeles de pintura retenidos con RGBA idéntico tras trasladarlos, tamaños de salida correctos y bytes idénticos Windows/Linux con ASan/UBSan y LSan en Linux. [Evidencia](evidence/sombras-proyeccion-fija-20261118.json).
+
+**PENDIENTE:** aceptación visual de dirección/distancia/huella; autorización del microbloque gráfico anterior; implementación e integración; pruebas de composición extendida, H3/CI y recorridos reales. **No se heredan los 56 PASS SDL de V1/V2**, pues eran activos dentro de la celda de 14 filas. La regla para las ocho orientaciones queda documentada; solo una pose está representada en la comparación.
+
+Recuperación: carpeta local `shadow-projection-preview/`, `prepare-shadow-projection.py`, `build-shadow-projection.ps1`, `export-shadow-projection.py` y `test-shadow-projection-linux.sh` en el directorio padre. Fuentes, PNG/RGBA de propuesta y `proposal.json` versionados; maestro de pintura y cuerpo original reutilizados de V1. Candidato de granadas y lote de daño siguen intactos/aislados según sus estados anteriores.
+
+| Paso | Objetivo y resultado esperado | Dependencia | Estado |
+|---|---|---|---|
+| 1. Valorar la proyección | Confirmar que la dirección y colocación ↘ son las pretendidas | Comparativa completa | REQUIERE VALORACIÓN DE MIGUEL |
+| 2. Autorizar huella visual | Decidir el microbloque gráfico delimitado arriba | Paso 1 | PROPUESTO; REQUIERE APROBACIÓN |
+| 3. Implementar y comprobar | Huella extendida en orden, con protecciones y pruebas | Aprobación del paso 2 | PROPUESTO; sin ejecución automática |
+| 4. Retomar continuidad | Integrar dependencias del daño y revisar jugando | Resolver prioridad del piloto | AUTORIZADO dentro del hito; pendiente |
+
+**Siguiente acción única:** valorar esta proyección completa y decidir el alcance gráfico necesario para llevarla al juego. Hito en curso; sin nuevo ejecutable ni cambio de simulación. Escalado: NO. Nuevo hilo: no necesario.

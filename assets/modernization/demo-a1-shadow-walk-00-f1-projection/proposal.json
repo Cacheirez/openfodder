@@ -1,0 +1,85 @@
+{
+  "status": "VISUAL PROPOSAL ONLY; incompatible with current 16x14 runtime key; no engine bindings",
+  "date": "2026-11-18",
+  "direction_rule": "Fixed screen-space down-right, light up-left, independent of actor facing; numerical offset is provisional for this ONE pose",
+  "shadow_source": "../demo-a1-shadow-walk-00-f1/shadow-source.png",
+  "shadow_source_sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+  "assets": [
+    {
+      "density": 8,
+      "file": "projection-preview-8x.rgba",
+      "height": 18,
+      "id": "projection-preview-8x",
+      "sha256": "097e6fa42390ebaf6a9ed4429c3cbfe0c49d24e224cfbd5d05f796a570422f5a",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "projection-preview-12x.rgba",
+      "height": 18,
+      "id": "projection-preview-12x",
+      "sha256": "09172efe8995024a4fe5f316c57e6f7034f8a6be70dc7bacc6f23933ea8a4570",
+      "width": 16
+    }
+  ],
+  "checks": [
+    {
+      "density": 8,
+      "body_rectangle_byte_identical": true,
+      "body_scale": [
+        1,
+        1
+      ],
+      "all_shadow_pixels_retained": true,
+      "retained_shadow_pixels": 1014,
+      "shadow_rgba_byte_identical_after_translation": true,
+      "screen_translation": [
+        2,
+        3
+      ],
+      "shadow_center": [
+        10.765763154679792,
+        15.36648101816738
+      ],
+      "logical_body_extent": [
+        16,
+        14
+      ],
+      "visual_preview_extent": [
+        16,
+        18
+      ]
+    },
+    {
+      "density": 12,
+      "body_rectangle_byte_identical": true,
+      "body_scale": [
+        1,
+        1
+      ],
+      "all_shadow_pixels_retained": true,
+      "retained_shadow_pixels": 2236,
+      "shadow_rgba_byte_identical_after_translation": true,
+      "screen_translation": [
+        2,
+        3
+      ],
+      "shadow_center": [
+        10.765537382385448,
+        15.366789300720322
+      ],
+      "logical_body_extent": [
+        16,
+        14
+      ],
+      "visual_preview_extent": [
+        16,
+        18
+      ]
+    }
+  ],
+  "runtime_bindings": [],
+  "acceptance": "PENDING Miguel review; V1 and V2 position rejected; intensity provisionally suitable",
+  "implementation": "Existing registry requires art.height==g.rows; proposed visual extent 18 differs from native rows14. No guard changed or bypassed.",
+  "offline_tests": "PASS Windows ASan/UBSan and Linux ASan/UBSan/LSan; exact bytes at both densities"
+}

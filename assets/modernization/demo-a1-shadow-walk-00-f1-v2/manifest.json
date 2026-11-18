@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "status": "Final v2: original body size/placement retained, lower-right tail technically verified; PENDING Miguel visual review; no activation",
+  "status": "Position rejected by Miguel: requires full fixed screen-space down-right projection; V2 clipping does not satisfy product requirement",
   "source": {
     "shadow_master": "../demo-a1-shadow-walk-00-f1/shadow-source.png",
     "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
