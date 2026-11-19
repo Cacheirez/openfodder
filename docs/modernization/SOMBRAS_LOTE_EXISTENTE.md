@@ -32,8 +32,8 @@ La clasificación delimita **83 poses normales candidatas** y 32 poses especiale
 ## Microbloques y siguiente tarea
 
 1. **Inventario y cierre de aceptación — completado documentalmente.** Estado inicial y autorización registrados; activos originales conservados.
-2. **Contrato de sombra de suelo — AUTORIZADO / siguiente tarea única.** Componente opcional en el descriptor de arte, vinculada por identidad exacta; composición en el turno del cuerpo y extensión acotada, con negativos, clásico independiente, estricto/híbrido y sanitizadores. No activar arte masivamente antes de comprobar este contrato.
-3. **Propagación a poses normales — AUTORIZADO**, después del contrato y pruebas requeridas. Revisión de fuente nativa y apoyo por pose/dirección, reutilizando pintura y cuerpos. Validación y publicación por bloques acotados; registrar exclusiones y faltantes reales.
+2. **Contrato de sombra de suelo — COMPLETADO técnico.** Componente opcional en el descriptor de arte, vinculada por identidad exacta; composición en el turno del cuerpo y extensión acotada, con negativos, clásico independiente, estricto/híbrido y sanitizadores. No activar arte masivamente antes de comprobar este contrato.
+3. **Propagación a poses normales — COMPLETADA técnicamente**, tras comprobar contrato y pruebas requeridas. Revisión de fuente nativa y apoyo por pose/dirección, reutilizando pintura y cuerpos. Validación y publicación por bloques acotados; registrar exclusiones y faltantes reales.
 4. **Conjunto comprobado y revisión jugando — AUTORIZADO**, tras las poses disponibles. Medir publicaciones/retornos, verificar transición de suelo a daño, altura y agua, H3/CI pertinentes y revisión de Miguel. No declarar aceptación jugando a partir del piloto o de pruebas automáticas.
 
 Hito en curso. No se amplía a B, nuevas escenas/familias, scroll ni 16:9. No se usan subagentes ni escalado de modelo. El plan y Arranque rápido registrarán cada punto comprobado y una única tarea siguiente.
@@ -81,3 +81,22 @@ Configuración publicada para **83 poses / 166 derivados**, 35 grupos y 14 pintu
 Resultados reproducibles: candidato completo desde daño **244 activos / 386 vínculos**; candidato de revisión desde granadas **212 / 363**, sin activar daño parcial. Replay público M1P2 en ambos sistemas: **4.096 publicaciones / 458 faltantes / 1.546 estados H3**. El nuevo apoyo visual conserva publicaciones y simulación; no resuelve por sí mismo los faltantes ni la continuidad global pendiente. Las 53 referencias reconstruidas sin vínculo existente se mantienen como prueba local, sin ampliar claves históricas.
 
 La lámina de revisión es un montaje de activos y componentes sobre fondo neutro, no captura de juego ni aceptación de Miguel. Fuente y evidencia de contacto por pose: [registro](evidence/sombras-lote-contacto-20261119.json).
+
+## Revisión local preparada — 19-11
+
+**Hito en curso; propagación técnica completa y aceptación del conjunto pendiente de Miguel.** Commits principales: motor `653d19d`, primer ciclo `2cc54f7` y lote `920c1ad`. PR #1 abierta/borrador/sin fusionar, rama permitida; `master` intacto.
+
+En la carpeta local de recuperación del 17-11 (`01a1ea7b-b727-78f2-a6ac-a4b32dc39150`):
+
+- Ejecutar `PROBAR_SOMBRAS_P1.cmd`, que usa `Probar-P1-Sombras.ps1`, modo híbrido predeterminado. `-Modo clasico` permite comparación; `-Comprobar` valida binario, manifiesto y los 212 activos antes de abrir el juego. El lanzador de granadas anterior se conserva.
+- Candidato: `ground-contract/playable-existing-candidate/candidate-manifest.json`, 212 activos/363 vínculos. Motor `ground-probe-build/Release/native_probe.exe`, SHA-256 `a0a7d550651517d8010f0e88608db0eb069ab18dd265770a0f44aec6a29446a6`.
+- Lámina: `ground-contract/sombras-lote-resumen.png`, representativa de los 35 grupos; los 83 cuerpos pasan los fixtures. Arte enemigo preparado solo visible aquí/fixtures mientras el experimento mantiene enemigos clásicos. No todas las armas/direcciones están disponibles en la fase de revisión.
+- Registros de la revisión: `%TEMP%/OpenFodder-P1-Sombras-*.log`; snapshots `sombras-snapshots-*` en la misma carpeta. [Rutas y hashes recuperables](evidence/sombras-revision-20261119.json). No se distribuyen datos comerciales.
+
+**PASS:** CTest/A2 del lote en [Windows](https://github.com/Cacheirez/openfodder/actions/runs/44426663407) y [Linux](https://github.com/Cacheirez/openfodder/actions/runs/44426663512), [densidades offline](https://github.com/Cacheirez/openfodder/actions/runs/44426663541), pruebas focalizadas con sanitizadores y H3 local Windows/Linux. El motor no cambia desde `653d19d`, cuya CI Windows completa y H3/ordenado Linux ya se comprobaron. **PENDIENTE:** resto de esas CI, GPU/CD32/audio y valoración jugando; no se les atribuye PASS ni aceptación.
+
+**Siguiente acción única:** Miguel prueba contacto y dirección fija al caminar/girar/lanzar, y observa transiciones con agua/altura/daño. La lámina permite valorar las poses no alcanzables en M1P2. Según el punto de revisión del plan, se espera esa valoración antes de seguir la integración del daño.
+
+**Hoja de ruta dentro del hito:** (1) revisión de sombras — AUTORIZADA, requiere valoración humana; (2) integración coherente del daño y dos dependencias verificadas — AUTORIZADA, después de la revisión; (3) medir continuidad y preparar su revisión jugando — AUTORIZADO, depende de (2). Son tareas del hito vigente, sin autorización de B, nuevas familias/escenas, scroll o 16:9. No se reconstruyen cuerpos ni se repiten validaciones válidas por rutina.
+
+No quedan cambios de código/arte del bloque sin publicar; ejecutables, candidatos, capturas y lanzadores de diagnóstico se conservan localmente. El ZIP de recuperación ajeno al bloque continúa sin seguimiento y sin cambios. **Escalado: NO. Nuevo hilo: no necesario**, hito vigente y contexto recuperable.

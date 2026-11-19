@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-19",
+  "code_commit": "653d19d080f71520fac7228118fb474f1c7d61ec",
+  "data_commit": "920c1ad225126349e48a6ad12dd2682555d93477",
+  "files": [
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\Probar-P1-Sombras.ps1",
+      "sha256": "adc851ccad08d0095948783472fa5d3e90bc269b3867e5482c25ae10238de8bc"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\PROBAR_SOMBRAS_P1.cmd",
+      "sha256": "16621551a28906b8aa6e7a62abfc79ac1c6ffd61640d55f9f5fe2824fde8fcc2"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-probe-build\\Release\\native_probe.exe",
+      "sha256": "a0a7d550651517d8010f0e88608db0eb069ab18dd265770a0f44aec6a29446a6"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\playable-existing-candidate\\candidate-manifest.json",
+      "sha256": "d707dc4817a0ae39cc81a66cefa6484d45e6b8e97589878ad762dd723f802873"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\sombras-lote-resumen.png",
+      "sha256": "cb0b5f8331752edf093a278d994e32b2d4bd5d5fa956699b11048d4ca70938e2"
+    }
+  ],
+  "launcher_check": "PASS executable, manifest and 212 asset hashes; 363 bindings",
+  "cross_platform_preparation": "PASS identical descriptors and all 212 payloads",
+  "visual_acceptance": "PENDING Miguel",
+  "classic_and_fallback": "covered by real Window fixtures; manual current run pending",
+  "CI": {
+    "data_commit_920c1ad": {
+      "Windows": {
+        "run": 44426663407,
+        "CTest": "PASS",
+        "A2": "PASS",
+        "rest": "in progress"
+      },
+      "Linux": {
+        "run": 44426663512,
+        "CTest": "PASS",
+        "A2": "PASS",
+        "rest": "in progress"
+      },
+      "offline_density": {
+        "run": 44426663541,
+        "result": "complete success"
+      }
+    },
+    "engine_commit_653d19d": {
+      "Windows": {
+        "run": 44416432197,
+        "result": "complete success"
+      },
+      "Linux": {
+        "run": 44416432186,
+        "CTest_A2_H3_ordered_publication": "PASS",
+        "remaining_full_diagnostics": "in progress"
+      }
+    },
+    "H3_local_current_engine": "PASS Windows and Linux, 11 phases / 11361 pinned states each",
+    "note": "Engine Source and CMake are unchanged since 653d19d; new assembly tool and all payloads verified identically on both platforms. No full CI PASS claimed for incomplete runs."
+  }
+}
