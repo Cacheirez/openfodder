@@ -63,3 +63,13 @@ El vínculo solo se activa para las familias normales existentes verificables: a
 83 poses normales / 166 activos pasan WindowHD real: **332 casos Windows y 332 Linux**, con sanitizadores focalizados. Las 80 referencias aliadas se reconstruyen desde tabla/recurso verificados, no son observaciones de ejecución; solo 27 claves de paleta 0 coinciden con vínculos existentes. No se añaden aquí las otras 53 ni se alteran referencias históricas. Las tres referencias enemigas proceden de capturas verificadas.
 
 Copiar la posición piloto falla el contacto en 89/166 derivados. El ajuste reutiliza la pintura, anchura 7–16 y cuartos de píxel por dirección, compartidos por sus frames y densidades. Los 35 grupos conservan SHA corporal, contacto completo y proyección derecha/abajo. No es aceptación visual del conjunto. Evidencia local: `ground-contract/contact-fit/contact-qualification.json` y `ground-contract/qualified/*/window-{win,linux}.log`.
+
+## Propagación reproducible
+
+Primer grupo comprobado: marcha dirección 0, tres frames / seis activos. `assets/modernization/ground-shadow-paint/placements.json` fija SHA del cuerpo y colocación común; `manifest.json` fija las pinturas derivadas del maestro aprobado. No se modifican PNG/RGBA corporales ni se añaden claves nativas. La herramienta comprueba todos los bytes de entrada y crea otro candidato, sin sobrescribir el origen:
+
+```powershell
+python tools/modernization/prepare_ground_shadows.py --base RUTA/candidate-manifest.json --out NUEVO_DIRECTORIO
+```
+
+Con el primer grupo: 232 activos / 386 vínculos desde el candidato de daño 230/386. Los 32 estados especiales conservan sus descriptores. La extensión al resto consiste en publicar sus ajustes ya cualificados, no en regenerar cuerpos ni encargar arte. [Evidencia por dirección y plataforma](evidence/sombras-lote-contacto-20261119.json).

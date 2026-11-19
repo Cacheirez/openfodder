@@ -26,6 +26,22 @@
       "id": "ground-shadow-7x3-12x",
       "sha256": "648960c54fd4fa5d6246f21e2aad053a2c5275e7b83b51a196f5263c85504734",
       "width": 7
+    },
+    {
+      "id": "ground-shadow-8x3-8x",
+      "file": "paint-8x3-8x.rgba",
+      "width": 8,
+      "height": 3,
+      "density": 8,
+      "sha256": "243b562801b82cbca2e8938513957f9b9a967a889c774fbe19077cfbf0670776"
+    },
+    {
+      "id": "ground-shadow-8x3-12x",
+      "file": "paint-8x3-12x.rgba",
+      "width": 8,
+      "height": 3,
+      "density": 12,
+      "sha256": "bdd4dbe80fe5b81f581d61dbcdc8e0c396f5eef2080384a5d8b06b370b993e26"
     }
   ],
   "bindings": []

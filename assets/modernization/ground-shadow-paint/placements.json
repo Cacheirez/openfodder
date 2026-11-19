@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-11-19",
+  "criterion": "Approved paint, screen down-right, foot contact; unchanged bodies and exact existing bindings",
+  "groups": [
+    {
+      "family": "walk",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s0-f0-8",
+          "sha256": "767b52bfa565cc9b784046a0b7cf9f7421f6e9682cac34beee47da50e8ad750b"
+        },
+        {
+          "id": "s0-f0-12",
+          "sha256": "ba3365314b6e7a415e47fa0c9f85cdcd92a71613f06907107415d9e39aefc8ee"
+        },
+        {
+          "id": "s0-f1-8",
+          "sha256": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe"
+        },
+        {
+          "id": "s0-f1-12",
+          "sha256": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057"
+        },
+        {
+          "id": "s0-f2-8",
+          "sha256": "a655d4ee52e04598f914bfbd2c5464f21e06caa5ca58683daf817a2e70f8a8d4"
+        },
+        {
+          "id": "s0-f2-12",
+          "sha256": "f8fcba2a243790d490d367bceebc9247836d59cd58e102a50bde8e9ea36d839a"
+        }
+      ]
+    }
+  ]
+}
