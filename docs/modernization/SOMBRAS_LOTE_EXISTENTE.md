@@ -100,3 +100,7 @@ En la carpeta local de recuperación del 17-11 (`01a1ea7b-b727-78f2-a6ac-a4b32dc
 **Hoja de ruta dentro del hito:** (1) revisión de sombras — AUTORIZADA, requiere valoración humana; (2) integración coherente del daño y dos dependencias verificadas — AUTORIZADA, después de la revisión; (3) medir continuidad y preparar su revisión jugando — AUTORIZADO, depende de (2). Son tareas del hito vigente, sin autorización de B, nuevas familias/escenas, scroll o 16:9. No se reconstruyen cuerpos ni se repiten validaciones válidas por rutina.
 
 No quedan cambios de código/arte del bloque sin publicar; ejecutables, candidatos, capturas y lanzadores de diagnóstico se conservan localmente. El ZIP de recuperación ajeno al bloque continúa sin seguimiento y sin cambios. **Escalado: NO. Nuevo hilo: no necesario**, hito vigente y contexto recuperable.
+
+## Revisión jugable recibida — 19-11
+
+Miguel confirma que las sombras del conjunto se ven bien. Se cierra este punto de revisión; no equivale a aceptación global de continuidad. Observa retorno al clásico durante la muerte de un aliado y en sus compañeros, además de un posible saludo final sin adaptar. [Registro validado y proyección condicionada](evidence/sombras-revision-jugable-20261119.json): 7.138 publicaciones HD, 699 faltantes y 15 retornos del mismo jugador. Continúa la integración coherente del daño y sus dos dependencias conforme al control operativo, sin activar el lote parcial ni producir arte para el saludo.
