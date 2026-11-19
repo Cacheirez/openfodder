@@ -25,6 +25,14 @@
         "8": "player-fall-b0-f0-8x",
         "12": "player-fall-b0-f0-12x"
       }
+    },
+    {
+      "key": "f62237ff841552359982d169df42a32f8c9270f598af5e624f6cf7db3a3abb06",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-fall-b0-f0-8x",
+        "12": "player-fall-b0-f0-12x"
+      }
     }
   ]
 }

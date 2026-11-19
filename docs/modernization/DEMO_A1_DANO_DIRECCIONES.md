@@ -63,3 +63,17 @@ Commits publicados por dirección: `a0e4917` (piloto), `6273e31` (izquierda y va
 ## Aprobación recibida — 18-11-2026
 
 Miguel aprueba visualmente las siete direcciones nuevas de daño el 18-11-2026; el piloto 0x2D ya estaba aprobado. No equivale a aceptación jugando ni activa el candidato. Siguiente tarea vigente: SOMBRAS-HD-PILOTO, según el control operativo actualizado. La revisión agrupada anterior queda cerrada.
+
+## Integración coherente del conjunto — 19-11-2026
+
+Tras la revisión favorable de las sombras, se integra el conjunto preparado junto a las dos dependencias verificadas. La caída 0xB0/F0, animación 1, conserva raster, paleta y geometría de la animación 0 y reutiliza exactamente su arte. El jugador 0x7C/F1, animación 6, se conserva como comando nativo solo dentro del experimento M1P2, con procedencia completa y ninguna escritura; otras animaciones/frames no quedan admitidos. Una textura dañada, procedencia inconsistente o escritura inesperada mantiene el rechazo y recuperación clásica. No cambia la simulación.
+
+Candidato aislado **244 activos / 387 vínculos**, producido por `tools/modernization/prepare_damage_candidate.py` desde `ground-contract/all-existing-candidate`: todos los activos y 386 vínculos anteriores intactos más un alias exacto. No se incorporan las 53 referencias normales sin vínculo ni las claves antiguas desconocidas. Sombras normales aprobadas conservadas; agua, caída, daño y sombras independientes mantienen su tratamiento. Sin arte nuevo.
+
+**PASS local:** Window/SDL estricto/híbrido y negativos de marcador (animación/frame, procedencia, escrituras), fallo SDL y recuperación completa, Windows ASan/UBSan y Linux ASan/UBSan/LSan. Alias real a 8×/12× con dos jugadores y recuperación clásica. H3 completo conserva 11 fases / 11.361 estados en cada sistema. Pruebas artísticas anteriores conservadas, sin repetir las ocho direcciones por rutina.
+
+El replay M1P2 real conserva los 1.546 estados: **4.096→4.465 publicaciones HD**, **458→89 faltantes**, **10→8 retornos del mismo jugador** y **1→0 rachas HD de hasta tres intentos** en Windows y Linux. Este recuento de rachas es por intentos, no por todas las presentaciones. [Huellas, faltantes restantes y recuperación](evidence/dano-integracion-20261119.json). La proyección de la partida nueva permanece separada: 7.138→7.630 publicaciones y 15→10 retornos, sin equivaler a una ejecución de esa partida.
+
+**PENDIENTE antes de preparar prueba jugable:** CI CTest/A2 pertinente de la implementación. Aceptación jugando de Miguel pendiente; no se activa el lote parcial ni se declara resuelta toda muerte. Recuperación local: carpeta diagnóstica del 19-11 `01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3`, scripts `prepare_validation.py`, `validate-win.ps1`, `validate-linux.sh`, `check_runtime.py`, candidato `damage-candidate/`, motores `probe-build/Release/native_probe.exe` y `probe-linux-build/native_probe`.
+
+**Final de fase:** la fuente `Sprite_Handle_Player_MissionOver` selecciona secuencias propias 0x38/0x9F/0x41. La observación de Miguel se registra como pendiente, sin confundir la hoja 0x7A del otro personaje con el saludo humano. No se ha capturado/modernizado ni aceptado este final. Producir arte nuevo para esas secuencias requiere concretar y aprobar el alcance posterior; no se inicia por este bloque.

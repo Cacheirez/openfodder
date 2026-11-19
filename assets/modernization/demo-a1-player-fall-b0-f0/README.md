@@ -1,5 +1,12 @@
 # Caída del jugador hacia delante, 0xB0/F0
 
+Integración del 19-11-2026: se añade el vínculo exacto de animación 1
+`f62237ff841552359982d169df42a32f8c9270f598af5e624f6cf7db3a3abb06`.
+La reconstrucción nativa conserva raster, paleta y geometría de la animación 0;
+ambas usan los mismos derivados, sin sombra de suelo añadida ni arte nuevo.
+PASS Window/SDL 8×/12× con dos jugadores y recuperación clásica, Windows
+ASan/UBSan y Linux ASan/UBSan/LSan. No implica aceptación jugando del daño.
+
 Maestro provisional, estilo C pintado moderado, generado con ImageGen integrado el 16 de noviembre de 2026. Referencias visuales: C01, el maestro de marcha `s0-f0-verde-a.png` con el verde oliva elegido por Miguel y la silueta nativa local. Se distribuye únicamente el arte nuevo, con licencia GPL-3.0-or-later. Aceptación visual y jugable pendiente.
 
 El maestro `source.png` es RGBA de 1354×1162 y tiene SHA-256 `31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b`. El recorte de alfa ≥16 es `[311, 188, 1041, 923)`. El contrato nativo de Amiga The One es 16×14, segmento 0, offset 2808, dos columnas, 14 filas, modificadores 0/0. La silueta nativa ocupa `[4, 1, 11, 11)`.

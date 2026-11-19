@@ -19,7 +19,7 @@ class OrderedSoldierRegistry {
         const auto& resource = prepared.resource;
         const bool forceClassic = IsClassicEnemyExperimentDraw(state.type, state.sheet) && classicEnemies;
         const bool associatedDraw =
-            classicEnemies && IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame);
+            classicEnemies && IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame, state.animation);
         if (!native.bytes && (forceClassic || associatedDraw))
             throw std::invalid_argument("ordered M1P2 classic draw requires native provenance");
         if (!native.bytes)
@@ -43,7 +43,7 @@ class OrderedSoldierRegistry {
         if (!forceClassic && (state.inVehicle || state.pendingDestroy))
             return false;
         const bool transparent = IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
-            (associatedDraw && state.type == 2 && state.sheet == 0x7c) ||
+            (associatedDraw && (state.type == 0 || state.type == 2) && state.sheet == 0x7c) ||
             (forceClassic && state.type == 4);
         if (!forceClassic && !associatedDraw && !transparent &&
             !IsNativeAmiga8AssociatedCandidate(state.type, state.sheet))

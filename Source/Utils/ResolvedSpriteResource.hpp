@@ -95,7 +95,8 @@ inline bool IsClassicEnemyExperimentDraw(int16_t type, int16_t sheet) {
     return type == 5 || (type == 4 && sheet == 0x7c);
 }
 
-inline bool IsNativeAmiga8M1P2AssociatedDraw(int16_t type, int16_t sheet, int16_t frame) {
+inline bool IsNativeAmiga8M1P2AssociatedDraw(int16_t type, int16_t sheet, int16_t frame,
+                                           int16_t animation = -1) {
     return ((type == 6 || type == 23) && sheet == 0x96 && frame >= 0 && frame < 4) ||
            // Grenade body and its separate ground shadow retain their native
            // commands, height-selected frames and original drawing order.
@@ -110,7 +111,10 @@ inline bool IsNativeAmiga8M1P2AssociatedDraw(int16_t type, int16_t sheet, int16_
            (type == 47 && sheet == 0xc5 && frame >= 0 && frame < 3) ||
            (type == 48 && sheet == 0xc6 && frame >= 0 && frame < 4) ||
            (type == 22 && sheet == 0x97 && frame == 0) ||
-           (type == 27 && sheet == 0x9e && frame == 0); // Floating casualty.
+           (type == 27 && sheet == 0x9e && frame == 0) || // Floating casualty.
+           // Verified death marker, not a visible player pose. The resolver
+           // must also prove that the retained producer writes no pixels.
+           (type == 0 && sheet == 0x7c && frame == 1 && animation == 6);
 }
 
 // Copying/moving this object retains the bytes referenced by draw.source.

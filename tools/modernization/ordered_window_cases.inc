@@ -265,7 +265,8 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
                               NativeCase{47,0xc5,2,6,6312},
                               NativeCase{48,0xc6,0,6,6072}, NativeCase{48,0xc6,1,6,6074},
                               NativeCase{48,0xc6,2,6,6076}, NativeCase{48,0xc6,3,6,6078},
-                              NativeCase{22,0x97,0,3,2748}, NativeCase{27,0x9e,0,10,6566}}) {
+                              NativeCase{22,0x97,0,3,2748}, NativeCase{27,0x9e,0,10,6566},
+                              NativeCase{0,0x7c,1,1,560}}) {
         auto layer = body;
         auto& p = layer.soldier;
         auto& state = p.soldier;
@@ -275,7 +276,8 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
         state.sheet = native.sheet;
         state.frame = native.frame;
         const bool visibleEnemy = native.type == 5 && native.sheet != 0x7c;
-        const bool associatedDraw = IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame);
+        if (native.type == 0) state.animation = 6;
+        const bool associatedDraw = IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame, state.animation);
         const bool experiment = visibleEnemy || native.type == 4 || associatedDraw;
         state.segment = visibleEnemy ? 0 : 1;
         g.format = SpriteDrawFormat::Amiga8;
@@ -308,6 +310,15 @@ if(std::getenv("OPENFODDER_TEST_ORDERED_HYBRID")){
                 return registry.resolve(draw,SoldierVariantKey(draw,colors),d,true,96,96*64,experiment);
             };
             assert(registry.resolve(p,nativeKey,d).decision == SoldierArtDecision::Missing);
+            if (native.type == 0) {
+                auto other = p;
+                other.soldier.animation = 1;
+                assert(resolve(other).decision == SoldierArtDecision::Missing);
+                other = p;
+                other.soldier.frame = 0;
+                other.nativeAmiga8.frame = 0;
+                assert(resolve(other).decision == SoldierArtDecision::Missing);
+            }
             if (associatedDraw)
                 assert(registry.resolve(p,nativeKey,d,true,96,96*64).decision == SoldierArtDecision::Missing);
             env("OPENFODDER_SOLDIER_HD",density);

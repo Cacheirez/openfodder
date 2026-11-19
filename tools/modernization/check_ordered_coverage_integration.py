@@ -35,8 +35,8 @@ def main():
                 [(47, 0xc5, f) for f in range(3)] +
                 [(48, 0xc6, f) for f in range(4)]
             )
-            assert result['outcomes']['published'] == 46 + 2 * len(grenade_cycle), result['outcomes']
-            assert result['outcomes']['classic-recovered'] == 18 + 2 * len(grenade_cycle), result['outcomes']
+            assert result['outcomes']['published'] == 48 + 2 * len(grenade_cycle), result['outcomes']
+            assert result['outcomes']['classic-recovered'] == 20 + 2 * len(grenade_cycle), result['outcomes']
             for density in (8, 12):
                 trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
                 assert len(trees) == 2, trees
@@ -53,7 +53,7 @@ def main():
                     assert sum(r.get('resolution_keep', 0) for r in native) == 1, native
                 for kind, sheet, frame in ((5, 0x64, 1), (4, 0x7c, 0), (6, 0x96, 3),
                                            (23, 0x96, 0), (22, 0x97, 0), (27, 0x9e, 0),
-                                           *grenade_cycle):
+                                           (0, 0x7c, 1), *grenade_cycle):
                     native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
                               and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
                     assert sum(r.get('resolution_keep', 0) for r in native) == 2, native
