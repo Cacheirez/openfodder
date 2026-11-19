@@ -101,3 +101,7 @@ Hay 18 intentos con variantes de lanzamiento 0x08/F0–F2 ausentes; no se observ
 **Siguiente tarea única conservada:** probar `PROBAR_DANO_SOMBRAS_P1.cmd` de la carpeta diagnóstica del 19-11, especialmente muerte y continuidad de compañeros, además de las situaciones nuevas. El lanzador volvió a pasar `-Comprobar`, sin ejecutar otra partida ni repetir pruebas válidas. Tras esa revisión, se podrán auditar los faltantes observados dentro del hito y reutilizar arte solo con procedencia verificada. Arte nuevo de saludo/salto requiere concretar y aprobar alcance. Hito de continuidad en curso, aceptación global pendiente; B/nuevas familias/scroll/16:9 sin autorización.
 
 CI `79508ff`: Windows completa y densidades PASS; Linux completa en curso. PR #1 abierta, borrador y sin fusionar. Sin código ni arte nuevos, sin cambios en los lanzadores. Escalado NO; nuevo hilo no necesario.
+
+### Revisión del candidato nuevo — 20-11
+
+Miguel ejecutó el lanzador correcto de daño y aprecia mejora de las imágenes al recibir daño, aunque persisten retornos puntuales. No es aceptación global. Log `OpenFodder-P1-DanoSombras-hibrido-20261119-235700.log`, 28 capturas nativas. Censo validado: 9.431 publicaciones HD, 219 faltantes y 16 retornos del mismo jugador. [Evidencia, claves y huellas](evidence/dano-revision-jugable-20261120.json). Continúa la auditoría de claves observadas con arte ya preparado, sin nuevos maestros/direcciones ni admitir claves desconocidas. La CI completa Windows/Linux/densidades de `9b920a0` ha terminado con éxito; no se repiten sus pruebas válidas.
