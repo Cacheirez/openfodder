@@ -42,6 +42,86 @@
       "height": 3,
       "density": 12,
       "sha256": "bdd4dbe80fe5b81f581d61dbcdc8e0c396f5eef2080384a5d8b06b370b993e26"
+    },
+    {
+      "id": "ground-shadow-10x3-8x",
+      "file": "paint-10x3-8x.rgba",
+      "width": 10,
+      "height": 3,
+      "density": 8,
+      "sha256": "d8e4fcb0c935e96a772cb9860ed789a13d13f93dfcc9aa8a474f815fa089b92c"
+    },
+    {
+      "id": "ground-shadow-10x3-12x",
+      "file": "paint-10x3-12x.rgba",
+      "width": 10,
+      "height": 3,
+      "density": 12,
+      "sha256": "0a8d3a25300ecfbefdb51df16a5420c065e2ba0ebdd5e302171a0e5d12e3fce5"
+    },
+    {
+      "id": "ground-shadow-12x3-8x",
+      "file": "paint-12x3-8x.rgba",
+      "width": 12,
+      "height": 3,
+      "density": 8,
+      "sha256": "c5a65ed49e77fc44c9fbe5b1f2ef26a10ac604f388026a5e577168370b9b1a4f"
+    },
+    {
+      "id": "ground-shadow-12x3-12x",
+      "file": "paint-12x3-12x.rgba",
+      "width": 12,
+      "height": 3,
+      "density": 12,
+      "sha256": "74ecd097cd70032986de6b9bddd9b44bc29cdf9877f12b39d351a4c2edb93dd7"
+    },
+    {
+      "id": "ground-shadow-11x3-8x",
+      "file": "paint-11x3-8x.rgba",
+      "width": 11,
+      "height": 3,
+      "density": 8,
+      "sha256": "fc5199db47068c4cfe8bab5cea26b101e9589a12bd2d41b40d54da31441030cd"
+    },
+    {
+      "id": "ground-shadow-11x3-12x",
+      "file": "paint-11x3-12x.rgba",
+      "width": 11,
+      "height": 3,
+      "density": 12,
+      "sha256": "4b84bb59a8c98eb6e21f65fb4c772b75280eff311bbd0dd01a95133d4288e698"
+    },
+    {
+      "id": "ground-shadow-9x3-8x",
+      "file": "paint-9x3-8x.rgba",
+      "width": 9,
+      "height": 3,
+      "density": 8,
+      "sha256": "60d2f9be0e76d4d2af5e47972ddc663f6214c373904d963050cc50eed9cb9098"
+    },
+    {
+      "id": "ground-shadow-9x3-12x",
+      "file": "paint-9x3-12x.rgba",
+      "width": 9,
+      "height": 3,
+      "density": 12,
+      "sha256": "555b105d7424b3fbb6ce03dbdb064c5fa63f274758c5071c09eb35b508760af5"
+    },
+    {
+      "id": "ground-shadow-13x3-8x",
+      "file": "paint-13x3-8x.rgba",
+      "width": 13,
+      "height": 3,
+      "density": 8,
+      "sha256": "faf4f2881f00cc57aedddf796a5acfec86de3f576d99a41b5eacb5b4d36e9f12"
+    },
+    {
+      "id": "ground-shadow-13x3-12x",
+      "file": "paint-13x3-12x.rgba",
+      "width": 13,
+      "height": 3,
+      "density": 12,
+      "sha256": "b95cb8a913869864c69f901a398ae76879c5b10ee8f35559c3c4c116bb06d0df"
     }
   ],
   "bindings": []

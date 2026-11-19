@@ -73,3 +73,11 @@ python tools/modernization/prepare_ground_shadows.py --base RUTA/candidate-manif
 ```
 
 Con el primer grupo: 232 activos / 386 vínculos desde el candidato de daño 230/386. Los 32 estados especiales conservan sus descriptores. La extensión al resto consiste en publicar sus ajustes ya cualificados, no en regenerar cuerpos ni encargar arte. [Evidencia por dirección y plataforma](evidence/sombras-lote-contacto-20261119.json).
+
+## Propagación normal completa — 19-11
+
+Configuración publicada para **83 poses / 166 derivados**, 35 grupos y 14 pinturas compartidas de anchura 7–13. Cuerpos originales intactos; 64 activos de estados especiales conservan exactamente sus descriptores, y las sombras nativas independientes permanecen en su turno. No se añaden claves ni se activan los enemigos HD en el experimento clásico. La cualificación Window de cada pose comprueba Windows/Linux con sanitizadores (332 casos por plataforma), y la herramienta rechaza una entrada corrupta antes de crear salida.
+
+Resultados reproducibles: candidato completo desde daño **244 activos / 386 vínculos**; candidato de revisión desde granadas **212 / 363**, sin activar daño parcial. Replay público M1P2 en ambos sistemas: **4.096 publicaciones / 458 faltantes / 1.546 estados H3**. El nuevo apoyo visual conserva publicaciones y simulación; no resuelve por sí mismo los faltantes ni la continuidad global pendiente. Las 53 referencias reconstruidas sin vínculo existente se mantienen como prueba local, sin ampliar claves históricas.
+
+La lámina de revisión es un montaje de activos y componentes sobre fondo neutro, no captura de juego ni aceptación de Miguel. Fuente y evidencia de contacto por pose: [registro](evidence/sombras-lote-contacto-20261119.json).

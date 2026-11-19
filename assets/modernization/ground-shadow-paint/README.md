@@ -18,3 +18,9 @@ Ejemplo del piloto aprobado, cuerpo 16×14:
 La sombra comienza en `(5,75;13)`, el cuerpo conserva su ancla y se dibuja encima en el mismo turno. **Estos valores son del piloto**, no una colocación universal: verificar apoyo, dimensiones y raster por pose antes de propagar. El contrato desactiva la componente con altura, filas recortadas, estados o familias fuera del alcance normal, vehículo o destrucción pendiente. Las sombras nativas independientes conservan su lógica.
 
 [Contrato, alcance y evidencias](../../../docs/modernization/SOMBRAS_LOTE_EXISTENTE.md).
+
+## Lote normal existente — 19-11-2026
+
+`placements.json` fija 35 grupos / 83 poses / 166 derivados por SHA corporal. La pintura se reutiliza con anchura 7–13 y altura 3, sin giro/reflejo; cada grupo comparte apoyo entre frames y densidades. Los derivados provienen del mismo recorte del maestro, exportado con el constructor existente a `bx=0, by=11, bw=ANCHURA, bh=3`, y extracción de la región pintada. Los dos activos de anchura 7 siguen idénticos al piloto. No se alteran PNG ni RGBA corporales.
+
+Aplicación reproducible: `python tools/modernization/prepare_ground_shadows.py --base RUTA/candidate-manifest.json --out NUEVO_DIRECTORIO`. Comprueba todos los bytes/SHA y los cuerpos cualificados; no sobrescribe candidatos, no añade claves y no activa enemigos ni estados excluidos. El programa debe ejecutarse sobre el manifiesto opt-in completo que contiene los 166 cuerpos normales. [Pruebas y límites](../../../docs/modernization/SOMBRAS_LOTE_EXISTENTE.md#propagación-normal-completa--19-11).

@@ -146,6 +146,3918 @@
           }
         }
       ]
+    },
+    {
+      "family": "walk",
+      "direction": 1,
+      "contact": [
+        {
+          "id": "s1-f0-8",
+          "body_sha256": "124b29ce08a0d798063b4e87c10bc0b46fb39215813ab5abc63393397b68347e",
+          "contact_pixels": 47,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.955593831903848,
+            12.243402611639183
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s1-f0-12",
+          "body_sha256": "48e0ba55300f4825fc6b50e51b14f8f06da1bafd4a83293c4ef48fc92bf17726",
+          "contact_pixels": 137,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            9.008825647153246,
+            12.188452641502069
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s1-f1-8",
+          "body_sha256": "e63f382a732e4c079c799b10ecca2f4bf729039ba9602f27cbd31c6781cdd1ad",
+          "contact_pixels": 38,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.703471937947292,
+            12.269308541422582
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s1-f1-12",
+          "body_sha256": "e3279340143a43972f369dbb781fa35758544a2a0b8d0f0bdb9547f921dc5d15",
+          "contact_pixels": 105,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            8.7081603146593,
+            12.230817521973123
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s1-f2-8",
+          "body_sha256": "c3ee25a9cf4a435aae2c9e4f161983770354350e9a91a6383dfc1c616efd9290",
+          "contact_pixels": 45,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.040397779334878,
+            12.2535787114393
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s1-f2-12",
+          "body_sha256": "610e8680c99a920064ec6cb6640dd5d9ea4a1ece8aa47642d27f7006818362b2",
+          "contact_pixels": 103,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.034204009534742,
+            12.259246641081164
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.629774850573405,
+            14.116794321104022
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s1-f0",
+          "native_key": "eecd0ae483d07b1d98da940de01ac6ea846498622554510590121e755671370b",
+          "native_rgba_sha256": "e80841579e1f7f8b2d6f000f973d109cf398e000fed43625ef2b98ef9aef8ba0",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s1-f1",
+          "native_key": "e4643f781822fc743fc12418dd2f182136c372c5bc7423178ee37be36fd3e202",
+          "native_rgba_sha256": "53eec8c1e0f50c66436ca8cdc29c74cf300312cdf4d47e0bd5308683b6fe2bb7",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s1-f2",
+          "native_key": "6a1c8981a361914b397b751c08ffbbdc49acd6e696dcd0c38ab882251c6a5f48",
+          "native_rgba_sha256": "dce7b033402542e8ab41a117ade79f2430a9bea91276747c3bc0b496d5885cea",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 2,
+      "contact": [
+        {
+          "id": "s2-f0-8",
+          "body_sha256": "3977c5a86616393f752dd2da392058e2045fe7de55c135d9a1954c1c5eaf68ed",
+          "contact_pixels": 101,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.805693853063469,
+            12.425196961111897
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205462331766668,
+            14.116532849478489
+          ]
+        },
+        {
+          "id": "s2-f0-12",
+          "body_sha256": "ff2d055ad2bef13ba9f2447e34eec84003cdd35dfc4c0fef4a6ff4545d2e412c",
+          "contact_pixels": 295,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.8240037161543485,
+            12.382527994813517
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205737414836872,
+            14.11686142096497
+          ]
+        },
+        {
+          "id": "s2-f1-8",
+          "body_sha256": "32884bedb2303f47be412160c2c803fa208205837cceb11ce823594e3a2a208f",
+          "contact_pixels": 118,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.814492757366616,
+            12.560066847129809
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205462331766668,
+            14.116532849478489
+          ]
+        },
+        {
+          "id": "s2-f1-12",
+          "body_sha256": "fa77d4be949cae558b41041a4010e74835d4ff4c99f2e07d03c1e7ad126b95b2",
+          "contact_pixels": 335,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.81160126937646,
+            12.520933604357149
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205737414836872,
+            14.11686142096497
+          ]
+        },
+        {
+          "id": "s2-f2-8",
+          "body_sha256": "ff3e1ff20bd0e384536f7389818aac8584aec2feccf39973e03e7988cd72b73e",
+          "contact_pixels": 54,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.1090858447436,
+            12.305181690984258
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205462331766668,
+            14.116532849478489
+          ]
+        },
+        {
+          "id": "s2-f2-12",
+          "body_sha256": "cc814d9b76cbc8ebd81e302ce9c40f4c8f35ae791ff67c35d054bbb65c590ff6",
+          "contact_pixels": 145,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            8.097281540818301,
+            12.258507024743237
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.205737414836872,
+            14.11686142096497
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s2-f0",
+          "native_key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "native_rgba_sha256": "995bda56ae72119b94e1ecbd5bcbf773e90ef3f4dae935bf513b5c825d53a068",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s2-f1",
+          "native_key": "6afe3afd5ecc7a1a9e615a45046447d1439d9823dbceade10ae99469bbd9cbc6",
+          "native_rgba_sha256": "4cbaabe5c27f00c1fbacd9d4dfc4f8bf8251ff561d48a74de0e9b28dd927c95d",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s2-f2",
+          "native_key": "3875401d2f46f9a6040a76314a14215954d6da2c2568b9b23f4a4cbb049fb03e",
+          "native_rgba_sha256": "2369378556b058401a2b18e1a410780e96878c36cc35db060b4437ade16914bb",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 3,
+      "contact": [
+        {
+          "id": "s3-f0-8",
+          "body_sha256": "4bd9b052ceea5f2360278f182f36f5b2928ef440b670365e1f184606933a4818",
+          "contact_pixels": 50,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.953518275183356,
+            12.422239067327887
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.417900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s3-f0-12",
+          "body_sha256": "375d77896a5e4c46dd98e04c798c9572faa244f330d44655d1c3e305b977ea83",
+          "contact_pixels": 112,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.950100528998036,
+            12.427747658090022
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.418020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s3-f1-8",
+          "body_sha256": "83987f0214bead68ddfde13a97ffa0bc82cbb192a78d8f0b84db3364abe4a8c2",
+          "contact_pixels": 42,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.349813744354686,
+            12.393751789008332
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.417900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s3-f1-12",
+          "body_sha256": "c3890b3e19a66377b89e3e53631690c18a64140bacf581f1bf712cd1ef606e62",
+          "contact_pixels": 99,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.359180088563566,
+            12.397066390080136
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.418020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s3-f2-8",
+          "body_sha256": "f5ea80638398c2e7e72a70628f770a1f0785c914b3eea160401c0b30e4c57381",
+          "contact_pixels": 50,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.074438601478112,
+            12.304069434292572
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.417900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s3-f2-12",
+          "body_sha256": "3a2e419ccbac38b2e994fa196998e98e8820af6439d882b14ce2bd50c842b0fb",
+          "contact_pixels": 137,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            8.12400610566995,
+            12.243409347903217
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.418020550712509,
+            14.116760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s3-f0",
+          "native_key": "598da8efb9769c715bf38d7ecc8a1a834d74abfd2f19c46fdc3247f7337e256b",
+          "native_rgba_sha256": "f1742418496d3eff6041d413c237e6da5860a62ac4a11fba8e7a7448dfa4ed17",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s3-f1",
+          "native_key": "1d340ad8bb9176167bf1ae440c2888a271106fcda2e9457a49401f71d1573cae",
+          "native_rgba_sha256": "0f22e3c80c238697f25b11a8f4f8d0c5374bdf1f15987a14ed5cc91410bbbbfc",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s3-f2",
+          "native_key": "d44593bc7e0f82b8b6a48c3e379d604109155a21df9e1636044bd732412d5705",
+          "native_rgba_sha256": "906138d9a1ba56af1198a7d398d6de3521a471e6d4a6a1b5a7f7f0a856bb1386",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 4,
+      "contact": [
+        {
+          "id": "s4-f0-8",
+          "body_sha256": "1d5f6a97700553211ab5d25c3172057c99ae714c9c8f29c269e723269168fd9a",
+          "contact_pixels": 32,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.599538719902291,
+            12.339455260556008
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s4-f0-12",
+          "body_sha256": "5fc344d64871363e0a7ec64df868d8d4e4af0865c582d1af2d78ad81e8dd675f",
+          "contact_pixels": 72,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.59584153543307,
+            12.33600540699458
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "s4-f1-8",
+          "body_sha256": "414ce43e44a1a482a4550a1b8e9fd9cd19fea9f8487da2a9b6029e354b4484fa",
+          "contact_pixels": 60,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.89401590155513,
+            12.317358808511964
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s4-f1-12",
+          "body_sha256": "589ba9669e52645ca4de85799d30a8f632f0a2c09d32da41ab2d55d0d7bc8b66",
+          "contact_pixels": 130,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.898448355386434,
+            12.320512121998327
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "s4-f2-8",
+          "body_sha256": "aa7d6c98884afb34eef0b5ccb268a74d22ff8311f6187252d84f31dc123a9d19",
+          "contact_pixels": 30,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.162727219931471,
+            12.247168825135025
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s4-f2-12",
+          "body_sha256": "56ab175ab2160e31185f69b5844b2438f39b5874ca53669ad1a1ef39511faca4",
+          "contact_pixels": 76,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.199526131790897,
+            12.175168628093623
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            14.366789300720322
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s4-f0",
+          "native_key": "52726ffe1c10684c2e615f3c08ab0d6f5eb87b34655d4c589683b8e7277724e5",
+          "native_rgba_sha256": "2daf642064a494df74b265d5c574a3e0cd6fda3ee4a84745864e1c97775225eb",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s4-f1",
+          "native_key": "b59daaa089591ae85f09509eae134265c85cb274a3f9419981aaaa19509ba319",
+          "native_rgba_sha256": "85b19a3d579f5401d263035bc69afa2c36893d22338b8a94aeffe4f57e85b304",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s4-f2",
+          "native_key": "7f6342fc785a76616c1041a96b76e6e109e73916f0f6f5a375b2075e64a2cccb",
+          "native_rgba_sha256": "2bb44c27626c5170310fea098525994190505cd232b5c6c9a9f99008e159627b",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 5,
+      "contact": [
+        {
+          "id": "s5-f0-8",
+          "body_sha256": "3e619bacf4997a7757cab8f0987768f2df85d4de998fc00f36478d200eb48906",
+          "contact_pixels": 34,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            4.353376226425568,
+            12.408808233530857
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.841973962332861,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s5-f0-12",
+          "body_sha256": "f5642bea7ff1ade6b92fd362c554c103f042b04acdf139b873de28c77ea85d36",
+          "contact_pixels": 98,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            4.427093579906879,
+            12.337563118893042
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.842442303075022,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s5-f1-8",
+          "body_sha256": "b96ec2c0ddac4e79f914c5843f5d06466270d6f73202b8a358a75cb7714f0d77",
+          "contact_pixels": 44,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.204953024420578,
+            12.39797202473991
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.841973962332861,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s5-f1-12",
+          "body_sha256": "3f37ed6d581b1d41cfb1e0c03553fcda3c46082ea31aaa82ec451f5d0a595012",
+          "contact_pixels": 130,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            6.200719656661996,
+            12.358042998462933
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.842442303075022,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s5-f2-8",
+          "body_sha256": "7f7a123d4e7a06568b76166d10695c269c006c3007388880e4a4cf407e25820f",
+          "contact_pixels": 44,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.397545239323051,
+            12.30284152172894
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.841973962332861,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s5-f2-12",
+          "body_sha256": "4b4b38ad119edb93b13b815103c02d2f85276a7cafc84c90a2df76c4fd87fc8a",
+          "contact_pixels": 101,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.403868666312383,
+            12.303717134308028
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.842442303075022,
+            14.116562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s5-f0",
+          "native_key": "9941fcceece2270e41eea579e82f1b285c2a6bc1cc10a3d2c9fbe04fa41436a5",
+          "native_rgba_sha256": "217038dcf161aff43c38da82b121cbcc1ba3b8ea6ede19dbe8c7947017aa09ec",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s5-f1",
+          "native_key": "abe0bd8d76e62d2510aea1b86d0ca85019466220687a4f18fbc2053f89b03150",
+          "native_rgba_sha256": "4c092e16f3056e382a3aa10a130ad8fbbd14feec02e26a3eccef78b83031ca96",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s5-f2",
+          "native_key": "6eda1c236a2880de07974de63fb9215ef22fcff4e7f395d13fb275db8ba021ae",
+          "native_rgba_sha256": "bab28e1c3fbc54ec977a6dcca75f9d20e5713bac3bff714444a1709cc25a3c42",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 6,
+      "contact": [
+        {
+          "id": "s6-f0-8",
+          "body_sha256": "f52ad7ae20f2edf62b7fce9ecd04e91fec57504d2e5f324c9b1247e129e383dd",
+          "contact_pixels": 48,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.67985751633987,
+            12.329590849673203
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.917900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "s6-f0-12",
+          "body_sha256": "e389a3442bc20c037291fc06d3b5e34a3515959ea0802cc89ca5884fd9f53571",
+          "contact_pixels": 144,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.662566201629648,
+            12.279637514779985
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.918020550712509,
+            14.366760112763162
+          ]
+        },
+        {
+          "id": "s6-f1-8",
+          "body_sha256": "89a31f6fed3d7226650b6f14384e9305ac699284e60294c1c951b7dc6bea14e6",
+          "contact_pixels": 103,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.274770319898917,
+            12.510175448437112
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.917900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "s6-f1-12",
+          "body_sha256": "f7d4dc124e927faa50bbad4fa5ee3205b6908673d7b873def143962e6260dd3f",
+          "contact_pixels": 297,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.283463936465442,
+            12.477216070227387
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.918020550712509,
+            14.366760112763162
+          ]
+        },
+        {
+          "id": "s6-f2-8",
+          "body_sha256": "d36e2df7ffc64261ca4936dbcf821dc9cdc4a094c14a03a1372588ecdd3fd4cd",
+          "contact_pixels": 57,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.2379731347276435,
+            12.280995126317883
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.917900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "s6-f2-12",
+          "body_sha256": "eab39f96cb78afd0ed04b35063f38e58b2d2a6c0e9ae89395eb5ad2b336402a7",
+          "contact_pixels": 153,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.246268047745534,
+            12.237316004370355
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.918020550712509,
+            14.366760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s6-f0",
+          "native_key": "9345b02a4ff96b76933c0e5ca5030112f09548d8dd251b480a1043107093d251",
+          "native_rgba_sha256": "d6428785fbd60ee8737fe42ab12970f023c2d85514061dcc6125417bcecf4ac9",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s6-f1",
+          "native_key": "2792dff4e0b01451d4960c465dc7cc9aa73ae3d66539c2cfb6d56ff65e8bfc99",
+          "native_rgba_sha256": "b480d01329dabaa4d8a77847be906f227268cc054d12306a1e68f44796abbf91",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s6-f2",
+          "native_key": "0b20a23c4d3e4b5bc5dba104646fa102a5eaa6837bdf02261b70ab093292b435",
+          "native_rgba_sha256": "3ddd6b88393228007cafa02f96b22226c3f53deba20378850f4961636b1145b8",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 7,
+      "contact": [
+        {
+          "id": "s7-f0-8",
+          "body_sha256": "2517d128d7725a6ffcef84f3f03b0a030cee1af03c6a8d4709c9093c1b75391c",
+          "contact_pixels": 41,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.75810403351692,
+            12.274848687892087
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.341973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s7-f0-12",
+          "body_sha256": "0f0eddee8f6d9dc6216e0672a82707c8e32e008f16d6742a8889bac98e4657b5",
+          "contact_pixels": 95,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.76067969188263,
+            12.27811089145797
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.342442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s7-f1-8",
+          "body_sha256": "4130f26bd3f9a11a764aea20dfa3858576bdecb24a095870444073dcb3c2621e",
+          "contact_pixels": 57,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.881438822906269,
+            12.252474772682517
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.341973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s7-f1-12",
+          "body_sha256": "fee06035d183d443b6e7bd65ec3e99da029602ba4585b2e539442624d08a24e6",
+          "contact_pixels": 152,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.886066147594168,
+            12.234099136017484
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.342442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s7-f2-8",
+          "body_sha256": "758fed83f4b7f045aa1fad6eb4d710cd211e38cad8dd1309355794ae08081dfa",
+          "contact_pixels": 40,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.756411717989445,
+            12.202119306245837
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.341973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s7-f2-12",
+          "body_sha256": "6498882dcd4e420beab22576e061dac74f45b5c5ecddbe03de3f3decdfd48273",
+          "contact_pixels": 109,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            6.764350268334255,
+            12.15559032096462
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.342442303075021,
+            14.116562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s7-f0",
+          "native_key": "042ddc7dcc89d3c06b666b9eeb3faf0000b99b19f57ef29d8ac53df2c5957157",
+          "native_rgba_sha256": "a8fc9fdaea351682135675bfa572b63916d4e148918a7b72a5e789fec11d0bab",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s7-f1",
+          "native_key": "829de99ac763bcf357493634493d72e9a8949a2163ef41262575fb2fde5b4c4c",
+          "native_rgba_sha256": "8c0dd186a9f78aa0fb148fd35943583482e1cd74f0fa0a201b32502cb8a46788",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s7-f2",
+          "native_key": "29446d182424162a0e905366b62d12c0bb2b7290833c52206440d65dfd209e06",
+          "native_rgba_sha256": "8b63db0d0554c5191c101f9d3d481d29fa83f55fa5e45f655792708723e14c8f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 0,
+      "contact": [
+        {
+          "id": "s16-f0-8",
+          "body_sha256": "66ef7fba284fed601b2abd9f0079a49329ebc31ff90f4745cb010847ed66aa4e",
+          "contact_pixels": 85,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.660019883276621,
+            12.106479155081905
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.341973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "s16-f0-12",
+          "body_sha256": "75713eb861a201cea2d7bc991bf31a0701da2f65009bbded120df7bb5b5b5896",
+          "contact_pixels": 175,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.672160060080071,
+            12.13549697033757
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.342442303075021,
+            14.366562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s16-f0",
+          "native_key": "0cfddedda72d9cc3b5b2d9eb6fa370fbfcad2db4dfe4c1f79aae69c2315666c7",
+          "native_rgba_sha256": "e700ee10e5601485c5ae8cc481c2366f36d4e6829460d7ebacf6f8701080bb1f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 1,
+      "contact": [
+        {
+          "id": "s17-f0-8",
+          "body_sha256": "84a45c725e7f0d846358788161b2fa0c2b373a7ea42ad4aa37ccaa26def16d3d",
+          "contact_pixels": 52,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.949747501521214,
+            12.013773325281655
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.667900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "s17-f0-12",
+          "body_sha256": "674205b56f61f8b4c9f9f1e7392971d30889095b7c299b8a83c63cb6ebbdca0c",
+          "contact_pixels": 99,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            7.957983348876607,
+            12.042844060974142
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.668020550712509,
+            14.366760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s17-f0",
+          "native_key": "8d1a2d8192a77e04f6f92ade189cab5d2ebfeee84b6c39aeb675521d11729619",
+          "native_rgba_sha256": "c32e3a3d3ab43ffa78f61f429cd6222f4f587c3d51145880c2d5db5ffd5ddd47",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 2,
+      "contact": [
+        {
+          "id": "s18-f0-8",
+          "body_sha256": "ecbfb207c74169b83d26182d4e901b74219c5dbda1a6f31e0d515793a287bc4a",
+          "contact_pixels": 77,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            9.679966387895979,
+            12.116149183313533
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.303427077948701,
+            14.366509732446836
+          ]
+        },
+        {
+          "id": "s18-f0-12",
+          "body_sha256": "418d91eae12ebe1286c833bbd6c86e74c48d6c1539aecc5065dcaca01df812aa",
+          "contact_pixels": 158,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            9.675029663600643,
+            12.141825461100268
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.303615403883104,
+            14.366911956152753
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s18-f0",
+          "native_key": "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c",
+          "native_rgba_sha256": "6490f77791d772c0c7f7ed1f7093c579ec4c549003c68213cfd3117c4a654c93",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 3,
+      "contact": [
+        {
+          "id": "s19-f0-8",
+          "body_sha256": "36887a6d903d6c62f634a68d3bae6d9b324f6299de2601341bd6c4ac7066217c",
+          "contact_pixels": 55,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.598849487909987,
+            12.101651107124182
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.091973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "s19-f0-12",
+          "body_sha256": "823b03cb80d0c4045cd579bf930efc37440da3788a7e75055fbfd82e5150b313",
+          "contact_pixels": 110,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            8.588633777368095,
+            12.12884213789278
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.092442303075021,
+            14.366562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s19-f0",
+          "native_key": "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893",
+          "native_rgba_sha256": "38cc43d975bdb10dbed3a53c7a2820bb3a013c29092812f61b5adba8fd6a04ff",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 4,
+      "contact": [
+        {
+          "id": "s20-f0-8",
+          "body_sha256": "bf4a122991e105d1817556a8b83bb9e74c2a12453c558e9ee20788943e6b75ad",
+          "contact_pixels": 85,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.151803987844207,
+            12.122394702772265
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.629723866984456,
+            14.366529994050355
+          ]
+        },
+        {
+          "id": "s20-f0-12",
+          "body_sha256": "2db728473780a77ba04a4d14394dac26f75eb247b7d3d1b981b2699c693fe2f0",
+          "contact_pixels": 171,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            8.149309056775687,
+            12.146057972592985
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.629774850573405,
+            14.366794321104022
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s20-f0",
+          "native_key": "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607",
+          "native_rgba_sha256": "48dfa582f8a7929653eda1fb8fa15e3066b0cae3405842e06400bc526586656a",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 5,
+      "contact": [
+        {
+          "id": "s21-f0-8",
+          "body_sha256": "74a6449af0dbd073ef088da7157dca685ad3c54cfc343b5170c43a60ac9fe754",
+          "contact_pixels": 65,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            6.628367247464152,
+            12.076460734470249
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.341973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s21-f0-12",
+          "body_sha256": "73c3fc5476f1ebd0f1dca9a4247a23084bb97fa690878cc3ca3b5be856bef156",
+          "contact_pixels": 160,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            6.62112391480322,
+            12.052874834570396
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.342442303075021,
+            14.116562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s21-f0",
+          "native_key": "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3",
+          "native_rgba_sha256": "5541ea2c29849408f835c2210e1a7d24ab3529e2842d90efa62ace46eee330cc",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 6,
+      "contact": [
+        {
+          "id": "s22-f0-8",
+          "body_sha256": "db04d14658a84dc39398cdc0c4c262e44e6d9eacddce16a383df61f1283ae04e",
+          "contact_pixels": 66,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            5.9562287622903085,
+            12.129515751949205
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.5534270779487,
+            14.366509732446836
+          ]
+        },
+        {
+          "id": "s22-f0-12",
+          "body_sha256": "830686a3ddf8ddb550c92e6851f8b01df7fcde37515f65bc3fe5928e86e4df3d",
+          "contact_pixels": 125,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            5.955901938207638,
+            12.155003838034927
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.5536154038831045,
+            14.366911956152753
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s22-f0",
+          "native_key": "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5",
+          "native_rgba_sha256": "22b968bbecd4edc3a718bea93cd801e7648d45846d62122f0bfe872cbc895597",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 7,
+      "contact": [
+        {
+          "id": "s23-f0-8",
+          "body_sha256": "5a97923e93d27feb8c0c3f8a6a629f730334c6fddf8a50bda4c917b2d163cd4a",
+          "contact_pixels": 49,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            6.876916310855616,
+            12.030841960260478
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.417900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "s23-f0-12",
+          "body_sha256": "20e52db93feac631d38f0d5dbad007bc0f6b7dc2e6c2f29d1c1d410b376b47f7",
+          "contact_pixels": 95,
+          "opaque_bottom": 13.916666666666666,
+          "support_center": [
+            6.869172260863418,
+            12.05972138663943
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.418020550712509,
+            14.366760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s23-f0",
+          "native_key": "2daae8e347e24ed69fc3c15c2c31c55c67bc7c6898f1b16500b53b99d176a5da",
+          "native_rgba_sha256": "010289be2adbb2c1e8ef99ac7b6202ade56a7dade6bd75586c3ae1a4676e1960",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 0,
+      "contact": [
+        {
+          "id": "s8-f0-8",
+          "body_sha256": "5e8ca207516d6207b1691cceb58cc0b7d00ed5ee46090a9467ad9852dac58bc9",
+          "contact_pixels": 63,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.709373636306964,
+            12.281439942958668
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s8-f0-12",
+          "body_sha256": "008574c6cb5bb9742c712268a1cd56597789c7944d7beb063c9cac2409038190",
+          "contact_pixels": 163,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.708941581231016,
+            12.25970232656928
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s8-f1-8",
+          "body_sha256": "57dcf06e16445b411f94a29d2744999983800cef9169b58e539b5d70f4daa0e9",
+          "contact_pixels": 64,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.474621673203793,
+            12.256127616729032
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s8-f1-12",
+          "body_sha256": "33d34fbee86ad2870c61dba3467e4336dfc7306fb4c145f6168e9f21e66443e7",
+          "contact_pixels": 164,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.480305842370015,
+            12.232556773053668
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s8-f2-8",
+          "body_sha256": "36d59c530ada5c0b4f9096cf63d75884fc44a7cc343198e8231ecae37aa2e25f",
+          "contact_pixels": 65,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            6.496669281624224,
+            12.241493844792211
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s8-f2-12",
+          "body_sha256": "43c2375f10fff499811b4b12b96d6d7c37a64a69b34a0089f53e78f36dbf8656",
+          "contact_pixels": 166,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            6.495190588751783,
+            12.216254321868101
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.879774850573405,
+            14.116794321104022
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s8-f0",
+          "native_key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+          "native_rgba_sha256": "a1072d3072e2258de4c4ed88cf6e5e8f965e630687b9691f8ce33fc75e200640",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s8-f1",
+          "native_key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+          "native_rgba_sha256": "072e8e1bee59ba8f98e907178b337a17ba80db91a11bb608ffe88133ce2eec6c",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s8-f2",
+          "native_key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+          "native_rgba_sha256": "2cbf157532b73dfbed30c30b4b9ddedc4ce5c0fde1ee88100eba976371027069",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 1,
+      "contact": [
+        {
+          "id": "s9-f0-8",
+          "body_sha256": "e5e8465aaa7664d50ccd67f2b8d594f8c1ffd7022a189dfa9679d27558c438ad",
+          "contact_pixels": 36,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.675121782107809,
+            12.180677535201252
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.841973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s9-f0-12",
+          "body_sha256": "507c82ff6207f83dada90eff7ad4c2e565dbcb50200b62e52c573a282c16a896",
+          "contact_pixels": 86,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.677916366503456,
+            12.158590350089824
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.842442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s9-f1-8",
+          "body_sha256": "eee1b81cbbafd84ba1059872723588dc1ef7a91cb94cf32a48e814540e7a0c8c",
+          "contact_pixels": 33,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.768065243280027,
+            12.047819553135987
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.841973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s9-f1-12",
+          "body_sha256": "3315141990169ee1dba6e7ca888b9e27c223841b51856de0acf76ab1a793d1ce",
+          "contact_pixels": 79,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.772869161765101,
+            12.021512838073752
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.842442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s9-f2-8",
+          "body_sha256": "5bfd1a64e76605a814ece994c75475c16278fac062494e146639e6263e7d7cb8",
+          "contact_pixels": 42,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            9.037181392731146,
+            12.099725302743007
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.841973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s9-f2-12",
+          "body_sha256": "ffd62baa4c68bcfb7895a184466f569b648b509fc4bedd82218245cac2c50b79",
+          "contact_pixels": 81,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            9.017717140199299,
+            12.153662254580572
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.842442303075021,
+            14.116562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s9-f0",
+          "native_key": "837767e2c660a76dd13080d3b98418abd3cbc126b8f573718aed7bcfeddc081c",
+          "native_rgba_sha256": "a8dc5dfc8848b375ec9b4e780d81d30da430db1748ed0598778d28babba21be5",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s9-f1",
+          "native_key": "c021366944ea7d67decaff4b32805e00ea81d9bd44cee3712f7a450abe95fa84",
+          "native_rgba_sha256": "fb3246da85ee0c000585fd2d412282dfb2ff66ccb772f7757a58b3ba9ab1486e",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s9-f2",
+          "native_key": "e0dd10b3e2b6fed33efa0ff786d34e58bceb1befc2904ad78ad31247cc2d5070",
+          "native_rgba_sha256": "a87c493f2780aef78bdb5f3ec9d95f1c5b44953382f76bd5570110909fbb8089",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 2,
+      "contact": [
+        {
+          "id": "s10-f0-8",
+          "body_sha256": "aba2c9f9becc91fa5badc1bc85b55ee1a850635ac094359d68999daab387307b",
+          "contact_pixels": 59,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.949035394373249,
+            12.361521948776915
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "s10-f0-12",
+          "body_sha256": "642733a4316fe5a4af1967377e42ae8cfdc2c606243c6f4e1ab5b131f1585c72",
+          "contact_pixels": 148,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            8.940917479505407,
+            12.347279535613191
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "s10-f1-8",
+          "body_sha256": "d3c577ee5b7fffe42e1dc118151fa4b1c0bf40ee48d544bd25d537c5150f6771",
+          "contact_pixels": 64,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.683522480451781,
+            12.355956150170421
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "s10-f1-12",
+          "body_sha256": "1667a55cbfe8d3de20ae015c0599d196154e2591787b1aee84be5186728802f4",
+          "contact_pixels": 162,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            8.676746989701803,
+            12.33687439781932
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "s10-f2-8",
+          "body_sha256": "073eb911b5563f526692673ebeed51078283597e2ad91a02aa3958b80858d26c",
+          "contact_pixels": 70,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            9.588023961576152,
+            12.132276549719688
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "s10-f2-12",
+          "body_sha256": "739b7becc2732ec1889138f5a3dbed6a7c99aa3366876750eda81d6be49580b3",
+          "contact_pixels": 128,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            9.582384548661366,
+            12.179989898928342
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.265537382385448,
+            14.116789300720322
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s10-f0",
+          "native_key": "e53cd99a351a5388e45047de563df4dc39b5c3039e3c4c15578862db46453008",
+          "native_rgba_sha256": "cd26d46c1e82e356ec313eb789a693eef49562b1dca082f908946aa3d2d3ec69",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s10-f1",
+          "native_key": "2d6e879a1676d2417c6acc3a5ad7cdab576c076060c37bad48c2cd0b30774df8",
+          "native_rgba_sha256": "610fc16ebc17a12ccaed2dd430913ad66a6f5951e8e9bc7cd970372563782b89",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s10-f2",
+          "native_key": "d3e47dcfc202f27261746e97144beed858bb3c9358595ec07631994a64d7c5a7",
+          "native_rgba_sha256": "c20fd287fc8454a90ee4ff89d7c1500f159486553c0b5c41160d3177daf462a9",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 3,
+      "contact": [
+        {
+          "id": "s11-f0-8",
+          "body_sha256": "be3bdbad00a80eb8615e3062920a682d62e4ed2e0abbe65aeefd8953aa2ca913",
+          "contact_pixels": 57,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.729592525691839,
+            12.249164796043631
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.917900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s11-f0-12",
+          "body_sha256": "4ca5d8c0df8b716d562deb5c63c4eb2e61d959e6a6071d600d293fdc21cfb0b5",
+          "contact_pixels": 143,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            8.749835510809147,
+            12.223454804588847
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.918020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s11-f1-8",
+          "body_sha256": "0f91c268bafa397adf265c0e6b93f673900d40ba2d5ee91f2a55b23fde16b1c9",
+          "contact_pixels": 46,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.629292981128202,
+            12.185599670288786
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.917900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s11-f1-12",
+          "body_sha256": "58dd61d8ee8a135c8f2d6d45fbba18c177c09adc9dffbd897a35d56670e6d4fa",
+          "contact_pixels": 126,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.636945801015034,
+            12.164634112655515
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.918020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s11-f2-8",
+          "body_sha256": "c6a440daf8b8566d63f195f7dda180b04f0354e3a8fd9935e6109e8443324bee",
+          "contact_pixels": 42,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            9.408773045957616,
+            12.173718052465926
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.917900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s11-f2-12",
+          "body_sha256": "3c4f36a7e7c27dc17a0edd24bc523b9be725ce0fab9081d11894d6dea59a320c",
+          "contact_pixels": 108,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            9.404112643664476,
+            12.15613887830587
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.918020550712509,
+            14.116760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s11-f0",
+          "native_key": "3bd6398249777dba631401c62e5e0b374045c4fc3a38a570221c8dc8ad28501f",
+          "native_rgba_sha256": "487fbad03fd7d2da85db91d027e06a3bc110b8f23e89cf4b87a104472dceff65",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s11-f1",
+          "native_key": "7237cad75403bb66e071311680c774ca8b61c37612815f5a9b4511d16188f09a",
+          "native_rgba_sha256": "5f88a0517c6340e7873225e6b62099ff64d807f7b13c570d2892feae602c4dab",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s11-f2",
+          "native_key": "25bfd9d28b65e9e02616229949c4bf446e501369767433feb21d5d853dec7f33",
+          "native_rgba_sha256": "91eef19cfc8719038881f23f9bfa2870cb87e8d1bd1198e9a71583aab478651d",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 4,
+      "contact": [
+        {
+          "id": "s12-f0-8",
+          "body_sha256": "f7f599daf2dcf0019c8ccb8bd2a9b09f9dd8441a222ad04ffb3a49845803bc85",
+          "contact_pixels": 62,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.87650946699253,
+            12.201107514554042
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553427077948701,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s12-f0-12",
+          "body_sha256": "dd917029c9b57cc8885bf63dd1bd1e670cb53f781fba037e4b3bef23582df2ed",
+          "contact_pixels": 162,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.869353990305676,
+            12.184395923664573
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553615403883104,
+            13.866911956152753
+          ]
+        },
+        {
+          "id": "s12-f1-8",
+          "body_sha256": "ec7c71f451e04707479a3fda1199d4ea0724c595cd79dad44206e3ecc98d04d3",
+          "contact_pixels": 66,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.947404188802882,
+            12.215957002440966
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553427077948701,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s12-f1-12",
+          "body_sha256": "e01fdd33e82f3964ec385b54ebc9cabeeca29d42c1af7d1ba46da8551cc9af42",
+          "contact_pixels": 168,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.947697283645173,
+            12.195076987596702
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553615403883104,
+            13.866911956152753
+          ]
+        },
+        {
+          "id": "s12-f2-8",
+          "body_sha256": "1f1b753f2ea1d8de14545be3f696f482ebac0e6a79e5cd80ee4db4863f4e6e13",
+          "contact_pixels": 57,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            8.887143902207196,
+            12.200255361834735
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553427077948701,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s12-f2-12",
+          "body_sha256": "0d4387898665f19840f44dd1225246dc74ae6afe0ab06490b6edb98616aca3c5",
+          "contact_pixels": 150,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            8.890819364187179,
+            12.18232048502979
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.553615403883104,
+            13.866911956152753
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s12-f0",
+          "native_key": "561c0602eec7538ce04e7c53a5c739ed9d6b7d5f81b7bd9662f85269237b33d7",
+          "native_rgba_sha256": "18b14458fb3bba9378ed5f03f4116e257759e75cea623be1559f31feeb3e8457",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s12-f1",
+          "native_key": "22e39c9dff87c1d788f50f8e657a27812ce31088877fffa36a0c19ecfb28972f",
+          "native_rgba_sha256": "a52b110c8f9cc629411e8ca5a2e4dbb29165a6a94094809dce20c40dee168311",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s12-f2",
+          "native_key": "78972de60ce56d748f198f143fc0a8a6d5b22324c79f5efb876116b573bd3656",
+          "native_rgba_sha256": "3c2d4c63eca68d29223070b54621a486aaae35552305191556d0098506da181a",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 5,
+      "contact": [
+        {
+          "id": "s13-f0-8",
+          "body_sha256": "b111f866424850d75259f36283902883f379c8bb44fdae760a6754999e07a279",
+          "contact_pixels": 66,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.282720865147465,
+            12.231467191445999
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.591973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s13-f0-12",
+          "body_sha256": "33a694720c17f087cd29fae9df0206495941ce39c48a79dbc49228319162c05f",
+          "contact_pixels": 167,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.278790641992437,
+            12.212690962621034
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.592442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s13-f1-8",
+          "body_sha256": "676ed233fefb441acd406a7537aa602e9766148b6cc835f71901edd0327cbcdf",
+          "contact_pixels": 70,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.3371786678667865,
+            12.234325382538254
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.591973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s13-f1-12",
+          "body_sha256": "fb93a25cafc8c1e7d03dc1eca184e0259054de44dcc613e7fa1caa97b952c334",
+          "contact_pixels": 172,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.325903431513581,
+            12.21229106663903
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.592442303075021,
+            14.116562282227415
+          ]
+        },
+        {
+          "id": "s13-f2-8",
+          "body_sha256": "2d684c199c1a2c64435ba94bdc35f93e62d88172af2318bdebf6de81b9c0a582",
+          "contact_pixels": 37,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            6.440101734028052,
+            12.200048523031574
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.591973962332862,
+            14.116500055416136
+          ]
+        },
+        {
+          "id": "s13-f2-12",
+          "body_sha256": "dfa754bb5eb6f518868e5f6a8bb4feeb34dee05ea0811d0beddd5c9b722b35aa",
+          "contact_pixels": 97,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            6.432196929975682,
+            12.178622309109704
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            8.592442303075021,
+            14.116562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s13-f0",
+          "native_key": "def36ad5ce5fa7fb29329965293f0d0c14905a1edfc2ca9727e3695bdf036354",
+          "native_rgba_sha256": "d32cd46e4c9445e19402348ed9451036ca8770681902b20ee0328bcf5948730b",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s13-f1",
+          "native_key": "e7747b635af8515d0540b2cb70304ffd4ebf88a79bd1eb455bf7a81db16e60c6",
+          "native_rgba_sha256": "a8ee47fd67306c36ed604653b6f7fe6ad2b4a09b997b80132ed837e77559d527",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s13-f2",
+          "native_key": "8ba31bc6946d7ca1db3c664eef29ab8f777da4ba19f0b204e62172ed5d408c66",
+          "native_rgba_sha256": "49c50fa51bdf04a5cf76cbae6fa4770ff415c35204cafaae23072b83bd08c925",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 6,
+      "contact": [
+        {
+          "id": "s14-f0-8",
+          "body_sha256": "8eac13afd7fa8e5829e391671da551e8a91216c38e4a826dface69ae2553fe55",
+          "contact_pixels": 61,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            6.454332799306576,
+            12.417453301064482
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8034270779487,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s14-f0-12",
+          "body_sha256": "1b4a43376c90286cfebeb38bc8e398a0ca3880f7448aeca5d473cfa02cdfde6a",
+          "contact_pixels": 147,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            6.4538037265051935,
+            12.400747537794063
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8036154038831045,
+            13.866911956152753
+          ]
+        },
+        {
+          "id": "s14-f1-8",
+          "body_sha256": "8af7e258f33a20aa5838db0b3e12d749fc4b676aa32da233bbdaa727c34e742f",
+          "contact_pixels": 41,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.367873169254487,
+            12.255956805417906
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8034270779487,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s14-f1-12",
+          "body_sha256": "c08b54950ee3d61d79855334cd0ae4ab9e4a0b421c99babdea5d041ed3f41b90",
+          "contact_pixels": 105,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.372710043904949,
+            12.238824874685468
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8036154038831045,
+            13.866911956152753
+          ]
+        },
+        {
+          "id": "s14-f2-8",
+          "body_sha256": "06860c7c1394bb42a4133f58892f0ea296a6b900af358c26b0a5c75821deb047",
+          "contact_pixels": 72,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            5.4335959097970035,
+            12.20452002316948
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8034270779487,
+            13.866509732446836
+          ]
+        },
+        {
+          "id": "s14-f2-12",
+          "body_sha256": "49710e440742bb552dbcf0a9cc97e63618e444372981ac759ef73548ea6451b8",
+          "contact_pixels": 142,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            5.4396354501066115,
+            12.257257706544914
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.8036154038831045,
+            13.866911956152753
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s14-f0",
+          "native_key": "07aa3b2c9b064e45dce71307e0e58acd08b19ce0e34b7632a3e0da5b97fd089b",
+          "native_rgba_sha256": "cfd9085e89d67bfdf9a57567ff92e4dd19f7d3fc50957dae5d4b789db4e79008",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s14-f1",
+          "native_key": "a64852ff67a70f27c12daeaa3a9a9e8d5a0edca13e7c8f69f154322acf1d9588",
+          "native_rgba_sha256": "df4211bb02348a29d596c28a94139311a1ed0ebeb67c845d7e7474fbe90856fe",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s14-f2",
+          "native_key": "f6cc4056e63ff16d6c35fbf51a1969dc29b395c024f7908777711f58f951dd77",
+          "native_rgba_sha256": "8a5c37c43633c3cc53213fd6c40a0007dca8b578468d1d62b8becea216256324",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 7,
+      "contact": [
+        {
+          "id": "s15-f0-8",
+          "body_sha256": "13afe50ffe2fe57bbd1db0a3f343626ba47d9a277e710b8e1509472503e77c1b",
+          "contact_pixels": 57,
+          "opaque_bottom": 13.875,
+          "support_center": [
+            7.202376142443156,
+            12.257376246934909
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s15-f0-12",
+          "body_sha256": "283128f7479a42962edf2fac6057521c3480bd8b28d0fdcf194ed3d51fb7329a",
+          "contact_pixels": 149,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.196413135257533,
+            12.235794639759163
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s15-f1-8",
+          "body_sha256": "a0616a91ac93a3bedd52194ca3644bb27e52a0606bcb07a28adb9fb9999d75b8",
+          "contact_pixels": 44,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            8.553550964247654,
+            12.030921071840465
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s15-f1-12",
+          "body_sha256": "4ed8ce177613d640f79fd44a17f758da80405087654bd5cbbd9cc3f954c7ad42",
+          "contact_pixels": 85,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            8.552321584066542,
+            12.094730284620496
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "s15-f2-8",
+          "body_sha256": "e0ffe5cd4cdf696bcb125a590dd0cfb2449191bd1651003a485ece24e6046c00",
+          "contact_pixels": 40,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            7.721889458352157,
+            12.006301310111695
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "s15-f2-12",
+          "body_sha256": "975e7520dd167ed13ba99b9da166e9a20e50646cfef9a0af7ef015c577ae9050",
+          "contact_pixels": 78,
+          "opaque_bottom": 13.833333333333334,
+          "support_center": [
+            7.713965103706592,
+            12.06908641758965
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.129774850573405,
+            14.116794321104022
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s15-f0",
+          "native_key": "0c9f7feac5cd449ade407694d567852fc90da19274ff7c2d36d3011acc7501b4",
+          "native_rgba_sha256": "9e634e233be1cca0bfd034d5a379ec833dd2366c08aec5f0d37314e8e00dbd72",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s15-f1",
+          "native_key": "13ef9a51a1c2111170d5c52ac0186652e3b07f1715d952074dba81b212d8bb4e",
+          "native_rgba_sha256": "cabcd43f0d8a4bc813ef90597416e485469dbb9149186b02d4695b9706d24763",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s15-f2",
+          "native_key": "3f0c09f11fa81672c7f16950be82313a4938a92e447db4c1088a12e0dcaa30b6",
+          "native_rgba_sha256": "6940d6e80499752e651991493ce5a1048203e54264d7c5ad176a1e8273098653",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 0,
+      "contact": [
+        {
+          "id": "s57-f0-8",
+          "body_sha256": "b43ae4d71829ca11e34eb17e3bf0cf4c0555a13f09fd169005b54b6fea90197f",
+          "contact_pixels": 43,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.160624821826397,
+            12.29106637560579
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            13.86648101816738
+          ]
+        },
+        {
+          "id": "s57-f0-12",
+          "body_sha256": "7ecee0bb12107f6eb62c9aa9fbe0a175827a7577ab6b6053ddb1065343426628",
+          "contact_pixels": 96,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.148208665620677,
+            12.28599573248664
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            13.866789300720322
+          ]
+        },
+        {
+          "id": "s57-f1-8",
+          "body_sha256": "62ea887d9e33c3c8ad0e4dc2726d6e9b45487b1ed7c7cc033a4016f29808ae61",
+          "contact_pixels": 90,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.193149315786446,
+            12.44614694452789
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            13.86648101816738
+          ]
+        },
+        {
+          "id": "s57-f1-12",
+          "body_sha256": "3def7c3a9f3e97a1f7f1a1dd317ebe2a7bdff2adc96d25db5db4e07a9cb3d4b7",
+          "contact_pixels": 201,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.199366462086715,
+            12.447298978985772
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            13.866789300720322
+          ]
+        },
+        {
+          "id": "s57-f2-8",
+          "body_sha256": "45d345796b41a44ca1d90777133eef0553379fdee9a65ed3ea7b3bf8f3b1b939",
+          "contact_pixels": 50,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.33103451832024,
+            12.214779831693969
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515763154679792,
+            13.86648101816738
+          ]
+        },
+        {
+          "id": "s57-f2-12",
+          "body_sha256": "c20654da1427fa8958ea72da50a432404a7296edaf50791ec5ef0c3401d54df8",
+          "contact_pixels": 105,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.336296328834443,
+            12.211877759026725
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.515537382385448,
+            13.866789300720322
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s57-f0",
+          "native_key": "26c8106c21eddf0121826c1057471d1706811416c2e7bcb0d6b7633f13cd1b80",
+          "native_rgba_sha256": "05ed8735fa0752045a33fa5c8c3e302ab0785486846747d03f24417252974086",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s57-f1",
+          "native_key": "6bcb66f97a6a236881ecbac010d64a47d3c6cc5b4163f5f4e815fda2543c96a6",
+          "native_rgba_sha256": "4a75fb2003f876520c60cbbab02abaa0c7e1ff3445fe95c8fa6ee43eab635ec0",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s57-f2",
+          "native_key": "583ca91fb808be37a83e1b1f5efb1bad7034de12f738f9c89220387f3e0ca1d7",
+          "native_rgba_sha256": "d2dec000363279dc8475bf28b86d176df0400d515d48b93b883c671a076e10f2",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 1,
+      "contact": [
+        {
+          "id": "s58-f0-8",
+          "body_sha256": "f0d17a991648a2d86c08625f02bae16f3d2412b0f6b155dc8a75164b5c41536a",
+          "contact_pixels": 54,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.33896108085349,
+            12.264181278607033
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.667900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s58-f0-12",
+          "body_sha256": "0e1d5d3476c2bfb1d4df1349bca9357fc5628daac6ebde5dee8bde4eb7035be6",
+          "contact_pixels": 121,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.32971268920979,
+            12.266684522309049
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.668020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s58-f1-8",
+          "body_sha256": "79fb2896946cd53a8bbdfa219917438e1c846eae24b9bdff8d8dfd06a2faec9e",
+          "contact_pixels": 43,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.703835705111215,
+            12.386575584279665
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.667900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s58-f1-12",
+          "body_sha256": "fe211d0c6e94b4bd89d855a35fdce6fcc9faa15f68b770c9302be1009b035490",
+          "contact_pixels": 100,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.705502431037656,
+            12.38584262701363
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.668020550712509,
+            14.116760112763162
+          ]
+        },
+        {
+          "id": "s58-f2-8",
+          "body_sha256": "bba374252c0e3bb6f4b3c067a5a794583d8e2a856dcacf334eba98b67d299ee2",
+          "contact_pixels": 52,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            11.191245062161192,
+            12.267070814166253
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.667900727889702,
+            14.116411759563267
+          ]
+        },
+        {
+          "id": "s58-f2-12",
+          "body_sha256": "90933a94bf50f5171312ba3c4936987bcd282c7e7a0b1ba2783da68d9de0a5af",
+          "contact_pixels": 119,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            11.204786128979864,
+            12.271983758846764
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.668020550712509,
+            14.116760112763162
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s58-f0",
+          "native_key": "fab3882f34ec9d141ab430b35d161647871407e7216f2a4be7a1540d0cf21997",
+          "native_rgba_sha256": "c568a994a833ad52c7b539ea24e5683bea6763a849d0a58ff07dfc72bd7f8596",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s58-f1",
+          "native_key": "2c44758a2a86fd752acb05a95a897b45fca1756301bee9a6190af82b5b7942ed",
+          "native_rgba_sha256": "99aabffa6f64f74f3e45483b4cab863e47b17688ae8953a085b26a811727b7f4",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s58-f2",
+          "native_key": "eea58dbf09b25e8f10f649ee9870e1f224326bbc084d4ed6bc09d55eb1304fed",
+          "native_rgba_sha256": "62179feda41004391fcba3d5cfcdba023275ec3aa12346432f84ccd3f533979f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 2,
+      "contact": [
+        {
+          "id": "s59-f0-8",
+          "body_sha256": "37e504c8905d051dbc4ea38fd062ceb410051338c9b806027a1a62f8fd63b076",
+          "contact_pixels": 122,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.70790132560252,
+            12.438214950598315
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493759198557282,
+            14.116491591456613
+          ]
+        },
+        {
+          "id": "s59-f0-12",
+          "body_sha256": "89525663d91c3f031b5e5741ce3f94ebb58c6cf6f2cd42108526ea50c88d1102",
+          "contact_pixels": 271,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.70276085070874,
+            12.438258286944015
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493517556316213,
+            14.116834214931478
+          ]
+        },
+        {
+          "id": "s59-f1-8",
+          "body_sha256": "ec194d26d44d6f7cd292104e5b5f1698aeb9a550663113da7599857bb12f7f73",
+          "contact_pixels": 145,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.834755246596623,
+            12.560353964241514
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493759198557282,
+            14.116491591456613
+          ]
+        },
+        {
+          "id": "s59-f1-12",
+          "body_sha256": "b464f882c5c9806a784c0ae297d0a23eaa3367a2ed27c255e6856c1375f0ad46",
+          "contact_pixels": 322,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.840059520812597,
+            12.562984845140027
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493517556316213,
+            14.116834214931478
+          ]
+        },
+        {
+          "id": "s59-f2-8",
+          "body_sha256": "26c6b5e7cbf22ec5a74244535d7e66f411b3c90b0fb3ff4cc6f9f341ba2ab533",
+          "contact_pixels": 67,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.190712945909377,
+            12.301646125685014
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493759198557282,
+            14.116491591456613
+          ]
+        },
+        {
+          "id": "s59-f2-12",
+          "body_sha256": "40b9bb93b91136abb07a04fabd0855730197f2b838d083903d21621dac13580e",
+          "contact_pixels": 152,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            10.200564213996703,
+            12.305657542001766
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.493517556316213,
+            14.116834214931478
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s59-f0",
+          "native_key": "53e34c7fca758b8c7d80124d908007f2037283442d548af64c85c763c3ad3bf9",
+          "native_rgba_sha256": "fb6a69fb9a3065e57e096f02cdbfdf0d50404582819f747dee72c5edc56d9f2f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s59-f1",
+          "native_key": "afed51c7c1065852f98abf661c4c0031647b54ef4b7f5249a0dab4b5bc7979eb",
+          "native_rgba_sha256": "30bde3fedc450af309127d296cce814b3470beef4ed9659d9a9f0e4cb040d4b0",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s59-f2",
+          "native_key": "b6255c910caab25f358f40f0dd5174a62be495c4ee3bf3232d95cb1bd2175a59",
+          "native_rgba_sha256": "2db61c1a3f556d9c30e03209598448494e937ae0c0c56b10479bdf13ecc3b49a",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 3,
+      "contact": [
+        {
+          "id": "s60-f0-8",
+          "body_sha256": "207c3fc094c52880b2f53b54de877174474b057dc10582ba690d02e564d7cd67",
+          "contact_pixels": 52,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            11.042961565733785,
+            12.435473863812627
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379723866984456,
+            13.866529994050355
+          ]
+        },
+        {
+          "id": "s60-f0-12",
+          "body_sha256": "b66c51f8c03dec927563ebd555f3009054623e46a57dc9efa8e95751178780a1",
+          "contact_pixels": 116,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            11.040131973848574,
+            12.437693661686216
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379774850573405,
+            13.866794321104022
+          ]
+        },
+        {
+          "id": "s60-f1-8",
+          "body_sha256": "89edd66410138974abe1256c1ca3d00f9df19012587fe4341495e770e8d94306",
+          "contact_pixels": 49,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.4038025612663,
+            12.404659432595386
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379723866984456,
+            13.866529994050355
+          ]
+        },
+        {
+          "id": "s60-f1-12",
+          "body_sha256": "055c040fe3cc3b90e21f0b174d621b9dc51b9153e74e6c0b9639c5bc96d6441d",
+          "contact_pixels": 106,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.400123100089244,
+            12.409032135239533
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379774850573405,
+            13.866794321104022
+          ]
+        },
+        {
+          "id": "s60-f2-8",
+          "body_sha256": "377b95aab711371b1946d0bdc55aba2013e5582845e3c7c87b8290284269fcb8",
+          "contact_pixels": 58,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.384819810688489,
+            12.294299038549052
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379723866984456,
+            13.866529994050355
+          ]
+        },
+        {
+          "id": "s60-f2-12",
+          "body_sha256": "7d3fc778535b3d3f071f5517e42b5c4e491d4ede44524f2aa9e250ac999f6a12",
+          "contact_pixels": 134,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.389487535731387,
+            12.302580761398978
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            11.379774850573405,
+            13.866794321104022
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s60-f0",
+          "native_key": "fe172037cb7335099015465a7cc8996a69f087f45250e2d28595302d13e593e8",
+          "native_rgba_sha256": "2d93f945a895c55693a6ee286a640e017d90a5ab3c7865a212b83172fb1352be",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s60-f1",
+          "native_key": "42bd996285b744f8d2a6b1e03507e4861b608e0f95849f422f4c8320e9fa2d98",
+          "native_rgba_sha256": "650a3348abf42c5ec825aa90b11f012659cda048d4e27f5902e6f3977607193d",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s60-f2",
+          "native_key": "29ed7a3790d3157ec7d7f70ce90a646fcd3172d853e08c7fb94fd111a73e7f0f",
+          "native_rgba_sha256": "c63713464dbae7b1c9b089f200413e54b92e7332febbdb5f38e083969808bb0f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 4,
+      "contact": [
+        {
+          "id": "s61-f0-8",
+          "body_sha256": "d60c4e52b7c6bf69e9843b15218cd08e8170b62a5c0e67489d820f016827fedc",
+          "contact_pixels": 35,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.945646632812808,
+            12.31480388223067
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s61-f0-12",
+          "body_sha256": "15a4bb8c999237186e0100a6acfccc60a2cb4770ecfac148be5e514111ebb411",
+          "contact_pixels": 81,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.942024487680747,
+            12.317612315771969
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "s61-f1-8",
+          "body_sha256": "e3110f1359df28747fd6641f38656d66f38a0d1d165508c42ead0f2596753d8f",
+          "contact_pixels": 73,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.27383918039786,
+            12.378349126920376
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s61-f1-12",
+          "body_sha256": "bfcc6c81c3265857bf9830e4cafb685fe1861c11d42096bfcdc851355e562765",
+          "contact_pixels": 167,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.26833001893788,
+            12.381006409252173
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "s61-f2-8",
+          "body_sha256": "a01e223dbad0d62ec9bda4489fd16f74cf4073af12bec7bdfdc59ce48f3608b0",
+          "contact_pixels": 35,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.340961357794335,
+            12.242625327835697
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "s61-f2-12",
+          "body_sha256": "7d4d31fd626edfe95379bbdd6d2960bec4d3f1b173623b740ac1c07527a7de60",
+          "contact_pixels": 78,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.345158964518798,
+            12.23958716334222
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.765537382385448,
+            14.366789300720322
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s61-f0",
+          "native_key": "e6002336d7af30ef610ddf1167da1725655cc7efae63861afdffea394966ae77",
+          "native_rgba_sha256": "f7953886215c2fe13f5f78c2fbe596a4f825b9dd9f59aa4e32af524dd19630bf",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s61-f1",
+          "native_key": "e5a7f38611887584aeac7a7ae1cd3ec45dcbd0265b852a2918f986fcdedcbf62",
+          "native_rgba_sha256": "39ce38b9c9321ee483212a148921696b84987de6833d6154a926dc7c2d3c6fe4",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s61-f2",
+          "native_key": "55280c81bf46339667d8d4cc36c7a1d63971ba96db0fd42d76b647418ecd3a7c",
+          "native_rgba_sha256": "f57c81a95dd8ec294e6518f11bbfefdd5b17c9f90b579d37c2e922163ed2f41f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 5,
+      "contact": [
+        {
+          "id": "s62-f0-8",
+          "body_sha256": "0ea2b1bdfde9e4dfbc21ca5a8123eb9a0912c4debcae5604a11f50935125b071",
+          "contact_pixels": 39,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            4.374100475781405,
+            12.41677212053129
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.591973962332861,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "s62-f0-12",
+          "body_sha256": "2921b6752a03b078cc0fbdd16a8c182451dfb1a6901b14ad0e73bec510e4c53f",
+          "contact_pixels": 90,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            4.3666011017617725,
+            12.421506015689056
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.592442303075022,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "s62-f1-8",
+          "body_sha256": "c352d7c434bf4a6ac26cf336141fd7092ffc2770826d6ae925b9e36c673adda0",
+          "contact_pixels": 55,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.843242356013706,
+            12.417774405103993
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.591973962332861,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "s62-f1-12",
+          "body_sha256": "829d03322cbd5a6c5c8d63199f7d97a98ded6e422ec513be4f45c57da42375ea",
+          "contact_pixels": 120,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.847475110258827,
+            12.414562502805907
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.592442303075022,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "s62-f2-8",
+          "body_sha256": "fdc3cf114f7d5c58b25c8f343fc4167581be1b439ccc2414397d2be1243cdda3",
+          "contact_pixels": 48,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.1311818902962365,
+            12.300368128343173
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.591973962332861,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "s62-f2-12",
+          "body_sha256": "3a6b1bf53d2bf4ae6981fd63ea963e5512aff5c69feb4c14cfdbf6556411f30e",
+          "contact_pixels": 114,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.141287533889854,
+            12.306259070238395
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            7.592442303075022,
+            14.366562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s62-f0",
+          "native_key": "78ec5f3eb240509e009cb9c15be6f23752f7bd9424142bb2eb7571a68a9015a2",
+          "native_rgba_sha256": "cccd6c980c2943a2f62682853c8b520f32cbd884dc2fa26844a7701ff4800437",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s62-f1",
+          "native_key": "558e96aa965d5d7d5a1d58afa58eee44f194421764ad41aadb5ff020b2ad8eba",
+          "native_rgba_sha256": "4f3add1873b2224ec0ed272bdf82064ed7f3a064e0677c822a913917b83dd3d1",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s62-f2",
+          "native_key": "364ffaf0d65f5385b715d8203d6fc32a0f14c0ea5d38dbaeb34b008899a9126c",
+          "native_rgba_sha256": "95abf227e2bc011f99b484b7a623acb54950916cc17a5598b2d485c1d6c21b63",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 6,
+      "contact": [
+        {
+          "id": "s63-f0-8",
+          "body_sha256": "0e11f0d44ffbc30be9c96f456705adf9e05be48971add2ebf5dc4fa6356831bf",
+          "contact_pixels": 63,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.139876773832339,
+            12.344508656517151
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.9937591985572825,
+            14.366491591456613
+          ]
+        },
+        {
+          "id": "s63-f0-12",
+          "body_sha256": "f63ae98e07aaf420a71cbc309a607ae2de3784762ee0b49b73ee1a5082b2f63e",
+          "contact_pixels": 140,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.138668931984561,
+            12.34367718394178
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.993517556316213,
+            14.366834214931478
+          ]
+        },
+        {
+          "id": "s63-f1-8",
+          "body_sha256": "d774bdc32547202d1a181c6fae52e37e82caf9b76455527a8a7a16f2f9c68416",
+          "contact_pixels": 168,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.034411907816163,
+            12.565948599991152
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.9937591985572825,
+            14.366491591456613
+          ]
+        },
+        {
+          "id": "s63-f1-12",
+          "body_sha256": "f93cff29ee15b186642f77ea3c08749fba4fdbf2250c04251e115979d5860153",
+          "contact_pixels": 371,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.025693423276798,
+            12.565373189465673
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.993517556316213,
+            14.366834214931478
+          ]
+        },
+        {
+          "id": "s63-f2-8",
+          "body_sha256": "93260ad0b4de147450ae4aeee55fb0f82d1100d9618c2b98b07e0622c14b4883",
+          "contact_pixels": 82,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.247537446220853,
+            12.315987013331917
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.9937591985572825,
+            14.366491591456613
+          ]
+        },
+        {
+          "id": "s63-f2-12",
+          "body_sha256": "ad8cfd478e17d33d2fc5190f1ebb470a66d7ed6d6c1962a34898089165eb79dc",
+          "contact_pixels": 180,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            5.243403813589537,
+            12.313965171649926
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            6.993517556316213,
+            14.366834214931478
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s63-f0",
+          "native_key": "e34c52463adffed3ae5aef1809e926555bc94183423f81b3e4357f0e3942bbdc",
+          "native_rgba_sha256": "8676734ca20ce9af9a04a0a0356aecf518999c382233979057ccd6a118a89c41",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s63-f1",
+          "native_key": "daa3bae731e1c12f8ebfe5f2010937b6e0062e0e217865c838bbe84b9836671c",
+          "native_rgba_sha256": "081d39e5842acafed4a723e419fa7c72832c944075c367f9ceb00e4b9dcdbd4f",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s63-f2",
+          "native_key": "28c2ab774e951fca116bc92a5390d06f14eb6630908964228aa6c468c6c00cc7",
+          "native_rgba_sha256": "2ec316f4c72a3bf9b2b641a795f423513e10a26d962c38b9c8582091332bb692",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 7,
+      "contact": [
+        {
+          "id": "s64-f0-8",
+          "body_sha256": "878d867cf8478256bd0e3b6c69060882338187927a6fc87b9e192f35627c367d",
+          "contact_pixels": 40,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.464589401662723,
+            12.294074086716426
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "s64-f0-12",
+          "body_sha256": "e51f2105e73bdb9ddac6f08bb0df9b441e303554af74c141d2db3cd52a698ec7",
+          "contact_pixels": 92,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            8.47229260198886,
+            12.293598743458277
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053615403883104,
+            14.116911956152753
+          ]
+        },
+        {
+          "id": "s64-f1-8",
+          "body_sha256": "a3c93e0314453b2d5e8226bf0bdf634852a19cb015ef497555e77a0496e1a7f4",
+          "contact_pixels": 77,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            7.72242619188731,
+            12.17023589651703
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "s64-f1-12",
+          "body_sha256": "09819864d34903a2ff3f0bbc5a59ae61413f1de49733d1bacc3f9256b28f4587",
+          "contact_pixels": 176,
+          "opaque_bottom": 13.75,
+          "support_center": [
+            7.720840627140574,
+            12.170765025242915
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053615403883104,
+            14.116911956152753
+          ]
+        },
+        {
+          "id": "s64-f2-8",
+          "body_sha256": "63501c3bd298f0f3571cd54afbc3d6a1c1ef1b3fd9285fc13b27e048d0688da6",
+          "contact_pixels": 48,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.52531442304077,
+            12.40242467633383
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "s64-f2-12",
+          "body_sha256": "ce089b7a76ee259fb1d6ceee603c02821234c7e782333135bea2d882f9038e9c",
+          "contact_pixels": 107,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            6.538894634428247,
+            12.399571096248911
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.053615403883104,
+            14.116911956152753
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "s64-f0",
+          "native_key": "107973c3a620312b82442a49c6b028dfd0b122075a9aac36f8f358d3464c26d1",
+          "native_rgba_sha256": "477e3c5df1326978c00fcb57ffb843c9d0ef43e7078c9d784fcb0cb616d18413",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s64-f1",
+          "native_key": "e06cd8be9048ca3230ebb180e1d1707bc29ee7516203bb30bb4c02772f4755fe",
+          "native_rgba_sha256": "8403a3f3418c37a6729e99dcda54a637a1283dfc155c2a54ae4adc40cf3b75ad",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        },
+        {
+          "id": "s64-f2",
+          "native_key": "d5f35d869a8732dbc7531e21c9f65f2dc82a51766522d9c63daa2efa98d4a133",
+          "native_rgba_sha256": "43f569c1c67d36acd65d502d2ecc0aca7520a97df09846f00ac81065a356c947",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "enemy-walk-44-f1",
+      "direction": null,
+      "contact": [
+        {
+          "id": "enemy-walk-44-f1-8x",
+          "body_sha256": "e88ea45e84b87577b72cac8e51341eec3c82441477cd990274845d4d0c428c6b",
+          "contact_pixels": 63,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.900428102239257,
+            12.432038191834168
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.591973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-walk-44-f1-12x",
+          "body_sha256": "13b79f8272b8553b227ae0ae487f21b4750c91a176fafdf26803a9d9cfdd603a",
+          "contact_pixels": 140,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            7.899801787228326,
+            12.433389706189395
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.592442303075021,
+            14.366562282227415
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "enemy-walk-44-f1",
+          "native_key": "af38382eee31380c6ba6d0469c9237f48400fa21bdeb3e8f09efbdd149988d77",
+          "native_rgba_sha256": "18484cf62316380c2b8a03f3919d565887d1cb85a9460a17a7d8071b0deafefb",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "enemy-walk-45-f1",
+      "direction": null,
+      "contact": [
+        {
+          "id": "enemy-walk-45-f1-8x",
+          "body_sha256": "12cdd3c9727c38c83b437b48cf1e507e7d836f4774ce533399cde71fa8e0032a",
+          "contact_pixels": 58,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.021415955462613,
+            12.495833804329395
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.515763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-walk-45-f1-12x",
+          "body_sha256": "c3e62bfcbe674c8203f3c121b50ac884f9d80a6f890748c4a16d450c2596f807",
+          "contact_pixels": 124,
+          "opaque_bottom": 14.0,
+          "support_center": [
+            9.020953113663088,
+            12.491397291234039
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            10.515537382385448,
+            14.366789300720322
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "enemy-walk-45-f1",
+          "native_key": "77d34d3f0593010865c1185e626929f4491ff2303b6656397cd640fb0334356a",
+          "native_rgba_sha256": "289cd896517de5f2376eeac5ac294b6c9c6762c7d174e2bfc6ef41510d4155ee",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family": "enemy-prone-59-f0",
+      "direction": null,
+      "contact": [
+        {
+          "id": "enemy-prone-59-f0-8x",
+          "body_sha256": "a6112cabbd00664b8e2d2bf5e62d364abbf4c6f42e9379cfdc1bd420f0306ebf",
+          "contact_pixels": 143,
+          "opaque_bottom": 13.0,
+          "support_center": [
+            7.8348063643398955,
+            11.27924449899583
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.455462331766668,
+            13.366532849478489
+          ]
+        },
+        {
+          "id": "enemy-prone-59-f0-12x",
+          "body_sha256": "44d03ee4fd5a1e1c91792b5ac4f1dcd424c44cc62b085f7119866053367e365f",
+          "contact_pixels": 311,
+          "opaque_bottom": 13.0,
+          "support_center": [
+            7.844641452450699,
+            11.277312217544434
+          ],
+          "all_contact_covered": true,
+          "shadow_center": [
+            9.455737414836872,
+            13.36686142096497
+          ]
+        }
+      ],
+      "poses": [
+        {
+          "id": "enemy-prone-59-f0",
+          "native_key": "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8",
+          "native_rgba_sha256": "33560bed47a5af3e46db0408a8220e81ac23132ad72059b6f2744d887086515d",
+          "window": {
+            "win": {
+              "sha256": "8f0b44990a1f98ccdfef1593162efe1a91dbb9f1a0f1c0ee3734b536a3416709",
+              "positive_cases": 4
+            },
+            "linux": {
+              "sha256": "890271fc418581333dcc5b5f0ab4adc492a0cd16d9d09f136bf3422e53f5b51b",
+              "positive_cases": 4
+            }
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "aggregate": {
+    "poses": 83,
+    "body_derivatives": 166,
+    "groups": 35,
+    "shared_paint_assets": 14,
+    "unchanged_special_assets": 64,
+    "all_existing_candidate": {
+      "assets": 244,
+      "bindings": 386
+    },
+    "playable_candidate": {
+      "assets": 212,
+      "bindings": 363
+    },
+    "window_positive_cases": {
+      "Windows": 332,
+      "Linux": 332
+    },
+    "immutable_body_assets": 230,
+    "new_native_keys": 0,
+    "invalid_input_rejected_before_output": true,
+    "runtime_replays": [
+      {
+        "platform": "win",
+        "log_sha256": "b0094b9b07582688b9a529124f0e53d465e12480b59a0578098a64f5a8fe5bb7",
+        "H3_states": 1546,
+        "HD_publications": 4096,
+        "missing": 458,
+        "snapshots": 79
+      },
+      {
+        "platform": "linux",
+        "log_sha256": "2719aedbab6b5eb32089e162c0cff663968bdd4f3ab92adb764d61ed0b5bd707",
+        "H3_states": 1546,
+        "HD_publications": 4096,
+        "missing": 458,
+        "snapshots": 28
+      }
+    ]
+  }
 }
