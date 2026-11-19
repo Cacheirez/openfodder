@@ -91,5 +91,27 @@
     "Propagation to 83 existing normal poses after source/contact checks",
     "Full CI, GPU, CD32, audio and visual/gameplay acceptance of full set"
   ],
-  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract"
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract",
+  "qualification_20261119": {
+    "contract_commit": "653d19d080f71520fac7228118fb474f1c7d61ec",
+    "windows_ci": {
+      "run": 44416432197,
+      "result": "complete success"
+    },
+    "linux_ci": {
+      "run": 44416432186,
+      "observed": "CTest, A2, full original H3 and relevant ordered publication steps success; remaining full-engine diagnostics in progress"
+    },
+    "linux_h3": "PASS 11 phases / 11361 pinned canonical states",
+    "normal_pose_qualification": {
+      "poses": 83,
+      "density_assets": 166,
+      "platforms": [
+        "Windows ASan/UBSan",
+        "Linux ASan/UBSan/LSan"
+      ],
+      "window_cases_per_platform": 332,
+      "runtime_activation": false
+    }
+  }
 }
