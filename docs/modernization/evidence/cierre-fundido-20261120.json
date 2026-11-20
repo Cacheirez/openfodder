@@ -6,10 +6,56 @@
   "tests": {
     "windows": "PASS Window strict/hybrid, 8x/12x, partial/last-entry/black negatives, exact complete-palette SDL and complete SDL recovery; ASan/UBSan",
     "linux": "PASS same Window cases ASan/UBSan/LSan; actual accessor + unchanged native fade;144 pause schedules 0/1/5 presentations",
-    "h3": "PENDING new diagnostic engine Windows/Linux",
-    "runtime": "PENDING early-publication contrast",
-    "ci": "PENDING publication",
-    "gameplay": "PENDING Miguel; partial fades intentionally remain classic"
+    "h3": "PASS local Windows/Linux 11 phases/11361 states each",
+    "runtime": {
+      "win": {
+        "first_hd_before": 87,
+        "first_hd_after": 84,
+        "extra_complete_palette_presentations": 3,
+        "previous_outcomes_and_ordered_commands_unchanged": true,
+        "log_sha256": "d9eeb4255aefe99c8222f1963b3a9bfb166b132e3f54a1fdc052443db2987eae",
+        "outcomes": {
+          "missing-variant": 89,
+          "published": 4468
+        }
+      },
+      "linux": {
+        "first_hd_before": 87,
+        "first_hd_after": 84,
+        "extra_complete_palette_presentations": 3,
+        "previous_outcomes_and_ordered_commands_unchanged": true,
+        "log_sha256": "a80973f12e038b5fa7c3c028198d448a6bb01f051eb5419f8566fb4350fa85e6",
+        "outcomes": {
+          "missing-variant": 89,
+          "published": 4468
+        }
+      }
+    },
+    "ci": {
+      "source_sha": "07da18aa56ba6582bf9e1871fd7f782ce5c9378c",
+      "windows": {
+        "run": 44769423700,
+        "ctest": "success",
+        "a2": "success",
+        "full_status": "in_progress",
+        "full_conclusion": null
+      },
+      "linux": {
+        "run": 44769423713,
+        "ctest": "success",
+        "a2": "success",
+        "full_status": "in_progress",
+        "full_conclusion": null,
+        "native_pause": "success"
+      },
+      "density": {
+        "run": 44769423741,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    },
+    "gameplay": "PENDING Miguel; partial fades remain classic, only complete target is newly eligible",
+    "a2": "PASS local Windows/Linux 301 canonical first-phase states, missing-art gate and pause/resume"
   },
   "logs": [
     {
@@ -37,5 +83,20 @@
       "sha256": "c31a13ea6e581e4494f5e8b4665806b15105d3268ed64ebeeacc816e65782d7c"
     }
   ],
-  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3"
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3",
+  "implementation_sha": "07da18aa56ba6582bf9e1871fd7f782ce5c9378c",
+  "launcher": {
+    "file": "PROBAR_REINICIO_P1.cmd",
+    "script": "Probar-P1-Reinicio.ps1",
+    "manifest": "split-complete-candidate/candidate-manifest.json",
+    "assets": 244,
+    "bindings": 399,
+    "hash_checks": "PASS engine/manifest/all asset hashes",
+    "sha256": {
+      "PROBAR_REINICIO_P1.cmd": "d8847fc99f26edddaa7cf4a203235b4526690e5f697b105f8b46699c7260cb99",
+      "Probar-P1-Reinicio.ps1": "01f56358d0bb22bc94b295dd4fdaac99947d0c85324a5a25ddd40c5acca5af90",
+      "palette-probe-build/Release/native_probe.exe": "399c8efc56a33a7c12540ffb9ddc9ad4725652010046a9d0662130fa9ca8df74",
+      "palette-probe-linux-build/native_probe": "1fb2014d31c465b57781907242f7b0111d1dcfe310b8b96148ceddbf0c7418ab"
+    }
+  }
 }
