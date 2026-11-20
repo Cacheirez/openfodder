@@ -1,4 +1,4 @@
-"""Bind five observed and qualified lower-aim poses; never the unobserved batch."""
+"""Bind observed lower-aim poses in two bounded stages; never the unobserved batch."""
 import argparse
 import hashlib
 import json
@@ -12,13 +12,16 @@ def main():
         p.add_argument('--' + name, type=Path, required=True)
     p.add_argument('--native-json', type=Path, action='append', required=True)
     p.add_argument('--resources', type=Path, action='append', required=True)
+    p.add_argument('--completion', action='store_true', help='Only the three other previously observed directions')
     a = p.parse_args()
-    contract = json.loads((Path(__file__).resolve().parents[2] /
-                          'assets/modernization/demo-a1-observed-aim.json').read_text())
-    assert {b['sheet'] for b in contract['bindings']} == set(range(0x12, 0x17))
-    assert len(contract['bindings']) == 5
+    name = 'demo-a1-observed-aim-completion.json' if a.completion else 'demo-a1-observed-aim.json'
+    contract = json.loads((Path(__file__).resolve().parents[2] / 'assets/modernization' / name).read_text())
+    expected_sheets = {0x10, 0x11, 0x17} if a.completion else set(range(0x12, 0x17))
+    assert {b['sheet'] for b in contract['bindings']} == expected_sheets
+    assert len(contract['bindings']) == len(expected_sheets)
     result = json.loads((a.base / 'candidate-manifest.json').read_text())
-    assert len(result['assets']) == 244 and len(result['bindings']) == 391
+    expected_base = 396 if a.completion else 391
+    assert len(result['assets']) == 244 and len(result['bindings']) == expected_base
     assets = {r['id']: r for r in result['assets']}
     for identifier, expected in contract['qualified_asset_descriptors'].items():
         descriptor = json.dumps(assets[identifier], sort_keys=True, separators=(',', ':')).encode()
@@ -48,7 +51,7 @@ def main():
     for name, raw in payloads:
         (a.out / name).write_bytes(raw)
     (a.out / 'candidate-manifest.json').write_text(json.dumps(result, indent=2) + '\n')
-    print('PASS five observed/qualified aim keys, unchanged bodies/shadows and previous 391 bindings; 244/396')
+    print(f'PASS {len(expected_sheets)} observed/qualified aim keys, unchanged bodies/shadows and previous {expected_base} bindings; 244/{len(result["bindings"])}')
 
 
 if __name__ == '__main__':

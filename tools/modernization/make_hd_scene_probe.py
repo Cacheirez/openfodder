@@ -1,6 +1,6 @@
 """Add bounded scene/call metadata to an existing local diagnostic WindowHD copy.
 
-Does not change guard conditions, rendering or simulation. The input may contain
+Does not change recovery conditions, rendering or simulation. The input may contain
 the pre-existing private native-snapshot exporter; no resources are published.
 """
 import argparse
