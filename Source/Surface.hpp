@@ -415,5 +415,15 @@ public:
 	inline size_t		GetHeight() const { return mHeight; }
 
 	inline bool			isPaletteAdjusting() const { return mPaletteAdjusting; }
+    // The native fade keeps its adjusting flag for one call after the last
+    // component reaches the target. Read completion without advancing it.
+    inline bool paletteMatchesTarget() const {
+        for (size_t i = 0; i < g_MaxColors; ++i)
+            if (mPalette[i].mRed != mPaletteNew[i].mRed ||
+                mPalette[i].mGreen != mPaletteNew[i].mGreen ||
+                mPalette[i].mBlue != mPaletteNew[i].mBlue)
+                return false;
+        return true;
+    }
     inline void         resetPaletteAdjusting() { mPaletteAdjusting = false; }
 };

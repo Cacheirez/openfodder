@@ -56,14 +56,23 @@ for(const char* density:{"8","12"}){
     image.scene.layers[1]=second;
     image.scene.destinations[0].initial.indexed.colors=recolored;assert(win.TryRenderMissionHD(&image,src,dst)==-1);
     image.scene.destinations[0].initial.indexed.colors=colors;assert(win.TryRenderMissionHD(&image,src,dst)==1);
-    image.adjusting=true;assert(win.TryRenderMissionHD(&image,src,dst)==-1);image.adjusting=false;
-    assert(win.TryRenderMissionHD(&image,src,dst)==1);
+    image.adjusting=true;assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+    image.paletteTarget=colors;
+    // Even an unused final palette entry must match before fade completion.
+    image.paletteTarget.back()^=1;
+    assert(win.TryRenderMissionHD(&image,src,dst)==-1);
+    image.paletteTarget=colors;
+    image.scene.destinations[0].initial.indexed.colors.fill(0);image.paletteTarget.fill(0);
+    assert(win.TryRenderMissionHD(&image,src,dst)==-1); // Settled black is still rejected.
+    image.scene.destinations[0].initial.indexed.colors=colors;image.paletteTarget=colors;
+    clear(renderer);assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==expected);
     // Resolution is not publication: exercise both SDL recovery outcomes.
     clear(renderer);callNumber=0;failAt=1;
     assert(win.TryRenderMissionHD(&image,src,dst)==1 && live==0);
     callNumber=0;secondFail=2;
     assert(win.TryRenderMissionHD(&image,src,dst)==0 && live==0);
     failAt=secondFail=0;
+    image.adjusting=false;image.paletteTarget.fill(0);
     assert(win.TryRenderMissionHD(&image,src,dst)==1);
     image.scene.layers={cover};assert(win.TryRenderMissionHD(&image,src,dst)==-1);
     image.scene.layers={body,second,cover};

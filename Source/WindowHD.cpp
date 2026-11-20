@@ -60,7 +60,7 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     if(g_Fodder->mPhase_ShowMapOverview)return classic("map-overview");
     if(g_Fodder->mInterruptCallback)return classic("scene-callback");
     if(image->isLoadedImage())return classic("loaded-image");
-    if(image->isPaletteAdjusting())return classic("palette-transition");
+    if(image->isPaletteAdjusting() && !image->paletteMatchesTarget())return classic("palette-transition");
     if(!image->MissionAuditActive())return classic("missing-audit-interval");
     float sx=0,sy=0;int w=0,h=0;
     SDL_RendererLogicalPresentation logical=SDL_LOGICAL_PRESENTATION_DISABLED;

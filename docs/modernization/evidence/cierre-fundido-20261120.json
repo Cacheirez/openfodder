@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-20",
+  "scope": "Only fully reached target palette may pass the stale adjusting flag. Actual partial fades/black/invalid data still rejected; no fade/tick/logic changes",
+  "source_head_before": "fe53157",
+  "native_fade_function_sha256": "b45dc97f861f48f7fbae2b30a2fea496a42e3f817545ce6d6723ce522e0709a6",
+  "tests": {
+    "windows": "PASS Window strict/hybrid, 8x/12x, partial/last-entry/black negatives, exact complete-palette SDL and complete SDL recovery; ASan/UBSan",
+    "linux": "PASS same Window cases ASan/UBSan/LSan; actual accessor + unchanged native fade;144 pause schedules 0/1/5 presentations",
+    "h3": "PENDING new diagnostic engine Windows/Linux",
+    "runtime": "PENDING early-publication contrast",
+    "ci": "PENDING publication",
+    "gameplay": "PENDING Miguel; partial fades intentionally remain classic"
+  },
+  "logs": [
+    {
+      "file": "palette-strict-win.log",
+      "sha256": "f71561b52a2e56146ca24c4476e313f392a00af495509bbf158d06df5953e24e"
+    },
+    {
+      "file": "palette-hybrid-win.log",
+      "sha256": "c17a49787f8c5c8aec0e73cc82642f4fe0b675f9a1c7fd92841faf0b787985e8"
+    },
+    {
+      "file": "palette-strict-linux.log",
+      "sha256": "b45314c8eb0edd93c5e2e151df7a51506930d7b2a5902f9c8e7554871281b1dd"
+    },
+    {
+      "file": "palette-hybrid-linux.log",
+      "sha256": "4725b1fda59f871ec3407ec49706a07a2672bdc09697b3a8b2d337e5e12ddaca"
+    },
+    {
+      "file": "palette-native-pause-linux.log",
+      "sha256": "0b26044713ee31a28309059217539ad1422c4eac5a5176881b928c30d631bb98"
+    },
+    {
+      "file": "palette-completion-proof.log",
+      "sha256": "c31a13ea6e581e4494f5e8b4665806b15105d3268ed64ebeeacc816e65782d7c"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3"
+}

@@ -10,6 +10,8 @@ def build_code(root):
  source=(root/'Source/Surface.cpp').read_text()
  fodder=(root/'Source/Fodder.cpp').read_text()
  original=subprocess.check_output(['git','show',BASELINE+':Source/Fodder.cpp'],cwd=root,text=True)
+ original_surface=subprocess.check_output(['git','show',BASELINE+':Source/Surface.cpp'],cwd=root,text=True)
+ assert function(source,'bool cSurface::palette_FadeTowardNew(')==function(original_surface,'bool cSurface::palette_FadeTowardNew('), 'Native fade must remain unchanged'
  assert canonical_pause(fodder)==original, 'Only the pure pause presentation block may change'
  header=(root/'Source/Surface.hpp').read_text().replace('protected:', 'public:')
  code=r'''
@@ -117,6 +119,22 @@ Result run(int w,int h,int mode,int repeats,int variant){
  return r;
 }
 int main(){size_t cases=0;
+ // Exercise the real surface accessor with the unchanged native fade, including
+ // the completed target whose legacy adjusting flag is cleared on the next call.
+ for(int direction:{0,1}){
+  cSurface s(32,32);
+  for(size_t i=0;i<255;++i){auto& p=direction?s.mPalette[i]:s.mPaletteNew[i];p.mRed=uint8(i%64);p.mGreen=uint8((i*3)%64);p.mBlue=uint8((i*7)%64);}
+  s.mPaletteAdjusting=true;int calls=0,completedButFlagged=0;
+  while(s.isPaletteAdjusting()){
+   auto before=logical(s);const bool complete=s.paletteMatchesTarget();assert(before==logical(s));
+   bool equal=true;for(size_t i=0;i<255;++i)for(int c=0;c<3;++c)equal&=s.mPalette[i].getPos(c)==s.mPaletteNew[i].getPos(c);
+   assert(complete==equal);assert(++calls<256);s.palette_FadeTowardNew();
+   if(s.paletteMatchesTarget()&&s.isPaletteAdjusting())++completedButFlagged;
+  }
+  assert(s.paletteMatchesTarget()&&completedButFlagged==1);
+  auto before=logical(s);assert(s.paletteMatchesTarget()&&before==logical(s));
+  s.mPaletteNew[254].mBlue^=1;assert(!s.paletteMatchesTarget());
+ }
  for(int w:{32,80,400})for(int h:{32,49})for(int padding:{0,3})for(int mode=0;mode<4;++mode){
   pad=padding;auto old=run(w,h,mode,1,0),actual=run(w,h,mode,1,1);
   assert(old.frames==actual.frames&&old.trace==actual.trace&&old.state==actual.state);
