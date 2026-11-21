@@ -3878,9 +3878,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-9f-f3/player-pose-9f-f3-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 164,
@@ -5200,9 +5200,9 @@
       "counts": {
         "required": 165,
         "latent": 24,
-        "masters": 149,
+        "masters": 150,
         "exact_reuse_candidates": 0,
-        "missing": 16,
+        "missing": 15,
         "surplus": 1
       }
     },
@@ -8896,9 +8896,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-9f-f3/player-pose-9f-f3-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 164,
@@ -10218,9 +10218,9 @@
       "counts": {
         "required": 164,
         "latent": 24,
-        "masters": 148,
+        "masters": 149,
         "exact_reuse_candidates": 0,
-        "missing": 16,
+        "missing": 15,
         "surplus": 1
       }
     }
