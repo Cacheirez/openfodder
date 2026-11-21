@@ -37,3 +37,5 @@ Los elementos asociados solo conservan su dibujo clásico con procedencia, archi
 - **0x21/F0–F1 comprobado (21-11):** dos maestros de desangrado/daño con override; cuatro derivados, cajas nativas exactas. PASS 64 casos de Window/SDL por plataforma con sanitizadores. Catálogo 113 maestros; 230/385 entradas del candidato, 155 pendientes. Sin activar el lote incompleto ni atribuir aceptación visual de Miguel. [Evidencia](evidence/player-pose-21.json). Siguiente dirección: 0x20, con asimetría PC/Amiga explícita.
 
 - **0x20/F0–F1 comprobado:** dos maestros/cuatro derivados; F0 PC/Amiga y F1 solo Amiga. PASS 48 casos Window/SDL por sistema con sanitizadores; activo previo intacto. Candidato 252 activos, 233/385 entradas, 152 pendientes. [Evidencia](evidence/player-pose-20.json). Siguiente dirección 0x23; 0x22 ya cubierta.
+
+- **0x23 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 3. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 256 activos, 237/385 entradas, 148 pendientes. [Evidencia](evidence/player-pose-23.json). Siguiente: R3 — daño con override dirección 4, 0x24/F0–F1.

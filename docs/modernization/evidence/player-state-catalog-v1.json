@@ -2223,9 +2223,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-hitdeath-23-f0/player-hitdeath-23-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 35,
@@ -2249,9 +2249,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-hitdeath-23-f1/player-hitdeath-23-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 36,
@@ -5106,9 +5106,9 @@
       ],
       "counts": {
         "required": 189,
-        "masters": 115,
+        "masters": 117,
         "exact_reuse_candidates": 3,
-        "missing": 71,
+        "missing": 69,
         "surplus": 1
       }
     },
@@ -7148,9 +7148,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-hitdeath-23-f0/player-hitdeath-23-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 35,
@@ -7174,9 +7174,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-hitdeath-23-f1/player-hitdeath-23-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 36,
@@ -10031,9 +10031,9 @@
       ],
       "counts": {
         "required": 188,
-        "masters": 114,
+        "masters": 116,
         "exact_reuse_candidates": 3,
-        "missing": 71,
+        "missing": 69,
         "surplus": 1
       }
     }
