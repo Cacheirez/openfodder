@@ -9713,9 +9713,9 @@
             "0"
           ],
           "visual_kind": "vehicle_entry_effect",
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-cc-f2/player-pose-cc-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 204,
@@ -9738,9 +9738,9 @@
             "0"
           ],
           "visual_kind": "vehicle_entry_effect",
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-cc-f3/player-pose-cc-f3-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 204,
@@ -9763,9 +9763,9 @@
             "0"
           ],
           "visual_kind": "vehicle_entry_effect",
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-cc-f4/player-pose-cc-f4-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         }
       ],
       "latent": [
@@ -10556,9 +10556,9 @@
         "transition_effects": 5,
         "no_write_slots": 2,
         "latent": 24,
-        "masters": 157,
+        "masters": 160,
         "exact_reuse_candidates": 0,
-        "missing": 7,
+        "missing": 4,
         "surplus": 1
       }
     }
