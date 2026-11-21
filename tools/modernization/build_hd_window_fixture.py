@@ -107,7 +107,9 @@ int main(){
         for (size_t i = 0; i < pixels.size(); ++i)
             assert((pixels[i] >> 24) == ((*original)[i] >> 24));
     };
-    if(std::getenv("OPENFODDER_A1_RANK_F4")){
+    if(std::getenv("OPENFODDER_PLAYER_POSE_CASE")){
+        #include "player_pose_window_cases.inc"
+    } else if(std::getenv("OPENFODDER_A1_RANK_F4")){
         #include "rank_f4_cases.inc"
     } else if(std::getenv("OPENFODDER_ROCKET_ART")){
         #include "rocket_art_cases.inc"

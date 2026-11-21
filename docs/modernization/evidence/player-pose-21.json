@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "block": "R3-override-dir1-21",
+  "date": "2026-11-21",
+  "base_head": "88e488182db8a9d44d4208a43bf5b60ee88e5357",
+  "poses": [
+    {
+      "type": 0,
+      "sheet": 33,
+      "frame": 0,
+      "manifest": "assets/modernization/demo-a1-player-hitdeath-21-f0/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 33,
+      "frame": 1,
+      "manifest": "assets/modernization/demo-a1-player-hitdeath-21-f1/manifest.json"
+    }
+  ],
+  "authoring": "Miguel delegated autonomous protagonist art; internal visual check, not global acceptance",
+  "tests": {
+    "windows": "64 actual Window/SDL cases, ASan/UBSan PASS",
+    "linux": "64 actual Window/SDL cases, ASan/UBSan/LSan PASS",
+    "matrix": "PC/Amiga \u00d7 2 frames \u00d7 2 native states \u00d7 4 scene variants \u00d7 2 densities",
+    "fixture_correction": "Private snapshot loader needed nonzero frozen-resource generation; fixed fixture, no production guard disabled"
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-bleeding-candidate\\candidate-manifest.json",
+    "assets": 248,
+    "covered": 230,
+    "missing": 155,
+    "complete": false,
+    "rgba_bytes": 21979776
+  },
+  "next": "R3 damage override dir0 0x20/F0-F1; PC F1 absent in native table, do not invent it",
+  "ci": "88e4881 Windows/Linux in progress; density workflow success; no full CI PASS claimed"
+}

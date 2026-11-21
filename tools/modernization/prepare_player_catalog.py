@@ -36,11 +36,15 @@ def signature(raw,width,height):
     return digest(b'CF1POSE\x01'+width.to_bytes(8,'little')+height.to_bytes(8,'little')+raw)
 
 
-def build(base,resources,out):
+def build(base,resources,out,extra=()):
     assert not out.exists(),'Preserve prior candidates'
     out.mkdir(parents=True);(out/'native').mkdir()
     original=json.loads((base/'candidate-manifest.json').read_text())
-    assets=original['assets'];art={}
+    assets=list(original['assets']);locations={a['id']:base/a['file'] for a in assets};art={}
+    for package in extra:
+        for asset in json.loads((package/'manifest.json').read_text())['assets']:
+            assert asset['id'] not in locations,'Duplicate modern asset'
+            assets.append(asset);locations[asset['id']]=package/asset['file']
     for asset in assets:
         match=re.fullmatch(r's(\d+)-f(\d+)-(8|12)',asset['id'])
         if match:sheet,frame,density=map(int,match.groups())
@@ -51,8 +55,8 @@ def build(base,resources,out):
         assert (sheet,frame,density) not in art
         art[sheet,frame,density]=asset['id']
     for asset in assets:
-        raw=(base/asset['file']).read_bytes();assert digest(raw)==asset['sha256']
-        shutil.copyfile(base/asset['file'],out/asset['file'])
+        raw=locations[asset['id']].read_bytes();assert digest(raw)==asset['sha256']
+        shutil.copyfile(locations[asset['id']],out/asset['file'])
     retained={}
     for fmt,directory in resources:
         for path in sorted(directory.glob('*.json')):
@@ -91,5 +95,5 @@ def build(base,resources,out):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--base',type=Path,required=True);p.add_argument('--resources',action='append',nargs=2,metavar=('FORMAT','DIRECTORY'),required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    build(a.base,[(int(fmt),Path(path)) for fmt,path in a.resources],a.out)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--base',type=Path,required=True);p.add_argument('--resources',action='append',nargs=2,metavar=('FORMAT','DIRECTORY'),required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--art',type=Path,action='append',default=[]);a=p.parse_args()
+    build(a.base,[(int(fmt),Path(path)) for fmt,path in a.resources],a.out,a.art)
