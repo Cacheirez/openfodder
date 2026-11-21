@@ -306,10 +306,10 @@
     "Source/PC/SpriteData_PC.hpp": "0a85e5ad28c503139fecceabd570f55d761daf416e83b735204ee0ecf062aa22"
   },
   "corrected_body_frames": [
-    0
+    0,
+    1
   ],
   "pending_corrections": [
-    1,
     2,
     3,
     4
