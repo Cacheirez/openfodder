@@ -11,6 +11,56 @@
       "review": "Native table/raster identical in PC and Amiga; reuse the exact immutable C01 master image, but export separate target derivatives inside the native 0x30 box to keep low-locomotion scale coherent with F1/F2. The accepted B0 fall derivatives remain unchanged. Action, height, frame, clocks and shadow policy remain engine-owned. Internal delegated review, not new human visual acceptance.",
       "kind": "master-reexport",
       "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b"
+    },
+    {
+      "actor_type": 0,
+      "sheet": 177,
+      "frame": 0,
+      "source_sheet": 48,
+      "source_frame": 1,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 178,
+      "frame": 0,
+      "source_sheet": 48,
+      "source_frame": 2,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 179,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 0,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 180,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 1,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 181,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 2,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
     }
   ]
 }

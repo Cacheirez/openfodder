@@ -4128,7 +4128,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 48,
@@ -4136,7 +4136,7 @@
               "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 178,
@@ -4160,7 +4160,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 48,
@@ -4168,7 +4168,7 @@
               "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 179,
@@ -4192,7 +4192,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -4200,7 +4200,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 180,
@@ -4224,7 +4224,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -4232,7 +4232,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 181,
@@ -4256,7 +4256,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -4264,7 +4264,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 182,
@@ -4496,7 +4496,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 177,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -4523,7 +4529,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 178,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -4550,7 +4562,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 179,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -4577,7 +4595,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 180,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -4604,7 +4628,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 181,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -5170,8 +5200,8 @@
       "counts": {
         "required": 165,
         "latent": 24,
-        "masters": 125,
-        "exact_reuse_candidates": 5,
+        "masters": 130,
+        "exact_reuse_candidates": 0,
         "missing": 35,
         "surplus": 1
       }
@@ -9116,7 +9146,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 48,
@@ -9124,7 +9154,7 @@
               "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 178,
@@ -9148,7 +9178,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 48,
@@ -9156,7 +9186,7 @@
               "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 179,
@@ -9180,7 +9210,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -9188,7 +9218,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 180,
@@ -9212,7 +9242,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -9220,7 +9250,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 181,
@@ -9244,7 +9274,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 49,
@@ -9252,7 +9282,7 @@
               "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 182,
@@ -9484,7 +9514,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 177,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -9511,7 +9547,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 178,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -9538,7 +9580,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 179,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -9565,7 +9613,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 180,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -9592,7 +9646,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 181,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
+            }
+          ],
           "art_state": "master_present",
           "producer_status": "declared-only; current CF1 human squad modes stay 2"
         },
@@ -10158,8 +10218,8 @@
       "counts": {
         "required": 164,
         "latent": 24,
-        "masters": 124,
-        "exact_reuse_candidates": 5,
+        "masters": 129,
+        "exact_reuse_candidates": 0,
         "missing": 35,
         "surplus": 1
       }
@@ -10176,6 +10236,56 @@
       "review": "Native table/raster identical in PC and Amiga; reuse the exact immutable C01 master image, but export separate target derivatives inside the native 0x30 box to keep low-locomotion scale coherent with F1/F2. The accepted B0 fall derivatives remain unchanged. Action, height, frame, clocks and shadow policy remain engine-owned. Internal delegated review, not new human visual acceptance.",
       "kind": "master-reexport",
       "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b"
+    },
+    {
+      "actor_type": 0,
+      "sheet": 177,
+      "frame": 0,
+      "source_sheet": 48,
+      "source_frame": 1,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 178,
+      "frame": 0,
+      "source_sheet": 48,
+      "source_frame": 2,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 179,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 0,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 180,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 1,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
+    },
+    {
+      "actor_type": 0,
+      "sheet": 181,
+      "frame": 0,
+      "source_sheet": 49,
+      "source_frame": 2,
+      "kind": "asset",
+      "status": "internally-reviewed-native-identical",
+      "review": "Explicit delegated review: same compact unarmed body, direction and pose in the complete PC/Amiga metadata and private native raster; painted master already created for this exact silhouette. Actual CF1 fall producer selects B0-B7/F0. Reuse body RGBA only; action, height, crop, independent native shadow, ordering and clocks stay engine-owned. No ground shadow added and no claim of human acceptance."
     }
   ],
   "reachability": {
