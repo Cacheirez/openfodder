@@ -142,3 +142,7 @@ La investigación inicial incluyó conservadoramente el tipo 27/9E como si falta
 El flotante conserva su dibujo nativo en orden, como asociación ya admitida por el experimento previo. No se elimina del inventario: sus cuatro entradas (dos formatos × dos frames) siguen siendo obligatorias, con geometría canónica, recurso completo y firma de raster. Se rechazan tanto una firma errónea como un intento de adjuntarle arte moderno. Así no se abre una familia artística ajena al pelotón ni se mezcla de estilo al mismo protagonista.
 
 PASS siete contratos Python, 15.365 casos CPU y 96 Window/SDL por sistema con sanitizadores. Los actores del mapa conviven con un protagonista HD sin forzar retorno de la escena. Candidato aislado 348 activos / 333 de 337 entradas; solo faltan los cuatro contratos gráficos de las dos sombras independientes 97/F0–F1. **Arte de cuerpos completo:** 158 poses Amiga / 157 PC, más cinco efectos de entrada PC. Quedan la integración de sombras y continuidad R4 y la validación final R5; no hay aceptación global ni nuevo lanzador activado. [Evidencia](evidence/player-map-association.json).
+
+## R3: sombras independientes completas
+
+352 activos / 337 contratos obligatorios, sin faltantes. Se reutiliza pintura aprobada para 97/F0-F1 conservando ancla, propietario y altura nativos. PASS 64 casos Window/SDL por sistema con sanitizadores. R4 debe cerrar sombras de suelo y continuidad antes de R5 y del nuevo lanzador; sin aceptación visual global. [Evidencia](evidence/player-owned-shadows.json).

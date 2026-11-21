@@ -24,7 +24,7 @@ def build(resources,requested,out,animations=(1,10),formats=(0,1)):
     for fmt,actor,sheet,frame,metadata,hidden,role in catalog:
         if fmt not in formats:continue
         if (actor,sheet,frame) not in requested:continue
-        assert role in (0,1),'This fixture exercises protagonists/transitions and finite native map associations'
+        assert role in (0,1,3),'Protagonists, finite map associations and verified owned shadows'
         segment={'eGFX_IN_GAME':0,'eGFX_IN_GAME2':1}[metadata[1]]
         seed,directory=seeds[fmt,segment];row=dict(seed,format=fmt,type=actor,person=0,sheet=sheet,frame=frame,animation=10,
             segment=segment,vehicle=0,destroy=0,offset=int(metadata[0],0),columns=int(metadata[4],0),rows=int(metadata[5],0),
