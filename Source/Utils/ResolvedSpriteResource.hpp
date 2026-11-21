@@ -6,8 +6,14 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <cstdlib>
+#include <cstring>
 
 namespace openfodder {
+inline bool CF1PlayerCatalogEnabled() {
+    const char* value=std::getenv("OPENFODDER_PLAYER_CATALOG");
+    return value && std::strcmp(value,"1")==0;
+}
 struct ResolvedSpriteResource {
     std::shared_ptr<const std::vector<uint8_t>> bytes;
     size_t offset = 0;
@@ -80,6 +86,16 @@ struct NativeAmiga8Frame {
     size_t slot = 0;
     uint64_t resourceGeneration = 0;
     std::shared_ptr<const std::vector<uint8_t>> bytes;
+    // Optional CF1 catalog proof. Legacy fields/name remain compatible with
+    // existing Amiga-only manifests. Filled only by the live source-table capture.
+    bool cf1 = false;
+    int role = 0; // 0 native associated/UI, 1 player, 2 floating body, 3 player-owned shadow
+    SpriteRasterLayout layout;
+    uint8_t palette = 0;
+    size_t frameOffset = 0;
+    size_t ownerSlot = 0;
+    uint64_t ownerGeneration = 0;
+    int16_t ownerType = -1, ownerPerson = -1, ownerX = 0, ownerY = 0, ownerHeight = 0;
 };
 
 inline bool IsNativeAmiga8TransparentCandidate(int16_t type, int16_t sheet) {

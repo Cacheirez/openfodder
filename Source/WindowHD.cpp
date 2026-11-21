@@ -25,6 +25,38 @@ bool cSurface::ClassicEnemyExperimentEnabled() {
 openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
         const openfodder::PreparedSpriteDraw& prepared, bool classicEnemies) {
     const auto& state = prepared.soldier;
+    if(openfodder::CF1PlayerCatalogEnabled() && g_Fodder->mVersionCurrent->isCannonFodder1()){
+        const auto& r=prepared.resource;const auto& g=state.geometry;
+        if(!state.valid || !r || r.offset>65535 ||
+           (g.format!=openfodder::SpriteDrawFormat::PC && g.format!=openfodder::SpriteDrawFormat::Amiga8))return {};
+        const auto* row=g_Fodder->Sprite_Get_Sheet(state.sheet,state.frame);
+        if(!row || row->mLoadSegment!=state.segment || row->mLoadOffset>r.offset ||
+           row->mColCount!=g.columns || row->mRowCount!=g.rows || row->mModX!=g.modX || row->mModY!=g.modY)return {};
+        openfodder::NativeAmiga8Frame n={state.type,state.sheet,state.frame,state.segment,uint16_t(r.offset),
+            row->mColCount,row->mRowCount,row->mModX,row->mModY,
+            state.scene,state.generation,state.slot,r.generation,r.bytes};
+        n.cf1=true;n.layout=r.layout;n.palette=r.palette;n.frameOffset=row->mLoadOffset;
+        if(state.slot<g_Fodder->mSprites.size()){
+            const auto& actor=g_Fodder->mSprites[state.slot];
+            if(actor.mPresentationGeneration!=state.generation || actor.mSpriteType!=state.type || actor.mPersonType!=state.personType)return {};
+            if(state.type==0 && state.personType==0)n.role=1;
+            else if(state.type==27)n.role=2;
+            else if(state.type==22 && state.sheet==0x97){
+                for(size_t ownerSlot=0;ownerSlot<g_Fodder->mSprites.size();++ownerSlot){
+                    const auto& owner=g_Fodder->mSprites[ownerSlot];
+                    if(&owner!=actor.mOwnerSprite)continue;
+                    if(actor.mCurrentVehicle==&owner && actor.mAIAggression==owner.mSpriteType &&
+                       owner.mSpriteType==0 && owner.mPersonType==0 && owner.mPresentationGeneration){
+                        n.role=3;n.ownerSlot=ownerSlot;n.ownerGeneration=owner.mPresentationGeneration;
+                        n.ownerType=owner.mSpriteType;n.ownerPerson=owner.mPersonType;
+                        n.ownerX=owner.mPosX;n.ownerY=owner.mPosY;n.ownerHeight=owner.mHeight;
+                    }
+                    break;
+                }
+            }
+        }
+        return n;
+    }
     const bool firstSheet = classicEnemies && state.type == eSprite_Enemy && state.segment == eGFX_IN_GAME;
     if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() ||
         (state.segment != eGFX_IN_GAME2 && !firstSheet))

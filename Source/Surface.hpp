@@ -144,13 +144,14 @@ public:
         layer.soldier = prepared;
         layer.soldier.soldier.interval = recording->interval;
         const auto& state = prepared.soldier;
-        if (state.geometry.format == openfodder::SpriteDrawFormat::Amiga8 &&
+        if (openfodder::HybridMissionArtEnabled() &&
+            (openfodder::CF1PlayerCatalogEnabled() ||
+             (state.geometry.format == openfodder::SpriteDrawFormat::Amiga8 &&
             (openfodder::IsNativeAmiga8AssociatedCandidate(state.type, state.sheet) ||
              openfodder::IsNativeAmiga8TransparentCandidate(state.type, state.sheet) ||
              (recording->scene.classicEnemies &&
               (openfodder::IsClassicEnemyExperimentDraw(state.type, state.sheet) ||
-               openfodder::IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame, state.animation)))) &&
-            openfodder::HybridMissionArtEnabled())
+               openfodder::IsNativeAmiga8M1P2AssociatedDraw(state.type, state.sheet, state.frame, state.animation)))))))
             layer.soldier.nativeAmiga8 = CaptureNativeAmiga8Frame(prepared, recording->scene.classicEnemies);
         // No borrowed draw pointer is needed by the semantic consumer.
         layer.soldier.draw.source = nullptr;

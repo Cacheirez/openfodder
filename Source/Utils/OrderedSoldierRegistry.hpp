@@ -3,6 +3,7 @@
 #include "MissionLayers.hpp"
 #include "SoldierVariant.hpp"
 #include "SoldierArtBatch.hpp"
+#include "NativePlayerCatalog.hpp"
 #include "json.hpp"
 #include <fstream>
 #include <set>
@@ -11,6 +12,7 @@ class OrderedSoldierRegistry {
     struct Binding {bool keep=false;int sheet=0,frame=0;std::map<unsigned,std::string> assets;};
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
+    std::shared_ptr<const NativePlayerCatalog> playerCatalog;
     static bool canKeepNativeAmiga8(const PreparedSpriteDraw& prepared,
                                    size_t targetWidth, size_t targetSize, bool classicEnemies) {
         const auto& state = prepared.soldier;
@@ -172,8 +174,9 @@ class OrderedSoldierRegistry {
 public:
     explicit OrderedSoldierRegistry(const nlohmann::json& root,const std::string& directory="") {
         const auto& v=root.at("version");
-        if(!v.is_number_integer() || (v!=1 && v!=2))throw std::invalid_argument("ordered manifest version");
-        if(v==2)loadArtwork(root.at("assets"),directory);
+        if(!v.is_number_integer() || (v!=1 && v!=2 && v!=3))throw std::invalid_argument("ordered manifest version");
+        if(v==2 || v==3)loadArtwork(root.at("assets"),directory);
+        if(v==3)playerCatalog=std::make_shared<const NativePlayerCatalog>(root.at("player_catalog"),artwork);
         if(!root.at("bindings").is_array() || root.at("bindings").size()>8192)
             throw std::invalid_argument("ordered manifest version/size");
         for(const auto& row:root.at("bindings")){
@@ -186,7 +189,7 @@ public:
                 b.sheet=row.at("sheet").get<int>();b.frame=row.at("frame").get<int>();
                 if((b.sheet!=2 && b.sheet!=7) || b.frame<0 || b.frame>2)
                     throw std::invalid_argument("ordered manifest pilot asset");
-            } else if(decision=="replace-art" && v==2){
+            } else if(decision=="replace-art" && (v==2 || v==3)){
                 const auto& ids=row.at("assets");
                 if(!ids.is_object() || ids.empty() || ids.size()>2)throw std::invalid_argument("ordered binding assets");
                 for(auto it=ids.begin();it!=ids.end();++it){
@@ -214,6 +217,10 @@ public:
                                 bool hybrid=false, size_t targetWidth=0, size_t targetSize=0,
                                 bool classicEnemies=false) const {
         OrderedSoldierAsset result;
+        if(playerCatalog){
+            if(!hybrid || !CF1PlayerCatalogEnabled())return result;
+            return playerCatalog->resolve(p,density,targetWidth,targetSize,artwork);
+        }
         const auto& s=p.soldier;const auto& g=s.geometry;
         if (hybrid && classicEnemies && IsClassicEnemyExperimentDraw(s.type, s.sheet)) {
             if (canKeepNativeAmiga8(p, targetWidth, targetSize, true))
