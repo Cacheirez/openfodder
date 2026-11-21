@@ -57,6 +57,8 @@ def art_reuse():
     targets=set()
     for row in rows:
         assert row['actor_type']==0 and row['status']=='internally-reviewed-native-identical' and row['review']
+        assert row.get('kind','asset') in ('asset','master-reexport')
+        if row.get('kind')=='master-reexport':assert re.fullmatch(r'[0-9a-f]{64}',row['source_master_sha256'])
         assert all(type(row[k]) is int and 0<=row[k]<256 for k in ('sheet','frame','source_sheet','source_frame'))
         target=(row['sheet'],row['frame']);assert target not in targets;targets.add(target)
     return rows
@@ -71,7 +73,7 @@ def validate_art_reuse(slots,aliases):
         assert slots[target]==slots[source],'Reuse requires exact native table geometry/source'
 
 
-def masters():
+def masters(reuse_rows=None):
     result = {}
     for name in ('soldier-walk24', 'soldier-aim', 'soldier-grenade', 'soldier-rocket'):
         path = ROOT / 'assets/modernization' / name / 'manifest.json'
@@ -87,14 +89,22 @@ def masters():
                 raw = path.parent / asset['file']
                 assert raw.is_file() and sha(raw) == asset['sha256']
                 result[(int(match[1], 16), int(match[2]))] = raw.relative_to(ROOT).as_posix()
-    for alias in art_reuse():
+    for alias in (art_reuse() if reuse_rows is None else reuse_rows):
         target=(alias['sheet'],alias['frame']);source=(alias['source_sheet'],alias['source_frame'])
-        assert target not in result and source in result,'Explicit reuse needs an existing immutable master'
-        result[target]=result[source]
+        assert source in result,'Explicit reuse needs an existing immutable master'
+        if alias.get('kind')=='master-reexport':
+            assert target in result,'Master reuse requires explicit target derivatives'
+            source_file=ROOT/result[source];target_file=ROOT/result[target]
+            source_master=source_file.parent/'source.png' if source_file.suffix=='.rgba' else source_file
+            target_master=target_file.parent/'source.png' if target_file.suffix=='.rgba' else target_file
+            assert sha(source_master)==sha(target_master)==alias['source_master_sha256'],'Reused master image differs'
+        else:
+            assert target not in result,'Duplicate explicit reused pose'
+            result[target]=result[source]
     return result
 
 
-def inventory():
+def inventory(include_art=True):
     sprites = (ROOT / 'Source/Sprites.cpp').read_text(encoding='utf-8')
     header = (ROOT / 'Source/Sprites.hpp').read_text(encoding='utf-8')
     body = re.search(r'int16 mSprite_AnimationHumanPtrs\[\]\s*=\s*\{([\s\S]*?)\};', sprites)[1]
@@ -116,7 +126,7 @@ def inventory():
     soldier = function((ROOT/'Source/Sprites/Sprite_Troop.cpp').read_text(encoding='utf-8'), 'int16 cFodder::Sprite_Handle_Soldier_Animation(')
     assert 'Data0 = 0x21;' in soldier and 'pSprite->mFrameIndex = 1;' in soldier
     assert 'pSprite->mSheetIndex = 0xCC;' in soldier and 'pSprite->mFrameIndex = 4;' in soldier
-    art = masters()
+    art = masters() if include_art else {}
     platforms = {}
     for platform in ('Amiga', 'PC'):
         path = ROOT / f'Source/{platform}/SpriteData_{platform}.hpp'

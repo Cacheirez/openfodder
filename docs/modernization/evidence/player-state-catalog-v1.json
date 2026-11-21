@@ -2847,7 +2847,7 @@
             "0x0",
             "0"
           ],
-          "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
+          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 176,
@@ -4742,7 +4742,7 @@
             {
               "sheet": 48,
               "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+              "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba"
             }
           ],
           "art_state": "master_present"
@@ -7790,7 +7790,7 @@
             "0",
             "0"
           ],
-          "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
+          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 176,
@@ -9685,7 +9685,7 @@
             {
               "sheet": 48,
               "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+              "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba"
             }
           ],
           "art_state": "master_present"
@@ -10082,7 +10082,9 @@
       "source_sheet": 176,
       "source_frame": 0,
       "status": "internally-reviewed-native-identical",
-      "review": "The original 0x30/F0 and B0/F0 are the same native body and table geometry in both formats. The existing C01 unarmed compact front pose also fits the low-locomotion use. Reuse body pixels only; engine-selected action, height, frame, order and shadow policy remain independent. Miguel delegated protagonist art decisions; this is not new human visual acceptance."
+      "review": "Native table/raster identical in PC and Amiga; reuse the exact immutable C01 master image, but export separate target derivatives inside the native 0x30 box to keep low-locomotion scale coherent with F1/F2. The accepted B0 fall derivatives remain unchanged. Action, height, frame, clocks and shadow policy remain engine-owned. Internal delegated review, not new human visual acceptance.",
+      "kind": "master-reexport",
+      "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b"
     }
   ],
   "sources": {

@@ -1,6 +1,6 @@
 """Verify the source denominator and exceptional branches, independently of logs."""
 import unittest
-from inventory_player_states import inventory,art_reuse,validate_art_reuse
+from inventory_player_states import inventory,art_reuse,validate_art_reuse,masters
 import copy
 
 
@@ -49,6 +49,10 @@ class CatalogTests(unittest.TestCase):
             bad=copy.deepcopy(aliases);bad[0]['sheet']=255
             with self.assertRaises(AssertionError):validate_art_reuse(slots,bad)
             with self.assertRaises(AssertionError):validate_art_reuse(slots,aliases+[aliases[0]])
+        for row in aliases:
+            if row.get('kind')=='master-reexport':
+                bad=copy.deepcopy(aliases);bad[aliases.index(row)]['source_master_sha256']='0'*64
+                with self.assertRaises(AssertionError):masters(bad)
 
 
 if __name__=='__main__':unittest.main()

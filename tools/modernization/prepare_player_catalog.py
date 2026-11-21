@@ -11,7 +11,7 @@ import shutil
 from pathlib import Path
 from PIL import Image
 from generate_player_pose_table import contracts
-from inventory_player_states import art_reuse
+from inventory_player_states import art_reuse,inventory
 
 
 def digest(data):
@@ -38,6 +38,7 @@ def signature(raw,width,height):
 
 
 def build(base,resources,out,extra=()):
+    inventory() # Native table generation is independent; candidate art integrity is mandatory here.
     assert not out.exists(),'Preserve prior candidates'
     out.mkdir(parents=True);(out/'native').mkdir()
     original=json.loads((base/'candidate-manifest.json').read_text())
@@ -59,8 +60,12 @@ def build(base,resources,out,extra=()):
     for alias in aliases:
         for density in (8,12):
             target=(alias['sheet'],alias['frame'],density);source=(alias['source_sheet'],alias['source_frame'],density)
-            assert target not in art and source in art,'Explicit reuse needs a verified source asset'
-            art[target]=art[source]
+            assert source in art,'Explicit reuse needs a verified source asset'
+            if alias.get('kind')=='master-reexport':
+                assert target in art,'Reused master needs its verified target derivatives'
+            else:
+                assert target not in art,'Duplicate explicit reused pose'
+                art[target]=art[source]
     for asset in assets:
         raw=locations[asset['id']].read_bytes();assert digest(raw)==asset['sha256']
         shutil.copyfile(locations[asset['id']],out/asset['file'])
