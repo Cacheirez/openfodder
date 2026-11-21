@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-01",
+  "user_feedback": "Funcionamiento general correcto; sin diferencia visual apreciable.",
+  "logs": [
+    {
+      "density": 8,
+      "sha256": "dd2e9dbfbfefc78372183e5de4e6da27da47ec221d0b1de9914a64219a54224c",
+      "bytes": 259,
+      "hd_published": false,
+      "semantic_capture": true,
+      "limitation": "El log anterior no identifica el motivo de descarte HD."
+    },
+    {
+      "density": 12,
+      "sha256": "0f251b1abd5611739468f92d69bd57135615aa554de7ed455519f065567561d7",
+      "bytes": 259,
+      "hd_published": false,
+      "semantic_capture": true,
+      "limitation": "El log anterior no identifica el motivo de descarte HD."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+"""Run the actual Window fixture with diagnostics off/on and validate evidence."""
+import argparse
+import os
+from pathlib import Path
+import subprocess
+import tempfile
+from ordered_soldier_coverage import report
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--exe', type=Path, required=True)
+    parser.add_argument('--hybrid', action='store_true')
+    args = parser.parse_args()
+    exe = args.exe.resolve()
+    with tempfile.TemporaryDirectory(prefix='ordered-coverage-') as tmp:
+        path = Path(tmp)/'engine.log'
+        if args.hybrid:
+            env = {**os.environ, 'OPENFODDER_ORDERED_COVERAGE': '1',
+                   'OPENFODDER_TEST_ORDERED_HYBRID': '1'}
+            with path.open('w') as log:
+                subprocess.run([str(exe)], cwd=tmp, env=env, stdout=log, stderr=subprocess.STDOUT,
+                               check=True, timeout=120)
+            result = report([path])
+            assert 'PASS hybrid Window:' in path.read_text(), result['outcomes']
+            # Each audited grenade-cycle case adds one publication and one
+            # injected SDL recovery at each density. Check the individual
+            # retained commands below as well, not just the aggregate totals.
+            grenade_cycle = (
+                [(2, 0x7d, f) for f in range(4)] +
+                [(3, 0x7e, f) for f in range(4)] + [(2, 0x7c, 0)] +
+                [(12, 0x7d, f) for f in range(4)] +
+                [(kind, 0x8e, f) for kind in (12, 39) for f in range(7)] +
+                [(12, 0xc0, f) for f in range(4)] +
+                [(47, 0xc5, f) for f in range(3)] +
+                [(48, 0xc6, f) for f in range(4)]
+            )
+            assert result['outcomes']['published'] == 48 + 2 * len(grenade_cycle), result['outcomes']
+            assert result['outcomes']['classic-recovered'] == 20 + 2 * len(grenade_cycle), result['outcomes']
+            for density in (8, 12):
+                trees = [r for r in result['entity_states'] if r['type'] == 14 and r['density'] == density]
+                assert len(trees) == 2, trees
+                assert sum(r.get('resolution_keep', 0) for r in trees) == 4, trees
+                assert sum(r['resolution_missing'] for r in trees) == 2, trees
+                ranks = [r for r in result['entity_states'] if r['type'] == 21 and r['density'] == density
+                         and r['sheet'] == 0x95 and r['frame'] == 2]
+                assert sum(r.get('resolution_keep', 0) for r in ranks) == 4, ranks
+                assert sum(r['resolution_missing'] for r in ranks) == 3, ranks
+                for kind, sheet, frame in ((6, 0x7f, 3), (6, 0x9d, 6), (20, 0x99, 0),
+                                           (21, 0x95, 0), (5, 0x7c, 1)):
+                    native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
+                              and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
+                    assert sum(r.get('resolution_keep', 0) for r in native) == 1, native
+                for kind, sheet, frame in ((5, 0x64, 1), (4, 0x7c, 0), (6, 0x96, 3),
+                                           (23, 0x96, 0), (22, 0x97, 0), (27, 0x9e, 0),
+                                           (0, 0x7c, 1), *grenade_cycle):
+                    native = [r for r in result['entity_states'] if r['density'] == density and r['slot'] == 2
+                              and (r['type'], r['sheet'], r['frame']) == (kind, sheet, frame)]
+                    assert sum(r.get('resolution_keep', 0) for r in native) == 2, native
+            print('PASS hybrid coverage: 8x/12x, two HD actors, native tree and rank, complete recovery')
+            return
+        for enabled in ('0', '1'):
+            env = {**os.environ, 'OPENFODDER_ORDERED_COVERAGE': enabled}
+            with path.open('w') as log:
+                subprocess.run([str(exe)], cwd=tmp, env=env, stdout=log, stderr=subprocess.STDOUT,
+                               check=True, timeout=120)
+            result = report([path])
+            if enabled == '0':
+                assert result['attempts'] == 0, result
+            else:
+                assert result['outcomes'] == dict(published=16, **{'missing-variant': 8,
+                    'classic-recovered': 2, 'recovery-failed': 2, 'no-body': 2,
+                    'interrupted': 2, 'manifest-invalid': 1}), result
+                assert result['published_command_presentations'] == 24, result
+                assert result['unique_producer_commands'] == 3, result
+                assert result['unique_published_variant_commands'] == 4, result
+                assert result['unresolved_commands'] == 4, result
+                assert result['verdict'] == 'PENDING', result
+        print('PASS ordered coverage: real Window/SDL outcomes, opt-in, partial census, repeated presentations; acceptance PENDING')
+
+
+if __name__ == '__main__':
+    main()

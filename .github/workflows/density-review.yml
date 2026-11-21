@@ -1,0 +1,50 @@
+name: H6 - offline density review
+on:
+  push:
+    branches: [modernization/windows-foundation]
+    paths:
+      - 'tools/modernization/density-preview/**'
+      - 'tools/modernization/*density_preview.py'
+      - 'assets/modernization/density-review/**'
+      - 'assets/modernization/soldier-c01/**'
+      - 'Source/Utils/SoldierArtPixels.hpp'
+      - '.github/workflows/density-review.yml'
+  pull_request:
+    paths:
+      - 'tools/modernization/density-preview/**'
+      - 'tools/modernization/*density_preview.py'
+      - 'assets/modernization/density-review/**'
+      - 'assets/modernization/soldier-c01/**'
+      - 'Source/Utils/SoldierArtPixels.hpp'
+      - '.github/workflows/density-review.yml'
+permissions:
+  contents: read
+jobs:
+  model:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check native equivalence, density geometry and alpha
+        run: python3 tools/modernization/check_density_preview.py
+      - name: Check standalone page is reproducible
+        run: |
+          python3 tools/modernization/build_density_preview.py --out /tmp/c01-density.html
+          cmp /tmp/c01-density.html assets/modernization/density-review/C01_DENSIDADES.html
+      - name: Install pinned browser test tooling
+        run: |
+          npm install --prefix /tmp/density-browser --no-audit --no-fund playwright@1.62.1
+          /tmp/density-browser/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify actual page and capture comparison
+        env:
+          NODE_PATH: /tmp/density-browser/node_modules
+        run: node tools/modernization/density-preview/check-browser.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: C01-density-review
+          path: |
+            reports/density-review/*.png
+            assets/modernization/density-review/C01_DENSIDADES.html
+          if-no-files-found: error

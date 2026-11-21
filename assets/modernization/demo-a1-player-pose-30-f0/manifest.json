@@ -1,0 +1,80 @@
+{
+  "status": "Existing immutable C01 master re-exported for low locomotion; separate native-fit derivatives; not new image generation or global gameplay acceptance",
+  "pose": {
+    "type": 0,
+    "sheet": 48,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-pose-30-f0-8x.rgba",
+      "height": 14,
+      "id": "player-pose-30-f0-8x",
+      "sha256": "938085b347fc768f15a9bf379c7d3e38afca6bb5a2e97d0c53df48be573dfa0a",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-pose-30-f0-12x.rgba",
+      "height": 14,
+      "id": "player-pose-30-f0-12x",
+      "sha256": "fd4269997cef0256074a2274044fe395553e387c8d84f45f3557095d5dfd29f0",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1354,
+      1162
+    ],
+    "mode": "RGBA",
+    "sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b",
+    "generator": "built-in image_gen; original preserved",
+    "reused_from": "assets/modernization/demo-a1-player-fall-b0-f0/source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      311,
+      188,
+      1041,
+      923
+    ],
+    "placement": {
+      "x": 4,
+      "y": 1,
+      "width": 7,
+      "height": 10
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179",
+        "bbox": [
+          4,
+          1,
+          11,
+          11
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179",
+        "bbox": [
+          4,
+          1,
+          11,
+          11
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  }
+}

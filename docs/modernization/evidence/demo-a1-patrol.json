@@ -1,0 +1,478 @@
+{
+  "schema": 1,
+  "date": "2026-11-08",
+  "entry_head": "d3810979b175bcb69f121612053421dcae9e7891",
+  "implementation": "babb62b3b931a2284ca18dfc22f85ac14fb4e2e1",
+  "verdict": "VIABLE_TECHNICAL_REPLAY",
+  "scope": "60 nominal seconds; accelerated SDL software/dummy replay, not normal-speed interactive or Miguel visual acceptance",
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02",
+  "runs": {
+    "loop": {
+      "wall_seconds": 39.908,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": null,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 4655,
+      "outcomes": {
+        "missing-variant": 4655
+      },
+      "published_command_presentations": 0,
+      "unresolved_commands": 0,
+      "input_sha256": "d3a19a635ed40d344358aaac3b0c8ce204423106ede392477d2bdbab1c84e469",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-loop\\run.json",
+          "sha256": "96c0a36f0951389972ffeabb28276e464cdf11dc694c4506a48df427c3929b7b",
+          "bytes": 1289
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-loop\\engine.log",
+          "sha256": "c53e18c20aed076a8708d836688a053263d6ba0cd9272cf3f8c202e0a7e5dcec",
+          "bytes": 8724647
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-loop\\coverage.json",
+          "sha256": "c7fa819eddacb9a61a9b3e61dd37cbbb6dcd73b4d56c90a25da89a3909632261",
+          "bytes": 40818
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-loop\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "61281795caa4a07dbbcfa178184b9fa64996bb0644cfb59a0d9b82ff8c64b4a9",
+          "bytes": 23438735
+        }
+      }
+    },
+    "west-loop": {
+      "wall_seconds": 23.888,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": null,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 4655,
+      "outcomes": {
+        "missing-variant": 4519,
+        "published": 136
+      },
+      "published_command_presentations": 680,
+      "unresolved_commands": 0,
+      "input_sha256": "b8b71f0688ebd6ebf76614d217d1aa2f3090eb37ee278931991d629ebce684ad",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-west-loop\\run.json",
+          "sha256": "bc9da6f8ce1171c40a92a1155c963b9a7fe80d697c9140b56886ff3dc4685a84",
+          "bytes": 1324
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-west-loop\\engine.log",
+          "sha256": "23ed1d7619123b6c935bdbf07e452708440252857d5b8f0a4717675e33391132",
+          "bytes": 8674863
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-west-loop\\coverage.json",
+          "sha256": "f7530004b33f0e9b0dc83cd12964298fa44cbfc9953e8a7cb725612bd5c1f448",
+          "bytes": 44410
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-west-loop\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "61477e3c8da56ce41b56f235d9d9a03c89ef9f6efec546e53ee1cf019fbd1c95",
+          "bytes": 23433577
+        }
+      }
+    },
+    "bounded-loop": {
+      "wall_seconds": 25.376,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": 920,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 4655,
+      "outcomes": {
+        "missing-variant": 3808,
+        "published": 847
+      },
+      "published_command_presentations": 4235,
+      "unresolved_commands": 0,
+      "input_sha256": "e3d8195db272afb4426601b17d39e254c26071f73429b487ae369a19113c04cd",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-bounded-loop\\run.json",
+          "sha256": "83e98de16e24b2396f7427aadcc04d456cf7b0f35b726b7aee4db4dcf3524e21",
+          "bytes": 1330
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-bounded-loop\\engine.log",
+          "sha256": "69a42327a90c30b8cbbfd455641bc8a06e43508d078af7c58acf2042733cd7ed",
+          "bytes": 7574324
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-bounded-loop\\coverage.json",
+          "sha256": "6d3a2bd60b3335d53309b448a7776e752018354f84f1c1be940c4b0d1be04c45",
+          "bytes": 34951
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-bounded-loop\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "c1b004840f1480e52ff78974a4377b2175bf4361c80f2c6b96996a4c35e51e63",
+          "bytes": 23439492
+        }
+      }
+    },
+    "balanced-loop": {
+      "wall_seconds": 36.373,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": null,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 4655,
+      "outcomes": {
+        "published": 4655
+      },
+      "published_command_presentations": 23275,
+      "unresolved_commands": 0,
+      "input_sha256": "6a2a79887f50efc0f87ecb42550dd1b990d5da462b6745203a614e99a93ac8cb",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-loop\\run.json",
+          "sha256": "b7a7f3af5b1b25e5f94d24d813718afcc5b80f81ee16d8dfc8f084afc0926a45",
+          "bytes": 1305
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-loop\\engine.log",
+          "sha256": "1286e0fd2f8b26b0684d7e6329c766bdae761e861b0469105686eaaaa76350b1",
+          "bytes": 6710744
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-loop\\coverage.json",
+          "sha256": "de58cfe4ff71de0f9fbde2e638bfa649c4e05e84eadd3c27a0995169779b2acb",
+          "bytes": 31400
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-loop\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "a86deab0205c57b5d5b841ac098658be214149cea46522cafcfd9d14d5385eaf",
+          "bytes": 23436531
+        }
+      }
+    },
+    "balanced-classic": {
+      "wall_seconds": 19.774,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": null,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 0,
+      "outcomes": {},
+      "published_command_presentations": 0,
+      "unresolved_commands": 0,
+      "input_sha256": "6a2a79887f50efc0f87ecb42550dd1b990d5da462b6745203a614e99a93ac8cb",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-classic\\run.json",
+          "sha256": "b2c457ca7a06c35377590546f2bf82fe1e4283c99f256e51a8c14901143eb8d5",
+          "bytes": 1294
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-classic\\engine.log",
+          "sha256": "cfad5cdde4c3a8e2442c24443c7da1005b4095399073e7e850d569a5f74ce1b1",
+          "bytes": 656
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-classic\\coverage.json",
+          "sha256": "cafaf1ea50f6203b45172cfe790807314ab91ef5e185459bf064525e17ab3f84",
+          "bytes": 353
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-classic\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "a86deab0205c57b5d5b841ac098658be214149cea46522cafcfd9d14d5385eaf",
+          "bytes": 23436531
+        }
+      }
+    },
+    "balanced-timed": {
+      "wall_seconds": 35.978,
+      "returncode": 4294967295,
+      "samples": 1546,
+      "demo_ticks": [
+        5,
+        4640
+      ],
+      "first_enemy_demo_tick": null,
+      "live_players": {
+        "5": 1546
+      },
+      "attempts": 4655,
+      "outcomes": {
+        "published": 4655
+      },
+      "published_command_presentations": 23275,
+      "unresolved_commands": 0,
+      "input_sha256": "6a2a79887f50efc0f87ecb42550dd1b990d5da462b6745203a614e99a93ac8cb",
+      "files": {
+        "run.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-timed\\run.json",
+          "sha256": "75c7747223d265ae5da656565f7fc6993e0c877cd80b65cdd1e8ce9f3be88a7e",
+          "bytes": 1327
+        },
+        "engine.log": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-timed\\engine.log",
+          "sha256": "c5390b9ca46e8b3a77fa7e89c933c6867e152a8122c65582ca4a43a18fb62213",
+          "bytes": 6710744
+        },
+        "coverage.json": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-timed\\coverage.json",
+          "sha256": "de58cfe4ff71de0f9fbde2e638bfa649c4e05e84eadd3c27a0995169779b2acb",
+          "bytes": 31400
+        },
+        "traces/Amiga_The_One_m1_p2.jsonl": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-timed\\traces\\Amiga_The_One_m1_p2.jsonl",
+          "sha256": "a86deab0205c57b5d5b841ac098658be214149cea46522cafcfd9d14d5385eaf",
+          "bytes": 23436531
+        }
+      }
+    }
+  },
+  "nominal_window": {
+    "first_demo_tick": 1001,
+    "last_demo_tick": 4001,
+    "samples": 1001,
+    "interrupt_hz": 50,
+    "seconds": 60,
+    "players_present_and_drawn": 5,
+    "enemies_drawn": 0,
+    "player_x_bounds": [
+      704,
+      742
+    ],
+    "player_y_bounds": [
+      52,
+      97
+    ],
+    "nonzero_rows_to_skip": 0,
+    "enemy_entities_preserved": 13
+  },
+  "publication": {
+    "attempts": 4655,
+    "published": 4655,
+    "body_publications": 23275,
+    "body_slots": {
+      "0": 4655,
+      "1": 4655,
+      "3": 4655,
+      "4": 4655,
+      "2": 4655
+    },
+    "missing": 0,
+    "uncensused": 0,
+    "first_result": {
+      "attempt": "365",
+      "outcome": "published",
+      "expected": "7",
+      "observed": "7",
+      "replace": "5",
+      "keep": "2",
+      "missing": "0",
+      "density": "12"
+    },
+    "last_result": {
+      "attempt": "9673",
+      "outcome": "published",
+      "expected": "6",
+      "observed": "6",
+      "replace": "5",
+      "keep": "1",
+      "missing": "0",
+      "density": "12"
+    },
+    "consecutive_serial_stride": 2,
+    "first_wall_seconds": 0.9773432000074536,
+    "last_wall_seconds": 35.96928800002206,
+    "continuous_wall_span_seconds": 34.99194480001461,
+    "wall_clock_note": "External receipt timestamps, includes pipe scheduling latency; accelerated replay, not 50Hz wall-clock play",
+    "associated": [
+      {
+        "type": 19,
+        "sheet": 152,
+        "frame": 0,
+        "classic_publications": 511
+      },
+      {
+        "type": 19,
+        "sheet": 152,
+        "frame": 1,
+        "classic_publications": 507
+      },
+      {
+        "type": 21,
+        "sheet": 124,
+        "frame": 0,
+        "classic_publications": 567
+      },
+      {
+        "type": 21,
+        "sheet": 149,
+        "frame": 0,
+        "classic_publications": 4088
+      }
+    ],
+    "timing": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\patrol-balanced-timed\\presentation-times.jsonl",
+      "sha256": "b2e6039b8fafd675850b5257601300a4894d3644dee7d6393258188b5bd92435",
+      "bytes": 770225
+    },
+    "gate_reasons": [
+      "SOLDIER_HD_REASON: palette-transition density=12",
+      "SOLDIER_HD_REASON: black-palette density=12",
+      "SOLDIER_HD_REASON: ordered-published density=12"
+    ]
+  },
+  "first_reproducible_missing": [
+    {
+      "route": "loop",
+      "attempt": "365",
+      "scene": "186",
+      "interval": "364",
+      "order": "3",
+      "slot": "16",
+      "generation": "157",
+      "type": "15",
+      "sheet": "145",
+      "frame": "0",
+      "key": "5fc9fc6b277ef4b4f27f2552b6a212827b18f31e8e3dc4c6979cb98c4e64d9f7",
+      "decision": "missing",
+      "density": "12"
+    },
+    {
+      "route": "west-loop",
+      "attempt": "587",
+      "scene": "186",
+      "interval": "586",
+      "order": "3",
+      "slot": "16",
+      "generation": "157",
+      "type": "15",
+      "sheet": "145",
+      "frame": "0",
+      "key": "5fc9fc6b277ef4b4f27f2552b6a212827b18f31e8e3dc4c6979cb98c4e64d9f7",
+      "decision": "missing",
+      "density": "12"
+    },
+    {
+      "route": "bounded-loop",
+      "attempt": "2031",
+      "scene": "186",
+      "interval": "2030",
+      "order": "9",
+      "slot": "21",
+      "generation": "162",
+      "type": "5",
+      "sheet": "89",
+      "frame": "0",
+      "key": "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8",
+      "decision": "missing",
+      "density": "12"
+    }
+  ],
+  "simulation": {
+    "exact_trace_sha256": "a86deab0205c57b5d5b841ac098658be214149cea46522cafcfd9d14d5385eaf",
+    "samples_per_mode": 1546,
+    "compared": [
+      "balanced-loop",
+      "balanced-timed",
+      "balanced-classic"
+    ],
+    "immutable_H3": "not rerun or modified; changed inputs are contrasted with classic, not original replay reference",
+    "preserved": [
+      "seeds",
+      "input/engine starting ticks",
+      "recorded parameters",
+      "original video tick schedule",
+      "executable",
+      "manifest",
+      "entities"
+    ],
+    "input_exhaustion": "Expected Phase Failed / exit 4294967295 after inputs end; no mission victory or full-test PASS claimed",
+    "kills_home_and_away": 0
+  },
+  "ci": {
+    "pr": {
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "d3810979b175bcb69f121612053421dcae9e7891"
+    },
+    "implementation": {
+      "windows": {
+        "id": 42484711149,
+        "conclusion": "cancelled"
+      },
+      "linux": {
+        "id": 42484711218,
+        "conclusion": "success",
+        "job": 128743951045
+      },
+      "density": {
+        "id": 42484711137,
+        "conclusion": "success"
+      }
+    },
+    "handoff": {
+      "windows": {
+        "id": 42485328657,
+        "conclusion": "success"
+      },
+      "linux": {
+        "id": 42485328592,
+        "conclusion": "success",
+        "job": 128745829262
+      },
+      "density": {
+        "id": 42485328579,
+        "conclusion": "success"
+      }
+    },
+    "linux_general_asan_ubsan_lsan_steps": "success on implementation and handoff; no reruns or new local Linux coverage claimed",
+    "D6": "42469760868 kept as prior evidence; not rerun or attributed to A.1"
+  },
+  "pending": [
+    "normal-speed interactive play",
+    "Miguel visual acceptance",
+    "GPU/audio/CD32",
+    "new clipping and occlusion scenarios on this patrol",
+    "pause/map/resume transitions",
+    "other states/families and the two missing Amiga walk keys"
+  ],
+  "next_task": "Review this bounded route with Miguel and decide the remaining normal-speed/visual validation within A; B remains unauthorized",
+  "reproduction_tool": {
+    "path": "tools/modernization/probe_demo_a1_patrol.py",
+    "sha256": "913309a51aeaec624fb2de34eb14b00961d042ca84f917d0151527d01fff3ba3"
+  }
+}

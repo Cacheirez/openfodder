@@ -5511,7 +5511,7 @@ namespace nlohmann
             using parse_event_t = typename BasicJsonType::parse_event_t;
 
             json_sax_dom_callback_parser(BasicJsonType& r,
-                const parser_callback_t cb,
+                const parser_callback_t& cb,
                 const bool allow_exceptions_ = true)
                 : root(r), callback(cb), allow_exceptions(allow_exceptions_)
             {
@@ -10170,7 +10170,7 @@ namespace nlohmann
         public:
             /// a parser reading from an input adapter
             explicit parser(InputAdapterType&& adapter,
-                const parser_callback_t<BasicJsonType> cb = nullptr,
+                const parser_callback_t<BasicJsonType>& cb = nullptr,
                 const bool allow_exceptions_ = true,
                 const bool skip_comments = false)
                 : callback(cb)
@@ -16682,7 +16682,7 @@ namespace nlohmann
         template<typename InputAdapterType>
         static ::nlohmann::detail::parser<basic_json, InputAdapterType> parser(
             InputAdapterType adapter,
-            detail::parser_callback_t<basic_json>cb = nullptr,
+            const detail::parser_callback_t<basic_json>& cb = nullptr,
             const bool allow_exceptions = true,
             const bool ignore_comments = false
         )
@@ -18658,13 +18658,20 @@ namespace nlohmann
 
         @since version 1.0.0
         */
-        basic_json& operator=(basic_json other) noexcept (
+        basic_json& operator=(const basic_json& value)
+        {
+            basic_json copy(value);
+            return *this = std::move(copy);
+        }
+
+        basic_json& operator=(basic_json&& value) noexcept (
             std::is_nothrow_move_constructible<value_t>::value&&
             std::is_nothrow_move_assignable<value_t>::value&&
             std::is_nothrow_move_constructible<json_value>::value&&
             std::is_nothrow_move_assignable<json_value>::value
             )
         {
+            basic_json other(std::move(value));
             // check that passed value is valid
             other.assert_invariant();
 
@@ -23133,7 +23140,7 @@ namespace nlohmann
         template<typename InputType>
         JSON_HEDLEY_WARN_UNUSED_RESULT
             static basic_json parse(InputType&& i,
-                const parser_callback_t cb = nullptr,
+                const parser_callback_t& cb = nullptr,
                 const bool allow_exceptions = true,
                 const bool ignore_comments = false)
         {
@@ -23172,7 +23179,7 @@ namespace nlohmann
         JSON_HEDLEY_WARN_UNUSED_RESULT
             static basic_json parse(IteratorType first,
                 IteratorType last,
-                const parser_callback_t cb = nullptr,
+                const parser_callback_t& cb = nullptr,
                 const bool allow_exceptions = true,
                 const bool ignore_comments = false)
         {
@@ -23184,7 +23191,7 @@ namespace nlohmann
         JSON_HEDLEY_WARN_UNUSED_RESULT
             JSON_HEDLEY_DEPRECATED_FOR(3.8.0, parse(ptr, ptr + len))
             static basic_json parse(detail::span_input_adapter&& i,
-                const parser_callback_t cb = nullptr,
+                const parser_callback_t& cb = nullptr,
                 const bool allow_exceptions = true,
                 const bool ignore_comments = false)
         {

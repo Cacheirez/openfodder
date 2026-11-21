@@ -1,0 +1,48 @@
+{
+  "scope": "Three other lower-aim directions directly observed in prior M1P2 15:13 sample; complete the same eight-direction family without new artwork",
+  "status": "PASS 24 Window cases/platform plus full 244/399 manifest, 8x/12x, exact SDL/negatives/recovery; Windows ASan/UBSan, Linux ASan/UBSan/LSan; gameplay pending",
+  "bindings": [
+    {
+      "key": "0cfddedda72d9cc3b5b2d9eb6fa370fbfcad2db4dfe4c1f79aae69c2315666c7",
+      "sheet": 16,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s16-f0-8",
+        "12": "s16-f0-12"
+      }
+    },
+    {
+      "key": "8d1a2d8192a77e04f6f92ade189cab5d2ebfeee84b6c39aeb675521d11729619",
+      "sheet": 17,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s17-f0-8",
+        "12": "s17-f0-12"
+      }
+    },
+    {
+      "key": "2daae8e347e24ed69fc3c15c2c31c55c67bc7c6898f1b16500b53b99d176a5da",
+      "sheet": 23,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s23-f0-8",
+        "12": "s23-f0-12"
+      }
+    }
+  ],
+  "qualified_asset_descriptors": {
+    "s16-f0-8": "cbcd680a231f0c9a02c84e72c137ad556ce9b34457e6d4b85ff720dfb7afb3ef",
+    "s16-f0-12": "c90b0243d6b43aafc71fc3f04e4cb40a5e809dfde23218759289ef4753cbe3e3",
+    "ground-shadow-9x3-8x": "5dd512421043ce9eb741f960fb3e5714db6b39f850ce21040b682406c37622c4",
+    "ground-shadow-9x3-12x": "a13e8e54a70d92941ae39fb310c437d7a595d4bd7b185ad12248450f1e7180c1",
+    "s17-f0-8": "cb19229bd36f63c60d9f6378461507fa4fe0ed1a3d12ef0db5d8878264a006b4",
+    "s17-f0-12": "3d2cce39d8657dd0ea6f1cfcc15df1866811f974b353e46703eece13b9653dba",
+    "ground-shadow-11x3-8x": "8590ff843b16f48cfb01fc687446bec75ef1bee14715b1e0ad8ab838ba20bf66",
+    "ground-shadow-11x3-12x": "64a8d75fc76d5370a60e4361a595c10f7ac25c4c0882d0cb1038c5b4ebe9fb3a",
+    "s23-f0-8": "b5a26f602cf046ffa802010824bf2905c486bd02a2de3206e90d7ceef37665a0",
+    "s23-f0-12": "4b1927d65b388b4b478dc54d58052f2a6f26bb88a39012af61890bb4544df729"
+  }
+}

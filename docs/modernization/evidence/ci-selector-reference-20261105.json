@@ -1,0 +1,16 @@
+{
+  "base_commit": "7de0ad10dd1dd61883188d8bfcecc791edabcd13",
+  "linux_pr_run": 42025973189,
+  "job": 127240157479,
+  "failed_step": "Build: generating aim_selector_fixture.cpp",
+  "cause": "shallow checkout lacks pinned classic object before build; later fetch step is too late",
+  "fix": "fetch exact classic commit and verify selector path before configure/build on Linux and Windows",
+  "local_reproduction": {
+    "shallow_missing_object": "PASS reproduced",
+    "targeted_fetch": "PASS",
+    "strict_selector_generation_after_fetch": "PASS"
+  },
+  "baseline": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8",
+  "selector_guard": "unchanged",
+  "new_ci": "PENDING at publication"
+}

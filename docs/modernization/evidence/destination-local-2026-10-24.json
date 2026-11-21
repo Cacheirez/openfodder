@@ -1,0 +1,51 @@
+{
+  "base": "a6c4b07a9dd53eff1016303f559e7c0ea5243a8d",
+  "scope": "Focused C++14 ASan/UBSan harnesses with SDL/STB doubles; detect_leaks=0 locally. No new local full-engine build.",
+  "focused": {
+    "sprite_raster_equivalence.log": [
+      "PASS: 29160 raster cases match legacy pixels and registers; inputs unchanged; repeated drawing identical"
+    ],
+    "sprite_resource_equivalence.log": [
+      "PASS: 10944 original preparation/resource cases; effective palettes, planes and registers match; retained bytes survive mutation/reload/destruction and release after last owner"
+    ],
+    "presentation_destination.log": [
+      "PASS: 97 accepted publications/backing commits, 627 rejected incompatible destinations; identity, dimensions, pitch, extents, format, address reuse and actual LoadPng replacement; no writes/uploads on rejection"
+    ],
+    "sprite_table_lengths.log": [
+      "PASS Amiga: 293 arrays, 8 pointer tables, 768 sheets",
+      "PASS PC: 297 arrays, 7 pointer tables, 541 sheets",
+      "PASS total 1309 source-derived frame extents"
+    ],
+    "pause_presentation.log": [
+      "PASS: 144 pause schedules; actual legacy/current loops, 0/1/5 presentations, fades, resume, resource replacement/destruction, retained generations and independent outputs"
+    ],
+    "visibility_contract.log": [
+      "PASS: H3.6 field references match the audited inventory: 15 occurrences across 9 files"
+    ],
+    "mission_presentation.log": [
+      "PASS: 240 mission/pause schedules; 672 retained frames match pre-change pixels after source destruction; real Interrupt_Redraw/Video_Sleep/Phase_Paused bodies; 0/1/5, guards, late main-cycle writes, fades, Save/Restore, resource changes and resume"
+    ],
+    "terrain_equivalence.log": [
+      "PASS: 7680 terrain pixel/background/effect cases; all 256 camera offsets, both atlas formats, retained lifetime and repeated rendering"
+    ],
+    "hud_cursor_equivalence.log": [
+      "PASS: 2304 cursor cases; 288 HUD cases; legacy request/guard, source registers, effective palettes, retained lifetimes and repeated pixels"
+    ],
+    "indexed_producer_equivalence.log": [
+      "PASS: 1536 raster, 1964 scenes, 1024 tiles, 72 minimap constructors; original pixels/registers, owned decoded operations and repeated rendering"
+    ],
+    "surface_draw_equivalence.log": [
+      "PASS: 27648 surface cases; effective colors, fade/Save/Restore order, owned outputs, retained lifetimes and repeated conversion"
+    ],
+    "sprite_draw_equivalence.log": [
+      "PASS: 306432 clipping cases match legacy PC/Amiga, input and pixels unchanged, repeated calls identical"
+    ],
+    "surface_layers_equivalence.log": [
+      "PASS: 2944 layer adapter cases; indexed/RGB copy, padding, palettes, source/destination independence, self merges, order and retained lifetime"
+    ],
+    "final_timer_equivalence.log": [
+      "PASS: 184320 retail timer transitions match H2.6, including video-off and draw calls"
+    ]
+  },
+  "python_tests": 13
+}

@@ -1,0 +1,20 @@
+# Caída del jugador hacia delante, 0xB0/F0
+
+Integración del 19-11-2026: se añade el vínculo exacto de animación 1
+`f62237ff841552359982d169df42a32f8c9270f598af5e624f6cf7db3a3abb06`.
+La reconstrucción nativa conserva raster, paleta y geometría de la animación 0;
+ambas usan los mismos derivados, sin sombra de suelo añadida ni arte nuevo.
+PASS Window/SDL 8×/12× con dos jugadores y recuperación clásica, Windows
+ASan/UBSan y Linux ASan/UBSan/LSan. No implica aceptación jugando del daño.
+
+Maestro provisional, estilo C pintado moderado, generado con ImageGen integrado el 16 de noviembre de 2026. Referencias visuales: C01, el maestro de marcha `s0-f0-verde-a.png` con el verde oliva elegido por Miguel y la silueta nativa local. Se distribuye únicamente el arte nuevo, con licencia GPL-3.0-or-later. Aceptación visual y jugable pendiente.
+
+El maestro `source.png` es RGBA de 1354×1162 y tiene SHA-256 `31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b`. El recorte de alfa ≥16 es `[311, 188, 1041, 923)`. El contrato nativo de Amiga The One es 16×14, segmento 0, offset 2808, dos columnas, 14 filas, modificadores 0/0. La silueta nativa ocupa `[4, 1, 11, 11)`.
+
+Los derivados conservan la escala cuadrada del maestro y la base nativa en y=11. La figura queda en la caja `[3, 2, 12, 11)`, dos píxeles nativos más ancha que la referencia. Se usa `build_soldier_batch.cpp` con recorte `311 188 1041 923` y colocación `3 9 9`, luego se trasladan tres filas nativas hacia arriba dentro de la misma celda. `build_ordered_soldier_asset.cpp` exporta el RGBA exacto de cada PNG. El manifiesto registra una sola clave observada en M1P2. Para la prueba híbrida se añaden estos dos descriptores y su vínculo al manifiesto existente, con los dos RGBA en su mismo directorio.
+
+## Prompt de generación
+
+```text
+Use case: stylized-concept. Create exactly one transparent RGBA game sprite master for OpenFodder, player soldier Amiga The One 0xB0/F0, falling forward towards the bottom of the screen. The first reference is the exact native pose and anchor, the second is the modern soldier facing this same direction, and the third is C01, the established moderate hand-painted style. Draw the same olive helmet, olive uniform, dark brown boots and tan straps seen in the modern references, with broad painterly strokes and the same steep overhead oblique camera. Match the compact, nearly frontal SOUTH silhouette of the first reference: helmet top prominent on the upper center, face and torso centered, arms bent down and slightly out on both sides to brace in midair, short slightly separated boots lifted under the hips, with the two legs at nearly the same level. The rifle stays compact against the body or mostly hidden, with no protruding barrel. A single suspended instant while dropping, no ground contact, no running stride, no exaggerated action, no tumble. Full figure, crisp separation, centered and surrounded by transparent padding. Genuine transparent background, no cast or contact shadow, no dirt, weapons effects, extra objects, borders, text, backdrop or scene. The art must read at 16 by 14 original world pixels; respect native relative helmet, arm and boot placement. Produce one new PNG with intact alpha.
+```

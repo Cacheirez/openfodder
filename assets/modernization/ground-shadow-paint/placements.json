@@ -1,0 +1,1056 @@
+{
+  "version": 1,
+  "date": "2026-11-19",
+  "criterion": "Approved paint, screen down-right, foot contact; unchanged bodies and exact existing bindings",
+  "groups": [
+    {
+      "family": "walk",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s0-f0-8",
+          "sha256": "767b52bfa565cc9b784046a0b7cf9f7421f6e9682cac34beee47da50e8ad750b"
+        },
+        {
+          "id": "s0-f0-12",
+          "sha256": "ba3365314b6e7a415e47fa0c9f85cdcd92a71613f06907107415d9e39aefc8ee"
+        },
+        {
+          "id": "s0-f1-8",
+          "sha256": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe"
+        },
+        {
+          "id": "s0-f1-12",
+          "sha256": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057"
+        },
+        {
+          "id": "s0-f2-8",
+          "sha256": "a655d4ee52e04598f914bfbd2c5464f21e06caa5ca58683daf817a2e70f8a8d4"
+        },
+        {
+          "id": "s0-f2-12",
+          "sha256": "f8fcba2a243790d490d367bceebc9247836d59cd58e102a50bde8e9ea36d839a"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s1-f0-8",
+          "sha256": "124b29ce08a0d798063b4e87c10bc0b46fb39215813ab5abc63393397b68347e"
+        },
+        {
+          "id": "s1-f0-12",
+          "sha256": "48e0ba55300f4825fc6b50e51b14f8f06da1bafd4a83293c4ef48fc92bf17726"
+        },
+        {
+          "id": "s1-f1-8",
+          "sha256": "e63f382a732e4c079c799b10ecca2f4bf729039ba9602f27cbd31c6781cdd1ad"
+        },
+        {
+          "id": "s1-f1-12",
+          "sha256": "e3279340143a43972f369dbb781fa35758544a2a0b8d0f0bdb9547f921dc5d15"
+        },
+        {
+          "id": "s1-f2-8",
+          "sha256": "c3ee25a9cf4a435aae2c9e4f161983770354350e9a91a6383dfc1c616efd9290"
+        },
+        {
+          "id": "s1-f2-12",
+          "sha256": "610e8680c99a920064ec6cb6640dd5d9ea4a1ece8aa47642d27f7006818362b2"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 12,
+      "height": 3,
+      "x_quarters": 11,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s2-f0-8",
+          "sha256": "3977c5a86616393f752dd2da392058e2045fe7de55c135d9a1954c1c5eaf68ed"
+        },
+        {
+          "id": "s2-f0-12",
+          "sha256": "ff2d055ad2bef13ba9f2447e34eec84003cdd35dfc4c0fef4a6ff4545d2e412c"
+        },
+        {
+          "id": "s2-f1-8",
+          "sha256": "32884bedb2303f47be412160c2c803fa208205837cceb11ce823594e3a2a208f"
+        },
+        {
+          "id": "s2-f1-12",
+          "sha256": "fa77d4be949cae558b41041a4010e74835d4ff4c99f2e07d03c1e7ad126b95b2"
+        },
+        {
+          "id": "s2-f2-8",
+          "sha256": "ff3e1ff20bd0e384536f7389818aac8584aec2feccf39973e03e7988cd72b73e"
+        },
+        {
+          "id": "s2-f2-12",
+          "sha256": "cc814d9b76cbc8ebd81e302ce9c40f4c8f35ae791ff67c35d054bbb65c590ff6"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 22,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s3-f0-8",
+          "sha256": "4bd9b052ceea5f2360278f182f36f5b2928ef440b670365e1f184606933a4818"
+        },
+        {
+          "id": "s3-f0-12",
+          "sha256": "375d77896a5e4c46dd98e04c798c9572faa244f330d44655d1c3e305b977ea83"
+        },
+        {
+          "id": "s3-f1-8",
+          "sha256": "83987f0214bead68ddfde13a97ffa0bc82cbb192a78d8f0b84db3364abe4a8c2"
+        },
+        {
+          "id": "s3-f1-12",
+          "sha256": "c3890b3e19a66377b89e3e53631690c18a64140bacf581f1bf712cd1ef606e62"
+        },
+        {
+          "id": "s3-f2-8",
+          "sha256": "f5ea80638398c2e7e72a70628f770a1f0785c914b3eea160401c0b30e4c57381"
+        },
+        {
+          "id": "s3-f2-12",
+          "sha256": "3a2e419ccbac38b2e994fa196998e98e8820af6439d882b14ce2bd50c842b0fb"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s4-f0-8",
+          "sha256": "1d5f6a97700553211ab5d25c3172057c99ae714c9c8f29c269e723269168fd9a"
+        },
+        {
+          "id": "s4-f0-12",
+          "sha256": "5fc344d64871363e0a7ec64df868d8d4e4af0865c582d1af2d78ad81e8dd675f"
+        },
+        {
+          "id": "s4-f1-8",
+          "sha256": "414ce43e44a1a482a4550a1b8e9fd9cd19fea9f8487da2a9b6029e354b4484fa"
+        },
+        {
+          "id": "s4-f1-12",
+          "sha256": "589ba9669e52645ca4de85799d30a8f632f0a2c09d32da41ab2d55d0d7bc8b66"
+        },
+        {
+          "id": "s4-f2-8",
+          "sha256": "aa7d6c98884afb34eef0b5ccb268a74d22ff8311f6187252d84f31dc123a9d19"
+        },
+        {
+          "id": "s4-f2-12",
+          "sha256": "56ab175ab2160e31185f69b5844b2438f39b5874ca53669ad1a1ef39511faca4"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 12,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s5-f0-8",
+          "sha256": "3e619bacf4997a7757cab8f0987768f2df85d4de998fc00f36478d200eb48906"
+        },
+        {
+          "id": "s5-f0-12",
+          "sha256": "f5642bea7ff1ade6b92fd362c554c103f042b04acdf139b873de28c77ea85d36"
+        },
+        {
+          "id": "s5-f1-8",
+          "sha256": "b96ec2c0ddac4e79f914c5843f5d06466270d6f73202b8a358a75cb7714f0d77"
+        },
+        {
+          "id": "s5-f1-12",
+          "sha256": "3f37ed6d581b1d41cfb1e0c03553fcda3c46082ea31aaa82ec451f5d0a595012"
+        },
+        {
+          "id": "s5-f2-8",
+          "sha256": "7f7a123d4e7a06568b76166d10695c269c006c3007388880e4a4cf407e25820f"
+        },
+        {
+          "id": "s5-f2-12",
+          "sha256": "4b4b38ad119edb93b13b815103c02d2f85276a7cafc84c90a2df76c4fd87fc8a"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 6,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 12,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s6-f0-8",
+          "sha256": "f52ad7ae20f2edf62b7fce9ecd04e91fec57504d2e5f324c9b1247e129e383dd"
+        },
+        {
+          "id": "s6-f0-12",
+          "sha256": "e389a3442bc20c037291fc06d3b5e34a3515959ea0802cc89ca5884fd9f53571"
+        },
+        {
+          "id": "s6-f1-8",
+          "sha256": "89a31f6fed3d7226650b6f14384e9305ac699284e60294c1c951b7dc6bea14e6"
+        },
+        {
+          "id": "s6-f1-12",
+          "sha256": "f7d4dc124e927faa50bbad4fa5ee3205b6908673d7b873def143962e6260dd3f"
+        },
+        {
+          "id": "s6-f2-8",
+          "sha256": "d36e2df7ffc64261ca4936dbcf821dc9cdc4a094c14a03a1372588ecdd3fd4cd"
+        },
+        {
+          "id": "s6-f2-12",
+          "sha256": "eab39f96cb78afd0ed04b35063f38e58b2d2a6c0e9ae89395eb5ad2b336402a7"
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 7,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 18,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s7-f0-8",
+          "sha256": "2517d128d7725a6ffcef84f3f03b0a030cee1af03c6a8d4709c9093c1b75391c"
+        },
+        {
+          "id": "s7-f0-12",
+          "sha256": "0f0eddee8f6d9dc6216e0672a82707c8e32e008f16d6742a8889bac98e4657b5"
+        },
+        {
+          "id": "s7-f1-8",
+          "sha256": "4130f26bd3f9a11a764aea20dfa3858576bdecb24a095870444073dcb3c2621e"
+        },
+        {
+          "id": "s7-f1-12",
+          "sha256": "fee06035d183d443b6e7bd65ec3e99da029602ba4585b2e539442624d08a24e6"
+        },
+        {
+          "id": "s7-f2-8",
+          "sha256": "758fed83f4b7f045aa1fad6eb4d710cd211e38cad8dd1309355794ae08081dfa"
+        },
+        {
+          "id": "s7-f2-12",
+          "sha256": "6498882dcd4e420beab22576e061dac74f45b5c5ecddbe03de3f3decdfd48273"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 18,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s16-f0-8",
+          "sha256": "66ef7fba284fed601b2abd9f0079a49329ebc31ff90f4745cb010847ed66aa4e"
+        },
+        {
+          "id": "s16-f0-12",
+          "sha256": "75713eb861a201cea2d7bc991bf31a0701da2f65009bbded120df7bb5b5b5896"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 15,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s17-f0-8",
+          "sha256": "84a45c725e7f0d846358788161b2fa0c2b373a7ea42ad4aa37ccaa26def16d3d"
+        },
+        {
+          "id": "s17-f0-12",
+          "sha256": "674205b56f61f8b4c9f9f1e7392971d30889095b7c299b8a83c63cb6ebbdca0c"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 28,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s18-f0-8",
+          "sha256": "ecbfb207c74169b83d26182d4e901b74219c5dbda1a6f31e0d515793a287bc4a"
+        },
+        {
+          "id": "s18-f0-12",
+          "sha256": "418d91eae12ebe1286c833bbd6c86e74c48d6c1539aecc5065dcaca01df812aa"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s19-f0-8",
+          "sha256": "36887a6d903d6c62f634a68d3bae6d9b324f6299de2601341bd6c4ac7066217c"
+        },
+        {
+          "id": "s19-f0-12",
+          "sha256": "823b03cb80d0c4045cd579bf930efc37440da3788a7e75055fbfd82e5150b313"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 17,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s20-f0-8",
+          "sha256": "bf4a122991e105d1817556a8b83bb9e74c2a12453c558e9ee20788943e6b75ad"
+        },
+        {
+          "id": "s20-f0-12",
+          "sha256": "2db728473780a77ba04a4d14394dac26f75eb247b7d3d1b981b2699c693fe2f0"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 14,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s21-f0-8",
+          "sha256": "74a6449af0dbd073ef088da7157dca685ad3c54cfc343b5170c43a60ac9fe754"
+        },
+        {
+          "id": "s21-f0-12",
+          "sha256": "73c3fc5476f1ebd0f1dca9a4247a23084bb97fa690878cc3ca3b5be856bef156"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 6,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 13,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s22-f0-8",
+          "sha256": "db04d14658a84dc39398cdc0c4c262e44e6d9eacddce16a383df61f1283ae04e"
+        },
+        {
+          "id": "s22-f0-12",
+          "sha256": "830686a3ddf8ddb550c92e6851f8b01df7fcde37515f65bc3fe5928e86e4df3d"
+        }
+      ]
+    },
+    {
+      "family": "aim",
+      "direction": 7,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 10,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s23-f0-8",
+          "sha256": "5a97923e93d27feb8c0c3f8a6a629f730334c6fddf8a50bda4c917b2d163cd4a"
+        },
+        {
+          "id": "s23-f0-12",
+          "sha256": "20e52db93feac631d38f0d5dbad007bc0f6b7dc2e6c2f29d1c1d410b376b47f7"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 14,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s8-f0-8",
+          "sha256": "5e8ca207516d6207b1691cceb58cc0b7d00ed5ee46090a9467ad9852dac58bc9"
+        },
+        {
+          "id": "s8-f0-12",
+          "sha256": "008574c6cb5bb9742c712268a1cd56597789c7944d7beb063c9cac2409038190"
+        },
+        {
+          "id": "s8-f1-8",
+          "sha256": "57dcf06e16445b411f94a29d2744999983800cef9169b58e539b5d70f4daa0e9"
+        },
+        {
+          "id": "s8-f1-12",
+          "sha256": "33d34fbee86ad2870c61dba3467e4336dfc7306fb4c145f6168e9f21e66443e7"
+        },
+        {
+          "id": "s8-f2-8",
+          "sha256": "36d59c530ada5c0b4f9096cf63d75884fc44a7cc343198e8231ecae37aa2e25f"
+        },
+        {
+          "id": "s8-f2-12",
+          "sha256": "43c2375f10fff499811b4b12b96d6d7c37a64a69b34a0089f53e78f36dbf8656"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 20,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s9-f0-8",
+          "sha256": "e5e8465aaa7664d50ccd67f2b8d594f8c1ffd7022a189dfa9679d27558c438ad"
+        },
+        {
+          "id": "s9-f0-12",
+          "sha256": "507c82ff6207f83dada90eff7ad4c2e565dbcb50200b62e52c573a282c16a896"
+        },
+        {
+          "id": "s9-f1-8",
+          "sha256": "eee1b81cbbafd84ba1059872723588dc1ef7a91cb94cf32a48e814540e7a0c8c"
+        },
+        {
+          "id": "s9-f1-12",
+          "sha256": "3315141990169ee1dba6e7ca888b9e27c223841b51856de0acf76ab1a793d1ce"
+        },
+        {
+          "id": "s9-f2-8",
+          "sha256": "5bfd1a64e76605a814ece994c75475c16278fac062494e146639e6263e7d7cb8"
+        },
+        {
+          "id": "s9-f2-12",
+          "sha256": "ffd62baa4c68bcfb7895a184466f569b648b509fc4bedd82218245cac2c50b79"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 26,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s10-f0-8",
+          "sha256": "aba2c9f9becc91fa5badc1bc85b55ee1a850635ac094359d68999daab387307b"
+        },
+        {
+          "id": "s10-f0-12",
+          "sha256": "642733a4316fe5a4af1967377e42ae8cfdc2c606243c6f4e1ab5b131f1585c72"
+        },
+        {
+          "id": "s10-f1-8",
+          "sha256": "d3c577ee5b7fffe42e1dc118151fa4b1c0bf40ee48d544bd25d537c5150f6771"
+        },
+        {
+          "id": "s10-f1-12",
+          "sha256": "1667a55cbfe8d3de20ae015c0599d196154e2591787b1aee84be5186728802f4"
+        },
+        {
+          "id": "s10-f2-8",
+          "sha256": "073eb911b5563f526692673ebeed51078283597e2ad91a02aa3958b80858d26c"
+        },
+        {
+          "id": "s10-f2-12",
+          "sha256": "739b7becc2732ec1889138f5a3dbed6a7c99aa3366876750eda81d6be49580b3"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 16,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s11-f0-8",
+          "sha256": "be3bdbad00a80eb8615e3062920a682d62e4ed2e0abbe65aeefd8953aa2ca913"
+        },
+        {
+          "id": "s11-f0-12",
+          "sha256": "4ca5d8c0df8b716d562deb5c63c4eb2e61d959e6a6071d600d293fdc21cfb0b5"
+        },
+        {
+          "id": "s11-f1-8",
+          "sha256": "0f91c268bafa397adf265c0e6b93f673900d40ba2d5ee91f2a55b23fde16b1c9"
+        },
+        {
+          "id": "s11-f1-12",
+          "sha256": "58dd61d8ee8a135c8f2d6d45fbba18c177c09adc9dffbd897a35d56670e6d4fa"
+        },
+        {
+          "id": "s11-f2-8",
+          "sha256": "c6a440daf8b8566d63f195f7dda180b04f0354e3a8fd9935e6109e8443324bee"
+        },
+        {
+          "id": "s11-f2-12",
+          "sha256": "3c4f36a7e7c27dc17a0edd24bc523b9be725ce0fab9081d11894d6dea59a320c"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 50,
+      "bodies": [
+        {
+          "id": "s12-f0-8",
+          "sha256": "f7f599daf2dcf0019c8ccb8bd2a9b09f9dd8441a222ad04ffb3a49845803bc85"
+        },
+        {
+          "id": "s12-f0-12",
+          "sha256": "dd917029c9b57cc8885bf63dd1bd1e670cb53f781fba037e4b3bef23582df2ed"
+        },
+        {
+          "id": "s12-f1-8",
+          "sha256": "ec7c71f451e04707479a3fda1199d4ea0724c595cd79dad44206e3ecc98d04d3"
+        },
+        {
+          "id": "s12-f1-12",
+          "sha256": "e01fdd33e82f3964ec385b54ebc9cabeeca29d42c1af7d1ba46da8551cc9af42"
+        },
+        {
+          "id": "s12-f2-8",
+          "sha256": "1f1b753f2ea1d8de14545be3f696f482ebac0e6a79e5cd80ee4db4863f4e6e13"
+        },
+        {
+          "id": "s12-f2-12",
+          "sha256": "0d4387898665f19840f44dd1225246dc74ae6afe0ab06490b6edb98616aca3c5"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 15,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s13-f0-8",
+          "sha256": "b111f866424850d75259f36283902883f379c8bb44fdae760a6754999e07a279"
+        },
+        {
+          "id": "s13-f0-12",
+          "sha256": "33a694720c17f087cd29fae9df0206495941ce39c48a79dbc49228319162c05f"
+        },
+        {
+          "id": "s13-f1-8",
+          "sha256": "676ed233fefb441acd406a7537aa602e9766148b6cc835f71901edd0327cbcdf"
+        },
+        {
+          "id": "s13-f1-12",
+          "sha256": "fb93a25cafc8c1e7d03dc1eca184e0259054de44dcc613e7fa1caa97b952c334"
+        },
+        {
+          "id": "s13-f2-8",
+          "sha256": "2d684c199c1a2c64435ba94bdc35f93e62d88172af2318bdebf6de81b9c0a582"
+        },
+        {
+          "id": "s13-f2-12",
+          "sha256": "dfa754bb5eb6f518868e5f6a8bb4feeb34dee05ea0811d0beddd5c9b722b35aa"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 6,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 14,
+      "y_quarters": 50,
+      "bodies": [
+        {
+          "id": "s14-f0-8",
+          "sha256": "8eac13afd7fa8e5829e391671da551e8a91216c38e4a826dface69ae2553fe55"
+        },
+        {
+          "id": "s14-f0-12",
+          "sha256": "1b4a43376c90286cfebeb38bc8e398a0ca3880f7448aeca5d473cfa02cdfde6a"
+        },
+        {
+          "id": "s14-f1-8",
+          "sha256": "8af7e258f33a20aa5838db0b3e12d749fc4b676aa32da233bbdaa727c34e742f"
+        },
+        {
+          "id": "s14-f1-12",
+          "sha256": "c08b54950ee3d61d79855334cd0ae4ab9e4a0b421c99babdea5d041ed3f41b90"
+        },
+        {
+          "id": "s14-f2-8",
+          "sha256": "06860c7c1394bb42a4133f58892f0ea296a6b900af358c26b0a5c75821deb047"
+        },
+        {
+          "id": "s14-f2-12",
+          "sha256": "49710e440742bb552dbcf0a9cc97e63618e444372981ac759ef73548ea6451b8"
+        }
+      ]
+    },
+    {
+      "family": "grenade",
+      "direction": 7,
+      "owner_type": 0,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 15,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s15-f0-8",
+          "sha256": "13afe50ffe2fe57bbd1db0a3f343626ba47d9a277e710b8e1509472503e77c1b"
+        },
+        {
+          "id": "s15-f0-12",
+          "sha256": "283128f7479a42962edf2fac6057521c3480bd8b28d0fdcf194ed3d51fb7329a"
+        },
+        {
+          "id": "s15-f1-8",
+          "sha256": "a0616a91ac93a3bedd52194ca3644bb27e52a0606bcb07a28adb9fb9999d75b8"
+        },
+        {
+          "id": "s15-f1-12",
+          "sha256": "4ed8ce177613d640f79fd44a17f758da80405087654bd5cbbd9cc3f954c7ad42"
+        },
+        {
+          "id": "s15-f2-8",
+          "sha256": "e0ffe5cd4cdf696bcb125a590dd0cfb2449191bd1651003a485ece24e6046c00"
+        },
+        {
+          "id": "s15-f2-12",
+          "sha256": "975e7520dd167ed13ba99b9da166e9a20e50646cfef9a0af7ef015c577ae9050"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 50,
+      "bodies": [
+        {
+          "id": "s57-f0-8",
+          "sha256": "b43ae4d71829ca11e34eb17e3bf0cf4c0555a13f09fd169005b54b6fea90197f"
+        },
+        {
+          "id": "s57-f0-12",
+          "sha256": "7ecee0bb12107f6eb62c9aa9fbe0a175827a7577ab6b6053ddb1065343426628"
+        },
+        {
+          "id": "s57-f1-8",
+          "sha256": "62ea887d9e33c3c8ad0e4dc2726d6e9b45487b1ed7c7cc033a4016f29808ae61"
+        },
+        {
+          "id": "s57-f1-12",
+          "sha256": "3def7c3a9f3e97a1f7f1a1dd317ebe2a7bdff2adc96d25db5db4e07a9cb3d4b7"
+        },
+        {
+          "id": "s57-f2-8",
+          "sha256": "45d345796b41a44ca1d90777133eef0553379fdee9a65ed3ea7b3bf8f3b1b939"
+        },
+        {
+          "id": "s57-f2-12",
+          "sha256": "c20654da1427fa8958ea72da50a432404a7296edaf50791ec5ef0c3401d54df8"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s58-f0-8",
+          "sha256": "f0d17a991648a2d86c08625f02bae16f3d2412b0f6b155dc8a75164b5c41536a"
+        },
+        {
+          "id": "s58-f0-12",
+          "sha256": "0e1d5d3476c2bfb1d4df1349bca9357fc5628daac6ebde5dee8bde4eb7035be6"
+        },
+        {
+          "id": "s58-f1-8",
+          "sha256": "79fb2896946cd53a8bbdfa219917438e1c846eae24b9bdff8d8dfd06a2faec9e"
+        },
+        {
+          "id": "s58-f1-12",
+          "sha256": "fe211d0c6e94b4bd89d855a35fdce6fcc9faa15f68b770c9302be1009b035490"
+        },
+        {
+          "id": "s58-f2-8",
+          "sha256": "bba374252c0e3bb6f4b3c067a5a794583d8e2a856dcacf334eba98b67d299ee2"
+        },
+        {
+          "id": "s58-f2-12",
+          "sha256": "90933a94bf50f5171312ba3c4936987bcd282c7e7a0b1ba2783da68d9de0a5af"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 13,
+      "height": 3,
+      "x_quarters": 18,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s59-f0-8",
+          "sha256": "37e504c8905d051dbc4ea38fd062ceb410051338c9b806027a1a62f8fd63b076"
+        },
+        {
+          "id": "s59-f0-12",
+          "sha256": "89525663d91c3f031b5e5741ce3f94ebb58c6cf6f2cd42108526ea50c88d1102"
+        },
+        {
+          "id": "s59-f1-8",
+          "sha256": "ec194d26d44d6f7cd292104e5b5f1698aeb9a550663113da7599857bb12f7f73"
+        },
+        {
+          "id": "s59-f1-12",
+          "sha256": "b464f882c5c9806a784c0ae297d0a23eaa3367a2ed27c255e6856c1375f0ad46"
+        },
+        {
+          "id": "s59-f2-8",
+          "sha256": "26c6b5e7cbf22ec5a74244535d7e66f411b3c90b0fb3ff4cc6f9f341ba2ab533"
+        },
+        {
+          "id": "s59-f2-12",
+          "sha256": "40b9bb93b91136abb07a04fabd0855730197f2b838d083903d21621dac13580e"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 50,
+      "bodies": [
+        {
+          "id": "s60-f0-8",
+          "sha256": "207c3fc094c52880b2f53b54de877174474b057dc10582ba690d02e564d7cd67"
+        },
+        {
+          "id": "s60-f0-12",
+          "sha256": "b66c51f8c03dec927563ebd555f3009054623e46a57dc9efa8e95751178780a1"
+        },
+        {
+          "id": "s60-f1-8",
+          "sha256": "89edd66410138974abe1256c1ca3d00f9df19012587fe4341495e770e8d94306"
+        },
+        {
+          "id": "s60-f1-12",
+          "sha256": "055c040fe3cc3b90e21f0b174d621b9dc51b9153e74e6c0b9639c5bc96d6441d"
+        },
+        {
+          "id": "s60-f2-8",
+          "sha256": "377b95aab711371b1946d0bdc55aba2013e5582845e3c7c87b8290284269fcb8"
+        },
+        {
+          "id": "s60-f2-12",
+          "sha256": "7d3fc778535b3d3f071f5517e42b5c4e491d4ede44524f2aa9e250ac999f6a12"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s61-f0-8",
+          "sha256": "d60c4e52b7c6bf69e9843b15218cd08e8170b62a5c0e67489d820f016827fedc"
+        },
+        {
+          "id": "s61-f0-12",
+          "sha256": "15a4bb8c999237186e0100a6acfccc60a2cb4770ecfac148be5e514111ebb411"
+        },
+        {
+          "id": "s61-f1-8",
+          "sha256": "e3110f1359df28747fd6641f38656d66f38a0d1d165508c42ead0f2596753d8f"
+        },
+        {
+          "id": "s61-f1-12",
+          "sha256": "bfcc6c81c3265857bf9830e4cafb685fe1861c11d42096bfcdc851355e562765"
+        },
+        {
+          "id": "s61-f2-8",
+          "sha256": "a01e223dbad0d62ec9bda4489fd16f74cf4073af12bec7bdfdc59ce48f3608b0"
+        },
+        {
+          "id": "s61-f2-12",
+          "sha256": "7d4d31fd626edfe95379bbdd6d2960bec4d3f1b173623b740ac1c07527a7de60"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 11,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s62-f0-8",
+          "sha256": "0ea2b1bdfde9e4dfbc21ca5a8123eb9a0912c4debcae5604a11f50935125b071"
+        },
+        {
+          "id": "s62-f0-12",
+          "sha256": "2921b6752a03b078cc0fbdd16a8c182451dfb1a6901b14ad0e73bec510e4c53f"
+        },
+        {
+          "id": "s62-f1-8",
+          "sha256": "c352d7c434bf4a6ac26cf336141fd7092ffc2770826d6ae925b9e36c673adda0"
+        },
+        {
+          "id": "s62-f1-12",
+          "sha256": "829d03322cbd5a6c5c8d63199f7d97a98ded6e422ec513be4f45c57da42375ea"
+        },
+        {
+          "id": "s62-f2-8",
+          "sha256": "fdc3cf114f7d5c58b25c8f343fc4167581be1b439ccc2414397d2be1243cdda3"
+        },
+        {
+          "id": "s62-f2-12",
+          "sha256": "3a6b1bf53d2bf4ae6981fd63ea963e5512aff5c69feb4c14cfdbf6556411f30e"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 6,
+      "owner_type": 0,
+      "width": 13,
+      "height": 3,
+      "x_quarters": 0,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "s63-f0-8",
+          "sha256": "0e11f0d44ffbc30be9c96f456705adf9e05be48971add2ebf5dc4fa6356831bf"
+        },
+        {
+          "id": "s63-f0-12",
+          "sha256": "f63ae98e07aaf420a71cbc309a607ae2de3784762ee0b49b73ee1a5082b2f63e"
+        },
+        {
+          "id": "s63-f1-8",
+          "sha256": "d774bdc32547202d1a181c6fae52e37e82caf9b76455527a8a7a16f2f9c68416"
+        },
+        {
+          "id": "s63-f1-12",
+          "sha256": "f93cff29ee15b186642f77ea3c08749fba4fdbf2250c04251e115979d5860153"
+        },
+        {
+          "id": "s63-f2-8",
+          "sha256": "93260ad0b4de147450ae4aeee55fb0f82d1100d9618c2b98b07e0622c14b4883"
+        },
+        {
+          "id": "s63-f2-12",
+          "sha256": "ad8cfd478e17d33d2fc5190f1ebb470a66d7ed6d6c1962a34898089165eb79dc"
+        }
+      ]
+    },
+    {
+      "family": "rocket",
+      "direction": 7,
+      "owner_type": 0,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "s64-f0-8",
+          "sha256": "878d867cf8478256bd0e3b6c69060882338187927a6fc87b9e192f35627c367d"
+        },
+        {
+          "id": "s64-f0-12",
+          "sha256": "e51f2105e73bdb9ddac6f08bb0df9b441e303554af74c141d2db3cd52a698ec7"
+        },
+        {
+          "id": "s64-f1-8",
+          "sha256": "a3c93e0314453b2d5e8226bf0bdf634852a19cb015ef497555e77a0496e1a7f4"
+        },
+        {
+          "id": "s64-f1-12",
+          "sha256": "09819864d34903a2ff3f0bbc5a59ae61413f1de49733d1bacc3f9256b28f4587"
+        },
+        {
+          "id": "s64-f2-8",
+          "sha256": "63501c3bd298f0f3571cd54afbc3d6a1c1ef1b3fd9285fc13b27e048d0688da6"
+        },
+        {
+          "id": "s64-f2-12",
+          "sha256": "ce089b7a76ee259fb1d6ceee603c02821234c7e782333135bea2d882f9038e9c"
+        }
+      ]
+    },
+    {
+      "family": "enemy-walk-44-f1",
+      "direction": null,
+      "owner_type": 5,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-walk-44-f1-8x",
+          "sha256": "e88ea45e84b87577b72cac8e51341eec3c82441477cd990274845d4d0c428c6b"
+        },
+        {
+          "id": "enemy-walk-44-f1-12x",
+          "sha256": "13b79f8272b8553b227ae0ae487f21b4750c91a176fafdf26803a9d9cfdd603a"
+        }
+      ]
+    },
+    {
+      "family": "enemy-walk-45-f1",
+      "direction": null,
+      "owner_type": 5,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 27,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-walk-45-f1-8x",
+          "sha256": "12cdd3c9727c38c83b437b48cf1e507e7d836f4774ce533399cde71fa8e0032a"
+        },
+        {
+          "id": "enemy-walk-45-f1-12x",
+          "sha256": "c3e62bfcbe674c8203f3c121b50ac884f9d80a6f890748c4a16d450c2596f807"
+        }
+      ]
+    },
+    {
+      "family": "enemy-prone-59-f0",
+      "direction": null,
+      "owner_type": 5,
+      "width": 12,
+      "height": 3,
+      "x_quarters": 12,
+      "y_quarters": 48,
+      "bodies": [
+        {
+          "id": "enemy-prone-59-f0-8x",
+          "sha256": "a6112cabbd00664b8e2d2bf5e62d364abbf4c6f42e9379cfdc1bd420f0306ebf"
+        },
+        {
+          "id": "enemy-prone-59-f0-12x",
+          "sha256": "44d03ee4fd5a1e1c91792b5ac4f1dcd424c44cc62b085f7119866053367e365f"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "verdict": "PASS",
+  "campaign": "PC Format",
+  "scope": "8 reference phases",
+  "executable_sha256": "2c1f5ac136394d4f20b02c90ede10c5d2aff5815dffd81ac31c71edc0f259056",
+  "densities": [
+    {
+      "density": 8,
+      "canonical_states": 7956,
+      "hd_published": true,
+      "files": [
+        {
+          "name": "C01_8.html",
+          "sha256": "a31000242e0c5fafa957b7af919d8baa6c4c244d3fe808523efc1210967b62f6"
+        },
+        {
+          "name": "C01_8_clasico.bmp",
+          "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+        },
+        {
+          "name": "C01_8_fondo.bmp",
+          "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+        },
+        {
+          "name": "C01_8_parche.bmp",
+          "sha256": "5a19bc9d929d63502391dda1a73648c37fea43ab8e39fd545cfb2c0d9bcd9754"
+        }
+      ]
+    },
+    {
+      "density": 12,
+      "canonical_states": 7956,
+      "hd_published": true,
+      "files": [
+        {
+          "name": "C01_12.html",
+          "sha256": "0c14e39122a108163c57364641c0c40a4353cb3ece5010b584a28131686781a3"
+        },
+        {
+          "name": "C01_12_clasico.bmp",
+          "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+        },
+        {
+          "name": "C01_12_fondo.bmp",
+          "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+        },
+        {
+          "name": "C01_12_parche.bmp",
+          "sha256": "22f8b6d131e3e33bef79be53a00e6f83447feab19d78ba738ce1d72f30e3c2de"
+        }
+      ]
+    }
+  ]
+}

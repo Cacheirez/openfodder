@@ -1,0 +1,435 @@
+{
+  "schema": 1,
+  "entry_head": "f91682d4066164abb610937a8fbd9922f5fbbfea",
+  "scope": "Manual validation NOT ACCEPTED by Miguel; normal-clock diagnostic startup verified, frequent classic fallbacks confirmed",
+  "date": "2026-11-08",
+  "session_directory": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02",
+  "command": [
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\data\\openfodder.exe",
+    "--appveyor",
+    "--nosound",
+    "--window",
+    "--window-scale",
+    "3",
+    "--alternate-mouse",
+    "--campaign",
+    "Amiga The One",
+    "--mission",
+    "1",
+    "--phase",
+    "2",
+    "--skipbriefing",
+    "--demo-record",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\input.ofd"
+  ],
+  "exe_sha256": "04e6d63e7335f41f539665409b610cd920c729e4e65d3fcad17c37287a7d7b3b",
+  "manifest_sha256": "dd81d551031cfc8ac0265c4979c80575fcf31c1bb9166ebc8a563fb216a18147",
+  "unit_test": false,
+  "playback": false,
+  "renderer": "software",
+  "sound": false,
+  "clock": "Production cadence unchanged, default 20ms interrupt",
+  "log_snapshot": {
+    "results": 4456,
+    "published": 92,
+    "first_result_wall": 2.826919699960854,
+    "last_result_wall": 94.06704719999107,
+    "span_seconds": 91.24012750003021,
+    "results_per_wall_second": 48.82720050997874,
+    "timing_bytes": 762492,
+    "timing_snapshot_sha256": "5c478ff04e0be290a8c57299de41fdd5b2b0bdb3d88f7185f2ee741a69d549b6",
+    "note": "Live snapshot, not a completed session or proof of continuous publication"
+  },
+  "first_attempt": {
+    "outcome": "missing-variant",
+    "type": 15,
+    "sheet": 145,
+    "frame": 0,
+    "key": "5fc9fc6b277ef4b4f27f2552b6a212827b18f31e8e3dc4c6979cb98c4e64d9f7"
+  },
+  "windows": "Find Grenades visible, five names in sidebar; manual input/minimization detected, no visual acceptance inferred",
+  "diagnostic_fix": "--appveyor preserves redirected Windows stdout/stderr (Debugger.cpp ConsoleOpen); does not enable unit testing or accelerated cadence",
+  "initial_attempt": {
+    "directory": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-01",
+    "result": "Startup visible but redirected logging unavailable; not valid coverage evidence"
+  },
+  "tool": {
+    "path": "tools/modernization/run_demo_a1_interactive.py",
+    "sha256": "e1117311ac68c16ed9da0b70f82c11362e7e1ba13d66299d7bae2007e0541fe8"
+  },
+  "acceptance": "NOT_ACCEPTED",
+  "next_task": "Audit original rank variant 0x95/F4 and reconstruct/verify its exact native key; propose bounded correction inside A without observation-only approval, new art or B",
+  "guarantees": "No Source, clock, entities, bindings, assets, original launchers, H3 references or package changed",
+  "user_observation": "Miguel reports new soldier designs appear only occasionally, in some positions, less often than classic; both windows closed by user",
+  "completed_session": {
+    "returncode": 0,
+    "wall_seconds": 94.25486639997689,
+    "outcomes": {
+      "missing-variant": 4364,
+      "published": 92
+    },
+    "first_publication_wall": 38.889511100016534,
+    "last_publication_wall": 52.684591399971396,
+    "attempts": 4456,
+    "publication_percent": 2.0646319569120286,
+    "longest_published_streak": {
+      "attempts": 21,
+      "wall_span_seconds": 0.40913450001971796,
+      "first": {
+        "wall": 40.0139869999839,
+        "attempt": "3991",
+        "outcome": "published",
+        "expected": "6",
+        "observed": "6",
+        "replace": "5",
+        "keep": "1",
+        "missing": "0",
+        "density": "12"
+      },
+      "last": {
+        "wall": 40.42312150000362,
+        "attempt": "4031",
+        "outcome": "published",
+        "expected": "6",
+        "observed": "6",
+        "replace": "5",
+        "keep": "1",
+        "missing": "0",
+        "density": "12"
+      }
+    }
+  },
+  "first_rejection_after_publication": {
+    "first_publication": {
+      "wall": 38.889511100016534,
+      "attempt": "3881",
+      "outcome": "published",
+      "expected": "6",
+      "observed": "6",
+      "replace": "5",
+      "keep": "1",
+      "missing": "0",
+      "density": "12"
+    },
+    "rejection": {
+      "wall": 39.21313069999451,
+      "attempt": "3913",
+      "outcome": "missing-variant",
+      "expected": "6",
+      "observed": "6",
+      "replace": "5",
+      "keep": "0",
+      "missing": "1",
+      "density": "12"
+    },
+    "missing_commands": [
+      {
+        "attempt": "3913",
+        "scene": "186",
+        "interval": "3912",
+        "order": "4",
+        "slot": "42",
+        "generation": "278",
+        "type": "21",
+        "sheet": "149",
+        "frame": "4",
+        "key": "84a0ee13d651ee9f27afe2d9284cacb3b3b53c18658c934effc0ba0942a0be5f",
+        "decision": "missing",
+        "density": "12"
+      }
+    ]
+  },
+  "missing_command_counts": [
+    {
+      "type": 21,
+      "sheet": 149,
+      "frame": 4,
+      "count": 4162
+    },
+    {
+      "type": 15,
+      "sheet": 145,
+      "frame": 0,
+      "count": 1758
+    },
+    {
+      "type": 37,
+      "sheet": 194,
+      "frame": 0,
+      "count": 1755
+    },
+    {
+      "type": 5,
+      "sheet": 89,
+      "frame": 0,
+      "count": 360
+    },
+    {
+      "type": 6,
+      "sheet": 127,
+      "frame": 0,
+      "count": 138
+    },
+    {
+      "type": 22,
+      "sheet": 151,
+      "frame": 1,
+      "count": 69
+    },
+    {
+      "type": 5,
+      "sheet": 113,
+      "frame": 1,
+      "count": 51
+    },
+    {
+      "type": 22,
+      "sheet": 151,
+      "frame": 0,
+      "count": 30
+    },
+    {
+      "type": 6,
+      "sheet": 127,
+      "frame": 4,
+      "count": 21
+    },
+    {
+      "type": 6,
+      "sheet": 127,
+      "frame": 5,
+      "count": 21
+    },
+    {
+      "type": 6,
+      "sheet": 127,
+      "frame": 6,
+      "count": 21
+    },
+    {
+      "type": 6,
+      "sheet": 127,
+      "frame": 7,
+      "count": 21
+    },
+    {
+      "type": 5,
+      "sheet": 69,
+      "frame": 1,
+      "count": 18
+    },
+    {
+      "type": 5,
+      "sheet": 68,
+      "frame": 1,
+      "count": 18
+    },
+    {
+      "type": 23,
+      "sheet": 150,
+      "frame": 1,
+      "count": 18
+    },
+    {
+      "type": 23,
+      "sheet": 150,
+      "frame": 2,
+      "count": 18
+    },
+    {
+      "type": 23,
+      "sheet": 150,
+      "frame": 3,
+      "count": 18
+    },
+    {
+      "type": 5,
+      "sheet": 69,
+      "frame": 0,
+      "count": 15
+    },
+    {
+      "type": 6,
+      "sheet": 157,
+      "frame": 1,
+      "count": 15
+    },
+    {
+      "type": 5,
+      "sheet": 106,
+      "frame": 1,
+      "count": 12
+    },
+    {
+      "type": 5,
+      "sheet": 124,
+      "frame": 1,
+      "count": 12
+    },
+    {
+      "type": 5,
+      "sheet": 68,
+      "frame": 0,
+      "count": 9
+    },
+    {
+      "type": 5,
+      "sheet": 68,
+      "frame": 2,
+      "count": 9
+    },
+    {
+      "type": 23,
+      "sheet": 150,
+      "frame": 0,
+      "count": 9
+    },
+    {
+      "type": 5,
+      "sheet": 107,
+      "frame": 1,
+      "count": 9
+    },
+    {
+      "type": 6,
+      "sheet": 157,
+      "frame": 6,
+      "count": 9
+    },
+    {
+      "type": 5,
+      "sheet": 112,
+      "frame": 1,
+      "count": 9
+    },
+    {
+      "type": 5,
+      "sheet": 100,
+      "frame": 1,
+      "count": 9
+    },
+    {
+      "type": 6,
+      "sheet": 150,
+      "frame": 0,
+      "count": 6
+    },
+    {
+      "type": 6,
+      "sheet": 150,
+      "frame": 1,
+      "count": 6
+    },
+    {
+      "type": 5,
+      "sheet": 109,
+      "frame": 1,
+      "count": 6
+    },
+    {
+      "type": 6,
+      "sheet": 150,
+      "frame": 2,
+      "count": 6
+    },
+    {
+      "type": 6,
+      "sheet": 150,
+      "frame": 3,
+      "count": 6
+    },
+    {
+      "type": 5,
+      "sheet": 110,
+      "frame": 1,
+      "count": 6
+    },
+    {
+      "type": 5,
+      "sheet": 72,
+      "frame": 1,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 86,
+      "frame": 0,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 70,
+      "frame": 1,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 69,
+      "frame": 2,
+      "count": 3
+    },
+    {
+      "type": 6,
+      "sheet": 157,
+      "frame": 7,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 111,
+      "frame": 0,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 110,
+      "frame": 0,
+      "count": 3
+    },
+    {
+      "type": 5,
+      "sheet": 111,
+      "frame": 1,
+      "count": 3
+    }
+  ],
+  "rank_selector_evidence": {
+    "path": "Source/Sprites/Sprite_Troop.cpp",
+    "function": "Sprite_Handle_Player_Rank",
+    "behavior": "mSquad_Walk_Target_Steps selects original 0x7C/F0 marker; normal rank copies mMissionTroop->mRank to 0x95 frame. A.1 only binds 0x95/F0. Observation does not approve new bindings."
+  },
+  "input_recording": {
+    "result": "UNUSABLE",
+    "states": 1,
+    "video_ticks": 0,
+    "note": "--demo-record normal startup saved only one state and no video ticks in both sessions; no reproducible user-input trajectory claimed. Final diagnostic runner omits --demo-record; local logs remain valid."
+  },
+  "current_runner_validation": "AST/help checked; visible normal startup/logging checked before removing unusable --demo-record. Final runner without recording has not been relaunched after user closure; no full patrol PASS claimed.",
+  "files": {
+    "session.json": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\session.json",
+      "bytes": 20193,
+      "sha256": "874b018d3c0d3be8ff87815a78b6692a2a818fc53ef9b09cd654dc413045b239"
+    },
+    "engine.log": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\engine.log",
+      "bytes": 7418158,
+      "sha256": "a47936a6d0397ce8d2b6686a8d473496a6b5ff4b32e1b7a393595aaa259f39c4"
+    },
+    "presentation-times.jsonl": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\presentation-times.jsonl",
+      "bytes": 762492,
+      "sha256": "5c478ff04e0be290a8c57299de41fdd5b2b0bdb3d88f7185f2ee741a69d549b6"
+    },
+    "coverage.json": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\coverage.json",
+      "bytes": 80793,
+      "sha256": "21a512c25fea5d06b6a2744d0a5efa555d8f72bc24afcdf36d3359724f348d4b"
+    },
+    "input.ofd": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1bbd5-0759-7e10-8ff4-5c706a4a0b02\\interactive-check-02\\input.ofd",
+      "bytes": 622,
+      "sha256": "31ef26dd7e355222d837afc4549d116addb8afbac1cd097deff9d6a369c4952e"
+    }
+  }
+}

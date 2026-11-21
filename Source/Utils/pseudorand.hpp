@@ -20,6 +20,8 @@
  *
  */
 
+#include "SignedBits.hpp"
+
 class cPseudorand {
 private:
 	int16 mRandom_0;
@@ -99,9 +101,11 @@ public:
 		int16 Data4 = mRandom_2;
 		int16 Data6 = mRandom_3;
 
-		uint32 Dat4 = Data4 | (Data6 << 16);
+		uint32 Dat4 = signExtendedWord32(Data4) |
+                      (static_cast<uint32>(static_cast<uint16>(Data6)) << 16);
 		uint8 CF = Data4 & 1;
-		uint32 Data8 = Data0 | (Data2 << 16);
+		uint32 Data8 = signExtendedWord32(Data0) |
+                       (static_cast<uint32>(static_cast<uint16>(Data2)) << 16);
 
 		uint8 CF2 = Data8 & 1;
 		Data8 >>= 1;
@@ -118,8 +122,8 @@ public:
 
 			if (Data0 & 0x8000)
 				CF = 1;
-			Data0 <<= 1;
-			Data2 <<= 1;
+			Data0 = wrapShiftLeft16(Data0, 1);
+			Data2 = wrapShiftLeft16(Data2, 1);
 			if (CF)
 				Data2 |= 1;
 		}

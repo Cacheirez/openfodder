@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-18",
+  "source_head": "38841c309339a005374a315dd2a45f2073009bf3",
+  "milestone": "SOMBRAS-HD-PILOTO revision 2",
+  "feedback": {
+    "position": "V1 rejected: project right/down, not up",
+    "intensity": "Miguel says may be suitable; paint and alpha retained"
+  },
+  "asset": {
+    "version": 2,
+    "status": "Final v2: original body size/placement retained, lower-right tail technically verified; PENDING Miguel visual review; no activation",
+    "source": {
+      "shadow_master": "../demo-a1-shadow-walk-00-f1/shadow-source.png",
+      "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+      "paint_rgba_unchanged": true,
+      "new_generation": false
+    },
+    "native": {
+      "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+      "sheet": 0,
+      "frame": 1,
+      "animation": 0,
+      "cell": [
+        16,
+        14
+      ],
+      "tail_mask": "row12 x9..11 lower half; row13 x8..10",
+      "scope": "Lower/right subset of the verified native dark component; original feet/contact/shadow are not labelled separately in source pixels"
+    },
+    "body": {
+      "scale": [
+        1,
+        1
+      ],
+      "logical_anchor": [
+        0,
+        14
+      ],
+      "opaque_pixels_unchanged": true,
+      "placement_unchanged": true
+    },
+    "assets": [
+      {
+        "density": 8,
+        "file": "shadow-walk-00-f1-v2-8x.rgba",
+        "height": 14,
+        "id": "shadow-walk-00-f1-v2-8x",
+        "sha256": "a377b8231594cc7bbbe450d194b01ba70f067088af29e690614af7967481304e",
+        "width": 16
+      },
+      {
+        "density": 12,
+        "file": "shadow-walk-00-f1-v2-12x.rgba",
+        "height": 14,
+        "id": "shadow-walk-00-f1-v2-12x",
+        "sha256": "4c3d3a18366c302cb423428348d8119ba0b10c2bf47707d69be4548a6179a21e",
+        "width": 16
+      }
+    ],
+    "bindings": [
+      {
+        "key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+        "decision": "replace-art",
+        "assets": {
+          "8": "shadow-walk-00-f1-v2-8x",
+          "12": "shadow-walk-00-f1-v2-12x"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "density": 8,
+        "body_scale": [
+          1,
+          1
+        ],
+        "unchanged_opaque_body": true,
+        "unchanged_outside_tail": true,
+        "body_current_sha256": "279d2854304094d881218be004948cb6d94f0c343b512359ae6431aa1e2b93fe",
+        "changed_pixels": 252,
+        "exposed_shadow_center": [
+          10.318921781682874,
+          13.068851427410024
+        ],
+        "boot_band_alpha_center": [
+          7.923147501032033,
+          12.414869511214757
+        ],
+        "exposed_tail_right_and_down_of_boot_band": true,
+        "minimum_changed_y": 12.5,
+        "paint_rgba_unchanged": true
+      },
+      {
+        "density": 12,
+        "body_scale": [
+          1,
+          1
+        ],
+        "unchanged_opaque_body": true,
+        "unchanged_outside_tail": true,
+        "body_current_sha256": "63be43e25c65a9e5ca6a52f0764c1f8b0caa987fad77c1fc90c6052a3c537057",
+        "changed_pixels": 550,
+        "exposed_shadow_center": [
+          10.30749343401182,
+          13.06837519150799
+        ],
+        "boot_band_alpha_center": [
+          7.923232159203212,
+          12.415030183954912
+        ],
+        "exposed_tail_right_and_down_of_boot_band": true,
+        "minimum_changed_y": 12.5,
+        "paint_rgba_unchanged": true
+      }
+    ],
+    "tests": {
+      "window_cases": 56,
+      "windows": "PASS SDL ASan UBSan",
+      "linux": "PASS SDL ASan UBSan LSan",
+      "composer_byte_equality": true,
+      "classic_independent": true,
+      "strict_hybrid": true,
+      "water_crop_reference": "Original full-size HD, unchanged",
+      "water_crop_identical_to_original_HD": true
+    }
+  },
+  "comparison": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot-v2\\comparativa-revision-8x-12x.png",
+    "sha256": "08af6d52d61077e1d0fdb145e99dd7d252ea4603968704608351d0982bf71a63",
+    "kind": "Offline comparison over retained game background; not gameplay"
+  },
+  "logs": [
+    {
+      "platform": "win",
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot-v2\\window-win.log",
+      "sha256": "39be5dd840e663c9c06d9052177979ea7c61f5366d9e53376394b769056403e6",
+      "window_cases": 28
+    },
+    {
+      "platform": "linux",
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot-v2\\window-linux.log",
+      "sha256": "0edd81f9a20b12894522387ed01e70a4c9cb4a8e78fc901c4521099e7cb8f20c",
+      "window_cases": 28
+    }
+  ],
+  "fixture": {
+    "source": "assets/modernization/demo-a1-shadow-walk-00-f1/window-cases.inc",
+    "source_sha256": "418be0ba1976c6b2e49f003c7a1ecf096795a34dfac9dd5a39215e1dd7ab0f1e",
+    "windows_executable_sha256": "8dcb5bc824c8bd776e289f1e848ebde6ad38c7bf95a971c42648573784cd65ec",
+    "linux_executable_sha256": "9c5675995c5909a52d5fd4ca2cfb512b89121d14534251f3fd3e5f58f8922d3a",
+    "note": "Unchanged fixtures, new candidate, ORIGINAL full-size HD baseline"
+  },
+  "composer_source_sha256": "f5b9807c3a28adbef9e87d006f38bf0626744bd915458987c0826e94fe4be6c7",
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\shadow-walk-pilot-v2",
+  "limitations": [
+    "Lower dark-component split is artistic; no universal mask or offset",
+    "Shadow extent is limited to current 16x14 native command",
+    "Complete gameplay transitions, explosion flight, CD32, GPU, audio and full CI not exercised here",
+    "No engine/simulation/normal-launcher changes; no mass correction"
+  ],
+  "discarded_local_alternative": "Uniform 6/7 body reduction was examined and discarded; not part of final candidate or published assets"
+}

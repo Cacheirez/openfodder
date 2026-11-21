@@ -1,0 +1,187 @@
+{
+  "records": [
+    {
+      "name": "Cannon Fodder Plus - Mission 1 Phase 1: STAGE 1",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Cannon Fodder Plus - Mission 2 Phase 1: STAGE 2",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Cannon Fodder Plus - Mission 3 Phase 1: STAGE 3",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Cannon Fodder Plus - Mission 4 Phase 1: STAGE 4",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Cannon Fodder Plus",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga The One - Mission 1 Phase 1: Welcome to the Jungle",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga The One - Mission 1 Phase 2: Welcome to the Jungle (Find Grenades)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga The One - Mission 1 Phase 3: Welcome to the Jungle (Destroy Enemy Buildings)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Amiga The One",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Action - Mission 1 Phase 1: LEVEL 1",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Action - Mission 2 Phase 1: LEVEL 2",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Action - Mission 3 Phase 1: LEVEL 3",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Action - Mission 4 Phase 1: LEVEL 4",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Amiga Action",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Power Alien Levels - Mission 1 Phase 1: LEVEL 1",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Power Alien Levels - Mission 2 Phase 1: LEVEL 2",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Power Alien Levels - Mission 3 Phase 1: LEVEL 3",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Power Alien Levels - Mission 4 Phase 1: LEVEL 4",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Amiga Power Alien Levels",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Christmas Special - Mission 1 Phase 1: LAND OF HOPE AND GLORY",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Christmas Special - Mission 2 Phase 1: IT'S SNOW TIME!",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Amiga Format Christmas Special",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Not Very Festive - Mission 1 Phase 1: LEVEL 1",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Not Very Festive - Mission 2 Phase 1: LEVEL 2",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Not Very Festive - Mission 3 Phase 1: LEVEL 3",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Amiga Format Not Very Festive - Mission 4 Phase 1: LEVEL 4",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - Amiga Format Not Very Festive",
+      "message": "",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 2 Phase 1: ONWARD VIRGIN SOLDIERS (BRIDGE OVER THE RIVER PIE)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 2 Phase 2: ONWARD VIRGIN SOLDIERS (TRASH ENEMY HQ)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 3 Phase 1: ANTARCTIC ADVENTURE (BUGGER ME IT'S COLD)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 4 Phase 1: SUPER SMASHING NAMTASTIC (BEACHY HEAD)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 4 Phase 2: SUPER SMASHING NAMTASTIC (PIER PRESSURE)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 4 Phase 3: SUPER SMASHING NAMTASTIC (VILLAGE PEOPLE)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "PC Format - Mission 4 Phase 4: SUPER SMASHING NAMTASTIC (QUICKSAND)",
+      "message": "Phase Complete",
+      "status": "Passed"
+    },
+    {
+      "name": "Campaign - PC Format",
+      "message": "",
+      "status": "Passed"
+    }
+  ],
+  "campaign": null,
+  "verdict": "PASS",
+  "provenance": "Linux baseline fefe3795805cdef8665694f834f56601952410af; data 070a6086c62164e859fc3274b75b5f536fa9d902; tests c7722ef1a37c1e04ff28c6fedf9d3bdff197dc86. Completion outcomes only, not full game state."
+}

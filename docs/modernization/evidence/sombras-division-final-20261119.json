@@ -1,0 +1,482 @@
+{
+  "date": "2026-11-19",
+  "checkout_head": "79508ffa07737308b07df59207053e5b886fc01d",
+  "launcher": "PROBAR_SOMBRAS_P1.cmd; previous 212/363 candidate, not current 244/387 damage launcher",
+  "log": "OpenFodder-P1-Sombras-hibrido-20261119-151304.log",
+  "sha256": "2a41e7f444c4a8d7c8d80ac4584e73ad66f57c0e0e5cf166e629eb9e4fb10a42",
+  "manual": "Miguel: clasico al dividir peloton y mientras parte dividida sigue en pantalla; posible granada; confirmado final de fase saludando y saltando",
+  "outcomes": {
+    "missing-variant": 1449,
+    "published": 7988
+  },
+  "attempts": 9437,
+  "same_actor_returns": [
+    {
+      "attempt": 9703,
+      "outcome": "missing-variant",
+      "missing": [
+        "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893"
+      ]
+    },
+    {
+      "attempt": 11485,
+      "outcome": "missing-variant",
+      "missing": [
+        "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3"
+      ]
+    },
+    {
+      "attempt": 13811,
+      "outcome": "missing-variant",
+      "missing": [
+        "3e2f0c7b7caaeeaf1980b255f0f4d8796fe73514bc409b2b9b343e0e54916b64"
+      ]
+    },
+    {
+      "attempt": 14732,
+      "outcome": "missing-variant",
+      "missing": [
+        "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28"
+      ]
+    },
+    {
+      "attempt": 18639,
+      "outcome": "missing-variant",
+      "missing": [
+        "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a"
+      ]
+    },
+    {
+      "attempt": 18858,
+      "outcome": "missing-variant",
+      "missing": [
+        "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+        "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a"
+      ]
+    },
+    {
+      "attempt": 19450,
+      "outcome": "missing-variant",
+      "missing": [
+        "71998e274de2711478e333e69f8004d0a06539e2c600df93632b94d3802b5711",
+        "e438aba5f40952deb93b7feae5e5bf850ba1fbf08191b4d653d9e9ea3db9e253"
+      ]
+    }
+  ],
+  "missing": [
+    {
+      "key": "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3",
+      "count": 1249,
+      "type": 0,
+      "sheet": 21,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5",
+      "count": 568,
+      "type": 0,
+      "sheet": 22,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607",
+      "count": 567,
+      "type": 0,
+      "sheet": 20,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "3e67239ef4e4278985060d39ccbe280d3ff2a86601f48a5e1da737de5dbb8cae",
+      "count": 224,
+      "type": 30,
+      "sheet": 161,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null
+    },
+    {
+      "key": "3f88859d0f661358a7a43d88d791db10b0e34b81dd0d13933eb9c41904979bce",
+      "count": 224,
+      "type": 28,
+      "sheet": 160,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null
+    },
+    {
+      "key": "dcebe4fa5153d8aa1285e03849c5204c58bf349761d7910354c4438278755ea8",
+      "count": 216,
+      "type": 0,
+      "sheet": 159,
+      "frame": 2,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893",
+      "count": 165,
+      "type": 0,
+      "sheet": 19,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c",
+      "count": 135,
+      "type": 0,
+      "sheet": 18,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "27588fbc9c596b6398baffe7e87ece4eb023a96cb4f54a48a1561fee68579ac9",
+      "count": 118,
+      "type": 0,
+      "sheet": 159,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "c52d1db1faae5095fc5419f4408e746ccdf8c28f451b51885cf7f2141bbee34e",
+      "count": 108,
+      "type": 0,
+      "sheet": 159,
+      "frame": 3,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "0cfddedda72d9cc3b5b2d9eb6fa370fbfcad2db4dfe4c1f79aae69c2315666c7",
+      "count": 63,
+      "type": 0,
+      "sheet": 16,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "8d1a2d8192a77e04f6f92ade189cab5d2ebfeee84b6c39aeb675521d11729619",
+      "count": 51,
+      "type": 0,
+      "sheet": 17,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a",
+      "count": 51,
+      "type": 15,
+      "sheet": 145,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null
+    },
+    {
+      "key": "71998e274de2711478e333e69f8004d0a06539e2c600df93632b94d3802b5711",
+      "count": 48,
+      "type": 0,
+      "sheet": 65,
+      "frame": 3,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "732e75338df7da82d25db28cdfb7f5c2ef9b01a71732430c91e591446ea2f0d2",
+      "count": 48,
+      "type": 0,
+      "sheet": 65,
+      "frame": 4,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "6be6ffa225577807c7bdddece277156e623652f360b079b97f5b5446df1c220c",
+      "count": 44,
+      "type": 0,
+      "sheet": 65,
+      "frame": 2,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "28b8a64f20cbdee9144491dfa6ff634a9398ddf208542ffda0818be0228f2398",
+      "count": 42,
+      "type": 0,
+      "sheet": 65,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "cc7e7e92ca965571141c23992f3463d491c61d774303de45f3810d96c844bfe2",
+      "count": 33,
+      "type": 0,
+      "sheet": 40,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 6
+    },
+    {
+      "key": "dcc9a41e76612dbb52b9b515869c0bd882af4d5bfec4660c5cecf73185e1bdc2",
+      "count": 32,
+      "type": 0,
+      "sheet": 45,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "3d5241a660e2b0108fc535f66b5046ef39036c71159f8f56b7c60f1a690065ed",
+      "count": 29,
+      "type": 0,
+      "sheet": 6,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null
+    },
+    {
+      "key": "16129839ea178fd4288639e890578d6c5dec51c626820ea9d4568604e4eae6de",
+      "count": 29,
+      "type": 5,
+      "sheet": 72,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null
+    },
+    {
+      "key": "38162d36444ea770416cbfdf9b94dcaafd7322b51030a42b01836bb1b3bf0006",
+      "count": 27,
+      "type": 0,
+      "sheet": 40,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "ac2ff629e90d840798ef7c43734b3dcca41c1db4b23fc331c4a6c8cfca7320a4",
+      "count": 24,
+      "type": 0,
+      "sheet": 65,
+      "frame": 5,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "8bd225a343d018a676c80aea1a280e7eeb7df6014448cc8734d7e53c9432dd8a",
+      "count": 21,
+      "type": 0,
+      "sheet": 65,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "5aaa302873a673083bee058984e2b9cb1c5c5e92a71037e4e28ad9cb966a10f3",
+      "count": 18,
+      "type": 0,
+      "sheet": 46,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "0648176b0e37a0ed16ecd851aaefd6d0b73a2ea2a63458ad1b005517905286ec",
+      "count": 15,
+      "type": 0,
+      "sheet": 41,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+      "count": 12,
+      "type": 0,
+      "sheet": 124,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 6
+    },
+    {
+      "key": "e438aba5f40952deb93b7feae5e5bf850ba1fbf08191b4d653d9e9ea3db9e253",
+      "count": 12,
+      "type": 0,
+      "sheet": 159,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+      "count": 9,
+      "type": 0,
+      "sheet": 44,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "c63352f2725a184131a4801d409d5af1df58fc98398648f32b52b8cbe3cb2e6f",
+      "count": 9,
+      "type": 0,
+      "sheet": 43,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "6e92afd6ffa281a74f3db5eabce33eaceb1d98cd1bba0c68681a49e80e7e0549",
+      "count": 6,
+      "type": 0,
+      "sheet": 34,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+      "count": 6,
+      "type": 0,
+      "sheet": 8,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+      "count": 6,
+      "type": 0,
+      "sheet": 8,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+      "count": 6,
+      "type": 0,
+      "sheet": 8,
+      "frame": 2,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "2daae8e347e24ed69fc3c15c2c31c55c67bc7c6898f1b16500b53b99d176a5da",
+      "count": 3,
+      "type": 0,
+      "sheet": 23,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 0
+    },
+    {
+      "key": "3e2f0c7b7caaeeaf1980b255f0f4d8796fe73514bc409b2b9b343e0e54916b64",
+      "count": 3,
+      "type": 0,
+      "sheet": 34,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28",
+      "count": 3,
+      "type": 0,
+      "sheet": 4,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "ac6db4a0c4872f67c4a55c03f7b9c6790e56527f2bfe21bbe39e3a4e3b7dffca",
+      "count": 3,
+      "type": 0,
+      "sheet": 45,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+      "count": 3,
+      "type": 0,
+      "sheet": 47,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1
+    },
+    {
+      "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+      "count": 3,
+      "type": 35,
+      "sheet": 141,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null
+    }
+  ],
+  "projection_only": {
+    "extra_exact_keys": 25,
+    "published": 8158,
+    "same_actor_returns": 6,
+    "short_attempt_runs": 0,
+    "remaining_missing": {
+      "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893": 165,
+      "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607": 567,
+      "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3": 1249,
+      "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5": 568,
+      "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c": 135,
+      "8d1a2d8192a77e04f6f92ade189cab5d2ebfeee84b6c39aeb675521d11729619": 51,
+      "0cfddedda72d9cc3b5b2d9eb6fa370fbfcad2db4dfe4c1f79aae69c2315666c7": 63,
+      "2daae8e347e24ed69fc3c15c2c31c55c67bc7c6898f1b16500b53b99d176a5da": 3,
+      "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28": 3,
+      "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a": 6,
+      "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225": 6,
+      "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a": 6,
+      "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924": 3,
+      "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a": 51,
+      "e438aba5f40952deb93b7feae5e5bf850ba1fbf08191b4d653d9e9ea3db9e253": 12,
+      "71998e274de2711478e333e69f8004d0a06539e2c600df93632b94d3802b5711": 48,
+      "732e75338df7da82d25db28cdfb7f5c2ef9b01a71732430c91e591446ea2f0d2": 48,
+      "3e67239ef4e4278985060d39ccbe280d3ff2a86601f48a5e1da737de5dbb8cae": 224,
+      "3f88859d0f661358a7a43d88d791db10b0e34b81dd0d13933eb9c41904979bce": 224,
+      "27588fbc9c596b6398baffe7e87ece4eb023a96cb4f54a48a1561fee68579ac9": 118,
+      "ac2ff629e90d840798ef7c43734b3dcca41c1db4b23fc331c4a6c8cfca7320a4": 24,
+      "dcebe4fa5153d8aa1285e03849c5204c58bf349761d7910354c4438278755ea8": 216,
+      "6be6ffa225577807c7bdddece277156e623652f360b079b97f5b5446df1c220c": 44,
+      "c52d1db1faae5095fc5419f4408e746ccdf8c28f451b51885cf7f2141bbee34e": 108,
+      "28b8a64f20cbdee9144491dfa6ff634a9398ddf208542ffda0818be0228f2398": 42,
+      "8bd225a343d018a676c80aea1a280e7eeb7df6014448cc8734d7e53c9432dd8a": 21,
+      "3d5241a660e2b0108fc535f66b5046ef39036c71159f8f56b7c60f1a690065ed": 29,
+      "16129839ea178fd4288639e890578d6c5dec51c626820ea9d4568604e4eae6de": 29
+    }
+  },
+  "sheet_7a_draws": 0,
+  "native_snapshots": 88,
+  "blocking_attempts_by_group": {
+    "low_aim": 951,
+    "damage_or_marker": 170,
+    "other": 83,
+    "grenade_throw_pose": 18,
+    "final_phase_player": 227,
+    "phase_complete_text": 224
+  },
+  "group_counts_overlap": true,
+  "current_candidate_sha256": "fe6a427c9ede78f08f5f160629a74fc4f26db504c7950ca7f623d6e01a25236c",
+  "interpretation": {
+    "low_aim": "Captured 0x10-0x17/F0 missing keys; source selects lower aiming pose at animation table offset 0x30. Compatible with split-squad observation, not input-timestamp proof.",
+    "final_phase": "Captured 0x9F/F0-F3 and 0x41/F0-F5 plus native PHASE/COMPLETE texts, also missing. Adapting player art alone would leave those text dependencies.",
+    "grenade": "Missing 0x08/F0-F2 throwing variants exist; the log does not timestamp the user observation. No missing grenade body or small-shadow command was recorded.",
+    "limits": "Old-launcher review; not acceptance or failure evidence for the new damage candidate. No new binding approved or artwork generated."
+  }
+}

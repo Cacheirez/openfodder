@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "id": "enemy-prone-59-f0-8x",
+      "file": "enemy-prone-59-f0-8x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 8,
+      "sha256": "a6112cabbd00664b8e2d2bf5e62d364abbf4c6f42e9379cfdc1bd420f0306ebf"
+    },
+    {
+      "id": "enemy-prone-59-f0-12x",
+      "file": "enemy-prone-59-f0-12x.rgba",
+      "width": 16,
+      "height": 14,
+      "density": 12,
+      "sha256": "44d03ee4fd5a1e1c91792b5ac4f1dcd424c44cc62b085f7119866053367e365f"
+    }
+  ],
+  "bindings": [
+    {
+      "key": "0ae80fd93ee8120c3e003e5b0e9383b2514910c7353812e498a587247d5455d8",
+      "decision": "replace-art",
+      "assets": {
+        "8": "enemy-prone-59-f0-8x",
+        "12": "enemy-prone-59-f0-12x"
+      }
+    }
+  ]
+}

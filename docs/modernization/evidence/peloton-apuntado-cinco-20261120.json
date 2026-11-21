@@ -1,0 +1,428 @@
+{
+  "date": "2026-11-20",
+  "scope": "First five directly observed lower aim bindings; unchanged artwork; diagnostic-only local engine",
+  "candidate": {
+    "assets": 244,
+    "bindings": 396,
+    "manifest_sha256": "febc9889d6caad0c37b30772bfb4a7570cb51422f60acdaf574409e8df72856e",
+    "previous_391_bindings_and_all_assets_unchanged": true
+  },
+  "contract": {
+    "scope": "Five lower-aim keys directly observed in current M1P2 review; native captures equal qualified references; no bulk binding",
+    "status": "PASS exact native reconstruction and qualified descriptors; 40 Window cases per platform ASan/UBSan(+LSan Linux); gameplay pending",
+    "bindings": [
+      {
+        "key": "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607",
+        "sheet": 20,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s20-f0-8",
+          "12": "s20-f0-12"
+        }
+      },
+      {
+        "key": "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3",
+        "sheet": 21,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s21-f0-8",
+          "12": "s21-f0-12"
+        }
+      },
+      {
+        "key": "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893",
+        "sheet": 19,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s19-f0-8",
+          "12": "s19-f0-12"
+        }
+      },
+      {
+        "key": "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5",
+        "sheet": 22,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s22-f0-8",
+          "12": "s22-f0-12"
+        }
+      },
+      {
+        "key": "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c",
+        "sheet": 18,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s18-f0-8",
+          "12": "s18-f0-12"
+        }
+      }
+    ],
+    "qualified_asset_descriptors": {
+      "s20-f0-8": "ce378ccc2433c01dcb2908f05098d3a47fda7f560862555a6ac6dc9145bf95ed",
+      "s20-f0-12": "d47eb88b13c678a2676c4278d2b3756550fa88da5420287dcfa1530afe02b47b",
+      "ground-shadow-10x3-8x": "4bde7b3b8ef01fadb7df30f7dfc12a2b995d8036cb91189f867ea7e7c27f753f",
+      "ground-shadow-10x3-12x": "3f41bf2121895f3928110021d65424e278b451270f2f617c91f077e8ba9d8dc2",
+      "s21-f0-8": "119e70d5c93bd73c851fc9bfbd3e1066e57cf800e596979a79d40a80623be4b4",
+      "s21-f0-12": "e02eb2b5e517cc62c3c474308e02729533c37bb0316f44c602201babefaba9e9",
+      "ground-shadow-9x3-8x": "5dd512421043ce9eb741f960fb3e5714db6b39f850ce21040b682406c37622c4",
+      "ground-shadow-9x3-12x": "a13e8e54a70d92941ae39fb310c437d7a595d4bd7b185ad12248450f1e7180c1",
+      "s19-f0-8": "0b796524f2853caac529667f195ffd36926427fcb39094039af5b75793ff3469",
+      "s19-f0-12": "8c9b6ed8968f3831aac3cb9ac501713d8aa1f152f76314b0818324115fa50d4b",
+      "s22-f0-8": "70cb20a83b3691bec03168fbd8760850229aa9a297bb724aa2daf06f5235be8c",
+      "s22-f0-12": "a088315b2bea6a28ac8ea59718216635df62b8cceadd8d507557488e587fc987",
+      "ground-shadow-8x3-8x": "3c641f2865f0dc0665aebe69cd2238ce2a7da17c812a4258e2f2827dea592b6d",
+      "ground-shadow-8x3-12x": "870356c3c46afb58155ca96460f854ce70c853e1b1c0ba0e5351cf1abcd11df3",
+      "s18-f0-8": "390d72dba75da2c7c3f66bfac1f82da525d24363ed19a532dddefd2c4ec16522",
+      "s18-f0-12": "02327af5d81d82ddd938d45de004e591f53d81e54561a5fdc993e1ca99b21c9f"
+    }
+  },
+  "tests": {
+    "window": "PASS 40 cases per platform 8x/12x, two actors, height/crop/zero-write occlusion, exact SDL oracle, negatives and full recovery",
+    "windows_sanitizers": "PASS ASan/UBSan",
+    "linux_sanitizers": "PASS ASan/UBSan/LSan"
+  },
+  "runtime": {
+    "win": {
+      "outcomes": {
+        "missing-variant": 89,
+        "published": 4465
+      },
+      "log_sha256": "8a3db92109117d6a3f3a15cb46a47b6bffc58da638ce11bba5af87dc91e1fd7d",
+      "h3": "PASS 11/11361 full local + 1546 mission states",
+      "bounded_scene_diagnostics": "PASS <=40 reasons/scene <=256/process, monotonic calls, scene identity matches ordered publication"
+    },
+    "linux": {
+      "outcomes": {
+        "missing-variant": 89,
+        "published": 4465
+      },
+      "log_sha256": "b248d22da506a805716033ba2ba7eae22893f4d8e88a259b878e343ff7ec4415",
+      "h3": "PASS 11/11361 full local + 1546 mission states",
+      "bounded_scene_diagnostics": "PASS <=40 reasons/scene <=256/process, monotonic calls, scene identity matches ordered publication"
+    }
+  },
+  "projections": [
+    {
+      "log": "OpenFodder-P1-DanoAjustado-hibrido-20261120-132407.log",
+      "before": {
+        "outcomes": {
+          "published": 12427,
+          "missing-variant": 1049,
+          "no-body": 131
+        },
+        "same_actor_returns": 10,
+        "returns_excluding_verified_empty_marker": 6,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 27945,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27957,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27969,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27981,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      },
+      "after": {
+        "outcomes": {
+          "published": 13449,
+          "missing-variant": 27,
+          "no-body": 131
+        },
+        "same_actor_returns": 7,
+        "returns_excluding_verified_empty_marker": 3,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 27945,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27957,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27969,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27981,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      }
+    },
+    {
+      "log": "OpenFodder-P1-DanoSombras-hibrido-20261119-235700.log",
+      "before": {
+        "outcomes": {
+          "published": 9479,
+          "missing-variant": 171,
+          "no-body": 131
+        },
+        "same_actor_returns": 15,
+        "returns_excluding_verified_empty_marker": 11,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 20581,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20593,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20607,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20619,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      },
+      "after": {
+        "outcomes": {
+          "published": 9479,
+          "missing-variant": 171,
+          "no-body": 131
+        },
+        "same_actor_returns": 15,
+        "returns_excluding_verified_empty_marker": 11,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 20581,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20593,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20607,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20619,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Sombras-hibrido-20261119-151304.log",
+      "before": {
+        "outcomes": {
+          "published": 8161,
+          "missing-variant": 1276
+        },
+        "same_actor_returns": 5,
+        "returns_excluding_verified_empty_marker": 5,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 9067,
+          "missing-variant": 370
+        },
+        "same_actor_returns": 4,
+        "returns_excluding_verified_empty_marker": 4,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    },
+    {
+      "log": "engine.log",
+      "before": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    }
+  ],
+  "initial_restart": "Unresolved: second observed scene has 293 published/zero missing. Old palette diagnostics lack scene IDs; do not infer cause or relax guards.",
+  "logs": [
+    {
+      "file": "split-fixtures\\0b9b6d18f60a\\window-win.log",
+      "sha256": "ea0984f299f595a06ed4372aba20b11aa6e5a8d116b64d20ab62e2ec0625b775"
+    },
+    {
+      "file": "split-fixtures\\0b9b6d18f60a\\window-linux.log",
+      "sha256": "961d1488afcded32572ab90b760fb1da6b56823d98e425794017929f00266523"
+    },
+    {
+      "file": "split-fixtures\\2c93b2ed124e\\window-win.log",
+      "sha256": "7dfb6b55a386005eb37877414eafe708edfe17fbc30b751c84735186110876e4"
+    },
+    {
+      "file": "split-fixtures\\2c93b2ed124e\\window-linux.log",
+      "sha256": "0f15d0aac940916784e74c520a338519d5183e802cc235de02f6f30fe9cc9239"
+    },
+    {
+      "file": "split-fixtures\\973d27bf6498\\window-win.log",
+      "sha256": "6417f2b2d5fc47e38f32a5955a4bf794031ab4d5dbc0ade1f846720cbf97535d"
+    },
+    {
+      "file": "split-fixtures\\973d27bf6498\\window-linux.log",
+      "sha256": "8a669d708343541cee0d9d53d397682695cc7fdd853a22b245a433cd4e0b629e"
+    },
+    {
+      "file": "split-fixtures\\9362b9ba313f\\window-win.log",
+      "sha256": "b7c4545051218e7aafc1360bcf00ccbeb9a85f0ae3d25b8b93476fc14222a0c8"
+    },
+    {
+      "file": "split-fixtures\\9362b9ba313f\\window-linux.log",
+      "sha256": "7fc7c9dcfd4b238cc814f070e07aa888e9ad909d78514f7beb1b50350cf44902"
+    },
+    {
+      "file": "split-fixtures\\97b50df56cae\\window-win.log",
+      "sha256": "df4fd32608e24f727af303ad4c40fd78bedcf25f8da5cf0c3ad120145050d161"
+    },
+    {
+      "file": "split-fixtures\\97b50df56cae\\window-linux.log",
+      "sha256": "80533f479cedaf8e72455c50a7e67dbcd0c0a690b4e6a9e5030d140b39d8b467"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3",
+  "next": "Three other already observed directions 0x10/0x11/0x17 in prior 15:13 sample; same qualified family, no new art. Complete before grouped gameplay review."
+}

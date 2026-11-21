@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-29",
+  "review_commit": "f842b3d2b85e6d912fffcbf44f01358a34cbeb44",
+  "engine_commit": "a1c885686b10d73b710d3f55a23fb66a77b11b0e",
+  "workflow": {
+    "jobs": [
+      {
+        "id": 123207403941,
+        "name": "model",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 40800565963,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check native equivalence, density geometry and alpha",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Check standalone page is reproducible",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Install pinned browser test tooling",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Verify actual page and capture comparison",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      }
+    ]
+  },
+  "artifact": {
+    "id": 12865747089,
+    "url": "https://github.com/Cacheirez/openfodder/actions/runs/40800565963/artifacts/12865747089",
+    "sha256": "58032feb051faf6e642f09bd21a2d36f75eb00f78025ee4727c3c39493701b69",
+    "standalone_html_matches_git": true,
+    "contains": [
+      "C01-dpr1.png",
+      "C01-dpr3.png",
+      "C01_DENSIDADES.html"
+    ]
+  },
+  "local_model": "PASS: exact native 224 pixels, alpha, deterministic 8/12, anchors, 96 output/platform/DPR cases",
+  "visual_review": "CI screenshots inspected; no claim of physical Windows or game rendering",
+  "followup": "Default inspection zoom changed from 4x to 2x; allow scrolling oversized canvases from the left edge. Followup browser CI required.",
+  "manual_density_choice": "PENDING",
+  "engine_ci": "a1c8856 Windows cancelled by the subsequent push due to cancel-in-progress. Follow current branch workflow; no fixed Windows ZIP verified yet."
+}

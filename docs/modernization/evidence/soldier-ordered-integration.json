@@ -1,0 +1,110 @@
+{
+  "code_commit": "615a90dc6fad01e0200036eccb5ddf5a7e6f183e",
+  "plan": "2.74",
+  "scope": "ordered WindowHD opt-in; full soldier artwork and acceptance remain PENDING",
+  "source_sha256": {
+    "Source/WindowHD.cpp": "a3580172265198aef40e537b8382366b7bf9f78f3d9e2a2d5034b7ae2b9882a4",
+    "Source/Utils/SoldierVariant.hpp": "ed5627fb3e43cda13830b82983262f1edd16fa4ce9343fc010ae1301fcbb7ea7",
+    "Source/Utils/OrderedSoldierRegistry.hpp": "6f1d356d5c5deab78aaa789eb1e39b6d672516aacac1a3152908aec26f52e73f",
+    "tools/modernization/ordered_window_cases.inc": "2864db42bded1033747232b34cd806bfb1926ef5f1e23045936a907204c37427",
+    "tools/modernization/build_hd_window_fixture.py": "103ac37bd6fc5d09a93e7d287b9dd2fd3e91e3d44ce00c6bf0507c4e6c7c9f42",
+    "tools/modernization/check_mission_publication_replays.py": "5422c13a3c191d8ee65782631bbcdd6db649cef67db7a2f88e967ddd2b8f27c5",
+    "tools/modernization/check_screen_transform_integration.py": "efd7a341154ba310ac9fbb8a7a53d2e3332292894151579ae1c7d62d9e0a2e2c",
+    "tools/modernization/ordered-empty-bindings.json": "7ab4d0de89a66a2208a396faa97fab8ae8ccd87a4802a09374ba3f5904e85438"
+  },
+  "build": "GCC C++14 Release, SDL3 release-3.4.0, local no-mixer build; built before commit publication, sources verified byte-for-byte against commit",
+  "tests": {
+    "ctest": "15 PASS; options font binary initially lacked local execution bit, corrected and rerun",
+    "python": "37 PASS",
+    "screen_transform": "PASS ASan/UBSan actual window/mouse contract; strict SDL sink inventory preserved",
+    "ordered_window": "PASS real method + SDL 8x/12x, SHA vectors, variants, multiple bodies, water, occlusion, missing bindings, palette and manifest errors; ASan/UBSan",
+    "lsan": "not run locally: ptrace unsupported; no leak-free claim beyond existing SDL texture counters"
+  },
+  "discarded_run": {
+    "reason": "truncated final JSON record in mounted-workspace PC first-phase trace; 100 complete lines match control exactly",
+    "controls": "first phases without pause, classic with pause and ordered with screen/pause all PASS (301 original states)",
+    "resolution": "full rerun in local temporary storage, all 11361 states PASS; no baseline regeneration"
+  },
+  "replay": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 1,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": null,
+      "coverage": "11 reference phases",
+      "ordered_manifest_sha256": "7ab4d0de89a66a2208a396faa97fab8ae8ccd87a4802a09374ba3f5904e85438",
+      "ordered_density": 12,
+      "art_coverage": "PENDING; replay PASS validates integration and H3 only"
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 635,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 87.966,
+        "executable_sha256": "373de44f1a3ad8d92c3c9b8f058ef8b5400b9a52aacf7433e163147b8f054ebc"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 508,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 67.047,
+        "executable_sha256": "373de44f1a3ad8d92c3c9b8f058ef8b5400b9a52aacf7433e163147b8f054ebc"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "observed_variants": {
+    "file": "soldier-ordered-variants.json.gz",
+    "sha256": "87791731f3149a3b0d0e3cc491fdbfdd5e5fa1a85dd87c167445682c2afc399d",
+    "PC": 635,
+    "Amiga": 508,
+    "meaning": "stable content/palette identities, not images or approved bindings"
+  },
+  "log_sha256": {
+    "pc": "d6c16825df36937181c0bea645fe4c24b0794e58aae6e073a42c8432f85598c5",
+    "amiga": "45987d432fc7c402590f94102b5f6255aeaa9487062eef8173c0ba30958473c7"
+  },
+  "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+  "ci": {
+    "code_commit": "615a90dc6fad01e0200036eccb5ddf5a7e6f183e",
+    "windows_run": 41623136653,
+    "linux_run": 41623137007,
+    "density_run": 41623136723,
+    "status": "consult live runs; density PASS, Windows/Linux running at report creation"
+  },
+  "pending": [
+    "complete art and variant bindings",
+    "ordered runtime positive publication on public campaign with sufficient art",
+    "pause/map/palette transition handling",
+    "GPU and visual acceptance",
+    "CD32 private data coverage"
+  ]
+}

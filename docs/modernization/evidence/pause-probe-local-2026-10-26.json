@@ -1,0 +1,482 @@
+{
+  "local-pause-1": {
+    "report": {
+      "verdict": "FAIL",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 1.97,
+          "executable_sha256": "27559187b4cd1cb6c539f012deb8b52ae018f94374c9053f11c574d76379a3d5"
+        }
+      ],
+      "failure": "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3', '/workspace/scratch/bb233acd400e/openfodder/tools/modernization/audit_replays.py', '--exe', '/workspace/scratch/bb233acd400e/openfodder/build-pause-local/openfodder', '--data', '/workspace/scratch/bb233acd400e/openfodder/Run', '--out', '/workspace/scratch/bb233acd400e/openfodder/reports/local-pause-1/amiga', '--campaign', 'Amiga The One', '--video', '--timeout', '180']' returned non-zero exit status 1."
+    },
+    "logs": {
+      "pc": {
+        "sha256": "cda1be9906b4f6f9142858f3488f13855c03f138112fd765ee0dd47e47722d12",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (1879ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (1880ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "1ee3e06a42f6a92f10ebe64c53e587c43feb36663e48a9a619d713b6c595fcc5",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\n"
+      }
+    }
+  },
+  "local-control": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": false,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 0,
+          "seconds": 1.82,
+          "executable_sha256": "27559187b4cd1cb6c539f012deb8b52ae018f94374c9053f11c574d76379a3d5"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 0,
+          "seconds": 3.028,
+          "executable_sha256": "27559187b4cd1cb6c539f012deb8b52ae018f94374c9053f11c574d76379a3d5"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "9daca2f279c92c0f2f799b07dcd8bfdfea35a754fc3ecf0649cbb2b3059783f1",
+        "content": "MISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (1722ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (1724ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "bc4bd92fe915081fd94e11a55b331607e7baa7370e6f3a1dfe00f60b2e3bf649",
+        "content": "MISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (2915ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (2915ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-debug": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 1.771,
+          "executable_sha256": "c75077f14b532702310fc911628802944ee17c2a05f4375c3e622f82386e3cc2"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 2.923,
+          "executable_sha256": "c75077f14b532702310fc911628802944ee17c2a05f4375c3e622f82386e3cc2"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "cbeaea5b453b949313da2d0268846d130c5d564ffa408367ab3658a38afb211d",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nDEBUG flags start unit=1 playback=1 disable=0 params app=1 unit=1\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nDEBUG flags start unit=1 playback=1 disable=0 params app=1 unit=1\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (1645ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (1646ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "58121ee007822ef7fe7e2eca1643b23c4fbb90a62a1e66d0b0eb7d5a1ace8a95",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nDEBUG flags start unit=1 playback=1 disable=0 params app=1 unit=1\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nDEBUG flags start unit=1 playback=1 disable=0 params app=1 unit=1\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (2819ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (2820ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-final-0": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 0,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 1.873,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 2.677,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "d6d710a479c88050f73c73c6f3fc897c1925b9ae244ca4f21e310243f3811bbe",
+        "content": "MISSION_LAYER_SCHEDULE: 0 presentations per mission call\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (1781ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (1783ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "9a050f2370b0c1fe5a1bd3390de1ea709ad46fd3bc39998308faa82a2a529fed",
+        "content": "MISSION_LAYER_SCHEDULE: 0 presentations per mission call\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (2568ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (2569ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-final-1": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 2.323,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 3.228,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "604479263c0669339ea4b8e4017f0dfde40fc4968382862f1277096cac6cc0fe",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (2186ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (2188ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "f57ae53358df9090e4251c1fcd2eefab7591ba6ad850b63bd12e847c45190aed",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (3156ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (3157ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-final-5": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 5,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 5.834,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 8.294,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "cf9b0ea90c04bf7fec7054b0c55a2d8c91d517dd934e7f238a66f469835e135c",
+        "content": "MISSION_LAYER_SCHEDULE: 5 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (5694ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (5696ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "24d0971071b3d2ae21afbcb9a3cd22c42f42a59aa4d55e18de42263896013703",
+        "content": "MISSION_LAYER_SCHEDULE: 5 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (8221ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (8222ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-asan": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 8.7,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 9.946,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "140fc04e4b50240b565f63d1f80d5e66b309596ea0997aff1823f202995e5f82",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (8438ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (8447ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "3584549a226553ecb5b0cc196e60ffd8cfaa81df07b40ac5d1cc5cc280b3c37c",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (9738ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (9744ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-asan-0": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 0,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 8.338,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 9.399,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "34113d3eb0641c004fca3f4d4d4a3d36932c2158857646cd7f27fbb556c274c6",
+        "content": "MISSION_LAYER_SCHEDULE: 0 presentations per mission call\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (8052ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (8061ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "8cf901594c2e9c3d40686a0f3cbf49ad002fd51ee53f59ef12ca1e9b44a84d3c",
+        "content": "MISSION_LAYER_SCHEDULE: 0 presentations per mission call\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (9230ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (9237ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-asan-5": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 5,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 22.836,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 26.498,
+          "executable_sha256": "74fa29242d3aad8b8877d8fac1ef394bdc80fac8a39676ecd695eb32dd27cae7"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "69e33419b284f5736a1f26ac77bd97f88e41837cf59a68e4e1c5b4e8e9155763",
+        "content": "MISSION_LAYER_SCHEDULE: 5 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (22626ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (22634ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "496d36032d29ea8c4df72d258d00c9ba84d38b49952f82dc6809f86fee1fb4fe",
+        "content": "MISSION_LAYER_SCHEDULE: 5 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (26287ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (26294ms) [Passed]\n"
+      }
+    }
+  },
+  "local-pause-repro": {
+    "report": {
+      "verdict": "PASS",
+      "settings": {
+        "flags": [
+          "--appveyor",
+          "--unit-test",
+          "--nosound"
+        ],
+        "publication": true,
+        "contrast": true,
+        "cadence": "classic producers",
+        "mission_presentations": 1,
+        "pause_probe": true,
+        "coverage": "first phase per campaign"
+      },
+      "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+      "fixture_count": 29,
+      "campaigns": [
+        {
+          "campaign": "PC Format",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 1.87,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        },
+        {
+          "campaign": "Amiga The One",
+          "phases": 1,
+          "pause_transitions": 2,
+          "seconds": 2.823,
+          "executable_sha256": "f87258421fef6df03e52f7c2bc6ffde16e5135b41987704bf5cd47bf4f1f3ddd"
+        }
+      ],
+      "baseline_source_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+      "canonical_states": 301
+    },
+    "logs": {
+      "pc": {
+        "sha256": "97a2376129d363bd20fb2ccd50643b4cf47b42341f5a46c87dd1f6c6ef809b91",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed PC Format:1:1:8\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:8\nMISSION_PAUSE_PROBE: completed PC Format:1:1:16\nMISSION_PAUSE_PROBE: resumed PC Format:1:1:16\n::notice::Test start: Campaign - PC Format\n::notice::Test start: PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE)\n::notice::Test PC Format - Mission 1 Phase 1: THE SENSIBLE INITIATION (IT'S A JUNGLE OUT THERE): Phase Complete (1739ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - PC Format:  (1741ms) [Passed]\n"
+      },
+      "amiga": {
+        "sha256": "2f2599b17398a50ecb6438e076b736819543c8884c6b6a8c270ba1774b13fd9c",
+        "content": "MISSION_LAYER_SCHEDULE: 1 presentations per mission call\nMISSION_LAYER_PRESENT: classic fallback (missing or incompatible interval)\nMISSION_LAYER_AUDIT: verified real producer interval\nMISSION_LAYER_PRESENT: published verified orders\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:8\nMISSION_PAUSE_PROBE: completed Amiga The One:1:1:16\nMISSION_PAUSE_PROBE: resumed Amiga The One:1:1:16\n::notice::Test start: Campaign - Amiga The One\n::notice::Test start: Amiga The One - Mission 1 Phase 1: Welcome to the Jungle\n::notice::Test Amiga The One - Mission 1 Phase 1: Welcome to the Jungle: Phase Complete (2731ms) [Passed]\n::notice::DIAGNOSTIC_SCOPE: first phase only; remaining campaign not executed\n::notice::Test Campaign - Amiga The One:  (2732ms) [Passed]\n"
+      }
+    }
+  },
+  "_scope": {
+    "local_asan_options": "detect_leaks=0:halt_on_error=1",
+    "local_ubsan_options": "halt_on_error=1",
+    "sdl_commit": "a962f40bbba175e9716557a25d5d7965f134a3d3",
+    "sdl_mixer_commit": "3045b35335113e5e5ba258858cb403d8803bfbeb",
+    "initial_anomaly": "FAIL preserved; 149 Amiga states match control, missing completion and second pause markers; not reproduced after recompilation, cause unknown",
+    "original_baseline_unchanged": true
+  }
+}

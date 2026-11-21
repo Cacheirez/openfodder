@@ -1,0 +1,22 @@
+{
+  "plan": "2.58",
+  "base_head": "2479fea2ba97ddd58bd6723295d815be98c5dcca",
+  "local_results": {
+    "hd_isolated": "PASS ASan/UBSan; 132 guard cases and alpha/detail/identity/native/budget checks",
+    "native_c01": "PASS ASan/UBSan; 64 guard cases plus existing adapter checks",
+    "options": "PASS ASan/UBSan; SDL doubles only; user crash not reproduced",
+    "surface": "PASS ASan/UBSan; 27648 cases; detect_leaks=0",
+    "python_unittest": "PASS 30 tests"
+  },
+  "local_exclusions": [
+    "First surface run failed in LeakSanitizer environment: cannot inspect /proc task; repeated with detect_leaks=0. No local LSan claim.",
+    "No physical Windows, SDL HD integration, GPU or performance acceptance."
+  ],
+  "preserved_sha256": {
+    "Source/Utils/SoldierArtPixels.hpp": "d904a0218e3bc666f4572da1d5846e9239d834da9cce3bcffd73ffc7cbed2d5b",
+    "tools/modernization/reference-gameplay-v1.json": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+    "assets/modernization/soldier-c01/source.png": "9fb5dd519e8589de6c6420e4385c8eb2e12ac1f24c83f9a64678a2d943e31c77"
+  },
+  "new_ci": "pending publication",
+  "save_crash": "open; diagnostic instrumentation only"
+}

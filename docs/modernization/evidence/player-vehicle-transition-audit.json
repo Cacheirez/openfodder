@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "base": "ad17bc9",
+  "block": "R3-vehicle-transition-format-audit",
+  "native": [
+    {
+      "format": 0,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "3f53640559ba7ecc438ffd6ab1b63b01d996d509e6e6501bbb1132b1eb5c0364",
+      "opaque_pixels": 5,
+      "bbox": [
+        6,
+        6,
+        9,
+        8
+      ]
+    },
+    {
+      "format": 0,
+      "frame": 1,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "a85462c6096be4260dc3d6e5a2b48759de50660ff09020af07dbe4f780fa100d",
+      "opaque_pixels": 15,
+      "bbox": [
+        5,
+        5,
+        10,
+        9
+      ]
+    },
+    {
+      "format": 0,
+      "frame": 2,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "1276d543915d9712c2aa9d5835747aaed5bfab27e871764499259c6190f79843",
+      "opaque_pixels": 30,
+      "bbox": [
+        4,
+        4,
+        12,
+        9
+      ]
+    },
+    {
+      "format": 0,
+      "frame": 3,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "ec8e0986315eaa5a2a8bc8f5fff012a8699690fd841529836c3a6502332b6588",
+      "opaque_pixels": 53,
+      "bbox": [
+        4,
+        3,
+        13,
+        10
+      ]
+    },
+    {
+      "format": 0,
+      "frame": 4,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "181437880f2698c90d49965d0addab8a8a2c8c7f2b22b5ba4dd46655be34423e",
+      "opaque_pixels": 13,
+      "bbox": [
+        5,
+        4,
+        11,
+        9
+      ]
+    },
+    {
+      "format": 1,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "opaque_pixels": 0,
+      "bbox": null
+    },
+    {
+      "format": 1,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "opaque_pixels": 0,
+      "bbox": null
+    },
+    {
+      "format": 1,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "opaque_pixels": 0,
+      "bbox": null
+    },
+    {
+      "format": 1,
+      "frame": 3,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "opaque_pixels": 0,
+      "bbox": null
+    },
+    {
+      "format": 1,
+      "frame": 4,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "opaque_pixels": 0,
+      "bbox": null
+    }
+  ],
+  "findings": [
+    "Vehicle_Inside selects CC/F4 then counts down F3,F2,F1,F0 before 7C/F0; Sprite_Draw_Row_Update moves/sorts the actor, does not paint a new body",
+    "PC retained resource contains five small grey transition effects, not humanoid body poses; modern effect art still required",
+    "Amiga The One retained resource has no pixels in all five CC rows; original Reinicio launcher uses this public campaign",
+    "PC/Amiga distinction is explicit in generated contracts and Python regression checks; 337 runtime entries remain mandatory",
+    "Known source hash plus native raster signature plus actual no-write producer guard required; nonempty signed resources are rejected as hidden"
+  ],
+  "tests": {
+    "python_contracts": 6,
+    "native_catalog_windows_asan_ubsan": 15357,
+    "native_catalog_linux_asan_ubsan_lsan": 15357,
+    "signed_nonempty_hidden_source_negatives": 9,
+    "window_sdl_cases_per_platform": 96,
+    "window_matrix": "Five hidden Amiga CC frames plus visible walk baseline; two tested actors and visible HD anchor; states 90/91, height/crop/zero occlusion, 8x/12x, palette alias, negatives, SDL recovery",
+    "pc_only_authoring_export": "PASS private utility check; no diagnostic art activated"
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-vehicle-transition-audit-candidate\\candidate-manifest.json",
+    "assets": 338,
+    "covered": 324,
+    "required": 337,
+    "missing": 13,
+    "activated": false
+  },
+  "required_breakdown": {
+    "amiga_bodies": 160,
+    "pc_bodies": 159,
+    "pc_transition_effects": 5,
+    "no_write": 9,
+    "owned_shadow": 4
+  },
+  "limits": [
+    "No universal claim that commercial CD32 CC resources are empty; unknown/nonempty data must reject and be audited",
+    "No simulation, native countdown, movement, reference/H3, classic or original launcher changes",
+    "No global Miguel visual/gameplay acceptance; ground qualification and final CI still pending"
+  ],
+  "recovered_failed_attempt": "Initial both-format invisible assumption was rejected by mandatory builder nonzero-raster assertion on PC; failed candidate retained locally and never activated"
+}

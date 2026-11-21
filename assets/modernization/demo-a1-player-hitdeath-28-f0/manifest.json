@@ -1,0 +1,56 @@
+{
+  "status": "Artistic grouped approval by Miguel 2026-11-18; technical fixtures verified; gameplay and coherent integration pending; not in normal launcher",
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-hitdeath-28-f0-8x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-28-f0-8x",
+      "sha256": "e1e28c736b03673d3a7fedc1206417fd6c1d55748828664aa5dc9173509d901d",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-hitdeath-28-f0-12x.rgba",
+      "height": 14,
+      "id": "player-hitdeath-28-f0-12x",
+      "sha256": "ee705816d6b85f703ada0d429ae50bdb064eea2014ecf1e7391c9386649aa40b",
+      "width": 16
+    }
+  ],
+  "bindings": [
+    {
+      "key": "9944ca1a4eb96b2e858d4a61ae1af5de628123b0ddcc93d33f054021a1127938",
+      "decision": "replace-art",
+      "assets": {
+        "8": "player-hitdeath-28-f0-8x",
+        "12": "player-hitdeath-28-f0-12x"
+      }
+    }
+  ],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "f543c47c6ac9fc73a8c74f121d2f54160c3819bacf6694e63746effda4c11b64",
+    "generator": "built-in image_gen, transparent referenced-image workflow"
+  },
+  "native": [
+    {
+      "file": "f0-a1.json",
+      "key": "9944ca1a4eb96b2e858d4a61ae1af5de628123b0ddcc93d33f054021a1127938",
+      "frame": 0,
+      "animation": 1,
+      "rgba_sha256": "28c665ae0ae20fae4f729a315055463eded072658f932799558d1e4dd993998c",
+      "bbox": [
+        3,
+        0,
+        12,
+        11
+      ]
+    }
+  ]
+}

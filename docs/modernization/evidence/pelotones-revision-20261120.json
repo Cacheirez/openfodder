@@ -1,0 +1,1032 @@
+{
+  "date": "2026-11-20",
+  "checkout_head": "4d3d1676d9b1ef097be13ca98ea0a6dcbe007a51",
+  "launcher": "PROBAR_PELOTONES_P1.cmd;244/399;scene diagnostics;metadata 4d3d167",
+  "manual": "Miguel confirma modernos al dividir peloton; primer fotograma tras perder todo el peloton clasico, modernos al moverse; saludo final sin valorar",
+  "log": "OpenFodder-P1-Pelotones-hibrido-20261120-164329.log",
+  "sha256": "628e96d1a52fa589db9113648ce64ee3d34bf34dedcfe0657a9cbdce4220c64a",
+  "attempts": 13322,
+  "outcomes": {
+    "missing-variant": 577,
+    "no-body": 134,
+    "published": 12611
+  },
+  "native_snapshots": 31,
+  "same_actor_returns": [
+    {
+      "attempt": 1728,
+      "outcome": "missing-variant",
+      "missing": [
+        "f083038e97f0b49255013a8899df06d7c573ce6e7a019b9d453ab32ade284055"
+      ]
+    },
+    {
+      "attempt": 9397,
+      "outcome": "missing-variant",
+      "missing": [
+        "5736042fcc8ff9cd3e43fe81f4dc9cfd99bd3576d39c452ae8df6bb42807407c"
+      ]
+    },
+    {
+      "attempt": 9927,
+      "outcome": "missing-variant",
+      "missing": [
+        "0a4565732d80a79ae87c521076cf70ed02177fb5f4a658e9c62ca110322942e4"
+      ]
+    },
+    {
+      "attempt": 10093,
+      "outcome": "missing-variant",
+      "missing": [
+        "034ce51859fd030f1b39afc1a4af66e1ab9d28c8ff70aba0ffb2c744d534cf37"
+      ]
+    },
+    {
+      "attempt": 12331,
+      "outcome": "missing-variant",
+      "missing": [
+        "61359956313fdba938c9a24e93029aa3402817f613526a4a13053baab1ce3277"
+      ]
+    },
+    {
+      "attempt": 14920,
+      "outcome": "missing-variant",
+      "missing": [
+        "921c9a9ce71d575b7e06659b9e797d677abdeb6cc05cea1f97d21be93309ed12"
+      ]
+    },
+    {
+      "attempt": 15007,
+      "outcome": "missing-variant",
+      "missing": [
+        "edd1e20df04af683b431288ecb1b15c6428f8a703636983dc3fd2278238fda0e"
+      ]
+    },
+    {
+      "attempt": 19232,
+      "outcome": "missing-variant",
+      "missing": [
+        "0a4565732d80a79ae87c521076cf70ed02177fb5f4a658e9c62ca110322942e4"
+      ]
+    },
+    {
+      "attempt": 26941,
+      "outcome": "missing-variant",
+      "missing": [
+        "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a"
+      ]
+    },
+    {
+      "attempt": 27153,
+      "outcome": "missing-variant",
+      "missing": [
+        "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a"
+      ]
+    },
+    {
+      "attempt": 27576,
+      "outcome": "missing-variant",
+      "missing": [
+        "25de6674803443e674028ee51a083cae1b250d462ce08130f49fa401c6eff8b8"
+      ]
+    }
+  ],
+  "missing": [
+    {
+      "key": "3e67239ef4e4278985060d39ccbe280d3ff2a86601f48a5e1da737de5dbb8cae",
+      "count": 224,
+      "starts_returns": 0,
+      "type": 30,
+      "sheet": 161,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "3f88859d0f661358a7a43d88d791db10b0e34b81dd0d13933eb9c41904979bce",
+      "count": 224,
+      "starts_returns": 0,
+      "type": 28,
+      "sheet": 160,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "4a0763ebf4444f56b9c90bc370e3f46996ca286bc4a97bbb39196121adec8637",
+      "count": 200,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 56,
+      "frame": 5,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+      "count": 81,
+      "starts_returns": 0,
+      "type": 35,
+      "sheet": 141,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a",
+      "count": 60,
+      "starts_returns": 1,
+      "type": 15,
+      "sheet": 145,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "b1fc5487ff05a3c25841e77b731c949dcb57d8ea0b50aadd4ef7be0f5a6eb497",
+      "count": 60,
+      "starts_returns": 0,
+      "type": 22,
+      "sheet": 151,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "124769a36ee8b45161888a27425bcf52454ca81aae900abcda1a685b6e82452e",
+      "count": 60,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 107,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "16129839ea178fd4288639e890578d6c5dec51c626820ea9d4568604e4eae6de",
+      "count": 40,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 72,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "3d5241a660e2b0108fc535f66b5046ef39036c71159f8f56b7c60f1a690065ed",
+      "count": 37,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 6,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "edd1e20df04af683b431288ecb1b15c6428f8a703636983dc3fd2278238fda0e",
+      "count": 30,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 180,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "72f0d80212ec5474a40951ed2a19030cb9d5d5b9f1d7bf0dfd1bc042a8f6d61e",
+      "count": 27,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 72,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "4f0d2d5bfd824138ec5d8e1841c03ea11d3394d8ada58cd5d5573cfc120f81ce",
+      "count": 25,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 107,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "eceed2c6e60ed5e92714d9eba869e7877552dae40007b67750b030cb30766102",
+      "count": 24,
+      "starts_returns": 0,
+      "type": 22,
+      "sheet": 151,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "781ec5ad964136eea8f963d05c86f679d14b762dab79874b2eaceaaeff0fea37",
+      "count": 12,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 72,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "355ba0006fdec4d646c431d8d526367960790c55ac329463c481796bbd319c3a",
+      "count": 12,
+      "starts_returns": 0,
+      "type": 23,
+      "sheet": 150,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "e37ea03de1098c0d7c0e9ba5fca758b6fd9905f4f97e747899913cb025be5c33",
+      "count": 12,
+      "starts_returns": 0,
+      "type": 23,
+      "sheet": 150,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "db71b592f3aff678892b419f2cd07606c17f89bf3eeeccfb88726ac055435c82",
+      "count": 12,
+      "starts_returns": 0,
+      "type": 23,
+      "sheet": 150,
+      "frame": 3,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "0a4565732d80a79ae87c521076cf70ed02177fb5f4a658e9c62ca110322942e4",
+      "count": 6,
+      "starts_returns": 2,
+      "type": 0,
+      "sheet": 3,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+      "count": 6,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 8,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 8,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 8,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "141892210438250747fdb603dfe4a23fc945683a85e4bdca31bc01f63f3ee21b",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 56,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "0d54500e6fca516e6c4b4e074492da08e6b8a643038deec2ff0d15e5f9ca9208",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 56,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "8410516d42cfc457d0b8db394517045aabd32aea92463a0c9d8975db80c88b1e",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 56,
+      "frame": 3,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "f5b8b031cc6917502278aa8fa402d48298f92571d1d0cf53a73fb02301bdeccc",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 56,
+      "frame": 4,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "371111b543a853f48a750b79237870211d08637d79898a73def3c97db15af16f",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 71,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "d9e8c3d834e4f0209d18507c6c02bb7ed71b372315efe524973e61608ca8bac5",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 23,
+      "sheet": 150,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "f083038e97f0b49255013a8899df06d7c573ce6e7a019b9d453ab32ade284055",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 7,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "5736042fcc8ff9cd3e43fe81f4dc9cfd99bd3576d39c452ae8df6bb42807407c",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 37,
+      "sheet": 194,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "10f6d126038bb7ac6a7fdc59d4dcd3a5b280fb1f86a5f763f572248f71b2a781",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 12,
+      "sheet": 194,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "034ce51859fd030f1b39afc1a4af66e1ab9d28c8ff70aba0ffb2c744d534cf37",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 1,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "61359956313fdba938c9a24e93029aa3402817f613526a4a13053baab1ce3277",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 0,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "921c9a9ce71d575b7e06659b9e797d677abdeb6cc05cea1f97d21be93309ed12",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 4,
+      "frame": 1,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "a9b407521f8c61e0113a8c571a7268c112c6a1c351768d1cc01acc22bab4f73c",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 22,
+      "sheet": 141,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "2f68fdf42307f1225ed9ba91e1b2fafb5fc2820fb07bae8271e42ed73500bb8f",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 15,
+      "sheet": 145,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "8fb449bc91cce5c1825c2b3b6b6482f9026ee7f931a4ba12d473d558d2fdb210",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 35,
+      "sheet": 141,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "7981a553e44c895ed99b33317b8b628019c4d7078925b3147a18137be91a2cc4",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 12,
+      "sheet": 145,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "25de6674803443e674028ee51a083cae1b250d462ce08130f49fa401c6eff8b8",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 56,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "fa386ff2094c5b3ab11dc2c68a8a360f30e1e21ec86c0ec8d97718539447b225",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 88,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "738a6975f52540cc9893346691f7f26cd770335b181102a0ab2c82304a3fb2a6",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 71,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "6ee402ef1e6c60029beec4a43042879c39d81cf36b7602f9513d6f80a4bbf3ab",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 71,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "c39013a5b16efe05352f4fdb8f5635479d1f8aef2e19fee220d9baa680332b65",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 5,
+      "sheet": 107,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    }
+  ],
+  "guards": [
+    {
+      "reason": "palette-transition",
+      "density": 12,
+      "scene": 186,
+      "call": 1
+    },
+    {
+      "reason": "black-palette",
+      "density": 12,
+      "scene": 186,
+      "call": 4
+    },
+    {
+      "reason": "ordered-published",
+      "density": 12,
+      "scene": 186,
+      "call": 88
+    },
+    {
+      "reason": "ordered-missing-variant",
+      "density": 12,
+      "scene": 186,
+      "call": 761
+    },
+    {
+      "reason": "ordered-no-body",
+      "density": 12,
+      "scene": 186,
+      "call": 5924
+    },
+    {
+      "reason": "palette-transition",
+      "density": 12,
+      "scene": 12933,
+      "call": 6148
+    },
+    {
+      "reason": "black-palette",
+      "density": 12,
+      "scene": 12933,
+      "call": 6151
+    },
+    {
+      "reason": "ordered-published",
+      "density": 12,
+      "scene": 12933,
+      "call": 6235
+    },
+    {
+      "reason": "ordered-missing-variant",
+      "density": 12,
+      "scene": 12933,
+      "call": 7124
+    },
+    {
+      "reason": "palette-transition",
+      "density": 12,
+      "scene": 28147,
+      "call": 13557
+    },
+    {
+      "reason": "black-palette",
+      "density": 12,
+      "scene": 28147,
+      "call": 13560
+    },
+    {
+      "reason": "ordered-missing-variant",
+      "density": 12,
+      "scene": 28147,
+      "call": 13644
+    }
+  ],
+  "scenes": {
+    "186": {
+      "first_attempt": 366,
+      "outcomes": {
+        "published": 5836,
+        "missing-variant": 18,
+        "no-body": 134
+      },
+      "first_commands": [
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "3",
+          "slot": "16",
+          "generation": "157",
+          "type": "15",
+          "sheet": "145",
+          "frame": "0",
+          "key": "5fc9fc6b277ef4b4f27f2552b6a212827b18f31e8e3dc4c6979cb98c4e64d9f7",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "4",
+          "slot": "4",
+          "generation": "145",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "5",
+          "slot": "2",
+          "generation": "143",
+          "type": "0",
+          "sheet": "1",
+          "frame": "0",
+          "key": "eecd0ae483d07b1d98da940de01ac6ea846498622554510590121e755671370b",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "6",
+          "slot": "1",
+          "generation": "142",
+          "type": "0",
+          "sheet": "1",
+          "frame": "0",
+          "key": "eecd0ae483d07b1d98da940de01ac6ea846498622554510590121e755671370b",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "7",
+          "slot": "0",
+          "generation": "141",
+          "type": "0",
+          "sheet": "1",
+          "frame": "0",
+          "key": "eecd0ae483d07b1d98da940de01ac6ea846498622554510590121e755671370b",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "8",
+          "slot": "42",
+          "generation": "278",
+          "type": "21",
+          "sheet": "149",
+          "frame": "4",
+          "key": "84a0ee13d651ee9f27afe2d9284cacb3b3b53c18658c934effc0ba0942a0be5f",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "9",
+          "slot": "3",
+          "generation": "144",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "10",
+          "slot": "23",
+          "generation": "164",
+          "type": "37",
+          "sheet": "194",
+          "frame": "0",
+          "key": "c967c720f08747d3eae8abb253c3ed16d3684ca547ca65df3627d275f9c3e6e5",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "366",
+          "scene": "186",
+          "interval": "365",
+          "order": "11",
+          "slot": "13",
+          "generation": "154",
+          "type": "19",
+          "sheet": "152",
+          "frame": "0",
+          "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7",
+          "decision": "keep",
+          "density": "12"
+        }
+      ],
+      "first_missing": {
+        "attempt": 1728,
+        "missing": [
+          {
+            "type": "0",
+            "sheet": "7",
+            "frame": "0",
+            "key": "f083038e97f0b49255013a8899df06d7c573ce6e7a019b9d453ab32ade284055"
+          }
+        ]
+      }
+    },
+    "12933": {
+      "first_attempt": 13113,
+      "outcomes": {
+        "published": 6775,
+        "missing-variant": 371
+      },
+      "first_commands": [
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "3",
+          "slot": "16",
+          "generation": "12904",
+          "type": "15",
+          "sheet": "145",
+          "frame": "0",
+          "key": "5fc9fc6b277ef4b4f27f2552b6a212827b18f31e8e3dc4c6979cb98c4e64d9f7",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "4",
+          "slot": "4",
+          "generation": "12892",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "5",
+          "slot": "2",
+          "generation": "12890",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "6",
+          "slot": "1",
+          "generation": "12889",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "7",
+          "slot": "0",
+          "generation": "12888",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "8",
+          "slot": "42",
+          "generation": "13025",
+          "type": "21",
+          "sheet": "149",
+          "frame": "0",
+          "key": "0ee8ed5af96ee6b4a71149b77e0e6463f419fab4ee61ce6dae031e2caf752410",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "9",
+          "slot": "3",
+          "generation": "12891",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "10",
+          "slot": "23",
+          "generation": "12911",
+          "type": "37",
+          "sheet": "194",
+          "frame": "0",
+          "key": "c967c720f08747d3eae8abb253c3ed16d3684ca547ca65df3627d275f9c3e6e5",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "13113",
+          "scene": "12933",
+          "interval": "13112",
+          "order": "11",
+          "slot": "13",
+          "generation": "12901",
+          "type": "19",
+          "sheet": "152",
+          "frame": "0",
+          "key": "37b0200c5e2fcef1c6bd9be08cfd3b22e7b64ad397c965694157cd7e268f60a7",
+          "decision": "keep",
+          "density": "12"
+        }
+      ],
+      "first_missing": {
+        "attempt": 14920,
+        "missing": [
+          {
+            "type": "0",
+            "sheet": "4",
+            "frame": "1",
+            "key": "921c9a9ce71d575b7e06659b9e797d677abdeb6cc05cea1f97d21be93309ed12"
+          }
+        ]
+      }
+    },
+    "28147": {
+      "first_attempt": 28329,
+      "outcomes": {
+        "missing-variant": 188
+      },
+      "first_commands": [
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "3",
+          "slot": "1",
+          "generation": "28103",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "b25e57e902d14a4af54b3467f541f10cb5fbeacace6da323cda7bb130c06b1e6",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "4",
+          "slot": "3",
+          "generation": "28105",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "b25e57e902d14a4af54b3467f541f10cb5fbeacace6da323cda7bb130c06b1e6",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "5",
+          "slot": "0",
+          "generation": "28102",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "b25e57e902d14a4af54b3467f541f10cb5fbeacace6da323cda7bb130c06b1e6",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "6",
+          "slot": "42",
+          "generation": "28239",
+          "type": "21",
+          "sheet": "149",
+          "frame": "0",
+          "key": "e20cfdf2ebac82221b6d1a86916fc1b05afc9d24718f52f0b61518cb869b9b46",
+          "decision": "keep",
+          "density": "12"
+        },
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "7",
+          "slot": "2",
+          "generation": "28104",
+          "type": "0",
+          "sheet": "2",
+          "frame": "0",
+          "key": "b25e57e902d14a4af54b3467f541f10cb5fbeacace6da323cda7bb130c06b1e6",
+          "decision": "replace",
+          "density": "12"
+        },
+        {
+          "attempt": "28329",
+          "scene": "28147",
+          "interval": "28328",
+          "order": "8",
+          "slot": "20",
+          "generation": "28122",
+          "type": "5",
+          "sheet": "72",
+          "frame": "1",
+          "key": "16129839ea178fd4288639e890578d6c5dec51c626820ea9d4568604e4eae6de",
+          "decision": "missing",
+          "density": "12"
+        }
+      ],
+      "first_missing": {
+        "attempt": 28329,
+        "missing": [
+          {
+            "type": "5",
+            "sheet": "72",
+            "frame": "1",
+            "key": "16129839ea178fd4288639e890578d6c5dec51c626820ea9d4568604e4eae6de"
+          }
+        ]
+      }
+    }
+  },
+  "split_review": "Favourable manual confirmation for this sample only; no universal acceptance",
+  "final_salute": "NOT ASSESSED by Miguel"
+}

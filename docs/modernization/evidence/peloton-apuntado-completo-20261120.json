@@ -1,0 +1,395 @@
+{
+  "date": "2026-11-20",
+  "scope": "Three other directly observed lower-aim directions 0x10/0x11/0x17; complete the same qualified family after first five microblock 2004160; no new art or unobserved bindings",
+  "contract": {
+    "scope": "Three other lower-aim directions directly observed in prior M1P2 15:13 sample; complete the same eight-direction family without new artwork",
+    "status": "PASS 24 Window cases/platform plus full 244/399 manifest, 8x/12x, exact SDL/negatives/recovery; Windows ASan/UBSan, Linux ASan/UBSan/LSan; gameplay pending",
+    "bindings": [
+      {
+        "key": "0cfddedda72d9cc3b5b2d9eb6fa370fbfcad2db4dfe4c1f79aae69c2315666c7",
+        "sheet": 16,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s16-f0-8",
+          "12": "s16-f0-12"
+        }
+      },
+      {
+        "key": "8d1a2d8192a77e04f6f92ade189cab5d2ebfeee84b6c39aeb675521d11729619",
+        "sheet": 17,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s17-f0-8",
+          "12": "s17-f0-12"
+        }
+      },
+      {
+        "key": "2daae8e347e24ed69fc3c15c2c31c55c67bc7c6898f1b16500b53b99d176a5da",
+        "sheet": 23,
+        "frame": 0,
+        "animation": 0,
+        "assets": {
+          "8": "s23-f0-8",
+          "12": "s23-f0-12"
+        }
+      }
+    ],
+    "qualified_asset_descriptors": {
+      "s16-f0-8": "cbcd680a231f0c9a02c84e72c137ad556ce9b34457e6d4b85ff720dfb7afb3ef",
+      "s16-f0-12": "c90b0243d6b43aafc71fc3f04e4cb40a5e809dfde23218759289ef4753cbe3e3",
+      "ground-shadow-9x3-8x": "5dd512421043ce9eb741f960fb3e5714db6b39f850ce21040b682406c37622c4",
+      "ground-shadow-9x3-12x": "a13e8e54a70d92941ae39fb310c437d7a595d4bd7b185ad12248450f1e7180c1",
+      "s17-f0-8": "cb19229bd36f63c60d9f6378461507fa4fe0ed1a3d12ef0db5d8878264a006b4",
+      "s17-f0-12": "3d2cce39d8657dd0ea6f1cfcc15df1866811f974b353e46703eece13b9653dba",
+      "ground-shadow-11x3-8x": "8590ff843b16f48cfb01fc687446bec75ef1bee14715b1e0ad8ab838ba20bf66",
+      "ground-shadow-11x3-12x": "64a8d75fc76d5370a60e4361a595c10f7ac25c4c0882d0cb1038c5b4ebe9fb3a",
+      "s23-f0-8": "b5a26f602cf046ffa802010824bf2905c486bd02a2de3206e90d7ceef37665a0",
+      "s23-f0-12": "4b1927d65b388b4b478dc54d58052f2a6f26bb88a39012af61890bb4544df729"
+    }
+  },
+  "candidate": {
+    "assets": 244,
+    "bindings": 399,
+    "manifest_sha256": "196870be4e5901b8fecfb007ab54cbb716345c2169f8c4ab0b8a04fac32938aa",
+    "all_assets_and_previous_396_bindings_unchanged": true
+  },
+  "tests": {
+    "this_microblock": "PASS 24 cases/platform for three poses +8/platform complete manifest; exact SDL, two actors, height/crop/zero-write occlusion, negatives/full recovery",
+    "whole_family": "64 cases/platform eight poses +8 complete-manifest cases; 72/platform total",
+    "windows": "PASS ASan/UBSan",
+    "linux": "PASS ASan/UBSan/LSan",
+    "h3": "PASS preserved new scene-diagnostic engine: 11 phases/11361 states per platform in first microblock; not repeated for last three bindings",
+    "replay": "Actual first-microblock 244/396 public replay Windows/Linux: 4465 publications/89 missing/1546 canonical states; final 244/399 full-manifest Window tested, no redundant public replay",
+    "ci": "Production rendering unchanged; full Windows/Linux/density PASS 46229d6. New metadata/tools commit CI pending publication",
+    "visual": "PENDING Miguel"
+  },
+  "projections": [
+    {
+      "log": "OpenFodder-P1-DanoAjustado-hibrido-20261120-132407.log",
+      "before": {
+        "outcomes": {
+          "published": 12427,
+          "missing-variant": 1049,
+          "no-body": 131
+        },
+        "same_actor_returns": 10,
+        "returns_excluding_verified_empty_marker": 6,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 27945,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27957,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27969,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27981,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      },
+      "after": {
+        "outcomes": {
+          "published": 13449,
+          "missing-variant": 27,
+          "no-body": 131
+        },
+        "same_actor_returns": 7,
+        "returns_excluding_verified_empty_marker": 3,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 27945,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27957,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27969,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 27981,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      }
+    },
+    {
+      "log": "OpenFodder-P1-DanoSombras-hibrido-20261119-235700.log",
+      "before": {
+        "outcomes": {
+          "published": 9479,
+          "missing-variant": 171,
+          "no-body": 131
+        },
+        "same_actor_returns": 15,
+        "returns_excluding_verified_empty_marker": 11,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 20581,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20593,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20607,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20619,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      },
+      "after": {
+        "outcomes": {
+          "published": 9479,
+          "missing-variant": 171,
+          "no-body": 131
+        },
+        "same_actor_returns": 15,
+        "returns_excluding_verified_empty_marker": 11,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 20581,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20593,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20607,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20619,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Sombras-hibrido-20261119-151304.log",
+      "before": {
+        "outcomes": {
+          "published": 8161,
+          "missing-variant": 1276
+        },
+        "same_actor_returns": 5,
+        "returns_excluding_verified_empty_marker": 5,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 9112,
+          "missing-variant": 325
+        },
+        "same_actor_returns": 3,
+        "returns_excluding_verified_empty_marker": 3,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    },
+    {
+      "log": "engine.log",
+      "before": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    }
+  ],
+  "scene_probe": {
+    "tool": "tools/modernization/make_hd_scene_probe.py",
+    "guards_and_rendering_unchanged": true,
+    "limits": "40 distinct reasons per scene, 256 per process; opt-in",
+    "runtime": "PASS real Windows/Linux scene identity, monotonic call numbers and bounded output in first microblock",
+    "purpose": "Locate early classic fallback at restart; old log cannot associate palette-transition/black-palette with a scene; restart is NOT declared fixed"
+  },
+  "logs": [
+    {
+      "file": "split-completion-fixtures\\0cfddedda72d\\window-win.log",
+      "sha256": "1502576528db7be8e674ec1b221052bb93f8f6ea167bec4356f7d866111ce928"
+    },
+    {
+      "file": "split-completion-fixtures\\0cfddedda72d\\window-linux.log",
+      "sha256": "ff5fed833ccbf0c2d90d93046071d1da4670dc1fdae59d022ceaf329cd9b08b8"
+    },
+    {
+      "file": "split-completion-fixtures\\8d1a2d8192a7\\window-win.log",
+      "sha256": "e6333440e7212e366c6bc4ad31163a17f609e4c9d02e7d8a09e233925c026992"
+    },
+    {
+      "file": "split-completion-fixtures\\8d1a2d8192a7\\window-linux.log",
+      "sha256": "71aac432fa4d7502a32ccaa89416223f69eaa617d042d36fc803c904b9faa710"
+    },
+    {
+      "file": "split-completion-fixtures\\2daae8e347e2\\window-win.log",
+      "sha256": "aa36672501e9b052b6e722a0e48313ce9164897faa944cf777e2bfe0306c2a68"
+    },
+    {
+      "file": "split-completion-fixtures\\2daae8e347e2\\window-linux.log",
+      "sha256": "20c8b040f86c488162ae1f32b9fe9b4fbbe53f2aad88ec3f1e56cfd6705df932"
+    },
+    {
+      "file": "split-full-fixture\\window-win.log",
+      "sha256": "ea0984f299f595a06ed4372aba20b11aa6e5a8d116b64d20ab62e2ec0625b775"
+    },
+    {
+      "file": "split-full-fixture\\window-linux.log",
+      "sha256": "ea0984f299f595a06ed4372aba20b11aa6e5a8d116b64d20ab62e2ec0625b775"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3",
+  "launcher": {
+    "file": "PROBAR_PELOTONES_P1.cmd",
+    "script": "Probar-P1-Pelotones.ps1",
+    "sha256": {
+      "split-probe-build/Release/native_probe.exe": "f98e85ccc8bd914105fc68ee6fedba1a2fadfe7c4307d928582007b0921345d4",
+      "split-probe-linux-build/native_probe": "b5ec0b4e2abc9b2c1a7bfd1de0a4c7388a13b8ee8eccdbb080867e360558bb1d",
+      "PROBAR_PELOTONES_P1.cmd": "5133dc676936e88b54f5ec1af8f2c70653b7c99cd5703d1631a533ccc67c785d",
+      "Probar-P1-Pelotones.ps1": "fa667cb882a636521d12758b3516b64f9d6b78797e638baa4c91994d41c50def"
+    },
+    "checks": "PASS executable hash + manifest hash +244 asset hashes /399 bindings; old launchers preserved"
+  }
+}

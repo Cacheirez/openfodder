@@ -1,0 +1,573 @@
+{
+  "schema": 1,
+  "base_commit": "36e2cf895efe491a8dfeb45e9c87cdcc8158c512",
+  "plan": "2.74",
+  "scope": "A3 player walk artistic production and bounded real-key publication; no complete soldiers/launcher delivery",
+  "real": {
+    "status": "PASS isolated artistic walk; full soldiers and visual acceptance PENDING",
+    "mode": "real unmodified native keys",
+    "artistic_keys": 24,
+    "rgba_assets": 48,
+    "published_intervals": 236,
+    "published_bodies": 472,
+    "published_variant_density_entries": 188,
+    "scope_rejections": 3,
+    "c01": "byte-identical 8x/12x",
+    "log_sha256": "fd5fab87213250703c851d810e5e6259a31eaa4f766f95c860cffe093a3d117d",
+    "preparation": {
+      "status": "PENDING user artistic acceptance and full soldier coverage",
+      "frames": 24,
+      "assets": [
+        {
+          "density": 8,
+          "file": "s0-f0-8.rgba",
+          "height": 14,
+          "id": "s0-f0-8",
+          "sha256": "bb71ec069e12229b5d0809dc1101ecf63df5722b5d99ba9b53e9499539344640",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s0-f0-12.rgba",
+          "height": 14,
+          "id": "s0-f0-12",
+          "sha256": "e8f29bb0db1a91ac5d6da22fc8e6f183325799342716ef4169a9343ff6d40777",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s0-f1-8.rgba",
+          "height": 14,
+          "id": "s0-f1-8",
+          "sha256": "268b3997375d89c71c2ba50ea20434ecc2f816ad47886740aca30519d5b7acac",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s0-f1-12.rgba",
+          "height": 14,
+          "id": "s0-f1-12",
+          "sha256": "d6b53139fb028f70f691123abff5c3d8a30857553427458fae62046e7cf6167e",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s0-f2-8.rgba",
+          "height": 14,
+          "id": "s0-f2-8",
+          "sha256": "920b065dd669394b963bb6615f99546f1fc394069cab9123ceccadcaef4c08b3",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s0-f2-12.rgba",
+          "height": 14,
+          "id": "s0-f2-12",
+          "sha256": "745ccaffa54299da8416b801e77e7d5c1c3176c215dea30d3947b0144141bcd3",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s1-f0-8.rgba",
+          "height": 14,
+          "id": "s1-f0-8",
+          "sha256": "1518543ef2e907a41f99383e33b98cfa308265d16bebdd9da842b3a242ca0690",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s1-f0-12.rgba",
+          "height": 14,
+          "id": "s1-f0-12",
+          "sha256": "63d40fdb7e7b05db66d3fe80eb23d22c8b808f08f9b13ef4b60980d99eec3b88",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s1-f1-8.rgba",
+          "height": 14,
+          "id": "s1-f1-8",
+          "sha256": "df44850aaf31c9930299f02c3efe0633e0008227ff47ba90573e1caeb43f5c19",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s1-f1-12.rgba",
+          "height": 14,
+          "id": "s1-f1-12",
+          "sha256": "b8b9fe534351e4b5b388b34346db34764a5623bec0b2612304b5e8976090b474",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s1-f2-8.rgba",
+          "height": 14,
+          "id": "s1-f2-8",
+          "sha256": "249b891c64a8d8dd4ced25b75886224a09764e68b4618c3b3564a7f1a82d4436",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s1-f2-12.rgba",
+          "height": 14,
+          "id": "s1-f2-12",
+          "sha256": "4e6f257e1e506807ebdf4b104a309c4f099fad50f7e79e81ddb629fbb3db9a32",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s2-f0-8.rgba",
+          "height": 14,
+          "id": "s2-f0-8",
+          "sha256": "dbbf18df623c9c3b5cedeb5a79f056246ea2722521e73ba0f34b1289b1a4869e",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s2-f0-12.rgba",
+          "height": 14,
+          "id": "s2-f0-12",
+          "sha256": "df5080ce79b3309bd58ae0f2e42ee8592bbdee6a49f999d72f9a0ce343a2ade3",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s2-f1-8.rgba",
+          "height": 14,
+          "id": "s2-f1-8",
+          "sha256": "064b6283fe6ffd8f042153fee9800a9ea9ea1de3b332c1ea187ea35f597934b7",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s2-f1-12.rgba",
+          "height": 14,
+          "id": "s2-f1-12",
+          "sha256": "991cd25ed05b843a896eca67515c25adb21f244382b431c60a70ce89d2115dd4",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s2-f2-8.rgba",
+          "height": 14,
+          "id": "s2-f2-8",
+          "sha256": "7a1ec9a90b437693c99baf93dc7bef2b1b9d5a370ec6c5f91f3dfdcd8491245c",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s2-f2-12.rgba",
+          "height": 14,
+          "id": "s2-f2-12",
+          "sha256": "70cd1b432b3b11ca8677e0191694ac0a1a2d09ba83cd9f2ed57995d3d8fbf6c1",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s3-f0-8.rgba",
+          "height": 14,
+          "id": "s3-f0-8",
+          "sha256": "46cc0ac556a209951e2d1a06ee0f7fb89c5e9fb1a3534f0e1468561e65b2ad07",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s3-f0-12.rgba",
+          "height": 14,
+          "id": "s3-f0-12",
+          "sha256": "90845c74a3ed4896b52fecdb735fcc7ca21f7ab6068bb4fff498bdc87924febd",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s3-f1-8.rgba",
+          "height": 14,
+          "id": "s3-f1-8",
+          "sha256": "602eb784cd66fbc6c835dc3690b204699d0b7e1fdedd7b519fc29cad8bc883a5",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s3-f1-12.rgba",
+          "height": 14,
+          "id": "s3-f1-12",
+          "sha256": "3eb1c87ff80b4a7c8f9aefc6e9198906ccaff9193977ad30feaa22139b141406",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s3-f2-8.rgba",
+          "height": 14,
+          "id": "s3-f2-8",
+          "sha256": "ffdafe0f27aa64dd688d2fe13675aeaa62ad48767aaeef56923faca1a5cf2caa",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s3-f2-12.rgba",
+          "height": 14,
+          "id": "s3-f2-12",
+          "sha256": "5b80e9aa285e5414c91a43f755b5a5a21e7140c34b78d806d399107adf11b29a",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s4-f0-8.rgba",
+          "height": 14,
+          "id": "s4-f0-8",
+          "sha256": "84d7bcf501fe2d9121e67a90da2151f6a28453950129663a3625aa057cf18048",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s4-f0-12.rgba",
+          "height": 14,
+          "id": "s4-f0-12",
+          "sha256": "79842261bce4a537038270f9c8e9885404c4ccf1593484d77dd47cba0f15a119",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s4-f1-8.rgba",
+          "height": 14,
+          "id": "s4-f1-8",
+          "sha256": "fccc2bc21883b319b0880608a8299db9660e577e9d587dadb886eea0dc84160d",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s4-f1-12.rgba",
+          "height": 14,
+          "id": "s4-f1-12",
+          "sha256": "18d10d07bb8103813aa8c6627bbb7c9a982c1774ac27f5d89b32571f87b3770c",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s4-f2-8.rgba",
+          "height": 14,
+          "id": "s4-f2-8",
+          "sha256": "6ff5f3c2134436bb2072e849a1b9106f61446c1896ae0abdf92fada57b7d082f",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s4-f2-12.rgba",
+          "height": 14,
+          "id": "s4-f2-12",
+          "sha256": "af7646259be7eea141282df07378151dc404b4f5c1a405548c790f28b72f9376",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s5-f0-8.rgba",
+          "height": 14,
+          "id": "s5-f0-8",
+          "sha256": "ec308fe10d71ff0dc40805f8e754a4b5fcdc5ef6e6388c01803daf26b82cb09a",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s5-f0-12.rgba",
+          "height": 14,
+          "id": "s5-f0-12",
+          "sha256": "07fe483b7c61e0bfb4a1504b7c2b5cd0356681fda5dee48e581732f5be93184c",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s5-f1-8.rgba",
+          "height": 14,
+          "id": "s5-f1-8",
+          "sha256": "9a9722708fe9a323cd4c8a09177fbaa5903f7d3b12eb09cdf6e76d2ec68c541b",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s5-f1-12.rgba",
+          "height": 14,
+          "id": "s5-f1-12",
+          "sha256": "e76777fdcd59daf70588dc4c629f22425089f8999fc289e88a8dd6561bd05ab3",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s5-f2-8.rgba",
+          "height": 14,
+          "id": "s5-f2-8",
+          "sha256": "72b1b91208297ec4dde3d220b52e6356cd372076b4c2994fcdaef49f3aa4b809",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s5-f2-12.rgba",
+          "height": 14,
+          "id": "s5-f2-12",
+          "sha256": "bae920143288944856f0bb05ef806ea0525dbe675e047717a331de6c4d21faf2",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s6-f0-8.rgba",
+          "height": 14,
+          "id": "s6-f0-8",
+          "sha256": "4cfc35967df09bb49292ec5116d4bf29874c7410633c3e5c80697f216d89de7c",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s6-f0-12.rgba",
+          "height": 14,
+          "id": "s6-f0-12",
+          "sha256": "b622c197939e61b9135581b83d04eea1fa12737d923c1a19d047ed9e1604da05",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s6-f1-8.rgba",
+          "height": 14,
+          "id": "s6-f1-8",
+          "sha256": "739c648bd5bf643dc8632f1d2d03acd74fea2b87b28e482005e45fe04003a514",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s6-f1-12.rgba",
+          "height": 14,
+          "id": "s6-f1-12",
+          "sha256": "6a970e62d13344445710f70d3f8575979edc40766f2b7157f790bbc5a6485113",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s6-f2-8.rgba",
+          "height": 14,
+          "id": "s6-f2-8",
+          "sha256": "2d24db6a188bae8035de7cdae5a223964204fe6837acd4754410eec54c226d0a",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s6-f2-12.rgba",
+          "height": 14,
+          "id": "s6-f2-12",
+          "sha256": "9640f1b766912f82e0513b0491504810fce9e57c3c362acc0b6d4affee006128",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s7-f0-8.rgba",
+          "height": 14,
+          "id": "s7-f0-8",
+          "sha256": "c89c14fb558651b67944155bd753bbd6dac0591a24e3b367a460eb84fb9d955b",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s7-f0-12.rgba",
+          "height": 14,
+          "id": "s7-f0-12",
+          "sha256": "640ef98c20ac74de048342aa37162fb8b9d60ee33d79f1f32533df8a7766c43c",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s7-f1-8.rgba",
+          "height": 14,
+          "id": "s7-f1-8",
+          "sha256": "b1721f7ff5d169f3c3ce3e09a42de79139907ef05994a0ff59833b1fc60c89d9",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s7-f1-12.rgba",
+          "height": 14,
+          "id": "s7-f1-12",
+          "sha256": "a79be6b96ca01152f66887afa9ad7667b544e0d130bf689635b743356f6b9444",
+          "width": 16
+        },
+        {
+          "density": 8,
+          "file": "s7-f2-8.rgba",
+          "height": 14,
+          "id": "s7-f2-8",
+          "sha256": "d60fe0c51cd3f51dc7cd33de1078d6b4caa59679e018650d8a7fbff6db0b3ec5",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "s7-f2-12.rgba",
+          "height": 14,
+          "id": "s7-f2-12",
+          "sha256": "7d47b60920c414f17f850fec9424303aae1da7ebea78dfbe2e29653991f3029f",
+          "width": 16
+        }
+      ],
+      "observed_native_bindings": 94,
+      "unobserved": [
+        {
+          "format": 1,
+          "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+          "sheet": 6,
+          "frame": 0,
+          "status": "ordinary-walk-not-replay-observed; no key invented"
+        },
+        {
+          "format": 1,
+          "resource_sha256": "3e0bf6247b71ccbbf9ab4a48104a8d680db60b1ff001227a624a39f99166e7c9",
+          "sheet": 6,
+          "frame": 2,
+          "status": "ordinary-walk-not-replay-observed; no key invented"
+        }
+      ],
+      "source_manifest_sha256": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+      "scope": "Player ordinary walk: 8 directions x 3 artistic keys; 94 observed native variants. Other states/enemies excluded, not full soldier coverage.",
+      "no_clock_changes": true,
+      "c01": "original source and builder unchanged"
+    },
+    "pending": [
+      "two unobserved Amiga ordinary keys",
+      "other states/enemies",
+      "campaign-wide HD without normal fallback",
+      "transitions/GPU/CD32",
+      "user visual acceptance"
+    ]
+  },
+  "controlled": {
+    "status": "PASS isolated artistic walk; full soldiers and visual acceptance PENDING",
+    "mode": "controlled keys explicitly rebound",
+    "artistic_keys": 24,
+    "rgba_assets": 48,
+    "published_intervals": 256,
+    "published_bodies": 512,
+    "published_variant_density_entries": 192,
+    "scope_rejections": 3,
+    "c01": "byte-identical 8x/12x",
+    "log_sha256": "5cf0c24903916532064eaf7c5b63e4bf036488c89a6b45d600a1a6e3edb3ca02",
+    "pending": [
+      "two unobserved Amiga ordinary keys",
+      "other states/enemies",
+      "campaign-wide HD without normal fallback",
+      "transitions/GPU/CD32",
+      "user visual acceptance"
+    ]
+  },
+  "review": [
+    {
+      "direction": 0,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 1,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 2,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 3,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 4,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 5,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 6,
+      "status": "internal visual cycle review; user acceptance pending"
+    },
+    {
+      "direction": 7,
+      "status": "internal visual cycle review; user acceptance pending"
+    }
+  ],
+  "new_selected_masters": 18,
+  "reused_previous_diagonal_masters": 3,
+  "c01_cycle_preserved": 3,
+  "rejected_generations": 4,
+  "h3": {
+    "verdict": "PASS",
+    "settings": {
+      "flags": [
+        "--appveyor",
+        "--unit-test",
+        "--nosound",
+        "--window",
+        "--alternate-mouse"
+      ],
+      "publication": true,
+      "contrast": true,
+      "cadence": "classic producers",
+      "mission_presentations": 1,
+      "pause_probe": true,
+      "soldier_probe": true,
+      "pose_probe": false,
+      "art_probe": false,
+      "hd_probe": null,
+      "coverage": "11 reference phases",
+      "ordered_manifest_sha256": "140d6ff9ed32affb988ecf6048a6fd3a85e4c7bbbfe4b2911837a8efacd6168e",
+      "ordered_density": 12,
+      "art_coverage": "PENDING; replay PASS validates integration and H3 only",
+      "screen_probe": true,
+      "screen_fit": true
+    },
+    "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+    "fixture_count": 29,
+    "campaigns": [
+      {
+        "campaign": "PC Format",
+        "phases": 8,
+        "pause_transitions": 16,
+        "soldier_scenes": 8,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 635,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 186.873,
+        "executable_sha256": "a4088a7af4685fb0d1d7b3d03ed9dd94919df856a7830e550dbdd16fe554e38e"
+      },
+      {
+        "campaign": "Amiga The One",
+        "phases": 3,
+        "pause_transitions": 6,
+        "soldier_scenes": 3,
+        "pose_scenes": 0,
+        "art_scenes": 0,
+        "hd_published": false,
+        "ordered_variant_keys": 508,
+        "ordered_published": false,
+        "ordered_missing": true,
+        "seconds": 146.819,
+        "executable_sha256": "a4088a7af4685fb0d1d7b3d03ed9dd94919df856a7830e550dbdd16fe554e38e"
+      }
+    ],
+    "canonical_states": 11361
+  },
+  "CI": "PENDING at publication",
+  "source_sha256": {
+    "CMakeLists.txt": "6913fef00317e63e10c4fa428bf547c37676e7cf13090ebd31d0956515faa27e",
+    "tools/modernization/prepare_walk24.py": "a8544d2112533c474273ec5ee71fdb4886a79ae6ee287201ab0ec2c7ac786a90",
+    "tools/modernization/prepare_walk_art_review.py": "b4fc119ec986d33c79a4bade79f0bb73638fcbe25520f2dfcc645c58e6d6842a",
+    "tools/modernization/check_walk24_art.py": "a69ad3adaae27eaea022ed69f8f40a09a009fcd2e6b8984b22fdd746ef004c96",
+    "tools/modernization/walk24_art_cases.inc": "7ad6d5dde4ad3289e6dd44c16309a73c01625e132291abf1840c6b545797d7a4",
+    "tools/modernization/build_hd_window_fixture.py": "581f692e9fdc9517a89f15113a5de0bf09b46990dc4a0ac37378cda700ba873e",
+    "assets/modernization/soldier-walk24/manifest.json": "6b4ec574aacb0149139f7fd34c9c498120128331c2aa7e6d97f64d28d57bfd71",
+    "assets/modernization/soldier-walk24/generation.json": "a5cd023e5a93f5c7f6c8a90f6d95112a4e6f6bb3bd86512cc16242fe82f86e23",
+    "docs/modernization/reviews/walk24.html": "7716061210362f80deaee4677919bab592a17bb265d68815f364b529aeab3e84",
+    "docs/modernization/evidence/soldier-walk24-contact.png": "cb538ed45ba8498af9f592b1fcb66f31d8f4c389149ff59bcd2b92b753261206"
+  },
+  "regressions": {
+    "previous_diagonal": "PASS ASan/UBSan 32 intervals/64 bodies, byte-identical C01",
+    "external_assets": "PASS ASan/UBSan 128 intervals/256 commands",
+    "python_coverage": "9 PASS",
+    "old_pilot_asset_rules": "PASS unchanged"
+  },
+  "h3_scope": "Unchanged engine Source, local no-mixer diagnostic build, full manifest loaded; no ordered campaign HD publication. PASS is original simulation and guards, not visual coverage."
+}

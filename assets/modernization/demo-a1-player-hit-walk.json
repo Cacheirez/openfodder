@@ -1,0 +1,138 @@
+{
+  "scope": "Twelve exact M1P2 hit-state keys reuse the same walk pixels; original bytes remain local",
+  "status": "technical verified; visual continuity pending",
+  "bindings": [
+    {
+      "sheet": 0,
+      "frame": 1,
+      "animation": 1,
+      "key": "0c5d8496dc3d136a612fafbd064771406a62072b213dd93fb23fb2e936708d4c",
+      "source_key": "7917be958aed8713b310fcb3da2a50fc49cdf2121f3693c2f6a60a14e7f29670",
+      "assets": {
+        "8": "s0-f1-8",
+        "12": "s0-f1-12"
+      }
+    },
+    {
+      "sheet": 1,
+      "frame": 2,
+      "animation": 1,
+      "key": "8fe73c8c8d3b9fb60d4a984380298bd93f43e1394640a54724f6b4d818d1de8d",
+      "source_key": "6a1c8981a361914b397b751c08ffbbdc49acd6e696dcd0c38ab882251c6a5f48",
+      "assets": {
+        "8": "s1-f2-8",
+        "12": "s1-f2-12"
+      }
+    },
+    {
+      "sheet": 2,
+      "frame": 1,
+      "animation": 1,
+      "key": "afb962a7379420924ab9aaefbedfdc768fae71e97d3e7e1f635b6204039df118",
+      "source_key": "6afe3afd5ecc7a1a9e615a45046447d1439d9823dbceade10ae99469bbd9cbc6",
+      "assets": {
+        "8": "s2-f1-8",
+        "12": "s2-f1-12"
+      }
+    },
+    {
+      "sheet": 2,
+      "frame": 2,
+      "animation": 1,
+      "key": "ea79e6b3f78877096de4a0e31a0067fd2f9e9e5c4d631f81a6e7fddb39d3f631",
+      "source_key": "3875401d2f46f9a6040a76314a14215954d6da2c2568b9b23f4a4cbb049fb03e",
+      "assets": {
+        "8": "s2-f2-8",
+        "12": "s2-f2-12"
+      }
+    },
+    {
+      "sheet": 4,
+      "frame": 2,
+      "animation": 1,
+      "key": "517bbf5e1173d91b61397a02e0e5a70e2362123a87a5743674bc1c809da41d51",
+      "source_key": "7f6342fc785a76616c1041a96b76e6e109e73916f0f6f5a375b2075e64a2cccb",
+      "assets": {
+        "8": "s4-f2-8",
+        "12": "s4-f2-12"
+      }
+    },
+    {
+      "sheet": 6,
+      "frame": 0,
+      "animation": 1,
+      "key": "a27908afdc63b805c6c815c7bf35aa42ed3ed43a5dad4ea55ef7d05baf71a0eb",
+      "source_key": "9345b02a4ff96b76933c0e5ca5030112f09548d8dd251b480a1043107093d251",
+      "assets": {
+        "8": "s6-f0-8",
+        "12": "s6-f0-12"
+      }
+    },
+    {
+      "sheet": 6,
+      "frame": 2,
+      "animation": 1,
+      "key": "f4c5a50314b513c0f24a70f05a1165e3bc1f77ac2a036e066db787ae48c2c728",
+      "source_key": "0b20a23c4d3e4b5bc5dba104646fa102a5eaa6837bdf02261b70ab093292b435",
+      "assets": {
+        "8": "s6-f2-8",
+        "12": "s6-f2-12"
+      }
+    },
+    {
+      "sheet": 1,
+      "frame": 0,
+      "animation": 1,
+      "key": "01ec4faff67d145abbca4571f6547050fd2a29da3ae42f2b656489407c49fb93",
+      "source_key": "eecd0ae483d07b1d98da940de01ac6ea846498622554510590121e755671370b",
+      "assets": {
+        "8": "s1-f0-8",
+        "12": "s1-f0-12"
+      }
+    },
+    {
+      "sheet": 6,
+      "frame": 1,
+      "animation": 1,
+      "key": "18436d5668a0c1ddc10ab569d3522331fbdbfe255f86000bc8d2ee42742e9b0f",
+      "source_key": "2792dff4e0b01451d4960c465dc7cc9aa73ae3d66539c2cfb6d56ff65e8bfc99",
+      "assets": {
+        "8": "s6-f1-8",
+        "12": "s6-f1-12"
+      }
+    },
+    {
+      "sheet": 5,
+      "frame": 0,
+      "animation": 1,
+      "key": "26a5eaf180bbf6d2c0ec88390905fda55f278cd7b6288b47ee0a9f789cb87bb7",
+      "source_key": "9941fcceece2270e41eea579e82f1b285c2a6bc1cc10a3d2c9fbe04fa41436a5",
+      "assets": {
+        "8": "s5-f0-8",
+        "12": "s5-f0-12"
+      }
+    },
+    {
+      "sheet": 5,
+      "frame": 2,
+      "animation": 1,
+      "key": "e6c773b72491274e3ee4193f5ba26d525a2efdc30f7f76fdd8a57b35dbb4f77e",
+      "source_key": "6eda1c236a2880de07974de63fb9215ef22fcff4e7f395d13fb275db8ba021ae",
+      "assets": {
+        "8": "s5-f2-8",
+        "12": "s5-f2-12"
+      }
+    },
+    {
+      "sheet": 5,
+      "frame": 1,
+      "animation": 1,
+      "key": "f9a52b1744b17c0af1f01e23096280eab372a7e6dd06d97f01e38a9dab1e5eb1",
+      "source_key": "abe0bd8d76e62d2510aea1b86d0ca85019466220687a4f18fbc2053f89b03150",
+      "assets": {
+        "8": "s5-f1-8",
+        "12": "s5-f1-12"
+      }
+    }
+  ]
+}

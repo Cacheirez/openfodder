@@ -1,0 +1,235 @@
+{
+  "date": "2026-11-17",
+  "source_head": "6273e314009363ba2cf06c965e3656600bbced05",
+  "sheet": 44,
+  "native_verified": [
+    {
+      "file": "f0-a1.json",
+      "key": "f3571e74760f2574fe5f79dc9e740d0435058cc3a56db40951f2399cf51c9080",
+      "frame": 0,
+      "animation": 1,
+      "rgba_sha256": "072d712acc637aa20668fed303c8ba0a790954b4b0b4a937210438802826d7c2",
+      "bbox": [
+        3,
+        1,
+        12,
+        12
+      ]
+    },
+    {
+      "file": "f1-a1.json",
+      "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+      "frame": 1,
+      "animation": 1,
+      "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+      "bbox": [
+        3,
+        1,
+        12,
+        13
+      ]
+    },
+    {
+      "file": "f1-a6.json",
+      "key": "8e6f770fb8e6e388e82540704cc9b89fa5871e61b0b5a468f647e1df587d6a70",
+      "frame": 1,
+      "animation": 6,
+      "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+      "bbox": [
+        3,
+        1,
+        12,
+        13
+      ]
+    }
+  ],
+  "pending_native_keys": [
+    {
+      "key": "a10d9fadaff72822174fc4017aaadbbd56ee311ddaf8155c3bffa0e5b93cb345",
+      "type": "0",
+      "sheet": "44",
+      "frame": "1"
+    }
+  ],
+  "masters": [
+    {
+      "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2c-f0-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2c-f0-8x",
+          "sha256": "064199630bbdd95ffde1e944eae75a8a1adf6cfaaf89128c2ca3bb9f1d5b78a1",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2c-f0-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2c-f0-12x",
+          "sha256": "117731eaf40355014e9dd035fa6c99ba535d0c0ab270a4fca35a35630e6e6eeb",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "f3571e74760f2574fe5f79dc9e740d0435058cc3a56db40951f2399cf51c9080",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2c-f0-8x",
+            "12": "player-hitdeath-2c-f0-12x"
+          }
+        }
+      ],
+      "source": {
+        "file": "source.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "4e4ad8c5cab04b4a745455463b30d861b2c66ce1144b0d23d10560fa09493e3f",
+        "generator": "built-in image_gen, transparent referenced-image workflow"
+      },
+      "native": [
+        {
+          "file": "f0-a1.json",
+          "key": "f3571e74760f2574fe5f79dc9e740d0435058cc3a56db40951f2399cf51c9080",
+          "frame": 0,
+          "animation": 1,
+          "rgba_sha256": "072d712acc637aa20668fed303c8ba0a790954b4b0b4a937210438802826d7c2",
+          "bbox": [
+            3,
+            1,
+            12,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "status": "Technical SDL/shadow fixtures verified; family design 0x2D approved by Miguel; this direction awaits grouped visual/gameplay review; not in normal launcher",
+      "assets": [
+        {
+          "density": 8,
+          "file": "player-hitdeath-2c-f1-8x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2c-f1-8x",
+          "sha256": "7036ab133472e6c8ef397f1c2785fe08659a24b0ba08d2f5c726063906ac3e96",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "player-hitdeath-2c-f1-12x.rgba",
+          "height": 14,
+          "id": "player-hitdeath-2c-f1-12x",
+          "sha256": "4f2cfcc65345088f546e398f21b772e8302865c8d5f274c3b3c49d728459d3ab",
+          "width": 16
+        }
+      ],
+      "bindings": [
+        {
+          "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2c-f1-8x",
+            "12": "player-hitdeath-2c-f1-12x"
+          }
+        },
+        {
+          "key": "8e6f770fb8e6e388e82540704cc9b89fa5871e61b0b5a468f647e1df587d6a70",
+          "decision": "replace-art",
+          "assets": {
+            "8": "player-hitdeath-2c-f1-8x",
+            "12": "player-hitdeath-2c-f1-12x"
+          }
+        }
+      ],
+      "source": {
+        "file": "source.png",
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "sha256": "f5191b10c457e4c3c5d11635841c198487d708757bc14dc6a4d728bc0ba49eee",
+        "generator": "built-in image_gen, transparent referenced-image workflow"
+      },
+      "native": [
+        {
+          "file": "f1-a1.json",
+          "key": "2def47dbb04caa1d2dd2945ad3f26661e62f41f9d8011a9f3fceebfeb97ed7bb",
+          "frame": 1,
+          "animation": 1,
+          "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+          "bbox": [
+            3,
+            1,
+            12,
+            13
+          ]
+        },
+        {
+          "file": "f1-a6.json",
+          "key": "8e6f770fb8e6e388e82540704cc9b89fa5871e61b0b5a468f647e1df587d6a70",
+          "frame": 1,
+          "animation": 6,
+          "rgba_sha256": "3ba1e545c52899e8f253c77f724b398552139208e816aff9d591b03e44b1edc4",
+          "bbox": [
+            3,
+            1,
+            12,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "windows": "PASS SDL 8x/12x ASan/UBSan",
+    "linux": "PASS SDL 8x/12x ASan/UBSan/LSan",
+    "shadow_cases": 24,
+    "heights": [
+      0,
+      12
+    ],
+    "independent_shadow_F0_F1": true,
+    "whole_classic_recovery": true,
+    "replay": "NOT RUN: isolated artwork, no engine/normal-launcher changes",
+    "visual": "PENDING grouped review of new directions; 0x2D pilot accepted"
+  },
+  "candidate": {
+    "assets": 210,
+    "bindings": 372,
+    "isolated": true
+  },
+  "logs": [
+    {
+      "file": "hitdeath-2c-f0-a1\\shadow-fixture-win.log",
+      "sha256": "2e73fe093c8b956722463e3c28f131279a39b9ccea348080b8bf3630380c66a9"
+    },
+    {
+      "file": "hitdeath-2c-f0-a1\\shadow-fixture-linux.log",
+      "sha256": "b60c0cf46acbe771ddb15638f5441cd0528f00c7a44c59efd6bc50652da99382"
+    },
+    {
+      "file": "hitdeath-2c-f1-a1\\shadow-fixture-win.log",
+      "sha256": "99815c35fc2f9390f110252b09a1647ca20fc36d0dd4554013da76520fb874c2"
+    },
+    {
+      "file": "hitdeath-2c-f1-a1\\shadow-fixture-linux.log",
+      "sha256": "9bdd57fb226ba22fffab371509f2333c15cdb11c59f3b6b6e67d3f188dac1684"
+    },
+    {
+      "file": "hitdeath-2c-f1-a6\\shadow-fixture-win.log",
+      "sha256": "99815c35fc2f9390f110252b09a1647ca20fc36d0dd4554013da76520fb874c2"
+    },
+    {
+      "file": "hitdeath-2c-f1-a6\\shadow-fixture-linux.log",
+      "sha256": "9bdd57fb226ba22fffab371509f2333c15cdb11c59f3b6b6e67d3f188dac1684"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "prompts_file": "prompts-2c.json"
+}

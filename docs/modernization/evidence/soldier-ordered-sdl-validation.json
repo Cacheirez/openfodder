@@ -1,0 +1,26 @@
+{
+  "base_head": "45ad790384c4a710016f77f3d3061fb0c631af38",
+  "plan": "2.74",
+  "scope": "A2 internal SDL publisher, not connected to WindowHD; no user executable delivered",
+  "source_sha256": {
+    "Source/Utils/OrderedSoldierSDL.hpp": "9b424e7e2191ca15929885056921cdd4fee01ec2a79f3ab010bb094857a3006e",
+    "tools/modernization/test_ordered_soldier_sdl.cpp": "0f7eb21c28283f4a2db2a78f268b06241247061a1911f6a39f419098439e19db",
+    "CMakeLists.txt": "5eb85c75f33aaa8bb78062c1f7188fc8714e849c0fffcc94d97b3b5bbcdb6fe4"
+  },
+  "sdl_commit": "a962f40bbba175e9716557a25d5d7965f134a3d3",
+  "validation": {
+    "ordered_sdl": "PASS 348 cases, SDL3 software renderer, GCC C++14 O1 ASan/UBSan",
+    "ordered_cpu": "PASS 144 scenarios ASan/UBSan",
+    "coverage_matrix": "PASS 4 tests",
+    "lsan": "NOT RUN: ptrace unsupported; ASAN_OPTIONS=detect_leaks=0; explicit live-texture counter zero on all injected failures",
+    "h3": "Not rerun for this block: engine and production publication unchanged; previous 11361-state evidence retained",
+    "ci": "Consult workflows for the resulting commit; not inherited from base HEAD"
+  },
+  "pending": [
+    "production resource/palette resolver",
+    "WindowHD integration",
+    "full artwork and dynamic variants",
+    "GPU rendering and fractional sampling review",
+    "continuous visual scenarios and CD32"
+  ]
+}
