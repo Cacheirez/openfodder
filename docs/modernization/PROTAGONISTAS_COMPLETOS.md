@@ -49,3 +49,5 @@ Los elementos asociados solo conservan su dibujo clásico con procedencia, archi
 Cruzar asimismo cada sombra independiente con la identidad/generación de su dueño y las placas opcionales de los cuerpos: comprobar que no se duplica una sombra cuando ambas rutas están presentes. Conservar orden, recorte/altura, agua, oclusiones y anclajes nativos. Las familias nuevas no reciben automáticamente una sombra de suelo por parecerse a una pose normal.
 
 - **0x25 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 5. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 264 activos, 245/385 entradas, 140 pendientes. [Evidencia](evidence/player-pose-25.json). Siguiente: R3 — daño con override dirección 6, 0x26/F0–F1.
+
+- **0x26 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 6. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 268 activos, 249/385 entradas, 136 pendientes. [Evidencia](evidence/player-pose-26.json). Siguiente: R3 — daño con override dirección 7, 0x27/F0–F1.
