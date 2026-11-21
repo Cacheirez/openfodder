@@ -30,17 +30,17 @@ def checked_file(directory, asset):
     return path
 
 
-def prepare(base, out):
+def prepare(base, out, placements_path=None):
     original = load(base)
-    if original['version'] != 2:
-        raise ValueError('Expected ordered registry version 2')
+    if original['version'] not in (2,3):
+        raise ValueError('Expected ordered registry version 2 or 3')
     result = copy.deepcopy(original)
     assets = {a['id']: a for a in result['assets']}
     if len(assets) != len(result['assets']):
         raise ValueError('Duplicate body identifiers')
     sources = {a['id']: checked_file(base.parent, a) for a in result['assets']}
     paint = {a['id']: a for a in load(PAINT / 'manifest.json')['assets']}
-    placements = load(PAINT / 'placements.json')
+    placements = load(placements_path or PAINT / 'placements.json')
     changed = set()
     for group in placements['groups']:
         for body in group['bodies']:
@@ -66,6 +66,7 @@ def prepare(base, out):
                 sources[shadow_id] = checked_file(PAINT, leaf)
             changed.add(identity)
     assert result['bindings'] == original['bindings']
+    assert result.get('player_catalog') == original.get('player_catalog')
     # Validate everything before creating the destination. Never overwrite a
     # candidate or mutate its source, including when paths alias each other.
     out.mkdir(parents=True, exist_ok=False)
@@ -80,6 +81,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--placements', type=Path, help='Explicit reviewed body hashes and ground placements')
     args = parser.parse_args()
-    changed, assets, bindings = prepare(args.base, args.out)
+    changed, assets, bindings = prepare(args.base, args.out, args.placements)
     print(f'PASS: {changed} qualified bodies, {assets} assets, {bindings} unchanged bindings')

@@ -146,3 +146,7 @@ PASS siete contratos Python, 15.365 casos CPU y 96 Window/SDL por sistema con sa
 ## R3: sombras independientes completas
 
 352 activos / 337 contratos obligatorios, sin faltantes. Se reutiliza pintura aprobada para 97/F0-F1 conservando ancla, propietario y altura nativos. PASS 64 casos Window/SDL por sistema con sanitizadores. R4 debe cerrar sombras de suelo y continuidad antes de R5 y del nuevo lanzador; sin aceptación visual global. [Evidencia](evidence/player-owned-shadows.json).
+
+## R4.1: suelo de estados especiales
+
+Saludo 38, celebración 9F y deslizamiento A4 reciben la pintura aprobada, fijada por SHA corporal y colocación revisada. El agua/recorte/altura desactivan suelo; 41 conserva la sombra independiente. La identidad/generación del propietario evita duplicar ambos tipos de sombra. PASS 704 casos Window por sistema y prueba CPU de convivencia/orden/presupuestos; candidato completo aún aislado. [Evidencia](evidence/player-special-ground.json).

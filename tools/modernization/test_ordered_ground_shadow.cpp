@@ -27,7 +27,26 @@ int main(){
         OrderedSoldierRegistry registry(manifest);
         const auto resolve=[&](const PreparedSpriteDraw& p){return registry.resolve(p,SoldierVariantKey(p,colors),d);};
         const auto art=resolve(a.soldier);assert(art.groundShadow.pixels);
+        for(int sheet:{0x38,0x9f,0xa4})for(int animation:{0,1,50,51,52}){
+            auto pose=a.soldier;pose.soldier.sheet=sheet;pose.soldier.animation=animation;
+            const bool eligible=sheet==0xa4?(animation>=50 && animation<=52):animation==0;
+            assert(OrderedGroundShadowEligible(pose,0)==eligible);
+            pose.soldier.geometry.rowsToSkip=1;assert(!OrderedGroundShadowEligible(pose,0));
+            pose.soldier.geometry.rowsToSkip=0;pose.soldier.geometry.height=1;assert(!OrderedGroundShadowEligible(pose,0));
+        }
         auto compose=[&](){return ComposeOrderedSoldierArt(scene,id,d,resolve);};
+        {
+            auto owner=a;owner.soldier.soldier.generation=9;owner.soldier.soldier.slot=3;
+            auto owned=body(amiga,id,40,20);auto& proof=owned.soldier.nativeAmiga8;
+            proof.cf1=true;proof.role=3;proof.scene=owner.soldier.soldier.scene;
+            proof.ownerType=0;proof.ownerPerson=0;proof.ownerGeneration=9;proof.ownerSlot=3;
+            scene.layers={owned,owner};
+            auto withGround=[&](const PreparedSpriteDraw& p){return p.soldier.slot==3?art:OrderedSoldierAsset{SoldierArtDecision::KeepClassic};};
+            auto noGround=[&](const PreparedSpriteDraw& p){auto v=withGround(p);v.groundShadow={};return v;};
+            assert(ComposeOrderedSoldierArt(scene,id,d,withGround).cells==ComposeOrderedSoldierArt(scene,id,d,noGround).cells);
+            scene.layers[0].soldier.nativeAmiga8.ownerGeneration=8;
+            assert(ComposeOrderedSoldierArt(scene,id,d,withGround).cells!=ComposeOrderedSoldierArt(scene,id,d,noGround).cells);
+        }
         const auto shade=SoldierBlend(0x80000000u,0xff112233u);
         scene.layers={a};auto f=compose();
         assert(f.complete()&&at(f,23,33,d/4)==0xffff0000u); // body covers its own shadow
