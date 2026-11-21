@@ -1,4 +1,4 @@
-# Deslizamiento, dirección 0 0xA4/F0
+# Deslizamiento frontal corregido, cuerpo compacto 0xA4/F0
 
 21-11-2026. PROTAGONISTAS-COMPLETOS, criterio artístico delegado por Miguel. Inspección interna y exportación comprobadas; no declara aceptación visual/jugable global. Maestro original inmutable generado con image_gen y transparencia. Referencias nativas reconstruidas de la hoja completa; identidad/paleta C01 mediante el maestro necesario de la dirección y, el maestro compartido de la familia. No se refleja arte.
 
@@ -7,5 +7,5 @@
 ## Prompt
 
 ```text
-Create one transparent RGBA OpenFodder C01 painted soldier in SLIDING/off-balance pose 0xA4/F0. Reference 1 EXACT native direction and pose: soldier faces DOWN SCREEN toward viewer, head/helmet above compact hunched torso, right arm (screen-left) reaching down-left to brace, one knee tucked underneath, OTHER leg trailing diagonally toward SCREEN BOTTOM RIGHT with a visible dark brown boot at lower-right. Do NOT draw symmetric crouching or standing pose; reproduce this asymmetric low sliding silhouette. Reference 2 provides C01 character identity, rounded olive helmet, olive/tan uniform, skin and brush treatment; change the body pose to reference 1. Same steep overhead strategy game camera. Entire body visible, no rifle. Compact roughly square silhouette with bent torso and bent/trailing legs, not lying flat like a corpse. No invented blood, cast shadow, terrain, ice, dust, water, text or background. Single isolated sprite, true transparency and padding.
+Correct this OpenFodder sliding soldier BODY. Reference 1 edit target identity/camera/head/olive-tan painting. Reference 2 native A4/F0: its dark green lower-right extension is a GROUND SHADOW, NOT a trailing leg. Do not copy that extension into anatomy. Reference 3 compact bent-leg C01 proportions. Keep facing exactly down-screen toward viewer, same overhead angle, helmet/head/torso and asymmetrically bracing hands. Replace the long stretched leg going to lower-right with BOTH LEGS BENT COMPACTLY UNDER HIPS: one knee low under torso, other slightly to side, both brown boots short/close below knees, no long shin/foot beyond body. Low hunched off-balance sliding posture, neither standing nor jumping high. Entire visible body should form a compact near-square silhouette. Body only, NO ground/cast shadow, no aura/glow/haze, no dust, blood, terrain or text. Preserve identity and original paint technique, genuine transparent RGBA background and padding.
 ```

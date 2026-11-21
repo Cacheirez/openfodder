@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "block": "R3-slide-body-shadow-review",
+  "measurements": [
+    {
+      "format": 0,
+      "frame": 0,
+      "full_bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "non_dark_bbox": [
+        3,
+        2,
+        12,
+        11
+      ],
+      "tail_pixels": 11,
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5"
+    },
+    {
+      "format": 0,
+      "frame": 1,
+      "full_bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "non_dark_bbox": [
+        2,
+        2,
+        9,
+        11
+      ],
+      "tail_pixels": 22,
+      "native_signature": "4952ec8f6ea3fbf719b28596aa17a6fa68ae489ff6325402561621c4108d15d7"
+    },
+    {
+      "format": 0,
+      "frame": 2,
+      "full_bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "non_dark_bbox": [
+        1,
+        1,
+        12,
+        10
+      ],
+      "tail_pixels": 20,
+      "native_signature": "580242bcee156be059fec6ee6a0529508f691eaf5fe06d45e1451747001383b9"
+    },
+    {
+      "format": 0,
+      "frame": 3,
+      "full_bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "non_dark_bbox": [
+        1,
+        1,
+        12,
+        12
+      ],
+      "tail_pixels": 17,
+      "native_signature": "7db9129ffbfd7bcfe7e0a4448976d948598d419caba9853a292da8a091d2eb43"
+    },
+    {
+      "format": 0,
+      "frame": 4,
+      "full_bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "non_dark_bbox": [
+        3,
+        1,
+        12,
+        12
+      ],
+      "tail_pixels": 14,
+      "native_signature": "a93c001f7bbaa86db4c092e551f97efc8559ad7736ebc44fb380453af82d0b59"
+    },
+    {
+      "format": 0,
+      "frame": 5,
+      "full_bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "non_dark_bbox": [
+        4,
+        0,
+        13,
+        11
+      ],
+      "tail_pixels": 14,
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1"
+    },
+    {
+      "format": 0,
+      "frame": 6,
+      "full_bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "non_dark_bbox": [
+        4,
+        1,
+        15,
+        10
+      ],
+      "tail_pixels": 20,
+      "native_signature": "e41ae44a2d6fe321bd362cf2faca688606faade0bb90d62d37b99fb520fda360"
+    },
+    {
+      "format": 0,
+      "frame": 7,
+      "full_bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "non_dark_bbox": [
+        6,
+        2,
+        14,
+        11
+      ],
+      "tail_pixels": 14,
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d"
+    },
+    {
+      "format": 1,
+      "frame": 0,
+      "full_bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "non_dark_bbox": [
+        3,
+        2,
+        12,
+        11
+      ],
+      "tail_pixels": 11,
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5"
+    },
+    {
+      "format": 1,
+      "frame": 1,
+      "full_bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "non_dark_bbox": [
+        2,
+        2,
+        9,
+        11
+      ],
+      "tail_pixels": 22,
+      "native_signature": "4952ec8f6ea3fbf719b28596aa17a6fa68ae489ff6325402561621c4108d15d7"
+    },
+    {
+      "format": 1,
+      "frame": 2,
+      "full_bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "non_dark_bbox": [
+        1,
+        1,
+        12,
+        10
+      ],
+      "tail_pixels": 20,
+      "native_signature": "580242bcee156be059fec6ee6a0529508f691eaf5fe06d45e1451747001383b9"
+    },
+    {
+      "format": 1,
+      "frame": 3,
+      "full_bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "non_dark_bbox": [
+        1,
+        1,
+        12,
+        12
+      ],
+      "tail_pixels": 17,
+      "native_signature": "7db9129ffbfd7bcfe7e0a4448976d948598d419caba9853a292da8a091d2eb43"
+    },
+    {
+      "format": 1,
+      "frame": 4,
+      "full_bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "non_dark_bbox": [
+        3,
+        1,
+        12,
+        12
+      ],
+      "tail_pixels": 14,
+      "native_signature": "a93c001f7bbaa86db4c092e551f97efc8559ad7736ebc44fb380453af82d0b59"
+    },
+    {
+      "format": 1,
+      "frame": 5,
+      "full_bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "non_dark_bbox": [
+        4,
+        0,
+        13,
+        11
+      ],
+      "tail_pixels": 14,
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1"
+    },
+    {
+      "format": 1,
+      "frame": 6,
+      "full_bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "non_dark_bbox": [
+        4,
+        1,
+        15,
+        10
+      ],
+      "tail_pixels": 20,
+      "native_signature": "e41ae44a2d6fe321bd362cf2faca688606faade0bb90d62d37b99fb520fda360"
+    },
+    {
+      "format": 1,
+      "frame": 7,
+      "full_bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "non_dark_bbox": [
+        6,
+        2,
+        14,
+        11
+      ],
+      "tail_pixels": 14,
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d"
+    }
+  ],
+  "facts": [
+    "PC/Amiga opaque and non-dark bounding boxes/tail counts agree in all eight directions",
+    "Native dark extension is consistently down-right outside colored body; same visual convention as ordinary walking",
+    "Slide1/2/3 branch before damage-owned-shadow creation; no new 0x97 created in those branches"
+  ],
+  "interpretation": "Delegated artistic review: treat dark down-right extension as embedded ground shadow, not a stretched boot; dark pixels within body are not all classified as shadow",
+  "correction": "Previously prepared A4/F0-F4 long trailing-leg masters are superseded for final use. Correct one direction per block into a compact bent-leg sliding body; keep shadows out of master. R4 must qualify the ground component and owner-shadow coexistence before activation.",
+  "acceptance": "Technical Window PASS of previous assets remains a compositor result, not artistic acceptance; incomplete candidate never activated",
+  "sources": {
+    "Source/Sprites/Sprite_Troop.cpp": "4710e69bd7661ad3866505542c3b46dcc3eee13629db54a93b42ef7c10a6de91",
+    "Source/Amiga/SpriteData_Amiga.hpp": "d53d26c84cd316da65164d1993e020f6a587448ad543f1f888e578a7a6bb4cec",
+    "Source/PC/SpriteData_PC.hpp": "0a85e5ad28c503139fecceabd570f55d761daf416e83b735204ee0ecf062aa22"
+  },
+  "corrected_body_frames": [
+    0
+  ],
+  "pending_corrections": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "ground_component_qualification": "PENDING R4; do not activate incomplete candidate"
+}
