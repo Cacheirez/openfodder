@@ -2931,9 +2931,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -2957,9 +2957,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -2983,9 +2983,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 50,
@@ -4834,8 +4834,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 180,
@@ -4860,8 +4866,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 1,
+              "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 181,
@@ -4886,8 +4898,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 2,
+              "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 182,
@@ -5124,9 +5142,9 @@
       ],
       "counts": {
         "required": 189,
-        "masters": 128,
-        "exact_reuse_candidates": 4,
-        "missing": 57,
+        "masters": 131,
+        "exact_reuse_candidates": 7,
+        "missing": 51,
         "surplus": 1
       }
     },
@@ -7874,9 +7892,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -7900,9 +7918,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -7926,9 +7944,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 50,
@@ -9777,8 +9795,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 180,
@@ -9803,8 +9827,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 1,
+              "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 181,
@@ -9829,8 +9859,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 49,
+              "frame": 2,
+              "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 182,
@@ -10067,9 +10103,9 @@
       ],
       "counts": {
         "required": 188,
-        "masters": 127,
-        "exact_reuse_candidates": 4,
-        "missing": 57,
+        "masters": 130,
+        "exact_reuse_candidates": 7,
+        "missing": 51,
         "surplus": 1
       }
     }
