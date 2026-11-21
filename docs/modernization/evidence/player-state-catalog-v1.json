@@ -1,6 +1,7 @@
 {
   "schema": 1,
-  "scope": "CF1 protagonist mission actor state machine plus floating human body; table/selector and master audit, not runtime or artistic acceptance",
+  "revision": 2,
+  "scope": "Current CF1 produced protagonist states plus floating body; declared dormant mode-zero rows retained separately; not runtime or artistic acceptance",
   "states": {
     "None": 0,
     "Hit": 1,
@@ -21,7 +22,7 @@
     "walk",
     "damage_override",
     "damage_ballistic",
-    "low_locomotion",
+    "latent_mode_zero",
     "swim",
     "grenade_throw",
     "aim_low",
@@ -2826,648 +2827,6 @@
           "art_state": "master_present"
         },
         {
-          "sheet": 48,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2808",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 176,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
-            }
-          ],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 48,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2810",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 48,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2812",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2814",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2816",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2818",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 50,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2820",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 182,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b6-f0/player-fall-b6-f0-8x.rgba"
-            }
-          ],
-          "art_state": "exact_reuse_candidate"
-        },
-        {
-          "sheet": 50,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2822",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 183,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b7-f0/player-fall-b7-f0-8x.rgba"
-            }
-          ],
-          "art_state": "exact_reuse_candidate"
-        },
-        {
-          "sheet": 50,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2824",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2826",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2828",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2830",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2832",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2834",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2836",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "2838",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3360",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3362",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3364",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3366",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3368",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3370",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3372",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "3374",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "2",
-            "14",
-            "13440",
-            "0x0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
           "sheet": 56,
           "frame": 0,
           "actor_type": 0,
@@ -5080,6 +4439,674 @@
           "art_state": "missing"
         }
       ],
+      "latent": [
+        {
+          "sheet": 48,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2808",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 176,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+            }
+          ],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 48,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2810",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 48,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2812",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2814",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2816",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2818",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2820",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 182,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b6-f0/player-fall-b6-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2822",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 183,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b7-f0/player-fall-b7-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2824",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2826",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2828",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2830",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2832",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2834",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2836",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "2838",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3360",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3362",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3364",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3366",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3368",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3370",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3372",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "3374",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "2",
+            "14",
+            "13440",
+            "0x0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        }
+      ],
       "surplus": [
         {
           "sheet": 62,
@@ -5141,10 +5168,11 @@
         }
       ],
       "counts": {
-        "required": 189,
-        "masters": 131,
-        "exact_reuse_candidates": 7,
-        "missing": 51,
+        "required": 165,
+        "latent": 24,
+        "masters": 125,
+        "exact_reuse_candidates": 5,
+        "missing": 35,
         "surplus": 1
       }
     },
@@ -7787,648 +7815,6 @@
           "art_state": "master_present"
         },
         {
-          "sheet": 48,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11232",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 176,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
-            }
-          ],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 48,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11240",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 48,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 0,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11248",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11256",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11264",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 49,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 1,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11272",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
-          "exact_native_metadata_reuse": [],
-          "art_state": "master_present"
-        },
-        {
-          "sheet": 50,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11280",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 182,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b6-f0/player-fall-b6-f0-8x.rgba"
-            }
-          ],
-          "art_state": "exact_reuse_candidate"
-        },
-        {
-          "sheet": 50,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11288",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [
-            {
-              "sheet": 183,
-              "frame": 0,
-              "master": "assets/modernization/demo-a1-player-fall-b7-f0/player-fall-b7-f0-8x.rgba"
-            }
-          ],
-          "art_state": "exact_reuse_candidate"
-        },
-        {
-          "sheet": 50,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 2,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11296",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11304",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11312",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 51,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 3,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11320",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11328",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11336",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 52,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 4,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11344",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "11352",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13440",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 53,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 5,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13448",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13456",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13464",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 54,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 6,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13472",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 0,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13480",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 1,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13488",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
-          "sheet": 55,
-          "frame": 2,
-          "actor_type": 0,
-          "roles": [
-            {
-              "family": "low_locomotion",
-              "direction": 7,
-              "table_offset": 24
-            }
-          ],
-          "metadata": [
-            "13496",
-            "eGFX_IN_GAME",
-            "0",
-            "0",
-            "16",
-            "14",
-            "160",
-            "0",
-            "0"
-          ],
-          "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
-        },
-        {
           "sheet": 56,
           "frame": 0,
           "actor_type": 0,
@@ -10041,6 +9427,674 @@
           "art_state": "missing"
         }
       ],
+      "latent": [
+        {
+          "sheet": 48,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11232",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f0/player-pose-30-f0-8x.rgba",
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 176,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+            }
+          ],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 48,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11240",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 48,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 0,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11248",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11256",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f0/player-pose-31-f0-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11264",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f1/player-pose-31-f1-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 49,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 1,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11272",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": "assets/modernization/demo-a1-player-pose-31-f2/player-pose-31-f2-8x.rgba",
+          "exact_native_metadata_reuse": [],
+          "art_state": "master_present",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11280",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 182,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b6-f0/player-fall-b6-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11288",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 183,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b7-f0/player-fall-b7-f0-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 50,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 2,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11296",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11304",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11312",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 51,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 3,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11320",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11328",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11336",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 52,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 4,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11344",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "11352",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13440",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 53,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 5,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13448",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13456",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13464",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 54,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 6,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13472",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 0,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13480",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 1,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13488",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        },
+        {
+          "sheet": 55,
+          "frame": 2,
+          "actor_type": 0,
+          "roles": [
+            {
+              "family": "latent_mode_zero",
+              "direction": 7,
+              "table_offset": 24
+            }
+          ],
+          "metadata": [
+            "13496",
+            "eGFX_IN_GAME",
+            "0",
+            "0",
+            "16",
+            "14",
+            "160",
+            "0",
+            "0"
+          ],
+          "master": null,
+          "exact_native_metadata_reuse": [],
+          "art_state": "missing",
+          "producer_status": "declared-only; current CF1 human squad modes stay 2"
+        }
+      ],
       "surplus": [
         {
           "sheet": 62,
@@ -10102,10 +10156,11 @@
         }
       ],
       "counts": {
-        "required": 188,
-        "masters": 130,
-        "exact_reuse_candidates": 7,
-        "missing": 51,
+        "required": 164,
+        "latent": 24,
+        "masters": 124,
+        "exact_reuse_candidates": 5,
+        "missing": 35,
         "surplus": 1
       }
     }
@@ -10123,6 +10178,114 @@
       "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b"
     }
   ],
+  "reachability": {
+    "status": "declared mode-zero branch not produced by current CF1 human controls",
+    "scope": "normal current CF1 campaign/control paths; not arbitrary debug/memory mutation or future features",
+    "mode_array": "word_3BED5[5]",
+    "initialized_values": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "mode_references": [
+      {
+        "file": "Source/CampaignSelect.cpp",
+        "line": 392,
+        "code": "word_3AA1D=word_3BED5[0];"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1162,
+        "code": "word_3BED5[0]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1163,
+        "code": "word_3BED5[1]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1164,
+        "code": "word_3BED5[2]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1165,
+        "code": "word_3BED5[3]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1166,
+        "code": "word_3BED5[4]=2;"
+      },
+      {
+        "file": "Source/Fodder.hpp",
+        "line": 520,
+        "code": "uint16word_3BED5[5];"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "line": 157,
+        "code": "word_3AA1D=word_3BED5[pSprite->field_32];"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "line": 2032,
+        "code": "Data0=word_3BED5[pSprite->field_32];"
+      },
+      {
+        "file": "Source/Squad.cpp",
+        "line": 276,
+        "code": "if(word_3BED5[Data0]){"
+      }
+    ],
+    "scratch_stores": [
+      {
+        "file": "Source/CampaignSelect.cpp",
+        "code": "word_3AA1D=word_3BED5[0];"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "code": "word_3AA1D=0;"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "code": "word_3AA1D=word_3BED5[pSprite->field_32];"
+      }
+    ],
+    "functions": {
+      "Sprite_Handle_Soldier_Animation": "e9322feb1193bc55858d736654bc25c0117ef9f7fb3b0e0d4086211eca8bcd11",
+      "Sprite_Handle_Player_MissionOver": "c041abac9d14d4323c98944c02b168e0adcb6f73f10add0351434ba5a473188f",
+      "Sprite_Handle_Player": "a54fce4b61e3b60fbae4fd5f1ecc4f28f456494c47c36717c397105d6b9ea21d",
+      "Sprite_Handle_Troop_Animation": "2ebf95b781cdabbdb350c8003023bef0aac97d70d11b089ed0c4fdba7d7092b0",
+      "Sprite_Handle_Player_Enter_Vehicle": "201118e649a7d8cbd07f8ef23151ff2d94b573d425c40962769949850217ebcc",
+      "Sprite_Update_Direction_Anim": "11f75cd8d856d2077837520c1990b3933f68a1234b0efab18c5e7cdf6d134887"
+    },
+    "latent_sheets": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "actual_fall_sheets": [
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183
+    ],
+    "actual_fall_frame": 0,
+    "conclusion": "Keep 24 declared rows per format as a source-only audit; do not invent protagonist artwork or count them as required runtime poses"
+  },
   "sources": {
     "Source/Sprites.hpp": "2a6369404bcddd376f629303bdab21a45d4f4e3b0d0e79bd2d63fb90e6a34d1c",
     "Source/Sprites.cpp": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",
@@ -10130,7 +10293,11 @@
     "Source/Sprites/Sprite_Core.cpp": "23d45dd02224eda108f5f3067f5ef2660fd017e0d4ed0314c3b6fadf51f25d63",
     "Source/Sprites/Sprite_Vehicle.cpp": "09ea6a9b0ddb9a7377cf014b6f20267ab1574e46b37b3273d22cbc10b8674d19",
     "Source/Amiga/SpriteData_Amiga.hpp": "72d283d5186d48f568dd02924bf2e2dd37569d5e30fe52f977a50a1aad112241",
-    "Source/PC/SpriteData_PC.hpp": "6ffe13e86a5d83c4793f68d762e4f23ebe582b045be1cc6e5e9dd8cae66818ea"
+    "Source/PC/SpriteData_PC.hpp": "6ffe13e86a5d83c4793f68d762e4f23ebe582b045be1cc6e5e9dd8cae66818ea",
+    "Source/Fodder.cpp": "b3aeeed2c3f7c276e6ebf2f26b04e0d545f0694b8c32f21d95c0f3f5afdf32aa",
+    "Source/Fodder.hpp": "6683f25d1b3e46fc17fec137a6c43df7d9911bcf059bc2252b3e3969f838fbe9",
+    "Source/Squad.cpp": "4fea7633314978cf1f6aeb2284144890c006a334d41e2460450e54093cbf4061",
+    "Source/CampaignSelect.cpp": "0bc4d210f07a0a7ae0e4c880837ff2b30f0c9ab6567f3dfffe9d80ea11390078"
   },
   "invariants": [
     "native clocks/selectors unchanged",

@@ -82,12 +82,12 @@ public:
                !resources[{fmt,segment}].insert(sha).second)throw std::invalid_argument("player catalog native resource identity");
         }
         const auto& entries=input.at("poses");
-        if(!entries.is_array() || entries.size()>sizeof(CF1PlayerNativeSlots)/sizeof(CF1PlayerNativeSlots[0]))
+        if(!entries.is_array() || entries.size()>RequiredCF1PlayerNativeSlotCount())
             throw std::invalid_argument("player catalog size");
         for(const auto& entry:entries){
             const int fmt=entry.at("format"),type=entry.at("type"),sheet=entry.at("sheet"),frame=entry.at("frame");
             const auto* slot=FindCF1PlayerNativeSlot(fmt,type,sheet,frame);
-            if(!slot)throw std::invalid_argument("player catalog unknown slot");
+            if(!slot || !slot->produced)throw std::invalid_argument("player catalog unknown or unproduced slot");
             Pose pose;const auto& signatures=entry.at("native_signatures");
             if(!signatures.is_array() || signatures.empty() || signatures.size()>32)throw std::invalid_argument("player catalog signatures");
             for(const auto& item:signatures){const auto value=item.get<std::string>();if(!hash(value)||!pose.signatures.insert(value).second)throw std::invalid_argument("player catalog signature");}
@@ -103,7 +103,7 @@ public:
             if(!poses.emplace(Key{fmt,type,sheet,frame},std::move(pose)).second)throw std::invalid_argument("player catalog duplicate");
         }
         if(complete)for(const auto& slot:CF1PlayerNativeSlots)
-            if(!poses.count(Key{slot.format,slot.type,slot.sheet,slot.frame}))throw std::invalid_argument("player catalog incomplete");
+            if(slot.produced && !poses.count(Key{slot.format,slot.type,slot.sheet,slot.frame}))throw std::invalid_argument("player catalog incomplete");
     }
     OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,unsigned density,size_t targetWidth,size_t targetSize,
                                const std::map<std::string,OrderedSoldierAsset>& artwork) const {
@@ -130,6 +130,7 @@ public:
            g.columns!=slot->columns || g.rows!=slot->rows || g.modX!=slot->modX || g.modY!=slot->modY || g.palette!=slot->palette)
             throw std::invalid_argument("player catalog source slot");
         if(n.role==1 && (s.personType!=0 || !IsCF1PlayerAnimation(s.animation)))throw std::invalid_argument("player catalog logical state");
+        if(!slot->produced)return out; // Valid retained native data, dormant selector: never inferred artwork.
         if(n.role==3 && (n.ownerType!=0 || n.ownerPerson!=0 || !n.ownerGeneration ||
            g.spriteX!=int16_t(n.ownerX+(n.ownerHeight>>2)+5) || g.spriteY!=int16_t(n.ownerY+(n.ownerHeight>>2)-3) ||
            g.height || s.frame!=(n.ownerHeight>8?0:1)))throw std::invalid_argument("player shadow owner/anchor");

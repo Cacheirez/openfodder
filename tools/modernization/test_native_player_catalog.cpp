@@ -29,6 +29,7 @@ int main(){
         {"native_resources",nlohmann::json::array()}};
     std::set<std::tuple<int,int,std::string>> resources;
     for(const auto& slot:CF1PlayerNativeSlots){
+        if(!slot.produced)continue;
         auto p=fixture(slot);nlohmann::json ids=nlohmann::json::object();
         resources.emplace(slot.format,slot.segment,SoldierSHA256(*p.resource.bytes));
         if(!slot.invisible)for(unsigned d:{8u,12u}){
@@ -46,6 +47,7 @@ int main(){
     NativePlayerCatalog catalog(input,art);assert(catalog.isComplete());size_t cases=0;
     for(const auto& slot:CF1PlayerNativeSlots)for(unsigned d:{8u,12u}){
         auto p=fixture(slot);auto resolve=[&](){return catalog.resolve(p,d,384,384*272,art);};
+        if(!slot.produced){assert(resolve().decision==SoldierArtDecision::Missing);++cases;continue;}
         auto result=resolve();assert(result.decision==(slot.invisible?SoldierArtDecision::KeepClassic:SoldierArtDecision::Replace));++cases;
         // Every legal logical state resolves independently of full-key churn.
         if(slot.role==1)for(int animation:{0,1,2,3,5,6,7,9,10,50,51,52,90,91}){p.soldier.animation=animation;assert(resolve().decision==result.decision);++cases;}
@@ -70,5 +72,7 @@ int main(){
     auto oversized=first;oversized.resource.bytes=std::make_shared<const std::vector<uint8_t>>(1024*1024+1,0);
     oversized.nativeAmiga8.bytes=oversized.resource.bytes;bool budget=false;
     try{catalog.resolve(oversized,8,384,384*272,art);}catch(const std::length_error&){budget=true;}assert(budget);
-    std::printf("PASS CF1 native catalog: %zu resolution/mutation cases; complete 385 slots; unknown/corrupt/incomplete rejected\n",cases+5);
+    auto latent=input;latent["complete"]=false;auto entry=input["poses"][0];entry["sheet"]=0x30;entry["frame"]=0;
+    latent["poses"]=nlohmann::json::array({entry});rejects([&](){NativePlayerCatalog c(latent,art);});
+    std::printf("PASS CF1 native catalog: %zu resolution/mutation cases; complete %zu produced slots; 48 declared-only rows remain unbound; unknown/corrupt/incomplete rejected\n",cases+6,RequiredCF1PlayerNativeSlotCount());
 }

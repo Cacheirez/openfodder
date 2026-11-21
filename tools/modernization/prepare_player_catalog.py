@@ -38,7 +38,7 @@ def signature(raw,width,height):
 
 
 def build(base,resources,out,extra=()):
-    inventory() # Native table generation is independent; candidate art integrity is mandatory here.
+    catalog=inventory() # Native table generation is independent; candidate art integrity is mandatory here.
     assert not out.exists(),'Preserve prior candidates'
     out.mkdir(parents=True);(out/'native').mkdir()
     original=json.loads((base/'candidate-manifest.json').read_text())
@@ -57,7 +57,9 @@ def build(base,resources,out,extra=()):
         assert (sheet,frame,density) not in art
         art[sheet,frame,density]=asset['id']
     aliases=art_reuse()
+    active={(r['actor_type'],r['sheet'],r['frame']) for info in catalog['platforms'].values() for r in info['required']}
     for alias in aliases:
+        if (alias['actor_type'],alias['sheet'],alias['frame']) not in active:continue
         for density in (8,12):
             target=(alias['sheet'],alias['frame'],density);source=(alias['source_sheet'],alias['source_frame'],density)
             assert source in art,'Explicit reuse needs a verified source asset'
@@ -96,6 +98,7 @@ def build(base,resources,out,extra=()):
                 native_signature=sha,width=width,height=height,reference='native/'+name))
         ids={} if hidden else {str(d):art[sheet,frame,d] for d in (8,12) if (sheet,frame,d) in art}
         pose_signatures[fmt,actor,sheet,frame]=set(hashes)
+        if actor==0 and 0x30<=sheet<0x38:continue # Audited dormant rows, not runtime body/art requirements.
         if hidden or len(ids)==2:
             poses.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,native_signatures=hashes,assets=ids))
         else:gaps.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,role=role,width=width,height=height))
@@ -104,6 +107,7 @@ def build(base,resources,out,extra=()):
             assert pose_signatures[fmt,0,alias['sheet'],alias['frame']]==pose_signatures[fmt,0,alias['source_sheet'],alias['source_frame']],'Explicit reuse native raster differs'
     sources=[dict(format=fmt,segment=segment,sha256=sha) for (fmt,segment),items in sorted(retained.items()) for sha in sorted(items)]
     manifest=dict(version=3,assets=assets,bindings=[],player_catalog=dict(schema=1,complete=not gaps,keep_verified_native=True,native_resources=sources,poses=poses))
+    manifest['player_catalog']['required_slots']=len(poses)+len(gaps)
     (out/'candidate-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     (out/'native-audit.json').write_text(json.dumps(audit,indent=2)+'\n',encoding='utf-8')
     (out/'missing-art.json').write_text(json.dumps(gaps,indent=2)+'\n',encoding='utf-8')

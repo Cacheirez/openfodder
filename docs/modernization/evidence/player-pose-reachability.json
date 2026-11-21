@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "base": "78778278621620e89aa17db1644c859c734a4c73",
+  "conclusion": {
+    "status": "declared mode-zero branch not produced by current CF1 human controls",
+    "scope": "normal current CF1 campaign/control paths; not arbitrary debug/memory mutation or future features",
+    "mode_array": "word_3BED5[5]",
+    "initialized_values": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "mode_references": [
+      {
+        "file": "Source/CampaignSelect.cpp",
+        "line": 392,
+        "code": "word_3AA1D=word_3BED5[0];"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1162,
+        "code": "word_3BED5[0]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1163,
+        "code": "word_3BED5[1]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1164,
+        "code": "word_3BED5[2]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1165,
+        "code": "word_3BED5[3]=2;"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "line": 1166,
+        "code": "word_3BED5[4]=2;"
+      },
+      {
+        "file": "Source/Fodder.hpp",
+        "line": 520,
+        "code": "uint16word_3BED5[5];"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "line": 157,
+        "code": "word_3AA1D=word_3BED5[pSprite->field_32];"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "line": 2032,
+        "code": "Data0=word_3BED5[pSprite->field_32];"
+      },
+      {
+        "file": "Source/Squad.cpp",
+        "line": 276,
+        "code": "if(word_3BED5[Data0]){"
+      }
+    ],
+    "scratch_stores": [
+      {
+        "file": "Source/CampaignSelect.cpp",
+        "code": "word_3AA1D=word_3BED5[0];"
+      },
+      {
+        "file": "Source/Fodder.cpp",
+        "code": "word_3AA1D=0;"
+      },
+      {
+        "file": "Source/Sprites/Sprite_Troop.cpp",
+        "code": "word_3AA1D=word_3BED5[pSprite->field_32];"
+      }
+    ],
+    "functions": {
+      "Sprite_Handle_Soldier_Animation": "e9322feb1193bc55858d736654bc25c0117ef9f7fb3b0e0d4086211eca8bcd11",
+      "Sprite_Handle_Player_MissionOver": "c041abac9d14d4323c98944c02b168e0adcb6f73f10add0351434ba5a473188f",
+      "Sprite_Handle_Player": "a54fce4b61e3b60fbae4fd5f1ecc4f28f456494c47c36717c397105d6b9ea21d",
+      "Sprite_Handle_Troop_Animation": "2ebf95b781cdabbdb350c8003023bef0aac97d70d11b089ed0c4fdba7d7092b0",
+      "Sprite_Handle_Player_Enter_Vehicle": "201118e649a7d8cbd07f8ef23151ff2d94b573d425c40962769949850217ebcc",
+      "Sprite_Update_Direction_Anim": "11f75cd8d856d2077837520c1990b3933f68a1234b0efab18c5e7cdf6d134887"
+    },
+    "latent_sheets": [
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "actual_fall_sheets": [
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183
+    ],
+    "actual_fall_frame": 0,
+    "conclusion": "Keep 24 declared rows per format as a source-only audit; do not invent protagonist artwork or count them as required runtime poses"
+  },
+  "counts": {
+    "Amiga": {
+      "required": 165,
+      "latent": 24,
+      "masters": 125,
+      "exact_reuse_candidates": 5,
+      "missing": 35,
+      "surplus": 1
+    },
+    "PC": {
+      "required": 164,
+      "latent": 24,
+      "masters": 124,
+      "exact_reuse_candidates": 5,
+      "missing": 35,
+      "surplus": 1
+    }
+  },
+  "required_runtime_slots": 337,
+  "declared_only_slots": 48,
+  "retained_source_contracts": 385,
+  "tests": {
+    "python_contracts": 6,
+    "generated_table": "PASS",
+    "windows_asan_ubsan_cases": 15348,
+    "linux_asan_ubsan_lsan_cases": 15348,
+    "negative_added_zero_mode_store": "rejected",
+    "complete_catalog_excludes_latent_rows": "PASS",
+    "binding_latent_row": "rejected",
+    "window_sdl_cases_per_platform": 64
+  },
+  "limits": [
+    "No simulation/selectors/H3 reference changes",
+    "Not global visual/gameplay acceptance",
+    "Historical 385-entry candidates remain isolated; no launcher activated",
+    "CI Windows/Linux on previous HEAD still running; no PASS claimed"
+  ],
+  "candidate": {
+    "assets": 272,
+    "covered": 253,
+    "required": 337,
+    "missing": 84,
+    "activated": false
+  }
+}
