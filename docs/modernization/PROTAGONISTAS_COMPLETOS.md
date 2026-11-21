@@ -51,3 +51,5 @@ Cruzar asimismo cada sombra independiente con la identidad/generación de su due
 - **0x25 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 5. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 264 activos, 245/385 entradas, 140 pendientes. [Evidencia](evidence/player-pose-25.json). Siguiente: R3 — daño con override dirección 6, 0x26/F0–F1.
 
 - **0x26 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 6. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 268 activos, 249/385 entradas, 136 pendientes. [Evidencia](evidence/player-pose-26.json). Siguiente: R3 — daño con override dirección 7, 0x27/F0–F1.
+
+- **0x27 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 7; grupo completo. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 272 activos, 253/385 entradas, 132 pendientes. [Evidencia](evidence/player-pose-27.json). Siguiente: R3 — locomoción baja dirección 0, 0x30/F0–F2; verificar reutilización de F0 con 0xB0 y completar F1/F2.
