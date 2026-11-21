@@ -1,4 +1,4 @@
-# Deslizamiento norte, dirección 4 0xA4/F4
+# Deslizamiento norte corregido, cuerpo compacto 0xA4/F4
 
 21-11-2026. PROTAGONISTAS-COMPLETOS, criterio artístico delegado por Miguel. Inspección interna y exportación comprobadas; no declara aceptación visual/jugable global. Maestro original inmutable generado con image_gen y transparencia. Referencias nativas reconstruidas de la hoja completa; identidad/paleta C01 mediante el maestro necesario de la dirección y, el maestro compartido de la familia. No se refleja arte.
 
@@ -7,5 +7,5 @@
 ## Prompt
 
 ```text
-Create one isolated transparent RGBA OpenFodder soldier SLIDING pose 0xA4/F4. CRITICAL direction: exactly UP SCREEN/north, AWAY FROM viewer, centered BACK view, back of olive helmet and back shoulders/tan harness, NO face or nose. Reference 1 exact native silhouette: helmet upper-center, torso hunched low forward, both bent arms slightly out to either side near shoulders with small hands ahead, one knee tucked under, OTHER leg trailing diagonally toward BOTTOM RIGHT, brown boot far lower-right. Low asymmetric off-balance slide, not walking or symmetric crouch. Reference 2 gives C01 north-facing identity/camera/colors; reference 3 gives painted slide family low pose, turn in 3D to straight north without mirroring. Same steep overhead oblique strategy camera, whole body visible, compact silhouette. No gun, blood, aura/glow, dust, cast shadow, terrain, water, text, labels or backdrop. Genuine clean RGBA transparency and padding.
+Correct OpenFodder north-facing SLIDING body A4/F4. Reference 1 edit target: preserve exact straight UP-SCREEN facing AWAY from viewer, BACK of helmet/neck/olive shoulders/tan harness, raised bracing hands beside shoulders, camera and painted identity. Reference 2 native: dark down-right extension is GROUND SHADOW, not anatomy. Replace long stretched leg and far sole with BOTH knees flexed compactly under hips, both short brown boots close beneath the pelvis/knees, no limb or boot reaching far down-right. Low hunched off-balance sliding posture, not standing/walking, no face visible. Reference 3 compact C01 north-view leg proportions. Preserve rounded helmet and hands/head/torso anchors, compact near-square body silhouette. Body only, clean true transparent RGBA with padding; NO cast shadow, aura/glow, dust, blood, ground, water, background, text or labels.
 ```
