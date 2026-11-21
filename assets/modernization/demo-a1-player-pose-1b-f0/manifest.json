@@ -11,7 +11,7 @@
       "file": "player-pose-1b-f0-8x.rgba",
       "height": 14,
       "id": "player-pose-1b-f0-8x",
-      "sha256": "04ac275f305c1a7177199265d3090e5e3de9f1c34088fcad955a4a55b183a65f",
+      "sha256": "76ed0b0c01d0ac5702fc6dd05e6e3b5fcb3cd1cbe3a0c646b56137514d1b77df",
       "width": 16
     },
     {
@@ -19,7 +19,7 @@
       "file": "player-pose-1b-f0-12x.rgba",
       "height": 14,
       "id": "player-pose-1b-f0-12x",
-      "sha256": "032ec0f9c9ca30511cf31d05e56d8150711c66814203f07e05cef6a1ac1a7d13",
+      "sha256": "f123e8cd28b4ece6fb26b6a066f3f26f980c98f38ac88fe50f141e3485121521",
       "width": 16
     }
   ],
@@ -27,20 +27,20 @@
   "source": {
     "file": "source.png",
     "size": [
-      1341,
-      1173
+      1254,
+      1254
     ],
     "mode": "RGBA",
-    "sha256": "f54cbb1e4f2d84210544564ea518f24bbde6095232398beec5f1972e3d839232",
+    "sha256": "d10bedc5f27191f8c6f43509c69f6ed12c2b41e2b5d12acba2ef3064615b258c",
     "generator": "built-in image_gen; original preserved"
   },
   "export": {
     "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
     "crop": [
-      186,
-      320,
-      850,
-      803
+      230,
+      325,
+      920,
+      850
     ],
     "placement": {
       "x": 0,

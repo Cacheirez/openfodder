@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "block": "R3-player-swim1b-coherent",
+  "block": "R3-player-swim1b-northwest",
   "date": "2026-11-21",
-  "base_head": "4a95ca5ed3822614b4b79b9dd9065e4c63d319f5",
+  "base_head": "3e8baaf713c7e3e52805b6b8447350233cb8b4e8",
   "poses": [
     {
       "type": 0,
@@ -32,7 +32,7 @@
     "matrix": "native format/frame entries; states 0/1; 4 variants; 8/12 density; two actors, exact SDL, negatives and full recovery"
   },
   "candidate": {
-    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-swim1b-coherent-candidate\\candidate-manifest.json",
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-swim1b-northwest-candidate\\candidate-manifest.json",
     "assets": 286,
     "covered": 267,
     "required": 337,
@@ -48,7 +48,7 @@
     "H3 R2 remains valid; no simulation change",
     "previous launchers unchanged"
   ],
-  "next": "R3 \u2014 agua direcci\u00f3n 4, 0x1C/F0\u2013F1; completar los dos frames pendientes con ancla com\u00fan.",
+  "next": "R3 \u2014 agua norte de espaldas, direcci\u00f3n 4, 0x1C/F0\u2013F1; completar con ancla com\u00fan.",
   "ci": "Set CI completion/consultation pending; no full PASS claimed",
   "reuse": [],
   "frames_tested": [

@@ -78,3 +78,5 @@ PASS: seis pruebas Python y 15.348 casos de resolución/mutación por sistema co
 - **Siguiente tarea única:** R3 — completar agua dirección 3, 0x1B/F0–F1, con referencias nativas y estilo C01; comprobar composición en ambos sistemas y publicar. Después agua dirección 4 y secuencias especiales del catálogo autorizado, conservando lanzadores hasta R4/R5.
 
 - **0x1B comprobado:** 2 maestros, 4 derivados; Agua, dirección 3. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 286 activos, 267/337 entradas, 70 pendientes. [Evidencia](evidence/player-pose-1b.json). Siguiente: R3 — agua dirección 4, 0x1C/F0–F1; completar los dos frames pendientes con ancla común.
+
+- **0x1B comprobado:** 2 maestros, 4 derivados; Agua noroeste, dirección 3 corregida. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 286 activos, 267/337 entradas, 70 pendientes. [Evidencia](evidence/player-pose-1b.json). Siguiente: R3 — agua norte de espaldas, dirección 4, 0x1C/F0–F1; completar con ancla común.
