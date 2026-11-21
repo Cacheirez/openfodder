@@ -19,7 +19,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None):
+def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None,shared_crop=None):
     assert not out.exists(),'Preserve existing masters/derivatives'
     native=[r for r in json.loads((atlas/'native-audit.json').read_text()) if (r['type'],r['sheet'],r['frame'])==(actor,sheet,frame)]
     formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
@@ -38,6 +38,11 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
         x,y,right,bottom=px,py,px+pw,py+ph
     image=Image.open(source);assert image.mode=='RGBA'
     crop=image.getchannel('A').point(lambda a:255 if a>=16 else 0).getbbox();assert crop
+    if shared_crop:
+        left,top,right_edge,bottom_edge=shared_crop
+        assert 0<=left<right_edge<=image.width and 0<=top<bottom_edge<=image.height
+        assert max(left,crop[0])<min(right_edge,crop[2]) and max(top,crop[1])<min(bottom_edge,crop[3])
+        crop=shared_crop # One authoring canvas/anchor across an animation, no per-frame rescaling.
     out.mkdir(parents=True);work.mkdir(parents=True,exist_ok=True)
     shutil.copyfile(source,out/'source.png');assets=[]
     for density in (8,12):
@@ -66,7 +71,9 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--crop',help='Explicit shared left,top,right,bottom authoring crop; original retained')
     for name in ('source','atlas','out','builders','work'):p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--sheet',type=lambda v:int(v,0),required=True);p.add_argument('--frame',type=int,required=True);p.add_argument('--type',type=int,default=0);p.add_argument('--family',choices=['hitdeath','pose'],default='pose');p.add_argument('--placement',help='Explicit x,y,width,height within native box; never changes logical geometry');a=p.parse_args()
     placement=tuple(map(int,a.placement.split(','))) if a.placement else None
-    export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work,placement)
+    export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work,placement,
+           tuple(map(int,a.crop.split(','))) if a.crop else None)
