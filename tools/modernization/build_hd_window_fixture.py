@@ -57,18 +57,18 @@ def build():
 #include <set>
 #undef OPENFODDER_HD_WINDOW_FIXTURE
 struct cSurface {
-    MissionLayerSequence scene;bool active=true,adjusting=false,loaded=false;SDL_Texture* tex=nullptr;int verified=0;
+    MissionLayerSequence scene;bool active=true,adjusting=false,loaded=false,suspended=true;SDL_Texture* tex=nullptr;int verified=0;
     std::array<uint32_t,255> paletteTarget{};
     static bool MissionPublicationEnabled(){return std::string(std::getenv("OPENFODDER_PRESENT_MISSION_LAYERS"))=="1";}
     bool MissionAuditActive(){return active;}bool isLoadedImage(){return loaded;}bool isPaletteAdjusting(){return adjusting;}
     bool paletteMatchesTarget()const{return scene.destinations[0].initial.indexed.colors==paletteTarget;}
     std::array<uint32_t,255> missionPaletteTarget()const{return paletteTarget;}
-    MissionLayerSequence VerifyMissionAudit(cSurface*){++verified;return scene;}
+    MissionLayerSequence VerifyMissionAudit(cSurface*,PresentationTarget* = nullptr,bool frozenPause=false){++verified;return active || (frozenPause && suspended)?scene:MissionLayerSequence{};}
     PresentationSurface CapturePresentation(){return scene.destinations[0].initial;}
     SDL_Texture* GetTexture(){return tex;}
 };
 struct cFodder {
-    cSurface* mSurface=nullptr; cSurface* mSurfaceFinal=nullptr;
+    cSurface* mSurface=nullptr; cSurface* mSurfaceFinal=nullptr; cSurface* mSurface2=nullptr;
     bool mPhase_In_Progress=true,mPhase_Paused=false,mPhase_ShowMapOverview=false,mInterruptCallback=false;
     uint64_t mPresentationScene=1;
 } fodder; cFodder* g_Fodder=&fodder;

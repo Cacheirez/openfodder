@@ -43,6 +43,7 @@ def build():
 #include <stdexcept>
 #include "Utils/ScreenTransform.hpp"
 #include "Utils/PresentationOptions.hpp"
+#include "Utils/ResolvedSpriteResource.hpp"
 using int16=int16_t;
 struct SDL_Window{};struct SDL_Renderer{};struct SDL_Texture{};
 struct SDL_FRect{float x,y,w,h;};struct SDL_Rect{int x,y,w,h;};
@@ -79,7 +80,8 @@ struct cWindow{
  bool IsMissionCursorInBand() const;unsigned FittedInputScene() const;
  SDL_Renderer* GetRenderer(){return mRenderer;}
  cDimension GetWindowSize(){return {640,mScreenSize.mHeight*2};}
- int TryRenderMissionHD(cSurface*,const SDL_FRect&,const SDL_FRect&){return -1;}
+ int hdCalls=0;
+ int TryRenderMissionHD(cSurface*,const SDL_FRect&,const SDL_FRect&){++hdCalls;return -1;}
  void BeginVideoPresentation();void RenderAt(cSurface*,bool=false);void RenderShrunk(cSurface*);void FrameEnd();void InvalidateScreenTransform();
  openfodder::ScreenMouseResult MapMissionMouse(int,int,int16&,int16&);
 };
@@ -327,6 +329,13 @@ int main(){
   ++pauseCases;
  }
  assert(pauseCases==72);
+ // Frozen protagonist publication must not grant a world-input transform.
+ fodder.mPhase_Paused=true;setenv("OPENFODDER_PLAYER_CATALOG","1",1);
+ {const int before=win.hdCalls;win.RenderAt(&image);win.FrameEnd();assert(win.hdCalls==before+1);
+  assert(!win.mPresentedScreenTransform.valid && win.MapMissionMouse(ww/2,wh/2,x,y)==R::Classic);
+  fodder.mInterruptCallback=true;win.RenderAt(&image);win.FrameEnd();assert(win.hdCalls==before+1);
+  fodder.mInterruptCallback=false;}
+ unsetenv("OPENFODDER_PLAYER_CATALOG");fodder.mPhase_Paused=false;
  pw=3840;ph=2160;ww=1280;wh=720;win.mScreenSize.mHeight=200;
  fodder.mPhase_Paused=true;
  for(int mode=0;mode<9;++mode) {

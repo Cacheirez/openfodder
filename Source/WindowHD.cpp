@@ -88,13 +88,15 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     if(!cSurface::MissionPublicationEnabled())return classic("publication-disabled");
     if(image!=g_Fodder->mSurface)return classic("not-mission-surface");
     if(!g_Fodder->mPhase_In_Progress)return classic("outside-mission");
-    if(g_Fodder->mPhase_Paused)return classic("paused");
+    const bool frozenPause=g_Fodder->mPhase_Paused && openfodder::CF1PlayerCatalogEnabled();
+    if(g_Fodder->mPhase_Paused && !frozenPause)return classic("paused");
+    if(frozenPause && (!g_Fodder->mSurface2 || g_Fodder->mSurface2==image))return classic("missing-pause-text");
     if(g_Fodder->mPhase_ShowMapOverview)return classic("map-overview");
     if(g_Fodder->mInterruptCallback)return classic("scene-callback");
     if(image->isLoadedImage())return classic("loaded-image");
     const bool paletteTransition=image->isPaletteAdjusting() && !image->paletteMatchesTarget();
     if(paletteTransition && !openfodder::CF1PlayerCatalogEnabled())return classic("palette-transition");
-    if(!image->MissionAuditActive())return classic("missing-audit-interval");
+    if(!image->MissionAuditActive() && !frozenPause)return classic("missing-audit-interval");
     float sx=0,sy=0;int w=0,h=0;
     SDL_RendererLogicalPresentation logical=SDL_LOGICAL_PRESENTATION_DISABLED;
     if(SDL_GetRenderTarget(mRenderer))return classic("renderer-target");
@@ -105,8 +107,8 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     try {
         // Verify the current interval and late palette before any SDL write.
         // Oracle mismatches still propagate as runtime errors.
-        const auto scene=image->VerifyMissionAudit(g_Fodder->mSurfaceFinal);
-        if(scene.destinations.empty())return classic("ordered-invalid-audit");
+        const auto scene=image->VerifyMissionAudit(g_Fodder->mSurfaceFinal,nullptr,frozenPause);
+        if(scene.destinations.empty())return classic(frozenPause?"ordered-pause-invalid-audit":"ordered-invalid-audit");
         const auto current=image->CapturePresentation();
         bool nonBlack=false;for(auto color:current.indexed.colors)nonBlack|=(color&0xffffffu)!=0;
         if(!nonBlack)return classic("black-palette");
@@ -168,14 +170,17 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
             // Census first; reject incomplete intervals before CPU/GPU work.
             if(missing){coverage.finish("missing-variant");return classic("ordered-missing-variant");}
             size_t commandIndex=0;
-            const auto frame=openfodder::ComposeOrderedSoldierArt(scene,current.destination,density,
+            auto frame=openfodder::ComposeOrderedSoldierArt(scene,current.destination,density,
                 [&](const openfodder::PreparedSpriteDraw&){return resolvedCommands.at(commandIndex++);});
+            if(frozenPause)openfodder::ApplyOrderedPauseText(frame,
+                openfodder::RasterizePresentationSurface(g_Fodder->mSurface2->CapturePresentation()));
             if(!frame.complete()){coverage.finish("no-body");return classic("ordered-no-body");}
             bool replaced=false;
             const bool drawn=openfodder::RenderOrderedSoldierHD(mRenderer,frame,image->GetTexture(),src,dst,replaced);
             coverage.finish(replaced?"published":drawn?"classic-recovered":"recovery-failed");
             if(!replaced)report(drawn?"sdl-error-classic-recovered":"sdl-error-recovery-failed");
             if(replaced)report("ordered-published");
+            if(replaced && frozenPause)report("ordered-pause-published");
             return drawn?1:0;
         }
         if(paletteTransition)return classic("palette-transition"); // Legacy fixed-art paths retain their guard.

@@ -119,6 +119,39 @@ Result run(int w,int h,int mode,int repeats,int variant){
  return r;
 }
 int main(){size_t cases=0;
+ // The opt-in pause retains the exact producer interval, never new native
+ // writes. Recomposition stays read-only; replacement/mutation rejects it.
+#ifdef _WIN32
+ _putenv_s("OPENFODDER_PLAYER_CATALOG","1");
+ _putenv_s("OPENFODDER_PRESENT_MISSION_LAYERS","1");
+#else
+ setenv("OPENFODDER_PLAYER_CATALOG","1",1);
+ setenv("OPENFODDER_PRESENT_MISSION_LAYERS","1",1);
+#endif
+ {
+  cSurface a(32,32),b(32,32);fill(a,3,false);fill(b,7,false);
+  a.BeginMissionAudit(&b,true);const auto retained=a.mMissionAudit;assert(retained);
+  a.BeginMissionAudit(&b,false);assert(!a.MissionAuditActive() && !b.MissionAuditActive());
+  assert(a.mSuspendedMissionAudit==retained && a.VerifyMissionAudit(&b).destinations.empty());
+  for(int repeats:{0,1,5}){
+   auto beforeA=logical(a),beforeB=logical(b);
+   for(int i=0;i<repeats;++i)assert(a.VerifyMissionAudit(&b,nullptr,true).destinations.size()==2);
+   assert(beforeA==logical(a) && beforeB==logical(b));
+  }
+  while(a.mPaletteAdjusting){a.palette_FadeTowardNew();auto before=logical(a);
+   assert(a.VerifyMissionAudit(&b,nullptr,true).destinations.size()==2 && before==logical(a));}
+  a.mSurfaceBuffer[0]^=1;assert(a.VerifyMissionAudit(&b,nullptr,true).destinations.empty());a.mSurfaceBuffer[0]^=1;
+  cSurface replacement(32,32);fill(replacement,7,false);
+  assert(a.VerifyMissionAudit(&replacement,nullptr,true).destinations.empty());
+  a.BeginMissionAudit(&b,true);assert(!a.mSuspendedMissionAudit && a.MissionAuditActive());
+ }
+#ifdef _WIN32
+ _putenv_s("OPENFODDER_PLAYER_CATALOG","");
+ _putenv_s("OPENFODDER_PRESENT_MISSION_LAYERS","");
+#else
+ unsetenv("OPENFODDER_PLAYER_CATALOG");
+ unsetenv("OPENFODDER_PRESENT_MISSION_LAYERS");
+#endif
  // Exercise the real surface accessor with the unchanged native fade, including
  // the completed target whose legacy adjusting flag is cleared on the next call.
  for(int direction:{0,1}){

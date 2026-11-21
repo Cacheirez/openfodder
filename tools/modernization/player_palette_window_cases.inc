@@ -1,7 +1,8 @@
 // Actual ordered Window route, exact independent CPU oracle and native colours.
 // The catalogue still verifies resources/raster; only the immutable HD RGB is transferred.
 assert(!nativeOnly);image.scene.layers.resize(2);image.adjusting=true;image.paletteTarget=colors;
-size_t fadeCases=0;
+cSurface pauseText;pauseText.scene.destinations={destination(96,64)};fodder.mSurface2=&pauseText;
+size_t fadeCases=0,pauseCases=0;
 for(bool fadeOut:{false,true})for(unsigned level:(fadeOut?std::vector<unsigned>{3,2,1}:std::vector<unsigned>{1,2,3,4})){
     auto current=colors;
     for(auto& color:current){uint32_t value=color&0xff000000u;
@@ -15,6 +16,11 @@ for(bool fadeOut:{false,true})for(unsigned level:(fadeOut?std::vector<unsigned>{
             return grading.apply(art);
         });
         assert(expectedFrame.complete());
+        // Pause text uses the native nonzero RGB-word merge, in its final turn.
+        auto& text=pauseText.scene.destinations[0].initial;
+        auto textIndices=std::make_shared<std::vector<uint8_t>>(96*64,0);
+        const auto textAt=expectedFrame.cells.begin()->first;(*textIndices)[textAt]=1;
+        text.indexed.indices=textIndices;text.indexed.colors.fill(0);text.indexed.colors[1]=0xff00ffffu;
         std::vector<uint32_t> pixels(96*64*density*density);
         for(size_t y=0;y<64*density;++y)for(size_t x=0;x<96*density;++x){
             const size_t at=(y/density)*96+x/density;const auto cell=expectedFrame.cells.find(at);
@@ -32,6 +38,23 @@ for(bool fadeOut:{false,true})for(unsigned level:(fadeOut?std::vector<unsigned>{
             assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==classic && live==0);failAt=0;
         }
         ++fadeCases;
+        auto paused=expectedFrame;ApplyOrderedPauseText(paused,RasterizePresentationSurface(text));
+        assert(!paused.cells.count(textAt) && paused.background.pixels[textAt]==0xff00ffffu);
+        for(size_t y=0;y<64*density;++y)for(size_t x=0;x<96*density;++x){
+            const size_t at=(y/density)*96+x/density;const auto cell=paused.cells.find(at);
+            pixels[y*96*density+x]=cell==paused.cells.end()?paused.background.pixels[at]:cell->second[(y%density)*density+x%density];
+        }
+        auto pauseOracle=texture(renderer,pixels,96*density,64*density);clear(renderer);
+        assert(SDL_RenderTexture(renderer,pauseOracle,&full,&dst));const auto pauseExpected=read(renderer);SDL_DestroyTexture(pauseOracle);
+        const auto classicPause=RasterizePausePresentation({image.CapturePresentation(),text});
+        assert(SDL_UpdateTexture(image.tex,nullptr,classicPause.background.pixels.data(),96*4));
+        image.active=false;fodder.mPhase_Paused=true;clear(renderer);callNumber=0;
+        assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==pauseExpected);
+        if(level==1){const auto lastCall=callNumber;clear(renderer);assert(SDL_RenderTexture(renderer,image.tex,&src,&dst));const auto classic=read(renderer);
+            clear(renderer);callNumber=0;failAt=lastCall;
+            assert(win.TryRenderMissionHD(&image,src,dst)==1 && read(renderer)==classic && live==0);failAt=0;}
+        image.suspended=false;assert(win.TryRenderMissionHD(&image,src,dst)==-1);image.suspended=true;
+        image.active=true;fodder.mPhase_Paused=false;++pauseCases;
     }
 }
 // No reference from a previous scene may qualify an unrelated fade-out.
@@ -47,4 +70,4 @@ assert(changed);image.scene.destinations[0].initial.indexed.colors=invalid;
 assert(win.TryRenderMissionHD(&image,src,dst)==-1);
 image.scene.destinations[0].initial.indexed.colors={};assert(win.TryRenderMissionHD(&image,src,dst)==-1);
 image.scene.destinations[0].initial.indexed.colors=colors;image.adjusting=false;
-std::cout<<"PASS palette Window: "<<fadeCases<<" ordered fade-in/out cases; exact SDL oracle, current native background, scene isolation and invalid/black recovery\n";
+std::cout<<"PASS palette Window: "<<fadeCases<<" ordered fade-in/out cases; "<<pauseCases<<" frozen pause/text cases; exact SDL oracle, current native background, scene isolation and invalid/black recovery\n";

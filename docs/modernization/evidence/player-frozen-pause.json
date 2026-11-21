@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "base": "9709d08534ffba770084ae1a959d68c9bcb0e82a",
+  "block": "R5.1-frozen-pause-continuity",
+  "found_by": "Code review of all publication guards; not another user-discovered missing pose",
+  "implementation": [
+    "Retain the already-owned mission producer interval when suspending audit; release it before next eligible recording",
+    "Verify frozen native indices, saved backing, palette, geometry and lifetime identities before HD composition; mutation/replacement rejects whole frozen interval",
+    "Recompose native ordered operations with current native dim palette; apply original nonzero RGB pause text as the final operation, erasing covered HD cells",
+    "Opt-in paused main-surface publication only; input inverse remains unavailable until fresh resumed mission publication; legacy/classic paths unchanged"
+  ],
+  "sources": {
+    "Source/Surface.hpp": "d7c3253e3724492aade4306607838f40fd445b8f60075128d1904ceb59a51b28",
+    "Source/Window.cpp": "732cb7d789d59984271deed0f369f3c8e9563e8da6059b15bfcded7077b9f156",
+    "Source/WindowHD.cpp": "d2509fc974ab3e105d60842d8f5dab33d4c80af0e350c33ba61f5dea2806e314",
+    "Source/Utils/OrderedSoldierArt.hpp": "dfd5dd97a53bb385a2acb2bc0439069e4e11d6269d54e6d019aea2255880423d"
+  },
+  "tests": {
+    "window_sdl_cases_per_platform": 368,
+    "breakdown": {
+      "existing_pose": 144,
+      "live_fade": 112,
+      "frozen_pause_with_text": 112
+    },
+    "native_pause_schedules_per_platform": 144,
+    "coverage": [
+      "0/1/5 retained consumers",
+      "native dim fade remains read-only",
+      "text exact order and nonzero RGB-word occlusion",
+      "same owner art and shadows preserved",
+      "missing retained interval recovers classic",
+      "mutated/replaced destination rejects frozen interval",
+      "SDL error repaints native pause including text",
+      "legacy input mapping and resume invalidation preserved"
+    ],
+    "sanitizers": {
+      "windows": "ASan/UBSan; LSan unsupported",
+      "linux": "ASan/UBSan/LSan Window/CPU; native game replay unsanitized build"
+    },
+    "screen_transform": "PASS actual methods: 544000 coordinates; 228 mission fit, 216 overview,72 pause,144 briefing/recruitment,864 GUI/window cases"
+  },
+  "runtime": {
+    "platforms": [
+      "Windows",
+      "Linux"
+    ],
+    "replay": "Amiga The One M1P2",
+    "h3": 1546,
+    "hd_publications": 4637,
+    "prior_without_pause_probe": 4635,
+    "completed_pauses": 2,
+    "resumes": 2,
+    "invalid_pause_audits": 0,
+    "missing": 0
+  },
+  "limits": [
+    "Full CI for this correction pending; no new validated launcher handed off",
+    "Previous frozen review directory contains pre-pause draft binary; preserve/refresh only after final checks",
+    "Final global visual/gameplay review Miguel pending; retail CD32/GPU not claimed"
+  ]
+}

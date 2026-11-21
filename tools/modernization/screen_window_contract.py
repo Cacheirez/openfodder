@@ -10,5 +10,10 @@ INTEGRATED = 'fc1dd9e8aeaebdad881ff8b7dc9e9fe95e82ac5874432804b7e0c7e6ff0f6a29'
 def verify_window_integration(current, original):
     digest=lambda s:hashlib.sha256(s.encode()).hexdigest()
     assert digest(original)==CLASSIC, "Unexpected classic Window baseline"
+    frozen='''    const bool frozenSoldiers=!pMission && openfodder::CF1PlayerCatalogEnabled() &&
+        pImage==g_Fodder->mSurface && g_Fodder->mPhase_In_Progress &&
+        g_Fodder->mPhase_Paused && !g_Fodder->mPhase_ShowMapOverview && !g_Fodder->mInterruptCallback;
+    const int hd=(pMission || frozenSoldiers) ? TryRenderMissionHD(pImage,Src,Dest) : -1;'''
+    current=current.replace(frozen,'    const int hd=pMission ? TryRenderMissionHD(pImage,Src,Dest) : -1;',1)
     current=current.replace('    const int hd=pMission ? TryRenderMissionHD(pImage,Src,Dest) : -1;\n    const bool drawn=hd<0 ? SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest) : hd==1;', '    const bool drawn=SDL_RenderTexture(mRenderer,pImage->GetTexture(),&Src,&Dest);', 1)
     assert digest(current)==INTEGRATED, "Window adapter changed; review its real-method integration tests"

@@ -72,6 +72,7 @@ protected:
         bool soldierArt = false;
     };
     std::shared_ptr<MissionAuditRecording> mMissionAudit;
+    std::shared_ptr<MissionAuditRecording> mSuspendedMissionAudit;
     openfodder::PresentationDestinationId mPresentationDestination =
         std::make_shared<const openfodder::PresentationDestination>();
     bool PresentationDestinationMatches(const openfodder::PresentationDestinationId& identity,
@@ -184,6 +185,10 @@ public:
     }
     void BeginMissionAudit(cSurface* other, bool eligible) {
         const auto previous = std::atomic_load(&mMissionAudit);
+        // Keep the already-owned producer interval for an opt-in frozen pause.
+        // A new eligible producer iteration releases it before allocating again.
+        if(eligible)std::atomic_store(&mSuspendedMissionAudit,std::shared_ptr<MissionAuditRecording>{});
+        else if(previous && openfodder::CF1PlayerCatalogEnabled())std::atomic_store(&mSuspendedMissionAudit,previous);
         // Reset at every producer iteration, including zero presentations and pause.
         std::atomic_store(&mMissionAudit, std::shared_ptr<MissionAuditRecording>{});
         if (other && other != this)
@@ -214,8 +219,9 @@ public:
             std::atomic_store(&other->mMissionAudit, recording);
     }
     openfodder::MissionLayerSequence VerifyMissionAudit(const cSurface* other,
-        openfodder::PresentationTarget* publication = nullptr) const {
-        const auto recording = std::atomic_load(&mMissionAudit);
+        openfodder::PresentationTarget* publication = nullptr, bool frozenPause = false) const {
+        auto recording = std::atomic_load(&mMissionAudit);
+        if(!recording && frozenPause && openfodder::CF1PlayerCatalogEnabled())recording=std::atomic_load(&mSuspendedMissionAudit);
         if (!recording) return {};
         openfodder::MissionLayerSequence scene;
         {
@@ -225,12 +231,16 @@ public:
         std::vector<const cSurface*> actual;
         for (auto& source : scene.destinations) {
             const cSurface* surface = source.initial.destination == mPresentationDestination ? this : other;
-            if (!surface || source.initial.destination != surface->mPresentationDestination)
+            if (!surface || source.initial.destination != surface->mPresentationDestination) {
+                if(frozenPause)return {};
                 throw std::runtime_error("mission audit: destination replaced during recording");
+            }
             const auto current = surface->CaptureDraw();
             if (!current.indices || current.width != source.initial.indexed.width ||
-                current.height != source.initial.indexed.height)
+                current.height != source.initial.indexed.height) {
+                if(frozenPause)return {};
                 throw std::runtime_error("mission audit: incompatible indexed destination");
+            }
             // Palette is sampled at the real conversion point, after late fades.
             source.initial.indexed.colors = current.colors;
             actual.push_back(surface);
@@ -252,13 +262,17 @@ public:
             const auto* surface = actual[i];
             if (*composed.surfaces[i].indexed.indices != *surface->CaptureDraw().indices ||
                 !std::equal(composed.saved[i].pixels->begin(), composed.saved[i].pixels->end(),
-                            surface->mSurfaceBufferSaved))
+                            surface->mSurfaceBufferSaved)) {
+                if(frozenPause)return {};
                 throw std::runtime_error("mission audit: unrecorded or reordered indexed write");
+            }
             const auto expected = openfodder::RasterizePresentationSurface(surface->CapturePresentation());
             auto replay = openfodder::RasterizePresentationSurface(composed.surfaces[i]);
             if (expected.destination != replay.destination || expected.width != replay.width ||
-                expected.height != replay.height || expected.stride != replay.stride || expected.pixels != replay.pixels)
+                expected.height != replay.height || expected.stride != replay.stride || expected.pixels != replay.pixels) {
+                if(frozenPause)return {};
                 throw std::runtime_error("mission audit: composed frame differs from classic frame");
+            }
             // Publish precisely the pixels just checked, not a new classic capture.
             if (publication && surface == this) *publication = std::move(replay);
         }

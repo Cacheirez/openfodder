@@ -56,6 +56,16 @@ inline uint32_t SoldierBlend(uint32_t src,uint32_t dst) {
         out|=(( ((src>>shift)&255)*alpha+((dst>>shift)&255)*(255-alpha)+127)/255)<<shift;
     return out;
 }
+// The native pause producer merges nonzero RGB text after its indexed mission.
+// Apply that same final operation to the background and erase covered HD cells.
+inline void ApplyOrderedPauseText(OrderedSoldierFrame& frame,const PresentationTarget& text) {
+    auto& bg=frame.background;
+    if(text.width!=bg.width || text.height!=bg.height || text.stride!=bg.stride ||
+       text.pixels.size()!=bg.pixels.size())throw std::invalid_argument("ordered pause text geometry");
+    for(size_t i=0;i<text.pixels.size();++i)if(text.pixels[i]){
+        bg.pixels[i]=text.pixels[i];frame.cells.erase(i);
+    }
+}
 // CPU reference for A2. Original indexed composition is independently executed
 // first. Modern indices omit replaced bodies; ordered HD cells survive Save and
 // Restore. No sorting by entity, no new animation clock, no simulation writes.
