@@ -390,6 +390,14 @@ if(Python3_Interpreter_FOUND)
     add_test(NAME player_state_catalog COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/inventory_player_states.py" --check)
     add_test(NAME player_state_catalog_contract COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_player_state_catalog.py")
     add_test(NAME player_native_table COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/generate_player_pose_table.py" --check)
+    add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/mission_palette_transfer_test.cpp"
+        COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/check_mission_palette_transfer.py"
+            --emit "${CMAKE_CURRENT_BINARY_DIR}/mission_palette_transfer_test.cpp"
+        DEPENDS tools/modernization/check_mission_palette_transfer.py tools/modernization/check_final_timer_equivalence.py
+            Source/Surface.cpp Source/Surface.hpp VERBATIM)
+    add_executable(openfodder_palette_transfer_tests "${CMAKE_CURRENT_BINARY_DIR}/mission_palette_transfer_test.cpp")
+    target_include_directories(openfodder_palette_transfer_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+    add_test(NAME mission_palette_transfer COMMAND $<TARGET_FILE:openfodder_palette_transfer_tests>)
 endif()
 
 # A2 ordered SDL publisher contract; no production resolver or artwork implied.

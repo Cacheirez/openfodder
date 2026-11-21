@@ -88,4 +88,7 @@ for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,
     image.scene.destinations[0].initial.indexed.colors=colors;
     ++cases;
 }
+if(std::getenv("OPENFODDER_PLAYER_FADE_CASE")){
+    #include "player_palette_window_cases.inc"
+}
 std::cout<<"PASS pose Window: "<<cases<<" cases, two actors, exact SDL, height/crop/zero occlusion, state/palette aliases, negatives and recovery\n";

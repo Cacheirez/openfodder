@@ -8,6 +8,7 @@
 #include "Utils/OrderedSoldierSDL.hpp"
 #include "Utils/OrderedSoldierRegistry.hpp"
 #include "Utils/OrderedSoldierCoverage.hpp"
+#include "Utils/PaletteTransfer.hpp"
 #include <set>
 
 bool cSurface::ClassicEnemyExperimentEnabled() {
@@ -91,7 +92,8 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
     if(g_Fodder->mPhase_ShowMapOverview)return classic("map-overview");
     if(g_Fodder->mInterruptCallback)return classic("scene-callback");
     if(image->isLoadedImage())return classic("loaded-image");
-    if(image->isPaletteAdjusting() && !image->paletteMatchesTarget())return classic("palette-transition");
+    const bool paletteTransition=image->isPaletteAdjusting() && !image->paletteMatchesTarget();
+    if(paletteTransition && !openfodder::CF1PlayerCatalogEnabled())return classic("palette-transition");
     if(!image->MissionAuditActive())return classic("missing-audit-interval");
     float sx=0,sy=0;int w=0,h=0;
     SDL_RendererLogicalPresentation logical=SDL_LOGICAL_PRESENTATION_DISABLED;
@@ -108,6 +110,21 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
         const auto current=image->CapturePresentation();
         bool nonBlack=false;for(auto color:current.indexed.colors)nonBlack|=(color&0xffffffu)!=0;
         if(!nonBlack)return classic("black-palette");
+        // Retain only a palette from this presentation scene. No simulation or
+        // fade step is advanced here; unknown/non-monotone transitions reject.
+        static openfodder::PresentationDestinationId paletteDestination;static uint64_t paletteScene=0;
+        static std::array<uint32_t,255> paletteReference{};static bool referenceValid=false;
+        if(paletteDestination!=current.destination || paletteScene!=g_Fodder->mPresentationScene){
+            paletteDestination=current.destination;paletteScene=g_Fodder->mPresentationScene;referenceValid=false;
+        }
+        openfodder::MissionPaletteArt paletteArt;
+        if(paletteTransition){
+            const auto target=image->missionPaletteTarget();
+            if(paletteArt.transfer.build(target,current.indexed.colors)){
+                paletteReference=target;referenceValid=true;
+            }else if(!referenceValid || !paletteArt.transfer.build(paletteReference,current.indexed.colors))
+                return classic("palette-transition");
+        }else {paletteReference=current.indexed.colors;referenceValid=true;}
         for(const auto& layer:scene.layers)
             if(layer.operation==openfodder::MissionLayerOperation::Soldier &&
                layer.soldier.soldier.scene!=g_Fodder->mPresentationScene)return classic("stale-scene");
@@ -138,8 +155,9 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
                 if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
                 const auto& command=layer.soldier;
                 const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
-                const auto resolved=registry->resolve(command,key,density,hybrid,
+                auto resolved=registry->resolve(command,key,density,hybrid,
                     current.indexed.width,current.indexed.indices->size(),scene.classicEnemies);
+                if(paletteTransition)resolved=paletteArt.apply(std::move(resolved));
                 coverage.resolved(order,key,resolved.decision);
                 if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
                     std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",
@@ -160,6 +178,7 @@ int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_F
             if(replaced)report("ordered-published");
             return drawn?1:0;
         }
+        if(paletteTransition)return classic("palette-transition"); // Legacy fixed-art paths retain their guard.
         static const auto a8=std::make_shared<const std::vector<uint32_t>>(
             openfodder::SoldierArtPixels8().begin(),openfodder::SoldierArtPixels8().end());
         static const auto a12=std::make_shared<const std::vector<uint32_t>>(

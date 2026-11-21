@@ -52,6 +52,7 @@ def build():
 #undef SDL_RenderTexture
 #include "Utils/OrderedSoldierRegistry.hpp"
 #include "Utils/OrderedSoldierCoverage.hpp"
+#include "Utils/PaletteTransfer.hpp"
 #include "native_walk_snapshot.hpp"
 #include <set>
 #undef OPENFODDER_HD_WINDOW_FIXTURE
@@ -61,6 +62,7 @@ struct cSurface {
     static bool MissionPublicationEnabled(){return std::string(std::getenv("OPENFODDER_PRESENT_MISSION_LAYERS"))=="1";}
     bool MissionAuditActive(){return active;}bool isLoadedImage(){return loaded;}bool isPaletteAdjusting(){return adjusting;}
     bool paletteMatchesTarget()const{return scene.destinations[0].initial.indexed.colors==paletteTarget;}
+    std::array<uint32_t,255> missionPaletteTarget()const{return paletteTarget;}
     MissionLayerSequence VerifyMissionAudit(cSurface*){++verified;return scene;}
     PresentationSurface CapturePresentation(){return scene.destinations[0].initial;}
     SDL_Texture* GetTexture(){return tex;}

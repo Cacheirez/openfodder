@@ -150,3 +150,9 @@ PASS siete contratos Python, 15.365 casos CPU y 96 Window/SDL por sistema con sa
 ## R4.1: suelo de estados especiales
 
 Saludo 38, celebración 9F y deslizamiento A4 reciben la pintura aprobada, fijada por SHA corporal y colocación revisada. El agua/recorte/altura desactivan suelo; 41 conserva la sombra independiente. La identidad/generación del propietario evita duplicar ambos tipos de sombra. PASS 704 casos Window por sistema y prueba CPU de convivencia/orden/presupuestos; candidato completo aún aislado. [Evidencia](evidence/player-special-ground.json).
+
+## R4.2: fundido y continuidad comprobados
+
+La paleta se lee sin avanzar la función nativa. Una transferencia monótona cualificada por componente permite presentar el cuerpo moderno desde el fundido, con alfa, fondo, orden y recuperación conservados. Referencia vinculada a escena e identidad de destino; entradas inválidas, negro y modos ajenos conservan guardas. Rutas anteriores sin catálogo mantienen su rechazo de fundidos.
+
+PASS 50 estados de la función nativa y 256 casos Window/SDL por sistema con sanitizadores. H3 completo 11 fases/11.361 estados conservado en Windows/Linux. Replay M1P2 final: 4.635 publicaciones HD, ningún faltante, 18.913 comandos protagonistas modernos y 36 comandos 7C/F1 sin escrituras; ningún cuerpo visible del pelotón clásico. Esto no extrapola todas las muertes/retail CD32 ni sustituye la valoración visual/jugable de Miguel. R5 debe completar CI/CTest y el lanzador final. [Evidencia](evidence/player-palette-continuity.json).

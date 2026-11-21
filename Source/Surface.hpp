@@ -416,6 +416,13 @@ public:
 	inline size_t		GetHeight() const { return mHeight; }
 
 	inline bool			isPaletteAdjusting() const { return mPaletteAdjusting; }
+    inline std::array<uint32_t,255> missionPaletteTarget() const {
+        std::array<uint32_t,255> colors{};
+        for(size_t i=0;i<colors.size();++i)colors[i]=0xff000000u |
+            (uint32_t(mPaletteNew[i].mRed<<2)<<16) |
+            (uint32_t(mPaletteNew[i].mGreen<<2)<<8) | uint32_t(mPaletteNew[i].mBlue<<2);
+        return colors;
+    }
     // The native fade keeps its adjusting flag for one call after the last
     // component reaches the target. Read completion without advancing it.
     inline bool paletteMatchesTarget() const {

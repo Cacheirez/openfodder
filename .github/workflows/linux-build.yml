@@ -138,6 +138,7 @@ jobs:
         run: |
           git fetch --no-tags --depth 1 origin d35e2675ffbbc79f8bf21eb961d78c06d74abd14
           python3 tools/modernization/check_pause_presentation.py
+          python3 tools/modernization/check_mission_palette_transfer.py
       - name: H4.1 - complete composed mission and mission-pause scheduling
         env:
           ASAN_OPTIONS: detect_leaks=1

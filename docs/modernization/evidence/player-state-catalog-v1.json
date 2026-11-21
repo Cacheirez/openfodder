@@ -10778,7 +10778,7 @@
     "Source/Fodder.hpp": "6683f25d1b3e46fc17fec137a6c43df7d9911bcf059bc2252b3e3969f838fbe9",
     "Source/Squad.cpp": "4fea7633314978cf1f6aeb2284144890c006a334d41e2460450e54093cbf4061",
     "Source/CampaignSelect.cpp": "0bc4d210f07a0a7ae0e4c880837ff2b30f0c9ab6567f3dfffe9d80ea11390078",
-    "Source/WindowHD.cpp": "be62073943301eef184adf21c759feb2dcbdf8732c77ddc89f93ee2e95bc50b0",
+    "Source/WindowHD.cpp": "362f9c1a09af80699bf960fb973623dc69a6b37dcd608e804a870953793a3597",
     "Source/Map/Original.cpp": "6c241a5c1b7f717c50b6497346d4c1a37a084ea84c7ef39a93cffc99fd1a0d0f",
     "Source/Map/MapRuntime.cpp": "05438b8fecad85b219c169d90db0867cfb750d59f14be150ae5b0b2afc2902f6"
   },
