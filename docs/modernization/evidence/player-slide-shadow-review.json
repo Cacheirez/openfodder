@@ -308,10 +308,10 @@
   "corrected_body_frames": [
     0,
     1,
-    2
+    2,
+    3
   ],
   "pending_corrections": [
-    3,
     4
   ],
   "ground_component_qualification": "PENDING R4; do not activate incomplete candidate"

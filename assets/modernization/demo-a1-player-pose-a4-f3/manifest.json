@@ -11,7 +11,7 @@
       "file": "player-pose-a4-f3-8x.rgba",
       "height": 14,
       "id": "player-pose-a4-f3-8x",
-      "sha256": "75e734066a5988482f7becddf5f05b192a8ef29b1e7a97fa3e73a473fb94392f",
+      "sha256": "cf2551543849f3a2b4a868abd279e5908cb832486be00ea3c5aa6d674ccf2a3d",
       "width": 16
     },
     {
@@ -19,7 +19,7 @@
       "file": "player-pose-a4-f3-12x.rgba",
       "height": 14,
       "id": "player-pose-a4-f3-12x",
-      "sha256": "8151c82188fe9a8c689d5639f664290cd92641fa52bd5a28afc42b3e1c6602b8",
+      "sha256": "b95c0a227298968376c0b0f0ac40d0423ab687c2496c2746871abd05ddaf0292",
       "width": 16
     }
   ],
@@ -31,22 +31,22 @@
       1173
     ],
     "mode": "RGBA",
-    "sha256": "a3920f7df07d2d7fc2068150f1a9f737c1dbf71e8157cf80ebced2e7c616fb68",
+    "sha256": "f03e94900a936a20695f9921e3b6563e6be29e4b891b8dc521ec4eed8779af45",
     "generator": "built-in image_gen; original preserved"
   },
   "export": {
     "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
     "crop": [
-      110,
-      191,
-      1258,
-      1107
+      149,
+      192,
+      1028,
+      944
     ],
     "placement": {
       "x": 1,
       "y": 1,
-      "width": 15,
-      "height": 13
+      "width": 11,
+      "height": 11
     },
     "logical_size": [
       16,

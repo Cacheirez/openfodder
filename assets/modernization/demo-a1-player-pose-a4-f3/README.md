@@ -1,4 +1,4 @@
-# Deslizamiento noroeste, dirección 3 0xA4/F3
+# Deslizamiento noroeste corregido, cuerpo compacto 0xA4/F3
 
 21-11-2026. PROTAGONISTAS-COMPLETOS, criterio artístico delegado por Miguel. Inspección interna y exportación comprobadas; no declara aceptación visual/jugable global. Maestro original inmutable generado con image_gen y transparencia. Referencias nativas reconstruidas de la hoja completa; identidad/paleta C01 mediante el maestro necesario de la dirección y, el maestro compartido de la familia. No se refleja arte.
 
@@ -7,5 +7,5 @@
 ## Prompt
 
 ```text
-Create one isolated transparent RGBA OpenFodder C01 soldier SLIDING pose 0xA4/F3. Reference 1 exact native direction/silhouette: helmet/head upper-left, soldier facing diagonally UP-LEFT (northwest) AWAY FROM viewer, rear three-quarter view, see BACK of helmet and back of olive shoulders/tan harness, at most tiny left ear, NO frontal face. Near arm extends toward left/up-left to brace, body hunched low, hips and bent/trailing legs stretch diagonally to BOTTOM RIGHT with brown boot at far lower-right. Native is a low asymmetric slipping pose, not walking or upright kneeling. Reference 2 same northwest-facing C01 identity/camera; retain rear direction but change body to slide. Reference 3 moderate painted slide family treatment and low posture, turn in 3D, never mirror. Steep overhead strategy-game view, compact entire body visible, no gun. Clean true transparency, no blood, glow, dust, ground/cast shadow, terrain, water, text, labels or backdrop.
+Correct OpenFodder northwest SLIDING body A4/F3. Reference 1 edit target: preserve helmet/head position, exact UP-LEFT/northwest facing AWAY from viewer, BACK of helmet/shoulders/tan harness, same bracing leftward hands, camera and olive/tan painted identity. Reference 2 native: dark down-right extension is embedded GROUND SHADOW, not a leg. Replace the long stretched leg/far sole with BOTH legs bent compactly under hips, both brown boots short and close near knees/bottom of torso, no long shin or far boot extending down-right. Keep low off-balance sliding with hunched back, not walking/standing; only tiny left ear, no frontal face. Reference 3 compact northwest C01 proportions. Compact near-square body-only silhouette with clean true RGBA transparency and padding. No cast shadow, halo/glow, dust, blood, terrain, water, background or text. Never mirror.
 ```
