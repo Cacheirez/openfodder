@@ -92,8 +92,9 @@ public:
             if(!signatures.is_array() || signatures.empty() || signatures.size()>32)throw std::invalid_argument("player catalog signatures");
             for(const auto& item:signatures){const auto value=item.get<std::string>();if(!hash(value)||!pose.signatures.insert(value).second)throw std::invalid_argument("player catalog signature");}
             const auto& ids=entry.at("assets");
-            if(!ids.is_object() || (slot->invisible?!ids.empty():ids.size()!=2))throw std::invalid_argument("player catalog assets");
-            for(unsigned d:{8u,12u})if(!slot->invisible){
+            const bool nativeOnly=slot->invisible || slot->role==0;
+            if(!ids.is_object() || (nativeOnly?!ids.empty():ids.size()!=2))throw std::invalid_argument("player catalog assets");
+            for(unsigned d:{8u,12u})if(!nativeOnly){
                 const auto id=ids.at(std::to_string(d)).get<std::string>();const auto asset=artwork.find(id);
                 const size_t width=fmt==0?size_t(slot->columns):size_t(slot->columns-1)*16;
                 if(asset==artwork.end() || asset->second.density!=d || asset->second.width!=width || asset->second.height!=size_t(slot->rows))
@@ -121,11 +122,11 @@ public:
         }
         const auto source=resources.find({int(g.format),s.segment});
         if(source==resources.end() || !source->second.count(resourceHash))throw std::invalid_argument("player catalog unverified source resource");
-        if(!n.role){
+        const auto* slot=FindCF1PlayerNativeSlot(int(g.format),s.type,s.sheet,s.frame);
+        if(!n.role && (!slot || slot->role!=0)){
             if(keepAssociated)out.decision=SoldierArtDecision::KeepClassic;
             return out;
         }
-        const auto* slot=FindCF1PlayerNativeSlot(int(g.format),s.type,s.sheet,s.frame);
         if(!slot || slot->role!=n.role || n.frameOffset!=size_t(slot->offset) || s.segment!=slot->segment ||
            g.columns!=slot->columns || g.rows!=slot->rows || g.modX!=slot->modX || g.modY!=slot->modY || g.palette!=slot->palette)
             throw std::invalid_argument("player catalog source slot");
@@ -137,6 +138,7 @@ public:
         const auto found=poses.find(Key{int(g.format),s.type,s.sheet,s.frame});
         if(found==poses.end())return out; // Explicit incomplete development catalog; no inferred art.
         if(!found->second.signatures.count(CF1NativePoseSignature(p)))throw std::invalid_argument("player catalog unverified native raster");
+        if(!slot->role){if(keepAssociated)out.decision=SoldierArtDecision::KeepClassic;return out;}
         if(slot->invisible){
             auto draw=p.draw;draw.source=p.resource.source();
             if(!CaptureSprite8Producer(draw,p.resource.layout,targetWidth).writes.empty())throw std::invalid_argument("player catalog hidden draw writes");

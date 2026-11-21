@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "revision": 3,
-  "scope": "Current CF1 produced visible protagonist poses plus floating body; hidden transitions require frozen native provenance and no writes; declared dormant mode-zero rows retained separately; not artistic acceptance",
+  "revision": 4,
+  "scope": "CF1 protagonist bodies and format-specific entry effects; independently verified native map association; hidden transitions require provenance and no writes; dormant mode-zero rows retained separately; not artistic acceptance",
   "states": {
     "None": 0,
     "Hit": 1,
@@ -3896,10 +3896,10 @@
             "0x0",
             "0"
           ],
-          "visual_kind": "body",
+          "visual_kind": "associated_map_actor",
           "master": null,
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "native_preserved"
         },
         {
           "sheet": 158,
@@ -3921,10 +3921,10 @@
             "0x0",
             "0"
           ],
-          "visual_kind": "body",
+          "visual_kind": "associated_map_actor",
           "master": null,
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "native_preserved"
         },
         {
           "sheet": 159,
@@ -5343,13 +5343,14 @@
       ],
       "counts": {
         "required": 160,
-        "visible_bodies": 160,
+        "visible_bodies": 158,
         "transition_effects": 0,
+        "native_associated": 2,
         "no_write_slots": 7,
         "latent": 24,
         "masters": 158,
         "exact_reuse_candidates": 0,
-        "missing": 2,
+        "missing": 0,
         "surplus": 1
       }
     },
@@ -9060,10 +9061,10 @@
             "0",
             "0"
           ],
-          "visual_kind": "body",
+          "visual_kind": "associated_map_actor",
           "master": null,
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "native_preserved"
         },
         {
           "sheet": 158,
@@ -9085,10 +9086,10 @@
             "0",
             "0"
           ],
-          "visual_kind": "body",
+          "visual_kind": "associated_map_actor",
           "master": null,
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "native_preserved"
         },
         {
           "sheet": 159,
@@ -10552,13 +10553,14 @@
       ],
       "counts": {
         "required": 164,
-        "visible_bodies": 159,
+        "visible_bodies": 157,
         "transition_effects": 5,
+        "native_associated": 2,
         "no_write_slots": 2,
         "latent": 24,
         "masters": 162,
         "exact_reuse_candidates": 0,
-        "missing": 2,
+        "missing": 0,
         "surplus": 1
       }
     }
@@ -10734,6 +10736,36 @@
     "actual_fall_frame": 0,
     "conclusion": "Keep 24 declared rows per format as a source-only audit; do not invent protagonist artwork or count them as required runtime poses"
   },
+  "map_associations": {
+    "status": "native map association, not a protagonist death-state body",
+    "type": 27,
+    "sheet": 158,
+    "frames": [
+      0,
+      1
+    ],
+    "human_death": "unlink mission troop then destroy current sprite as Null; never convert to type 27",
+    "origin": "SPT map types / generic map structure factory; CampaignSelect separate preview actor",
+    "runtime_policy": "four mandatory native-only catalog entries, canonical geometry plus full resource/raster signatures; no modern body assets accepted",
+    "symbolic_producer_files": [
+      "Source/CampaignSelect.cpp"
+    ],
+    "generic_map_factory_references": {
+      "Source/Map/MapData.cpp": 2,
+      "Source/Map/MapRuntime.cpp": 1,
+      "Source/Sprites/Sprite_Core.cpp": 1
+    },
+    "functions": {
+      "Sprite_Handle_Player": "a54fce4b61e3b60fbae4fd5f1ecc4f28f456494c47c36717c397105d6b9ea21d",
+      "Sprite_Handle_Soldier_Animation": "e9322feb1193bc55858d736654bc25c0117ef9f7fb3b0e0d4086211eca8bcd11",
+      "Sprite_Troop_Dies": "be8bf756794c1eb17a123c0d43ab73f51657fc1e3515e28834cb5b3cc9c6e8f5",
+      "Sprite_Handle_Floating_Dead_Soldier": "155d7e0c8a345a255f6b790be334fcde865ae0a3410d239fb6cb35b2bee0a9e4",
+      "Sprite_Destroy": "115cb452101cf882008508d5f3da4081f6afce83700935a58c095a1a40ba521f",
+      "Map_Load_Sprites": "0d2fa72d546e7ee9a46fa821233ba287d54b92244875363709c0a2c2992f3416",
+      "loadCF1Spt": "c554939cd510c7a69e28d4af8458b6b9c55534eececbc2924cad464795f9fbad",
+      "CaptureNativeAmiga8Frame": "06da983083d8c7cac17cbdc489774fb892a1b920f68480d9ccd757e9aa89dabb"
+    }
+  },
   "sources": {
     "Source/Sprites.hpp": "2a6369404bcddd376f629303bdab21a45d4f4e3b0d0e79bd2d63fb90e6a34d1c",
     "Source/Sprites.cpp": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",
@@ -10745,7 +10777,10 @@
     "Source/Fodder.cpp": "b3aeeed2c3f7c276e6ebf2f26b04e0d545f0694b8c32f21d95c0f3f5afdf32aa",
     "Source/Fodder.hpp": "6683f25d1b3e46fc17fec137a6c43df7d9911bcf059bc2252b3e3969f838fbe9",
     "Source/Squad.cpp": "4fea7633314978cf1f6aeb2284144890c006a334d41e2460450e54093cbf4061",
-    "Source/CampaignSelect.cpp": "0bc4d210f07a0a7ae0e4c880837ff2b30f0c9ab6567f3dfffe9d80ea11390078"
+    "Source/CampaignSelect.cpp": "0bc4d210f07a0a7ae0e4c880837ff2b30f0c9ab6567f3dfffe9d80ea11390078",
+    "Source/WindowHD.cpp": "be62073943301eef184adf21c759feb2dcbdf8732c77ddc89f93ee2e95bc50b0",
+    "Source/Map/Original.cpp": "6c241a5c1b7f717c50b6497346d4c1a37a084ea84c7ef39a93cffc99fd1a0d0f",
+    "Source/Map/MapRuntime.cpp": "05438b8fecad85b219c169d90db0867cfb750d59f14be150ae5b0b2afc2902f6"
   },
   "invariants": [
     "native clocks/selectors unchanged",

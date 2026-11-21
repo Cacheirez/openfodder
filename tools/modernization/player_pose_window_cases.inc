@@ -12,17 +12,18 @@ auto& p=first.soldier;auto& s=p.soldier;auto& g=s.geometry;
 p.resource.generation=1; // The private loader predates producer cache generations.
 s.scene=fodder.mPresentationScene;s.interval=1;s.generation=1;s.slot=0;
 g.spriteX=32;g.spriteY=20;g.xBias=0;g.viewWidth=96;g.viewHeight=64;
-const auto* slot=FindCF1PlayerNativeSlot(int(g.format),s.type,s.sheet,s.frame);assert(slot && slot->role==1);
+const auto* slot=FindCF1PlayerNativeSlot(int(g.format),s.type,s.sheet,s.frame);assert(slot && (slot->role==1 || slot->role==0));
 p.nativeAmiga8={s.type,s.sheet,s.frame,s.segment,uint16_t(p.resource.offset),g.columns,g.rows,g.modX,g.modY,
     s.scene,s.generation,s.slot,p.resource.generation,p.resource.bytes};
-p.nativeAmiga8.cf1=true;p.nativeAmiga8.role=1;p.nativeAmiga8.layout=p.resource.layout;
+p.nativeAmiga8.cf1=true;p.nativeAmiga8.role=slot->role;p.nativeAmiga8.layout=p.resource.layout;
 p.nativeAmiga8.palette=p.resource.palette;p.nativeAmiga8.frameOffset=slot->offset;
 auto prepare=[](PreparedSpriteDraw& draw){auto input=draw.soldier.geometry;input.source=draw.resource.source();
     draw.draw=PrepareSpriteDraw(input);draw.draw.source=nullptr;};
 const bool invisible=slot->invisible;
+const bool nativeOnly=invisible || slot->role==0;
 assert(row.value("test_invisible",false)==invisible);
 auto anchor=body;
-if(invisible){
+if(nativeOnly){
     const auto anchorRoot=root+"/"+row.at("test_visible_anchor").get<std::string>();
     nlohmann::json anchorRow;{std::ifstream file(anchorRoot+"/native.json");file>>anchorRow;assert(file);}
     anchor.soldier=LoadNativeWalkSnapshot(anchorRow,anchorRoot+"/native-resources");
@@ -45,18 +46,19 @@ for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,
     auto second=first;second.soldier.soldier.slot=1;second.soldier.nativeAmiga8.slot=1;
     second.soldier.soldier.geometry.spriteX+=4;prepare(second.soldier);
     image.scene.layers={first,second};
-    if(invisible)image.scene.layers.push_back(anchor);
-    const auto& coveredDraw=invisible?anchor.soldier.draw:p.draw;
+    if(nativeOnly)image.scene.layers.push_back(anchor);
+    const auto& coveredDraw=nativeOnly?anchor.soldier.draw:p.draw;
     const size_t coverAt=size_t(coveredDraw.y+5)*96+coveredDraw.x+6;
     if(variant==3){MissionLayer cover;cover.destination=body.destination;cover.pixels.put(coverAt,0);image.scene.layers.push_back(cover);}
     const auto resolve=[&](const PreparedSpriteDraw& draw){return registry.resolve(draw,SoldierVariantKey(draw,colors),density,true,96,96*64);};
     const auto composed=ComposeOrderedSoldierArt(image.scene,body.destination,density,resolve);
-    assert(composed.complete()&&composed.replaced==(invisible?1u:2u)&&!composed.cells.empty());
-    if(invisible){assert(composed.kept==2);for(const auto& hidden:{first,second}){
+    assert(composed.complete()&&composed.replaced==(nativeOnly?1u:2u)&&!composed.cells.empty());
+    if(nativeOnly)assert(composed.kept==2);
+    if(invisible){for(const auto& hidden:{first,second}){
         auto draw=hidden.soldier.draw;draw.source=hidden.soldier.resource.source();
         assert(CaptureSprite8Producer(draw,hidden.soldier.resource.layout,96).writes.empty());}}
     if(variant==3)assert(!composed.cells.count(coverAt));
-    for(int mutation:{0,1}){auto bad=p;if(mutation==0)bad.soldier.animation=777;else ++bad.resource.offset;
+    for(int mutation:{0,1}){auto bad=p;if(mutation==0){if(slot->role==0)++bad.nativeAmiga8.frameOffset;else bad.soldier.animation=777;}else ++bad.resource.offset;
         bool caught=false;try{resolve(bad);}catch(const std::invalid_argument&){caught=true;}assert(caught);}
     std::vector<uint32_t> expanded(96*64*density*density);
     for(size_t y=0;y<64*density;++y)for(size_t x=0;x<96*density;++x){

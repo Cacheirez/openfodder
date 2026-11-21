@@ -40,7 +40,6 @@ openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
             const auto& actor=g_Fodder->mSprites[state.slot];
             if(actor.mPresentationGeneration!=state.generation || actor.mSpriteType!=state.type || actor.mPersonType!=state.personType)return {};
             if(state.type==0 && state.personType==0)n.role=1;
-            else if(state.type==27)n.role=2;
             else if(state.type==22 && state.sheet==0x97){
                 for(size_t ownerSlot=0;ownerSlot<g_Fodder->mSprites.size();++ownerSlot){
                     const auto& owner=g_Fodder->mSprites[ownerSlot];

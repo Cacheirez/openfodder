@@ -15,8 +15,8 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(len(self.catalog['groups']),9)
         self.assertEqual(self.catalog['platforms']['Amiga']['counts']['required'],160)
         self.assertEqual(self.catalog['platforms']['PC']['counts']['required'],164)
-        self.assertEqual(self.catalog['platforms']['Amiga']['counts']['visible_bodies'],160)
-        self.assertEqual(self.catalog['platforms']['PC']['counts']['visible_bodies'],159)
+        self.assertEqual(self.catalog['platforms']['Amiga']['counts']['visible_bodies'],158)
+        self.assertEqual(self.catalog['platforms']['PC']['counts']['visible_bodies'],157)
         for platform in ('PC','Amiga'):
             self.assertEqual(len(self.catalog['platforms'][platform]['latent']),24)
 
@@ -69,6 +69,14 @@ class CatalogTests(unittest.TestCase):
         refs=list(EXPECTED_MODE_REFS.elements());stores=list(EXPECTED_SCRATCH_STORES.elements())
         refs.append(('Source/Squad.cpp','word_3BED5[0]=0;'))
         with self.assertRaises(AssertionError):check_mode_references(refs,stores)
+
+    def test_map_corpse_is_native_association_not_missing_player_art(self):
+        for platform in ('PC','Amiga'):
+            info=self.catalog['platforms'][platform]
+            self.assertEqual(info['counts']['native_associated'],2)
+            rows=[r for r in info['required'] if r['actor_type']==27]
+            self.assertEqual({r['frame'] for r in rows},{0,1})
+            self.assertTrue(all(r['visual_kind']=='associated_map_actor' and r['art_state']=='native_preserved' for r in rows))
 
 
 if __name__=='__main__':unittest.main()

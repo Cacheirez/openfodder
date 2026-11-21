@@ -11,6 +11,7 @@ from pathlib import Path
 from check_sprite_table_lengths import ARRAY, COMMENT, check
 from check_final_timer_equivalence import function
 from player_pose_reachability import audit as reachability_audit
+from player_map_associations import audit as association_audit
 
 ROOT = Path(__file__).resolve().parents[2]
 GROUPS = ('walk', 'damage_override', 'damage_ballistic', 'latent_mode_zero',
@@ -161,11 +162,12 @@ def inventory(include_art=True):
                 empty_transitions.append(dict(sheet=slot['sheet'],frame=slot['frame'],metadata=slot['metadata'],
                     classification='Vehicle entry countdown: empty in frozen verified resources; require native provenance/signature and zero producer writes, never dummy art. Nonempty data requires recovery and re-audit.'))
                 continue
-            slot['visual_kind']='vehicle_entry_effect' if slot['sheet']==0xcc else 'body'
+            slot['visual_kind']='associated_map_actor' if slot['actor_type']==27 else 'vehicle_entry_effect' if slot['sheet']==0xcc else 'body'
             slot['master'] = art.get(key)
             same = [k for k in art if k[0]<len(refs) and k[1]<len(arrays[refs[k[0]]]) and arrays[refs[k[0]]][k[1]]==slot['metadata']]
             slot['exact_native_metadata_reuse'] = [dict(sheet=k[0],frame=k[1],master=art[k]) for k in same if k!=key]
             slot['art_state'] = 'master_present' if slot['master'] else 'exact_reuse_candidate' if same else 'missing'
+            if slot['actor_type']==27:slot['art_state']='native_preserved'
             if any(r['family']=='latent_mode_zero' for r in slot['roles']):
                 slot['producer_status']='declared-only; current CF1 human squad modes stay 2'
                 latent.append(slot)
@@ -175,9 +177,9 @@ def inventory(include_art=True):
             demo=tables['mSpriteSheetTypes_InGame_Amiga_TheOne']
             assert all(refs[s['sheet']]==demo[s['sheet']] for s in required+latent+empty_transitions), 'Retail/demo protagonist table divergence'
         platforms[platform]=dict(required=required,latent=latent,surplus=surplus,hidden=[dict(sheet=0x7c,frame=f,metadata=arrays[refs[0x7c]][f],classification='verify no native writes; not new artwork') for f in (0,1)]+empty_transitions,
-            counts=dict(required=len(required),visible_bodies=sum(s['visual_kind']=='body' for s in required),transition_effects=sum(s['visual_kind']=='vehicle_entry_effect' for s in required),no_write_slots=2+len(empty_transitions),latent=len(latent),masters=sum(s['art_state']=='master_present' for s in required),exact_reuse_candidates=sum(s['art_state']=='exact_reuse_candidate' for s in required),missing=sum(s['art_state']=='missing' for s in required),surplus=len(surplus)))
-    files=['Source/Sprites.hpp','Source/Sprites.cpp','Source/Sprites/Sprite_Troop.cpp','Source/Sprites/Sprite_Core.cpp','Source/Sprites/Sprite_Vehicle.cpp','Source/Amiga/SpriteData_Amiga.hpp','Source/PC/SpriteData_PC.hpp','Source/Fodder.cpp','Source/Fodder.hpp','Source/Squad.cpp','Source/CampaignSelect.cpp']
-    return dict(schema=1,revision=3,scope='Current CF1 produced visible protagonist poses plus floating body; hidden transitions require frozen native provenance and no writes; declared dormant mode-zero rows retained separately; not artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,art_reuse=art_reuse(),reachability=reachability,
+            counts=dict(required=len(required),visible_bodies=sum(s['visual_kind']=='body' for s in required),transition_effects=sum(s['visual_kind']=='vehicle_entry_effect' for s in required),native_associated=sum(s['visual_kind']=='associated_map_actor' for s in required),no_write_slots=2+len(empty_transitions),latent=len(latent),masters=sum(s['art_state']=='master_present' for s in required),exact_reuse_candidates=sum(s['art_state']=='exact_reuse_candidate' for s in required),missing=sum(s['art_state']=='missing' for s in required),surplus=len(surplus)))
+    files=['Source/Sprites.hpp','Source/Sprites.cpp','Source/Sprites/Sprite_Troop.cpp','Source/Sprites/Sprite_Core.cpp','Source/Sprites/Sprite_Vehicle.cpp','Source/Amiga/SpriteData_Amiga.hpp','Source/PC/SpriteData_PC.hpp','Source/Fodder.cpp','Source/Fodder.hpp','Source/Squad.cpp','Source/CampaignSelect.cpp','Source/WindowHD.cpp','Source/Map/Original.cpp','Source/Map/MapRuntime.cpp']
+    return dict(schema=1,revision=4,scope='CF1 protagonist bodies and format-specific entry effects; independently verified native map association; hidden transitions require provenance and no writes; dormant mode-zero rows retained separately; not artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,art_reuse=art_reuse(),reachability=reachability,map_associations=association_audit(ROOT),
         sources={f:hashlib.sha256((ROOT/f).read_text(encoding='utf-8').encode()).hexdigest() for f in files},invariants=['native clocks/selectors unchanged','only frame metadata, no commercial bitmap data','animation variants do not automatically require distinct artwork','metadata aliases across different actions require artistic/semantic review, not automatic reuse','hidden markers need producer verification, never dummy bodies'],
         exceptional_states=[dict(state='Die5',sheet=0x21,frames=[0,1],clock='field_2A & 7; no FPS clock',associated='independent blood trail'),dict(state='Vehicle_Inside',sheet=0xcc,frames=[4,3,2,1,0],then='0x7C/F0 invisible'),dict(state='None / squad mode 0',sheets=list(range(0x30,0x38)),frames=[0,1,2],note='low-locomotion branch; squad modes initialize to 2; latent branch retained, not called death by its table label')],
         boundaries=['CF2/enemies/vehicle body art excluded','associated shadows,blood,ranks,projectiles,texts require validated native ordered commands','palette/phase/renderer recovery remains independent of protagonist art coverage','CD32 source tables covered; commercial CD32 runtime data not present in public replay directory'],

@@ -195,8 +195,8 @@ static const PlayerNativeSlot CF1PlayerNativeSlots[]={
     {0,0,204,4,0,20216,16,14,0,0,160,1,false,true},
     {0,22,151,0,1,10992,16,3,0,0,176,3,false,true},
     {0,22,151,1,1,11000,16,4,0,0,176,3,false,true},
-    {0,27,158,0,1,26264,16,10,0,0,176,2,false,true},
-    {0,27,158,1,1,26272,16,10,0,0,176,2,false,true},
+    {0,27,158,0,1,26264,16,10,0,0,176,0,false,true},
+    {0,27,158,1,1,26272,16,10,0,0,176,0,false,true},
     {1,0,0,0,0,0,2,14,0,0,0,1,false,true},
     {1,0,0,1,0,2,2,14,0,0,0,1,false,true},
     {1,0,0,2,0,4,2,14,0,0,0,1,false,true},
@@ -388,8 +388,8 @@ static const PlayerNativeSlot CF1PlayerNativeSlots[]={
     {1,0,204,4,0,5054,2,14,0,0,0,1,true,true},
     {1,22,151,0,1,2748,2,3,0,0,0,3,false,true},
     {1,22,151,1,1,2750,2,4,0,0,0,3,false,true},
-    {1,27,158,0,1,6566,2,10,0,0,0,2,false,true},
-    {1,27,158,1,1,6568,2,10,0,0,0,2,false,true},
+    {1,27,158,0,1,6566,2,10,0,0,0,0,false,true},
+    {1,27,158,1,1,6568,2,10,0,0,0,0,false,true},
 };
 inline size_t RequiredCF1PlayerNativeSlotCount() {
     size_t count=0;for(const auto& slot:CF1PlayerNativeSlots)count+=slot.produced;return count;

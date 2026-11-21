@@ -32,7 +32,7 @@ int main(){
         if(!slot.produced)continue;
         auto p=fixture(slot);nlohmann::json ids=nlohmann::json::object();
         resources.emplace(slot.format,slot.segment,SoldierSHA256(*p.resource.bytes));
-        if(!slot.invisible)for(unsigned d:{8u,12u}){
+        if(!slot.invisible && slot.role)for(unsigned d:{8u,12u}){
             const auto id=std::to_string(NativeSpriteWidth(p))+"x"+std::to_string(slot.rows)+"-"+std::to_string(d);
             if(!art.count(id)){OrderedSoldierAsset a;a.decision=SoldierArtDecision::Replace;a.width=NativeSpriteWidth(p);
                 a.height=slot.rows;a.density=d;a.pixels=std::make_shared<const std::vector<uint32_t>>(a.width*a.height*d*d,0xff123456u);art[id]=a;}
@@ -48,7 +48,7 @@ int main(){
     for(const auto& slot:CF1PlayerNativeSlots)for(unsigned d:{8u,12u}){
         auto p=fixture(slot);auto resolve=[&](){return catalog.resolve(p,d,384,384*272,art);};
         if(!slot.produced){assert(resolve().decision==SoldierArtDecision::Missing);++cases;continue;}
-        auto result=resolve();assert(result.decision==(slot.invisible?SoldierArtDecision::KeepClassic:SoldierArtDecision::Replace));++cases;
+        auto result=resolve();assert(result.decision==((slot.invisible || !slot.role)?SoldierArtDecision::KeepClassic:SoldierArtDecision::Replace));++cases;
         // Every legal logical state resolves independently of full-key churn.
         if(slot.role==1)for(int animation:{0,1,2,3,5,6,7,9,10,50,51,52,90,91}){p.soldier.animation=animation;assert(resolve().decision==result.decision);++cases;}
         p.soldier.animation=0;p.soldier.geometry.spriteX+=1; // position is engine-owned
@@ -75,6 +75,17 @@ int main(){
         NativePlayerCatalog guarded(nonempty,art);bool writesRejected=false;
         try{guarded.resolve(p,8,384,384*272,art);}catch(const std::invalid_argument& e){writesRejected=std::string(e.what())=="player catalog hidden draw writes";}
         assert(writesRejected);++cases;
+    }
+    for(const auto& slot:CF1PlayerNativeSlots)if(slot.produced && !slot.role){
+        auto wrongArt=input;for(auto& row:wrongArt["poses"])if(row["format"]==slot.format && row["type"]==slot.type && row["sheet"]==slot.sheet && row["frame"]==slot.frame)
+            row["assets"]={{"8",art.begin()->first},{"12",art.begin()->first}};
+        bool rejected=false;try{NativePlayerCatalog c(wrongArt,art);}catch(const std::invalid_argument& e){rejected=std::string(e.what())=="player catalog assets";}
+        assert(rejected);++cases;
+        auto wrongRaster=input;for(auto& row:wrongRaster["poses"])if(row["format"]==slot.format && row["type"]==slot.type && row["sheet"]==slot.sheet && row["frame"]==slot.frame)
+            row["native_signatures"]=nlohmann::json::array({std::string(64,'f')});
+        NativePlayerCatalog badRaster(wrongRaster,art);auto p=fixture(slot);bool rasterRejected=false;
+        try{badRaster.resolve(p,8,384,384*272,art);}catch(const std::invalid_argument& e){rasterRejected=std::string(e.what())=="player catalog unverified native raster";}
+        assert(rasterRejected);++cases;
     }
     auto missing=input;missing["poses"].erase(missing["poses"].begin());rejects([&](){NativePlayerCatalog c(missing,art);});
     auto duplicate=input;duplicate["poses"].back()=duplicate["poses"].front();rejects([&](){NativePlayerCatalog c(duplicate,art);});

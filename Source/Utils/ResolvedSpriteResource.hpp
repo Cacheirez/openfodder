@@ -89,7 +89,7 @@ struct NativeAmiga8Frame {
     // Optional CF1 catalog proof. Legacy fields/name remain compatible with
     // existing Amiga-only manifests. Filled only by the live source-table capture.
     bool cf1 = false;
-    int role = 0; // 0 native associated/UI, 1 player, 2 floating body, 3 player-owned shadow
+    int role = 0; // 0 native associated/UI (including map corpse), 1 player, 3 player-owned shadow
     SpriteRasterLayout layout;
     uint8_t palette = 0;
     size_t frameOffset = 0;

@@ -11,7 +11,7 @@ def contracts():
     for platform,format_id in (('PC',0),('Amiga',1)):
         info=catalog['platforms'][platform]
         for row in info['required']+info.get('latent',[]):
-            entries.append((format_id,row['actor_type'],row['sheet'],row['frame'],row['metadata'],False,2 if row['actor_type']==27 else 1))
+            entries.append((format_id,row['actor_type'],row['sheet'],row['frame'],row['metadata'],False,0 if row['visual_kind']=='associated_map_actor' else 1))
         for row in info['hidden']:
             entries.append((format_id,0,row['sheet'],row['frame'],row['metadata'],True,1))
         text=(ROOT/f'Source/{platform}/SpriteData_{platform}.hpp').read_text(encoding='utf-8')

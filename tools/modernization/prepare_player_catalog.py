@@ -96,10 +96,10 @@ def build(base,resources,out,extra=()):
             Image.frombytes('RGBA',(width,height),bytes(pixels)).save(out/'native'/name)
             audit.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,resource_sha256=resource_hash,
                 native_signature=sha,width=width,height=height,reference='native/'+name))
-        ids={} if hidden else {str(d):art[sheet,frame,d] for d in (8,12) if (sheet,frame,d) in art}
+        ids={} if hidden or role==0 else {str(d):art[sheet,frame,d] for d in (8,12) if (sheet,frame,d) in art}
         pose_signatures[fmt,actor,sheet,frame]=set(hashes)
         if actor==0 and 0x30<=sheet<0x38:continue # Audited dormant rows, not runtime body/art requirements.
-        if hidden or len(ids)==2:
+        if hidden or role==0 or len(ids)==2:
             poses.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,native_signatures=hashes,assets=ids))
         else:gaps.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,role=role,width=width,height=height))
     for alias in aliases:
