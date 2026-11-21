@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 from PIL import Image
 from generate_player_pose_table import contracts
+from inventory_player_states import art_reuse
 
 
 def digest(data):
@@ -49,11 +50,17 @@ def build(base,resources,out,extra=()):
         match=re.fullmatch(r's(\d+)-f(\d+)-(8|12)',asset['id'])
         if match:sheet,frame,density=map(int,match.groups())
         else:
-            match=re.fullmatch(r'player-(?:fall|swim|hitdeath)-([0-9a-f]+)-f(\d+)-(8|12)x',asset['id'])
+            match=re.fullmatch(r'player-(?:fall|swim|hitdeath|pose)-([0-9a-f]+)-f(\d+)-(8|12)x',asset['id'])
             if not match:continue
             sheet=int(match[1],16);frame=int(match[2]);density=int(match[3])
         assert (sheet,frame,density) not in art
         art[sheet,frame,density]=asset['id']
+    aliases=art_reuse()
+    for alias in aliases:
+        for density in (8,12):
+            target=(alias['sheet'],alias['frame'],density);source=(alias['source_sheet'],alias['source_frame'],density)
+            assert target not in art and source in art,'Explicit reuse needs a verified source asset'
+            art[target]=art[source]
     for asset in assets:
         raw=locations[asset['id']].read_bytes();assert digest(raw)==asset['sha256']
         shutil.copyfile(locations[asset['id']],out/asset['file'])
@@ -64,7 +71,7 @@ def build(base,resources,out,extra=()):
             if row.get('format')!=fmt or row.get('segment') not in (0,1):continue
             data=(directory/row['resource_file']).read_bytes();assert digest(data)==row['resource_sha256']
             retained.setdefault(key,{})[row['resource_sha256']]=(row,data)
-    poses=[];audit=[];gaps=[]
+    poses=[];audit=[];gaps=[];pose_signatures={}
     for fmt,actor,sheet,frame,metadata,hidden,role in contracts():
         segment={'eGFX_IN_GAME':0,'eGFX_IN_GAME2':1}[metadata[1]]
         offset=int(metadata[0],0);width=int(metadata[4],0) if fmt==0 else (int(metadata[4],0)-1)*16
@@ -83,9 +90,13 @@ def build(base,resources,out,extra=()):
             audit.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,resource_sha256=resource_hash,
                 native_signature=sha,width=width,height=height,reference='native/'+name))
         ids={} if hidden else {str(d):art[sheet,frame,d] for d in (8,12) if (sheet,frame,d) in art}
+        pose_signatures[fmt,actor,sheet,frame]=set(hashes)
         if hidden or len(ids)==2:
             poses.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,native_signatures=hashes,assets=ids))
         else:gaps.append(dict(format=fmt,type=actor,sheet=sheet,frame=frame,role=role,width=width,height=height))
+    for alias in aliases:
+        for fmt in (0,1):
+            assert pose_signatures[fmt,0,alias['sheet'],alias['frame']]==pose_signatures[fmt,0,alias['source_sheet'],alias['source_frame']],'Explicit reuse native raster differs'
     sources=[dict(format=fmt,segment=segment,sha256=sha) for (fmt,segment),items in sorted(retained.items()) for sha in sorted(items)]
     manifest=dict(version=3,assets=assets,bindings=[],player_catalog=dict(schema=1,complete=not gaps,keep_verified_native=True,native_resources=sources,poses=poses))
     (out/'candidate-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

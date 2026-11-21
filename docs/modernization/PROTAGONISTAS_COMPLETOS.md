@@ -53,3 +53,11 @@ Cruzar asimismo cada sombra independiente con la identidad/generación de su due
 - **0x26 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 6. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 268 activos, 249/385 entradas, 136 pendientes. [Evidencia](evidence/player-pose-26.json). Siguiente: R3 — daño con override dirección 7, 0x27/F0–F1.
 
 - **0x27 comprobado:** 2 maestros, 4 derivados; Daño con override, dirección 7; grupo completo. PASS 64 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 272 activos, 253/385 entradas, 132 pendientes. [Evidencia](evidence/player-pose-27.json). Siguiente: R3 — locomoción baja dirección 0, 0x30/F0–F2; verificar reutilización de F0 con 0xB0 y completar F1/F2.
+
+- **0x30 comprobado:** 2 maestros, 4 derivados; Locomoción baja 0x30, tres frames con F0 reutilizado. PASS 96 casos Window/SDL por sistema con sanitizadores; activos/vínculos previos intactos. Candidato 276 activos, 259/385 entradas, 126 pendientes. [Evidencia](evidence/player-pose-30.json). Siguiente: R3 — locomoción baja dirección 1, 0x31/F0–F2.
+
+## Reutilización nativa explícita de R3
+
+`player-pose-reuse.json` declara únicamente revisiones concretas dentro del catálogo. El primer vínculo es 0x30/F0 → B0/F0: mismo cuerpo y metadatos completos PC/Amiga; el maestro C01 compacto sin arma sirve también al contexto de locomoción baja. El generador comprueba la tabla y el constructor contrasta las firmas de raster de ambos usos con recursos privados retenidos. No se incorporan automáticamente otros candidatos ni las 53 referencias desconocidas. Pruebas negativas rechazan poses desconocidas, geometría distinta y duplicados.
+
+Se reutilizan los píxeles del cuerpo; hoja/frame, acción, altura, reloj y política de sombra siguen siendo los originales. Las placas opcionales no se habilitan por semejanza. F1/F2 de 0x30 son maestros nuevos; el perfil de F2 se ajustó dentro de la caja nativa para mantener escala sin desplazar su centro o apoyo. [Pruebas y colocación final](evidence/player-pose-30.json). Los recuentos de maestro indican **poses con maestro disponible**, incluidas reutilizaciones explícitas, no necesariamente imágenes originales distintas.

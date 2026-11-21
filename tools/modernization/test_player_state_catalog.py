@@ -1,6 +1,7 @@
 """Verify the source denominator and exceptional branches, independently of logs."""
 import unittest
-from inventory_player_states import inventory
+from inventory_player_states import inventory,art_reuse,validate_art_reuse
+import copy
 
 
 class CatalogTests(unittest.TestCase):
@@ -36,6 +37,18 @@ class CatalogTests(unittest.TestCase):
             self.assertTrue(any(p['exact_native_metadata_reuse'] for p in data['required']))
         self.assertIn('Sprite_Handle_Soldier_Animation',{r['function'] for r in self.catalog['routes']})
         self.assertTrue(any(s['state']=='Die5' and s['sheet']==0x21 for s in self.catalog['exceptional_states']))
+
+    def test_reuse_rejects_different_or_unknown_native_pose(self):
+        aliases=art_reuse()
+        for platform in ('PC','Amiga'):
+            slots={(r['sheet'],r['frame']):r['metadata'] for r in self.catalog['platforms'][platform]['required']}
+            validate_art_reuse(slots,aliases)
+            if not aliases:continue
+            bad=copy.deepcopy(aliases);bad[0]['source_sheet']=0;bad[0]['source_frame']=0
+            with self.assertRaises(AssertionError):validate_art_reuse(slots,bad)
+            bad=copy.deepcopy(aliases);bad[0]['sheet']=255
+            with self.assertRaises(AssertionError):validate_art_reuse(slots,bad)
+            with self.assertRaises(AssertionError):validate_art_reuse(slots,aliases+[aliases[0]])
 
 
 if __name__=='__main__':unittest.main()

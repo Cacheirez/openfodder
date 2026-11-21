@@ -6,9 +6,11 @@ import shutil
 import struct
 from pathlib import Path
 from generate_player_pose_table import contracts
+from inventory_player_states import STATES
 
 
-def build(resources,requested,out):
+def build(resources,requested,out,animations=(1,10)):
+    assert animations and set(animations)<=set(STATES.values())
     assert not out.exists(),'Preserve earlier fixtures';out.mkdir(parents=True)
     seeds={}
     for fmt,directory in resources:
@@ -24,6 +26,7 @@ def build(resources,requested,out):
             segment=segment,vehicle=0,destroy=0,offset=int(metadata[0],0),columns=int(metadata[4],0),rows=int(metadata[5],0),
             mod_x=int(metadata[7],0),mod_y=int(metadata[8],0),palette=int(metadata[6],0) if fmt==0 else 0)
         row['resource_palette']=row['palette'];data=(directory/row['resource_file']).read_bytes()
+        row['test_animations']=list(animations)
         assert hashlib.sha256(data).hexdigest()==row['resource_sha256']
         stride=160 if fmt==0 else 40;planes=1 if fmt==0 else row['planes'];columns=row['columns']//2 if fmt==0 else (row['columns']-1)*2
         raster=b''.join(data[row['offset']+p*row['layout_height']*40+y*stride:row['offset']+p*row['layout_height']*40+y*stride+columns]
@@ -40,5 +43,5 @@ def build(resources,requested,out):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--resources',nargs=2,action='append',required=True);p.add_argument('--pose',nargs=3,action='append',required=True);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
-    build([(int(fmt),Path(path)) for fmt,path in a.resources],{tuple(int(v,0) for v in pose) for pose in a.pose},a.out)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--resources',nargs=2,action='append',required=True);p.add_argument('--pose',nargs=3,action='append',required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--animations',default='1,10');a=p.parse_args()
+    build([(int(fmt),Path(path)) for fmt,path in a.resources],{tuple(int(v,0) for v in pose) for pose in a.pose},a.out,tuple(map(int,a.animations.split(','))))

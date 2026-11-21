@@ -2847,7 +2847,7 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 176,
@@ -2855,7 +2855,7 @@
               "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 48,
@@ -2879,9 +2879,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 48,
@@ -2905,9 +2905,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -4738,7 +4738,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+            }
+          ],
           "art_state": "master_present"
         },
         {
@@ -4764,8 +4770,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 1,
+              "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 178,
@@ -4790,8 +4802,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 2,
+              "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 179,
@@ -5106,9 +5124,9 @@
       ],
       "counts": {
         "required": 189,
-        "masters": 125,
-        "exact_reuse_candidates": 3,
-        "missing": 61,
+        "masters": 128,
+        "exact_reuse_candidates": 4,
+        "missing": 57,
         "surplus": 1
       }
     },
@@ -7772,7 +7790,7 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
           "exact_native_metadata_reuse": [
             {
               "sheet": 176,
@@ -7780,7 +7798,7 @@
               "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
             }
           ],
-          "art_state": "exact_reuse_candidate"
+          "art_state": "master_present"
         },
         {
           "sheet": 48,
@@ -7804,9 +7822,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 48,
@@ -7830,9 +7848,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 49,
@@ -9663,7 +9681,13 @@
             "0"
           ],
           "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba",
-          "exact_native_metadata_reuse": [],
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 0,
+              "master": "assets/modernization/demo-a1-player-fall-b0-f0/player-fall-b0-f0-8x.rgba"
+            }
+          ],
           "art_state": "master_present"
         },
         {
@@ -9689,8 +9713,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 1,
+              "master": "assets/modernization/demo-a1-player-pose-30-f1/player-pose-30-f1-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 178,
@@ -9715,8 +9745,14 @@
             "0"
           ],
           "master": null,
-          "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "exact_native_metadata_reuse": [
+            {
+              "sheet": 48,
+              "frame": 2,
+              "master": "assets/modernization/demo-a1-player-pose-30-f2/player-pose-30-f2-8x.rgba"
+            }
+          ],
+          "art_state": "exact_reuse_candidate"
         },
         {
           "sheet": 179,
@@ -10031,13 +10067,24 @@
       ],
       "counts": {
         "required": 188,
-        "masters": 124,
-        "exact_reuse_candidates": 3,
-        "missing": 61,
+        "masters": 127,
+        "exact_reuse_candidates": 4,
+        "missing": 57,
         "surplus": 1
       }
     }
   },
+  "art_reuse": [
+    {
+      "actor_type": 0,
+      "sheet": 48,
+      "frame": 0,
+      "source_sheet": 176,
+      "source_frame": 0,
+      "status": "internally-reviewed-native-identical",
+      "review": "The original 0x30/F0 and B0/F0 are the same native body and table geometry in both formats. The existing C01 unarmed compact front pose also fits the low-locomotion use. Reuse body pixels only; engine-selected action, height, frame, order and shadow policy remain independent. Miguel delegated protagonist art decisions; this is not new human visual acceptance."
+    }
+  ],
   "sources": {
     "Source/Sprites.hpp": "2a6369404bcddd376f629303bdab21a45d4f4e3b0d0e79bd2d63fb90e6a34d1c",
     "Source/Sprites.cpp": "b076d043ddc033b278ee2936a2372ddbec4959e32c807831b54b6fa9d870b947",

@@ -19,7 +19,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def export(source,atlas,sheet,frame,actor,family,out,builders,work):
+def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None):
     assert not out.exists(),'Preserve existing masters/derivatives'
     native=[r for r in json.loads((atlas/'native-audit.json').read_text()) if (r['type'],r['sheet'],r['frame'])==(actor,sheet,frame)]
     formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
@@ -32,6 +32,10 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work):
         box=Image.open(atlas/r['reference']).getchannel('A').getbbox();assert box
         boxes.append(dict(format=r['format'],native_signature=r['native_signature'],bbox=list(box)))
     x,y,right,bottom=next(b['bbox'] for b in boxes if b['format']==1)
+    if placement:
+        px,py,pw,ph=placement
+        assert pw>0 and ph>0 and x<=px<px+pw<=right and y<=py<py+ph<=bottom,'Art placement must stay within the verified native box'
+        x,y,right,bottom=px,py,px+pw,py+ph
     image=Image.open(source);assert image.mode=='RGBA'
     crop=image.getchannel('A').point(lambda a:255 if a>=16 else 0).getbbox();assert crop
     out.mkdir(parents=True);work.mkdir(parents=True,exist_ok=True)
@@ -63,5 +67,6 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('source','atlas','out','builders','work'):p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--sheet',type=lambda v:int(v,0),required=True);p.add_argument('--frame',type=int,required=True);p.add_argument('--type',type=int,default=0);p.add_argument('--family',choices=['hitdeath','pose'],default='pose');a=p.parse_args()
-    export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work)
+    p.add_argument('--sheet',type=lambda v:int(v,0),required=True);p.add_argument('--frame',type=int,required=True);p.add_argument('--type',type=int,default=0);p.add_argument('--family',choices=['hitdeath','pose'],default='pose');p.add_argument('--placement',help='Explicit x,y,width,height within native box; never changes logical geometry');a=p.parse_args()
+    placement=tuple(map(int,a.placement.split(','))) if a.placement else None
+    export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work,placement)

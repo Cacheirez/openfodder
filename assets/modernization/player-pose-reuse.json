@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "entries": [
+    {
+      "actor_type": 0,
+      "sheet": 48,
+      "frame": 0,
+      "source_sheet": 176,
+      "source_frame": 0,
+      "status": "internally-reviewed-native-identical",
+      "review": "The original 0x30/F0 and B0/F0 are the same native body and table geometry in both formats. The existing C01 unarmed compact front pose also fits the low-locomotion use. Reuse body pixels only; engine-selected action, height, frame, order and shadow policy remain independent. Miguel delegated protagonist art decisions; this is not new human visual acceptance."
+    }
+  ]
+}

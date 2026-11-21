@@ -49,6 +49,28 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def art_reuse():
+    path=ROOT/'assets/modernization/player-pose-reuse.json'
+    if not path.exists():return []
+    root=json.loads(path.read_text(encoding='utf-8'));assert root['schema']==1
+    rows=root['entries'];assert isinstance(rows,list) and len(rows)<=32
+    targets=set()
+    for row in rows:
+        assert row['actor_type']==0 and row['status']=='internally-reviewed-native-identical' and row['review']
+        assert all(type(row[k]) is int and 0<=row[k]<256 for k in ('sheet','frame','source_sheet','source_frame'))
+        target=(row['sheet'],row['frame']);assert target not in targets;targets.add(target)
+    return rows
+
+
+def validate_art_reuse(slots,aliases):
+    targets=set()
+    for row in aliases:
+        target=(row['sheet'],row['frame']);source=(row['source_sheet'],row['source_frame'])
+        assert target not in targets and target!=source;targets.add(target)
+        assert target in slots and source in slots,'Reuse outside finite source catalog'
+        assert slots[target]==slots[source],'Reuse requires exact native table geometry/source'
+
+
 def masters():
     result = {}
     for name in ('soldier-walk24', 'soldier-aim', 'soldier-grenade', 'soldier-rocket'):
@@ -60,11 +82,15 @@ def masters():
             result[(row['sheet'], row['frame'])] = image.relative_to(ROOT).as_posix()
     for path in sorted((ROOT / 'assets/modernization').glob('demo-a1-player-*/manifest.json')):
         for asset in json.loads(path.read_text(encoding='utf-8')).get('assets', []):
-            match = re.fullmatch(r'player-(?:fall|swim|hitdeath)-([0-9a-f]+)-f(\d+)-8x', asset['id'])
+            match = re.fullmatch(r'player-(?:fall|swim|hitdeath|pose)-([0-9a-f]+)-f(\d+)-8x', asset['id'])
             if match:
                 raw = path.parent / asset['file']
                 assert raw.is_file() and sha(raw) == asset['sha256']
                 result[(int(match[1], 16), int(match[2]))] = raw.relative_to(ROOT).as_posix()
+    for alias in art_reuse():
+        target=(alias['sheet'],alias['frame']);source=(alias['source_sheet'],alias['source_frame'])
+        assert target not in result and source in result,'Explicit reuse needs an existing immutable master'
+        result[target]=result[source]
     return result
 
 
@@ -122,13 +148,14 @@ def inventory():
             slot['exact_native_metadata_reuse'] = [dict(sheet=k[0],frame=k[1],master=art[k]) for k in same if k!=key]
             slot['art_state'] = 'master_present' if slot['master'] else 'exact_reuse_candidate' if same else 'missing'
             required.append(slot)
+        validate_art_reuse({(row['sheet'],row['frame']):row['metadata'] for row in required},art_reuse())
         if platform=='Amiga':
             demo=tables['mSpriteSheetTypes_InGame_Amiga_TheOne']
             assert all(refs[s['sheet']]==demo[s['sheet']] for s in required), 'Retail/demo protagonist table divergence'
         platforms[platform]=dict(required=required,surplus=surplus,hidden=[dict(sheet=0x7c,frame=f,metadata=arrays[refs[0x7c]][f],classification='verify no native writes; not new artwork') for f in (0,1)],
             counts=dict(required=len(required),masters=sum(s['art_state']=='master_present' for s in required),exact_reuse_candidates=sum(s['art_state']=='exact_reuse_candidate' for s in required),missing=sum(s['art_state']=='missing' for s in required),surplus=len(surplus)))
     files=['Source/Sprites.hpp','Source/Sprites.cpp','Source/Sprites/Sprite_Troop.cpp','Source/Sprites/Sprite_Core.cpp','Source/Sprites/Sprite_Vehicle.cpp','Source/Amiga/SpriteData_Amiga.hpp','Source/PC/SpriteData_PC.hpp']
-    return dict(schema=1,scope='CF1 protagonist mission actor state machine plus floating human body; table/selector and master audit, not runtime or artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,
+    return dict(schema=1,scope='CF1 protagonist mission actor state machine plus floating human body; table/selector and master audit, not runtime or artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,art_reuse=art_reuse(),
         sources={f:hashlib.sha256((ROOT/f).read_text(encoding='utf-8').encode()).hexdigest() for f in files},invariants=['native clocks/selectors unchanged','only frame metadata, no commercial bitmap data','animation variants do not automatically require distinct artwork','metadata aliases across different actions require artistic/semantic review, not automatic reuse','hidden markers need producer verification, never dummy bodies'],
         exceptional_states=[dict(state='Die5',sheet=0x21,frames=[0,1],clock='field_2A & 7; no FPS clock',associated='independent blood trail'),dict(state='Vehicle_Inside',sheet=0xcc,frames=[4,3,2,1,0],then='0x7C/F0 invisible'),dict(state='None / squad mode 0',sheets=list(range(0x30,0x38)),frames=[0,1,2],note='low-locomotion branch; squad modes initialize to 2; latent branch retained, not called death by its table label')],
         boundaries=['CF2/enemies/vehicle body art excluded','associated shadows,blood,ranks,projectiles,texts require validated native ordered commands','palette/phase/renderer recovery remains independent of protagonist art coverage','CD32 source tables covered; commercial CD32 runtime data not present in public replay directory'],

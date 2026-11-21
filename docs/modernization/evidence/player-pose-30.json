@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "block": "R3-player-low30-final",
+  "date": "2026-11-21",
+  "base_head": "06f0b502594b82c9508afab6d14b136bdff4e9e2",
+  "poses": [
+    {
+      "type": 0,
+      "sheet": 48,
+      "frame": 1,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-30-f1/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 48,
+      "frame": 2,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-30-f2/manifest.json"
+    }
+  ],
+  "authoring": "Authorized autonomous protagonist art; internal inspection, not Miguel global acceptance",
+  "tests": {
+    "windows": "96 actual Window/SDL cases; ASan/UBSan PASS",
+    "linux": "96 actual Window/SDL cases; ASan/UBSan/LSan PASS",
+    "matrix": "6 native format/frame entries x states 0/1 x 4 variants x 8/12 density = 96 cases; two actors, exact SDL, negatives and full recovery",
+    "native_states": [
+      0,
+      1
+    ]
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-low30-final-candidate\\candidate-manifest.json",
+    "assets": 276,
+    "covered": 259,
+    "missing": 126,
+    "complete": false,
+    "rgba_bytes": 24588928
+  },
+  "invariants": [
+    "previous assets/pose bindings unchanged",
+    "native geometry and selectors unchanged",
+    "source originals preserved",
+    "blood/shadow commands remain independent",
+    "H3 R2 remains valid; no simulation change",
+    "previous launchers unchanged"
+  ],
+  "next": "R3 \u2014 locomoci\u00f3n baja direcci\u00f3n 1, 0x31/F0\u2013F2.",
+  "ci": "Set CI completion/consultation pending; no full PASS claimed",
+  "reuse": [
+    {
+      "actor_type": 0,
+      "sheet": 48,
+      "frame": 0,
+      "source_sheet": 176,
+      "source_frame": 0,
+      "status": "internally-reviewed-native-identical",
+      "review": "The original 0x30/F0 and B0/F0 are the same native body and table geometry in both formats. The existing C01 unarmed compact front pose also fits the low-locomotion use. Reuse body pixels only; engine-selected action, height, frame, order and shadow policy remain independent. Miguel delegated protagonist art decisions; this is not new human visual acceptance."
+    }
+  ],
+  "frames_tested": [
+    0,
+    1,
+    2
+  ],
+  "fixture_binaries": {
+    "player-pose-window.exe": "5d3b15eff7c15129463630c60777128efb9790fd465884d07aa507cadb4fda28",
+    "player-pose-window-linux": "d5dc0a8f81005caab716f2a04981a300be38f0e342d10f8c1b1ac9f0a9a53c1e"
+  },
+  "reuse_proof": [
+    {
+      "format": 0,
+      "target": [
+        48,
+        0
+      ],
+      "source": [
+        176,
+        0
+      ],
+      "native_signatures": [
+        "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179"
+      ],
+      "assets": {
+        "8": "player-fall-b0-f0-8x",
+        "12": "player-fall-b0-f0-12x"
+      }
+    },
+    {
+      "format": 1,
+      "target": [
+        48,
+        0
+      ],
+      "source": [
+        176,
+        0
+      ],
+      "native_signatures": [
+        "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179"
+      ],
+      "assets": {
+        "8": "player-fall-b0-f0-8x",
+        "12": "player-fall-b0-f0-12x"
+      }
+    }
+  ],
+  "placement_adjustment": {
+    "frame": 2,
+    "native_box": [
+      3,
+      1,
+      8,
+      11
+    ],
+    "chosen": [
+      4,
+      1,
+      6,
+      11
+    ],
+    "center_x": 7,
+    "bottom": 12,
+    "logical_cell": [
+      16,
+      14
+    ],
+    "reason": "Keep C01 profile scale coherent with F0/F1; native geometry/anchor unchanged; art fits strictly inside native box",
+    "previous_export": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\rejected-low30-f2-wide"
+  },
+  "art_review": {
+    "frame2": "One corrected orientation master after initial too-frontal variant; final left-profile master retained unchanged; then exact derivative width fit",
+    "discarded_orientation": "exec-ca61208f-dcb6-4b46-9659-b62d7e45a15c.png retained in generated_images",
+    "native_masks_private": true
+  }
+}

@@ -20,7 +20,10 @@ p.nativeAmiga8.palette=p.resource.palette;p.nativeAmiga8.frameOffset=slot->offse
 auto prepare=[](PreparedSpriteDraw& draw){auto input=draw.soldier.geometry;input.source=draw.resource.source();
     draw.draw=PrepareSpriteDraw(input);draw.draw.source=nullptr;};
 size_t cases=0;
-for(int animation:{1,10})for(int variant:{0,1,2,3})for(unsigned density:{8u,12u}){
+const auto animations=row.value("test_animations",std::vector<int>{1,10});
+assert(!animations.empty() && animations.size()<=14);
+for(int animation:animations)assert(IsCF1PlayerAnimation(animation));
+for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,12u}){
     s.animation=animation;g.height=variant==1?12:0;g.rowsToSkip=variant==2?3:0;prepare(p);
     auto second=first;second.soldier.soldier.slot=1;second.soldier.nativeAmiga8.slot=1;
     second.soldier.soldier.geometry.spriteX+=4;prepare(second.soldier);
