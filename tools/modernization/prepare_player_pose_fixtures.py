@@ -15,8 +15,8 @@ def build(resources,requested,out):
         for path in sorted(directory.glob('*.json')):
             row=json.loads(path.read_text());segment=row.get('segment')
             if row.get('format')==fmt and segment in (0,1):seeds.setdefault((fmt,segment),(row,directory))
-    count=0
-    for fmt,actor,sheet,frame,metadata,hidden,role in contracts():
+    count=0;catalog=contracts()
+    for fmt,actor,sheet,frame,metadata,hidden,role in catalog:
         if (actor,sheet,frame) not in requested:continue
         assert role==1 and not hidden,'This fixture exercises protagonist bodies'
         segment={'eGFX_IN_GAME':0,'eGFX_IN_GAME2':1}[metadata[1]]
@@ -34,7 +34,8 @@ def build(resources,requested,out):
         folder=out/f'{fmt}-{actor}-{sheet:02x}-f{frame}';folder.mkdir();(folder/'native-resources').mkdir()
         (folder/'native.json').write_text(json.dumps(row,indent=2)+'\n')
         shutil.copyfile(directory/row['resource_file'],folder/'native-resources'/row['resource_file']);count+=1
-    assert count==2*len(requested),'Pose absent from one source format'
+    expected=sum((actor,sheet,frame) in requested for fmt,actor,sheet,frame,*_ in catalog)
+    assert count==expected and all(any((actor,sheet,frame)==pose for fmt,actor,sheet,frame,*_ in catalog) for pose in requested),'Source-defined pose/format coverage'
     print(f'PASS reconstructed {count} source-defined private Window fixtures, no log-discovery dependency')
 
 

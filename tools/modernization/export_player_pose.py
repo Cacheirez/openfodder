@@ -12,6 +12,7 @@ import subprocess
 from pathlib import Path
 from PIL import Image
 from prepare_walk_art_review import png
+from generate_player_pose_table import contracts
 
 
 def sha(path):
@@ -21,7 +22,8 @@ def sha(path):
 def export(source,atlas,sheet,frame,actor,family,out,builders,work):
     assert not out.exists(),'Preserve existing masters/derivatives'
     native=[r for r in json.loads((atlas/'native-audit.json').read_text()) if (r['type'],r['sheet'],r['frame'])==(actor,sheet,frame)]
-    assert {r['format'] for r in native}=={0,1}
+    formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
+    assert {r['format'] for r in native}==formats and 1 in formats,'Source-defined format coverage'
     row=next(r for r in native if r['format']==1)
     width,height=row['width'],row['height'];assert width==16 and height<=14
     boxes=[]
