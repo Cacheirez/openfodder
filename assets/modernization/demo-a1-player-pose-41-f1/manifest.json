@@ -1,0 +1,79 @@
+{
+  "status": "Authorized autonomous protagonist art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 0,
+    "sheet": 65,
+    "frame": 1
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-pose-41-f1-8x.rgba",
+      "height": 14,
+      "id": "player-pose-41-f1-8x",
+      "sha256": "e875e9498d4843670f4b2c3e17616db2b9117fa79544c36c4586b2a234fd54e4",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-pose-41-f1-12x.rgba",
+      "height": 14,
+      "id": "player-pose-41-f1-12x",
+      "sha256": "60474f0b4bef8d1120f4c7fc0663fdfa8ebbbae22497a84ccda0064449d4c1d7",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1199,
+      1312
+    ],
+    "mode": "RGBA",
+    "sha256": "7fe0c676f7d9180588365f24982a39d77bf71f63425d7b15cf06760df69f949b",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      86,
+      165,
+      1010,
+      1173
+    ],
+    "placement": {
+      "x": 2,
+      "y": 0,
+      "width": 11,
+      "height": 12
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "cf303b02e8eecb48d3c1625c99096ea99157f627f8fb1645e8a7a6becb14f109",
+        "bbox": [
+          2,
+          0,
+          13,
+          12
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "cf303b02e8eecb48d3c1625c99096ea99157f627f8fb1645e8a7a6becb14f109",
+        "bbox": [
+          2,
+          0,
+          13,
+          12
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  }
+}

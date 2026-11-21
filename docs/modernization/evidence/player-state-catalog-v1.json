@@ -3614,9 +3614,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f0/player-pose-41-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -3638,9 +3638,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f1/player-pose-41-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -3662,9 +3662,9 @@
             "0x0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f2/player-pose-41-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -5200,9 +5200,9 @@
       "counts": {
         "required": 165,
         "latent": 24,
-        "masters": 140,
+        "masters": 143,
         "exact_reuse_candidates": 0,
-        "missing": 25,
+        "missing": 22,
         "surplus": 1
       }
     },
@@ -8632,9 +8632,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f0/player-pose-41-f0-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -8656,9 +8656,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f1/player-pose-41-f1-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -8680,9 +8680,9 @@
             "0",
             "0"
           ],
-          "master": null,
+          "master": "assets/modernization/demo-a1-player-pose-41-f2/player-pose-41-f2-8x.rgba",
           "exact_native_metadata_reuse": [],
-          "art_state": "missing"
+          "art_state": "master_present"
         },
         {
           "sheet": 65,
@@ -10218,9 +10218,9 @@
       "counts": {
         "required": 164,
         "latent": 24,
-        "masters": 139,
+        "masters": 142,
         "exact_reuse_candidates": 0,
-        "missing": 25,
+        "missing": 22,
         "surplus": 1
       }
     }
