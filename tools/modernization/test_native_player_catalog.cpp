@@ -64,6 +64,18 @@ int main(){
         p=fixture(slot);if(slot.role==1){p.nativeAmiga8.role=0;p.soldier.type=5;p.nativeAmiga8.type=5;
             assert(resolve().decision==SoldierArtDecision::KeepClassic);++cases;}
     }
+    // Even a deliberately whitelisted/signed nonempty resource cannot turn a
+    // hidden transition into an ignored draw: the real producer must write nothing.
+    for(const auto& slot:CF1PlayerNativeSlots)if(slot.produced && slot.invisible){
+        auto p=fixture(slot);auto bytes=std::make_shared<std::vector<uint8_t>>(*p.resource.bytes);
+        (*bytes)[p.resource.offset]=slot.format?0x80:0x10;p.resource.bytes=bytes;p.nativeAmiga8.bytes=bytes;
+        auto nonempty=input;nonempty["native_resources"].push_back({{"format",slot.format},{"segment",slot.segment},{"sha256",SoldierSHA256(*bytes)}});
+        for(auto& row:nonempty["poses"])if(row["format"]==slot.format && row["type"]==slot.type && row["sheet"]==slot.sheet && row["frame"]==slot.frame)
+            row["native_signatures"]=nlohmann::json::array({CF1NativePoseSignature(p)});
+        NativePlayerCatalog guarded(nonempty,art);bool writesRejected=false;
+        try{guarded.resolve(p,8,384,384*272,art);}catch(const std::invalid_argument& e){writesRejected=std::string(e.what())=="player catalog hidden draw writes";}
+        assert(writesRejected);++cases;
+    }
     auto missing=input;missing["poses"].erase(missing["poses"].begin());rejects([&](){NativePlayerCatalog c(missing,art);});
     auto duplicate=input;duplicate["poses"].back()=duplicate["poses"].front();rejects([&](){NativePlayerCatalog c(duplicate,art);});
     auto unknown=input;unknown["poses"][0]["sheet"]=999;rejects([&](){NativePlayerCatalog c(unknown,art);});

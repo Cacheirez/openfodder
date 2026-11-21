@@ -19,19 +19,23 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None,shared_crop=None):
+def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None,shared_crop=None,native_format=None):
     assert not out.exists(),'Preserve existing masters/derivatives'
     native=[r for r in json.loads((atlas/'native-audit.json').read_text()) if (r['type'],r['sheet'],r['frame'])==(actor,sheet,frame)]
-    formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
-    assert {r['format'] for r in native}==formats and 1 in formats,'Source-defined format coverage'
-    row=next(r for r in native if r['format']==1)
+    declared_formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
+    formats=declared_formats if native_format is None else {native_format}
+    assert formats<=declared_formats,'Unknown source format'
+    if native_format is not None:native=[r for r in native if r['format']==native_format]
+    preferred_format=1 if native_format is None else native_format
+    assert {r['format'] for r in native}==formats and preferred_format in formats,'Source-defined format coverage'
+    row=next(r for r in native if r['format']==preferred_format)
     width,height=row['width'],row['height'];assert width==16 and height<=14
     boxes=[]
     for r in native:
         assert (r['width'],r['height'])==(width,height)
         box=Image.open(atlas/r['reference']).getchannel('A').getbbox();assert box
         boxes.append(dict(format=r['format'],native_signature=r['native_signature'],bbox=list(box)))
-    x,y,right,bottom=next(b['bbox'] for b in boxes if b['format']==1)
+    x,y,right,bottom=next(b['bbox'] for b in boxes if b['format']==preferred_format)
     if placement:
         px,py,pw,ph=placement
         assert pw>0 and ph>0 and x<=px<px+pw<=right and y<=py<py+ph<=bottom,'Art placement must stay within the verified native box'
@@ -72,8 +76,9 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--crop',help='Explicit shared left,top,right,bottom authoring crop; original retained')
+    p.add_argument('--native-format',type=int,choices=(0,1),help='Explicit format-specific art, e.g. PC entry effect with empty Amiga counterpart')
     for name in ('source','atlas','out','builders','work'):p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--sheet',type=lambda v:int(v,0),required=True);p.add_argument('--frame',type=int,required=True);p.add_argument('--type',type=int,default=0);p.add_argument('--family',choices=['hitdeath','pose'],default='pose');p.add_argument('--placement',help='Explicit x,y,width,height within native box; never changes logical geometry');a=p.parse_args()
     placement=tuple(map(int,a.placement.split(','))) if a.placement else None
     export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work,placement,
-           tuple(map(int,a.crop.split(','))) if a.crop else None)
+           tuple(map(int,a.crop.split(','))) if a.crop else None,native_format=a.native_format)

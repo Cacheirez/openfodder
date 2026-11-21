@@ -19,6 +19,23 @@ p.nativeAmiga8.cf1=true;p.nativeAmiga8.role=1;p.nativeAmiga8.layout=p.resource.l
 p.nativeAmiga8.palette=p.resource.palette;p.nativeAmiga8.frameOffset=slot->offset;
 auto prepare=[](PreparedSpriteDraw& draw){auto input=draw.soldier.geometry;input.source=draw.resource.source();
     draw.draw=PrepareSpriteDraw(input);draw.draw.source=nullptr;};
+const bool invisible=slot->invisible;
+assert(row.value("test_invisible",false)==invisible);
+auto anchor=body;
+if(invisible){
+    const auto anchorRoot=root+"/"+row.at("test_visible_anchor").get<std::string>();
+    nlohmann::json anchorRow;{std::ifstream file(anchorRoot+"/native.json");file>>anchorRow;assert(file);}
+    anchor.soldier=LoadNativeWalkSnapshot(anchorRow,anchorRoot+"/native-resources");
+    auto& a=anchor.soldier;auto& as=a.soldier;auto& ag=as.geometry;a.resource.generation=1;
+    as.scene=fodder.mPresentationScene;as.interval=1;as.generation=1;as.slot=2;as.animation=0;
+    ag.spriteX=64;ag.spriteY=20;ag.xBias=0;ag.viewWidth=96;ag.viewHeight=64;
+    const auto* anchorSlot=FindCF1PlayerNativeSlot(int(ag.format),as.type,as.sheet,as.frame);
+    assert(anchorSlot && anchorSlot->produced && !anchorSlot->invisible);
+    a.nativeAmiga8={as.type,as.sheet,as.frame,as.segment,uint16_t(a.resource.offset),ag.columns,ag.rows,ag.modX,ag.modY,
+        as.scene,as.generation,as.slot,a.resource.generation,a.resource.bytes};
+    a.nativeAmiga8.cf1=true;a.nativeAmiga8.role=1;a.nativeAmiga8.layout=a.resource.layout;
+    a.nativeAmiga8.palette=a.resource.palette;a.nativeAmiga8.frameOffset=anchorSlot->offset;prepare(a);
+}
 size_t cases=0;
 const auto animations=row.value("test_animations",std::vector<int>{1,10});
 assert(!animations.empty() && animations.size()<=14);
@@ -28,11 +45,16 @@ for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,
     auto second=first;second.soldier.soldier.slot=1;second.soldier.nativeAmiga8.slot=1;
     second.soldier.soldier.geometry.spriteX+=4;prepare(second.soldier);
     image.scene.layers={first,second};
-    const size_t coverAt=size_t(p.draw.y+5)*96+p.draw.x+6;
+    if(invisible)image.scene.layers.push_back(anchor);
+    const auto& coveredDraw=invisible?anchor.soldier.draw:p.draw;
+    const size_t coverAt=size_t(coveredDraw.y+5)*96+coveredDraw.x+6;
     if(variant==3){MissionLayer cover;cover.destination=body.destination;cover.pixels.put(coverAt,0);image.scene.layers.push_back(cover);}
     const auto resolve=[&](const PreparedSpriteDraw& draw){return registry.resolve(draw,SoldierVariantKey(draw,colors),density,true,96,96*64);};
     const auto composed=ComposeOrderedSoldierArt(image.scene,body.destination,density,resolve);
-    assert(composed.complete()&&composed.replaced==2&&!composed.cells.empty());
+    assert(composed.complete()&&composed.replaced==(invisible?1u:2u)&&!composed.cells.empty());
+    if(invisible){assert(composed.kept==2);for(const auto& hidden:{first,second}){
+        auto draw=hidden.soldier.draw;draw.source=hidden.soldier.resource.source();
+        assert(CaptureSprite8Producer(draw,hidden.soldier.resource.layout,96).writes.empty());}}
     if(variant==3)assert(!composed.cells.count(coverAt));
     for(int mutation:{0,1}){auto bad=p;if(mutation==0)bad.soldier.animation=777;else ++bad.resource.offset;
         bool caught=false;try{resolve(bad);}catch(const std::invalid_argument&){caught=true;}assert(caught);}
