@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.6 enemy walk direction7",
+  "status": "PASS internal art/export; runtime integration and Miguel review pending",
+  "sheet": 73,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "new_frames": [
+    0,
+    1,
+    2
+  ],
+  "logical_size": [
+    16,
+    14
+  ],
+  "density": [
+    8,
+    12
+  ],
+  "occupied_boxes": {
+    "0": [
+      5,
+      0,
+      12,
+      14
+    ],
+    "1": [
+      5,
+      0,
+      12,
+      14
+    ],
+    "2": [
+      5,
+      0,
+      12,
+      14
+    ]
+  },
+  "validation": [
+    "Native PC/Amiga geometry and occupied bounds verified",
+    "Source/PNG/RGBA hashes, size, raw/pixel equality and alpha bounds PASS",
+    "Internal derivative inspection: lower-right rifle aim and left/feet-together/right leg phases, no reflected art or baked shadow",
+    "Registry20 available poses/40 assets;18 walk poses in six directions",
+    "Native logic and accepted protagonist launcher unchanged; engine validation deferred to integration"
+  ],
+  "next": "E2.7 enemy walk direction0,42/F0-F2, one direction only"
+}

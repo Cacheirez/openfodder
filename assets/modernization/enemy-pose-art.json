@@ -378,6 +378,81 @@
       }
     },
     {
+      "sheet": 73,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f0/manifest.json",
+      "source_sha256": "4901105f3d8637af89425c0286e26d286d2355e073307db1e71cb90998437c33",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f0-8x",
+          "sha256": "3dcec78ad5e6403ef272c00f069892b35da59033a69ca7cd819a0cf3f7caf55f",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f0-12x",
+          "sha256": "57f628a741bef470cd4d7236600bfb9d27a56badb7c6f5d7d399169cf0d1bc68",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 73,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f1/manifest.json",
+      "source_sha256": "768c4f3acb35592ed8d06a63296ab4b2469d31e119371cd58a1a7e5a38a27b45",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f1-8x",
+          "sha256": "ec6950ed5ff3fae7cfadb8ba8b32c706237acd6a4ac12db8fba4ac3c4f15b893",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f1-12x",
+          "sha256": "e5385d91cf1c6e3cb54668a6b18cc0056bbebc8571514c791bd732925a93f601",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 73,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f2/manifest.json",
+      "source_sha256": "9893948febdc13ee252863adb65e79a9723fcb337731353291bcbe4130661304",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f2-8x",
+          "sha256": "a5353eefc68cb3345f4dc97427eb10dfc18ac917604f383e3d1ece50a69b3a56",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f2-12x",
+          "sha256": "decd308108972af8119a2802a1784204e56a487de9466ee2f658ff390aa5c36c",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 89,
       "frame": 0,
       "family": "prone",
@@ -429,7 +504,7 @@
     }
   ],
   "counts": {
-    "poses": 17,
-    "assets": 34
+    "poses": 20,
+    "assets": 40
   }
 }
