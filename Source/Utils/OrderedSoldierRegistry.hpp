@@ -105,7 +105,7 @@ class OrderedSoldierRegistry {
             throw std::invalid_argument("ordered asset integer");
         return value.get<size_t>();
     }
-    void loadArtwork(const nlohmann::json& assets,const std::string& directory) {
+    void loadArtwork(const nlohmann::json& assets,const std::string& directory,unsigned selectedDensity=0) {
         if(!assets.is_array() || assets.size()>8192)throw std::invalid_argument("ordered assets size");
         size_t total=0;const size_t budget=64u*1024u*1024u;
         // Preflight the entire budget before opening files or allocating pixels.
@@ -113,6 +113,7 @@ class OrderedSoldierRegistry {
             const auto width=integer(row,"width",352),height=integer(row,"height",272);
             const auto density=integer(row,"density",12);
             if(density!=8 && density!=12)throw std::invalid_argument("ordered asset density");
+            if(selectedDensity && density!=selectedDensity)throw std::invalid_argument("ordered selected asset density");
             const size_t bytes=width*height*density*density*4;
             if(bytes>budget-total)throw std::length_error("ordered assets budget");
             total+=bytes;
@@ -174,9 +175,11 @@ class OrderedSoldierRegistry {
 public:
     explicit OrderedSoldierRegistry(const nlohmann::json& root,const std::string& directory="") {
         const auto& v=root.at("version");
-        if(!v.is_number_integer() || (v!=1 && v!=2 && v!=3))throw std::invalid_argument("ordered manifest version");
-        if(v==2 || v==3)loadArtwork(root.at("assets"),directory);
-        if(v==3)playerCatalog=std::make_shared<const NativePlayerCatalog>(root.at("player_catalog"),artwork);
+        if(!v.is_number_integer() || (v!=1 && v!=2 && v!=3 && v!=4))throw std::invalid_argument("ordered manifest version");
+        const unsigned selectedDensity=v==4?unsigned(integer(root,"density",12)):0;
+        if(selectedDensity && selectedDensity!=8 && selectedDensity!=12)throw std::invalid_argument("ordered selected density");
+        if(v==2 || v==3 || v==4)loadArtwork(root.at("assets"),directory,selectedDensity);
+        if(v==3 || v==4)playerCatalog=std::make_shared<const NativePlayerCatalog>(root.at("player_catalog"),artwork,selectedDensity);
         if(!root.at("bindings").is_array() || root.at("bindings").size()>8192)
             throw std::invalid_argument("ordered manifest version/size");
         for(const auto& row:root.at("bindings")){
@@ -189,12 +192,13 @@ public:
                 b.sheet=row.at("sheet").get<int>();b.frame=row.at("frame").get<int>();
                 if((b.sheet!=2 && b.sheet!=7) || b.frame<0 || b.frame>2)
                     throw std::invalid_argument("ordered manifest pilot asset");
-            } else if(decision=="replace-art" && (v==2 || v==3)){
+            } else if(decision=="replace-art" && (v==2 || v==3 || v==4)){
                 const auto& ids=row.at("assets");
                 if(!ids.is_object() || ids.empty() || ids.size()>2)throw std::invalid_argument("ordered binding assets");
                 for(auto it=ids.begin();it!=ids.end();++it){
                     if(it.key()!="8" && it.key()!="12")throw std::invalid_argument("ordered binding density");
                     const unsigned density=it.key()=="8"?8:12;
+                    if(selectedDensity && density!=selectedDensity)throw std::invalid_argument("ordered selected binding density");
                     const auto id=it.value().get<std::string>();const auto found=artwork.find(id);
                     if(found==artwork.end() || found->second.density!=density)
                         throw std::invalid_argument("ordered binding asset reference");

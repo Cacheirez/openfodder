@@ -72,12 +72,17 @@ class NativePlayerCatalog {
     mutable std::vector<std::pair<std::weak_ptr<const std::vector<uint8_t>>,std::string>> resourceHashes;
     mutable std::mutex resourceHashMutex;
     bool complete=false,keepAssociated=false;
+    unsigned selectedDensity=0; // zero retains the legacy paired 8x/12x contract
     static bool hash(const std::string& s){return s.size()==64 && s.find_first_not_of("0123456789abcdef")==std::string::npos;}
 public:
-    NativePlayerCatalog(const nlohmann::json& input,const std::map<std::string,OrderedSoldierAsset>& artwork) {
-        if(input.value("schema",0)!=1 || !input.contains("complete") || !input["complete"].is_boolean() ||
+    NativePlayerCatalog(const nlohmann::json& input,const std::map<std::string,OrderedSoldierAsset>& artwork,
+                        unsigned density=0):selectedDensity(density) {
+        if((density && density!=8 && density!=12) || input.value("schema",0)!=(density?2:1) ||
+           !input.contains("complete") || !input["complete"].is_boolean() ||
            !input.contains("keep_verified_native") || !input["keep_verified_native"].is_boolean())
             throw std::invalid_argument("player catalog schema");
+        if(density && (!input.contains("density") || !input["density"].is_number_integer() || input["density"]!=density))
+            throw std::invalid_argument("player catalog selected density");
         complete=input["complete"];keepAssociated=input["keep_verified_native"];
         const auto& sources=input.at("native_resources");
         if(!sources.is_array() || sources.empty() || sources.size()>128)throw std::invalid_argument("player catalog native resources");
@@ -98,8 +103,8 @@ public:
             for(const auto& item:signatures){const auto value=item.get<std::string>();if(!hash(value)||!pose.signatures.insert(value).second)throw std::invalid_argument("player catalog signature");}
             const auto& ids=entry.at("assets");
             const bool nativeOnly=slot->invisible || slot->role==0;
-            if(!ids.is_object() || (nativeOnly?!ids.empty():ids.size()!=2))throw std::invalid_argument("player catalog assets");
-            for(unsigned d:{8u,12u})if(!nativeOnly){
+            if(!ids.is_object() || (nativeOnly?!ids.empty():ids.size()!=(density?1u:2u)))throw std::invalid_argument("player catalog assets");
+            for(unsigned d:{8u,12u})if(!nativeOnly && (!density || d==density)){
                 const auto id=ids.at(std::to_string(d)).get<std::string>();const auto asset=artwork.find(id);
                 const size_t width=fmt==0?size_t(slot->columns):size_t(slot->columns-1)*16;
                 if(asset==artwork.end() || asset->second.density!=d || asset->second.width!=width || asset->second.height!=size_t(slot->rows))
@@ -114,6 +119,8 @@ public:
     OrderedSoldierAsset resolve(const PreparedSpriteDraw& p,unsigned density,size_t targetWidth,size_t targetSize,
                                const std::map<std::string,OrderedSoldierAsset>& artwork) const {
         OrderedSoldierAsset out;const auto& s=p.soldier;const auto& g=s.geometry;const auto& n=p.nativeAmiga8;
+        // A density mismatch is a configuration error, never missing artwork.
+        if(selectedDensity && density!=selectedDensity)throw std::invalid_argument("player catalog requested density");
         ValidateCF1NativeSprite(p,targetWidth,targetSize);
         std::string resourceHash;
         {

@@ -84,3 +84,9 @@ Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar 
 - **E2.9 comprobado:** 268 poses corporales opacas distintas por clave; once candidatos de reutilización nativa explícitos, sin vínculos automáticos. Estimación combinada sin ahorros: 81.404.544 bytes a ambas densidades (excede 64 MiB), 56.356.992 a 12×; con reserva de tres sombras, quedan 10.364.800 bytes. Cinco pruebas del informe PASS. Decisión: cargar solo la densidad elegida, sin elevar el límite; implementación PENDIENTE. [Medición reproducible](evidence/enemy-reuse-budget-v1.json).
 
 E3.D — implementar catálogo de densidad explícita (8× o 12×), con preflight de 64 MiB y rechazo seguro de densidad incorrecta; mantener manifiestos y candidato de protagonistas previos. Validar el cambio focalizado antes de restantes estados e integración enemiga.
+
+## E3.D — carga por densidad comprobada
+
+- **E3.D comprobado:** carga explícita por densidad, manifiesto4/schema2; versiones anteriores intactas y preflight64 MiB conservado. Windows/Linux: 1.376 casos nuevos de densidad, 15.441 previos de catálogo y cuatro grupos de sombras PASS con ASan/UBSan; LSan Linux PASS. Integración enemiga, H3/CI completa del candidato y aceptación jugando PENDIENTES. [Contrato](CATALOGO_DENSIDAD.md), [evidencia](evidence/enemy-density-loading-v1.json).
+
+E2.G0 — preparar granada enemiga dirección 0, 4A/F0-F2, con identidad E01 aprobada y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.

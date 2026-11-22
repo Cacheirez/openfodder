@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E3.D",
+  "status": "PASS focused Windows/Linux; enemy integration/gameplay pending",
+  "changes": [
+    "Version4 manifests and schema2 catalog load only an explicit matching density",
+    "Versions1/2/3 and schema1 paired completeness preserved",
+    "Unchanged 64 MiB preflight; wrong requested density throws configuration error"
+  ],
+  "results": {
+    "Windows": {
+      "selected_density_cases": 1376,
+      "legacy_catalog_cases": 15441,
+      "ground_shadow_groups": 4,
+      "ASan": "PASS",
+      "UBSan": "PASS",
+      "LSan": "not available in this Windows runtime; Linux exercised"
+    },
+    "Linux": {
+      "selected_density_cases": 1376,
+      "legacy_catalog_cases": 15441,
+      "ground_shadow_groups": 4,
+      "ASan": "PASS",
+      "UBSan": "PASS",
+      "LSan": "PASS"
+    }
+  },
+  "environment": {
+    "Windows": "clang23.1.5/MSVC SDK; retained runtimes; leak detection disabled on Windows",
+    "Linux": "OpenFodderD3 WSL, GCC13.3.0, ASan/UBSan/LSan, non-PIE"
+  },
+  "local_logs_sha256": {
+    "enemy-density-tests\\native_player_catalog-linux-build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enemy-density-tests\\native_player_catalog-linux.log": "192880a3a8e5f992765c1dc5c93e218d1407ba45a44b4b831e2317b4f7aeb068",
+    "enemy-density-tests\\native_player_catalog-win-build.log": "46f42c121a6fe013e415b8e592e9f1ee721caecc958e82f51a34b303b285314d",
+    "enemy-density-tests\\native_player_catalog-win.log": "bd3958ba5d1f8f1830c131b34b5556fa912b05c528229f029bb2ddb00c109b5d",
+    "enemy-density-tests\\ordered_ground_shadow-linux-build.log": "bf1dcbe5c3cca2bcc0e2ece92750532f60667c3f9ec8263316cb78334c5d22ef",
+    "enemy-density-tests\\ordered_ground_shadow-linux.log": "595b8b3c7e99d1546af31e500208c2ffe882766c2dea9f52815d33d3a9105472",
+    "enemy-density-tests\\ordered_ground_shadow-win-build.log": "5f6602b0eb724324f21b7f7b34c72d6f054034b3a71e6e9c0337081ea18f4694",
+    "enemy-density-tests\\ordered_ground_shadow-win.log": "fd1ca72877b650cb64a4e30fcd6d5603bcd2a61bf78fb712842d1e3a62000c34"
+  },
+  "limits": [
+    "H3 and full CI not rerun or claimed PASS for this block; required before integrated enemy executable",
+    "No enemy runtime catalog/selection activated",
+    "Frozen protagonist executable/candidate unchanged"
+  ],
+  "next": "Enemy grenade direction0,4A/F0-F2 with E01 identity; continue complete enemy milestone"
+}

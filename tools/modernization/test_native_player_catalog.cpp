@@ -3,6 +3,7 @@
 #undef NDEBUG
 #endif
 #include "Utils/NativePlayerCatalog.hpp"
+#include "Utils/OrderedSoldierRegistry.hpp"
 #include <cassert>
 #include <cstdio>
 using namespace openfodder;
@@ -93,6 +94,51 @@ int main(){
         try{badRaster.resolve(p,8,384,384*272,art);}catch(const std::invalid_argument& e){rasterRejected=std::string(e.what())=="player catalog unverified native raster";}
         assert(rasterRejected);++cases;
     }
+    size_t densityCases=0;
+    for(unsigned d:{8u,12u}){
+        auto single=input;single["schema"]=2;single["density"]=d;
+        for(auto& row:single["poses"])if(!row["assets"].empty())row["assets"].erase(std::to_string(d==8?12:8));
+        std::map<std::string,OrderedSoldierAsset> selected;
+        for(const auto& a:art)if(a.second.density==d)selected.emplace(a);
+        NativePlayerCatalog one(single,selected,d);assert(one.isComplete());
+        for(const auto& slot:CF1PlayerNativeSlots)if(slot.produced){
+            auto p=fixture(slot);
+            const auto result=one.resolve(p,d,384,384*272,selected);
+            assert(result.decision==((slot.invisible || !slot.role)?SoldierArtDecision::KeepClassic:SoldierArtDecision::Replace));
+            bool wrongDensity=false;
+            try{one.resolve(p,d==8?12:8,384,384*272,selected);}catch(const std::invalid_argument& e){wrongDensity=std::string(e.what())=="player catalog requested density";}
+            assert(wrongDensity);densityCases+=2;
+        }
+        auto wrongLabel=single;wrongLabel["density"]=d==8?12:8;rejects([&](){NativePlayerCatalog c(wrongLabel,selected,d);});
+        auto fractional=single;fractional["density"]=double(d);rejects([&](){NativePlayerCatalog c(fractional,selected,d);});
+        auto pair=single;pair["poses"]=input["poses"];rejects([&](){NativePlayerCatalog c(pair,art,d);});
+        rejects([&](){NativePlayerCatalog c(single,selected);}); // schema2 cannot weaken schema1's paired contract
+        auto incomplete=single;incomplete["poses"].erase(incomplete["poses"].begin());rejects([&](){NativePlayerCatalog c(incomplete,selected,d);});
+        nlohmann::json manifest={{"version",4},{"density",d},{"assets",nlohmann::json::array()},
+            {"bindings",nlohmann::json::array()},{"player_catalog",single}};
+        for(const auto& a:selected){
+            const auto& asset=a.second;std::vector<uint8_t> bytes(asset.pixels->size()*4);
+            for(size_t i=0;i<asset.pixels->size();++i){auto c=(*asset.pixels)[i];bytes[4*i]=uint8_t(c>>16);bytes[4*i+1]=uint8_t(c>>8);bytes[4*i+2]=uint8_t(c);bytes[4*i+3]=uint8_t(c>>24);}
+            const auto file="density-fixture-"+a.first+".rgba";std::ofstream out(file,std::ios::binary);
+            out.write(reinterpret_cast<const char*>(bytes.data()),bytes.size());out.close();assert(out);
+            manifest["assets"].push_back({{"id",a.first},{"file",file},{"width",asset.width},{"height",asset.height},
+                {"density",d},{"sha256",SoldierSHA256(bytes)}});
+        }
+        OrderedSoldierRegistry registry(manifest);
+        auto bad=manifest;bad["density"]=d==8?12:8;
+        bool rejectedBeforeFiles=false;try{OrderedSoldierRegistry c(bad);}catch(const std::invalid_argument& e){rejectedBeforeFiles=std::string(e.what())=="ordered selected asset density";}
+        assert(rejectedBeforeFiles);
+        bad=manifest;bad["density"]=9;rejects([&](){OrderedSoldierRegistry c(bad);});
+        bad=manifest;bad["player_catalog"]["density"]=d==8?12:8;rejects([&](){OrderedSoldierRegistry c(bad);});
+        bad=manifest;bad["assets"]=nlohmann::json::array();
+        auto huge=manifest["assets"][0];huge["width"]=352;huge["height"]=272;huge["file"]="never-open-budget.rgba";
+        for(int i=0;i<4;++i){huge["id"]="budget-"+std::to_string(i);bad["assets"].push_back(huge);}
+        bool unchangedBudget=false;try{OrderedSoldierRegistry c(bad);}catch(const std::length_error& e){unchangedBudget=std::string(e.what())=="ordered assets budget";}
+        assert(unchangedBudget);
+        for(const auto& row:manifest["assets"])std::remove(row["file"].get<std::string>().c_str());
+        densityCases+=10;
+    }
+    std::printf("PASS selected-density catalog: %zu cases; complete 8x/12x independently, mismatch/corruption/incomplete and 64 MiB preflight rejected\n",densityCases);
     auto missing=input;missing["poses"].erase(missing["poses"].begin());rejects([&](){NativePlayerCatalog c(missing,art);});
     auto duplicate=input;duplicate["poses"].back()=duplicate["poses"].front();rejects([&](){NativePlayerCatalog c(duplicate,art);});
     auto unknown=input;unknown["poses"][0]["sheet"]=999;rejects([&](){NativePlayerCatalog c(unknown,art);});
