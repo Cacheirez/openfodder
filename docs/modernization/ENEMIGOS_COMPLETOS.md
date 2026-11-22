@@ -27,7 +27,11 @@ E2.3 comprobado: dirección4,46/F0-F2; tres maestros y seis derivados nuevos, ma
 
 E2.4 comprobado: dirección5,47/F0-F2; tres maestros/seis derivados nuevos, vista diagonal hacia arriba-derecha sin reflejos. [Evidencia](evidence/enemy-walk-d5.json). Registro total catorce poses/veintiocho activos; doce poses de marcha en cuatro direcciones.
 
-E2.5 siguiente: marcha enemiga dirección6,48/F0-F2. Un solo grupo de tres frames, validación y commit antes de otra dirección. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
+E2.5 comprobado: dirección6,48/F0-F2; tres maestros/seis derivados nuevos, orientación derecha y proporciones de casco corregidas antes de publicar. [Evidencia](evidence/enemy-walk-d6.json). Registro total diecisiete poses/treinta y cuatro activos; quince poses de marcha en cinco direcciones.
+
+E2.6 siguiente: marcha enemiga dirección7,49/F0-F2. Un solo grupo de tres frames, validación y commit antes de otra dirección. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
+
+Condición de E3: respetar el presupuesto existente de64MiB de activos. Medir el manifiesto combinado; reutilizar recursos equivalentes explícitos y organizar densidades cargadas sin elevar el límite ni perder verificación. La producción actual no activa ni cambia ese presupuesto.
 
 ## Recorrido autorizado hasta revisión
 
