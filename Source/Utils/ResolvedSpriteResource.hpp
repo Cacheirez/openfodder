@@ -95,6 +95,8 @@ struct NativeAmiga8Frame {
     size_t frameOffset = 0;
     size_t ownerSlot = 0;
     uint64_t ownerGeneration = 0;
+    // Native owner type retained at creation; XY/height are later observations,
+    // not a basis for reselecting a shadow already prepared by the engine.
     int16_t ownerType = -1, ownerPerson = -1, ownerX = 0, ownerY = 0, ownerHeight = 0;
 };
 

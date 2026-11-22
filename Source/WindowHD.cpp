@@ -41,18 +41,22 @@ openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
             const auto& actor=g_Fodder->mSprites[state.slot];
             if(actor.mPresentationGeneration!=state.generation || actor.mSpriteType!=state.type || actor.mPersonType!=state.personType)return {};
             if(state.type==0 && state.personType==0)n.role=1;
-            else if(state.type==22 && state.sheet==0x97){
+            else if(state.type==22){
+                bool ownerFound=false;
                 for(size_t ownerSlot=0;ownerSlot<g_Fodder->mSprites.size();++ownerSlot){
                     const auto& owner=g_Fodder->mSprites[ownerSlot];
                     if(&owner!=actor.mOwnerSprite)continue;
-                    if(actor.mCurrentVehicle==&owner && actor.mAIAggression==owner.mSpriteType &&
-                       owner.mSpriteType==0 && owner.mPersonType==0 && owner.mPresentationGeneration){
-                        n.role=3;n.ownerSlot=ownerSlot;n.ownerGeneration=owner.mPresentationGeneration;
-                        n.ownerType=owner.mSpriteType;n.ownerPerson=owner.mPersonType;
-                        n.ownerX=owner.mPosX;n.ownerY=owner.mPosY;n.ownerHeight=owner.mHeight;
-                    }
+                    if(ownerSlot==state.slot || actor.mCurrentVehicle!=&owner ||
+                       !owner.mPresentationGeneration || actor.mAIAggression<0)return {};
+                    ownerFound=true;n.ownerSlot=ownerSlot;n.ownerGeneration=owner.mPresentationGeneration;
+                    // mAIAggression retains the native owner type at creation;
+                    // a later destruction in this tick must not change its art.
+                    n.ownerType=actor.mAIAggression;n.ownerPerson=owner.mPersonType;
+                    n.ownerX=owner.mPosX;n.ownerY=owner.mPosY;n.ownerHeight=owner.mHeight;
+                    if(n.ownerType==0 && n.ownerPerson==0)n.role=3;
                     break;
                 }
+                if(!ownerFound)return {};
             }
         }
         return n;

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 4,
+  "revision": 5,
   "scope": "CF1 protagonist bodies and format-specific entry effects; independently verified native map association; hidden transitions require provenance and no writes; dormant mode-zero rows retained separately; not artistic acceptance",
   "states": {
     "None": 0,
@@ -158,6 +158,16 @@
         "Data28->mSheetIndex == 0x7C)\n        goto loc_1B06D",
         "pSprite->mSheetIndex = 0x97",
         "Data28->mSheetIndex == 0x7C)\n        pSprite->mSheetIndex = 0x7C"
+      ]
+    },
+    {
+      "function": "Sprite_Create_Player_Shadow",
+      "file": "Source/Sprites/Sprite_Troop.cpp",
+      "line": 2084,
+      "sha256": "e947be1be9e05a91e7e540723377eb5d406b19480658b59913c405f3d2bc4065",
+      "evidence": "type22 starts 0x8D/F2 at owner X+4,Y before its first handler; do not assume slot/update order",
+      "sheet_assignments": [
+        "Data2C->mSheetIndex = 0x8D"
       ]
     }
   ],
@@ -5225,6 +5235,59 @@
             "0"
           ],
           "reason": "rocket selector increments then resets at >=2; normal collision carry is modulo 2"
+        }
+      ],
+      "owned_shadows": [
+        {
+          "actor_type": 22,
+          "sheet": 141,
+          "frame": 2,
+          "stage": "creation",
+          "metadata": [
+            "5588",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "2",
+            "5",
+            "13480",
+            "0x0",
+            "0"
+          ]
+        },
+        {
+          "actor_type": 22,
+          "sheet": 151,
+          "frame": 0,
+          "stage": "updated_air",
+          "metadata": [
+            "2748",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "2",
+            "3",
+            "13480",
+            "0x0",
+            "0"
+          ]
+        },
+        {
+          "actor_type": 22,
+          "sheet": 151,
+          "frame": 1,
+          "stage": "updated_ground",
+          "metadata": [
+            "2750",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "2",
+            "4",
+            "13480",
+            "0x0",
+            "0"
+          ]
         }
       ],
       "hidden": [
@@ -10517,6 +10580,59 @@
           "reason": "rocket selector increments then resets at >=2; normal collision carry is modulo 2"
         }
       ],
+      "owned_shadows": [
+        {
+          "actor_type": 22,
+          "sheet": 141,
+          "frame": 2,
+          "stage": "creation",
+          "metadata": [
+            "22352",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "16",
+            "5",
+            "176",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "actor_type": 22,
+          "sheet": 151,
+          "frame": 0,
+          "stage": "updated_air",
+          "metadata": [
+            "10992",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "16",
+            "3",
+            "176",
+            "0",
+            "0"
+          ]
+        },
+        {
+          "actor_type": 22,
+          "sheet": 151,
+          "frame": 1,
+          "stage": "updated_ground",
+          "metadata": [
+            "11000",
+            "eGFX_IN_GAME2",
+            "0",
+            "0",
+            "16",
+            "4",
+            "176",
+            "0",
+            "0"
+          ]
+        }
+      ],
       "hidden": [
         {
           "sheet": 124,
@@ -10763,7 +10879,7 @@
       "Sprite_Destroy": "115cb452101cf882008508d5f3da4081f6afce83700935a58c095a1a40ba521f",
       "Map_Load_Sprites": "0d2fa72d546e7ee9a46fa821233ba287d54b92244875363709c0a2c2992f3416",
       "loadCF1Spt": "c554939cd510c7a69e28d4af8458b6b9c55534eececbc2924cad464795f9fbad",
-      "CaptureNativeAmiga8Frame": "06da983083d8c7cac17cbdc489774fb892a1b920f68480d9ccd757e9aa89dabb"
+      "CaptureNativeAmiga8Frame": "6634e1842338458af96e38e8595a541e3bc623417400fe2226e599b69dda6ab1"
     }
   },
   "sources": {
@@ -10778,7 +10894,7 @@
     "Source/Fodder.hpp": "6683f25d1b3e46fc17fec137a6c43df7d9911bcf059bc2252b3e3969f838fbe9",
     "Source/Squad.cpp": "4fea7633314978cf1f6aeb2284144890c006a334d41e2460450e54093cbf4061",
     "Source/CampaignSelect.cpp": "0bc4d210f07a0a7ae0e4c880837ff2b30f0c9ab6567f3dfffe9d80ea11390078",
-    "Source/WindowHD.cpp": "c046ee7c51b6a17d132dec6f98766413a0de54a8f9a0f3a48626e3e6d9555a42",
+    "Source/WindowHD.cpp": "07d3a606642cf4de92b6de0919e168918bc95b501ae9f2b9da271d0e75de5035",
     "Source/Map/Original.cpp": "6c241a5c1b7f717c50b6497346d4c1a37a084ea84c7ef39a93cffc99fd1a0d0f",
     "Source/Map/MapRuntime.cpp": "05438b8fecad85b219c169d90db0867cfb750d59f14be150ae5b0b2afc2902f6"
   },

@@ -23,6 +23,7 @@ STATES = {'None': 0, 'Hit': 1, 'Hit2': 2, 'Hit3': 3, 'Die1': 5,
           'Die2': 6, 'Die3': 7, 'Die4': 9, 'Die5': 10,
           'Slide1': 50, 'Slide2': 51, 'Slide3': 52,
           'Vehicle_Enter': 90, 'Vehicle_Inside': 91}
+PLAYER_SHADOW_POSES = ((0x8d,2,'creation'),(0x97,0,'updated_air'),(0x97,1,'updated_ground'))
 ROUTES = {
     'Sprite_Handle_Player': ('Source/Sprites/Sprite_Troop.cpp', 'void',
         'dispatch: vehicle, injury/death/slide, mission-over, ordinary selector'),
@@ -44,6 +45,8 @@ ROUTES = {
         'type27 -> 0x9E, frame retained from initialized/map state'),
     'Sprite_Handle_Player_Shadow': ('Source/Sprites/Sprite_Troop.cpp', 'void',
         'associated type22 0x97 F0/F1; owner/height offset (+5+h/4,-3+h/4), separate order'),
+    'Sprite_Create_Player_Shadow': ('Source/Sprites/Sprite_Troop.cpp', 'void',
+        'type22 starts 0x8D/F2 at owner X+4,Y before its first handler; do not assume slot/update order'),
 }
 
 
@@ -131,6 +134,9 @@ def inventory(include_art=True):
     soldier = function((ROOT/'Source/Sprites/Sprite_Troop.cpp').read_text(encoding='utf-8'), 'int16 cFodder::Sprite_Handle_Soldier_Animation(')
     assert 'Data0 = 0x21;' in soldier and 'pSprite->mFrameIndex = 1;' in soldier
     assert 'pSprite->mSheetIndex = 0xCC;' in soldier and 'pSprite->mFrameIndex = 4;' in soldier
+    creator=function((ROOT/'Source/Sprites/Sprite_Troop.cpp').read_text(encoding='utf-8'),'void cFodder::Sprite_Create_Player_Shadow(')
+    assert all(s in creator for s in ('Data2C->mSheetIndex = 0x8D;','Data2C->mFrameIndex = 2;',
+        'Data2C->mPosX += 4;','Data2C->mPosY = pSprite->mPosY;','Data2C->mDrawOrder = eSprite_Draw_First;'))
     art = masters() if include_art else {}
     platforms = {}
     for platform in ('Amiga', 'PC'):
@@ -173,13 +179,15 @@ def inventory(include_art=True):
                 latent.append(slot)
             else:required.append(slot)
         validate_art_reuse({(row['sheet'],row['frame']):row['metadata'] for row in required+latent},art_reuse())
+        owned_shadows=[dict(actor_type=22,sheet=s,frame=f,stage=stage,metadata=arrays[refs[s]][f]) for s,f,stage in PLAYER_SHADOW_POSES]
         if platform=='Amiga':
             demo=tables['mSpriteSheetTypes_InGame_Amiga_TheOne']
             assert all(refs[s['sheet']]==demo[s['sheet']] for s in required+latent+empty_transitions), 'Retail/demo protagonist table divergence'
-        platforms[platform]=dict(required=required,latent=latent,surplus=surplus,hidden=[dict(sheet=0x7c,frame=f,metadata=arrays[refs[0x7c]][f],classification='verify no native writes; not new artwork') for f in (0,1)]+empty_transitions,
+            assert all(refs[s['sheet']]==demo[s['sheet']] for s in owned_shadows),'Retail/demo shadow table divergence'
+        platforms[platform]=dict(required=required,latent=latent,surplus=surplus,owned_shadows=owned_shadows,hidden=[dict(sheet=0x7c,frame=f,metadata=arrays[refs[0x7c]][f],classification='verify no native writes; not new artwork') for f in (0,1)]+empty_transitions,
             counts=dict(required=len(required),visible_bodies=sum(s['visual_kind']=='body' for s in required),transition_effects=sum(s['visual_kind']=='vehicle_entry_effect' for s in required),native_associated=sum(s['visual_kind']=='associated_map_actor' for s in required),no_write_slots=2+len(empty_transitions),latent=len(latent),masters=sum(s['art_state']=='master_present' for s in required),exact_reuse_candidates=sum(s['art_state']=='exact_reuse_candidate' for s in required),missing=sum(s['art_state']=='missing' for s in required),surplus=len(surplus)))
     files=['Source/Sprites.hpp','Source/Sprites.cpp','Source/Sprites/Sprite_Troop.cpp','Source/Sprites/Sprite_Core.cpp','Source/Sprites/Sprite_Vehicle.cpp','Source/Amiga/SpriteData_Amiga.hpp','Source/PC/SpriteData_PC.hpp','Source/Fodder.cpp','Source/Fodder.hpp','Source/Squad.cpp','Source/CampaignSelect.cpp','Source/WindowHD.cpp','Source/Map/Original.cpp','Source/Map/MapRuntime.cpp']
-    return dict(schema=1,revision=4,scope='CF1 protagonist bodies and format-specific entry effects; independently verified native map association; hidden transitions require provenance and no writes; dormant mode-zero rows retained separately; not artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,art_reuse=art_reuse(),reachability=reachability,map_associations=association_audit(ROOT),
+    return dict(schema=1,revision=5,scope='CF1 protagonist bodies and format-specific entry effects; independently verified native map association; hidden transitions require provenance and no writes; dormant mode-zero rows retained separately; not artistic acceptance',states=states,groups=list(GROUPS),routes=routes,platforms=platforms,art_reuse=art_reuse(),reachability=reachability,map_associations=association_audit(ROOT),
         sources={f:hashlib.sha256((ROOT/f).read_text(encoding='utf-8').encode()).hexdigest() for f in files},invariants=['native clocks/selectors unchanged','only frame metadata, no commercial bitmap data','animation variants do not automatically require distinct artwork','metadata aliases across different actions require artistic/semantic review, not automatic reuse','hidden markers need producer verification, never dummy bodies'],
         exceptional_states=[dict(state='Die5',sheet=0x21,frames=[0,1],clock='field_2A & 7; no FPS clock',associated='independent blood trail'),dict(state='Vehicle_Inside',sheet=0xcc,frames=[4,3,2,1,0],then='0x7C/F0 invisible'),dict(state='None / squad mode 0',sheets=list(range(0x30,0x38)),frames=[0,1,2],note='low-locomotion branch; squad modes initialize to 2; latent branch retained, not called death by its table label')],
         boundaries=['CF2/enemies/vehicle body art excluded','associated shadows,blood,ranks,projectiles,texts require validated native ordered commands','palette/phase/renderer recovery remains independent of protagonist art coverage','CD32 source tables covered; commercial CD32 runtime data not present in public replay directory'],

@@ -18,7 +18,7 @@ static PreparedSpriteDraw fixture(const PlayerNativeSlot& slot){
         s.scene,s.generation,s.slot,r.generation,r.bytes};
     n.cf1=true;n.role=slot.role;n.layout=r.layout;n.palette=r.palette;n.frameOffset=slot.offset;
     if(slot.role==3){n.ownerType=0;n.ownerPerson=0;n.ownerGeneration=6;n.ownerHeight=slot.frame?0:12;
-        n.ownerX=45-(n.ownerHeight>>2);n.ownerY=53-(n.ownerHeight>>2);}
+        n.ownerX=slot.sheet==0x8d?46:45-(n.ownerHeight>>2);n.ownerY=slot.sheet==0x8d?50:53-(n.ownerHeight>>2);}
     auto input=g;input.source=r.source();p.draw=PrepareSpriteDraw(input);p.draw.source=nullptr;
     return p;
 }
@@ -52,7 +52,8 @@ int main(){
         // Every legal logical state resolves independently of full-key churn.
         if(slot.role==1)for(int animation:{0,1,2,3,5,6,7,9,10,50,51,52,90,91}){p.soldier.animation=animation;assert(resolve().decision==result.decision);++cases;}
         p.soldier.animation=0;p.soldier.geometry.spriteX+=1; // position is engine-owned
-        if(slot.role!=3){assert(resolve().decision==result.decision);++cases;}
+        if(slot.role!=3){auto geometry=p.soldier.geometry;geometry.source=p.resource.source();p.draw=PrepareSpriteDraw(geometry);p.draw.source=nullptr;
+            assert(resolve().decision==result.decision);++cases;}
         p=fixture(slot);p.nativeAmiga8.cf1=false;rejects(resolve);++cases;
         p=fixture(slot);p.resource.generation++;rejects(resolve);++cases;
         p=fixture(slot);p.nativeAmiga8.columns++;rejects(resolve);++cases;
@@ -61,6 +62,11 @@ int main(){
         p=fixture(slot);p.soldier.geometry.rows++;rejects(resolve);++cases;
         p=fixture(slot);if(slot.role==1){p.soldier.animation=99;rejects(resolve);++cases;}
         p=fixture(slot);if(slot.role==3){p.nativeAmiga8.ownerGeneration=0;rejects(resolve);++cases;}
+        p=fixture(slot);if(slot.role==3){p.nativeAmiga8.role=0;rejects(resolve);++cases;}
+        p=fixture(slot);if(slot.role==3){p.nativeAmiga8.ownerX+=7;p.nativeAmiga8.ownerY-=3;
+            p.nativeAmiga8.ownerHeight=slot.frame==0?0:16;assert(resolve().decision==result.decision);++cases;
+            p.nativeAmiga8.ownerSlot=p.soldier.slot;rejects(resolve);++cases;
+            p=fixture(slot);++p.soldier.geometry.spriteX;rejects(resolve);++cases;}
         p=fixture(slot);if(slot.role==1){p.nativeAmiga8.role=0;p.soldier.type=5;p.nativeAmiga8.type=5;
             assert(resolve().decision==SoldierArtDecision::KeepClassic);++cases;}
     }

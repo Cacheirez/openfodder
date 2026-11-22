@@ -1,0 +1,80 @@
+{
+  "status": "Authorized autonomous protagonist art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 22,
+    "sheet": 141,
+    "frame": 2
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "player-pose-8d-f2-8x.rgba",
+      "height": 5,
+      "id": "player-pose-8d-f2-8x",
+      "sha256": "9b9994eed9e33eb49a64a94dea7226e9703bf4ee57b2b24a920cf810ffeb56fa",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "player-pose-8d-f2-12x.rgba",
+      "height": 5,
+      "id": "player-pose-8d-f2-12x",
+      "sha256": "7b01a747bb0061c91db53b6d21e7aeb36aa19cb33cc24eada3eca5374e643342",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+    "generator": "Reuse of approved built-in image_gen ground shadow; no new generation",
+    "origin": "../demo-a1-shadow-walk-00-f1/shadow-source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      373,
+      540,
+      916,
+      751
+    ],
+    "placement": {
+      "x": 0,
+      "y": 0,
+      "width": 11,
+      "height": 5
+    },
+    "logical_size": [
+      16,
+      5
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "d153ed6176d4208fa6d51c3c6cd2c64ebec2b905554537b2f8d113435b136bab",
+        "bbox": [
+          0,
+          0,
+          11,
+          5
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "d153ed6176d4208fa6d51c3c6cd2c64ebec2b905554537b2f8d113435b136bab",
+        "bbox": [
+          0,
+          0,
+          11,
+          5
+        ]
+      }
+    ],
+    "ground_shadow": "Independent native creation shadow; never attach another ground component"
+  }
+}

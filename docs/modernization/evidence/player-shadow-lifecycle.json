@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "base": "1ea43dbe067f60306421956a114aa7e6a03d9a0f",
+  "block": "R5.2-complete-shadow-lifecycle",
+  "correction": "Earlier 337-slot inventory omitted the opaque 22/8D/F2 creation state; handlers alone did not close the producer lifecycle",
+  "native_creation": {
+    "type": 22,
+    "sheet": 141,
+    "frame": 2,
+    "size": [
+      16,
+      5
+    ],
+    "opaque_pixels_per_format": 43,
+    "bbox": [
+      0,
+      0,
+      11,
+      5
+    ],
+    "anchor": "ownerX+4,ownerY at creation",
+    "order": "First"
+  },
+  "ownership": "Capture the native type retained in mAIAggression, pointer linkage and current generation. A later owner movement/height/destruction cannot reselect a shadow already prepared by the native engine. Validate captured geometry against PrepareSpriteDraw; reject self/missing links and downgrade of a protagonist shadow.",
+  "art": {
+    "source_sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+    "crop": [
+      373,
+      540,
+      916,
+      751
+    ],
+    "new_generation": false,
+    "previous_body_assets_and_pose_bindings_unchanged": true
+  },
+  "catalog": {
+    "source_rows": 387,
+    "required": 339,
+    "covered": 339,
+    "missing": 0,
+    "assets": 354,
+    "owned_shadow_slots": 6,
+    "body_slots": 315,
+    "pc_entry_effects": 5,
+    "no_write": 9,
+    "native_map_associations": 4,
+    "dormant": 48
+  },
+  "tests": {
+    "python_contracts": 8,
+    "all_python": 50,
+    "cpu_resolution_mutation_per_platform": 15441,
+    "actual_source_capture_per_platform": 60,
+    "creation_window_per_platform": 32,
+    "full_pose_fade_pause_window_per_platform": 456,
+    "sanitizers": "ASan/UBSan Windows and Linux; LSan Linux",
+    "checks": [
+      "source creator plus handler covered",
+      "current owner can move/change height after native selection",
+      "late owner destruction retains original type",
+      "invalid pointer/generation/self-link rejected",
+      "foreign shadow remains native",
+      "paired native preparation/anchor rejects altered geometry",
+      "protagonist shadow cannot be downgraded to generic native"
+    ]
+  },
+  "runtime": {
+    "platforms": [
+      "Windows",
+      "Linux"
+    ],
+    "replay": "Amiga The One M1P2 with two pauses/resumes",
+    "h3": 1546,
+    "hd_publications": 4637,
+    "unresolved": 0
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-creation-shadow-candidate\\candidate-manifest.json",
+    "activated": false
+  },
+  "limits": [
+    "Final CI of this correction pending",
+    "Frozen review binary/manifest still need refresh to 339/354",
+    "No global visual/gameplay acceptance of Miguel; commercial CD32 and GPU not claimed"
+  ]
+}

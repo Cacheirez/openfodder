@@ -78,5 +78,12 @@ class CatalogTests(unittest.TestCase):
             self.assertEqual({r['frame'] for r in rows},{0,1})
             self.assertTrue(all(r['visual_kind']=='associated_map_actor' and r['art_state']=='native_preserved' for r in rows))
 
+    def test_shadow_creation_is_included_before_its_first_handler(self):
+        for platform in ('PC','Amiga'):
+            rows=self.catalog['platforms'][platform]['owned_shadows']
+            self.assertEqual({(r['sheet'],r['frame']) for r in rows},{(0x8d,2),(0x97,0),(0x97,1)})
+            self.assertTrue(all(r['actor_type']==22 for r in rows))
+        self.assertIn('Sprite_Create_Player_Shadow',{r['function'] for r in self.catalog['routes']})
+
 
 if __name__=='__main__':unittest.main()

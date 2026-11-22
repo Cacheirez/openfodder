@@ -22,6 +22,7 @@ auto prepare=[](PreparedSpriteDraw& draw){auto input=draw.soldier.geometry;input
 const bool invisible=slot->invisible;
 const bool nativeOnly=invisible || slot->role==0;
 const bool ownedShadow=slot->role==3;
+const bool initialShadow=ownedShadow && s.sheet==0x8d;
 if(ownedShadow){auto& n=p.nativeAmiga8;n.ownerType=0;n.ownerPerson=0;n.ownerSlot=4;n.ownerGeneration=1;}
 assert(row.value("test_invisible",false)==invisible);
 auto anchor=body;
@@ -45,8 +46,8 @@ assert(!animations.empty() && animations.size()<=14);
 for(int animation:animations)assert(IsCF1PlayerAnimation(animation));
 for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,12u}){
     s.animation=animation;g.height=!ownedShadow && variant==1?12:0;g.rowsToSkip=variant==2?(ownedShadow?1:3):0;
-    if(ownedShadow){auto& n=p.nativeAmiga8;n.ownerHeight=s.frame==0?(variant==1?20:12):(variant==1?8:0);
-        n.ownerX=32;n.ownerY=20;g.spriteX=n.ownerX+(n.ownerHeight>>2)+5;g.spriteY=n.ownerY+(n.ownerHeight>>2)-3;}
+    if(ownedShadow){auto& n=p.nativeAmiga8;n.ownerHeight=s.frame==0 || initialShadow?(variant==1?20:12):(variant==1?8:0);
+        n.ownerX=32;n.ownerY=20;g.spriteX=n.ownerX+(initialShadow?4:(n.ownerHeight>>2)+5);g.spriteY=n.ownerY+(initialShadow?0:(n.ownerHeight>>2)-3);}
     prepare(p);
     auto second=first;second.soldier.soldier.slot=1;second.soldier.nativeAmiga8.slot=1;
     second.soldier.soldier.geometry.spriteX+=4;
@@ -59,6 +60,8 @@ for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,
     if(variant==3){MissionLayer cover;cover.destination=body.destination;cover.pixels.put(coverAt,0);image.scene.layers.push_back(cover);}
     const auto resolve=[&](const PreparedSpriteDraw& draw){return registry.resolve(draw,SoldierVariantKey(draw,colors),density,true,96,96*64);};
     const auto composed=ComposeOrderedSoldierArt(image.scene,body.destination,density,resolve);
+    if(ownedShadow){auto later=p;later.nativeAmiga8.ownerX+=7;later.nativeAmiga8.ownerY-=3;later.nativeAmiga8.ownerHeight=32;
+        assert(resolve(later).decision==SoldierArtDecision::Replace);}
     assert(composed.complete()&&composed.replaced==(nativeOnly?1u:2u)&&!composed.cells.empty());
     if(nativeOnly)assert(composed.kept==2);
     if(invisible){for(const auto& hidden:{first,second}){
@@ -67,7 +70,7 @@ for(int animation:animations)for(int variant:{0,1,2,3})for(unsigned density:{8u,
     if(variant==3)assert(!composed.cells.count(coverAt));
     for(int mutation=0;mutation<(ownedShadow?3:2);++mutation){auto bad=p;if(mutation==0){if(slot->role==0)++bad.nativeAmiga8.frameOffset;else if(ownedShadow)bad.nativeAmiga8.ownerGeneration=0;else bad.soldier.animation=777;}
         else if(mutation==1)++bad.resource.offset;
-        else {if(ownedShadow)++bad.nativeAmiga8.ownerX;else ++bad.nativeAmiga8.frameOffset;}
+        else {if(ownedShadow)bad.nativeAmiga8.ownerSlot=s.slot;else ++bad.nativeAmiga8.frameOffset;}
         bool caught=false;try{resolve(bad);}catch(const std::invalid_argument&){caught=true;}assert(caught);}
     std::vector<uint32_t> expanded(96*64*density*density);
     for(size_t y=0;y<64*density;++y)for(size_t x=0;x<96*density;++x){

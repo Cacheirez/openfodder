@@ -36,6 +36,11 @@ inline void ValidateCF1NativeSprite(const PreparedSpriteDraw& p,size_t targetWid
     if(last>r.available())throw std::out_of_range("native CF1 complete extent");
     auto draw=p.draw;draw.source=r.source();
     ValidateMissionSpriteRaster(draw,r,targetWidth,targetSize);
+    auto input=g;input.source=r.source();const auto expected=PrepareSpriteDraw(input);
+    if(draw.sourceOffset!=expected.sourceOffset || draw.x!=expected.x || draw.y!=expected.y ||
+       draw.columns!=expected.columns || draw.rows!=expected.rows || draw.palette!=expected.palette ||
+       draw.visible!=expected.visible || draw.format!=expected.format)
+        throw std::invalid_argument("native CF1 prepared draw/anchor mismatch");
 }
 // Hash visible source indices/mask, not animation, address or unrelated palette
 // colors. The slot separately fixes the action, native table geometry and palette.
@@ -123,6 +128,9 @@ public:
         const auto source=resources.find({int(g.format),s.segment});
         if(source==resources.end() || !source->second.count(resourceHash))throw std::invalid_argument("player catalog unverified source resource");
         const auto* slot=FindCF1PlayerNativeSlot(int(g.format),s.type,s.sheet,s.frame);
+        if(slot && slot->role==3 && (!n.ownerGeneration || n.ownerType<0 || n.ownerPerson<0 ||
+           n.ownerSlot==s.slot || g.height || ((n.ownerType==0 && n.ownerPerson==0)!=(n.role==3))))
+            throw std::invalid_argument("player shadow owner classification");
         if(!n.role && (!slot || slot->role!=0)){
             if(keepAssociated)out.decision=SoldierArtDecision::KeepClassic;
             return out;
@@ -132,9 +140,12 @@ public:
             throw std::invalid_argument("player catalog source slot");
         if(n.role==1 && (s.personType!=0 || !IsCF1PlayerAnimation(s.animation)))throw std::invalid_argument("player catalog logical state");
         if(!slot->produced)return out; // Valid retained native data, dormant selector: never inferred artwork.
+        // The engine chooses the shadow frame and position at creation/update.
+        // Its owner may move, change height or be destroyed later in this tick.
+        // Validate the captured native draw above; never reselect it from the
+        // owner's later state. Identity is supplied by the live pointer capture.
         if(n.role==3 && (n.ownerType!=0 || n.ownerPerson!=0 || !n.ownerGeneration ||
-           g.spriteX!=int16_t(n.ownerX+(n.ownerHeight>>2)+5) || g.spriteY!=int16_t(n.ownerY+(n.ownerHeight>>2)-3) ||
-           g.height || s.frame!=(n.ownerHeight>8?0:1)))throw std::invalid_argument("player shadow owner/anchor");
+           n.ownerSlot==s.slot || g.height))throw std::invalid_argument("player shadow owner");
         const auto found=poses.find(Key{int(g.format),s.type,s.sheet,s.frame});
         if(found==poses.end())return out; // Explicit incomplete development catalog; no inferred art.
         if(!found->second.signatures.count(CF1NativePoseSignature(p)))throw std::invalid_argument("player catalog unverified native raster");

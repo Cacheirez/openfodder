@@ -17,8 +17,8 @@ def contracts():
         text=(ROOT/f'Source/{platform}/SpriteData_{platform}.hpp').read_text(encoding='utf-8')
         _,tables=check(text);refs=tables[f'mSpriteSheetTypes_InGame_{platform}']
         arrays={name:[[v.strip() for v in row.split(',')] for row in re.findall(r'\{([^{}]+)\}',COMMENT.sub('',data))] for name,_,data in ARRAY.findall(text)}
-        for frame,row in enumerate(arrays[refs[0x97]]):entries.append((format_id,22,0x97,frame,row,False,3))
-    assert len(entries)==385
+        for row in info['owned_shadows']:entries.append((format_id,22,row['sheet'],row['frame'],row['metadata'],False,3))
+    assert len(entries)==387
     return sorted(entries,key=lambda x:x[:4])
 
 
@@ -50,4 +50,4 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,default=ROOT/'Source/Utils/PlayerPoseTable.hpp');p.add_argument('--check',action='store_true');a=p.parse_args();text=build()
     if a.check:assert a.out.read_text(encoding='utf-8')==text,'Native pose table drift'
     else:a.out.write_text(text,encoding='utf-8',newline='\n')
-    print('PASS 385 audited native contracts: 337 produced/hidden/owned-shadow slots; 48 declared-only mode-zero rows')
+    print('PASS 387 audited native contracts: 339 produced/hidden/owned-shadow slots; 48 declared-only mode-zero rows')
