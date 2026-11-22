@@ -1,0 +1,9 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept / game sprite animation variant. Exactly ONE transparent full-body CF1 enemy sprite master, direction2 walk sheet44 FRAME2. Reference1 defines enemy identity/finish (existing frame1), reference2 defines frame2 pose: the short passing step, boots closer under body, NOT the wide forward stride. Reference3 native frame2 defines orientation and silhouette. Reference4 C01 style only. Keep SAME dark olive helmet/uniform, reddish brown harness and backpack, compact charcoal rifle and dark boots as reference1; same head scale, body proportions, equipment, painterly finish and left-facing camera angle. Change ONLY the stepping pose to frame2 from reference2: compressed step with boot spacing narrower than the stride, rifle pointed screen LEFT. No mirroring, no new direction, no redesign. Lighting upper left; whole body and feet uncropped, transparent background and generous margin. NO ground, NO baked shadow, NO text, NO scene. A matching third animation key for the existing enemy, not a separate character.",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-44-f1/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-44-f2-7a44b4a6.png",
+  "source_sha256": "dedbb1ee896280d99f84f9d11e92b1edca963c693caf6244d128409de5c5f6ca",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

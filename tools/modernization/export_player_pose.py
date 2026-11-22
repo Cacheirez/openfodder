@@ -19,10 +19,10 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None,shared_crop=None,native_format=None):
+def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=None,shared_crop=None,native_format=None,contract_rows=None,asset_prefix='player'):
     assert not out.exists(),'Preserve existing masters/derivatives'
     native=[r for r in json.loads((atlas/'native-audit.json').read_text()) if (r['type'],r['sheet'],r['frame'])==(actor,sheet,frame)]
-    declared_formats={fmt for fmt,t,s,f,*_ in contracts() if (t,s,f)==(actor,sheet,frame)}
+    declared_formats={fmt for fmt,t,s,f,*_ in (contracts() if contract_rows is None else contract_rows) if (t,s,f)==(actor,sheet,frame)}
     formats=declared_formats if native_format is None else {native_format}
     assert formats<=declared_formats,'Unknown source format'
     if native_format is not None:native=[r for r in native if r['format']==native_format]
@@ -50,7 +50,7 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
     out.mkdir(parents=True);work.mkdir(parents=True,exist_ok=True)
     shutil.copyfile(source,out/'source.png');assets=[]
     for density in (8,12):
-        name=f'player-{family}-{sheet:02x}-f{frame}-{density}x';header=work/f'{name}.hpp'
+        name=f'{asset_prefix}-{family}-{sheet:02x}-f{frame}-{density}x';header=work/f'{name}.hpp'
         subprocess.run([str(builders/'openfodder_batch_builder.exe'),str(source),str(header),str(density),'PlayerPose',
             *map(str,crop),str(x),str(right-x),str(bottom-y)],check=True)
         values=[int(v) for v in re.findall(r'(\d+)u',header.read_text())];assert len(values)==16*14*density*density
@@ -64,7 +64,7 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
         box=Image.frombytes('RGBA',(16*density,height*density),rgba).getchannel('A').getbbox()
         assert box and x*density<=box[0]<box[2]<=right*density and y*density<=box[1]<box[3]<=bottom*density
         assets.append(result)
-    manifest=dict(status='Authorized autonomous protagonist art; internal inspection and exact export; not global visual/gameplay acceptance',
+    manifest=dict(status=('Authorized autonomous enemy art' if asset_prefix=='enemy' else 'Authorized autonomous protagonist art')+'; internal inspection and exact export; not global visual/gameplay acceptance',
         pose=dict(type=actor,sheet=sheet,frame=frame),assets=assets,bindings=[],
         source=dict(file='source.png',size=list(image.size),mode=image.mode,sha256=sha(source),generator='built-in image_gen; original preserved'),
         export=dict(builder='existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp',crop=list(crop),placement=dict(x=x,y=y,width=right-x,height=bottom-y),
