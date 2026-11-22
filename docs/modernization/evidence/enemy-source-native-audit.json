@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E1.2 source bounds and private references",
+  "status": "PASS source/retained-native audit; not enemy art completion or retail CD32 runtime coverage",
+  "counts": {
+    "PC": {
+      "contracts": 482,
+      "produced": 341,
+      "declared_only": 141,
+      "by_actor": {
+        "5": 241,
+        "36": 182,
+        "106": 52,
+        "22": 3,
+        "41": 4
+      },
+      "unique_metadata_rows": 287,
+      "opaque_produced": 336,
+      "unique_opaque_body_poses": 268
+    },
+    "Amiga": {
+      "contracts": 483,
+      "produced": 342,
+      "declared_only": 141,
+      "by_actor": {
+        "5": 242,
+        "36": 182,
+        "106": 52,
+        "22": 3,
+        "41": 4
+      },
+      "unique_metadata_rows": 288,
+      "opaque_produced": 281,
+      "unique_opaque_body_poses": 217
+    }
+  },
+  "private_reference_summary": {
+    "schema": 1,
+    "scope": "private references; no art/visual acceptance",
+    "captures": 965,
+    "resources": [
+      {
+        "format": 0,
+        "segment": 0,
+        "sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+      },
+      {
+        "format": 0,
+        "segment": 1,
+        "sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd"
+      },
+      {
+        "format": 1,
+        "segment": 0,
+        "sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+      },
+      {
+        "format": 1,
+        "segment": 1,
+        "sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11"
+      }
+    ],
+    "by_format": {
+      "0": 482,
+      "1": 483
+    },
+    "opaque_contracts": 888,
+    "unique_rasters": 310
+  },
+  "private_audit": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-native-audit-v2\\native-audit.json",
+  "private_audit_sha256": "48e21a5c4990f2b7368e6fa5c431ddc795179b2f57c140d7c4daf967a6fcd4cc",
+  "producer_decisions": [
+    "Type5 pre-first-update human classification retained as explicit injury slots with enemy identity; current native table geometry, no dummy invalid frames",
+    "Type36 live normal handler selects rocket then forces frame2; other ordinary groups are declarations, not another 8-direction art family",
+    "Type5 follower resets rocket-disable; generic rocket rows are declarations for that actor",
+    "Vehicle-enter90 assigned only by player squad timer; enemy CC rows declared-only; leader vehicle path explicitly hidden7C",
+    "Type5 follower DC retained; no inferred type36 follower guard",
+    "Mode-zero72..79 retained for type5 because scratch state/order differs from player proof",
+    "Native hidden7C verified zero writes; public-demo Amiga later resources D8/D9/DA/DC/C4 empty are resource-specific absence, never universal invisibility",
+    "Leader106 art can be based on opaque PC references; modern art must not invent a body over verified no-write native intervals"
+  ],
+  "validation": {
+    "python_tests": 11,
+    "catalog_reproduction": "PASS",
+    "reference_bank_integrity": "PASS four SHA-256 banks",
+    "raster_bounds": "PASS all965",
+    "hidden_no_write": "PASS both formats",
+    "h3_ci": "Not repeated: native/game sources unchanged; full technical code CI remains b1d8bff",
+    "art": "PENDING"
+  },
+  "next": "E2: one direction2 enemy walk family, frames44/F0-F2, preserve existing F1 and approved style; validate derivatives before commit"
+}

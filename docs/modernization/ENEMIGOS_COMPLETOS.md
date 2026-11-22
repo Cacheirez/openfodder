@@ -17,7 +17,9 @@ El catálogo conserva metadatos, rutas y hashes de funciones nativas. No contien
 
 ## Próximo microbloque único
 
-E1.2: cerrar productores e inicialización, distinguir filas seleccionables de sobrantes y verificar transiciones. Después preparar referencias nativas y firmas privadas con los recursos locales ya conservados. No generar arte antes de conocer su contrato.
+E1.2 comprobado: [límites y referencias](evidence/enemy-source-native-audit.json). Catálogo revisión3: 483 filas Amiga/482 PC, de las cuales 342/341 con productor (incluido límite conservador del daño anterior a IA) y 141 declaradas por formato. Once pruebas PASS; 965 referencias privadas, cuatro bancos por SHA, 310 rasters distintos. Los recursos posteriores vacíos de la demo Amiga conservan ausencia nativa; no prueban ausencia de un jefe en el juego comercial. No se ha modificado el motor ni la simulación.
+
+E2 siguiente: marcha enemiga dirección2, 44/F0-F2, con F1 anterior conservado. Generar F0/F2 desde referencias pertinentes y estilo C/C01, revisar y exportar8×/12×. Microbloques siguientes autónomos dentro del hito; entrega jugable después de integración/cobertura y validación completa.
 
 ## Recorrido autorizado hasta revisión
 

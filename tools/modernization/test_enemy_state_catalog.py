@@ -2,7 +2,7 @@
 import copy
 import unittest
 from check_final_timer_equivalence import function
-from inventory_enemy_states import ROOT, ROUTES, audit_routes, inventory, table
+from inventory_enemy_states import ROOT, ROUTES, audit_routes, inventory, table, produced
 
 
 class EnemyInventoryTests(unittest.TestCase):
@@ -62,6 +62,26 @@ class EnemyInventoryTests(unittest.TestCase):
     def test_absent_leader_shadow_cannot_be_invented(self):
         codes = copy.copy(self.codes)
         codes['Sprite_Handle_Hostage'] += '\nSprite_Create_Player_Shadow(pSprite);'
+        with self.assertRaises(AssertionError):
+            audit_routes(codes)
+
+    def test_map_enemy_initial_human_injury_has_own_identity(self):
+        for platform in self.catalog['platforms'].values():
+            rows={(s['actor_type'],s['sheet'],s['frame']) for s in platform['slots']}
+            self.assertTrue({(5,0x21,0),(5,0x21,1),(5,0x38,5),(5,0xa4,7),(5,0xb7,0),(5,0x17,0)}<=rows)
+            self.assertNotIn((36,0x21,0),rows)
+
+    def test_declared_rows_do_not_expand_art_production(self):
+        for platform in self.catalog['platforms'].values():
+            rows={(s['actor_type'],s['sheet'],s['frame']):s for s in platform['slots']}
+            for key in [(5,0xa8,0),(5,0xcc,0),(36,0xcc,4),(36,0x42,0),(36,0xdc,0),(36,0xa8,0)]:
+                self.assertFalse(produced(rows[key])[0], key)
+            self.assertTrue(produced(rows[36,0xa8,2])[0])
+            self.assertTrue(produced(rows[5,0xdc,0])[0])
+
+    def test_new_rocket_permission_invalidates_type5_bound(self):
+        codes=copy.copy(self.codes)
+        codes['Sprite_Update_Follower_Target'] += '\nmTroop_Weapon_Rocket_Disabled = false;'
         with self.assertRaises(AssertionError):
             audit_routes(codes)
 
