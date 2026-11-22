@@ -132,3 +132,9 @@ E3.T4 — cualificar y adjuntar la pintura de sombra de suelo aprobada a las 27 
 Nueve grupos/27 poses/54 derivados con apoyo inferior y centro de sombra abajo-derecha; colocación común por dirección. Pintura aprobada y cuerpos intactos. Candidatos y catálogo conservados; validación Windows/Linux con bancos retenidos y sanitizadores PASS. [Evidencia](evidence/enemy-ground-contact-integration-v1.json). No es aceptación visual global.
 
 E3.T5 — compilar diagnóstico privado con la integración actual; ejecutar replay técnico de cuerpos/sombras y H3 pertinente en Windows/Linux, consultar CI y medir continuidad/faltantes. No entregar el candidato parcial como revisión final.
+
+## E3.T5 — replay/H3 local comprobados, CI pendiente
+
+- **E3.T5 local PASS, CI PENDIENTE:** diagnóstico compilado Windows/Linux; H3 clásico11 fases/11.361 estados y M1P2 técnico1.546 estados intactos, 4.635 publicaciones HD en ambos sistemas. Enemigo5: 1.673 dibujos modernos/5.022 clásicos por arte pendiente; sin missing de datos. CI Windows de37de241 falló por guardia de captura antigua; corrección y85 pruebas Python PASS locales, pendiente de CI. [Evidencia](evidence/enemy-technical-replay-v1.json).
+
+Los analizadores antiguos de captura y diagnóstico se adaptan al contrato enemigo opt-in; nuevos controles negativos impiden clasificar cadáveres nativos como cuerpos. Se actualizan solo hashes de procedencia del inventario protagonista. No se modifican referencias H3 ni cuerpos/poses. Pendiente verificar CI completa de la corrección.

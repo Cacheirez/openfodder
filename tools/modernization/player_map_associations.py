@@ -6,6 +6,14 @@ from check_final_timer_equivalence import function
 from check_sprite_table_lengths import COMMENT
 
 
+def check_capture_roles(code):
+    capture=re.sub(r'\s+','',COMMENT.sub('',code))
+    assert 'if(state.type==0&&state.personType==0)n.role=1;' in capture
+    enemy='elseif(openfodder::CF1EnemyCatalogEnabled()&&(state.type==5||state.type==36||state.type==106))n.role=2;'
+    assert enemy in capture and capture.count('n.role=2;')==1, 'Enemy body role must remain opt-in and type-bounded'
+    assert 'state.type==27' not in capture, 'Native map corpse must never become a body-art actor'
+
+
 def audit(root):
     troop=(root/'Source/Sprites/Sprite_Troop.cpp').read_text(encoding='utf-8')
     core=(root/'Source/Sprites/Sprite_Core.cpp').read_text(encoding='utf-8')
@@ -28,9 +36,7 @@ def audit(root):
     functions['loadCF1Spt']=function((root/'Source/Map/Original.cpp').read_text(encoding='utf-8'),'void cOriginalMap::loadCF1Spt(')
     assert 'Sprite->mSpriteType = ax;' in functions['loadCF1Spt']
     functions['CaptureNativeAmiga8Frame']=function((root/'Source/WindowHD.cpp').read_text(encoding='utf-8'),'openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(')
-    capture=re.sub(r'\s+','',COMMENT.sub('',functions['CaptureNativeAmiga8Frame']))
-    assert 'if(state.type==0&&state.personType==0)n.role=1;' in capture and 'n.role=2;' not in capture
-    assert 'state.type==27' not in capture
+    check_capture_roles(functions['CaptureNativeAmiga8Frame'])
     symbolic=[];factory_calls=Counter()
     for path in sorted((root/'Source').rglob('*.cpp')):
         code=COMMENT.sub('',path.read_text(encoding='utf-8'));name=path.relative_to(root).as_posix()
