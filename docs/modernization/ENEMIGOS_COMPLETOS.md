@@ -98,3 +98,9 @@ E2.G0 — preparar granada enemiga dirección 0, 4A/F0-F2, con identidad E01 apr
 - **BLOQUEO E2.G1 de plataforma:** ImageGen rechazó la salida de 4B/F0 con HTTP400, moderation_blocked/illicit (output), petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa. Un intento, sin imagen utilizable y sin reintento/cambio de herramienta o modelo. [Reproducción y recuperación](evidence/enemy-generation-blocked-4b-f0.json). Arte publicado: 27 poses/54 activos, último bloque 6ff562b; carga por densidad 805f426. No hay ejecutable enemigo nuevo. CI de 6ff562b: H6 PASS; Windows/Linux EN CURSO, sin PASS completo.
 
 E2.G1 BLOQUEADO — resolver el rechazo de plataforma antes de retomar granada dirección 1, 4B/F0-F2. Conservar prompt/referencias y 27 poses/54 activos; no sortear el bloqueo ni activar un lote parcial. Requiere intervención sobre la herramienta, no otra aprobación artística.
+
+## Criterio obligatorio de sombras y cobertura — aclaración de Miguel
+
+- **Criterio de Miguel — sombras y cobertura completa:** enemigos con la misma proyección fija abajo-derecha y luz arriba-izquierda que los protagonistas, independientemente de su orientación, con el mismo apoyo relativo de los pies y ajuste por pose. Cubrir cada estado, dirección/frame y transición producido por la fuente, incluidos reinicios, daño previo a IA y desangrado; registrar ocultos y filas no producidas. Conservar sombras independientes y tratamientos de agua/altura/caída; documentar ausencias nativas sin inventarlas. Inventario disponible no equivale a integración ni aceptación visual completa. [Requisito y fuente](evidence/enemy-shadow-coverage-requirement.json).
+
+Inspección focalizada: propietarios5/36 comparten el controlador nativo de sombras con protagonistas. Los tres estados22/8D-F2 y97-F0/F1 ya están inventariados. Integración y comprobación jugando PENDIENTES; el bloqueo de plataforma E2.G1 continúa sin reintentos.
