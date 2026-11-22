@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.V2.6",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 6,
+  "sheet": 72,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-48-f0",
+      "source_sha256": "24b858cd15868f69203b8397ef005f7321c7c70d9435f34d7fe223ca4679f6e3",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-48-f1",
+      "source_sha256": "f54e743142b12f0cd842261d2177874ce1616df6473780cbbcb0bedc2c3adb3e",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-48-f2",
+      "source_sha256": "74896f76da7d08093edeefc0eaa198a4b1d2439afe5bc1cab287977a83b14716",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": true,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 21,
+    "assets": 42
+  },
+  "notes": [
+    "Perfil derecho propio, sin reflejar el izquierdo. Pasos, equipo y proporciones conservados."
+  ],
+  "next": "E2.V2.7 — adaptar marcha enemiga dirección 7, 49/F0-F2, a E01/v2; validar 8×/12× y publicar. Después retomar E2.9, reutilización y presupuesto, antes de restantes estados e integración."
+}
