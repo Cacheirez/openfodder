@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "status": "Protagonist milestone completed and accepted by Miguel",
+  "code_commit": "b1d8bffa2183f149aa593b206c3243ffc8504b5d",
+  "review_evidence": "player-review-20261122-122031.json",
+  "technical_evidence": "player-complete-final.json",
+  "user_statement": "podemos dar por finalizada la modernización de los soldados ¿a qué fase pasamos ahora: modernización de los soldados enemigos?",
+  "interpretation": "Explicit closure of protagonist milestone. Enemy modernization is the recommended next A3 block, proposed for scope authorization; the question does not automatically authorize new art production.",
+  "scope": "Source-reachable CF1 protagonist states in the authorized P1; user visual/gameplay acceptance following public Amiga The One M1P2 review.",
+  "limits": [
+    "Does not claim retail CD32, GPU, audio or full campaign validation",
+    "Does not close overall A/H7 or authorize B, scenery, scroll or 16:9",
+    "Jump remains native and fully covered in catalog; absent in reviewed session, not a new mandatory acceptance gate"
+  ],
+  "next": {
+    "status": "PROPOSED; scope approval required",
+    "milestone": "Enemy soldier modernization within A3",
+    "steps": [
+      "Source inventory of enemy states and variants, including death, damage, water, weapons and owned shadows; distinguish shared and unique resources",
+      "Prepare coherent enemy master using approved painted style; identify required visual decisions",
+      "Produce verified catalog by small direction/family microblocks, integrate explicit native bindings",
+      "Validate ordered composition and mixed player/enemy continuity, H3 and Windows/Linux CI; Miguel gameplay review"
+    ]
+  },
+  "invariants": [
+    "Classic independence and full fallback for real errors",
+    "Unchanged native AI, simulation, RNG, collisions, logical clock, frame selection and H3 reference"
+  ]
+}
