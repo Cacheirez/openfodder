@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.2 enemy walk direction3",
+  "status": "PASS internal art/export; runtime integration and Miguel review pending",
+  "sheet": 69,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "existing_frame1_unchanged": true,
+  "new_frames": [
+    0,
+    2
+  ],
+  "logical_size": [
+    16,
+    14
+  ],
+  "density": [
+    8,
+    12
+  ],
+  "occupied_boxes": {
+    "0": [
+      3,
+      0,
+      12,
+      14
+    ],
+    "1": [
+      3,
+      0,
+      12,
+      14
+    ],
+    "2": [
+      4,
+      0,
+      12,
+      14
+    ]
+  },
+  "validation": [
+    "Source/PNG/RGBA SHA, sizes, raw/pixel equality and alpha within both native format boxes PASS",
+    "Existing F1 source/derivatives/bindings byte-for-byte unchanged",
+    "Internal native-size inspection: same direction/style, full stride F0, opposite passing step F2",
+    "Available registry8 poses/16 assets, not complete enemy coverage",
+    "Native game code unchanged; no duplicated H3/CI run for unactivated art"
+  ],
+  "next": "E2.3 enemy walk direction4,46/F0-F2, one direction only; keep prior art immutable"
+}

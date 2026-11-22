@@ -21,7 +21,9 @@ E1.2 comprobado: [límites y referencias](evidence/enemy-source-native-audit.jso
 
 E2.1 comprobado: dirección2, 44/F0-F2, con F1 anterior conservado y F0/F2 nuevos; [evidencia](evidence/enemy-walk-d2.json). Registro de arte disponible: seis poses/doce activos, sin integrarlos todavía como cobertura completa.
 
-E2.2 siguiente: marcha enemiga dirección3, 45/F0-F2, con F1 anterior conservado. Generar F0/F2 desde referencias pertinentes y estilo C/C01, revisar y exportar8×/12×. Microbloques siguientes autónomos dentro del hito; entrega jugable después de integración/cobertura y validación completa.
+E2.2 comprobado: dirección3,45/F0-F2; F1 anterior intacto, F0/F2 nuevos, tres poses/seis derivados. [Evidencia](evidence/enemy-walk-d3.json). Registro total ocho poses/dieciséis activos.
+
+E2.3 siguiente: marcha enemiga dirección4,46/F0-F2. Un solo grupo de tres frames, validación y commit antes de otra dirección. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
 
 ## Recorrido autorizado hasta revisión
 

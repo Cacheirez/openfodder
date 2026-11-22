@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit / sprite animation. Create ONE transparent adjacent walk FRAME0, direction3 sheet45, for the SAME enemy as image1 (existing frame1). Image2 supplies the walking stride reference only, image3 is native frame0 orientation/pose, image4 is C01 approved style only. Preserve image1 helmet/head/upper body/rifle, dark olive uniform, reddish brown harness, proportions, identity and painted finish. Rear three-quarter view facing UPPER LEFT; do not mirror or change view direction. Change leg/boot pose into the frame0 full stride, a clearly extended walking step rather than the lifted compact step of image1; match native image3. Keep occupied width/height around0.64 like image1 and same helmet-to-body scale so it fits9-by14 without distortion. One soldier fully visible with both boots, transparent margins, upper-left light. No floor, baked shadow, text, scene, extra gear or character redesign.",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-45-f1/source.png",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s3-f0-verde-a.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-45-f0-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "6f95270b625bf147f8b3b5b96b310e99aaa55272dc3a7378c0b9c3c1dd8a467d",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}
