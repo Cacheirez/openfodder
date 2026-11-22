@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "block": "E3.T1",
+  "date": "2026-11-22",
+  "authorization": "Miguel approves technical integration before blocked remaining art",
+  "rows": 965,
+  "produced": 679,
+  "declared_only": 286,
+  "roles": {
+    "2": 951,
+    "4": 6,
+    "6": 8
+  },
+  "tests": "PASS four source-boundary tests and generated-header drift check",
+  "header_sha256": "5b46f2f209bb32a566b7b24570c8cdc4620d7063f3db20b2fcda126f2e0e1715",
+  "limits": [
+    "No capture/resolver enabled yet",
+    "No new art or retry of blocked generation",
+    "Not gameplay/visual acceptance"
+  ],
+  "next": "E3.T2 \u2014 conectar cat\u00e1logo enemigo opt-in, captura de cuerpos y sombras propias, firmas nativas y rechazo de fallos reales; mantener cat\u00e1logo de desarrollo expl\u00edcitamente incompleto y protagonistas independientes. Validar en Windows/Linux antes de preparar candidato t\u00e9cnico."
+}

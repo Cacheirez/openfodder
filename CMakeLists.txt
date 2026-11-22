@@ -388,6 +388,8 @@ add_dependencies(openfodder_ground_shadow_tests openfodder_batch_assets openfodd
 add_test(NAME soldier_ground_shadow COMMAND $<TARGET_FILE:openfodder_ground_shadow_tests>)
 if(Python3_Interpreter_FOUND)
     add_test(NAME enemy_art_budget COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_enemy_art_budget.py")
+    add_test(NAME enemy_native_table COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/generate_enemy_pose_table.py" --check)
+    add_test(NAME enemy_native_table_contract COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_enemy_pose_table.py")
     add_test(NAME soldier_coverage_matrix COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_soldier_coverage.py")
     add_test(NAME player_state_catalog COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/inventory_player_states.py" --check)
     add_test(NAME player_state_catalog_contract COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/modernization/test_player_state_catalog.py")

@@ -104,3 +104,9 @@ E2.G1 BLOQUEADO — resolver el rechazo de plataforma antes de retomar granada d
 - **Criterio de Miguel — sombras y cobertura completa:** enemigos con la misma proyección fija abajo-derecha y luz arriba-izquierda que los protagonistas, independientemente de su orientación, con el mismo apoyo relativo de los pies y ajuste por pose. Cubrir cada estado, dirección/frame y transición producido por la fuente, incluidos reinicios, daño previo a IA y desangrado; registrar ocultos y filas no producidas. Conservar sombras independientes y tratamientos de agua/altura/caída; documentar ausencias nativas sin inventarlas. Inventario disponible no equivale a integración ni aceptación visual completa. [Requisito y fuente](evidence/enemy-shadow-coverage-requirement.json).
 
 Inspección focalizada: propietarios5/36 comparten el controlador nativo de sombras con protagonistas. Los tres estados22/8D-F2 y97-F0/F1 ya están inventariados. Integración y comprobación jugando PENDIENTES; el bloqueo de plataforma E2.G1 continúa sin reintentos.
+
+## E3.T1 — contrato técnico de enemigos
+
+- **E3.T1 comprobado:** tabla nativa enemiga generada desde fuente: 965 contratos, 679 producidos (339 PC/340 Amiga), 286 solo declarados. Roles separados de cuerpo/sombra/asociado y máscaras de persona para daño inicial; cuatro pruebas y control de deriva PASS. Sin captura ni arte nuevo activados. [Evidencia](evidence/enemy-native-table-v1.json).
+
+E3.T2 — conectar catálogo enemigo opt-in, captura de cuerpos y sombras propias, firmas nativas y rechazo de fallos reales; mantener catálogo de desarrollo explícitamente incompleto y protagonistas independientes. Validar en Windows/Linux antes de preparar candidato técnico.
