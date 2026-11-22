@@ -23,7 +23,9 @@ E2.1 comprobado: dirección2, 44/F0-F2, con F1 anterior conservado y F0/F2 nuevo
 
 E2.2 comprobado: dirección3,45/F0-F2; F1 anterior intacto, F0/F2 nuevos, tres poses/seis derivados. [Evidencia](evidence/enemy-walk-d3.json). Registro total ocho poses/dieciséis activos.
 
-E2.3 siguiente: marcha enemiga dirección4,46/F0-F2. Un solo grupo de tres frames, validación y commit antes de otra dirección. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
+E2.3 comprobado: dirección4,46/F0-F2; tres maestros y seis derivados nuevos, marcha atrás hacia arriba con alternancia nativa de piernas. [Evidencia](evidence/enemy-walk-d4.json). Registro total once poses/veintidós activos.
+
+E2.4 siguiente: marcha enemiga dirección5,47/F0-F2. Un solo grupo de tres frames, validación y commit antes de otra dirección. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
 
 ## Recorrido autorizado hasta revisión
 

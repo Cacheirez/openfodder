@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit, CF1 game sprite master. Edit IMAGE1 into enemy walk direction4 FRAME0, sheet46. IMAGE1 is the exact pose/camera target; IMAGE2 is enemy palette/equipment/paint reference, IMAGE3 original native frame0 reference, IMAGE4 approved C01 finish only. Preserve IMAGE1's full-body silhouette, head scale, upward facing back view, rifle pointing UP, and the leg pose (left boot forward and right boot trailing toward lower screen). Change the tan harness and pouches to the same muted reddish brown leather as image2, and match image2's dark olive helmet/uniform. Keep the same C moderate painted style and chunky proportions; do not introduce a backpack if absent in image1. Entire soldier with both boots visible, native aspect compatible8-by14, transparent generous margins. Upper-left lighting. No mirroring, no new camera angle, no text, floor or baked shadow. Exactly one matching enemy animation frame.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s4-f0-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-45-f1/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-46-f0-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "bd1780bb1b366d15facc96f675071c4292000d5dcb7bea757e2649596255a8bb",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

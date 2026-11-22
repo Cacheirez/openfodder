@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.3 enemy walk direction4",
+  "status": "PASS internal art/export; runtime integration and Miguel review pending",
+  "sheet": 70,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "new_frames": [
+    0,
+    1,
+    2
+  ],
+  "logical_size": [
+    16,
+    14
+  ],
+  "density": [
+    8,
+    12
+  ],
+  "occupied_boxes": {
+    "0": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "1": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "2": [
+      4,
+      0,
+      12,
+      14
+    ]
+  },
+  "validation": [
+    "Native PC/Amiga geometry16x14, common occupied box8x14",
+    "Source/PNG/RGBA hashes, sizes, raw/pixel equality, native alpha bounds PASS",
+    "Internal derivative inspection: rear upward direction, rifle up, left/feet-together/right cycle, no baked shadow",
+    "Registry11 available poses/22 assets, nine walk poses in three directions; no global runtime completeness claim",
+    "Game/native logic and accepted protagonist launcher unchanged; no redundant H3/CI run for unactivated art"
+  ],
+  "next": "E2.4 enemy walk direction5,47/F0-F2, one direction only"
+}
