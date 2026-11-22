@@ -90,3 +90,5 @@ E3.D — implementar catálogo de densidad explícita (8× o 12×), con prefligh
 - **E3.D comprobado:** carga explícita por densidad, manifiesto4/schema2; versiones anteriores intactas y preflight64 MiB conservado. Windows/Linux: 1.376 casos nuevos de densidad, 15.441 previos de catálogo y cuatro grupos de sombras PASS con ASan/UBSan; LSan Linux PASS. Integración enemiga, H3/CI completa del candidato y aceptación jugando PENDIENTES. [Contrato](CATALOGO_DENSIDAD.md), [evidencia](evidence/enemy-density-loading-v1.json).
 
 E2.G0 — preparar granada enemiga dirección 0, 4A/F0-F2, con identidad E01 aprobada y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.
+
+- **E2.G0 comprobado:** pose, dirección0, 4A/F0,1,2; registro27 poses/54 activos. [Evidencia](evidence/enemy-v2-grenade-d0.json). Próximo: E2.G1 — preparar granada enemiga dirección 1, 4B/F0-F2, con identidad E01 y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.

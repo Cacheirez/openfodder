@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Create CF1 ENEMY grenade preparation body, sheet4A/F0 direction0. IMAGE1 POSE TARGET only: existing grenade preparation (right hand SCREEN-LEFT holds grenade near chest, left hand SCREEN-RIGHT supports lowered rifle; feet planted). IMAGE2 approved ENEMY E01 appearance: grey-green plain helmet, grey-olive uniform, compact dark beard and short brick-red neck cloth, reddish-brown leather webbing. IMAGE3 tiny native enemy frame is pose/silhouette authority. Repaint IMAGE1 as IMAGE2 enemy identity, preserving elevated straight FRONT camera, exact arm positions, grenade near chest, rifle orientation, boots and proportions. Same C moderately painted texture, upper-left light. No allied camouflage, no face hidden by beard beyond jaw, no new equipment, no mirrored/rotated pose, floor/text/baked shadow, flying projectile. Full single transparent sprite; hands/muzzle/boots intact, native10-by14 occupied proportions.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "e9efbf033a04170f75135b641da03ef69d0ef0e3f3ca244a51eaa7df4edddcb1",
+  "references": [
+    "assets/modernization/soldier-grenade/uniform-a/s8-f0-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-4a-f0-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

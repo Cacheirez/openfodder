@@ -601,11 +601,86 @@
           ]
         }
       }
+    },
+    {
+      "sheet": 74,
+      "frame": 0,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-4a-f0/manifest.json",
+      "source_sha256": "e9efbf033a04170f75135b641da03ef69d0ef0e3f3ca244a51eaa7df4edddcb1",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-4a-f0-8x",
+          "sha256": "e7922dbfcb4aef3be42c22539e58018379f84359a98f853acd25708faa659d80",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-4a-f0-12x",
+          "sha256": "a18354ae9d4e4704032d079db2faed241827631482c27f7324c0bd45756706bc",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 74,
+      "frame": 1,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-4a-f1/manifest.json",
+      "source_sha256": "aa0336bf86dd36ac27d28646d65e0a716ceac7f70e33857a158bf325ae46dce7",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-4a-f1-8x",
+          "sha256": "e492c42e9dfad91f78d6fcb862208714901c2c90d4074aa1fb2b489c16ace097",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-4a-f1-12x",
+          "sha256": "ecaa338b5c0680642236d65003c4c1f2218bdadb1e4b03e7b0e84adc7bd5891b",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 74,
+      "frame": 2,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-4a-f2/manifest.json",
+      "source_sha256": "f4e5d6826524bb00a67910037ff279b6aa6506f49a210c142cb2f53d99d5ed0c",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-4a-f2-8x",
+          "sha256": "ee5a2feda2d34bf3348161338a74a3c5dfa8244144536d87fa56139099688ba6",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-4a-f2-12x",
+          "sha256": "b3e93c4b90feed04677be5570b2f96ce70022a0c2ff337f0d7a53a91b6fd6204",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
     }
   ],
   "counts": {
-    "poses": 24,
-    "assets": 48
+    "poses": 27,
+    "assets": 54
   },
   "identity": 2
 }
