@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "code_commit": "b1d8bffa2183f149aa593b206c3243ffc8504b5d",
+  "user_feedback": "Miguel reports modern soldiers apparently maintained throughout; asks whether final jump was removed. This is positive continuity feedback, not an invented global acceptance.",
+  "log": "C:\\Users\\migue\\AppData\\Local\\Temp\\OpenFodder-P1-ProtagonistasCompletos-hibrido-20261122-122031.log",
+  "log_sha256": "913f2092bea6750edc8a846f398ee0bc33575fd9091275c4058815b901c492b7",
+  "coverage": {
+    "attempts": 48750,
+    "outcomes": {
+      "interrupted": 292,
+      "no-body": 1024,
+      "published": 47434
+    },
+    "celebration_commands": [
+      {
+        "sheet": 56,
+        "frames": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "replace": 1073,
+        "published": 1073,
+        "keep": 0,
+        "missing": 0
+      },
+      {
+        "sheet": 65,
+        "frames": [],
+        "replace": 0,
+        "published": 0,
+        "keep": 0,
+        "missing": 0
+      },
+      {
+        "sheet": 159,
+        "frames": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "replace": 284,
+        "published": 284,
+        "keep": 0,
+        "missing": 0
+      }
+    ]
+  },
+  "source": {
+    "file": "Source/Sprites/Sprite_Troop.cpp",
+    "function": "Sprite_Handle_Player_MissionOver",
+    "identical_to_classic_reference": true,
+    "classic_reference": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8",
+    "function_sha256": "24fa381b05f75c24e91938680734c29158a942109c745d65d7e98504c82edd12",
+    "selection": "Native RNG selects celebration: first bit zero -> 9F loop; otherwise, absent water clipping, second bit zero -> 41 jump; remaining case -> 38 salute. Existing 41/9F/38 state continues without reselection.",
+    "jump": "Frame oscillates 0..5; native height=max(frame-1,0)*8, up to32; independent shadow. No simulation modification."
+  },
+  "catalog": {
+    "jump_sheet": 65,
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "formats": [
+      0,
+      1
+    ],
+    "covered_slots": 12,
+    "densities": [
+      8,
+      12
+    ]
+  },
+  "conclusion": "No jump state was captured or published in this session; salute/arm celebration were modern. Native celebration selection and jump height code are exactly unchanged from classic. There is no evidence of a removed jump; this session did not exercise it.",
+  "validation": "Read-only source equality, existing log transaction census and frozen catalog verification; no rebuild or repeated H3/CI warranted.",
+  "acceptance": "Positive user continuity observation; global visual/gameplay verdict remains pending; no automatic phase advancement"
+}
