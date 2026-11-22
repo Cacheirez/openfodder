@@ -92,3 +92,9 @@ E3.D — implementar catálogo de densidad explícita (8× o 12×), con prefligh
 E2.G0 — preparar granada enemiga dirección 0, 4A/F0-F2, con identidad E01 aprobada y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.
 
 - **E2.G0 comprobado:** pose, dirección0, 4A/F0,1,2; registro27 poses/54 activos. [Evidencia](evidence/enemy-v2-grenade-d0.json). Próximo: E2.G1 — preparar granada enemiga dirección 1, 4B/F0-F2, con identidad E01 y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.
+
+## E2.G1 — bloqueo de generación
+
+- **BLOQUEO E2.G1 de plataforma:** ImageGen rechazó la salida de 4B/F0 con HTTP400, moderation_blocked/illicit (output), petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa. Un intento, sin imagen utilizable y sin reintento/cambio de herramienta o modelo. [Reproducción y recuperación](evidence/enemy-generation-blocked-4b-f0.json). Arte publicado: 27 poses/54 activos, último bloque 6ff562b; carga por densidad 805f426. No hay ejecutable enemigo nuevo. CI de 6ff562b: H6 PASS; Windows/Linux EN CURSO, sin PASS completo.
+
+E2.G1 BLOQUEADO — resolver el rechazo de plataforma antes de retomar granada dirección 1, 4B/F0-F2. Conservar prompt/referencias y 27 poses/54 activos; no sortear el bloqueo ni activar un lote parcial. Requiere intervención sobre la herramienta, no otra aprobación artística.
