@@ -78,3 +78,9 @@ Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar 
 - **E2.V2.6 comprobado:** walk, dirección6, 48/F0,1,2; registro21 poses/42 activos. [Evidencia](evidence/enemy-v2-walk-d6.json). Próximo: E2.V2.7 — adaptar marcha enemiga dirección 7, 49/F0-F2, a E01/v2; validar 8×/12× y publicar. Después retomar E2.9, reutilización y presupuesto, antes de restantes estados e integración.
 
 - **E2.V2.7 comprobado:** walk, dirección7, 49/F0,1,2; registro24 poses/48 activos. [Evidencia](evidence/enemy-v2-walk-d7.json). Próximo: E2.9 — medir reutilización nativa verificable y presupuesto combinado de protagonistas/enemigos, manteniendo el límite de 64 MiB; fijar organización de carga antes de restantes estados e integración. Continuar autónomamente dentro del hito autorizado.
+
+## E2.9 — reutilización y presupuesto comprobados
+
+- **E2.9 comprobado:** 268 poses corporales opacas distintas por clave; once candidatos de reutilización nativa explícitos, sin vínculos automáticos. Estimación combinada sin ahorros: 81.404.544 bytes a ambas densidades (excede 64 MiB), 56.356.992 a 12×; con reserva de tres sombras, quedan 10.364.800 bytes. Cinco pruebas del informe PASS. Decisión: cargar solo la densidad elegida, sin elevar el límite; implementación PENDIENTE. [Medición reproducible](evidence/enemy-reuse-budget-v1.json).
+
+E3.D — implementar catálogo de densidad explícita (8× o 12×), con preflight de 64 MiB y rechazo seguro de densidad incorrecta; mantener manifiestos y candidato de protagonistas previos. Validar el cambio focalizado antes de restantes estados e integración enemiga.
