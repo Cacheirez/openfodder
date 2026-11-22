@@ -60,3 +60,7 @@ E1.3 comprobado: catálogo revisión4, 340 contratos producidos Amiga/339 PC y 1
 Miguel acepta expresamente la propuesta completa: casco y uniforme gris verdoso, cuello rojo teja y barba corta. [Decisión y SHA](evidence/enemy-identity-approved-v2.json) · [maestro](../../assets/modernization/enemy-identity-v2/). No requiere otra aprobación rutinaria para propagarla por el hito autorizado. Se preservan los 26 maestros verdes versión 1; nuevos paquetes/registros separados para evitar mezcla. La aprobación es de identidad, no una aceptación jugable anticipada.
 
 Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar exactamente F1 aprobado y editar F0/F2 manteniendo postura, anclas, orden y tamaños nativos. Validar/exportar 8×/12×, publicar y encadenar otras direcciones/estados. Reutilización y presupuesto (E2.9) siguen pendientes antes del conjunto restante/integración.
+
+## Registro de arte E01/v2
+
+- **E2.V2.0 comprobado:** walk, dirección0, 42/F0,1,2; registro3 poses/6 activos. [Evidencia](evidence/enemy-v2-walk-d0.json). Próximo: E2.V2.1 — adaptar marcha enemiga dirección1, 43/F0-F2, a E01/v2; mantener poses y geometría, validar8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
