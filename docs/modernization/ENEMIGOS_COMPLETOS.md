@@ -118,3 +118,11 @@ E3.T2 — conectar catálogo enemigo opt-in, captura de cuerpos y sombras propia
 El manifiesto4 puede incorporar enemy_catalog schema1 a la misma densidad. Se exigen todos los contratos producidos, firmas por raster y ausencia nativa por firma cero, con assets vacíos solo como desarrollo explícito. complete_art impide declarar terminado un catálogo con cuerpos o sombras opacos sin arte. El entorno debe activar ambos catálogos; sin la opción enemiga se conserva la ruta anterior. Marcador C4 independiente, jefe sin sombra inventada.
 
 E3.T3 — preparar candidatos técnicos privados por densidad con protagonistas conservados, 679 contratos enemigos firmados y arte E01 disponible; medir faltantes y sombras pendientes sin presentarlos como revisión final. Validar carga/recursos antes del replay técnico.
+
+## E3.T3 — candidatos técnicos privados
+
+- **E3.T3 comprobado:** candidatos privados 8×/12×, 679 contratos: 54 corporales E01, seis sombras modernas reutilizadas por igualdad nativa, 66 no-write, cuatro marcadores nativos y 549 cuerpos sin arte. 204 activos por densidad; 11.227.648/25.262.208 bytes, dentro de 64 MiB. Validación C++ con bancos retenidos Windows/Linux y sanitizadores PASS; tres pruebas de conversión PASS. Contacto de suelo, replay/H3/CI y revisión final PENDIENTES. [Evidencia](evidence/enemy-technical-candidates-v1.json).
+
+Preparador: tools/modernization/prepare_enemy_technical_candidate.py. Validador C++: validate_enemy_technical_candidate.cpp. Recuperación local: C:\Users\migue\.codex\visualizations\2026\11\19\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\enemy-technical-v2. Recalcula firmas desde cuatro bancos verificados, conserva descriptores/bytes protagonistas y separa faltantes de recursos vacíos. No hay lanzador de revisión final.
+
+E3.T4 — cualificar y adjuntar la pintura de sombra de suelo aprobada a las 27 poses E01 existentes, con apoyo/proyección comunes por dirección y hashes corporales intactos; validar contratos y candidatos sin generar arte nuevo ni activar revisión final.
