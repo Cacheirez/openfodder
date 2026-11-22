@@ -78,6 +78,81 @@
       }
     },
     {
+      "sheet": 67,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f0/manifest.json",
+      "source_sha256": "a65b0f7f06e4bf277ffba619f4484f9c8ee7e2b5643b64ae6b401bb1682f2ded",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f0-8x",
+          "sha256": "71e312baf7dcaab5cdcbd236bf13a82b34d757de76b7a9b6aab636d89e4ef18b",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f0-12x",
+          "sha256": "f3dfad0ff2b2d73f0f9651676836894c10a6e5de43fc11024da8770ce372576d",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 67,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f1/manifest.json",
+      "source_sha256": "55ccc8efaaad1e44e8fb998f012d8a233c0849810bab3db25c69019d17a47860",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f1-8x",
+          "sha256": "6c0083994f3ba718043e8f0302e33310a47dfa8910d20c5e441b34260ecf56d2",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f1-12x",
+          "sha256": "2517f9c2bf4b0fc5ae2c1307064b96e1e79bb9a988d0b5352638b294b4001c3b",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 67,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f2/manifest.json",
+      "source_sha256": "5ff4c3439f59473659b47d98d2da211257c45d60a371ec305425165565b1a981",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f2-8x",
+          "sha256": "e8d07db1883830dad4877523b0a219bba3a29bf094d8b057677b22e48354d3af",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f2-12x",
+          "sha256": "d39b75fe5ce22f203f1459a3b8e30f3b0bc33fffd3b5c94f504141348e3fbf22",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 68,
       "frame": 0,
       "family": "walk",
@@ -579,7 +654,7 @@
     }
   ],
   "counts": {
-    "poses": 23,
-    "assets": 46
+    "poses": 26,
+    "assets": 52
   }
 }

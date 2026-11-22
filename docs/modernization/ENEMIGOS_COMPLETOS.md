@@ -33,7 +33,9 @@ E2.6 comprobado: dirección7,49/F0-F2; tres maestros/seis derivados nuevos, fren
 
 E2.7 comprobado: dirección0,42/F0-F2; tres maestros/seis derivados nuevos, cuerpo de frente hacia abajo. [Evidencia](evidence/enemy-walk-d0.json). Registro total 23 poses/46 activos;21 poses de marcha en siete direcciones.
 
-E2.8 siguiente: marcha enemiga dirección1,43/F0-F2, última dirección del ciclo. Un grupo de tres frames, validación y commit antes de otro microbloque. No se altera ni se activa parcialmente el diagnóstico aceptado de protagonistas.
+E2.8 comprobado: dirección1,43/F0-F2; tres maestros/seis derivados nuevos, diagonal abajo-izquierda desde sus referencias. [Evidencia](evidence/enemy-walk-d1.json). Marcha completa: 8×3, 24 poses/48 derivados. Registro total 26 poses/52 activos; los cuatro paquetes enemigos anteriores siguen exactos. Source intacto respecto a 1b40748.
+
+E2.9 siguiente: auditar candidatos de reutilización explícita por raster nativo y semántica, junto al presupuesto combinado, antes de las familias restantes. No añadir vínculos automáticamente por una coincidencia ni modernizar filas solo declaradas. Hito enemigo en curso, no integrado ni aceptado jugando.
 
 Condición de E3: respetar el presupuesto existente de 64 MiB de activos. Medir el manifiesto combinado; reutilizar recursos equivalentes explícitos y organizar densidades cargadas sin elevar el límite ni perder verificación. La producción actual no activa ni cambia ese presupuesto.
 
