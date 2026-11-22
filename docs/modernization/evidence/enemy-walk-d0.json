@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.7 enemy walk direction0",
+  "status": "PASS internal art/export; runtime integration and Miguel review pending",
+  "sheet": 66,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "new_frames": [
+    0,
+    1,
+    2
+  ],
+  "logical_size": [
+    16,
+    14
+  ],
+  "density": [
+    8,
+    12
+  ],
+  "occupied_boxes": {
+    "0": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "1": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "2": [
+      4,
+      0,
+      11,
+      14
+    ]
+  },
+  "validation": [
+    "PC/Amiga native geometry and alpha bounds PASS",
+    "Source/PNG/RGBA SHA, lengths, sizes and pixel equality PASS",
+    "Internal derivative review: front downward body, alternate steps and feet-together frame, native carry angle preserved",
+    "Registry23 poses/46 assets;21 walk poses in seven directions",
+    "Native logic and accepted protagonist launcher unchanged; no duplicated H3/CI for inactive art"
+  ],
+  "next": "E2.8 enemy walk direction1,43/F0-F2, final walk direction"
+}

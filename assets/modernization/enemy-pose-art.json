@@ -3,6 +3,81 @@
   "status": "internally checked available masters; not runtime integration or Miguel acceptance",
   "poses": [
     {
+      "sheet": 66,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f0/manifest.json",
+      "source_sha256": "e4327830f296a66ccd78cbd18b8710dc52e0726fa0f639feb2dc665a0ee7fa32",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f0-8x",
+          "sha256": "d8a301637f56230a9794759bf0db1f3a07d2b34b5d4dad8db51f218729456075",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f0-12x",
+          "sha256": "9fd5a2cb49142678ae25d6b56358b459e679956d8bc5e6c4eaa0a7b95145a200",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 66,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f1/manifest.json",
+      "source_sha256": "3998579eeb76f9667109464b6e3fee6024d850635b58360fc532f6fe71a52c2b",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f1-8x",
+          "sha256": "682ddbc2572042d1ea20bf0871ab344cc4ba9ab9449cf6e59162b99d3ce60a8f",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f1-12x",
+          "sha256": "677e0c722a3bf53632b69ff0a3b5ce40e0fe10a4086b634a3ddae1f6358a8732",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 66,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f2/manifest.json",
+      "source_sha256": "2081d9764457e4a75271c30c3b7d8a554edf9fdf219c1d970cfcdaf44c69c7a5",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f2-8x",
+          "sha256": "c5fcbc6aa680b2d2737aae970f42f028810f8a8ba6e9bfa1ecb1657e08922c37",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f2-12x",
+          "sha256": "36069bea47c356be989ca0730d8872ec8f66dce9d068d3e0c80d97f48e2c7c46",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 68,
       "frame": 0,
       "family": "walk",
@@ -504,7 +579,7 @@
     }
   ],
   "counts": {
-    "poses": 20,
-    "assets": 40
+    "poses": 23,
+    "assets": 46
   }
 }
