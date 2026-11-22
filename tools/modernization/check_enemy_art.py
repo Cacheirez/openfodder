@@ -12,15 +12,23 @@ def sha(p):
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
-def registry():
+def registry(identity=1):
+    assert identity in (1,2)
     catalog=inventory()
     slots={(s['actor_type'],s['sheet'],s['frame'])
            for pl in catalog['platforms'].values() for s in pl['slots'] if s['produced']}
     poses={}
     for path in sorted((ROOT/'assets/modernization').glob('demo-a1-enemy-*/manifest.json')):
+        if ('-enemy-v2-' in path.parent.name)!=(identity==2):continue
         m=json.loads(path.read_text(encoding='utf-8'))
+        if identity==2:
+            master=ROOT/'assets/modernization/enemy-identity-v2'
+            approved=json.loads((master/'manifest.json').read_text(encoding='utf-8'))
+            assert approved['status']=='approved-by-Miguel' and sha(master/'source.png')==approved['source_sha256']
+            assert m['enemy_identity']==2 and m['identity_master_sha256']==approved['source_sha256']
         for asset in m['assets']:
-            match=re.fullmatch(r'enemy-(walk|death|prone|pose)-([0-9a-f]+)-f(\d+)-(8|12)x',asset['id'])
+            prefix='enemy-v2' if identity==2 else 'enemy'
+            match=re.fullmatch(prefix+r'-(walk|death|prone|pose)-([0-9a-f]+)-f(\d+)-(8|12)x',asset['id'])
             assert match, 'Unclassified enemy asset ID'
             family,sheet,frame,density=match.groups();sheet=int(sheet,16);frame=int(frame);density=int(density)
             actors=[t for t in (5,36,106) if (t,sheet,frame) in slots]
@@ -48,14 +56,18 @@ def registry():
             assert entry['source_sha256']==sha(source) and str(density) not in entry['assets']
             entry['assets'][str(density)]=dict(id=asset['id'],sha256=asset['sha256'],size=list(size))
     assert all(set(e['assets'])=={'8','12'} for e in poses.values())
-    return dict(schema=1,status='internally checked available masters; not runtime integration or Miguel acceptance',
+    result=dict(schema=1,status='internally checked available masters; not runtime integration or Miguel acceptance',
         poses=[poses[k] for k in sorted(poses)],counts=dict(poses=len(poses),assets=2*len(poses)))
+    if identity==2:result['identity']=2
+    return result
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--out',type=Path,default=ROOT/'assets/modernization/enemy-pose-art.json')
-    p.add_argument('--check',action='store_true');a=p.parse_args();r=registry()
+    p.add_argument('--out',type=Path)
+    p.add_argument('--identity',type=int,choices=(1,2),default=1)
+    p.add_argument('--check',action='store_true');a=p.parse_args();r=registry(a.identity)
+    if a.out is None:a.out=ROOT/f"assets/modernization/enemy-{'v2-' if a.identity==2 else ''}pose-art.json"
     if a.check:
         assert json.loads(a.out.read_text(encoding='utf-8'))==r, 'Enemy art registry drift'
     else:

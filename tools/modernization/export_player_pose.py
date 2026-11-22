@@ -64,7 +64,7 @@ def export(source,atlas,sheet,frame,actor,family,out,builders,work,placement=Non
         box=Image.frombytes('RGBA',(16*density,height*density),rgba).getchannel('A').getbbox()
         assert box and x*density<=box[0]<box[2]<=right*density and y*density<=box[1]<box[3]<=bottom*density
         assets.append(result)
-    manifest=dict(status=('Authorized autonomous enemy art' if asset_prefix=='enemy' else 'Authorized autonomous protagonist art')+'; internal inspection and exact export; not global visual/gameplay acceptance',
+    manifest=dict(status=('Authorized autonomous enemy art' if asset_prefix.startswith('enemy') else 'Authorized autonomous protagonist art')+'; internal inspection and exact export; not global visual/gameplay acceptance',
         pose=dict(type=actor,sheet=sheet,frame=frame),assets=assets,bindings=[],
         source=dict(file='source.png',size=list(image.size),mode=image.mode,sha256=sha(source),generator='built-in image_gen; original preserved'),
         export=dict(builder='existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp',crop=list(crop),placement=dict(x=x,y=y,width=right-x,height=bottom-y),

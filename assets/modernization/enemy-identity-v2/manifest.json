@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "identity": 2,
+  "status": "approved-by-Miguel",
+  "date": "2026-11-22",
+  "source_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source": "source.png",
+  "source_pose": {
+    "type": 5,
+    "sheet": 66,
+    "frame": 1
+  },
+  "approved_quote": "me parece muy bien lo que propones para el uniforme enemigo. Adelante.",
+  "features": [
+    "Plain muted grey-green helmet",
+    "Grey-olive uniform, same moderate painted style",
+    "Short brick-red neck cloth/collar",
+    "Short dark beard where face/jaw is visible",
+    "Existing reddish-brown webbing and equipment"
+  ],
+  "invariants": [
+    "Native pose, silhouette, direction and logical geometry",
+    "No mirrored art",
+    "No beard drawn through helmet or on unseen faces",
+    "No invented shadows, native independent shadows retained",
+    "Leader106 retains its source-defined silhouette and identity; no conversion of unrelated civilians"
+  ],
+  "scope": "Artistic identity approval; not acceptance of every pose or gameplay; full enemy milestone remains authorized",
+  "recovery": "All previous green enemy masters/derivatives remain at their original version1 paths; identity2 uses sibling packages and a separate registry"
+}

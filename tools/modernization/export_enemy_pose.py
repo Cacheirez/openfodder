@@ -1,7 +1,9 @@
 """Export a single source-defined enemy pose using the established C++ builders."""
 import argparse
+import hashlib
+import json
 from pathlib import Path
-from inventory_enemy_states import inventory
+from inventory_enemy_states import ROOT, inventory
 from export_player_pose import export
 
 
@@ -21,6 +23,18 @@ if __name__=='__main__':
     p.add_argument('--type',type=int,default=5)
     p.add_argument('--family',default='pose')
     p.add_argument('--native-format',type=int,choices=(0,1))
+    p.add_argument('--identity',type=int,choices=(1,2),default=1)
     a=p.parse_args()
+    identity=None
+    if a.identity==2:
+        identity_path=ROOT/'assets/modernization/enemy-identity-v2/manifest.json'
+        identity=json.loads(identity_path.read_text(encoding='utf-8'))
+        assert identity['status']=='approved-by-Miguel' and identity['identity']==2
+        master=identity_path.parent/'source.png'
+        assert hashlib.sha256(master.read_bytes()).hexdigest()==identity['source_sha256']
     export(a.source,a.atlas,a.sheet,a.frame,a.type,a.family,a.out,a.builders,a.work,
-           native_format=a.native_format,contract_rows=contracts(),asset_prefix='enemy')
+           native_format=a.native_format,contract_rows=contracts(),asset_prefix='enemy-v2' if a.identity==2 else 'enemy')
+    if identity:
+        path=a.out/'manifest.json';m=json.loads(path.read_text(encoding='utf-8'))
+        m['enemy_identity']=2;m['identity_master_sha256']=identity['source_sha256']
+        path.write_text(json.dumps(m,indent=2)+'\n',encoding='utf-8')

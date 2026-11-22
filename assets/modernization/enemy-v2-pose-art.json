@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "status": "internally checked available masters; not runtime integration or Miguel acceptance",
+  "poses": [
+    {
+      "sheet": 66,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-walk-42-f1/manifest.json",
+      "source_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-walk-42-f1-8x",
+          "sha256": "751d8d7c67eb6e08f132a53c3188f0c25063094bc5362c356204ddb28d076ce9",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-walk-42-f1-12x",
+          "sha256": "3af2534bf3eb1995513b847b2150574775bee448bc33bb40c07552e7609d6d18",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    }
+  ],
+  "counts": {
+    "poses": 1,
+    "assets": 2
+  },
+  "identity": 2
+}

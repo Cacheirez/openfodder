@@ -31,7 +31,7 @@ E2.5 comprobado: dirección6,48/F0-F2; tres maestros/seis derivados nuevos, orie
 
 E2.6 comprobado: dirección7,49/F0-F2; tres maestros/seis derivados nuevos, frente diagonal abajo-derecha y alternancia de pasos. [Evidencia](evidence/enemy-walk-d7.json). Registro total veinte poses/cuarenta activos; dieciocho poses de marcha en seis direcciones.
 
-E2.7 comprobado: dirección0,42/F0-F2; tres maestros/seis derivados nuevos, cuerpo de frente hacia abajo. [Evidencia](evidence/enemy-walk-d0.json). Registro total 23 poses/46 activos;21 poses de marcha en siete direcciones.
+E2.7 comprobado: dirección 0, 42/F0-F2; tres maestros/seis derivados nuevos, cuerpo de frente hacia abajo. [Evidencia](evidence/enemy-walk-d0.json). Registro total 23 poses/46 activos;21 poses de marcha en siete direcciones.
 
 E2.8 comprobado: dirección1,43/F0-F2; tres maestros/seis derivados nuevos, diagonal abajo-izquierda desde sus referencias. [Evidencia](evidence/enemy-walk-d1.json). Marcha completa: 8×3, 24 poses/48 derivados. Registro total 26 poses/52 activos; los cuatro paquetes enemigos anteriores siguen exactos. Source intacto respecto a 1b40748.
 
@@ -54,3 +54,9 @@ IA, simulación, RNG, colisiones, reloj lógico, dirección/frame y referencias 
 Miguel considera que los enemigos se parecen demasiado a los aliados; propone barba y un distintivo, observando rojo en el cuello original. Se ha verificado color rojizo en esa franja, sin atribuir con certeza una prenda al bitmap. Propuesta local sin integrar: casco liso gris verdoso, uniforme gris oliva, cuello rojo teja corto y barba corta como rasgo secundario. El casco/uniforme conservan reconocimiento desde atrás. [Muestra y recuperación](evidence/enemy-identity-proposal-v1.json). Esperar la elección artística de Miguel antes de extender diseño; las 24 poses anteriores se conservan. No se anula el hito completo autorizado.
 
 E1.3 comprobado: catálogo revisión4, 340 contratos producidos Amiga/339 PC y 143 solo declarados por formato; 69/F2 no lo produce el controlador de daño acotado a 0/1. Once pruebas PASS, sin cambios en Source ni arte activo. [Evidencia](evidence/enemy-source-bounds-r4.json). E2.9 está en curso y pendiente de cierre; sus candidatos preliminares de reutilización no se han convertido en vínculos.
+
+## Identidad E01/v2 aprobada —22-11
+
+Miguel acepta expresamente la propuesta completa: casco y uniforme gris verdoso, cuello rojo teja y barba corta. [Decisión y SHA](evidence/enemy-identity-approved-v2.json) · [maestro](../../assets/modernization/enemy-identity-v2/). No requiere otra aprobación rutinaria para propagarla por el hito autorizado. Se preservan los 26 maestros verdes versión 1; nuevos paquetes/registros separados para evitar mezcla. La aprobación es de identidad, no una aceptación jugable anticipada.
+
+Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar exactamente F1 aprobado y editar F0/F2 manteniendo postura, anclas, orden y tamaños nativos. Validar/exportar 8×/12×, publicar y encadenar otras direcciones/estados. Reutilización y presupuesto (E2.9) siguen pendientes antes del conjunto restante/integración.

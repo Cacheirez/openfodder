@@ -1,0 +1,8 @@
+{
+  "generator": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit, ONE enemy identity design proposal for a small top-down Cannon Fodder game sprite. Edit this existing full-body enemy soldier master. Preserve EXACTLY the standing pose, chunky C01 moderate-painted proportions, camera, head/helmet size, rifle, arms/hands, boots, body silhouette and transparent background. Make the enemy visibly distinct from the allied green-camouflage soldier using these restrained changes ONLY: helmet becomes PLAIN muted grey-green charcoal olive, visibly greyer and less yellow than allied olive camouflage, with the same upper-left lighting; uniform becomes muted grey-olive with quieter texture while retaining painted finish; add a short simple BRICK-RED cloth collar/neck wrap visible around neck, no long dangling scarf or new silhouette; add a SHORT DARK BROWN BEARD along jaw/chin, compact and natural, keeping mouth and cheeks readable, not a long pointed beard. Keep existing reddish-brown leather webbing and equipment unchanged. Beard is a secondary identifying feature, helmet and red neck colour are the main markers at small sprite size. No symbols, flags, helmet insignia, arm bands, extra gear, ground shadow, floor, text, labels or background. One complete full-body sprite, all parts visible with same generous transparent margins. This is an unintegrated design proposal, not a new pose.",
+  "reference": "assets/modernization/demo-a1-enemy-walk-42-f1/source.png",
+  "source_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "Identity accepted by Miguel; original proposal prompt preserved",
+  "approval": "docs/modernization/evidence/enemy-identity-approved-v2.json"
+}
