@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 3,
+  "revision": 4,
   "status": "source producer bounds including conservative initial-person injury; runtime signatures and art validation separate",
   "actors": [
     {
@@ -3534,8 +3534,8 @@
               "table_offset": 8
             }
           ],
-          "produced": true,
-          "producer_evidence": "current selector or conservative pre-first-update injury boundary"
+          "produced": false,
+          "producer_evidence": "shared injury initializer selects0; native update and restoration bound injury frames to0/1"
         },
         {
           "actor_type": 5,
@@ -8546,8 +8546,8 @@
               "table_offset": 8
             }
           ],
-          "produced": true,
-          "producer_evidence": "type36 normal path is rocket-only; shared injury controller retains other listed states"
+          "produced": false,
+          "producer_evidence": "shared injury initializer selects0; native update and restoration bound injury frames to0/1"
         },
         {
           "actor_type": 36,
@@ -12177,8 +12177,8 @@
       ],
       "counts": {
         "contracts": 483,
-        "produced": 342,
-        "declared_only": 141,
+        "produced": 340,
+        "declared_only": 143,
         "by_actor": {
           "5": 242,
           "36": 182,
@@ -15547,8 +15547,8 @@
               "table_offset": 8
             }
           ],
-          "produced": true,
-          "producer_evidence": "current selector or conservative pre-first-update injury boundary"
+          "produced": false,
+          "producer_evidence": "shared injury initializer selects0; native update and restoration bound injury frames to0/1"
         },
         {
           "actor_type": 5,
@@ -20559,8 +20559,8 @@
               "table_offset": 8
             }
           ],
-          "produced": true,
-          "producer_evidence": "type36 normal path is rocket-only; shared injury controller retains other listed states"
+          "produced": false,
+          "producer_evidence": "shared injury initializer selects0; native update and restoration bound injury frames to0/1"
         },
         {
           "actor_type": 36,
@@ -24190,8 +24190,8 @@
       ],
       "counts": {
         "contracts": 482,
-        "produced": 341,
-        "declared_only": 141,
+        "produced": 339,
+        "declared_only": 143,
         "by_actor": {
           "5": 241,
           "36": 182,

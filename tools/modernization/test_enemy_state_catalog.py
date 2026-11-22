@@ -78,6 +78,8 @@ class EnemyInventoryTests(unittest.TestCase):
                 self.assertFalse(produced(rows[key])[0], key)
             self.assertTrue(produced(rows[36,0xa8,2])[0])
             self.assertTrue(produced(rows[5,0xdc,0])[0])
+            self.assertFalse(produced(rows[5,0x69,2])[0])
+            self.assertFalse(produced(rows[36,0x69,2])[0])
 
     def test_new_rocket_permission_invalidates_type5_bound(self):
         codes=copy.copy(self.codes)

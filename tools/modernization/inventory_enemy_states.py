@@ -47,6 +47,8 @@ def produced(slot):
     """Current CF1 producer bounds, independent of declared table extent."""
     actor, sheet, frame = slot['actor_type'], slot['sheet'], slot['frame']
     families = {r['family'] for r in slot['roles']}
+    if families & {'damage_override','damage_ballistic'} and frame > 1:
+        return False, 'shared injury initializer selects0; native update and restoration bound injury frames to0/1'
     if actor in (5,36) and sheet == 0xcc:
         return False, 'vehicle countdown is entered only by player squad timer; retain declaration'
     if actor == 5 and families == {'rocket'}:
@@ -91,6 +93,7 @@ def audit_routes(codes):
     assert all(s in soldier for s in ('Data0 = 0x63;', 'pSprite->mSheetIndex = 0x7A;',
         'pSprite->mSheetIndex = 0xA7;', 'pSprite->mSheetIndex = 0xCC;',
         'pSprite->mFrameIndex = 4;', 'pSprite->mFrameIndex %= 2;'))
+    assert 'if (pSprite->mFrameIndex < 1)' in soldier
     assert all(s in ordinary for s in ('pSprite->mSheetIndex = 0xDC;',
         'pSprite->mFollowTarget', 'else if (!word_3AA1D)', 'Data28 + Data8 + 0x18'))
     assert 'Sprite_Handle_Hostage(pSprite);' in codes['Sprite_Handle_Enemy_Leader']
@@ -187,7 +190,7 @@ def inventory(root=ROOT):
         platforms[platform] = dict(slots=rows, counts=dict(contracts=len(rows),
             produced=sum(s['produced'] for s in rows), declared_only=sum(not s['produced'] for s in rows),
             by_actor=by_actor, unique_metadata_rows=unique))
-    return dict(schema=1, revision=3, status='source producer bounds including conservative initial-person injury; runtime signatures and art validation separate',
+    return dict(schema=1, revision=4, status='source producer bounds including conservative initial-person injury; runtime signatures and art validation separate',
         actors=[dict(type=5, name='enemy infantry'), dict(type=36, name='enemy rocket infantry'),
                 dict(type=106, name='enemy leader; native hostage controller, not ordinary infantry')],
         groups=list(GROUPS), routes=routes, platforms=platforms,

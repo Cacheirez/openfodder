@@ -48,3 +48,9 @@ Condición de E3: respetar el presupuesto existente de 64 MiB de activos. Medir 
 5. E5: diagnóstico local congelado con hashes y revisión visual/jugable de Miguel. No inventar aceptación a partir de contadores.
 
 IA, simulación, RNG, colisiones, reloj lógico, dirección/frame y referencias clásicas intactos. CD32 es el destino principal; metadatos Amiga/TheOne contrastados no equivalen a ejecutar campaña comercial CD32. Pruebas aún no ejercitadas permanecen pendientes.
+
+## Revisión de identidad — petición de Miguel, 22-11
+
+Miguel considera que los enemigos se parecen demasiado a los aliados; propone barba y un distintivo, observando rojo en el cuello original. Se ha verificado color rojizo en esa franja, sin atribuir con certeza una prenda al bitmap. Propuesta local sin integrar: casco liso gris verdoso, uniforme gris oliva, cuello rojo teja corto y barba corta como rasgo secundario. El casco/uniforme conservan reconocimiento desde atrás. [Muestra y recuperación](evidence/enemy-identity-proposal-v1.json). Esperar la elección artística de Miguel antes de extender diseño; las 24 poses anteriores se conservan. No se anula el hito completo autorizado.
+
+E1.3 comprobado: catálogo revisión4, 340 contratos producidos Amiga/339 PC y 143 solo declarados por formato; 69/F2 no lo produce el controlador de daño acotado a 0/1. Once pruebas PASS, sin cambios en Source ni arte activo. [Evidencia](evidence/enemy-source-bounds-r4.json). E2.9 está en curso y pendiente de cierre; sus candidatos preliminares de reutilización no se han convertido en vínculos.

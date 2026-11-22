@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E1.3 bounded damage rows",
+  "status": "PASS source refinement; no game changes",
+  "inventory_revision": 4,
+  "produced": {
+    "Amiga": 340,
+    "PC": 339
+  },
+  "declared_only_per_format": 143,
+  "correction": "Enemy69/F2 is a declared trailing row, but shared damage startsF0, increments only below1 and restores modulo2. Exclude from art/runtime-produced slots for types5/36; retain source declaration and private reference.",
+  "validation": "11 Python source-bound tests PASS; source catalogue reproduced; art registry26 poses/52 assets still PASS",
+  "runtime": "Source tree identical to protagonist acceptance1b40748; no repeated H3/CI claimed",
+  "remaining": "E2.9 reuse/budget audit still pending completion; preliminary exact candidates are not new runtime bindings"
+}
