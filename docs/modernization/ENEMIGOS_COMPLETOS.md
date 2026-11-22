@@ -66,3 +66,5 @@ Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar 
 - **E2.V2.0 comprobado:** walk, dirección0, 42/F0,1,2; registro3 poses/6 activos. [Evidencia](evidence/enemy-v2-walk-d0.json). Próximo: E2.V2.1 — adaptar marcha enemiga dirección1, 43/F0-F2, a E01/v2; mantener poses y geometría, validar8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
 
 - **E2.V2.1 comprobado:** walk, dirección1, 43/F0,1,2; registro6 poses/12 activos. [Evidencia](evidence/enemy-v2-walk-d1.json). Próximo: E2.V2.2 — adaptar marcha enemiga dirección 2, 44/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.2 comprobado:** walk, dirección2, 44/F0,1,2; registro9 poses/18 activos. [Evidencia](evidence/enemy-v2-walk-d2.json). Próximo: E2.V2.3 — adaptar marcha enemiga dirección 3, 45/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
