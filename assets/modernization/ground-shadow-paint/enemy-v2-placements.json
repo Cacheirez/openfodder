@@ -1,0 +1,1062 @@
+{
+  "schema": 1,
+  "status": "Technical alpha/contact qualification only; Miguel enemy visual acceptance pending",
+  "identity": 2,
+  "paint_source_sha256": "97b994a6dec9db1aba06ced1ab9f5359d354fe24279564b0586ce7ccab4c83c0",
+  "paint_assets_sha256": {
+    "ground-shadow-7x3-8x": "17cc48ab2a1958161d98201966e28f8bb8df7ba0ea72d054ae454df4968ba71c",
+    "ground-shadow-7x3-12x": "648960c54fd4fa5d6246f21e2aad053a2c5275e7b83b51a196f5263c85504734",
+    "ground-shadow-8x3-8x": "243b562801b82cbca2e8938513957f9b9a967a889c774fbe19077cfbf0670776",
+    "ground-shadow-8x3-12x": "bdd4dbe80fe5b81f581d61dbcdc8e0c396f5eef2080384a5d8b06b370b993e26",
+    "ground-shadow-10x3-8x": "d8e4fcb0c935e96a772cb9860ed789a13d13f93dfcc9aa8a474f815fa089b92c",
+    "ground-shadow-10x3-12x": "0a8d3a25300ecfbefdb51df16a5420c065e2ba0ebdd5e302171a0e5d12e3fce5",
+    "ground-shadow-12x3-8x": "c5a65ed49e77fc44c9fbe5b1f2ef26a10ac604f388026a5e577168370b9b1a4f",
+    "ground-shadow-12x3-12x": "74ecd097cd70032986de6b9bddd9b44bc29cdf9877f12b39d351a4c2edb93dd7",
+    "ground-shadow-11x3-8x": "fc5199db47068c4cfe8bab5cea26b101e9589a12bd2d41b40d54da31441030cd",
+    "ground-shadow-11x3-12x": "4b84bb59a8c98eb6e21f65fb4c772b75280eff311bbd0dd01a95133d4288e698",
+    "ground-shadow-9x3-8x": "60d2f9be0e76d4d2af5e47972ddc663f6214c373904d963050cc50eed9cb9098",
+    "ground-shadow-9x3-12x": "555b105d7424b3fbb6ce03dbdb064c5fa63f274758c5071c09eb35b508760af5",
+    "ground-shadow-13x3-8x": "faf4f2881f00cc57aedddf796a5acfec86de3f576d99a41b5eacb5b4d36e9f12",
+    "ground-shadow-13x3-12x": "b95cb8a913869864c69f901a398ae76879c5b10ee8f35559c3c4c116bb06d0df"
+  },
+  "body_pixels_unchanged": true,
+  "stable_placement_within_direction": true,
+  "groups": [
+    {
+      "family": "grenade",
+      "direction": 0,
+      "owner_type": 5,
+      "width": 11,
+      "height": 3,
+      "x_quarters": 9,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-pose-4a-f0-8x",
+          "sha256": "e7922dbfcb4aef3be42c22539e58018379f84359a98f853acd25708faa659d80"
+        },
+        {
+          "id": "enemy-v2-pose-4a-f0-12x",
+          "sha256": "a18354ae9d4e4704032d079db2faed241827631482c27f7324c0bd45756706bc"
+        },
+        {
+          "id": "enemy-v2-pose-4a-f1-8x",
+          "sha256": "e492c42e9dfad91f78d6fcb862208714901c2c90d4074aa1fb2b489c16ace097"
+        },
+        {
+          "id": "enemy-v2-pose-4a-f1-12x",
+          "sha256": "ecaa338b5c0680642236d65003c4c1f2218bdadb1e4b03e7b0e84adc7bd5891b"
+        },
+        {
+          "id": "enemy-v2-pose-4a-f2-8x",
+          "sha256": "ee5a2feda2d34bf3348161338a74a3c5dfa8244144536d87fa56139099688ba6"
+        },
+        {
+          "id": "enemy-v2-pose-4a-f2-12x",
+          "sha256": "b3e93c4b90feed04677be5570b2f96ce70022a0c2ff337f0d7a53a91b6fd6204"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-pose-4a-f0-8x",
+          "contact_pixels": 95,
+          "all_contact_covered": true,
+          "support_center": [
+            6.615118010669063,
+            12.423372996670238
+          ],
+          "shadow_center": [
+            8.167900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4a-f0-12x",
+          "contact_pixels": 215,
+          "all_contact_covered": true,
+          "support_center": [
+            6.62377148836303,
+            12.425159494700454
+          ],
+          "shadow_center": [
+            8.168020550712509,
+            14.366760112763162
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4a-f1-8x",
+          "contact_pixels": 82,
+          "all_contact_covered": true,
+          "support_center": [
+            6.95264221144655,
+            12.394644281472948
+          ],
+          "shadow_center": [
+            8.167900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4a-f1-12x",
+          "contact_pixels": 186,
+          "all_contact_covered": true,
+          "support_center": [
+            6.962540946257949,
+            12.39545553261855
+          ],
+          "shadow_center": [
+            8.168020550712509,
+            14.366760112763162
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4a-f2-8x",
+          "contact_pixels": 78,
+          "all_contact_covered": true,
+          "support_center": [
+            6.447229955631528,
+            12.401214162717915
+          ],
+          "shadow_center": [
+            8.167900727889702,
+            14.366411759563267
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4a-f2-12x",
+          "contact_pixels": 180,
+          "all_contact_covered": true,
+          "support_center": [
+            6.4400833654676,
+            12.406254246313742
+          ],
+          "shadow_center": [
+            8.168020550712509,
+            14.366760112763162
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 0,
+      "owner_type": 5,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-42-f0-8x",
+          "sha256": "407e918acc9b41045d40d15c40fb27c5d84e2c082891d63adb0793f345fdfc3f"
+        },
+        {
+          "id": "enemy-v2-walk-42-f0-12x",
+          "sha256": "0479429f0928598e75afd33726ef929478d02b677a49c81f9f75669698f8de37"
+        },
+        {
+          "id": "enemy-v2-walk-42-f1-8x",
+          "sha256": "751d8d7c67eb6e08f132a53c3188f0c25063094bc5362c356204ddb28d076ce9"
+        },
+        {
+          "id": "enemy-v2-walk-42-f1-12x",
+          "sha256": "3af2534bf3eb1995513b847b2150574775bee448bc33bb40c07552e7609d6d18"
+        },
+        {
+          "id": "enemy-v2-walk-42-f2-8x",
+          "sha256": "4be797934f406604171f2d988fb667fde2d768f434b093fa218436c93fcae07b"
+        },
+        {
+          "id": "enemy-v2-walk-42-f2-12x",
+          "sha256": "eb7bcd3b0cbdadd975a3433379e51cf09d8d1c3938b0f46bdd752d9c514f1f98"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-42-f0-8x",
+          "contact_pixels": 39,
+          "all_contact_covered": true,
+          "support_center": [
+            8.52008251936679,
+            12.22270545638262
+          ],
+          "shadow_center": [
+            9.015763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-42-f0-12x",
+          "contact_pixels": 88,
+          "all_contact_covered": true,
+          "support_center": [
+            8.52363876563031,
+            12.224970368692267
+          ],
+          "shadow_center": [
+            9.015537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-42-f1-8x",
+          "contact_pixels": 77,
+          "all_contact_covered": true,
+          "support_center": [
+            7.869090344273079,
+            12.444795702068562
+          ],
+          "shadow_center": [
+            9.015763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-42-f1-12x",
+          "contact_pixels": 169,
+          "all_contact_covered": true,
+          "support_center": [
+            7.8660915986744895,
+            12.439263774133591
+          ],
+          "shadow_center": [
+            9.015537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-42-f2-8x",
+          "contact_pixels": 36,
+          "all_contact_covered": true,
+          "support_center": [
+            6.627959185816914,
+            12.281399228388578
+          ],
+          "shadow_center": [
+            9.015763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-42-f2-12x",
+          "contact_pixels": 79,
+          "all_contact_covered": true,
+          "support_center": [
+            6.641431595657537,
+            12.280062004679062
+          ],
+          "shadow_center": [
+            9.015537382385448,
+            14.366789300720322
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 1,
+      "owner_type": 5,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 20,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-43-f0-8x",
+          "sha256": "e5c1e5dc8ed48c0ebec63f58be0064ba32708e63475c772f13fe29b76618f4f9"
+        },
+        {
+          "id": "enemy-v2-walk-43-f0-12x",
+          "sha256": "80ec7c6c99b2d09b0fbb6073464881807c8d877fdae20ab69fa116b6896e8987"
+        },
+        {
+          "id": "enemy-v2-walk-43-f1-8x",
+          "sha256": "731e7ca140bc5e0193615acd750a5acad27f2e2baa9cd50795ea7356e01af39a"
+        },
+        {
+          "id": "enemy-v2-walk-43-f1-12x",
+          "sha256": "5767504fa4d8d0df2ca3c336f6a559cb6ead5e7506fd99bd03ee19f04bdbe260"
+        },
+        {
+          "id": "enemy-v2-walk-43-f2-8x",
+          "sha256": "6de78c7884bd47a23de3ecebe5057b15f1b5dbb8efacb69bfa4259283e743c5e"
+        },
+        {
+          "id": "enemy-v2-walk-43-f2-12x",
+          "sha256": "ba48b29c6a24c69ae3420905ad3564693edc6e9543f25442f4d648305bca169f"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-43-f0-8x",
+          "contact_pixels": 45,
+          "all_contact_covered": true,
+          "support_center": [
+            8.31272406555518,
+            12.270325375195485
+          ],
+          "shadow_center": [
+            9.841973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-43-f0-12x",
+          "contact_pixels": 96,
+          "all_contact_covered": true,
+          "support_center": [
+            8.330160339606316,
+            12.264438338200302
+          ],
+          "shadow_center": [
+            9.842442303075021,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-43-f1-8x",
+          "contact_pixels": 38,
+          "all_contact_covered": true,
+          "support_center": [
+            8.678274304325312,
+            12.383673221407612
+          ],
+          "shadow_center": [
+            9.841973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-43-f1-12x",
+          "contact_pixels": 88,
+          "all_contact_covered": true,
+          "support_center": [
+            8.680831907145866,
+            12.38721023069582
+          ],
+          "shadow_center": [
+            9.842442303075021,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-43-f2-8x",
+          "contact_pixels": 49,
+          "all_contact_covered": true,
+          "support_center": [
+            8.244729297936512,
+            12.366675874219846
+          ],
+          "shadow_center": [
+            9.841973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-43-f2-12x",
+          "contact_pixels": 112,
+          "all_contact_covered": true,
+          "support_center": [
+            8.247872515857859,
+            12.366900137951589
+          ],
+          "shadow_center": [
+            9.842442303075021,
+            14.366562282227415
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 2,
+      "owner_type": 5,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 17,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-44-f0-8x",
+          "sha256": "9a65835405175a4d6c83171116d7cd11026e39945ce34ad8ccf865b49dfdc861"
+        },
+        {
+          "id": "enemy-v2-walk-44-f0-12x",
+          "sha256": "f1d152ec4dba25068f032ed456331aff186368470682543777ef85510b095433"
+        },
+        {
+          "id": "enemy-v2-walk-44-f1-8x",
+          "sha256": "502881ba6ea5572f1f805227462743cfda605a72c288b51405d7df18cc423a81"
+        },
+        {
+          "id": "enemy-v2-walk-44-f1-12x",
+          "sha256": "ca8913dc9ab6e0bca2321114e0936722adcbd75f8e2263c99e0f84688b0b05b3"
+        },
+        {
+          "id": "enemy-v2-walk-44-f2-8x",
+          "sha256": "5e6db1a7d96fa17c0d210e0482c12530e6df8408a2f59c45606ec92921775316"
+        },
+        {
+          "id": "enemy-v2-walk-44-f2-12x",
+          "sha256": "542b5905faba0a41f33bc1a3ce6aa41f1dec04c83581b172167f68dd5da44a42"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-44-f0-8x",
+          "contact_pixels": 98,
+          "all_contact_covered": true,
+          "support_center": [
+            8.507602853057119,
+            12.51097381375719
+          ],
+          "shadow_center": [
+            9.629723866984456,
+            14.366529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-44-f0-12x",
+          "contact_pixels": 230,
+          "all_contact_covered": true,
+          "support_center": [
+            8.499937765789545,
+            12.521849729574525
+          ],
+          "shadow_center": [
+            9.629774850573405,
+            14.366794321104022
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-44-f1-8x",
+          "contact_pixels": 57,
+          "all_contact_covered": true,
+          "support_center": [
+            7.869095697569982,
+            12.417240750212065
+          ],
+          "shadow_center": [
+            9.629723866984456,
+            14.366529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-44-f1-12x",
+          "contact_pixels": 124,
+          "all_contact_covered": true,
+          "support_center": [
+            7.866749643205474,
+            12.4144177590916
+          ],
+          "shadow_center": [
+            9.629774850573405,
+            14.366794321104022
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-44-f2-8x",
+          "contact_pixels": 54,
+          "all_contact_covered": true,
+          "support_center": [
+            7.816256081274444,
+            12.324151648456475
+          ],
+          "shadow_center": [
+            9.629723866984456,
+            14.366529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-44-f2-12x",
+          "contact_pixels": 120,
+          "all_contact_covered": true,
+          "support_center": [
+            7.819377289793322,
+            12.32110149672844
+          ],
+          "shadow_center": [
+            9.629774850573405,
+            14.366794321104022
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 3,
+      "owner_type": 5,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 22,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-45-f0-8x",
+          "sha256": "5bc653c28db461a19b1fdf0691a4fb26dbf1196d102d0b3c103df3f0a84f73e8"
+        },
+        {
+          "id": "enemy-v2-walk-45-f0-12x",
+          "sha256": "68dc76f756c61a2bc6cf874f57b6a56b09a51a2a9c9a35398cb131e1e98ccbc5"
+        },
+        {
+          "id": "enemy-v2-walk-45-f1-8x",
+          "sha256": "8f8b2189a591f9ac97745beda96a595d4347213817487e31fe0b484449a7ea21"
+        },
+        {
+          "id": "enemy-v2-walk-45-f1-12x",
+          "sha256": "ff580cf1a5f579cbe157407f736094accdb2cebff914d7dc1eb87dee145e5fb8"
+        },
+        {
+          "id": "enemy-v2-walk-45-f2-8x",
+          "sha256": "9c1d2269a46ec6d8e1fa5185e61a2d6ba1df45aa244151d52e58651483705096"
+        },
+        {
+          "id": "enemy-v2-walk-45-f2-12x",
+          "sha256": "0a95768b4d23968f684a9d3224ed32ba253d1cf64cf41faf5c020a1b2804c530"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-45-f0-8x",
+          "contact_pixels": 57,
+          "all_contact_covered": true,
+          "support_center": [
+            10.461301739357877,
+            12.456920649970575
+          ],
+          "shadow_center": [
+            10.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-45-f0-12x",
+          "contact_pixels": 123,
+          "all_contact_covered": true,
+          "support_center": [
+            10.463760287446304,
+            12.458110522301176
+          ],
+          "shadow_center": [
+            10.879774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-45-f1-8x",
+          "contact_pixels": 53,
+          "all_contact_covered": true,
+          "support_center": [
+            9.044544616746407,
+            12.476115278602562
+          ],
+          "shadow_center": [
+            10.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-45-f1-12x",
+          "contact_pixels": 118,
+          "all_contact_covered": true,
+          "support_center": [
+            9.04670407968264,
+            12.479368888054195
+          ],
+          "shadow_center": [
+            10.879774850573405,
+            14.116794321104022
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-45-f2-8x",
+          "contact_pixels": 59,
+          "all_contact_covered": true,
+          "support_center": [
+            7.147793644839782,
+            12.429462276283356
+          ],
+          "shadow_center": [
+            10.879723866984456,
+            14.116529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-45-f2-12x",
+          "contact_pixels": 133,
+          "all_contact_covered": true,
+          "support_center": [
+            7.150708678621403,
+            12.429163886220186
+          ],
+          "shadow_center": [
+            10.879774850573405,
+            14.116794321104022
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 4,
+      "owner_type": 5,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 22,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-46-f0-8x",
+          "sha256": "5844a91767bc59a13940bc5f9d68ea275c7938c4a28ee22062ce56efcf43d5ca"
+        },
+        {
+          "id": "enemy-v2-walk-46-f0-12x",
+          "sha256": "bc7fe45fae33c6dd5b2bef50ff04de3b658c106e025603417570a992153ee609"
+        },
+        {
+          "id": "enemy-v2-walk-46-f1-8x",
+          "sha256": "5383e6ef5ae873f1547abb24af7dfb46ba9d7646418c783a68f51a0108f599c5"
+        },
+        {
+          "id": "enemy-v2-walk-46-f1-12x",
+          "sha256": "3f0b63197f85ce29fc8c84a395219918067132f46595e0a395c451030e05219b"
+        },
+        {
+          "id": "enemy-v2-walk-46-f2-8x",
+          "sha256": "c19c5233787d3471aa92812473c3ba0a875898d8b9e1b1226e9fab52e2880bf8"
+        },
+        {
+          "id": "enemy-v2-walk-46-f2-12x",
+          "sha256": "1400f3cbb6a46e8b4d7a2f8ba1dcf3ccaaef0986663089138869df5e52f19694"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-46-f0-8x",
+          "contact_pixels": 39,
+          "all_contact_covered": true,
+          "support_center": [
+            8.488911666045471,
+            12.342376382159275
+          ],
+          "shadow_center": [
+            9.265763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-46-f0-12x",
+          "contact_pixels": 87,
+          "all_contact_covered": true,
+          "support_center": [
+            8.479447226453066,
+            12.345204505027704
+          ],
+          "shadow_center": [
+            9.265537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-46-f1-8x",
+          "contact_pixels": 71,
+          "all_contact_covered": true,
+          "support_center": [
+            7.836437346649618,
+            12.3503503300273
+          ],
+          "shadow_center": [
+            9.265763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-46-f1-12x",
+          "contact_pixels": 160,
+          "all_contact_covered": true,
+          "support_center": [
+            7.828160973181507,
+            12.350344296977246
+          ],
+          "shadow_center": [
+            9.265537382385448,
+            14.366789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-46-f2-8x",
+          "contact_pixels": 40,
+          "all_contact_covered": true,
+          "support_center": [
+            6.775264212949948,
+            12.3592384174665
+          ],
+          "shadow_center": [
+            9.265763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-46-f2-12x",
+          "contact_pixels": 86,
+          "all_contact_covered": true,
+          "support_center": [
+            6.7728227409418365,
+            12.357129167506391
+          ],
+          "shadow_center": [
+            9.265537382385448,
+            14.366789300720322
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 5,
+      "owner_type": 5,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-47-f0-8x",
+          "sha256": "be9e6f71d49edb5c701398641a25fa6d879e2ded19d2ed035b836032786275c3"
+        },
+        {
+          "id": "enemy-v2-walk-47-f0-12x",
+          "sha256": "1925dd6a6761ce2f0b3e90ea5a6fc6e3b6371c5adbae582fd6f8253ca4733292"
+        },
+        {
+          "id": "enemy-v2-walk-47-f1-8x",
+          "sha256": "4a1b7177443a67e22b9da0a8c7ca5f3fa86cbeed155fc0dca84177155919a3f5"
+        },
+        {
+          "id": "enemy-v2-walk-47-f1-12x",
+          "sha256": "cd84f934b89c83560a101ce9c21b5826bf52a33795d1156e54aee8c9048bebf6"
+        },
+        {
+          "id": "enemy-v2-walk-47-f2-8x",
+          "sha256": "19d9c710c2a2757444e38bd5c5c4dadb3db3d78b7d5e048680badfd51b92fca9"
+        },
+        {
+          "id": "enemy-v2-walk-47-f2-12x",
+          "sha256": "34a716ab49c98f4f0087765b9fb37a79542a5a0c187abee452f8f14eaa0c58d9"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-47-f0-8x",
+          "contact_pixels": 31,
+          "all_contact_covered": true,
+          "support_center": [
+            6.088368797239566,
+            12.40192449884982
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-47-f0-12x",
+          "contact_pixels": 68,
+          "all_contact_covered": true,
+          "support_center": [
+            6.086257357298993,
+            12.401895981649043
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            14.116911956152753
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-47-f1-8x",
+          "contact_pixels": 40,
+          "all_contact_covered": true,
+          "support_center": [
+            7.2750190169415125,
+            12.40724662860148
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-47-f1-12x",
+          "contact_pixels": 92,
+          "all_contact_covered": true,
+          "support_center": [
+            7.279131581273794,
+            12.41050358589291
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            14.116911956152753
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-47-f2-8x",
+          "contact_pixels": 51,
+          "all_contact_covered": true,
+          "support_center": [
+            9.106637694204814,
+            12.349728009199039
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            14.116509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-47-f2-12x",
+          "contact_pixels": 114,
+          "all_contact_covered": true,
+          "support_center": [
+            9.10138731605448,
+            12.350550923304537
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            14.116911956152753
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 6,
+      "owner_type": 5,
+      "width": 9,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-48-f0-8x",
+          "sha256": "34746680d98dffab7cf5762461b99c8d6f7377463f27d73c3349a713ed1f0ee4"
+        },
+        {
+          "id": "enemy-v2-walk-48-f0-12x",
+          "sha256": "94018e5ffe9cda28d00df7d971d169730ecd3a0e4f9e04828fec640c5f13a4da"
+        },
+        {
+          "id": "enemy-v2-walk-48-f1-8x",
+          "sha256": "6a6b6203205217e938621c1aec9c4ea29bc21b1e1ca2f37b0acb8dc0f6b0260f"
+        },
+        {
+          "id": "enemy-v2-walk-48-f1-12x",
+          "sha256": "7072e7844cc68157998ad5786855b565603df5d00b424a814440cee9985c29e0"
+        },
+        {
+          "id": "enemy-v2-walk-48-f2-8x",
+          "sha256": "cb99ed142e10e8820be75d660baec71e5dd6b0b3d613ce0fc28cdb9a27aa061a"
+        },
+        {
+          "id": "enemy-v2-walk-48-f2-12x",
+          "sha256": "0e64d060d95b3fd1fe02ee8d157c36d625fa14a5eee6569f04784fcce2085068"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-48-f0-8x",
+          "contact_pixels": 87,
+          "all_contact_covered": true,
+          "support_center": [
+            8.314030282043683,
+            12.514730854840954
+          ],
+          "shadow_center": [
+            9.591973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-48-f0-12x",
+          "contact_pixels": 197,
+          "all_contact_covered": true,
+          "support_center": [
+            8.319363364081843,
+            12.515742660676468
+          ],
+          "shadow_center": [
+            9.592442303075021,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-48-f1-8x",
+          "contact_pixels": 106,
+          "all_contact_covered": true,
+          "support_center": [
+            7.785918964175373,
+            12.557015164736681
+          ],
+          "shadow_center": [
+            9.591973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-48-f1-12x",
+          "contact_pixels": 239,
+          "all_contact_covered": true,
+          "support_center": [
+            7.788635997254262,
+            12.555745726251269
+          ],
+          "shadow_center": [
+            9.592442303075021,
+            14.366562282227415
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-48-f2-8x",
+          "contact_pixels": 62,
+          "all_contact_covered": true,
+          "support_center": [
+            7.762307716935223,
+            12.420554230980738
+          ],
+          "shadow_center": [
+            9.591973962332862,
+            14.366500055416136
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-48-f2-12x",
+          "contact_pixels": 139,
+          "all_contact_covered": true,
+          "support_center": [
+            7.760752750568684,
+            12.420365869294656
+          ],
+          "shadow_center": [
+            9.592442303075021,
+            14.366562282227415
+          ]
+        }
+      ]
+    },
+    {
+      "family": "walk",
+      "direction": 7,
+      "owner_type": 5,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 25,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "enemy-v2-walk-49-f0-8x",
+          "sha256": "5766a41e9f7c9746dd18473f5b2fa87780bca9830ad96c13d3c1984be7630429"
+        },
+        {
+          "id": "enemy-v2-walk-49-f0-12x",
+          "sha256": "d539f7f4412300582652ae856ac053b6eb01d950a7baf0a6ae028cdad3e4c2e8"
+        },
+        {
+          "id": "enemy-v2-walk-49-f1-8x",
+          "sha256": "35383e6699d5c07524aabe68104c255f7b3b3c3a65fec1e5d1e05b2edd9f844f"
+        },
+        {
+          "id": "enemy-v2-walk-49-f1-12x",
+          "sha256": "dd673219aa30b15b1cb7f1ba0123b97d739a36a41247ef3bcc0a45a3ae312f93"
+        },
+        {
+          "id": "enemy-v2-walk-49-f2-8x",
+          "sha256": "13e64b6368acf5716344d6af8bf7c3a3ddc6f3891c774e330aebf3037bd56518"
+        },
+        {
+          "id": "enemy-v2-walk-49-f2-12x",
+          "sha256": "0fd3f267f8e280fe85b1642d4d42d7b6168ea27bdb0bbf4db9b0addbb8862f74"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-walk-49-f0-8x",
+          "contact_pixels": 35,
+          "all_contact_covered": true,
+          "support_center": [
+            9.275507493428142,
+            12.23937612678397
+          ],
+          "shadow_center": [
+            10.015763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-49-f0-12x",
+          "contact_pixels": 78,
+          "all_contact_covered": true,
+          "support_center": [
+            9.281013684367098,
+            12.243453815261043
+          ],
+          "shadow_center": [
+            10.015537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-49-f1-8x",
+          "contact_pixels": 64,
+          "all_contact_covered": true,
+          "support_center": [
+            8.378158771690588,
+            12.427587955544949
+          ],
+          "shadow_center": [
+            10.015763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-49-f1-12x",
+          "contact_pixels": 139,
+          "all_contact_covered": true,
+          "support_center": [
+            8.381316795912506,
+            12.424285053839837
+          ],
+          "shadow_center": [
+            10.015537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-49-f2-8x",
+          "contact_pixels": 35,
+          "all_contact_covered": true,
+          "support_center": [
+            7.431756719081075,
+            12.26058568919371
+          ],
+          "shadow_center": [
+            10.015763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-walk-49-f2-12x",
+          "contact_pixels": 80,
+          "all_contact_covered": true,
+          "support_center": [
+            7.423765599148774,
+            12.263279649914816
+          ],
+          "shadow_center": [
+            10.015537382385448,
+            14.116789300720322
+          ]
+        }
+      ]
+    }
+  ],
+  "pending": []
+}

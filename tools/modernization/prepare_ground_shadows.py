@@ -7,6 +7,7 @@ import argparse
 import copy
 import hashlib
 import json
+import re
 from pathlib import Path
 import shutil
 
@@ -32,12 +33,17 @@ def checked_file(directory, asset):
 
 def prepare(base, out, placements_path=None):
     original = load(base)
-    if original['version'] not in (2,3):
-        raise ValueError('Expected ordered registry version 2 or 3')
+    if original['version'] not in (2,3,4):
+        raise ValueError('Expected ordered registry version 2, 3 or 4')
+    density=original.get('density') if original['version']==4 else None
+    if original['version']==4 and (type(density) is not int or density not in (8,12)):
+        raise ValueError('Expected explicit density for version4')
     result = copy.deepcopy(original)
     assets = {a['id']: a for a in result['assets']}
     if len(assets) != len(result['assets']):
         raise ValueError('Duplicate body identifiers')
+    if density is not None and any(a['density']!=density for a in result['assets']):
+        raise ValueError('Asset differs from explicit selected density')
     sources = {a['id']: checked_file(base.parent, a) for a in result['assets']}
     paint = {a['id']: a for a in load(PAINT / 'manifest.json')['assets']}
     placements = load(placements_path or PAINT / 'placements.json')
@@ -45,6 +51,9 @@ def prepare(base, out, placements_path=None):
     for group in placements['groups']:
         for body in group['bodies']:
             identity = body['id']
+            if density is not None and identity not in assets:
+                suffix=re.search(r'-(8|12)x?$',identity)
+                if suffix and int(suffix[1])!=density:continue
             if identity in changed or identity not in assets:
                 raise ValueError(f'Missing or repeated qualified body: {identity}')
             asset = assets[identity]
@@ -67,6 +76,9 @@ def prepare(base, out, placements_path=None):
             changed.add(identity)
     assert result['bindings'] == original['bindings']
     assert result.get('player_catalog') == original.get('player_catalog')
+    assert result.get('enemy_catalog') == original.get('enemy_catalog')
+    total=sum(a['width']*a['height']*a['density']**2*4 for a in result['assets'])
+    if total>64*1024*1024:raise ValueError('Ground candidate exceeds 64 MiB')
     # Validate everything before creating the destination. Never overwrite a
     # candidate or mutate its source, including when paths alias each other.
     out.mkdir(parents=True, exist_ok=False)
@@ -74,6 +86,16 @@ def prepare(base, out, placements_path=None):
         shutil.copyfile(sources[asset['id']], out / asset['file'])
     (out / 'candidate-manifest.json').write_text(
         json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    if original['version']==4:
+        for name in ('native-evidence.json','missing-art.json'):
+            if (base.parent/name).is_file():shutil.copyfile(base.parent/name,out/name)
+        if (base.parent/'technical-summary.json').is_file():
+            summary=load(base.parent/'technical-summary.json')
+            summary['assets']=len(result['assets'])
+            summary['asset_bytes']=total
+            summary['enemy_ground_contact']='Technical contact qualification attached; Miguel visual acceptance pending'
+            summary['qualified_ground_bodies']=len(changed)
+            (out/'technical-summary.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     return len(changed), len(result['assets']), len(result['bindings'])
 
 

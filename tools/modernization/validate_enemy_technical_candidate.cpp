@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,cases=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -50,7 +50,7 @@ int main(int argc,char** argv){try{
         const bool empty=CF1NativePoseSignature(p)==CF1EmptyEnemyPoseSignature(NativeSpriteWidth(p),size_t(g.rows));
         if(empty!=row.at("no_write").get<bool>())throw std::runtime_error("candidate evidence no-write differs");
         const auto result=registry.resolve(p,"",density,true,384,384*272);
-        if(result.decision==SoldierArtDecision::Replace){++modern;if(slot->role==4)++shadows;}
+        if(result.decision==SoldierArtDecision::Replace){++modern;if(slot->role==4)++shadows;if(result.groundShadow.pixels)++ground;}
         else if(result.decision==SoldierArtDecision::KeepClassic){++classic;if(row.at("no_write")==true)++hidden;}
         else throw std::runtime_error("candidate known source became missing");
         ++cases;
@@ -61,6 +61,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}

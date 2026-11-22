@@ -126,3 +126,9 @@ E3.T3 — preparar candidatos técnicos privados por densidad con protagonistas 
 Preparador: tools/modernization/prepare_enemy_technical_candidate.py. Validador C++: validate_enemy_technical_candidate.cpp. Recuperación local: C:\Users\migue\.codex\visualizations\2026\11\19\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\enemy-technical-v2. Recalcula firmas desde cuatro bancos verificados, conserva descriptores/bytes protagonistas y separa faltantes de recursos vacíos. No hay lanzador de revisión final.
 
 E3.T4 — cualificar y adjuntar la pintura de sombra de suelo aprobada a las 27 poses E01 existentes, con apoyo/proyección comunes por dirección y hashes corporales intactos; validar contratos y candidatos sin generar arte nuevo ni activar revisión final.
+
+## E3.T4 — sombras de suelo cualificadas
+
+Nueve grupos/27 poses/54 derivados con apoyo inferior y centro de sombra abajo-derecha; colocación común por dirección. Pintura aprobada y cuerpos intactos. Candidatos y catálogo conservados; validación Windows/Linux con bancos retenidos y sanitizadores PASS. [Evidencia](evidence/enemy-ground-contact-integration-v1.json). No es aceptación visual global.
+
+E3.T5 — compilar diagnóstico privado con la integración actual; ejecutar replay técnico de cuerpos/sombras y H3 pertinente en Windows/Linux, consultar CI y medir continuidad/faltantes. No entregar el candidato parcial como revisión final.
