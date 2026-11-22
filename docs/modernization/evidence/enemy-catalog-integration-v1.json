@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E3.T2",
+  "status": "PASS focused Windows/Linux; opt-in technical integration; partial artwork",
+  "contracts": {
+    "produced": 679,
+    "body_role": 2,
+    "owned_shadow_role": 4,
+    "marker_role": 6
+  },
+  "manifest": "Version4, explicit density; optional enemy_catalog schema1, all produced source slots mandatory, complete_art distinct from source completeness",
+  "opt_in": "OPENFODDER_PLAYER_CATALOG=1 and OPENFODDER_ENEMY_CATALOG=1; frozen protagonist launchers unchanged",
+  "results": {
+    "Windows": {
+      "enemy_catalog_and_registry_cases": 18284,
+      "actual_enemy_capture_cases": 2073,
+      "legacy_player_catalog_cases": 15441,
+      "selected_density_cases": 1376,
+      "legacy_shadow_capture_cases": 60,
+      "ground_shadow_format_density_groups": 4,
+      "ASan": "PASS",
+      "UBSan": "PASS",
+      "LSan": "not supported by retained Windows runtime; Linux exercised"
+    },
+    "Linux": {
+      "enemy_catalog_and_registry_cases": 18284,
+      "actual_enemy_capture_cases": 2073,
+      "legacy_player_catalog_cases": 15441,
+      "selected_density_cases": 1376,
+      "legacy_shadow_capture_cases": 60,
+      "ground_shadow_format_density_groups": 4,
+      "ASan": "PASS",
+      "UBSan": "PASS",
+      "LSan": "PASS"
+    }
+  },
+  "semantics": [
+    "Unknown/unproduced contracts and invalid ownership/resources/raster/geometry reject safely",
+    "Missing art keeps a verified native draw in development; does not imply full modern coverage",
+    "Resource-specific all-zero signatures require actual no-write raster; empty demo leader data is not universal invisibility",
+    "Independent enemy shadow suppresses optional body ground paint by scene/slot/generation even after late owner person changes",
+    "Ground eligibility expanded only to bounded enemy walk/grenade/aim and rocket F2; water/injury/height exclusions preserved"
+  ],
+  "simulation_source_equal_to_1b40748": [
+    "Source/Sprites",
+    "Source/Sprites.cpp",
+    "Source/Squad.cpp",
+    "Source/Map"
+  ],
+  "local_logs_sha256": {
+    "enemy-integration-tests\\capture-linux-build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enemy-integration-tests\\capture-linux.log": "8a1eeec969111c288042c6a059df37dfedb906b1790b57949d62d585f0e04592",
+    "enemy-integration-tests\\capture-win-build.log": "35090b1fdd0bc587cbf927d3cef3bca63a899cb38691b19bba58ac0d5498c68e",
+    "enemy-integration-tests\\capture-win.log": "0265278a3755a9e9bb6527d9da6482b46786967d795dab20e48c08ebbfd05881",
+    "enemy-integration-tests\\native_enemy_catalog-linux-build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enemy-integration-tests\\native_enemy_catalog-linux.log": "51ae6529c32f3f085d2edcffeacbedc243fbaa311ff74eac77870c9af7faf9d6",
+    "enemy-integration-tests\\native_enemy_catalog-win-build.log": "07bac26015508dc04b30cf56af38dbb3ca58a820185853a32ea41c6b7555abe3",
+    "enemy-integration-tests\\native_enemy_catalog-win.log": "d462277008680b112868013efb6e22fa2cc8531ae58b7417ad2214f925685835",
+    "enemy-integration-tests\\native_player_catalog-linux-build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enemy-integration-tests\\native_player_catalog-linux.log": "192880a3a8e5f992765c1dc5c93e218d1407ba45a44b4b831e2317b4f7aeb068",
+    "enemy-integration-tests\\native_player_catalog-win-build.log": "6d774d95bba4e091506c1ec1fae5bdb1f88f1d29ab54f4c33b1fad2597d71d17",
+    "enemy-integration-tests\\native_player_catalog-win.log": "bd3958ba5d1f8f1830c131b34b5556fa912b05c528229f029bb2ddb00c109b5d",
+    "enemy-integration-tests\\ordered_ground_shadow-linux-build.log": "bf1dcbe5c3cca2bcc0e2ece92750532f60667c3f9ec8263316cb78334c5d22ef",
+    "enemy-integration-tests\\ordered_ground_shadow-linux.log": "595b8b3c7e99d1546af31e500208c2ffe882766c2dea9f52815d33d3a9105472",
+    "enemy-integration-tests\\ordered_ground_shadow-win-build.log": "683f937e90817f59002602f8103247bf5aba22b38cc511f537981a474eda0065",
+    "enemy-integration-tests\\ordered_ground_shadow-win.log": "fd1ca72877b650cb64a4e30fcd6d5603bcd2a61bf78fb712842d1e3a62000c34"
+  },
+  "pending": [
+    "Combined private candidate",
+    "Native replay and complete H3/CI for integrated binary",
+    "Remaining enemy art and artistic shadow-contact qualification",
+    "Miguel visual/gameplay acceptance"
+  ],
+  "next": "E3.T3 — preparar candidatos técnicos privados por densidad con protagonistas conservados, 679 contratos enemigos firmados y arte E01 disponible; medir faltantes y sombras pendientes sin presentarlos como revisión final. Validar carga/recursos antes del replay técnico."
+}

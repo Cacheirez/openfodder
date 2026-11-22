@@ -14,6 +14,10 @@ inline bool CF1PlayerCatalogEnabled() {
     const char* value=std::getenv("OPENFODDER_PLAYER_CATALOG");
     return value && std::strcmp(value,"1")==0;
 }
+inline bool CF1EnemyCatalogEnabled() {
+    const char* value=std::getenv("OPENFODDER_ENEMY_CATALOG");
+    return CF1PlayerCatalogEnabled() && value && std::strcmp(value,"1")==0;
+}
 struct ResolvedSpriteResource {
     std::shared_ptr<const std::vector<uint8_t>> bytes;
     size_t offset = 0;
@@ -89,7 +93,7 @@ struct NativeAmiga8Frame {
     // Optional CF1 catalog proof. Legacy fields/name remain compatible with
     // existing Amiga-only manifests. Filled only by the live source-table capture.
     bool cf1 = false;
-    int role = 0; // 0 native associated/UI (including map corpse), 1 player, 3 player-owned shadow
+    int role = 0; // 0 native/UI, 1 player, 2 enemy, 3 player shadow, 4 enemy shadow, 6 enemy marker
     SpriteRasterLayout layout;
     uint8_t palette = 0;
     size_t frameOffset = 0;

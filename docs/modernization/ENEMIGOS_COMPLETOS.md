@@ -110,3 +110,11 @@ Inspección focalizada: propietarios5/36 comparten el controlador nativo de somb
 - **E3.T1 comprobado:** tabla nativa enemiga generada desde fuente: 965 contratos, 679 producidos (339 PC/340 Amiga), 286 solo declarados. Roles separados de cuerpo/sombra/asociado y máscaras de persona para daño inicial; cuatro pruebas y control de deriva PASS. Sin captura ni arte nuevo activados. [Evidencia](evidence/enemy-native-table-v1.json).
 
 E3.T2 — conectar catálogo enemigo opt-in, captura de cuerpos y sombras propias, firmas nativas y rechazo de fallos reales; mantener catálogo de desarrollo explícitamente incompleto y protagonistas independientes. Validar en Windows/Linux antes de preparar candidato técnico.
+
+## E3.T2 — integración técnica opt-in
+
+- **E3.T2 comprobado:** catálogo enemigo opt-in y captura de cuerpos/sombras, 679 estados firmables obligatorios; cobertura artística separada. Windows/Linux: 18.284 casos de catálogo/despacho, 2.073 de captura enemiga, 15.441 de catálogo protagonista, 1.376 de densidad y 60 de captura previa PASS; sombras y sanitizadores focalizados PASS (LSan Linux). Fuente de simulación intacta; faltantes válidos conservan clásico y errores reales rechazan. Candidato/replay/H3/CI completa y contacto visual enemigos PENDIENTES. [Evidencia](evidence/enemy-catalog-integration-v1.json).
+
+El manifiesto4 puede incorporar enemy_catalog schema1 a la misma densidad. Se exigen todos los contratos producidos, firmas por raster y ausencia nativa por firma cero, con assets vacíos solo como desarrollo explícito. complete_art impide declarar terminado un catálogo con cuerpos o sombras opacos sin arte. El entorno debe activar ambos catálogos; sin la opción enemiga se conserva la ruta anterior. Marcador C4 independiente, jefe sin sombra inventada.
+
+E3.T3 — preparar candidatos técnicos privados por densidad con protagonistas conservados, 679 contratos enemigos firmados y arte E01 disponible; medir faltantes y sombras pendientes sin presentarlos como revisión final. Validar carga/recursos antes del replay técnico.

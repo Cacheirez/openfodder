@@ -41,6 +41,8 @@ openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
             const auto& actor=g_Fodder->mSprites[state.slot];
             if(actor.mPresentationGeneration!=state.generation || actor.mSpriteType!=state.type || actor.mPersonType!=state.personType)return {};
             if(state.type==0 && state.personType==0)n.role=1;
+            else if(openfodder::CF1EnemyCatalogEnabled() && (state.type==5 || state.type==36 || state.type==106))n.role=2;
+            else if(openfodder::CF1EnemyCatalogEnabled() && state.type==41 && state.sheet==0xc4)n.role=6;
             else if(state.type==22){
                 bool ownerFound=false;
                 for(size_t ownerSlot=0;ownerSlot<g_Fodder->mSprites.size();++ownerSlot){
@@ -54,6 +56,7 @@ openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
                     n.ownerType=actor.mAIAggression;n.ownerPerson=owner.mPersonType;
                     n.ownerX=owner.mPosX;n.ownerY=owner.mPosY;n.ownerHeight=owner.mHeight;
                     if(n.ownerType==0 && n.ownerPerson==0)n.role=3;
+                    else if(openfodder::CF1EnemyCatalogEnabled() && (n.ownerType==5 || n.ownerType==36))n.role=4;
                     break;
                 }
                 if(!ownerFound)return {};

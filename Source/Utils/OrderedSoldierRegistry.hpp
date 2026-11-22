@@ -4,6 +4,7 @@
 #include "SoldierVariant.hpp"
 #include "SoldierArtBatch.hpp"
 #include "NativePlayerCatalog.hpp"
+#include "NativeEnemyCatalog.hpp"
 #include "json.hpp"
 #include <fstream>
 #include <set>
@@ -13,6 +14,7 @@ class OrderedSoldierRegistry {
     std::map<std::string,OrderedSoldierAsset> artwork;
     std::map<std::string,Binding> entries;
     std::shared_ptr<const NativePlayerCatalog> playerCatalog;
+    std::shared_ptr<const NativeEnemyCatalog> enemyCatalog;
     static bool canKeepNativeAmiga8(const PreparedSpriteDraw& prepared,
                                    size_t targetWidth, size_t targetSize, bool classicEnemies) {
         const auto& state = prepared.soldier;
@@ -160,7 +162,7 @@ class OrderedSoldierRegistry {
                 return v.get<int>();
             };
             const auto& type=config.at("owner_type");
-            if(!type.is_number_integer() || (type.get<int64_t>()!=0 && type.get<int64_t>()!=5))
+            if(!type.is_number_integer() || (type.get<int64_t>()!=0 && type.get<int64_t>()!=5 && type.get<int64_t>()!=36))
                 throw std::invalid_argument("ordered ground shadow owner");
             const auto& paint=found->second;auto& shadow=body.groundShadow;
             shadow.width=paint.width;shadow.height=paint.height;shadow.density=paint.density;
@@ -180,6 +182,10 @@ public:
         if(selectedDensity && selectedDensity!=8 && selectedDensity!=12)throw std::invalid_argument("ordered selected density");
         if(v==2 || v==3 || v==4)loadArtwork(root.at("assets"),directory,selectedDensity);
         if(v==3 || v==4)playerCatalog=std::make_shared<const NativePlayerCatalog>(root.at("player_catalog"),artwork,selectedDensity);
+        if(root.contains("enemy_catalog")){
+            if(v!=4)throw std::invalid_argument("enemy catalog manifest version");
+            enemyCatalog=std::make_shared<const NativeEnemyCatalog>(root.at("enemy_catalog"),artwork,selectedDensity);
+        }
         if(!root.at("bindings").is_array() || root.at("bindings").size()>8192)
             throw std::invalid_argument("ordered manifest version/size");
         for(const auto& row:root.at("bindings")){
@@ -223,6 +229,12 @@ public:
         OrderedSoldierAsset result;
         if(playerCatalog){
             if(!hybrid || !CF1PlayerCatalogEnabled())return result;
+            if(CF1EnemyCatalogEnabled() && (p.soldier.type==5 || p.soldier.type==36 || p.soldier.type==106 ||
+               p.nativeAmiga8.role==4 || (p.soldier.type==22 && (p.nativeAmiga8.ownerType==5 || p.nativeAmiga8.ownerType==36)) ||
+               (p.soldier.type==41 && p.soldier.sheet==0xc4))){
+                if(!enemyCatalog)throw std::invalid_argument("enemy catalog not configured");
+                return enemyCatalog->resolve(p,density,targetWidth,targetSize,artwork);
+            }
             return playerCatalog->resolve(p,density,targetWidth,targetSize,artwork);
         }
         const auto& s=p.soldier;const auto& g=s.geometry;

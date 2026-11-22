@@ -14,6 +14,7 @@ def build_code(root):
                        'static PreparedSpriteDraw fixture(')
     return r'''
 #include "Utils/NativePlayerCatalog.hpp"
+#include "Utils/EnemyPoseTable.hpp"
 #include <cassert>
 #include <cstring>
 #include <iostream>
@@ -36,8 +37,10 @@ struct cSurface{static NativeAmiga8Frame CaptureNativeAmiga8Frame(const Prepared
 int main(){
 #ifdef _WIN32
  _putenv_s("OPENFODDER_PLAYER_CATALOG","1");
+ _putenv_s("OPENFODDER_ENEMY_CATALOG","0");
 #else
  setenv("OPENFODDER_PLAYER_CATALOG","1",1);
+ setenv("OPENFODDER_ENEMY_CATALOG","0",1);
 #endif
  size_t cases=0;
  for(const auto& slot:CF1PlayerNativeSlots)if(slot.role==3){
@@ -62,6 +65,37 @@ int main(){
   engine.row.mLoadOffset++;assert(!capture().cf1);++cases;
  }
  std::cout<<"PASS actual shadow capture: "<<cases<<" cases; creation/update rows, late movement/destruction, pointer/generation identity, foreign owner and source rejection\n";
+#ifdef _WIN32
+ _putenv_s("OPENFODDER_ENEMY_CATALOG","1");
+#else
+ setenv("OPENFODDER_ENEMY_CATALOG","1",1);
+#endif
+ size_t enemyCases=0;
+ for(const auto& slot:CF1EnemyNativeSlots)if(slot.produced){
+  PlayerNativeSlot equivalent={slot.format,slot.type,slot.sheet,slot.frame,slot.segment,slot.offset,
+   slot.columns,slot.rows,slot.modX,slot.modY,slot.palette,slot.role,slot.invisible,slot.produced};
+  auto p=fixture(equivalent);p.soldier.slot=1;
+  p.soldier.personType=slot.personMask&1?0:slot.personMask&2?1:slot.personMask&4?2:0;
+  auto& owner=engine.mSprites[0];auto& actor=engine.mSprites[1];owner={};actor={};
+  owner.mSpriteType=5;owner.mPersonType=1;owner.mPresentationGeneration=6;
+  actor.mSpriteType=slot.type;actor.mPersonType=p.soldier.personType;actor.mPresentationGeneration=p.soldier.generation;
+  actor.mOwnerSprite=actor.mCurrentVehicle=&owner;actor.mAIAggression=5;
+  engine.row={uint16_t(slot.segment),uint16_t(slot.offset),int16_t(slot.columns),int16_t(slot.rows),int16_t(slot.modX),int16_t(slot.modY)};
+  auto capture=[&](){return cSurface::CaptureNativeAmiga8Frame(p,false);};
+  auto n=capture();assert(n.cf1 && n.role==slot.role);++enemyCases;
+  if(slot.role==4){
+   for(int type:{5,36}){actor.mAIAggression=owner.mSpriteType=type;
+    n=capture();assert(n.role==4 && n.ownerType==type);++enemyCases;
+    owner.mSpriteType=4;owner.mPersonType=0;owner.mHeight=32;owner.mPosX+=7;
+    n=capture();assert(n.role==4 && n.ownerType==type);++enemyCases;
+   }
+   actor.mCurrentVehicle=nullptr;assert(!capture().cf1);++enemyCases;
+   actor.mCurrentVehicle=&owner;actor.mOwnerSprite=&actor;assert(!capture().cf1);++enemyCases;
+  }
+  actor.mPresentationGeneration++;assert(!capture().cf1);++enemyCases;
+  actor.mPresentationGeneration--;engine.row.mLoadOffset++;assert(!capture().cf1);++enemyCases;
+ }
+ std::cout<<"PASS actual enemy capture: "<<enemyCases<<" cases; body/person classes, shadow owners5/36, late destruction and source identity\n";
 }
 '''
 

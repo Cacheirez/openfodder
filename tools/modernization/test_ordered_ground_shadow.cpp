@@ -48,6 +48,23 @@ int main(){
             assert(ComposeOrderedSoldierArt(scene,id,d,withGround).cells!=ComposeOrderedSoldierArt(scene,id,d,noGround).cells);
         }
         const auto shade=SoldierBlend(0x80000000u,0xff112233u);
+        // An enemy's separately ordered native shadow suppresses the optional
+        // ground component even after its owner's person field changes late.
+        for(int type:{5,36}){
+            auto owner=a;owner.soldier.soldier.generation=9;owner.soldier.soldier.slot=3;
+            owner.soldier.soldier.type=type;owner.soldier.soldier.personType=1;
+            owner.soldier.soldier.sheet=type==5?0x42:0xa8;owner.soldier.soldier.frame=type==5?0:2;
+            auto enemyArt=art;enemyArt.groundShadow.ownerType=type;
+            auto owned=body(amiga,id,40,20);auto& proof=owned.soldier.nativeAmiga8;
+            proof.cf1=true;proof.role=4;proof.scene=owner.soldier.soldier.scene;
+            proof.ownerType=type;proof.ownerPerson=0;proof.ownerGeneration=9;proof.ownerSlot=3;
+            scene.layers={owned,owner};
+            auto withGround=[&](const PreparedSpriteDraw& p){return p.soldier.slot==3?enemyArt:OrderedSoldierAsset{SoldierArtDecision::KeepClassic};};
+            auto noGround=[&](const PreparedSpriteDraw& p){auto v=withGround(p);v.groundShadow={};return v;};
+            assert(ComposeOrderedSoldierArt(scene,id,d,withGround).cells==ComposeOrderedSoldierArt(scene,id,d,noGround).cells);
+            scene.layers[0].soldier.nativeAmiga8.ownerGeneration=8;
+            assert(ComposeOrderedSoldierArt(scene,id,d,withGround).cells!=ComposeOrderedSoldierArt(scene,id,d,noGround).cells);
+        }
         scene.layers={a};auto f=compose();
         assert(f.complete()&&at(f,23,33,d/4)==0xffff0000u); // body covers its own shadow
         assert(at(f,23,34,0)==0xff112233u&&at(f,23,34,d/4)==shade);

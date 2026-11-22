@@ -26,12 +26,13 @@ struct OrderedSoldierAsset {
 inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerType) {
     const auto& s=p.soldier;const auto& g=s.geometry;
     const bool normal=s.type==0 ? ((s.sheet>=0 && s.sheet<=23) || (s.sheet>=57 && s.sheet<=64))
-        : (s.type==5 && (s.sheet==0x44 || s.sheet==0x45 || s.sheet==0x59));
+        : (s.type==5 && s.sheet>=0x42 && s.sheet<=0x59) ||
+          (s.type==36 && s.sheet>=0xa8 && s.sheet<=0xaf && s.frame==2);
     // Native 38/9f contain a planted ground tail; A4 is the verified sliding
     // body with embedded ground, selected by the three native slide states.
     const bool celebration=s.type==0 && (s.sheet==0x38 || s.sheet==0x9f) && s.animation==0;
     const bool slide=s.type==0 && s.sheet==0xa4 && (s.animation==50 || s.animation==51 || s.animation==52);
-    return (ownerType==0 || ownerType==5) && s.type==ownerType &&
+    return (ownerType==0 || ownerType==5 || ownerType==36) && s.type==ownerType &&
         ((normal && s.animation==0) || celebration || slide) &&
         !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
 }
@@ -126,8 +127,8 @@ inline OrderedSoldierFrame ComposeOrderedSoldierArt(const MissionLayerSequence& 
         if(a.groundShadow.pixels)for(const auto& other:scene.layers){
             if(other.destination!=id || other.operation!=MissionLayerOperation::Soldier)continue;
             const auto& n=other.soldier.nativeAmiga8;
-            if(n.cf1 && n.role==3 && n.scene==p.soldier.scene && n.ownerType==p.soldier.type &&
-               n.ownerPerson==p.soldier.personType && n.ownerGeneration &&
+            if(n.cf1 && (n.role==3 || n.role==4) && n.scene==p.soldier.scene && n.ownerType==p.soldier.type &&
+               (n.role==4 || n.ownerPerson==p.soldier.personType) && n.ownerGeneration &&
                n.ownerGeneration==p.soldier.generation && n.ownerSlot==p.soldier.slot){
                 a.groundShadow=OrderedSoldierGroundShadow{};break;
             }
