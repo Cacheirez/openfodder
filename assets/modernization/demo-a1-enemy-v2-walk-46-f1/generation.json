@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. IMAGE1 exact target enemy walk sheet46 FRAME1 direction4; IMAGE2 approved E01 appearance only. Preserve IMAGE1 straight BACK elevated camera, exact compact passing stance/feet together, helmet/body/boots proportions, rifle/hands/equipment and transparent margins. Change ONLY colours to E01 plain grey-green helmet, subdued grey-olive uniform, reddish-brown leather webbing unchanged, brick-red cloth only at actual visible nape. NO beard or face from this rear view. Moderate-painted C style, upper-left illumination. No reflection, rotation, front view, new gear, floor, text or baked shadow. Whole transparent sprite with boots/muzzle uncropped, native tall compact proportions.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d281bc5bc2492704d6270cf875e3aabeb896ad9d8143a5fd839a28cdd95df1de",
+  "references": [
+    "assets/modernization/demo-a1-enemy-walk-46-f1/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
