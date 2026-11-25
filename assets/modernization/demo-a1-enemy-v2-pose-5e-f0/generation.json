@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Create ONE painted game sprite of approved enemy E01 swimming directly toward SCREEN-UP, seen from BEHIND at the original elevated game camera. Image1 original native enemy5E/F0 controls exact direction, waterline silhouette and swimming arm stroke. Image2 is approved enemy identity: plain grey-green helmet, grey-olive uniform, reddish-brown leather straps. Face, jaw and neck are hidden behind the helmet in this rear direction: do not paint a face/beard on the back. Image3 is a modern E01 swimming sprite for style, proportions, water ripple rendering ONLY; replace its diagonal direction with the straight-up direction from native image1, don't mirror it. Show only native visible upper body/arms, lower body submerged, small wake/ripples below and around shoulders. Moderate painted style, soft upper-left lighting, generous transparent margins, transparent RGBA outside small ripples. No ground shadow, floor, broad water background, text, insignia or added equipment. Keep this native swim frame0, not a standing soldier.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "a4068cb9b0d536bca7cb90ea2098e6b2207f13ac5c89b6520415fe934db2be13",
+  "references": [
+    "private:enemy-native-audit-v2/native/1-5-5e-f0-7a44b4a6.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "assets/modernization/demo-a1-enemy-v2-pose-5d-f0/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
