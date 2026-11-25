@@ -1178,6 +1178,56 @@
       }
     },
     {
+      "sheet": 96,
+      "frame": 0,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-60-f0/manifest.json",
+      "source_sha256": "689949b00c3846f183ee076df4d16ab913e1d8924041db42b9c64675045bdef1",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-60-f0-8x",
+          "sha256": "97100000b33c8f2fb8a815df7dba1622b9e1c586f6831121014e796d8a2b90e4",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-60-f0-12x",
+          "sha256": "d03d2ee52facc9bd823e695d2c3e1db7942c1cc66b0f38e0733ded7a14b0e76b",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 96,
+      "frame": 1,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-60-f1/manifest.json",
+      "source_sha256": "a4cc8a7bd6d1271a633145b243a1eb5afb217275e33308025e7ece1e2c7f6622",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-60-f1-8x",
+          "sha256": "b6bc1d7a27fb78aa36695808d793bf7f8599a22faa9312629ca8dd263692b4db",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-60-f1-12x",
+          "sha256": "3d4d2bab83f783faffdc30ceb65e9fe8c96810240d39bdc47510d5b4ed2f0b3c",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 168,
       "frame": 2,
       "family": "pose",
@@ -1379,8 +1429,8 @@
     }
   ],
   "counts": {
-    "poses": 55,
-    "assets": 110
+    "poses": 57,
+    "assets": 114
   },
   "identity": 2
 }
