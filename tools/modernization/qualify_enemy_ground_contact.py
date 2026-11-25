@@ -36,13 +36,17 @@ def qualify():
         plates[width,d]=dict(alpha=alpha,cx=sum((i%(width*d)+.5)*v for i,v in enumerate(alpha))/mass/d,
                             cy=sum((i//(width*d)+.5)*v for i,v in enumerate(alpha))/mass/d)
         paint_hashes[a['id']]=a['sha256']
-    groups={}
+    groups={};excluded=[]
     for pose in available['poses']:
         sheet=pose['sheet']
         if pose['family']=='walk' and 0x42<=sheet<=0x49:family,direction='walk',sheet-0x42
         elif pose['family']=='pose' and 0x4a<=sheet<=0x51:family,direction='grenade',sheet-0x4a
         elif pose['family']=='prone' and 0x52<=sheet<=0x59:family,direction='aim',sheet-0x52
         elif pose['family']=='pose' and 0xa8<=sheet<=0xaf and pose['frame']==2:family,direction='rocket',sheet-0xa8
+        elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
+            excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
+            continue
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
         g=groups.setdefault((family,direction),[])
@@ -67,7 +71,8 @@ def qualify():
                          support_center=[p['cx'],p['cy']],shadow_center=[xq/4+plates[width,p['d']]['cx'],yq/4+plates[width,p['d']]['cy']]) for p in images]))
     return dict(schema=1,status='Technical alpha/contact qualification only; Miguel enemy visual acceptance pending',
         identity=2,paint_source_sha256=paint['source']['sha256'],paint_assets_sha256=paint_hashes,
-        body_pixels_unchanged=True,stable_placement_within_direction=True,groups=result,pending=pending)
+        body_pixels_unchanged=True,stable_placement_within_direction=True,groups=result,pending=pending,
+        excluded_ground_poses=excluded)
 
 
 if __name__=='__main__':

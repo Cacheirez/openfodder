@@ -1810,5 +1810,37 @@
       ]
     }
   ],
-  "pending": []
+  "pending": [],
+  "excluded_ground_poses": [
+    {
+      "sheet": 90,
+      "frame": 0,
+      "reason": "Native swimming waterline; no ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-5a-f0-8x",
+          "sha256": "b38188053ba12a3368818f28431a05270ca9070cf753147b6397e6b5d60bb56d"
+        },
+        {
+          "id": "enemy-v2-pose-5a-f0-12x",
+          "sha256": "a60ac349ec2250ab1b4a6b0b9ee982be1959df51b4b48f5012049d86ea6b4c41"
+        }
+      ]
+    },
+    {
+      "sheet": 90,
+      "frame": 1,
+      "reason": "Native swimming waterline; no ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-5a-f1-8x",
+          "sha256": "82bc6f617936d150d171a4be0105f7284c8cc334d23e63951252d81924516f46"
+        },
+        {
+          "id": "enemy-v2-pose-5a-f1-12x",
+          "sha256": "bbb72d586c754284779f26a3cbe93d912e5c3261e1159056de82185773829a5f"
+        }
+      ]
+    }
+  ]
 }
