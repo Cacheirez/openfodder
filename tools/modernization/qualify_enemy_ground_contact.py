@@ -42,6 +42,7 @@ def qualify():
         if pose['family']=='walk' and 0x42<=sheet<=0x49:family,direction='walk',sheet-0x42
         elif pose['family']=='pose' and 0x4a<=sheet<=0x51:family,direction='grenade',sheet-0x4a
         elif pose['family']=='prone' and 0x52<=sheet<=0x59:family,direction='aim',sheet-0x52
+        elif pose['family']=='pose' and 0xa8<=sheet<=0xaf and pose['frame']==2:family,direction='rocket',sheet-0xa8
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
         g=groups.setdefault((family,direction),[])
@@ -60,7 +61,7 @@ def qualify():
         if answer is None:
             pending.append(dict(family=family,direction=direction));continue
         width,xq,yq=answer
-        result.append(dict(family=family,direction=direction,owner_type=5,width=width,height=3,
+        result.append(dict(family=family,direction=direction,owner_type=36 if family=='rocket' else 5,width=width,height=3,
             x_quarters=xq,y_quarters=yq,bodies=[dict(id=p['id'],sha256=p['sha256']) for p in images],
             checks=[dict(id=p['id'],contact_pixels=len(p['points']),all_contact_covered=True,
                          support_center=[p['cx'],p['cy']],shadow_center=[xq/4+plates[width,p['d']]['cx'],yq/4+plates[width,p['d']]['cy']]) for p in images]))

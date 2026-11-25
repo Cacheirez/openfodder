@@ -166,3 +166,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.A6 comprobado:** prone, dirección6, 58/F0; registro35 poses/70 activos. [Evidencia](evidence/enemy-v2-aim-d6.json). Próximo: E3.A — integrar las ocho poses de apuntado bajo E01 en candidatos técnicos y verificar sombras por propietario5/36, geometría, faltantes y presupuesto. Conservar candidatos/lanzadores anteriores; no presentar lote parcial como final.
 
 - **E3.A comprobado:** ocho poses de apuntado integradas; propietarios5/36 y transición51 verificados.35 poses,92 contratos modernos; candidatos anteriores conservados. [Evidencia](evidence/enemy-aim-integration-v1.json). Próximo: E2.R0 — modernizar la pose de lanzacohetes A8/F2, dirección0, con identidad E01/v2 y referencia nativa; validar exportación y sombra de propietario36. No reintentar la imagen4B/F0 pendiente.
+
+- **E2.R0 comprobado:** pose, dirección0, A8/F2; registro36 poses/72 activos. [Evidencia](evidence/enemy-v2-rocket-d0.json). Próximo: E2.R1 — modernizar la pose de lanzacohetes A9/F2, dirección1, con identidad E01/v2, referencia nativa y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
