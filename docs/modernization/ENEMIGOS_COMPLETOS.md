@@ -180,3 +180,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.R5 comprobado:** pose, dirección5, AD/F2; registro41 poses/82 activos. [Evidencia](evidence/enemy-v2-rocket-d5.json). Próximo: E2.R6 — modernizar lanzacohetes AE/F2, dirección6, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
 
 - **E2.R6 comprobado:** pose, dirección6, AE/F2; registro42 poses/84 activos. [Evidencia](evidence/enemy-v2-rocket-d6.json). Próximo: E2.R7 — modernizar lanzacohetes AF/F2, dirección7, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R7 comprobado:** pose, dirección7, AF/F2; registro43 poses/86 activos. [Evidencia](evidence/enemy-v2-rocket-d7.json). Próximo: E3.R — integrar las ocho poses de lanzacohetes A8..AF/F2 en candidatos nuevos8×/12×; validar contratos nativos, sombra de propietario36 y presupuesto. Mantener4B/F0 pendiente y candidatos previos intactos.
