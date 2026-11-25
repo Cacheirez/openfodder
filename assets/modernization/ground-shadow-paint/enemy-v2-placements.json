@@ -702,6 +702,53 @@
       ]
     },
     {
+      "family": "rocket",
+      "direction": 4,
+      "owner_type": 36,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "enemy-v2-pose-ac-f2-8x",
+          "sha256": "1f76b56d8a557391f4716d98dd92d4e168f62899e111288ab2b4fecc6e2277dd"
+        },
+        {
+          "id": "enemy-v2-pose-ac-f2-12x",
+          "sha256": "b16b81955f78386bb1467984c0518f102939cb42be2eca645ed47eb68b8ca0b4"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-pose-ac-f2-8x",
+          "contact_pixels": 42,
+          "all_contact_covered": true,
+          "support_center": [
+            8.202820320013096,
+            12.229418595134328
+          ],
+          "shadow_center": [
+            9.765763154679792,
+            14.36648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-ac-f2-12x",
+          "contact_pixels": 98,
+          "all_contact_covered": true,
+          "support_center": [
+            8.205122768576883,
+            12.235035423818545
+          ],
+          "shadow_center": [
+            9.765537382385448,
+            14.366789300720322
+          ]
+        }
+      ]
+    },
+    {
       "family": "walk",
       "direction": 0,
       "owner_type": 5,
