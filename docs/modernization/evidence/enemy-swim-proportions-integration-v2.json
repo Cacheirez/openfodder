@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.VI",
+  "status": "PASS proportional export/native candidate integration; Miguel gameplay pending",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-swim-proportions-technical-v2\\8x",
+      "manifest_sha256": "f65bed432accb9fd07cfc05104e652696f43660ab5f26f170db7ee278247a118",
+      "asset_bytes": 13521408,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=140, classic=539, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=140, classic=539, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-swim-proportions-technical-v2\\12x",
+      "manifest_sha256": "f2e37e9f091d73a956a9d601aca48fbabeb5ea0aeb7ff146f60c247d30fb3049",
+      "asset_bytes": 30423168,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=140, classic=539, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=140, classic=539, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 59,
+    "active_art_derivatives": 118,
+    "corrected_swim_poses": 16,
+    "corrected_swim_derivatives": 32,
+    "candidate_assets": 244,
+    "native_contracts": 679,
+    "modern_contracts": 140,
+    "missing_body_contracts": 469,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 102
+  },
+  "scale_xy_ratio_range": [
+    0.9739696312364425,
+    1.032784041630529
+  ],
+  "guarantees": [
+    "All16source PNG hashes and previous32RGBA derivatives preserved",
+    "One crop/placement across frames per direction; logical16x14/native contracts retained",
+    "Water and independent shadows unchanged; no swim ground component",
+    "Runtime Source identical to CI76db816; no redundant full CI/H3 rerun inferred for inactive art",
+    "Earlier candidates/player launcher untouched"
+  ],
+  "tests": [
+    "679 actual retained native draws per density/platform PASS",
+    "ASan/UBSan Windows and ASan/UBSan/LSan Linux PASS",
+    "Art registry59/118 and ground25groups/86derivatives checked;16swim exclusions retained",
+    "Internal native-size review of all16corrected poses; not Miguel acceptance"
+  ],
+  "ci": "Runtime validation reused from76db816: Windows push/Linux/H6 PASS, duplicate PR Windows timeout documented. New art validated separately, no fresh full CI claim.",
+  "next": "E2.D0 — modernizar daño enemigo62/F0,F1, dirección0, con identidad E01/v2, maestros protagonistas20 necesarios y referencias nativas62. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0."
+}
