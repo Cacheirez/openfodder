@@ -1186,7 +1186,7 @@
       "assets": {
         "8": {
           "id": "enemy-v2-pose-60-f0-8x",
-          "sha256": "97100000b33c8f2fb8a815df7dba1622b9e1c586f6831121014e796d8a2b90e4",
+          "sha256": "df84821487fa684089621019909fa9090061638eaaceb209f186f9b23f1f10f2",
           "size": [
             128,
             112
@@ -1194,7 +1194,7 @@
         },
         "12": {
           "id": "enemy-v2-pose-60-f0-12x",
-          "sha256": "d03d2ee52facc9bd823e695d2c3e1db7942c1cc66b0f38e0733ded7a14b0e76b",
+          "sha256": "21db3deae9b087936ffbfa92ef4b1a6a5115205aa8b55227ef02d1a4fa950eb7",
           "size": [
             192,
             168
@@ -1211,7 +1211,7 @@
       "assets": {
         "8": {
           "id": "enemy-v2-pose-60-f1-8x",
-          "sha256": "b6bc1d7a27fb78aa36695808d793bf7f8599a22faa9312629ca8dd263692b4db",
+          "sha256": "a065f72a6fd6dcfe7d4b427fb0698650d93b0c0bc755c28e7a8306ed8873d574",
           "size": [
             128,
             112
@@ -1219,7 +1219,7 @@
         },
         "12": {
           "id": "enemy-v2-pose-60-f1-12x",
-          "sha256": "3d4d2bab83f783faffdc30ceb65e9fe8c96810240d39bdc47510d5b4ed2f0b3c",
+          "sha256": "8603ba2dab1e983927e16bca8c4d6671d30888110ea9dc6c3bbaa74319993e01",
           "size": [
             192,
             168
