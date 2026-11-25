@@ -8,18 +8,18 @@
   "assets": [
     {
       "density": 8,
-      "file": "enemy-v2-pose-5d-f0-8x.rgba",
+      "file": "enemy-v2-pose-5d-f0-8x-proportions-v2.rgba",
       "height": 14,
       "id": "enemy-v2-pose-5d-f0-8x",
-      "sha256": "fd9545b6b2d3d502291e5c4810d56100e9f91af637faafad29737b36c7e6f36b",
+      "sha256": "e9d7ff01b55ce1901682c326f4893985e5d9cb29ab11f568274e0d8ed43bd4a8",
       "width": 16
     },
     {
       "density": 12,
-      "file": "enemy-v2-pose-5d-f0-12x.rgba",
+      "file": "enemy-v2-pose-5d-f0-12x-proportions-v2.rgba",
       "height": 14,
       "id": "enemy-v2-pose-5d-f0-12x",
-      "sha256": "2c1c605821de52fde01f6ada9c33fb1bd5878b256f58a272727f2290d16e932c",
+      "sha256": "1d25ed18631010e0cbdfbb1eec20b362487dee1abd6f803052b784b02ac80dc1",
       "width": 16
     }
   ],
@@ -40,13 +40,13 @@
       85,
       280,
       1238,
-      725
+      738
     ],
     "placement": {
       "x": 0,
-      "y": 1,
-      "width": 14,
-      "height": 13
+      "y": 9,
+      "width": 13,
+      "height": 5
     },
     "logical_size": [
       16,
@@ -77,5 +77,13 @@
     "ground_shadow": "none; preserve independent native commands"
   },
   "enemy_identity": 2,
-  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "proportions-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-proportions-v2.json",
+      "reason": "Near-uniform quantized scale and shared direction anchor; originals preserved"
+    }
+  ]
 }
