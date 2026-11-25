@@ -50,5 +50,27 @@ class GroundCandidateDensityTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.run_prepare()
         self.assertFalse((self.root/'out').exists())
 
+    def owner_fixture(self):
+        self.body['id']='enemy-v2-prone-52-f0-8x'
+        self.placements['groups'][0]['bodies'][0]['id']=self.body['id']
+        self.placements['groups'][0]['bodies'][1]['id']='enemy-v2-prone-52-f0-12x'
+        self.manifest['enemy_catalog']=dict(poses=[dict(format=0,type=t,sheet=0x52,frame=0,
+            assets={'8':self.body['id']},native_signatures=['a'*64],no_write_signatures=[]) for t in (5,36)])
+
+    def test_owner_metadata_split_preserves_pixels_and_native_contract(self):
+        self.owner_fixture();self.assertEqual(self.run_prepare(),(1,3,0))
+        result=json.loads((self.root/'out/candidate-manifest.json').read_text())
+        bodies={a['id']:a for a in result['assets']};poses=result['enemy_catalog']['poses']
+        ordinary=bodies[poses[0]['assets']['8']];rocket=bodies[poses[1]['assets']['8']]
+        self.assertEqual(ordinary['sha256'],rocket['sha256'])
+        self.assertEqual(ordinary['file'],rocket['file'])
+        self.assertEqual(ordinary['ground_shadow']['owner_type'],5)
+        self.assertEqual(rocket['ground_shadow']['owner_type'],36)
+
+    def test_owner_split_rejects_different_native_raster_before_output(self):
+        self.owner_fixture();self.manifest['enemy_catalog']['poses'][1]['native_signatures']=['b'*64]
+        with self.assertRaises(ValueError):self.run_prepare()
+        self.assertFalse((self.root/'out').exists())
+
 
 if __name__=='__main__':unittest.main()

@@ -31,6 +31,30 @@ def checked_file(directory, asset):
     return path
 
 
+def split_enemy_aim_owners(result,assets,sources):
+    """Separate owner metadata, reusing exact approved pixels, for known AI poses."""
+    catalog=result.get('enemy_catalog')
+    if not catalog:return {}
+    poses=catalog.get('poses',[])
+    by={(p['format'],p['type'],p['sheet'],p['frame']):p for p in poses}
+    clones={}
+    for p in poses:
+        if p['type']!=36 or not 0x52<=p['sheet']<=0x59 or p['frame']!=0:continue
+        for density,identity in list(p['assets'].items()):
+            a=assets[identity]
+            if a.get('ground_shadow',{}).get('owner_type')!=5:continue
+            ordinary=by[p['format'],5,p['sheet'],p['frame']]
+            if (ordinary['assets'].get(density)!=identity or ordinary['native_signatures']!=p['native_signatures'] or
+                ordinary['no_write_signatures']!=p['no_write_signatures']):
+                raise ValueError('Owner-specific aim requires exact ordinary/rocket native equivalence')
+            clone='owner36-'+identity
+            if clone not in assets:
+                descriptor=copy.deepcopy(a);descriptor['id']=clone;descriptor['ground_shadow']['owner_type']=36
+                assets[clone]=descriptor;result['assets'].append(descriptor);sources[clone]=sources[identity]
+            p['assets'][density]=clone;clones[clone]=identity
+    return clones
+
+
 def prepare(base, out, placements_path=None):
     original = load(base)
     if original['version'] not in (2,3,4):
@@ -74,9 +98,14 @@ def prepare(base, out, placements_path=None):
                 result['assets'].append(assets[shadow_id])
                 sources[shadow_id] = checked_file(PAINT, leaf)
             changed.add(identity)
+    clones=split_enemy_aim_owners(result,assets,sources) if original['version']==4 else {}
     assert result['bindings'] == original['bindings']
     assert result.get('player_catalog') == original.get('player_catalog')
-    assert result.get('enemy_catalog') == original.get('enemy_catalog')
+    normalized=copy.deepcopy(result.get('enemy_catalog'))
+    if normalized:
+        for pose in normalized.get('poses',[]):
+            pose['assets']={d:clones.get(identity,identity) for d,identity in pose['assets'].items()}
+    assert normalized == original.get('enemy_catalog')
     total=sum(a['width']*a['height']*a['density']**2*4 for a in result['assets'])
     if total>64*1024*1024:raise ValueError('Ground candidate exceeds 64 MiB')
     # Validate everything before creating the destination. Never overwrite a
@@ -95,6 +124,7 @@ def prepare(base, out, placements_path=None):
             summary['asset_bytes']=total
             summary['enemy_ground_contact']='Technical contact qualification attached; Miguel visual acceptance pending'
             summary['qualified_ground_bodies']=len(changed)
+            summary['owner_specific_ground_assets']=len(clones)
             (out/'technical-summary.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     return len(changed), len(result['assets']), len(result['bindings'])
 

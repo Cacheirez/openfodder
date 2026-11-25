@@ -27,6 +27,12 @@ int main(){
         OrderedSoldierRegistry registry(manifest);
         const auto resolve=[&](const PreparedSpriteDraw& p){return registry.resolve(p,SoldierVariantKey(p,colors),d);};
         const auto art=resolve(a.soldier);assert(art.groundShadow.pixels);
+        for(int type:{5,36})for(int sheet=0x52;sheet<=0x59;++sheet)for(int animation:{0,1,50,51,52,90}){
+            auto low=a.soldier;low.soldier.type=type;low.soldier.sheet=sheet;low.soldier.animation=animation;
+            assert(OrderedGroundShadowEligible(low,type)==(animation==0 || animation==51));
+            low.soldier.geometry.height=1;assert(!OrderedGroundShadowEligible(low,type));
+            low.soldier.geometry.height=0;low.soldier.geometry.rowsToSkip=1;assert(!OrderedGroundShadowEligible(low,type));
+        }
         for(int sheet:{0x38,0x9f,0xa4})for(int animation:{0,1,50,51,52}){
             auto pose=a.soldier;pose.soldier.sheet=sheet;pose.soldier.animation=animation;
             const bool eligible=sheet==0xa4?(animation>=50 && animation<=52):animation==0;
