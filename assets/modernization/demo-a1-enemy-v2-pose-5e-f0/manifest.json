@@ -8,18 +8,18 @@
   "assets": [
     {
       "density": 8,
-      "file": "enemy-v2-pose-5e-f0-8x.rgba",
+      "file": "enemy-v2-pose-5e-f0-8x-proportions-v2.rgba",
       "height": 14,
       "id": "enemy-v2-pose-5e-f0-8x",
-      "sha256": "e824cc10ce785a0a8c90d37fd9a90cebf00fdfbdf369f38a21077c4497b59637",
+      "sha256": "bf584d2b20b9cf89f1be188f606c596b21c7e7e40263bbc00d9be0c286e6c6b3",
       "width": 16
     },
     {
       "density": 12,
-      "file": "enemy-v2-pose-5e-f0-12x.rgba",
+      "file": "enemy-v2-pose-5e-f0-12x-proportions-v2.rgba",
       "height": 14,
       "id": "enemy-v2-pose-5e-f0-12x",
-      "sha256": "5a895c4700071caba96d1a787b671391f316d1323b883d4d517cf0860db52ceb",
+      "sha256": "d8d23216a92d3dbd3ab01d9472380db1b8f9e1ebd205aa7b8fea331526a0cb56",
       "width": 16
     }
   ],
@@ -37,16 +37,16 @@
   "export": {
     "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
     "crop": [
-      255,
-      191,
-      921,
+      229,
+      188,
+      1069,
       1038
     ],
     "placement": {
       "x": 1,
-      "y": 0,
-      "width": 14,
-      "height": 14
+      "y": 1,
+      "width": 13,
+      "height": 13
     },
     "logical_size": [
       16,
@@ -77,5 +77,13 @@
     "ground_shadow": "none; preserve independent native commands"
   },
   "enemy_identity": 2,
-  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "proportions-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-proportions-v2.json",
+      "reason": "Near-uniform quantized scale and shared direction anchor; originals preserved"
+    }
+  ]
 }
