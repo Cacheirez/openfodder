@@ -142,3 +142,9 @@ Los analizadores antiguos de captura y diagnóstico se adaptan al contrato enemi
 ## E3.T5.CI — integración técnica comprobada (25-11-2026)
 
 CI completa de14025f9: Windows, Linux y H6 PASS; ejecuciones PR y push confirmadas. El diagnóstico local conserva H3 en ambos sistemas y publica cuerpos E01/sombras con faltantes artísticos explícitos. [Cierre reproducible](evidence/enemy-technical-ci-20261125.json). No hay aceptación visual global ni revisión final de enemigos. Siguiente tarea única: E2.G1, resolver bloqueo de generación antes de continuar arte. No se ha repetido ni sorteado el rechazo.
+
+## E2.G1.R — solicitud de revisión preparada (25-11-2026)
+
+- **E2.G1.R — revisión preparada, NO enviada:** comprobado rechazo de salida concreto, no bloqueo general de cuenta/servicio demostrado. ImageGen no ofrece aquí acción de revisión/desbloqueo. Informe de soporte reproducible con petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa conservado localmente, sin imágenes ni recursos comerciales adjuntos. Sin nueva generación ni elusión. [Vía oficial y entrega](evidence/enemy-imagegen-review-request-20261125.json).
+
+Siguiente paso: envío por el canal privado oficial de soporte. No equivale a una petición enviada ni a rechazo resuelto. El bloqueo de arte continúa y la integración técnica comprobada se conserva.

@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E2.G1.R",
+  "status": "Support request prepared; NOT submitted; rejection NOT resolved",
+  "request_id": "d0b0ba1a-05a9-416c-aa3c-3c603d2441aa",
+  "error": {
+    "http": 400,
+    "code": "moderation_blocked",
+    "category": "illicit",
+    "stage": "output",
+    "request_id": "d0b0ba1a-05a9-416c-aa3c-3c603d2441aa"
+  },
+  "diagnosis": "One recorded output moderation rejection; no evidence of a general service/account lock or local game failure.",
+  "checked_capabilities": "Session image-generation tools expose no moderation-review or unblock action; no generation retry made.",
+  "official_support": {
+    "url": "https://help.openai.com/en/articles/6614161-how-can-i-contact-support",
+    "instructions": "Use help.openai.com chat bubble and include exact safety/policy flag and request ID",
+    "consulted": "2026-11-25"
+  },
+  "prepared_request": {
+    "local_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\SOLICITUD_REVISION_IMAGEGEN_4B_F0.txt",
+    "sha256": "fe47e965152c6c41014cf14011d13257f94e802f8e8664468ed751ee8ba72d78",
+    "contains_images": false,
+    "contains_commercial_resources": false,
+    "sent": false
+  },
+  "authority": "AGENTS.md: Una señal o bloqueo de seguridad de la plataforma no se sortea: detener la operación afectada y conservar el estado reproducible.",
+  "next": "Submit the prepared request through official support; review the response before resuming E2.G1. Do not infer approval, resolution or service availability from elapsed time."
+}
