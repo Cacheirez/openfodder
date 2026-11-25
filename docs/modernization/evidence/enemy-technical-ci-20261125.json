@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E3.T5.CI",
+  "status": "PASS complete technical integration; enemy art milestone remains blocked",
+  "validated_code_sha": "14025f974177c70da781156b57e52ab26bdb12f8",
+  "ci": [
+    {
+      "databaseId": 45073913853,
+      "headSha": "14025f974177c70da781156b57e52ab26bdb12f8",
+      "conclusion": "success",
+      "event": "pull_request",
+      "workflowName": "Windows - modernization foundation",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45073913853",
+      "startedAt": "2026-11-22T21:45:54Z",
+      "updatedAt": "2026-11-22T22:29:57Z"
+    },
+    {
+      "databaseId": 45073913911,
+      "headSha": "14025f974177c70da781156b57e52ab26bdb12f8",
+      "conclusion": "success",
+      "event": "pull_request",
+      "workflowName": "linux-build",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45073913911",
+      "startedAt": "2026-11-22T21:45:54Z",
+      "updatedAt": "2026-11-22T22:50:40Z"
+    },
+    {
+      "databaseId": 45073913864,
+      "headSha": "14025f974177c70da781156b57e52ab26bdb12f8",
+      "conclusion": "success",
+      "event": "pull_request",
+      "workflowName": "H6 - offline density review",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45073913864",
+      "startedAt": "2026-11-22T21:45:54Z",
+      "updatedAt": "2026-11-22T21:47:20Z"
+    }
+  ],
+  "also_verified_push_runs": [
+    {
+      "id": 45073906972,
+      "workflow": "Windows",
+      "conclusion": "success"
+    },
+    {
+      "id": 45073906885,
+      "workflow": "Linux",
+      "conclusion": "success"
+    }
+  ],
+  "local_evidence": "docs/modernization/evidence/enemy-technical-replay-v1.json",
+  "runtime_source_equal_between_probe_build_37de241_and_validated_14025f9": true,
+  "legacy_ci_cleanup": "One cancellation request raced with already-completed ancestor run45065454048; no retry needed, current-head runs preserved",
+  "remaining": {
+    "art": "ImageGen4B/F0 platform rejection unresolved; no retries, alternative tool or model used",
+    "body_contracts_without_art": 549,
+    "game_review": "Not delivered as complete enemies; no visual/gameplay acceptance inferred",
+    "unseen_in_m1p2": [
+      "rocket enemy36",
+      "leader106"
+    ]
+  },
+  "recovery": {
+    "private_candidates": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-technical-ground-v1",
+    "windows_probe": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-probe-build\\Release\\native_probe.exe",
+    "linux_probe": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-probe-linux-build\\native_probe",
+    "next": "E2.G1 remains blocked on image-generation platform. Resolve the rejection before resuming remaining enemy art; technical integration stays published and recoverable."
+  }
+}

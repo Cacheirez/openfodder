@@ -138,3 +138,7 @@ E3.T5 — compilar diagnóstico privado con la integración actual; ejecutar rep
 - **E3.T5 local PASS, CI PENDIENTE:** diagnóstico compilado Windows/Linux; H3 clásico11 fases/11.361 estados y M1P2 técnico1.546 estados intactos, 4.635 publicaciones HD en ambos sistemas. Enemigo5: 1.673 dibujos modernos/5.022 clásicos por arte pendiente; sin missing de datos. CI Windows de37de241 falló por guardia de captura antigua; corrección y85 pruebas Python PASS locales, pendiente de CI. [Evidencia](evidence/enemy-technical-replay-v1.json).
 
 Los analizadores antiguos de captura y diagnóstico se adaptan al contrato enemigo opt-in; nuevos controles negativos impiden clasificar cadáveres nativos como cuerpos. Se actualizan solo hashes de procedencia del inventario protagonista. No se modifican referencias H3 ni cuerpos/poses. Pendiente verificar CI completa de la corrección.
+
+## E3.T5.CI — integración técnica comprobada (25-11-2026)
+
+CI completa de14025f9: Windows, Linux y H6 PASS; ejecuciones PR y push confirmadas. El diagnóstico local conserva H3 en ambos sistemas y publica cuerpos E01/sombras con faltantes artísticos explícitos. [Cierre reproducible](evidence/enemy-technical-ci-20261125.json). No hay aceptación visual global ni revisión final de enemigos. Siguiente tarea única: E2.G1, resolver bloqueo de generación antes de continuar arte. No se ha repetido ni sorteado el rechazo.
