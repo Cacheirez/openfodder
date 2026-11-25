@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. CF1/OpenFodder fictional enemy low-aim body sheet56/F0 direction4. IMAGE1 exact target: compact crouch viewed from elevated straight BACK, rifle pointing forward/up past the screen-left side of the helmet, hands, bent knees and planted boots. IMAGE2 E01 appearance reference ONLY; IMAGE3 native game pose reference. Preserve IMAGE1 camera, exact silhouette, rifle/arms/boots arrangement, equipment shapes and proportions. Apply plain grey-green helmet, subdued grey-olive uniform, reddish-brown leather webbing/pouches; short brick-red cloth only at visible nape. NO face or beard visible from this rear view. C moderately painted upper-left lighting. No standing pose, mirror, rotation, extra gear, floor, text or baked shadow. Whole transparent sprite, muzzle and boots intact, native compact low-aim proportions.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "8a4851e376450ce7d9bb1606f24a37662b5d85530633b65196c1e78109c0d682",
+  "references": [
+    "assets/modernization/soldier-aim/uniform-a/s20-f0-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-56-f0-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
