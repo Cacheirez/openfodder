@@ -2021,6 +2021,36 @@
           "sha256": "3d4d2bab83f783faffdc30ceb65e9fe8c96810240d39bdc47510d5b4ed2f0b3c"
         }
       ]
+    },
+    {
+      "sheet": 97,
+      "frame": 0,
+      "reason": "Native swimming waterline; no ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-61-f0-8x",
+          "sha256": "c2f1767308de8cd519879c789c859c75afcde549225b93a5120e294b1ee7a85e"
+        },
+        {
+          "id": "enemy-v2-pose-61-f0-12x",
+          "sha256": "abe6e12c7f3a63693a88facd6f0f6ac9264311024662f1630479b7b663ac7e51"
+        }
+      ]
+    },
+    {
+      "sheet": 97,
+      "frame": 1,
+      "reason": "Native swimming waterline; no ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-61-f1-8x",
+          "sha256": "99cd4779db6b54fb0ed758d55726d4298d9e96b1ec6b44f77ffa46ba6fe45c83"
+        },
+        {
+          "id": "enemy-v2-pose-61-f1-12x",
+          "sha256": "1999e18ba6db2947b979ca270c40c0ea58f185770cc1ea812f9378a5433b3cd0"
+        }
+      ]
     }
   ]
 }

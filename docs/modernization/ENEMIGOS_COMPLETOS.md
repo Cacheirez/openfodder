@@ -198,3 +198,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.S5 comprobado:** pose, dirección5, 5F/F0,1; registro55 poses/110 activos. [Evidencia](evidence/enemy-v2-swim-d5.json). Próximo: E2.S6 — modernizar natación enemiga60/F0,F1, dirección6, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
 
 - **E2.S6 comprobado:** pose, dirección6, 60/F0,1; registro57 poses/114 activos. [Evidencia](evidence/enemy-v2-swim-d6.json). Próximo: E2.S7 — modernizar natación enemiga61/F0,F1, dirección7, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S7 comprobado:** pose, dirección7, 61/F0,1; registro59 poses/118 activos. [Evidencia](evidence/enemy-v2-swim-d7.json). Próximo: E3.S — integrar las16 poses de natación5A..61/F0,F1 en candidatos nuevos8×/12×; validar contratos nativos, ausencia de sombra de suelo y presupuesto. Mantener4B/F0 pendiente y candidatos anteriores intactos.
