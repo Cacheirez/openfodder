@@ -50,6 +50,9 @@ int main(int argc,char** argv){try{
         const bool empty=CF1NativePoseSignature(p)==CF1EmptyEnemyPoseSignature(NativeSpriteWidth(p),size_t(g.rows));
         if(empty!=row.at("no_write").get<bool>())throw std::runtime_error("candidate evidence no-write differs");
         const auto result=registry.resolve(p,"",density,true,384,384*272);
+        if(type==36 && sheet>=0xa8 && sheet<=0xaf && frame==2 &&
+           result.decision==SoldierArtDecision::Replace && !result.groundShadow.pixels)
+            throw std::runtime_error("candidate rocket missing owner-specific ground");
         if((type==5 || type==36) && sheet>=0x52 && sheet<=0x59 && result.decision==SoldierArtDecision::Replace){
             if(!result.groundShadow.pixels)throw std::runtime_error("candidate aim missing owner-specific ground");
             auto transition=p;transition.soldier.animation=51;
