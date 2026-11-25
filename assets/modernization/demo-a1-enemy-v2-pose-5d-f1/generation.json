@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Create frame1 of the enemy swimming sprite shown in image3, keeping exactly its E01/v2 identity, moderate painted style, upper-left lighting, camera, rear three-quarter orientation and direction toward screen upper-left. Image1 is the ORIGINAL native enemy5D/F1 pose and determines this frame's hand/arm position: pull the leading visible arm back in the swim stroke as native frame1, instead of keeping frame0 extended. Image2 is the approved identity master: plain grey-green helmet, grey-olive cloth, reddish-brown straps, brick-red cloth only if neck is actually visible, short beard only on exposed jaw. Do not invent a face on back of head. Preserve submerged lower body and small native-scale wake/ripples, change only stroke needed by image1. One isolated waterline game sprite, generous transparent margins, actual RGBA transparency. No floor, ground shadow, broad water background, text, insignia, new equipment, mirroring or different facing.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d091ebdda37401cf455ab25d850cc297a3042cc8babd0ebe79c2a0993c54addb",
+  "references": [
+    "private:enemy-native-audit-v2/native/1-5-5d-f1-7a44b4a6.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "assets/modernization/demo-a1-enemy-v2-pose-5d-f0/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

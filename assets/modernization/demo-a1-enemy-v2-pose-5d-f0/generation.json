@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Create one transparent-background painted enemy game sprite for Cannon Fodder modernization. Image1 is the original native enemy swimming pose sheet5D frame0: reproduce its precise screen upper-left direction, elevated game camera, rear three-quarter orientation, waterline silhouette and extended swim stroke. Image2 is APPROVED enemy E01 appearance: plain grey-green helmet, grey-olive uniform, reddish-brown leather straps, dark brown gear; short dark beard only on actually visible jaw, small brick-red neck cloth only if the neck is visible. Do not show a face on back of head. Image3 is a modern swimming sprite used ONLY for painted rendering, proportions and small waterline ripples; its lower-left direction must NOT be copied. Render E01 swimming upper-left as in native image1, submerged lower body hidden, no legs/boots or equipment invented above water. One character with only native-scale small ripples and wake, moderate painted style, soft upper-left light, clean RGBA cutout with generous transparent margin. No floor, ground shadow, broad water background, text, insignia or mirroring. Not an illustration scene; one game sprite.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d05d7f5b9db28f17a21c876e2bf8c19511cf18ddccc77d538d3f3bd1a203a068",
+  "references": [
+    "private:enemy-native-audit-v2/native/1-5-5d-f0-7a44b4a6.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "assets/modernization/demo-a1-player-swim-19-f0/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
