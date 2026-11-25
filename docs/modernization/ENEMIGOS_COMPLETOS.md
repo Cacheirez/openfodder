@@ -162,3 +162,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.A4 comprobado:** prone, dirección4, 56/F0; registro33 poses/66 activos. [Evidencia](evidence/enemy-v2-aim-d4.json). Próximo: E2.A5 — preparar apuntado bajo enemigo dirección 5, 57/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
 
 - **E2.A5 comprobado:** prone, dirección5, 57/F0; registro34 poses/68 activos. [Evidencia](evidence/enemy-v2-aim-d5.json). Próximo: E2.A6 — preparar apuntado bajo enemigo dirección 6, 58/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar. Después revisar integración del conjunto de ocho direcciones sin activar un lote parcial como final.
+
+- **E2.A6 comprobado:** prone, dirección6, 58/F0; registro35 poses/70 activos. [Evidencia](evidence/enemy-v2-aim-d6.json). Próximo: E3.A — integrar las ocho poses de apuntado bajo E01 en candidatos técnicos y verificar sombras por propietario5/36, geometría, faltantes y presupuesto. Conservar candidatos/lanzadores anteriores; no presentar lote parcial como final.
