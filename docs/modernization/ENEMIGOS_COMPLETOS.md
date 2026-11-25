@@ -186,3 +186,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.R comprobado:** lanzacohetes8direcciones integrado,108contratos modernos,501cuerpos pendientes de arte; candidato privado conservado, no revisión final. [Evidencia](evidence/enemy-rocket-integration-v1.json). Próximo: E2.S0 — modernizar natación enemiga5A/F0,F1, dirección0, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
 
 - **E2.S0 comprobado:** pose, dirección0, 5A/F0,1; registro45 poses/90 activos. [Evidencia](evidence/enemy-v2-swim-d0.json). Próximo: E2.S1 — modernizar natación enemiga5B/F0,F1, dirección1, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S1 comprobado:** pose, dirección1, 5B/F0,1; registro47 poses/94 activos. [Evidencia](evidence/enemy-v2-swim-d1.json). Próximo: E2.S2 — modernizar natación enemiga5C/F0,F1, dirección2, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
