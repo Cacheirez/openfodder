@@ -1969,11 +1969,11 @@
       "assets": [
         {
           "id": "enemy-v2-pose-5f-f0-8x",
-          "sha256": "d514dcd9cf7ec75bab6d0d152bbb74ec766dd155e575a5a619570d18e9c28e12"
+          "sha256": "3ca0f9c7721232a5c68676da299b8fb4b844b7a425d2f04b80b9e3258763d38d"
         },
         {
           "id": "enemy-v2-pose-5f-f0-12x",
-          "sha256": "4a5a356e04aea663b82f59e82a5ba7d408f21515ddbcd6d1af27dab7628deb86"
+          "sha256": "d23ee12485564c8bf52d7c949aa3552b233e4981d1539ff13db8a37a8870e6ea"
         }
       ]
     },
@@ -1984,11 +1984,11 @@
       "assets": [
         {
           "id": "enemy-v2-pose-5f-f1-8x",
-          "sha256": "e493344bb5709ca33769cb5f988b7a4f95d3001d875f06ca05d148380ceaab17"
+          "sha256": "c553309a520203cb39aac3a5f51fe4b5c25b7f681e65dac7539377287a7caed3"
         },
         {
           "id": "enemy-v2-pose-5f-f1-12x",
-          "sha256": "bdf298f26cdc6d89781079debd61209a37ba3d09daed67eb5f7868f86e572f7c"
+          "sha256": "6e4fe275745afbe236ff3fd818aaa65191504b66509477ab99f978d56c5dc6ee"
         }
       ]
     },
