@@ -150,3 +150,5 @@ CI completa de14025f9: Windows, Linux y H6 PASS; ejecuciones PR y push confirmad
 Siguiente paso: envío por el canal privado oficial de soporte. No equivale a una petición enviada ni a rechazo resuelto. El bloqueo de arte continúa y la integración técnica comprobada se conserva.
 
 - **E2.A7 comprobado:** prone, dirección7, 59/F0; registro28 poses/56 activos. [Evidencia](evidence/enemy-v2-aim-d7.json). Próximo: E2.A0 — preparar apuntado bajo enemigo dirección 0, 52/F0, con E01 y referencias nativas; validar 8×/12×, apoyo de sombra y publicar antes de otra dirección. 4B/F0 queda pendiente sin bloquear otras poses.
+
+- **E2.A0 comprobado:** prone, dirección0, 52/F0; registro29 poses/58 activos. [Evidencia](evidence/enemy-v2-aim-d0.json). Próximo: E2.A1 — preparar apuntado bajo enemigo dirección 1, 53/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.

@@ -24,6 +24,53 @@
   "groups": [
     {
       "family": "aim",
+      "direction": 0,
+      "owner_type": 5,
+      "width": 10,
+      "height": 3,
+      "x_quarters": 18,
+      "y_quarters": 48,
+      "bodies": [
+        {
+          "id": "enemy-v2-prone-52-f0-8x",
+          "sha256": "ea2eddd05b9ccf188f2e581026dc056bda55a783b9b86f49c03220bfbe0b2328"
+        },
+        {
+          "id": "enemy-v2-prone-52-f0-12x",
+          "sha256": "1c68357d12113d096bebbfda2a7a9ca6d58d82118d6e136417cf915bc05b93a4"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-prone-52-f0-8x",
+          "contact_pixels": 98,
+          "all_contact_covered": true,
+          "support_center": [
+            8.213067070998463,
+            11.234608926290546
+          ],
+          "shadow_center": [
+            9.879723866984456,
+            13.366529994050355
+          ]
+        },
+        {
+          "id": "enemy-v2-prone-52-f0-12x",
+          "contact_pixels": 219,
+          "all_contact_covered": true,
+          "support_center": [
+            8.218593408516405,
+            11.235457708564049
+          ],
+          "shadow_center": [
+            9.879774850573405,
+            13.366794321104022
+          ]
+        }
+      ]
+    },
+    {
+      "family": "aim",
       "direction": 7,
       "owner_type": 5,
       "width": 12,
