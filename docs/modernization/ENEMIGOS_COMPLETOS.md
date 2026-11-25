@@ -218,3 +218,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.V5 comprobado:** natación5F/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d5.json). Próximo: E3.V6 — corregir proporciones de natación60/F0,F1, dirección6, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
 
 - **E3.V6 comprobado:** natación60/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d6.json). Próximo: E3.V7 — corregir proporciones de natación61/F0,F1, dirección7, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V7 comprobado:** natación61/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d7.json). Próximo: E3.VI — integrar las16 poses de natación corregidas en candidatos nuevos8×/12×; verificar contratos nativos, agua, ausencia de suelo, presupuesto y continuidad. Conservar candidatos anteriores; después retomar daño62/F0,F1.
