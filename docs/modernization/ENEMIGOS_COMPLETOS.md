@@ -148,3 +148,5 @@ CI completa de14025f9: Windows, Linux y H6 PASS; ejecuciones PR y push confirmad
 - **E2.G1.R — revisión preparada, NO enviada:** comprobado rechazo de salida concreto, no bloqueo general de cuenta/servicio demostrado. ImageGen no ofrece aquí acción de revisión/desbloqueo. Informe de soporte reproducible con petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa conservado localmente, sin imágenes ni recursos comerciales adjuntos. Sin nueva generación ni elusión. [Vía oficial y entrega](evidence/enemy-imagegen-review-request-20261125.json).
 
 Siguiente paso: envío por el canal privado oficial de soporte. No equivale a una petición enviada ni a rechazo resuelto. El bloqueo de arte continúa y la integración técnica comprobada se conserva.
+
+- **E2.A7 comprobado:** prone, dirección7, 59/F0; registro28 poses/56 activos. [Evidencia](evidence/enemy-v2-aim-d7.json). Próximo: E2.A0 — preparar apuntado bajo enemigo dirección 0, 52/F0, con E01 y referencias nativas; validar 8×/12×, apoyo de sombra y publicar antes de otra dirección. 4B/F0 queda pendiente sin bloquear otras poses.

@@ -41,6 +41,7 @@ def qualify():
         sheet=pose['sheet']
         if pose['family']=='walk' and 0x42<=sheet<=0x49:family,direction='walk',sheet-0x42
         elif pose['family']=='pose' and 0x4a<=sheet<=0x51:family,direction='grenade',sheet-0x4a
+        elif pose['family']=='prone' and 0x52<=sheet<=0x59:family,direction='aim',sheet-0x52
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
         g=groups.setdefault((family,direction),[])

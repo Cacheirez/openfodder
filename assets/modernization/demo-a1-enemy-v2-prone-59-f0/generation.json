@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Asset: CF1/OpenFodder fictional game enemy soldier, low-aim pose sheet59 FRAME0 direction7. IMAGE1 is the exact edit target for crouched/prone compact posture, elevated front-right camera, silhouette, rifle pointing to screen right, hands, equipment placement and body proportions. IMAGE2 is the approved E01 appearance/style reference ONLY, not a posture reference. IMAGE3 is the tiny native game pose reference. Apply IMAGE2's plain grey-green helmet, subdued grey-olive uniform, short brick-red neck cloth, reddish-brown leather and compact dark brown beard only on visible jaw/chin to IMAGE1. Match the established C moderately painted style and upper-left light. Preserve the low pose and existing rifle; do not turn this into the standing pose from IMAGE2, do not add visible standing legs or extra equipment. Keep margins, entire silhouette and muzzle. No mirroring, rotation, floor, text or baked shadow. One transparent sprite; native occupied proportions10-by11 inside a16-by14 logical canvas.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "cd0eeb905cb613c9bd3c3349fe24802d5e52308e85f83c889ba119acba66dd1c",
+  "references": [
+    "assets/modernization/demo-a1-enemy-prone/source.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-59-f0-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

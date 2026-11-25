@@ -23,6 +23,53 @@
   "stable_placement_within_direction": true,
   "groups": [
     {
+      "family": "aim",
+      "direction": 7,
+      "owner_type": 5,
+      "width": 12,
+      "height": 3,
+      "x_quarters": 12,
+      "y_quarters": 48,
+      "bodies": [
+        {
+          "id": "enemy-v2-prone-59-f0-8x",
+          "sha256": "1636b43bf09599ce23266265a322cfcef4a3ac82619accf5d952be1a5d161c82"
+        },
+        {
+          "id": "enemy-v2-prone-59-f0-12x",
+          "sha256": "2171d29ea9ecdca7be3d1d6284fc78396361ec3ad681fad4436122a7437d8f9f"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-prone-59-f0-8x",
+          "contact_pixels": 132,
+          "all_contact_covered": true,
+          "support_center": [
+            7.893833676214591,
+            11.267593764836208
+          ],
+          "shadow_center": [
+            9.455462331766668,
+            13.366532849478489
+          ]
+        },
+        {
+          "id": "enemy-v2-prone-59-f0-12x",
+          "contact_pixels": 299,
+          "all_contact_covered": true,
+          "support_center": [
+            7.8956919627872635,
+            11.272112777566441
+          ],
+          "shadow_center": [
+            9.455737414836872,
+            13.36686142096497
+          ]
+        }
+      ]
+    },
+    {
       "family": "grenade",
       "direction": 0,
       "owner_type": 5,
