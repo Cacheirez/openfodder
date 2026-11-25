@@ -156,3 +156,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.A1 comprobado:** prone, dirección1, 53/F0; registro30 poses/60 activos. [Evidencia](evidence/enemy-v2-aim-d1.json). Próximo: E2.A2 — preparar apuntado bajo enemigo dirección 2, 54/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
 
 - **E2.A2 comprobado:** prone, dirección2, 54/F0; registro31 poses/62 activos. [Evidencia](evidence/enemy-v2-aim-d2.json). Próximo: E2.A3 — preparar apuntado bajo enemigo dirección 3, 55/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A3 comprobado:** prone, dirección3, 55/F0; registro32 poses/64 activos. [Evidencia](evidence/enemy-v2-aim-d3.json). Próximo: E2.A4 — preparar apuntado bajo enemigo dirección 4, 56/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
