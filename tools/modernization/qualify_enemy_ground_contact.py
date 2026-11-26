@@ -47,7 +47,7 @@ def qualify():
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
             continue
-        elif pose['family']=='death' and 0x62<=sheet<=0x71 and pose['frame'] in (0,1):
+        elif pose['family']=='death' and (0x62<=sheet<=0x71 or 0x20<=sheet<=0x2f) and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native damage/airborne state; retain specific and independent shadow commands, no added ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
             continue

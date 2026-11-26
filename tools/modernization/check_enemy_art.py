@@ -15,6 +15,9 @@ def sha(p):
 def registry(identity=1):
     assert identity in (1,2)
     catalog=inventory()
+    native_slots={(fmt,s['actor_type'],s['sheet'],s['frame'])
+                  for fmt,pl in ((0,'PC'),(1,'Amiga'))
+                  for s in catalog['platforms'][pl]['slots'] if s['produced']}
     slots={(s['actor_type'],s['sheet'],s['frame'])
            for pl in catalog['platforms'].values() for s in pl['slots'] if s['produced']}
     poses={}
@@ -26,6 +29,13 @@ def registry(identity=1):
             approved=json.loads((master/'manifest.json').read_text(encoding='utf-8'))
             assert approved['status']=='approved-by-Miguel' and sha(master/'source.png')==approved['source_sha256']
             assert m['enemy_identity']==2 and m['identity_master_sha256']==approved['source_sha256']
+        if 'authoring_reuse' in m:
+            reuse=m['authoring_reuse'];origin=ROOT/reuse['source_manifest']
+            original=json.loads(origin.read_text(encoding='utf-8'))
+            assert identity==2 and original['enemy_identity']==2
+            assert original['identity_master_sha256']==m['identity_master_sha256']
+            assert sha(origin.parent/'source.png')==reuse['source_sha256']==sha(path.parent/'source.png')
+            assert sha(origin.parent/'generation.json')==reuse['generation_metadata_sha256']
         for asset in m['assets']:
             prefix='enemy-v2' if identity==2 else 'enemy'
             match=re.fullmatch(prefix+r'-(walk|death|prone|pose)-([0-9a-f]+)-f(\d+)-(8|12)x',asset['id'])
@@ -45,7 +55,8 @@ def registry(identity=1):
                 assert sha(source)==m['source']['sha256']
                 assert m['pose']['type'] in actors and m['pose']['sheet']==sheet and m['pose']['frame']==frame
                 assert m['export']['ground_shadow']=='none; preserve independent native commands'
-                assert {x['format'] for x in m['export']['native']}=={0,1}
+                expected_formats={fmt for fmt in (0,1) if (fmt,m['pose']['type'],sheet,frame) in native_slots}
+                assert {x['format'] for x in m['export']['native']}==expected_formats, 'Enemy native source-format coverage'
                 for native in m['export']['native']:
                     box=native['bbox'];actual=image.getchannel('A').getbbox()
                     assert box[0]*density<=actual[0]<actual[2]<=box[2]*density
