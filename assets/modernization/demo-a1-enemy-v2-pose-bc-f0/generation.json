@@ -1,0 +1,19 @@
+{
+  "generator": "reuse-existing-E01-source and derivatives; no new ImageGen call",
+  "identity": 2,
+  "transparent_background": true,
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-73-f1/source.png",
+  "source_sha256": "bcf3f78f8a761f872dd236e9a1e8523ba1c2a20e1c804373766275cfc13a3c3c",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-pose-73-f1/generation.json",
+  "original_generation_metadata_sha256": "a0823500cc57b0dc13e8507b1f000c6926466da11b5091993a72c546bcb8c928",
+  "target": {
+    "types": [
+      5,
+      36
+    ],
+    "sheet": 188,
+    "frame": 0,
+    "direction": 4
+  },
+  "review": "Native equality and art hashes verified; runtime integration and Miguel gameplay pending"
+}
