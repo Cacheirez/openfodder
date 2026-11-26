@@ -77,7 +77,7 @@ int main(int argc,char** argv){try{
                 ++fallHeights;
             }
         }
-        if((type==5 || type==36) && sheet==0x7a && result.decision==SoldierArtDecision::Replace){
+        if((((type==5 || type==36) && sheet==0x7a) || (type==5 && sheet==0x38)) && result.decision==SoldierArtDecision::Replace){
             for(int skip=5;skip<13;++skip){
                 auto sinking=p;sinking.soldier.geometry.rowsToSkip=skip;
                 auto geometry=sinking.soldier.geometry;geometry.source=sinking.resource.source();
