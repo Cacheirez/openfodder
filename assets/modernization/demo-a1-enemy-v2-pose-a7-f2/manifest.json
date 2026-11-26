@@ -11,7 +11,7 @@
       "file": "enemy-v2-pose-a7-f2-8x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-a7-f2-8x",
-      "sha256": "d576f4b6db2534f7e52222d753d585cba82c65f4d3b74b3d64a263c36c8fd252",
+      "sha256": "374aa4e494d79f7a68fb2b1f1bc4260ba2cd5778c01a4da0018a01b6f3d4ee51",
       "width": 16
     },
     {
@@ -19,7 +19,7 @@
       "file": "enemy-v2-pose-a7-f2-12x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-a7-f2-12x",
-      "sha256": "8aed536271bd22e0e6d67308e1b95e46a01649051899dfdca6ff7e510d88b7be",
+      "sha256": "8f15321c343faa7e8314535092a5e39001bf9d4c483f2ed95ed4903d2ced4033",
       "width": 16
     }
   ],
@@ -44,9 +44,9 @@
     ],
     "placement": {
       "x": 1,
-      "y": 1,
-      "width": 14,
-      "height": 9
+      "y": 3,
+      "width": 11,
+      "height": 7
     },
     "logical_size": [
       16,

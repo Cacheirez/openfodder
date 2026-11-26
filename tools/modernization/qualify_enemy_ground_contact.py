@@ -83,7 +83,9 @@ def qualify():
     for (family,direction),images in sorted(groups.items()):
         preferred=round((min(p['bottom'] for p in images)-1)*4)
         minwidth=max(7,min(16,math.ceil(max(p['span'] for p in images)+2)));answer=None
-        for width in range(minwidth,17):
+        widths=sorted({width for width,density in plates if density==12 and width>=minwidth and
+                       all((width,p['d']) in plates for p in images)})
+        for width in widths:
             ideal=round((sum(p['cx'] for p in images)/len(images)+1.6-plates[width,12]['cx'])*4)
             candidates=sorted(((x,y) for x in range(-16,65) for y in range(max(0,preferred-4),min(60,preferred+4)+1)),
                               key=lambda p:(p[0]-ideal)**2+(p[1]-preferred)**2)
