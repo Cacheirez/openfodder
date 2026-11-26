@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T70",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 7,
+  "sheet": 121,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-79-f0",
+      "source_sha256": "83a98b1b9cbb66c98dfd93cccfbf44705e8143b2c89ad47bd2758a9f94addf2c",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 4,
+          "y": 0,
+          "width": 8,
+          "height": 14
+        },
+        "1": {
+          "x": 6,
+          "y": 3,
+          "width": 6,
+          "height": 10
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 193,
+    "assets": 408
+  },
+  "notes": [
+    "CF/D0 row13 proves right profile group6 phase1; lowered hands and bent forward knee inspected against own native reference.",
+    "PC14/Amiga13 native anchors retained by own format/density derivatives; no mirrored art, new floor or guessed alias. Global gameplay acceptance pending."
+  ],
+  "next": "E3.T71 — crear únicamente79/F1, vista frontal abajo-derecha/fase0 segúnCF/D0/fila14; identidad E01 y referencias propias PC/Plus. Anclas PC14/Amiga13, sin reflejos ni suelo nuevo inferido; validar/publicar antes del último frame."
+}

@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Create native next walking phase1 of the reference E01 enemy. Preserve exact identity, overhead three-quarter RIGHT PROFILE facing screen-right, moderate painted style, plain grey-green helmet, grey-olive uniform, short dark beard, brick-red neck cloth and reddish leather equipment. Match last two native images for this frame: LOWER the previously raised hand, both empty hands relaxed around waist/hip level, near arm swinging backward/down; change stepping stance so near knee bends and boot is raised toward screen-right, far leg stretches back down-left. Keep nose facing right, no mirror or angle rotation. Entire helmet and both boots visible, adult compact proportions, upper-left lighting. One figure, no held object or weapon, no salute, no floor, no cast shadow, no words. Truly transparent background.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "83a98b1b9cbb66c98dfd93cccfbf44705e8143b2c89ad47bd2758a9f94addf2c",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-pose-78-f2/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d7-audit/79-f0-native-0.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d7-audit/79-f0-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
