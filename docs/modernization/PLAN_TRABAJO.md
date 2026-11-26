@@ -6,8 +6,8 @@
 **Única autoridad sobre el trabajo inmediato.** Plan2.74 vigente. Rama `modernization/windows-foundation`; PR#1 abierta, borrador y sin fusionar. Nunca modificar master, usar subagentes ni cambiar de modelo sin permiso.
 
 - **Hito AUTORIZADO/en curso:** enemigos completos hasta revisión jugando. Protagonistas aceptados y congelados; no se infiere aceptación global enemiga por pruebas automáticas.
-- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.186poses/380derivados disponibles; versión verde anterior conservada.
-- **Avance E01/v2:**186poses/380derivados integrados;76/F0..2 con anclas nativas y gestos propios. Aceptación global jugando/sombras PENDIENTE.
+- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.187poses/384derivados disponibles; versión verde anterior conservada.
+- **Avance E01/v2:** E3.T50 comprobado; registro disponible 187 poses/384 activos, siempre separados de la versión1 conservada. PASS contratos nativos, hashes, alfa/cajas y RGBA/PNG; revisión interna favorable. Integración y aceptación jugando PENDIENTES. [Último bloque](evidence/enemy-v2-mode-zero-d5-f0.json).
 - **Último bloque E3.MRI PASS técnico:** orientaciones75/F0 y76/F2 corregidas e integradas en candidatos nuevos;679contratos por densidad/plataforma y14anclas PASS con sanitizadores. [Evidencia](evidence/enemy-mode-zero-facing-corrected-integration-v1.json).
 - **Candidatos privados actuales:** `enemy-mode-zero-facing-corrected-v1/8x` y `12x`;383activos,21.492.224/48.357.504bytes dentro de64MiB.679contratos:497modernos (491cuerpos/6sombras),112cuerpos sin arte,66no-write y4marcadores. Anteriores intactos; sin ejecutable final enemigo.
 - **Sombras:**33grupos/67poses terrestres y134derivados cualificados; proyección fija aprobada. Suelo de deslizamiento50/51/52 y apuntado0/51; sombra independiente prevalece, altura/recorte/agua/daño conservados.
@@ -23,7 +23,7 @@
 - **E2.MF orientación comprobada:**16filas nativas (32contratosPC/Amiga) equivalen aCF/D0 con dirección=fila>>1 y fase=fila&1. Se detectaron dos ángulos artísticos incorrectos;75/F0 y76/F2ya corregidos, e integrados en candidatos nuevos; los PASS técnicos anteriores no certificaban el ángulo. Candidatos anteriores preservados, sin entrega/revisión final. [Mapa y correcciones](evidence/enemy-mode-zero-native-facing-map-v1.json).
 - **E3.MR0 comprobado:**75/F0 corregido a frontal hacia abajo, fase1; originales previos intactos, integración comprobada E3.MRI. [Evidencia](evidence/enemy-mode-zero-facing-correction-75-f0-v1.json).
 - **E3.MR1 comprobado:**76/F2 corregido a vista trasera arriba-izquierda, fase0; originales previos intactos, integración comprobada E3.MRI. [Evidencia](evidence/enemy-mode-zero-facing-correction-76-f2-v1.json).
-- **Siguiente tarea única:** E3.T50 — crear únicamente77/F0, vista trasera arriba-izquierda y fase1 segúnCF/D0/fila7; identidad E01, referencias propias PC/Plus y anclas PC14/Amiga12 por formato. Sin reflejos, alias ni suelo nuevo inferido; validar/publicar antes del frame siguiente.
+- **Siguiente tarea única:** E3.T51 — crear únicamente77/F1, vista trasera hacia arriba y fase0 segúnCF/D0/fila8; identidad E01 y referencias propias, anclas PC14/Amiga11 por formato. Sin saludo frontal supuesto ni suelo nuevo inferido; validar/publicar antes del último frame.
 - **Límites:** sin B, civiles generales/vehículos, escenarios nuevos, scroll ni16:9. Mantener simulación/IA/RNG/colisiones/reloj/dirección/frame, clásico independiente, fallback ante errores reales y64MiB. ZIP ajeno y lanzadores anteriores intactos.
 
 
