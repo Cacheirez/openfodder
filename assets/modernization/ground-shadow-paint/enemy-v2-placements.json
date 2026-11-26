@@ -1903,6 +1903,36 @@
       ]
     },
     {
+      "sheet": 35,
+      "frame": 0,
+      "reason": "Native damage/airborne state; retain specific and independent shadow commands, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-death-23-f0-8x",
+          "sha256": "d885f552b88fff54487feaf001d62fe44140cc2c96cf38881a0208b6ef809f92"
+        },
+        {
+          "id": "enemy-v2-death-23-f0-12x",
+          "sha256": "aa21897e399ad76d0d160f97df3f7f2716eaa91e4ff209ad889403c3deb63d7f"
+        }
+      ]
+    },
+    {
+      "sheet": 35,
+      "frame": 1,
+      "reason": "Native damage/airborne state; retain specific and independent shadow commands, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-death-23-f1-8x",
+          "sha256": "e890a3eb402b7ca2f3ed9ea44fa236c379885629e9262409ff7175ff29c8bcbd"
+        },
+        {
+          "id": "enemy-v2-death-23-f1-12x",
+          "sha256": "7d3d42577a4c7f1cb85d792165bc2551d592f035c7de17f8484db802cd353f10"
+        }
+      ]
+    },
+    {
       "sheet": 90,
       "frame": 0,
       "reason": "Native swimming waterline; no ground component",
