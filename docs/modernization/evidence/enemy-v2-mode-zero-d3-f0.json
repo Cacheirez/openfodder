@@ -50,5 +50,7 @@
     "No new floor inferred from flat TheOne silhouette; independent native commands retained; global shadow/gameplay acceptance pending.",
     "Runtime Source unchanged from e0d9430b fullCI/H3PASS; inactive art only, no redundant fullCI/H3 rerun."
   ],
-  "next": "E3.T31 — crear solo75/F1 de infantería modo-cero, con identidad E01 y referencias nativas PC/Plus de esa entrada; anclas PC14/Amiga13 y derivados por formato, sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame de esta dirección."
+  "next": "E3.T31 — crear solo75/F1 de infantería modo-cero, con identidad E01 y referencias nativas PC/Plus de esa entrada; anclas PC14/Amiga13 y derivados por formato, sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame de esta dirección.",
+  "superseded_artistic_orientation": "enemy-mode-zero-facing-correction-75-f0-v1.json",
+  "original_package_recovery": "Git5b7fe8ff and private mode-zero-facing-before-75-f0"
 }

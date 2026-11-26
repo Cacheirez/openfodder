@@ -11,7 +11,7 @@
       "file": "enemy-v2-pose-75-f0-pc-8x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-75-f0-pc-8x",
-      "sha256": "4f3cc4137fe1030250b66b5da9fe4947356b8777e2e5770a7e586f37d5842f71",
+      "sha256": "e0266992dcbdea1158137beb7fb92f72784a12e58243929e7c8b13c53f16c348",
       "width": 16,
       "native_formats": [
         0
@@ -22,7 +22,7 @@
       "file": "enemy-v2-pose-75-f0-pc-12x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-75-f0-pc-12x",
-      "sha256": "b799358f9ddd2a479e2cd4480357726cd682ae172dea0f4450182832aac54864",
+      "sha256": "c90f0f943baa2fd5200de52dbf34a6645b425ef0ad8840dbb68a60b6fb8ce005",
       "width": 16,
       "native_formats": [
         0
@@ -33,7 +33,7 @@
       "file": "enemy-v2-pose-75-f0-amiga-8x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-75-f0-amiga-8x",
-      "sha256": "86dfb4953898e9667b147d6759832deab8d7e0456fa30010e37c394924e5214e",
+      "sha256": "3d9003bb895d45a8ae5cd71039ee5b09f73af34d550b68bfcf6f4878bff28e53",
       "width": 16,
       "native_formats": [
         1
@@ -44,7 +44,7 @@
       "file": "enemy-v2-pose-75-f0-amiga-12x.rgba",
       "height": 14,
       "id": "enemy-v2-pose-75-f0-amiga-12x",
-      "sha256": "de678b7c8d0c7325d83487bf4d22463d8668411af897612ef23e56403e77bcd2",
+      "sha256": "fe2681095a42cff72b731dee7de3f4d3222eca6110e0bd190ab4a474fb7cda12",
       "width": 16,
       "native_formats": [
         1
@@ -55,20 +55,20 @@
   "source": {
     "file": "source.png",
     "size": [
-      1197,
-      1314
+      1199,
+      1312
     ],
     "mode": "RGBA",
-    "sha256": "88bce5e2abd457c57feb847451da5025efe1b0b7d25490528900d2b4874d6183",
+    "sha256": "0f15087e12ea3848c4050797eb4ad89bc611ef2db3fb7b9af86f9a67a0446e31",
     "generator": "built-in image_gen; original preserved"
   },
   "export": {
     "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
     "crop": [
-      318,
-      150,
-      859,
-      1216
+      298,
+      152,
+      901,
+      1182
     ],
     "logical_size": [
       16,
@@ -99,15 +99,15 @@
     "ground_shadow": "none; preserve independent native commands",
     "placements_by_format": {
       "0": {
-        "x": 5,
+        "x": 4,
         "y": 0,
-        "width": 7,
+        "width": 8,
         "height": 14
       },
       "1": {
         "x": 3,
         "y": 0,
-        "width": 6,
+        "width": 7,
         "height": 12
       }
     }
