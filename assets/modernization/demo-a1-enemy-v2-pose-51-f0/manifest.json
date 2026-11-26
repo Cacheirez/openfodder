@@ -1,0 +1,87 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 81,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-51-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-51-f0-8x",
+      "sha256": "5766a41e9f7c9746dd18473f5b2fa87780bca9830ad96c13d3c1984be7630429",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-51-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-51-f0-12x",
+      "sha256": "d539f7f4412300582652ae856ac053b6eb01d950a7baf0a6ae028cdad3e4c2e8",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      887,
+      1773
+    ],
+    "mode": "RGBA",
+    "sha256": "1d9875cc7a4042e2e1c57b7d43251433c955241c0a5cb36e918284c845eb65a4",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      61,
+      213,
+      800,
+      1550
+    ],
+    "placement": {
+      "x": 5,
+      "y": 0,
+      "width": 7,
+      "height": 14
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7",
+        "bbox": [
+          5,
+          0,
+          12,
+          14
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7",
+        "bbox": [
+          5,
+          0,
+          12,
+          14
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-walk-49-f0/manifest.json",
+    "source_sha256": "1d9875cc7a4042e2e1c57b7d43251433c955241c0a5cb36e918284c845eb65a4",
+    "generation_metadata_sha256": "5202f932c5f1c473b4cfabfb1819875b3ce5e30f450341c3608964e1a00834a5",
+    "reason": "Both full native signatures/dimensions and own anchors equal; no runtime alias"
+  }
+}
