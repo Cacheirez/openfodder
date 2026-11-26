@@ -64,7 +64,7 @@ def qualify():
             excluded.append(dict(sheet=sheet,frame=2,reason='Source-known mode-zero frame with format-specific native anchors; no added ground, independent commands retained',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
-        elif pose['family']=='pose' and 0xb8<=sheet<=0xbf and pose['frame']==0:
+        elif pose['family']=='pose' and 0xb0<=sheet<=0xbf and pose['frame']==0:
             excluded.append(dict(sheet=sheet,frame=0,reason='Native falling body with separate height-driven shadow; no added ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue

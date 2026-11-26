@@ -1,0 +1,88 @@
+{
+  "status": "E01initial-person fall reuse with own native signatures/anchors; not native alias or gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 176,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-b0-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b0-f0-8x",
+      "sha256": "0eb5d9906df9ac750736a1af7e5bce81ccac2c144cba916769a3ed076eca44d1",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-b0-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b0-f0-12x",
+      "sha256": "6909dc19b79cbbebbbd56a652ae49771c671cd59505788b2332ed179cf5089d5",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1354,
+      1162
+    ],
+    "mode": "RGBA",
+    "sha256": "69211fc356249a5587558591334be52fe2a115af4c551f20bd75b03e5d34d25d",
+    "generator": "reuse-existing-E01-source; no new ImageGen call",
+    "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-b8-f0/source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      310,
+      187,
+      1043,
+      926
+    ],
+    "placement": {
+      "x": 4,
+      "y": 4,
+      "width": 7,
+      "height": 7
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179",
+        "bbox": [
+          4,
+          1,
+          11,
+          11
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179",
+        "bbox": [
+          4,
+          1,
+          11,
+          11
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-b8-f0/manifest.json",
+    "source_sha256": "69211fc356249a5587558591334be52fe2a115af4c551f20bd75b03e5d34d25d",
+    "generation_metadata_sha256": "0b463eb7d76462a597b0eed3137c64e6e23f6474a839811dba138c650d757074",
+    "reason": "Same injury action/direction and original friendly-master reference verified; separate initial-person contract"
+  }
+}
