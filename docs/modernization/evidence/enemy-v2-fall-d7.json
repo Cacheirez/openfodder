@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.F7",
+  "status": "PASS exact E01 art/geometry reuse; native runtime integration and Miguel gameplay pending",
+  "direction": 7,
+  "sheet": 191,
+  "frame": 0,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-74-f1/manifest.json",
+  "source_sha256": "ff6d9af27b2a5ef4fcf0d2ca635085c6ed89af0660f60f01e99cfb78c1f06b98",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 191,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d",
+      "source_sheet": 116,
+      "source_frame": 1
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "sheet": 191,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d",
+      "source_sheet": 116,
+      "source_frame": 1
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 191,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d",
+      "source_sheet": 116,
+      "source_frame": 1
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "sheet": 191,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d",
+      "source_sheet": 116,
+      "source_frame": 1
+    }
+  ],
+  "placement": {
+    "x": 5,
+    "y": 5,
+    "width": 7,
+    "height": 7
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-bf-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-bf-f0-8x",
+      "sha256": "828ba9795428aed9523523ae64603ab865d21c606f3376fe0106687014673082",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-bf-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-bf-f0-12x",
+      "sha256": "2033b19261f0aa95f92a6a40e98a1d05a340a525cae247284245303c555f5de2",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 136,
+    "assets": 274
+  },
+  "validation": [
+    "Exact retained body raster and native geometry/offset/palette equality in4cases (PC/Amiga,type5/36)",
+    "Original E01source and8x/12x PNG/RGBA hashes preserved; explicit separate target package/catalog keys",
+    "Registry provenance/source/native alpha bounds and version1 freeze checked",
+    "No ImageGen call, runtime contract alias, new resource bank or ground component; independent native shadow and height preserved"
+  ],
+  "reproduction": "python tools/modernization/reuse_enemy_fall_pose.py --direction 7 --atlas <private enemy-native-audit-v2>",
+  "next": "E3.FI \u2014 integrar ca\u00eddaB8..BF/F0 completa en candidatos nuevos8\u00d7/12\u00d7. Verificar679contratos, anclas, sombras independientes/altura, presupuesto y sanitizadores Windows/Linux; no tocar candidatos anteriores. Despu\u00e9s retomar estados enemigos restantes seg\u00fan inventario, sin claves desconocidas."
+}
