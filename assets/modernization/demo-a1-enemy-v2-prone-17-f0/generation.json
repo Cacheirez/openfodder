@@ -1,0 +1,20 @@
+{
+  "generator": "reuse-existing-E01-source and derivatives; no new ImageGen call",
+  "identity": 2,
+  "transparent_background": true,
+  "source_sha256": "cd0eeb905cb613c9bd3c3349fe24802d5e52308e85f83c889ba119acba66dd1c",
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-prone-59-f0/source.png",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-prone-59-f0/generation.json",
+  "original_generation_metadata_sha256": "c386f08d5dcf944588f39ac283e8d0368b643ee4eca9da42192b6aae4ead7173",
+  "original_pose_reference": "assets/modernization/demo-a1-enemy-prone/source.png",
+  "pose_reference_sha256": "6378ee0023531c8045e196ff06f7897af18a6ad531e07fd8a90f8942c84783cf",
+  "pose_reference_kind": "frozen-legacy-enemy-aim-master",
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 23,
+    "frame": 0,
+    "direction": 7
+  },
+  "review": "Art/native bounds verified; Slide2 initial-person ground eligibility must be integrated before gameplay"
+}

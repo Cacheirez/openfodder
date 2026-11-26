@@ -19,7 +19,17 @@ def reuse(direction,atlas,out=None):
     assert original['enemy_identity']==2 and sha(source/'source.png')==original['source']['sha256']
     reference=generation['references'][0]
     match=re.search(r'/s(\d+)-f0-verde-a\.png$',reference)
-    assert match and int(match[1])==sheet and (ROOT/reference).is_file(),'Verify original friendly aim direction before reuse'
+    assert (ROOT/reference).is_file(),'Original pose reference missing'
+    if match:
+        assert int(match[1])==sheet,'Original friendly aim direction differs'
+        reference_kind='friendly-aim-master'
+    else:
+        assert direction==7 and reference=='assets/modernization/demo-a1-enemy-prone/source.png','Unreviewed aim reference'
+        frozen=json.loads((ROOT/'assets/modernization/enemy-pose-art.json').read_text(encoding='utf-8'))
+        legacy=next(p for p in frozen['poses'] if (p['sheet'],p['frame'])==(source_sheet,0))
+        assert legacy['family']=='prone' and legacy['manifest']==str(Path(reference).with_name('manifest.json')).replace('\\','/')
+        assert legacy['source_sha256']==sha(ROOT/reference),'Frozen legacy direction7 master changed'
+        reference_kind='frozen-legacy-enemy-aim-master'
     native=json.loads((atlas/'native-audit.json').read_text(encoding='utf-8'));catalog=inventory();rows=[];evidence=[]
     for fmt,platform in ((0,'PC'),(1,'Amiga')):
         slot=next(s for s in catalog['platforms'][platform]['slots'] if (s['actor_type'],s['sheet'],s['frame'])==(5,sheet,0))
@@ -48,7 +58,8 @@ def reuse(direction,atlas,out=None):
     g=dict(generator='reuse-existing-E01-source and derivatives; no new ImageGen call',identity=2,transparent_background=True,
         source_sha256=sha(source/'source.png'),reused_from=(source/'source.png').relative_to(ROOT).as_posix(),
         original_generation_metadata=(source/'generation.json').relative_to(ROOT).as_posix(),original_generation_metadata_sha256=sha(source/'generation.json'),
-        original_pose_reference=reference,friendly_reference_sha256=sha(ROOT/reference),target=dict(type=5,person=0,sheet=sheet,frame=0,direction=direction),
+        original_pose_reference=reference,pose_reference_sha256=sha(ROOT/reference),pose_reference_kind=reference_kind,
+        target=dict(type=5,person=0,sheet=sheet,frame=0,direction=direction),
         review='Art/native bounds verified; Slide2 initial-person ground eligibility must be integrated before gameplay')
     (out/'generation.json').write_text(json.dumps(g,indent=2)+'\n',encoding='utf-8')
     (out/'reuse-evidence.json').write_text(json.dumps(dict(native_cases=evidence,source_manifest=m['authoring_reuse']['source_manifest'],
