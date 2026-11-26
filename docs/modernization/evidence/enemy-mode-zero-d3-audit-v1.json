@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.T3",
+  "status": "PASS source/reference/body-anchor contract; art/integration and global gameplay pending",
+  "scope": "Only mode-zero direction3 sheet75/F0..2; no scenario activation",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "f01f7c642e2a0898d6e5a276935e0183805f96b4bfd86932f76d597f4e0880ab",
+      "bbox": [
+        3,
+        0,
+        14,
+        14
+      ],
+      "opaque_pixels": 75
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "947365cc7710f6b9855ddbd4cb36701da492c90247d26824e894e6cd1b57ab94",
+      "bbox": [
+        0,
+        0,
+        13,
+        12
+      ],
+      "opaque_pixels": 85
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 1,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "325dc131c61bb7a63787fa13234d400ab8516ffd42b71e96e0bd4d3cbc3af884",
+      "bbox": [
+        3,
+        0,
+        13,
+        14
+      ],
+      "opaque_pixels": 81
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "8e2c0f782c4e433ee3c457096a51253af2b8ca68ec03929e019c2dab6dccc1a4",
+      "bbox": [
+        0,
+        0,
+        12,
+        13
+      ],
+      "opaque_pixels": 84
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 2,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "4b07074f87443d2d99ec0a83d1ae262b35a44e9e285e2a59895eac328b87c125",
+      "bbox": [
+        3,
+        0,
+        13,
+        14
+      ],
+      "opaque_pixels": 81
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 117,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "915ffdb29476cb8ef6bbc3f241f8071bb8c6fd2139bb81eaa00f771675655e82",
+      "bbox": [
+        0,
+        0,
+        12,
+        13
+      ],
+      "opaque_pixels": 85
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "Source/Sprites/Sprite_Troop.cpp",
+      "lines": [
+        484,
+        489,
+        1991,
+        1993,
+        1994
+      ],
+      "finding": "Infantry5 generic selector uses offset0x18 if globalword_3AA1Dzero, with native mSprite_Frame_2 cycle0-1-2-1. Do not inherit protagonist dormancy proof; no code changes"
+    },
+    {
+      "file": "tools/modernization/inventory_enemy_states.py",
+      "finding": "Type36mode-zero declared-only; no rocket binding. Type5/person1 produced in both formats"
+    }
+  ],
+  "references": {
+    "c01": "assets/modernization/concepts/C01-painted.png",
+    "identity": "assets/modernization/enemy-identity-v2/source.png",
+    "friendly33": "No existing master; do not invent a path or copy a different direction",
+    "private": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-mode-zero-d3-audit",
+    "bank_proof": [
+      {
+        "frame": 0,
+        "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+        "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+        "plus_posture_only": true,
+        "mask_equal": false
+      },
+      {
+        "frame": 1,
+        "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+        "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+        "plus_posture_only": true,
+        "mask_equal": false
+      },
+      {
+        "frame": 2,
+        "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+        "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+        "plus_posture_only": true,
+        "mask_equal": false
+      }
+    ]
+  },
+  "authoring_contract": [
+    "Generate single frame from its own native PC/Plus posture and E01 identity; empty hands, no civilian clothing copied",
+    "TheOne native references are flat index15silhouettes. Same verified ILBMdecoder reproduces bank7a44... and all3own native signatures",
+    "Plus supplied only as posture reference; all3opaque masks differ, no alias or native equivalence asserted",
+    "PC lower anchors14; TheOne12forF0 and13forF1/F2. Separate format derivatives, common original master, bounds/proportions checked",
+    "Do not force yaw/step from direction number: preserve each actual frame pose; frame dispatch and original cycle unchanged"
+  ],
+  "shadow_contract": [
+    "Body preparation excludes painted ground; retain source independent shadow commands and existing height/crop semantics",
+    "No new ground eligible sheet75 under current runtime, matching conservative74/F2treatment. Flat native silhouette is not evidence to invent a new shadow",
+    "Separate/embedded interpretation beyond verified body/reference bounds is not promoted to global shadow acceptance; verify during final enemy review, do not hide it with a runtime alias"
+  ],
+  "guarantees": [
+    "Source/classic/known guards unchanged; no new resourcebank/campaign activation; private commercial references not published",
+    "Reusing decoded Plus data does not retry isolated ImageGen4B/F0 operation; old rejection preserved"
+  ],
+  "next": "E3.T30 — crear solo75/F0 de infantería modo-cero, con identidad E01 y referencias nativas PC/Plus de la misma entrada. Exportar anclas propias PC14/Amiga12 y derivados por formato, sin alias ni suelo nuevo inferido de la silueta. Validar/publicar antes del siguiente frame de esta dirección."
+}
