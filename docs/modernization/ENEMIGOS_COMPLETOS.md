@@ -386,3 +386,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.ISK3:**38/F3 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f3.json). Próximo: E3.ISK4 — exportar solo38/F4 de hundimiento inicial5/persona0 desde maestro E01 de7A/F4; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
 
 - **E3.ISK4:**38/F4 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f4.json). Próximo: E3.ISK5 — exportar solo38/F5 de hundimiento inicial5/persona0 desde maestro E01 de7A/F5; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK5:**38/F5 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f5.json). Próximo: E3.ISKI — integrar38/F0..5 inicial/persona0 en candidatos nuevos8×/12×; validar sus96recortes5..12 y sombras sin suelo con sanitizadores Windows/Linux. Conservar ancla propiaF5 y contratos separados de7A.
