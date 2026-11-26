@@ -3454,6 +3454,69 @@
       }
     },
     {
+      "sheet": 117,
+      "frame": 1,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-75-f1/manifest.json",
+      "source_sha256": "b76ec9bbc7f087b9de3047de763e5fb03da0655a593a9ee863130835d7f66a87",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-75-f1-amiga-8x",
+          "sha256": "7274e21d2daa47a34e2aa9ad63acd7a795d134bdabae5a8c168f5e14b5e894d9",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-75-f1-amiga-12x",
+          "sha256": "690a02b52ec5d186f95ef0e3960000ebbc1e94e18247cbc0293adc6efce19565",
+          "size": [
+            192,
+            168
+          ]
+        }
+      },
+      "assets_by_format": {
+        "0": {
+          "8": {
+            "id": "enemy-v2-pose-75-f1-pc-8x",
+            "sha256": "040173283429760acbe440b328ec2dc6dadf9bfcd9d970c58383ee19437060cf",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-75-f1-pc-12x",
+            "sha256": "65d0d40fb06f6afc4cb2d197e1e35adaa0d00e9132388604b0f23b3fef2e40bd",
+            "size": [
+              192,
+              168
+            ]
+          }
+        },
+        "1": {
+          "8": {
+            "id": "enemy-v2-pose-75-f1-amiga-8x",
+            "sha256": "7274e21d2daa47a34e2aa9ad63acd7a795d134bdabae5a8c168f5e14b5e894d9",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-75-f1-amiga-12x",
+            "sha256": "690a02b52ec5d186f95ef0e3960000ebbc1e94e18247cbc0293adc6efce19565",
+            "size": [
+              192,
+              168
+            ]
+          }
+        }
+      }
+    },
+    {
       "sheet": 122,
       "frame": 0,
       "family": "pose",
@@ -4605,8 +4668,8 @@
     }
   ],
   "counts": {
-    "poses": 181,
-    "assets": 366
+    "poses": 182,
+    "assets": 370
   },
   "identity": 2
 }
