@@ -368,3 +368,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.SK0 comprobado:** pose, dirección0, 7A/F0; registro153 poses/308 activos. [Evidencia](evidence/enemy-v2-sinking-f0.json). Próximo: E3.SK1 — crear solo7A/F1 de hundimiento enemigo, con referencia protagonista38/F1 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del frame siguiente.
 
 - **E3.SK1 comprobado:** pose, dirección0, 7A/F1; registro154 poses/310 activos. [Evidencia](evidence/enemy-v2-sinking-f1.json). Próximo: E3.SK2 — crear solo7A/F2 de hundimiento enemigo con referencia protagonista38/F2 e identidad E01; respetar ancla y recorte nativo, sin suelo. Validar/publicar antes del siguiente frame.
+
+- **E3.SK2 comprobado:** pose, dirección0, 7A/F2; registro155 poses/312 activos. [Evidencia](evidence/enemy-v2-sinking-f2.json). Próximo: E3.SK3 — crear solo7A/F3 de hundimiento enemigo con referencia protagonista38/F3 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del siguiente frame.
