@@ -2535,6 +2535,21 @@
       ]
     },
     {
+      "sheet": 56,
+      "frame": 0,
+      "reason": "Audited native sinking with progressive rowsToSkip; no added floor or painted waterline",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-38-f0-8x",
+          "sha256": "2f625d18e4dc68d555e55e2e0aeb394d13765bd81b0ec67e211a4c461bb2e54a"
+        },
+        {
+          "id": "enemy-v2-pose-38-f0-12x",
+          "sha256": "e9e3c1689a2afa50ad091c7f6bc7423983b15a2b52a1afbbdb499dfbd04c7b61"
+        }
+      ]
+    },
+    {
       "sheet": 90,
       "frame": 0,
       "reason": "Native swimming waterline; no ground component",
