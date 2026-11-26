@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.IA3",
+  "status": "PASS E01art reuse/native anchors; ground runtime integration and Miguel gameplay pending",
+  "direction": 3,
+  "sheet": 19,
+  "frame": 0,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-prone-55-f0/manifest.json",
+  "source_sha256": "8ed43f4a760e2cbb1dc5ed59e5bf93b37d9f9231b4d3991ced64451e70c61fbc",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 19,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "160f42256b724aa17c238a9a7de82a29f60371eaf587c527af68cd189fc2a078"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 19,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "5f77e16e1a68986f6e2ff9ce4660c3910d9c7e94381ad6068d013c716af295e7"
+    }
+  ],
+  "placement": {
+    "x": 3,
+    "y": 2,
+    "width": 10,
+    "height": 11
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-prone-13-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-prone-13-f0-8x",
+      "sha256": "b6abe2a1b6e4a1c44505c58c6b4b9cd8f4f51424bee46f49a1c741bfc706f1e2",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-prone-13-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-prone-13-f0-12x",
+      "sha256": "5a875fedd6fb6cb54ce1c0281854054131ff90288d61ae4d101f912fc99a6286",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 148,
+    "assets": 298
+  },
+  "ground_source_audit": [
+    "Sprite_Troop.cpp:823..827 dispatchesSlide1/2 directly before generic shadow creation at850..852",
+    "Sprite_Troop.cpp:1338..1351 Slide2 selects person-indexed aim table offset0x30 at frame0, retains51until next update then0",
+    "Human initial10..17 and AI52..59 are corresponding aim directions; existing E01body/foot contacts reused",
+    "Ground qualified in existing aim family; NativeGroundShadowEligible still needs explicit initial-person integration before gameplay",
+    "Independent shadow, when present, must retain command order/owner identity and suppress duplicate ground"
+  ],
+  "validation": [
+    "Initial-person0 native source producer/direction and original friendly aim master reference checked",
+    "Original E01source and8x/12x PNG/RGBA hashes preserved; both own native bounds and lower anchors checked",
+    "No ImageGen call, native contract alias, unknown resource/frame or protagonist change",
+    "No new ground art: approved lower-right paint/contact qualification only, no current runtime ground PASS asserted"
+  ],
+  "reproduction": "python tools/modernization/reuse_enemy_initial_aim_pose.py --direction 3 --atlas <private enemy-native-audit-v2>",
+  "next": "E3.IA4 \u2014 verificar y exportar apuntado inicial14/F0, direcci\u00f3n4 de tipo5/persona0, reutilizando maestro E01 de56 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitaci\u00f3n runtime de persona0 pendiente de integraci\u00f3n. Sin nueva generaci\u00f3n; solo esta direcci\u00f3n antes de validar/publicar."
+}
