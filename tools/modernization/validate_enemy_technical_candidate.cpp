@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -87,7 +87,8 @@ int main(int argc,char** argv){try{
         if(type==36 && sheet>=0xa8 && sheet<=0xaf && frame==2 &&
            result.decision==SoldierArtDecision::Replace && !result.groundShadow.pixels)
             throw std::runtime_error("candidate rocket missing owner-specific ground");
-        if((type==5 || type==36) && sheet>=0x52 && sheet<=0x59 && result.decision==SoldierArtDecision::Replace){
+        const bool initialAim=type==5 && sheet>=0x10 && sheet<=0x17;
+        if((((type==5 || type==36) && sheet>=0x52 && sheet<=0x59) || initialAim) && result.decision==SoldierArtDecision::Replace){
             if(!result.groundShadow.pixels)throw std::runtime_error("candidate aim missing owner-specific ground");
             auto transition=p;transition.soldier.animation=51;
             if(!registry.resolve(transition,"",density,true,384,384*272).groundShadow.pixels)
@@ -98,6 +99,21 @@ int main(int argc,char** argv){try{
             if(registry.resolve(transition,"",density,true,384,384*272).groundShadow.pixels)
                 throw std::runtime_error("candidate airborne aim retained ground");
             ++aimTransitions;
+            if(initialAim){
+                for(int animation:{50,52}){
+                    auto off=p;off.soldier.animation=animation;
+                    const auto excluded=registry.resolve(off,"",density,true,384,384*272);
+                    if(excluded.decision!=SoldierArtDecision::Replace || excluded.groundShadow.pixels)
+                        throw std::runtime_error("candidate initial aim off-state ground exclusion");
+                    ++initialAimOffStates;
+                }
+                auto wrongPerson=p;wrongPerson.soldier.personType=1;
+                bool rejected=false;
+                try{registry.resolve(wrongPerson,"",density,true,384,384*272);}
+                catch(const std::invalid_argument& e){rejected=std::string(e.what())=="enemy catalog logical state";}
+                if(!rejected)throw std::runtime_error("candidate initial aim accepted wrong native person");
+                ++initialAimRejections;
+            }
         }
         if(result.decision==SoldierArtDecision::Replace){++modern;if(slot->role==4)++shadows;if(result.groundShadow.pixels)++ground;}
         else if(result.decision==SoldierArtDecision::KeepClassic){++classic;if(row.at("no_write")==true)++hidden;}
@@ -110,6 +126,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}

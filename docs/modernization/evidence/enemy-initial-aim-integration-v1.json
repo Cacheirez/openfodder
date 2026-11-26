@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.IAI",
+  "status": "PASS focal integration; full current-code CI/H3 and Miguel gameplay pending",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-aim-technical-v1\\8x",
+      "manifest_sha256": "98eeef2e2e9184a127f3e56d16e245ccd38916d9bced6e1e276e259018dbba94",
+      "asset_bytes": 18911744,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=401, classic=278, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=401, classic=278, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-aim-technical-v1\\12x",
+      "manifest_sha256": "3a9b2392777a709531654449e4af63bfbd4362078300849312d84c7b26a6f5d9",
+      "asset_bytes": 42551424,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=401, classic=278, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=401, classic=278, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 152,
+    "art_derivatives": 306,
+    "candidate_assets": 338,
+    "native_contracts": 679,
+    "modern_contracts": 401,
+    "modern_bodies": 395,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 208,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 118
+  },
+  "tests": [
+    {
+      "platform": "win",
+      "suite": "ground",
+      "result": "PASS ordered ground shadow: 4 format/density groups; dimensions retained, ordered occlusion, Save/Restore, clipping, budgets, height/water/state exclusions and invalid metadata"
+    },
+    {
+      "platform": "win",
+      "suite": "test_native_player_catalog",
+      "result": "PASS selected-density catalog: 1376 cases; complete 8x/12x independently, mismatch/corruption/incomplete and 64 MiB preflight rejected\nPASS CF1 native catalog: 15441 resolution/mutation cases; complete 339 produced slots; 48 declared-only rows remain unbound; unknown/corrupt/incomplete rejected"
+    },
+    {
+      "platform": "win",
+      "suite": "test_native_enemy_catalog",
+      "result": "PASS enemy native catalog: 18284 cases, 679 produced source slots at 8x/12x; verified classic gaps, resource-specific zero draws, owners and corruption rejection"
+    },
+    {
+      "platform": "linux",
+      "suite": "ground",
+      "result": "PASS ordered ground shadow: 4 format/density groups; dimensions retained, ordered occlusion, Save/Restore, clipping, budgets, height/water/state exclusions and invalid metadata"
+    },
+    {
+      "platform": "linux",
+      "suite": "test_native_player_catalog",
+      "result": "PASS selected-density catalog: 1376 cases; complete 8x/12x independently, mismatch/corruption/incomplete and 64 MiB preflight rejected\nPASS CF1 native catalog: 15441 resolution/mutation cases; complete 339 produced slots; 48 declared-only rows remain unbound; unknown/corrupt/incomplete rejected"
+    },
+    {
+      "platform": "linux",
+      "suite": "test_native_enemy_catalog",
+      "result": "PASS enemy native catalog: 18284 cases, 679 produced source slots at 8x/12x; verified classic gaps, resource-specific zero draws, owners and corruption rejection"
+    },
+    "Registry152poses/306derivatives PASS",
+    "Python ground contact4tests PASS",
+    "Windows clang23 ASan/UBSan; Linux GCC13 ASan/UBSan/LSan PASS"
+  ],
+  "next": "E2.SK — auditar hundimiento enemigo7A/F0..5 y su ruta inicial38/F0..5: productores5/36/persona0, recorte progresivo, referencias por formato, procedencia E01 reutilizable y sombras. Sin generar ni vincular arte antes de fijar el contrato.",
+  "guarantees": [
+    "Initial aim only type5/person0, sheets10..17, animations0/51; geometry/height/crop/vehicle/destruction guards retained",
+    "Actual independent shadow suppresses optional floor; stale owner generation must not suppress it",
+    "Native person1 negative rejects with enemy catalog logical state; corrected test diagnostic comparison, no catalogue guard weakened",
+    "Frozen protagonists, approved paint/contact pixels and previous candidates untouched",
+    "First runtime Source delta since76db816: only optional ground eligibility; simulation/classic/H3 references unchanged",
+    "Current code fullCI/H3 PENDING before final executable; earlier76db816 CI is baseline only"
+  ],
+  "ci_current": {
+    "head": "d1089fee2d28e4bd46d91595056c7da0d151471d",
+    "pr": "OPEN/draft",
+    "checks": "3QUEUED/2IN_PROGRESS; no fresh PASS",
+    "source_change": "not yet published at consultation"
+  }
+}

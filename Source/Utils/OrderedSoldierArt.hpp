@@ -37,8 +37,12 @@ inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerTyp
     // planted body phase for both infantry and rocket enemies.
     const bool enemyAim=(s.type==5 || s.type==36) && s.sheet>=0x52 && s.sheet<=0x59 &&
         (s.animation==0 || s.animation==51);
+    // Before its first AI update, type5 can leave Slide2 using the human aim
+    // table. That path bypasses generic independent-shadow creation.
+    const bool initialEnemyAim=s.type==5 && s.personType==0 && s.sheet>=0x10 && s.sheet<=0x17 &&
+        (s.animation==0 || s.animation==51);
     return (ownerType==0 || ownerType==5 || ownerType==36) && s.type==ownerType &&
-        ((normal && s.animation==0) || celebration || slide || enemyAim) &&
+        ((normal && s.animation==0) || celebration || slide || enemyAim || initialEnemyAim) &&
         !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
 }
 struct SoldierArtObservation {
