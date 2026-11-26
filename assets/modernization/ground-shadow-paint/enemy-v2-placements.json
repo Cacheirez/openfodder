@@ -3071,6 +3071,29 @@
           "sha256": "2033b19261f0aa95f92a6a40e98a1d05a340a525cae247284245303c555f5de2"
         }
       ]
+    },
+    {
+      "sheet": 116,
+      "frame": 2,
+      "reason": "Source-known mode-zero frame with format-specific native anchors; no added ground, independent commands retained",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-74-f2-pc-8x",
+          "sha256": "a6cc07a3b41ffd903efe4d6cf60e39cd485bc7daa11c9d120035538c8357d2dc"
+        },
+        {
+          "id": "enemy-v2-pose-74-f2-pc-12x",
+          "sha256": "0870c6870e69f078055b63437b357414f1675f7a3ab1d7c13721491aef53bf33"
+        },
+        {
+          "id": "enemy-v2-pose-74-f2-amiga-8x",
+          "sha256": "ec8d3dda7f96a61e71656e9dcf0795495f63bf95ab924ccf51ae8ae1f729d0d6"
+        },
+        {
+          "id": "enemy-v2-pose-74-f2-amiga-12x",
+          "sha256": "ff37830208ebea17d4b891a1c20138798cb1be42068d86e64d5321e17d223ecd"
+        }
+      ]
     }
   ]
 }

@@ -57,7 +57,11 @@ def build(base,resources,out,density):
             if a['density']!=density:continue
             assert a['id'] not in assets
             locations[a['id']]=checked_file(package.parent,a);assets[a['id']]=copy.deepcopy(a)
-            art[pose['sheet'],pose['frame']]=a['id']
+            formats=a.get('native_formats',[n['format'] for n in manifest['export']['native']])
+            for fmt in formats:
+                key=fmt,pose['sheet'],pose['frame']
+                assert key not in art, 'Conflicting enemy art for native format'
+                art[key]=a['id']
     player_shadows={(p['format'],p['sheet'],p['frame']):p for p in original['player_catalog']['poses'] if p['type']==22}
     poses=[];evidence=[];missing=[];counts={}
     for slot in contracts():
@@ -80,8 +84,8 @@ def build(base,resources,out,density):
             identity=reference['assets'][str(density)];a=assets[identity]
             assert (a['width'],a['height'])==(width,height)
             ids={str(density):identity}
-        elif slot['role']==2 and hashes!=empty and (sheet,frame) in art:
-            identity=art[sheet,frame];a=assets[identity]
+        elif slot['role']==2 and hashes!=empty and (fmt,sheet,frame) in art:
+            identity=art[fmt,sheet,frame];a=assets[identity]
             assert (a['width'],a['height'])==(width,height)
             ids={str(density):identity}
         kind='no-write' if hashes==empty else 'modern' if ids else 'native-marker' if slot['role']==6 else 'classic-missing-art'

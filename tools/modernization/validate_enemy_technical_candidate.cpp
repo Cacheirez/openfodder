@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -56,6 +56,16 @@ int main(int argc,char** argv){try{
             throw std::runtime_error("candidate damage unexpectedly received ground shadow");
         if(type==5 && sheet>=0x20 && sheet<=0x2f && result.groundShadow.pixels)
             throw std::runtime_error("candidate initial-person damage unexpectedly received ground shadow");
+        if(type==5 && sheet>=0x72 && sheet<=0x74 && result.groundShadow.pixels)
+            throw std::runtime_error("candidate mode-zero unexpectedly received ground shadow");
+        if(type==5 && sheet==0x74 && frame==2 && result.decision==SoldierArtDecision::Replace){
+            size_t bottom=0;
+            for(size_t i=0;i<result.pixels->size();++i)
+                if((*result.pixels)[i]>>24)bottom=i/(result.width*density)+1;
+            if(bottom!=size_t(fmt==0?14:12)*density)
+                throw std::runtime_error("candidate format-specific native foot anchor differs");
+            ++formatAnchors;
+        }
         if(type==36 && sheet>=0xa8 && sheet<=0xaf && frame==2 &&
            result.decision==SoldierArtDecision::Replace && !result.groundShadow.pixels)
             throw std::runtime_error("candidate rocket missing owner-specific ground");
@@ -82,6 +92,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}

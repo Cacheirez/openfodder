@@ -8,6 +8,11 @@ from inventory_enemy_states import ROOT
 from prepare_ground_shadows import checked_file, PAINT
 
 
+def pose_assets(pose):
+    groups=pose.get('assets_by_format',{'common':pose['assets']})
+    return {a['id']:a for group in groups.values() for a in group.values()}.values()
+
+
 def picture(asset,path):
     raw=path.read_bytes();d=asset['density'];width=asset['width']*d;alpha=raw[3::4]
     bottom=max(i//width for i,v in enumerate(alpha) if v>=128)+1
@@ -45,15 +50,19 @@ def qualify():
         elif pose['family']=='pose' and 0xa8<=sheet<=0xaf and pose['frame']==2:family,direction='rocket',sheet-0xa8
         elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
-                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
         elif pose['family']=='death' and (0x62<=sheet<=0x71 or 0x20<=sheet<=0x2f) and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native damage/airborne state; retain specific and independent shadow commands, no added ground component',
-                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
         elif pose['family']=='pose' and ((sheet in (0x72,0x73) and pose['frame'] in (0,1,2)) or (sheet==0x74 and pose['frame'] in (0,1))):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component',
-                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
+            continue
+        elif pose['family']=='pose' and sheet==0x74 and pose['frame']==2:
+            excluded.append(dict(sheet=sheet,frame=2,reason='Source-known mode-zero frame with format-specific native anchors; no added ground, independent commands retained',
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
