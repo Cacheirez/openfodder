@@ -234,3 +234,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.DA0 comprobado:** daño62, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d0.json). Próximo: E3.DA1 — ajustar exportación de63/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69.
 
 - **E3.DA1 comprobado:** daño63, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d1.json). Próximo: E3.DA2 — ajustar exportación de64/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69.
+
+- **E3.DA2 comprobado:** daño64, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d2.json). Próximo: E2.D4 — modernizar daño enemigo66/F0,F1, dirección4, con identidad E01/v2, maestros protagonistas24 necesarios y referencias nativas66. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.
