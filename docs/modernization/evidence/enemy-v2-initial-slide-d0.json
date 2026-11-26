@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.ISL0",
+  "status": "PASS source/master reuse and own anchors; initial ground runtime/gameplay pending",
+  "sheet": 164,
+  "frame": 0,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-a7-f0/manifest.json",
+  "source_sha256": "dc0a1f231d52f167178e5bdf6e7723360898e0d92924f66a3ceadc1a63fb66dd",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5"
+    }
+  ],
+  "placement": {
+    "x": 3,
+    "y": 2,
+    "width": 10,
+    "height": 9
+  },
+  "body_lower_anchor": 11,
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-a4-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f0-8x",
+      "sha256": "158cf15b88c15e45cbd3a7180bb32a1fab446aaafcc045d35aa959e307962561",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-a4-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f0-12x",
+      "sha256": "8fa508ed7ccc02cb289e4408fcb7a09b363723d3da8e8a1f1eeacce2bc135b55",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 173,
+    "assets": 348
+  },
+  "validation": [
+    "Exact original friendly A4direction reference and own source-person0 signatures checked",
+    "E01original source/PNG/RGBA copied byte-identical; no ImageGen call, mirroring or runtime alias",
+    "Body lower anchor separated from native embedded tail; both native alpha bounds checked",
+    "Existing fixed lower-right slide contact reused; runtime initial eligibility remains pending"
+  ],
+  "next": "E3.ISL1 \u2014 exportar soloA4/F1 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F1; verificar referencia protagonista y contratos/ancla propios. P\u00edxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra direcci\u00f3n."
+}
