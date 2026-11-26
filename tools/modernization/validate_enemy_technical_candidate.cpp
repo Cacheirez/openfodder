@@ -52,6 +52,8 @@ int main(int argc,char** argv){try{
         const auto result=registry.resolve(p,"",density,true,384,384*272);
         if(type==5 && sheet>=0x5a && sheet<=0x61 && result.groundShadow.pixels)
             throw std::runtime_error("candidate swim unexpectedly received ground shadow");
+        if(type==5 && sheet>=0x62 && sheet<=0x69 && result.groundShadow.pixels)
+            throw std::runtime_error("candidate damage unexpectedly received ground shadow");
         if(type==36 && sheet>=0xa8 && sheet<=0xaf && frame==2 &&
            result.decision==SoldierArtDecision::Replace && !result.groundShadow.pixels)
             throw std::runtime_error("candidate rocket missing owner-specific ground");
