@@ -3970,6 +3970,69 @@
       }
     },
     {
+      "sheet": 120,
+      "frame": 2,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-78-f2/manifest.json",
+      "source_sha256": "48573b909b4b1f1e9d220ce7c1304858bc6a37146841bfc7f784bdffcbedbc3c",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-78-f2-amiga-8x",
+          "sha256": "e8f5943c1a00d891e1d3a6ef031ec920e6a890ce71e4ef404662c6d1ebc78ec4",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-78-f2-amiga-12x",
+          "sha256": "650ae017dac358e4ab8a412ff1b32895e18f79f45af6641822ea4f6dbb4f40f2",
+          "size": [
+            192,
+            168
+          ]
+        }
+      },
+      "assets_by_format": {
+        "0": {
+          "8": {
+            "id": "enemy-v2-pose-78-f2-pc-8x",
+            "sha256": "2817769125baddc25fbed119f17f5f7a781996442c7e4befa98a1c837e7ba634",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-78-f2-pc-12x",
+            "sha256": "77176c42214d3f7fe433878818935f9366d69e2f7c450353d8bfcdbd1cb94076",
+            "size": [
+              192,
+              168
+            ]
+          }
+        },
+        "1": {
+          "8": {
+            "id": "enemy-v2-pose-78-f2-amiga-8x",
+            "sha256": "e8f5943c1a00d891e1d3a6ef031ec920e6a890ce71e4ef404662c6d1ebc78ec4",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-78-f2-amiga-12x",
+            "sha256": "650ae017dac358e4ab8a412ff1b32895e18f79f45af6641822ea4f6dbb4f40f2",
+            "size": [
+              192,
+              168
+            ]
+          }
+        }
+      }
+    },
+    {
       "sheet": 122,
       "frame": 0,
       "family": "pose",
@@ -5121,8 +5184,8 @@
     }
   ],
   "counts": {
-    "poses": 191,
-    "assets": 400
+    "poses": 192,
+    "assets": 404
   },
   "identity": 2
 }

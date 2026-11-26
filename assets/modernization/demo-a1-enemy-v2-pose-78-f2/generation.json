@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Single isolated full-body E01 enemy game sprite in moderate painted style of first reference. Camera overhead three-quarter RIGHT PROFILE facing screen RIGHT, same character material/identity as first reference but UNARMED with empty hands. Follow native stance in last two tiny references: near forearm bends across upper chest with empty hand toward face at screen-right; other arm rests low/slightly back, knees relaxed in walking phase0 with nearer boot forward to screen-right and other boot back to left. First image is identity and right-facing angle ONLY: do not copy weapon or its two-handed holding grip. Grey-green plain helmet, grey-olive uniform, short dark beard on exposed jaw, small brick-red neck cloth, reddish leather straps/belt pouches. Compact adult proportions, whole helmet and boots inside frame, upper-left light and painterly facets, clear small-scale silhouette. No mirrored left-facing source, no rifle or held object, no extra figure, no ground or cast shadow, no text, genuinely transparent background.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "48573b909b4b1f1e9d220ce7c1304858bc6a37146841bfc7f784bdffcbedbc3c",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d6-audit/78-f2-native-0.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d6-audit/78-f2-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
