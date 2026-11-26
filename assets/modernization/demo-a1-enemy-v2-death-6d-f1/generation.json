@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Edit image1, painted game soldier second reaction frame1 in rear/upper-LEFT three-quarter view, knees curled with both soles visible and empty hand reaching outward, partial dark rifle at chest. Preserve EXACT curled posture, soles and leg angles, hand/arm positions, weapon fragments, helmet direction, camera elevation, proportions, straps/pouches layout and existing small red mark on upper back. Transfer ONLY approved E01 enemy appearance from image2: plain grey-green helmet, grey-olive uniform, reddish-brown leather straps/pouches, dark brown boots. Small brick-red cloth only at visible neck; short dark beard only if original jaw sliver visible, do not reveal face or turn head. No extra gear, weapon relocation or new injury. Native6D/F1 image3 fixes frame and orientation. Restrained non-graphic game depiction with unchanged small mark. Moderate painted rendering, soft upper-left light, one complete isolated game sprite on true RGBA transparency, generous margin. No floor, ground shadow, text, insignia, mirroring or extended-frame0 pose.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "a915f3cfe63a426cd068b649982f291dd82528ab28d19222e89f531b577fb307",
+  "references": [
+    "assets/modernization/demo-a1-player-hitdeath-2b-f1/source.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-6d-f1-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
