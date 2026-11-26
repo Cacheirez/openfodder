@@ -51,6 +51,10 @@ def qualify():
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native damage/airborne state; retain specific and independent shadow commands, no added ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
             continue
+        elif pose['family']=='pose' and sheet==0x72 and pose['frame'] in (0,1,2):
+            excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Verified native body equality with falling B8..BA; retain independent height-driven shadows, no added ground component',
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose['assets'].values()]))
+            continue
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
         g=groups.setdefault((family,direction),[])

@@ -2951,6 +2951,51 @@
           "sha256": "44e9f79d868de91ac286d2d5405e4d90e345b592960b8ad32e7bf7342412d90e"
         }
       ]
+    },
+    {
+      "sheet": 114,
+      "frame": 0,
+      "reason": "Verified native body equality with falling B8..BA; retain independent height-driven shadows, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-72-f0-8x",
+          "sha256": "0eb5d9906df9ac750736a1af7e5bce81ccac2c144cba916769a3ed076eca44d1"
+        },
+        {
+          "id": "enemy-v2-pose-72-f0-12x",
+          "sha256": "6909dc19b79cbbebbbd56a652ae49771c671cd59505788b2332ed179cf5089d5"
+        }
+      ]
+    },
+    {
+      "sheet": 114,
+      "frame": 1,
+      "reason": "Verified native body equality with falling B8..BA; retain independent height-driven shadows, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-72-f1-8x",
+          "sha256": "c07ba0a5ae89a1598c504618a3d687907405bd2b5ab736754467d12773883d78"
+        },
+        {
+          "id": "enemy-v2-pose-72-f1-12x",
+          "sha256": "f05b7e43b2021dbe4b842efd39b635f06be2f5c21fcc6441a667f6d5b15796d0"
+        }
+      ]
+    },
+    {
+      "sheet": 114,
+      "frame": 2,
+      "reason": "Verified native body equality with falling B8..BA; retain independent height-driven shadows, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-72-f2-8x",
+          "sha256": "08c724f8ca955dfdb0d3f2e8defd99a69f3d6da71ed78fe7489dee3dc0da6e95"
+        },
+        {
+          "id": "enemy-v2-pose-72-f2-12x",
+          "sha256": "a2810b095c1607fc23c3527cf612bab90207347e2aa2c1ca3cf9270fbff5dd6f"
+        }
+      ]
     }
   ]
 }

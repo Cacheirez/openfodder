@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.T0",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 114,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-72-f0",
+      "source_sha256": "69211fc356249a5587558591334be52fe2a115af4c551f20bd75b03e5d34d25d",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 4,
+        "width": 7,
+        "height": 7
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-72-f1",
+      "source_sha256": "544414a4c38df726f607fe1fb50158cfce895d0c1de1175703a23f020456fb8c",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 3,
+        "width": 7,
+        "height": 9
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-72-f2",
+      "source_sha256": "ee460a112ea1f6d9837f2e68f5ee6489e621151df721b7c2ae99810761d81acb",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 7,
+        "height": 11
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 122,
+    "assets": 244
+  },
+  "notes": [
+    "Source mode-zero table has distinct native orientations per frame; preserved down/diagonal-left/left-profile poses and empty hands, no invented injury or mirroring.",
+    "Per-frame proportional native-box fits4,4,7,7;4,3,7,9;3,1,7,11 retain native bottoms11/12/12, logical16x14. XYratios1.008/0.993/0.978.",
+    "Native body equality withB8..BA verified in prior focused audit; no automatic fall binding, no ground component. Type36mode-zero remains declared-only.",
+    "Native clock untouched. Export/hash/alpha review only; size/continuity in replay and Miguel gameplay acceptance pending."
+  ],
+  "next": "E2.T1 — verificar y modernizar73/F0,F1,F2 (dirección1 de tabla modo-cero), con E01/v2, maestros protagonistas31 y nativos73. Confirmar equivalencia de cuerposBB..BD y conservar cada pose/orientación/ancla; sin suelo añadido ni vínculo automático de caída. Solo contratos producidos de infantería5."
+}
