@@ -8,18 +8,18 @@
   "assets": [
     {
       "density": 8,
-      "file": "enemy-v2-death-63-f1-8x.rgba",
+      "file": "enemy-v2-death-63-f1-8x-native-anchor-v2.rgba",
       "height": 14,
       "id": "enemy-v2-death-63-f1-8x",
-      "sha256": "9255b4307951b2b0d4bda814c805c2bdc951dc64d29a561c99e13f47bad6a4b9",
+      "sha256": "9e39a6127417e854ef94c740b157ce333b06ebd5fd956c0a2205bdfebfd3fd14",
       "width": 16
     },
     {
       "density": 12,
-      "file": "enemy-v2-death-63-f1-12x.rgba",
+      "file": "enemy-v2-death-63-f1-12x-native-anchor-v2.rgba",
       "height": 14,
       "id": "enemy-v2-death-63-f1-12x",
-      "sha256": "6b50a23ddd8ac26b9decc1283d5346ba29cd3938f51ae295f0285a0a3d86e664",
+      "sha256": "5d42936ad6671c03fa37e6ee311727a9aa7f78a76c42526f3d5d88c9c293ad8d",
       "width": 16
     }
   ],
@@ -40,13 +40,13 @@
       313,
       258,
       893,
-      1079
+      1032
     ],
     "placement": {
       "x": 4,
-      "y": 1,
-      "width": 8,
-      "height": 11
+      "y": 0,
+      "width": 9,
+      "height": 12
     },
     "logical_size": [
       16,
@@ -77,5 +77,13 @@
     "ground_shadow": "none; preserve independent native commands"
   },
   "enemy_identity": 2,
-  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "native-anchor-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-native-anchor-v2.json",
+      "reason": "Per-frame proportional native box fit; original master/derivatives preserved"
+    }
+  ]
 }

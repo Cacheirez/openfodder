@@ -8,18 +8,18 @@
   "assets": [
     {
       "density": 8,
-      "file": "enemy-v2-death-63-f0-8x.rgba",
+      "file": "enemy-v2-death-63-f0-8x-native-anchor-v2.rgba",
       "height": 14,
       "id": "enemy-v2-death-63-f0-8x",
-      "sha256": "110502f1f6709630c0e445bf864dc1773f9774f78ea54680de59eac4b014fe75",
+      "sha256": "bede9db8efa07a3dc7665ba34314aefad630cb695caafe55a5fb3442268917d8",
       "width": 16
     },
     {
       "density": 12,
-      "file": "enemy-v2-death-63-f0-12x.rgba",
+      "file": "enemy-v2-death-63-f0-12x-native-anchor-v2.rgba",
       "height": 14,
       "id": "enemy-v2-death-63-f0-12x",
-      "sha256": "000aadf9d4550a091484be26226716e385ec374eb454ce23264a64838136812d",
+      "sha256": "7a86e9a1efe2ca27162e0ec63f25542cf242d55a23c8518390e0e0afa4a7cce5",
       "width": 16
     }
   ],
@@ -37,16 +37,16 @@
   "export": {
     "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
     "crop": [
-      313,
-      258,
-      893,
+      332,
+      265,
+      888,
       1079
     ],
     "placement": {
-      "x": 4,
-      "y": 1,
+      "x": 3,
+      "y": 0,
       "width": 8,
-      "height": 11
+      "height": 12
     },
     "logical_size": [
       16,
@@ -77,5 +77,13 @@
     "ground_shadow": "none; preserve independent native commands"
   },
   "enemy_identity": 2,
-  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "native-anchor-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-native-anchor-v2.json",
+      "reason": "Per-frame proportional native box fit; original master/derivatives preserved"
+    }
+  ]
 }
