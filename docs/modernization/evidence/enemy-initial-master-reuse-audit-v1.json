@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.RA",
+  "status": "PASS focused authoring reuse audit; export/integration pending",
+  "scope": "Only enemy type5 initial person0, first damage direction0 sheets20/F0,F1",
+  "source_tables": {
+    "human": 32,
+    "enemy": 98,
+    "table_offset": 8,
+    "direction": 0,
+    "frames": [
+      0,
+      1
+    ]
+  },
+  "code_evidence": [
+    "Source/Sprites.cpp:661,665,691,695,720 person-indexed animation tables",
+    "Source/Sprites.cpp:804 constructor initializes human/person0",
+    "Source/Sprites/Sprite_Troop.cpp:981,1226 shared injury controller selects table by person and bounds frame modulo2",
+    "tools/modernization/inventory_enemy_states.py:157..172 conservative initial-person type5 producer"
+  ],
+  "masters": [
+    {
+      "frame": 0,
+      "source": "assets/modernization/demo-a1-enemy-v2-death-62-f0/source.png",
+      "sha256": "b488537ff737538bc259129b64f332e99a23a10869286450c4a31c76c61f149f",
+      "generation_metadata": "assets/modernization/demo-a1-enemy-v2-death-62-f0/generation.json"
+    },
+    {
+      "frame": 1,
+      "source": "assets/modernization/demo-a1-enemy-v2-death-62-f1/source.png",
+      "sha256": "7d4a3b5a8c50549cc656f38fcdd94d1d7689f33bce96c6c86a219e0192ca1562",
+      "generation_metadata": "assets/modernization/demo-a1-enemy-v2-death-62-f1/generation.json"
+    }
+  ],
+  "native_contracts": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 32,
+      "frame": 0,
+      "native_signature": "28c254e8f9c0b1e941939ab7ab27d37d7b73d61741efc807a5bb050795b60e5b",
+      "native_geometry": [
+        16,
+        14
+      ],
+      "native_equals_ai": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 32,
+      "frame": 0,
+      "native_signature": "28c254e8f9c0b1e941939ab7ab27d37d7b73d61741efc807a5bb050795b60e5b",
+      "native_geometry": [
+        16,
+        14
+      ],
+      "native_equals_ai": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 32,
+      "frame": 1,
+      "native_signature": "f2868641f23ce15c6f4c25000758edbdf3ce9ceff17ec46fdbc514daa95ba894",
+      "native_geometry": [
+        16,
+        14
+      ],
+      "native_equals_ai": false
+    }
+  ],
+  "excluded": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 32,
+      "frame": 1,
+      "reason": "No PC source frame; do not export or bind"
+    }
+  ],
+  "conclusion": "Reuse authored E01 source for same action/direction/frame is viable; native raster alias is not asserted. Export separate native20 contracts/assets/placement: F0 both formats, F1 Amiga only. Existing62 source/generation provenance remains unchanged.",
+  "guarantees": [
+    "No ImageGen request or tool/model switch",
+    "No unknown or53oldrefs batch binding",
+    "No friendly art binding: reuse enemy E01 masters only",
+    "No simulation, RNG, clock, shadow command or Source modification",
+    "No gameplay acceptance inferred"
+  ],
+  "next": "E3.R0 \u2014 exportar da\u00f1o inicial20/F0 (PC/Amiga) y20/F1 (soloAmiga) reutilizando maestros E01 de62, con firma/geometr\u00eda/ancla y procedencia propias. Ajustar verificador a formatos realmente producidos, excluir suelo y comprobar PNG/RGBA. Sin v\u00ednculo20/F1PC, alias nativo, nuevas generaciones ni cambios protagonistas."
+}
