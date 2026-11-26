@@ -254,3 +254,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.D23 comprobado:** death, dirección3, 6D/F0,1; registro81 poses/162 activos. [Evidencia](evidence/enemy-v2-damage2-d3.json). Próximo: E2.D24 — modernizar segunda reacción de daño6E/F0,F1, dirección4, con identidad E01/v2, maestros protagonistas2C y referencias nativas6E. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
 
 - **E2.D24 comprobado:** death, dirección4, 6E/F0,1; registro83 poses/166 activos. [Evidencia](evidence/enemy-v2-damage2-d4.json). Próximo: E2.D25 — modernizar segunda reacción de daño6F/F0,F1, dirección5, con identidad E01/v2, maestros protagonistas2D y referencias nativas6F. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
+
+- **E2.D25 comprobado:** death, dirección5, 6F/F0,1; registro85 poses/170 activos. [Evidencia](evidence/enemy-v2-damage2-d5.json). Próximo: E2.D26 — modernizar segunda reacción de daño70/F0,F1, dirección6, con identidad E01/v2, maestros protagonistas2E y referencias nativas70. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
