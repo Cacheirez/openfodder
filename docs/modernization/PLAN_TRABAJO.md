@@ -6,8 +6,8 @@
 **Única autoridad sobre el trabajo inmediato.** Plan2.74 vigente. Rama `modernization/windows-foundation`; PR#1 abierta, borrador y sin fusionar. Nunca modificar master, usar subagentes ni cambiar de modelo sin permiso.
 
 - **Hito AUTORIZADO/en curso:** enemigos completos hasta revisión jugando. Protagonistas aceptados y congelados; no se infiere aceptación global enemiga por pruebas automáticas.
-- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.182poses/370derivados disponibles; versión verde anterior conservada.
-- **Avance E01/v2:** E3.T31 comprobado; registro disponible 182 poses/370 activos, siempre separados de la versión1 conservada. PASS contratos nativos, hashes, alfa/cajas y RGBA/PNG; revisión interna favorable. Integración y aceptación jugando PENDIENTES. [Último bloque](evidence/enemy-v2-mode-zero-d3-f1.json).
+- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.183poses/374derivados disponibles; versión verde anterior conservada.
+- **Avance E01/v2:** E3.T32 comprobado; registro disponible 183 poses/374 activos, siempre separados de la versión1 conservada. PASS contratos nativos, hashes, alfa/cajas y RGBA/PNG; revisión interna favorable. Integración y aceptación jugando PENDIENTES. [Último bloque](evidence/enemy-v2-mode-zero-d3-f2.json).
 - **Último bloque E3.ISLI PASS técnico:** deslizamientoA7/F0..7 e inicialA4/F0..7 con suelo por dueño/persona en estados50/51/52. [Evidencia](evidence/enemy-initial-slide-integration-v1.json).
 - **Candidatos privados actuales:** `enemy-initial-slide-technical-v1/8x` y `12x`;374activos,20.976.128/47.196.288bytes dentro de64MiB.679contratos:485modernos (479cuerpos/6sombras),124cuerpos sin arte,66no-write y4marcadores. Anteriores intactos; sin ejecutable final enemigo.
 - **Sombras:**33grupos/67poses terrestres y134derivados cualificados; proyección fija aprobada. Suelo de deslizamiento50/51/52 y apuntado0/51; sombra independiente prevalece, altura/recorte/agua/daño conservados.
@@ -18,7 +18,7 @@
 - **ImageGen:** operativo en poses independientes.4B/F0 mantiene rechazo aislado auditado, sin reintento, cambio de herramienta/modelo ni borrado del registro. Soporte no es requisito para el resto. [Registro](evidence/enemy-generation-blocked-4b-f0.json).
 - **E3.RC PASS M1P2 Windows/Linux:**1546estados intactos,4635publicacionesHD; infantería5:6524apariciones modernas y171keep del marcador invisible7C/F1 (cero cuerpos visibles clásicos en este replay). +4851apariciones modernas frente al candidato anterior. Lanzacohetes36/líder106 no observados; revisión jugando global PENDIENTE. [Medición](evidence/enemy-slide-continuity-m1p2-v1.json).
 - **E2.T3 comprobado:**75/F0..2,6contratos producidos de5/persona1;36solo declarado. Maestro33 inexistente; referencias propias PC/TheOne y Plus solo para postura, sin igualdad de máscaras. Anclas PC14/Amiga12-13 requieren derivados por formato; sin suelo nuevo inferido ni aceptación global de sombra. [Contrato](evidence/enemy-mode-zero-d3-audit-v1.json).
-- **Siguiente tarea única:** E3.T32 — crear solo75/F2 de infantería modo-cero con identidad E01 y referencias nativas PC/Plus de esa entrada. Verificar gesto/mano y apoyo propios, PC14/Amiga13; exportar por formato sin alias ni suelo nuevo inferido. Validar/publicar antes de integrar esta dirección.
+- **Siguiente tarea única:** E3.T3I — integrar75/F0..2 de5/persona1 en candidatos nuevos8×/12×, con derivados/anclas nativos por formato y sin suelo nuevo inferido. Validar6contratos nuevos, rechazo al intercambiar formatos y sanitizadores Windows/Linux; Source clásico/simulación intactos.
 - **Límites:** sin B, civiles generales/vehículos, escenarios nuevos, scroll ni16:9. Mantener simulación/IA/RNG/colisiones/reloj/dirección/frame, clásico independiente, fallback ante errores reales y64MiB. ZIP ajeno y lanzadores anteriores intactos.
 
 

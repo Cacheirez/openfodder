@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T32",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 3,
+  "sheet": 117,
+  "frames": [
+    2
+  ],
+  "packages": [
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-75-f2",
+      "source_sha256": "3b037e48a43d4968139e785d273076428170fb0444fe2b9b3fd3487150b08ce4",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 4,
+          "y": 0,
+          "width": 8,
+          "height": 14
+        },
+        "1": {
+          "x": 2,
+          "y": 0,
+          "width": 7,
+          "height": 13
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 183,
+    "assets": 374
+  },
+  "notes": [
+    "Own F2arm swing and opposite stepping foot inspected with E01identity, no mirroring and no different frame substitution.",
+    "PC14/Amiga13 lower anchors, alpha/native bounds and scaleX/Y within5%;4format derivatives from common original.",
+    "No new floor inferred; independent native commands retained; global shadow/gameplay acceptance pending. Source unchanged from e0d9430b CI/H3PASS."
+  ],
+  "next": "E3.T3I — integrar75/F0..2 de5/persona1 en candidatos nuevos8×/12×, con derivados/anclas nativos por formato y sin suelo nuevo inferido. Validar6contratos nuevos, rechazo al intercambiar formatos y sanitizadores Windows/Linux; Source clásico/simulación intactos."
+}
