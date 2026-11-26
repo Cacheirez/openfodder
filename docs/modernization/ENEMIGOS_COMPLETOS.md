@@ -226,3 +226,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.D0 comprobado:** death, dirección0, 62/F0,1; registro61 poses/122 activos. [Evidencia](evidence/enemy-v2-damage-d0.json). Próximo: E2.D1 — modernizar daño enemigo63/F0,F1, dirección1, con identidad E01/v2, maestros protagonistas21 necesarios y referencias nativas63. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
 
 - **E2.D1 comprobado:** death, dirección1, 63/F0,1; registro63 poses/126 activos. [Evidencia](evidence/enemy-v2-damage-d1.json). Próximo: E2.D2 — modernizar daño enemigo64/F0,F1, dirección2, con identidad E01/v2, maestros protagonistas22 necesarios y referencias nativas64. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
+
+- **E2.D2 comprobado:** death, dirección2, 64/F0,1; registro65 poses/130 activos. [Evidencia](evidence/enemy-v2-damage-d2.json). Próximo: E2.D3 — modernizar daño enemigo65/F0,F1, dirección3, con identidad E01/v2, maestros protagonistas23 necesarios y referencias nativas65. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.

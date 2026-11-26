@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.D2",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 2,
+  "sheet": 100,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-64-f0",
+      "source_sha256": "6a96e9cfdf10594704f2ac7436b4a5a895c662d723805b1a2e1a177598fe1dbb",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 6,
+        "y": 2,
+        "width": 7,
+        "height": 8
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-64-f1",
+      "source_sha256": "6c080473094efbd3709e1c2dee6b31410b0f212f5ec519d8fdad45430d15381b",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 6,
+        "y": 2,
+        "width": 7,
+        "height": 8
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 65,
+    "assets": 130
+  },
+  "notes": [
+    "Source enemy animation tables reuse64 for direction2 in Death and Death-2; no6C key invented.",
+    "Shared crop314,143,1127,1098; placement6,2,7,8 remains inside both frames native boxes, X/Y ratio1.0278; descriptor16x14 and native geometry unchanged.",
+    "Distinct extended/curled leg poses retained; height/independent shadow commands unchanged, no ground paint.",
+    "Internal native-size review only; runtime integration and Miguel global gameplay acceptance pending."
+  ],
+  "next": "E2.D3 — modernizar daño enemigo65/F0,F1, dirección3, con identidad E01/v2, maestros protagonistas23 necesarios y referencias nativas65. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0."
+}
