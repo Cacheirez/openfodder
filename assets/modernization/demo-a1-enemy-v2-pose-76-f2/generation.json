@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Image1 gives E01 identity/rendering from76/F0; images2/3 are PC/Plus native depictions of the SAME target frame76/F2 and supply its own arm/leg stance. Create F2 without repeating F0 or F1: retain left-facing profile/three-quarter orientation of native reference, elevated game camera showing helmet crown, near empty arm swinging forward with elbow bent and hand around waist/lower-chest, other empty arm close to far/back side, opposite stepping leg slightly forward relative to image1. Follow the native F2 silhouette and articulation individually rather than forcing a generic walk. Keep plain grey-green helmet, grey-olive uniform, short dark beard, small brick-red neck cloth, reddish-brown straps/belt/pouches and brown boots. Same moderate painted style with restrained details and soft upper-left light. Single whole isolated figure with hands and boots complete, genuine transparent RGBA margins. No gun/held objects, floor/ground shadow/water/effects/text/emblems and no mirroring. Native engine owns frame cycle.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "c49a5fc19fbf0648cfe1bac1f327a25f6f085e37c29178c7e51d02a2aca67461",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-pose-76-f0/source.png",
+    "private:enemy-mode-zero-d4-audit/76-f2-native-0.png",
+    "private:enemy-mode-zero-d4-audit/76-f2-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
