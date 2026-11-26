@@ -67,7 +67,7 @@ def qualify():
             excluded.append(dict(sheet=sheet,frame=2,reason='Source-known mode-zero frame with format-specific native anchors; no added ground, independent commands retained',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
-        elif pose['family']=='pose' and sheet in (0x75,0x76,0x77) and pose['frame'] in range(3):
+        elif pose['family']=='pose' and sheet in (0x75,0x76,0x77,0x78) and pose['frame'] in range(3):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Audited mode-zero body with own format masks/anchors; no new floor inferred from silhouette, independent commands retained; global shadow acceptance pending',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue

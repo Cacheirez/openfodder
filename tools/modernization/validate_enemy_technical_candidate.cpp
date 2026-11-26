@@ -56,13 +56,13 @@ int main(int argc,char** argv){try{
             throw std::runtime_error("candidate damage unexpectedly received ground shadow");
         if(type==5 && sheet>=0x20 && sheet<=0x2f && result.groundShadow.pixels)
             throw std::runtime_error("candidate initial-person damage unexpectedly received ground shadow");
-        if(type==5 && sheet>=0x72 && sheet<=0x77 && result.groundShadow.pixels)
+        if(type==5 && sheet>=0x72 && sheet<=0x78 && result.groundShadow.pixels)
             throw std::runtime_error("candidate mode-zero unexpectedly received ground shadow");
-        if(type==5 && ((sheet==0x74 && frame==2) || sheet==0x75 || sheet==0x76 || sheet==0x77) && result.decision==SoldierArtDecision::Replace){
+        if(type==5 && ((sheet==0x74 && frame==2) || (sheet>=0x75 && sheet<=0x78)) && result.decision==SoldierArtDecision::Replace){
             size_t bottom=0;
             for(size_t i=0;i<result.pixels->size();++i)
                 if((*result.pixels)[i]>>24)bottom=i/(result.width*density)+1;
-            const int anchor=(fmt==0 || sheet==0x76)?14:(sheet==0x77?(frame==0?12:11):((sheet==0x74 || frame==0)?12:13));
+            const int anchor=(fmt==0 || sheet==0x76)?14:(sheet==0x78?12:(sheet==0x77?(frame==0?12:11):((sheet==0x74 || frame==0)?12:13)));
             if(bottom!=size_t(anchor)*density)
                 throw std::runtime_error("candidate format-specific native foot anchor differs");
             ++formatAnchors;
