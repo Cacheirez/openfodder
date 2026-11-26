@@ -1,0 +1,87 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 46,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-death-2e-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-death-2e-f0-8x",
+      "sha256": "d189c8b78068ebe2d708e0d385875f28b041ff74d692278eaa91333eed37a61f",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-death-2e-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-death-2e-f0-12x",
+      "sha256": "2db18b8adf8d48476f6fbcc58b76394771d58a590a3c6f339822d5db53686862",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "186aab758e1f90a0e94465507b4c8ca251b1e4afbb181a07831163ee0768c54e",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      396,
+      177,
+      847,
+      1090
+    ],
+    "placement": {
+      "x": 5,
+      "y": 0,
+      "width": 5,
+      "height": 10
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "4c58125c384517afedf13e7c107126dc5a5943c6a0287296c8b0b8c627673249",
+        "bbox": [
+          3,
+          0,
+          13,
+          10
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "4c58125c384517afedf13e7c107126dc5a5943c6a0287296c8b0b8c627673249",
+        "bbox": [
+          3,
+          0,
+          13,
+          10
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-death-70-f0/manifest.json",
+    "source_sha256": "186aab758e1f90a0e94465507b4c8ca251b1e4afbb181a07831163ee0768c54e",
+    "generation_metadata_sha256": "440893cb813d2ec09fea6bf93dd4eda4d02e1b21d8a7bcc24f7f8884be8bcd89",
+    "reason": "Same native second-injury table action/direction/frame, distinct type5 person0 contract; authoring reuse, not native alias"
+  }
+}
