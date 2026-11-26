@@ -2955,7 +2955,7 @@
     {
       "sheet": 114,
       "frame": 0,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-72-f0-8x",
@@ -2970,7 +2970,7 @@
     {
       "sheet": 114,
       "frame": 1,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-72-f1-8x",
@@ -2985,7 +2985,7 @@
     {
       "sheet": 114,
       "frame": 2,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-72-f2-8x",
@@ -3000,7 +3000,7 @@
     {
       "sheet": 115,
       "frame": 0,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-73-f0-8x",
@@ -3015,7 +3015,7 @@
     {
       "sheet": 115,
       "frame": 1,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-73-f1-8x",
@@ -3030,7 +3030,7 @@
     {
       "sheet": 115,
       "frame": 2,
-      "reason": "Verified native body equality with falling B8..BD; retain independent height-driven shadows, no added ground component",
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
       "assets": [
         {
           "id": "enemy-v2-pose-73-f2-8x",
@@ -3039,6 +3039,36 @@
         {
           "id": "enemy-v2-pose-73-f2-12x",
           "sha256": "4085fdc3b4902ca8d8016deb0e4669fbf2c10a75bda85477753e89eefd97a13f"
+        }
+      ]
+    },
+    {
+      "sheet": 116,
+      "frame": 0,
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-74-f0-8x",
+          "sha256": "5a7996a58296e9bc0ef30c7d54e7f7f209902b799b62906e371c6a479fc4a3e5"
+        },
+        {
+          "id": "enemy-v2-pose-74-f0-12x",
+          "sha256": "8769638bf5e808d4149d9ea580e35ddcda0f0b682038870915eba4bae1d2d157"
+        }
+      ]
+    },
+    {
+      "sheet": 116,
+      "frame": 1,
+      "reason": "Verified native body equality with falling B8..BF; retain independent height-driven shadows, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-74-f1-8x",
+          "sha256": "828ba9795428aed9523523ae64603ab865d21c606f3376fe0106687014673082"
+        },
+        {
+          "id": "enemy-v2-pose-74-f1-12x",
+          "sha256": "2033b19261f0aa95f92a6a40e98a1d05a340a525cae247284245303c555f5de2"
         }
       ]
     }

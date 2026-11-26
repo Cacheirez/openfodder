@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Edit image1, painted game soldier seen from elevated camera in lower-RIGHT/front three-quarter view, hunched shoulders, two empty open hands lowered/outward and boots together below bent knees. Preserve EXACT pose, fingers/hands, boot/knee positions, head/helmet angle, elevated camera, silhouette proportions and strap/pouch layout. Transfer ONLY approved E01 enemy identity from image2: plain grey-green helmet, grey-olive uniform, short dark beard along exposed jaw, small brick-red neck cloth, reddish-brown leather straps/pouches, dark brown boots. Keep empty hands, no rifle or extra gear from image2. Native74/F1 image3 fixes pose/orientation and is equivalent to fallBF. Moderate painted rendering with soft upper-left light. Single complete isolated sprite, generous transparent margins and true RGBA transparency. No injury, stains, floor, ground shadow, text, insignia, effects, mirroring or new gesture.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "ff6d9af27b2a5ef4fcf0d2ca635085c6ed89af0660f60f01e99cfb78c1f06b98",
+  "references": [
+    "assets/modernization/demo-a1-player-fall-b7-f0/source.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-74-f1-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
