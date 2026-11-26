@@ -1,0 +1,117 @@
+{
+  "status": "E01 native-posture interpretation with separate signed format anchors; no native alias; global gameplay/shadow acceptance pending",
+  "pose": {
+    "type": 5,
+    "sheet": 120,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-78-f0-pc-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-78-f0-pc-8x",
+      "sha256": "022f4aad0d2135cb45df08301e3d05d3d629ade0fc8bec587bfc907a3f73d824",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-78-f0-pc-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-78-f0-pc-12x",
+      "sha256": "79dceaa199dbdd3fca18ad5871ea8fb127479843caeed644aaed304d2b91114e",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    },
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-78-f0-amiga-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-78-f0-amiga-8x",
+      "sha256": "d330d53e42cadc9decb888a01626a0fca48b1117b55b22f686db8135cfb0aa5e",
+      "width": 16,
+      "native_formats": [
+        1
+      ]
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-78-f0-amiga-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-78-f0-amiga-12x",
+      "sha256": "049cff18ef651ad1c74ecdf8094795cf419c0a6e41ecd79ee1773f11f75e970f",
+      "width": 16,
+      "native_formats": [
+        1
+      ]
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1086,
+      1448
+    ],
+    "mode": "RGBA",
+    "sha256": "dd0bfb140d4b0de8b4f5a206fe32d00df0c3b07940bcdf0a173dcec3b49a80b8",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      165,
+      132,
+      835,
+      1364
+    ],
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "f1456f29ec95a6c49a58113c637d506ff4a7ada75a69e720cade269a2866b2a2",
+        "bbox": [
+          3,
+          0,
+          13,
+          14
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "0599e7e1eeb3a848a0f91c3c012e0e71f4b01f700e75cfa4b676053be1304ad4",
+        "bbox": [
+          2,
+          1,
+          16,
+          12
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands",
+    "placements_by_format": {
+      "0": {
+        "x": 4,
+        "y": 1,
+        "width": 7,
+        "height": 13
+      },
+      "1": {
+        "x": 6,
+        "y": 1,
+        "width": 6,
+        "height": 11
+      }
+    }
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+}
