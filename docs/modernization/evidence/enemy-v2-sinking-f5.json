@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.SK5",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 122,
+  "frames": [
+    5
+  ],
+  "packages": [
+    {
+      "frame": 5,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-7a-f5",
+      "source_sha256": "b7515c5b4f494883e45fa98c481edbd6eab064fd114fd78b827c4630b4b1021f",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 0,
+        "width": 9,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 158,
+    "assets": 318
+  },
+  "notes": [
+    "Complete6frame E01 family internally inspected one frame at a time; correct hand/helmet pose and native lower anchor14 retained, scaleX/Y within5%.",
+    "No floor/waterline baked in; initial38/F5 remains distinct."
+  ],
+  "next": "E3.SKI — integrar los seis frames7A/F0..5 de hundimiento5/36 en candidatos nuevos8×/12×; validar todos los recortes nativos5..12, anclas, ausencia de suelo y sanitizadores Windows/Linux. Sin activar ruta inicial38 todavía."
+}

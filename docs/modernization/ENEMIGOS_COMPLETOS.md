@@ -374,3 +374,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.SK3 comprobado:** pose, dirección0, 7A/F3; registro156 poses/314 activos. [Evidencia](evidence/enemy-v2-sinking-f3.json). Próximo: E3.SK4 — crear solo7A/F4 de hundimiento enemigo con referencia protagonista38/F4 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del último frame.
 
 - **E3.SK4 comprobado:** pose, dirección0, 7A/F4; registro157 poses/316 activos. [Evidencia](evidence/enemy-v2-sinking-f4.json). Próximo: E3.SK5 — crear solo7A/F5 de hundimiento enemigo con referencia protagonista38/F5 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes de integrar los seis frames.
+
+- **E3.SK5 comprobado:** pose, dirección0, 7A/F5; registro158 poses/318 activos. [Evidencia](evidence/enemy-v2-sinking-f5.json). Próximo: E3.SKI — integrar los seis frames7A/F0..5 de hundimiento5/36 en candidatos nuevos8×/12×; validar todos los recortes nativos5..12, anclas, ausencia de suelo y sanitizadores Windows/Linux. Sin activar ruta inicial38 todavía.

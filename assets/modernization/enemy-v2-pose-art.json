@@ -3366,6 +3366,31 @@
       }
     },
     {
+      "sheet": 122,
+      "frame": 5,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-7a-f5/manifest.json",
+      "source_sha256": "b7515c5b4f494883e45fa98c481edbd6eab064fd114fd78b827c4630b4b1021f",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-7a-f5-8x",
+          "sha256": "7ac3f502670ead87fd00a570fa4dbce3910eea3f4a581e5b02682744616598b9",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-7a-f5-12x",
+          "sha256": "e7b5e1be9a978dfc2e28a16f9cbe6137836bd649938ffea39fdb8c2ae941ad64",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 168,
       "frame": 2,
       "family": "pose",
@@ -3967,8 +3992,8 @@
     }
   ],
   "counts": {
-    "poses": 157,
-    "assets": 316
+    "poses": 158,
+    "assets": 318
   },
   "identity": 2
 }
