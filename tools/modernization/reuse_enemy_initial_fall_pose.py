@@ -23,7 +23,14 @@ def reuse(direction,atlas,out=None):
     reference=(f'assets/modernization/demo-a1-player-pose-{0x30+direction//3:02x}-f{direction%3}/source.png'
                if direction<6 else friendly.relative_to(ROOT).as_posix())
     assert reference in generation['references'],'Original E01pose was not based on this direction'
-    assert sha(ROOT/reference)==sha(friendly),'Frozen pose proxy differs from falling master'
+    reference_sha=sha(ROOT/reference)
+    proxy=None
+    if friendly.exists():
+        assert reference_sha==sha(friendly),'Frozen pose proxy differs from falling master'
+    else:
+        assert direction in range(1,6),'Missing direct falling reference'
+        proxy=json.loads((ROOT/reference).with_name('manifest.json').read_text(encoding='utf-8'))
+        assert proxy['source']['sha256']==reference_sha,'Frozen pose master changed'
     assert sha(mode/'source.png')==sha(source/'source.png'),'E01 provenance chain differs'
     native=json.loads((atlas/'native-audit.json').read_text(encoding='utf-8'));catalog=inventory()
     rows=[];evidence=[]
@@ -34,6 +41,9 @@ def reuse(direction,atlas,out=None):
         matches=[x for x in native if (x['format'],x['type'],x['sheet'],x['frame'])==(fmt,5,sheet,0)]
         assert len(matches)==1,'Explicit native resource review needed before extending this reuse'
         n=matches[0];box=list(Image.open(atlas/n['reference']).getchannel('A').getbbox());place=original['export']['placement']
+        if proxy:
+            native_proxy=next(p for p in proxy['export']['native'] if p['format']==fmt)
+            assert native_proxy['native_signature']==n['native_signature'],'Pose proxy is not this initial falling body'
         assert place['y']+place['height']==box[3],'Own native lower anchor differs; re-export explicitly'
         for a in original['assets']:
             density=a['density'];pixels=Image.open((source/a['file']).with_suffix('.png'));actual=pixels.getchannel('A').getbbox()
@@ -55,7 +65,8 @@ def reuse(direction,atlas,out=None):
     g=dict(generator='reuse-existing-E01-source and derivatives; no new ImageGen call',identity=2,transparent_background=True,
         source_sha256=sha(source/'source.png'),reused_from=(source/'source.png').relative_to(ROOT).as_posix(),
         original_generation_metadata=(mode/'generation.json').relative_to(ROOT).as_posix(),original_generation_metadata_sha256=sha(mode/'generation.json'),
-        original_pose_reference=reference,friendly_fall_master=friendly.relative_to(ROOT).as_posix(),friendly_reference_sha256=sha(friendly),
+        original_pose_reference=reference,friendly_fall_master=friendly.relative_to(ROOT).as_posix() if friendly.exists() else None,
+        friendly_reference_sha256=reference_sha,verified_native_proxy=bool(proxy),
         target=dict(type=5,person=0,sheet=sheet,frame=0,direction=direction),review='Source/action/native bounds and provenance checked; runtime integration and Miguel gameplay pending')
     (out/'generation.json').write_text(json.dumps(g,indent=2)+'\n',encoding='utf-8')
     (out/'reuse-evidence.json').write_text(json.dumps(dict(native_cases=evidence,source_manifest=m['authoring_reuse']['source_manifest'],
