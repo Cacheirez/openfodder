@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.RH",
+  "status": "PASS compiled runtime, independent H3, focused CTest/A2 and full current-source CI; Miguel gameplay pending",
+  "source_head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+  "classic_reference": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8",
+  "baseline_sha256": "ae1bcaf6b006d8e41bc0de3fcf7e908d48b786ac427f1620ff69eecc9ff9e819",
+  "platforms": {
+    "win": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-probe-build\\Release\\native_probe.exe",
+      "executable_sha256": "6d39ab09f1aa0596d25da95699aa797721f56bc0e3db2b9c0f7de13f203351a2",
+      "h3_report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-h3-win\\report.json",
+      "h3_report_sha256": "7d8d63afeb40f91fa0d90f1629f86984ddbeb168ab282b09c9f67b141b1a5aa0",
+      "phases": 11,
+      "canonical_states": 11361,
+      "a2_report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-runtimechecks\\a2-win\\report.json",
+      "a2_states": 301,
+      "window_ctest_log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-runtimechecks\\ctest-window-win-fixed.log",
+      "window": "PASS actual method fixture with external assets; ASan/UBSan both platforms, LSan Linux"
+    },
+    "linux": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-probe-linux-build\\native_probe",
+      "executable_sha256": "586d9c432b66538eb7128f9cae333cbafb1447b2a372c8546b14306474f8ad2e",
+      "h3_report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-h3-linux-dummy\\report.json",
+      "h3_report_sha256": "e2936cff0b7b3f426389357362fb7bc7368dafc0bbf8b0393435fa3b7b7ef61f",
+      "phases": 11,
+      "canonical_states": 11361,
+      "a2_report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-runtimechecks\\a2-linux\\report.json",
+      "a2_states": 301,
+      "window_ctest_log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-runtimechecks\\ctest-window-linux-fixed.log",
+      "window": "PASS actual method fixture with external assets; ASan/UBSan both platforms, LSan Linux"
+    }
+  },
+  "ci": {
+    "windows_push": {
+      "run": 45845576873,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45845576873",
+      "head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+      "status": "completed/success"
+    },
+    "windows_pr": {
+      "run": 45845601191,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45845601191",
+      "head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+      "status": "completed/success"
+    },
+    "linux_pr": {
+      "run": 45845600879,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45845600879",
+      "head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+      "status": "completed/success"
+    },
+    "linux_push": {
+      "run": 45845576687,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45845576687",
+      "head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+      "status": "completed/success"
+    },
+    "h6": {
+      "run": 45845600892,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45845600892",
+      "head": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+      "status": "completed/success"
+    }
+  },
+  "incidents": [
+    {
+      "kind": "environment",
+      "observed": "Windows cmake not on non-login PATH",
+      "fix": "Use existing VS2022 bundled absolute cmake path; no install/toolchain change"
+    },
+    {
+      "kind": "environment",
+      "observed": "First Linux H3SDLinitialisation failed before any phase",
+      "preserved_log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-slide-h3-linux\\pc\\engine.log",
+      "fix": "Existing SDLdummy/audio dummy/software setup; fresh outputenemy-slide-h3-linux-dummy PASS"
+    },
+    {
+      "kind": "private harness",
+      "observed": "CTest Windows lacked Release; tests not run",
+      "fix": "-C Release; reports retained"
+    },
+    {
+      "kind": "private harness",
+      "observed": "Window fixture requires nested temp folder; both local CTestdirs lacked it",
+      "fix": "Create nested and add file(MAKE_DIRECTORY) to private CMakeharness; rerun only failedWindow tests, A2PASSnot repeated"
+    },
+    {
+      "kind": "CI cancellation race",
+      "requests": 56,
+      "already_completed": 1,
+      "run": 45845022367,
+      "verified": "completed/cancelled; no identical retry"
+    }
+  ],
+  "next": "E3.RC — medir replay híbrido real AmigaM1P2 en Windows/Linux con los candidatos actuales12×: publicaciones HD efectivas por actor, retornos clásicos por falta de arte frente a errores reales y1546estados H3 intactos. Conservar diagnósticos anteriores; sin aceptación jugando ni lanzador final.",
+  "ci_coverage": [
+    "Windows and Linux full workflows PASS",
+    "Linux independent H3 PC/Amiga, A2, active presentation ASan/UBSan/LSan,29public demoLSan,TSan and publication/pauseTSan PASS",
+    "PR1OPEN/draft/unmerged; all5currentchecksSUCCESS observed"
+  ],
+  "limits": [
+    "Diagnostic WindowHD differs repository by only two opt-in native snapshot lines; full CI builds repository code normally",
+    "LocalH3 uses mission publication without enemy art enabled; validates simulation, not HD actor continuity. E3.RC will measure current hybrid candidate separately",
+    "No final enemy executable/launcher delivered;124source-produced body contracts still lack art",
+    "No protagonist/previous launcher/candidate/reference changes; no B/scroll/16:9/newscenario"
+  ]
+}
