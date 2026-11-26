@@ -34,6 +34,8 @@ inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerTyp
     const bool slide=s.type==0 && s.sheet==0xa4 && (s.animation==50 || s.animation==51 || s.animation==52);
     const bool enemySlide=(s.type==5 || s.type==36) && s.personType==1 && s.sheet==0xa7 &&
         (s.animation==50 || s.animation==51 || s.animation==52);
+    const bool initialEnemySlide=s.type==5 && s.personType==0 && s.sheet==0xa4 &&
+        (s.animation==50 || s.animation==51 || s.animation==52);
     // The shared Slide2 controller selects the AI low-aim table (offset0x30)
     // before clearing animation51 on the following update. Preserve that
     // planted body phase for both infantry and rocket enemies.
@@ -44,7 +46,7 @@ inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerTyp
     const bool initialEnemyAim=s.type==5 && s.personType==0 && s.sheet>=0x10 && s.sheet<=0x17 &&
         (s.animation==0 || s.animation==51);
     return (ownerType==0 || ownerType==5 || ownerType==36) && s.type==ownerType &&
-        ((normal && s.animation==0) || celebration || slide || enemySlide || enemyAim || initialEnemyAim) &&
+        ((normal && s.animation==0) || celebration || slide || enemySlide || initialEnemySlide || enemyAim || initialEnemyAim) &&
         !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
 }
 struct SoldierArtObservation {

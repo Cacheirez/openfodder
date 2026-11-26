@@ -56,11 +56,11 @@ int main(){
         const auto shade=SoldierBlend(0x80000000u,0xff112233u);
         // An enemy's separately ordered native shadow suppresses the optional
         // ground component even after its owner's person field changes late.
-        for(int context:{0,1,2,3,4}){
+        for(int context:{0,1,2,3,4,5}){
             const int type=(context==2 || context==4)?36:5;
             auto owner=a;owner.soldier.soldier.generation=9;owner.soldier.soldier.slot=3;
-            owner.soldier.soldier.type=type;owner.soldier.soldier.personType=context==0?0:1;
-            owner.soldier.soldier.sheet=context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
+            owner.soldier.soldier.type=type;owner.soldier.soldier.personType=(context==0 || context==5)?0:1;
+            owner.soldier.soldier.sheet=context==5?0xa4:context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
             owner.soldier.soldier.animation=(context==0 || context>=3)?51:0;
             owner.soldier.soldier.frame=context>=3?3:type==5?0:2;
             auto enemyArt=art;enemyArt.groundShadow.ownerType=type;

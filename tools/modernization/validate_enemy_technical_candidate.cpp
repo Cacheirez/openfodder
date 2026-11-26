@@ -90,7 +90,7 @@ int main(int argc,char** argv){try{
                 ++sinkingCrops;
             }
         }
-        if((type==5 || type==36) && sheet==0xa7 && result.decision==SoldierArtDecision::Replace){
+        if((((type==5 || type==36) && sheet==0xa7) || (type==5 && sheet==0xa4)) && result.decision==SoldierArtDecision::Replace){
             if(result.groundShadow.pixels)throw std::runtime_error("candidate slide ground outside native state");
             for(int animation:{50,51,52}){
                 auto sliding=p;sliding.soldier.animation=animation;
