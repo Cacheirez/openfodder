@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Image1 is approved-in-work E01 master76/F0 with exact uniform/style/camera. Create native frame76/F1 from posture references images2/3 (PC/Plus SAME F1 entry). Keep profile facing screen LEFT and elevated camera of image1, grey-green helmet, grey-olive uniform, short beard, red neck cloth, reddish leather, brown boots. Change the near arm to F1's lowered swing: it hangs forward beside the front hip with empty hand just below belt level, rather than F0's chest-height bent hand. Opposite arm stays on far/back side near torso, empty. Follow F1's closer, nearly level feet/step position from native references; do not repeat F0's wide stepping stance. Whole isolated complete figure with hands/boots visible, moderate painted style and upper-left soft light, genuine transparent RGBA margins. No rifle/held objects, floor/ground shadow/water/effects/text/emblems; no mirroring. Preserve identity while matching this native frame articulation.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "136bd67833dd451e0287d90af2868175d6dbc40d272bb4325b88a5aafcc72b47",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-pose-76-f0/source.png",
+    "private:enemy-mode-zero-d4-audit/76-f1-native-0.png",
+    "private:enemy-mode-zero-d4-audit/76-f1-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

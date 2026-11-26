@@ -4190,6 +4190,21 @@
       ]
     },
     {
+      "sheet": 118,
+      "frame": 1,
+      "reason": "Audited mode-zero body with own format masks/anchors; no new floor inferred from silhouette, independent commands retained; global shadow acceptance pending",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-76-f1-8x",
+          "sha256": "acab10dfe861cc9123d03b25c1777392e4e9f4ca0589ef74b87acf88584b0029"
+        },
+        {
+          "id": "enemy-v2-pose-76-f1-12x",
+          "sha256": "18447f4301487f4dbe6cc6e4715d6655eae27ee175fb6906e13895ff7cd86bce"
+        }
+      ]
+    },
+    {
       "sheet": 122,
       "frame": 0,
       "reason": "Audited native sinking with progressive rowsToSkip; no added floor or painted waterline",
