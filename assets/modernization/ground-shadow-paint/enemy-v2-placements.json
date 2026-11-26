@@ -113,6 +113,14 @@
       "y_quarters": 48,
       "bodies": [
         {
+          "id": "enemy-v2-prone-11-f0-8x",
+          "sha256": "a2d00c22ee01106fe4773741e5758c2470d1cc126b8d503c79ce6335420bcca9"
+        },
+        {
+          "id": "enemy-v2-prone-11-f0-12x",
+          "sha256": "73c2200e7495f4a45257bb857256890c71beae376df312814ff1d266f1e12bb8"
+        },
+        {
           "id": "enemy-v2-prone-53-f0-8x",
           "sha256": "a2d00c22ee01106fe4773741e5758c2470d1cc126b8d503c79ce6335420bcca9"
         },
@@ -122,6 +130,32 @@
         }
       ],
       "checks": [
+        {
+          "id": "enemy-v2-prone-11-f0-8x",
+          "contact_pixels": 55,
+          "all_contact_covered": true,
+          "support_center": [
+            7.514095312765402,
+            11.133838538149549
+          ],
+          "shadow_center": [
+            9.205462331766668,
+            13.366532849478489
+          ]
+        },
+        {
+          "id": "enemy-v2-prone-11-f0-12x",
+          "contact_pixels": 122,
+          "all_contact_covered": true,
+          "support_center": [
+            7.501622990854767,
+            11.136597731636265
+          ],
+          "shadow_center": [
+            9.205737414836872,
+            13.36686142096497
+          ]
+        },
         {
           "id": "enemy-v2-prone-53-f0-8x",
           "contact_pixels": 55,
