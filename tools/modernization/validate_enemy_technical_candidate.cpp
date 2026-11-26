@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0,sinkingCrops=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -77,6 +77,19 @@ int main(int argc,char** argv){try{
                 ++fallHeights;
             }
         }
+        if((type==5 || type==36) && sheet==0x7a && result.decision==SoldierArtDecision::Replace){
+            for(int skip=5;skip<13;++skip){
+                auto sinking=p;sinking.soldier.geometry.rowsToSkip=skip;
+                auto geometry=sinking.soldier.geometry;geometry.source=sinking.resource.source();
+                sinking.draw=PrepareSpriteDraw(geometry);sinking.draw.source=nullptr;
+                const auto cropped=registry.resolve(sinking,"",density,true,384,384*272);
+                if(cropped.decision!=SoldierArtDecision::Replace || cropped.pixels!=result.pixels ||
+                   cropped.groundShadow.pixels || sinking.draw.rows!=p.draw.rows-skip ||
+                   sinking.draw.y!=p.draw.y+skip)
+                    throw std::runtime_error("candidate sinking crop lost HD, anchor or gained ground");
+                ++sinkingCrops;
+            }
+        }
         if(slot->role==4 && result.decision==SoldierArtDecision::Replace){
             auto initial=p;initial.nativeAmiga8.ownerPerson=0;
             const auto shadow=registry.resolve(initial,"",density,true,384,384*272);
@@ -126,6 +139,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<", sinking-native-crops="<<sinkingCrops<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}
