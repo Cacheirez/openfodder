@@ -1444,6 +1444,53 @@
       ]
     },
     {
+      "family": "slide",
+      "direction": 6,
+      "owner_type": 5,
+      "width": 12,
+      "height": 3,
+      "x_quarters": 14,
+      "y_quarters": 36,
+      "bodies": [
+        {
+          "id": "enemy-v2-pose-a7-f6-8x",
+          "sha256": "9d2d4dfa7f5f22ca3c6d4b948aa8d4e3c83d7172a4a8bf3fde758020ab6d0587"
+        },
+        {
+          "id": "enemy-v2-pose-a7-f6-12x",
+          "sha256": "2764485658ea103412d768e325b290a063a94bea58b85816e596b849daf4352c"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-pose-a7-f6-8x",
+          "contact_pixels": 118,
+          "all_contact_covered": true,
+          "support_center": [
+            8.353725790110092,
+            8.29409701596051
+          ],
+          "shadow_center": [
+            9.955462331766668,
+            10.366532849478489
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-a7-f6-12x",
+          "contact_pixels": 265,
+          "all_contact_covered": true,
+          "support_center": [
+            8.372388533928744,
+            8.293902671348944
+          ],
+          "shadow_center": [
+            9.955737414836872,
+            10.36686142096497
+          ]
+        }
+      ]
+    },
+    {
       "family": "walk",
       "direction": 0,
       "owner_type": 5,
