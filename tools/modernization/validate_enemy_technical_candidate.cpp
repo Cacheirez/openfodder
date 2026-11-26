@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -66,7 +66,7 @@ int main(int argc,char** argv){try{
                 throw std::runtime_error("candidate format-specific native foot anchor differs");
             ++formatAnchors;
         }
-        if((type==5 || type==36) && sheet>=0xb8 && sheet<=0xbf && result.decision==SoldierArtDecision::Replace){
+        if(((type==5 && sheet>=0xb0 && sheet<=0xbf) || (type==36 && sheet>=0xb8 && sheet<=0xbf)) && result.decision==SoldierArtDecision::Replace){
             for(const int height:{1,16}){
                 auto falling=p;falling.soldier.geometry.height=height;
                 auto geometry=falling.soldier.geometry;geometry.source=falling.resource.source();
@@ -76,6 +76,13 @@ int main(int argc,char** argv){try{
                     throw std::runtime_error("candidate falling height lost HD or gained ground");
                 ++fallHeights;
             }
+        }
+        if(slot->role==4 && result.decision==SoldierArtDecision::Replace){
+            auto initial=p;initial.nativeAmiga8.ownerPerson=0;
+            const auto shadow=registry.resolve(initial,"",density,true,384,384*272);
+            if(shadow.decision!=SoldierArtDecision::Replace || shadow.pixels!=result.pixels || shadow.groundShadow.pixels)
+                throw std::runtime_error("candidate initial-person owned shadow lost HD");
+            ++initialShadows;
         }
         if(type==36 && sheet>=0xa8 && sheet<=0xaf && frame==2 &&
            result.decision==SoldierArtDecision::Replace && !result.groundShadow.pixels)
@@ -103,6 +110,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}
