@@ -1928,6 +1928,56 @@
       }
     },
     {
+      "sheet": 112,
+      "frame": 0,
+      "family": "death",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-death-70-f0/manifest.json",
+      "source_sha256": "186aab758e1f90a0e94465507b4c8ca251b1e4afbb181a07831163ee0768c54e",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-death-70-f0-8x",
+          "sha256": "d189c8b78068ebe2d708e0d385875f28b041ff74d692278eaa91333eed37a61f",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-death-70-f0-12x",
+          "sha256": "2db18b8adf8d48476f6fbcc58b76394771d58a590a3c6f339822d5db53686862",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 112,
+      "frame": 1,
+      "family": "death",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-death-70-f1/manifest.json",
+      "source_sha256": "8c2e34081175bc15f1f7b2b674da9b684c5aa928e03d24d3f322f9183faccf73",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-death-70-f1-8x",
+          "sha256": "bf088ba3b1194a9d830fa43465da1a70053ddfcc8d04c1a80b8e0527978caf66",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-death-70-f1-12x",
+          "sha256": "ddeed2f2d7afbef46b4876fb4113aa486562efb2d38b514bb044a61c10fbf963",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 168,
       "frame": 2,
       "family": "pose",
@@ -2129,8 +2179,8 @@
     }
   ],
   "counts": {
-    "poses": 85,
-    "assets": 170
+    "poses": 87,
+    "assets": 174
   },
   "identity": 2
 }

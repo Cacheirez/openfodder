@@ -2441,6 +2441,36 @@
           "sha256": "49d20f072c64326dc6595d53354a0b24eae661bb07d90bcb2c52888880db52ef"
         }
       ]
+    },
+    {
+      "sheet": 112,
+      "frame": 0,
+      "reason": "Native damage/airborne state; retain specific and independent shadow commands, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-death-70-f0-8x",
+          "sha256": "d189c8b78068ebe2d708e0d385875f28b041ff74d692278eaa91333eed37a61f"
+        },
+        {
+          "id": "enemy-v2-death-70-f0-12x",
+          "sha256": "2db18b8adf8d48476f6fbcc58b76394771d58a590a3c6f339822d5db53686862"
+        }
+      ]
+    },
+    {
+      "sheet": 112,
+      "frame": 1,
+      "reason": "Native damage/airborne state; retain specific and independent shadow commands, no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-death-70-f1-8x",
+          "sha256": "bf088ba3b1194a9d830fa43465da1a70053ddfcc8d04c1a80b8e0527978caf66"
+        },
+        {
+          "id": "enemy-v2-death-70-f1-12x",
+          "sha256": "ddeed2f2d7afbef46b4876fb4113aa486562efb2d38b514bb044a61c10fbf963"
+        }
+      ]
     }
   ]
 }
