@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.R24",
+  "status": "PASS explicit E01 authoring reuse/export; runtime integration and Miguel gameplay pending",
+  "direction": 4,
+  "sheet": 44,
+  "packages": [
+    {
+      "path": "assets/modernization/demo-a1-enemy-v2-death-2c-f0",
+      "frame": 0,
+      "formats": [
+        0,
+        1
+      ],
+      "source_sha256": "e57edfbf1aa830384929a0beb34f43f069b7d819f6de80e31ba3eed9831ffd3e",
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 8,
+        "height": 11
+      },
+      "reused_from": "assets/modernization/demo-a1-enemy-v2-death-6e-f0/manifest.json"
+    },
+    {
+      "path": "assets/modernization/demo-a1-enemy-v2-death-2c-f1",
+      "frame": 1,
+      "formats": [
+        0,
+        1
+      ],
+      "source_sha256": "951250fda7e859fac798880e94dd6abe6c1d63487e47a77595676e07665ec21c",
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 9,
+        "height": 12
+      },
+      "reused_from": "assets/modernization/demo-a1-enemy-v2-death-6e-f1/manifest.json"
+    }
+  ],
+  "counts": {
+    "poses": 113,
+    "assets": 226
+  },
+  "validation": [
+    "Source-defined type5 person0 producer and format bounds checked",
+    "Same E01source SHA and original ImageGen generation metadata verified",
+    "PNG/RGBA alpha/native bounds and8x/12x equality PASS",
+    "No ImageGen request, native raster alias, unknown frame or friendly binding",
+    "No ground component; independent native shadow/height semantics unchanged",
+    "Version1 and protagonist art/launchers untouched"
+  ],
+  "next": "E3.R25 \u2014 verificar y exportar segunda reacci\u00f3n inicial2D/F0,F1 de tipo5/persona0, direcci\u00f3n5, reutilizando maestros E01 de6F con acci\u00f3n/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo a\u00f1adido, alias ni nuevas generaciones. Direcci\u00f3n2 ya cubierta por22; no crear2A."
+}
