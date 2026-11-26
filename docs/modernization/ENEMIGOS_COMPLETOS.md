@@ -230,3 +230,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E2.D2 comprobado:** death, dirección2, 64/F0,1; registro65 poses/130 activos. [Evidencia](evidence/enemy-v2-damage-d2.json). Próximo: E2.D3 — modernizar daño enemigo65/F0,F1, dirección3, con identidad E01/v2, maestros protagonistas23 necesarios y referencias nativas65. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
 
 - **E2.D3 comprobado:** death, dirección3, 65/F0,1; registro67 poses/134 activos. [Evidencia](evidence/enemy-v2-damage-d3.json). Próximo: E3.DA0 — ajustar exportación de62/F0,F1 a la caja/ancla nativa de cada frame, con escala proporcional y originales intactos; después63 y64. Retomar luego producción65..69 pendiente (siguiente66/F0,F1).
+
+- **E3.DA0 comprobado:** daño62, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d0.json). Próximo: E3.DA1 — ajustar exportación de63/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69.

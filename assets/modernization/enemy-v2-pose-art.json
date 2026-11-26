@@ -1286,7 +1286,7 @@
       "assets": {
         "8": {
           "id": "enemy-v2-death-62-f0-8x",
-          "sha256": "6028807ae1152da8bf09228af7982e00f667b403588a1817921b5a5ab8d9bd0b",
+          "sha256": "359d47ae1b3881980377d64489846f2a2557995759ecc48046bc27757a03a8c0",
           "size": [
             128,
             112
@@ -1294,7 +1294,7 @@
         },
         "12": {
           "id": "enemy-v2-death-62-f0-12x",
-          "sha256": "47697b87399a2440654ab44569de94007d2dfef44e66d77f3d06bebeae5536a0",
+          "sha256": "f162ad55ede890c02ac3683511b512808b647a8b5301a85d6e2e1bba1887df10",
           "size": [
             192,
             168
@@ -1311,7 +1311,7 @@
       "assets": {
         "8": {
           "id": "enemy-v2-death-62-f1-8x",
-          "sha256": "72043c2b0332ab1c647da04794f96603a919aed5e5503969259820b408cf38ee",
+          "sha256": "af0ebd295bf18fdfe849431d0c1a931c268e3492179868b4ae1353476fae071d",
           "size": [
             128,
             112
@@ -1319,7 +1319,7 @@
         },
         "12": {
           "id": "enemy-v2-death-62-f1-12x",
-          "sha256": "420c01e1ae388afa9b4de253d96ad32d7a1a9d2210d7c354e9790cb7bf7f0ce1",
+          "sha256": "7745a3986e23022c0b6a51f621cba3270e35adebeb1d5f96c298f816ba235284",
           "size": [
             192,
             168
