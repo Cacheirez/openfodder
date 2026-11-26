@@ -3156,6 +3156,21 @@
       ]
     },
     {
+      "sheet": 180,
+      "frame": 0,
+      "reason": "Native falling body with separate height-driven shadow; no added ground component",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-b4-f0-8x",
+          "sha256": "63b1fbc8566e921ce8cc9b0378d56bded78a8b10c279f77e39112a8752dbdc2e"
+        },
+        {
+          "id": "enemy-v2-pose-b4-f0-12x",
+          "sha256": "14261bbb932531b886b5774aef1ac2cf664a78ac3143041b5d62029bac4a1040"
+        }
+      ]
+    },
+    {
       "sheet": 184,
       "frame": 0,
       "reason": "Native falling body with separate height-driven shadow; no added ground component",
