@@ -153,5 +153,10 @@
     "Global artistic shadow/body review pending; no acceptance or absent-native-shadow proof fabricated"
   ],
   "next": "E3.T50 — crear solo77/F0 de modo-cero5/persona1 con identidad E01 y referencias PC/Plus propias; verificar postura/manos y anclas por formato. Derivados comunes solo si apoyo/cajas/proporción coinciden; en otro caso separar formatos. Sin alias ni suelo nuevo inferido; validar/publicar antes de otro frame.",
-  "frame_observation": "F1raises hand at right side of picture;F2lowers it partway. Verify chosen image before export; no mirroring."
+  "observation_revision": {
+    "previous": "F1raises hand at right side of picture;F2lowers it partway. Verify chosen image before export; no mirroring.",
+    "authoritative_facing": "F0rear-left;F1/F2rear/up, phases from nativeCF/D0selector",
+    "reference": "enemy-mode-zero-native-facing-map-v1.json",
+    "gesture_not_proven_by_flat_colour": true
+  }
 }

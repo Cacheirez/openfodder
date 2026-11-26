@@ -1,0 +1,455 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.MF",
+  "status": "PASS authoritative native row/facing map; two art corrections required before continuing77",
+  "native_row_map": [
+    {
+      "format": 0,
+      "sheet": 116,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 0,
+      "facing_group": 0,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-42-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front/down"
+    },
+    {
+      "format": 0,
+      "sheet": 117,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 1,
+      "facing_group": 0,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-42-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front/down"
+    },
+    {
+      "format": 0,
+      "sheet": 117,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 2,
+      "facing_group": 1,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-43-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-left/down-left"
+    },
+    {
+      "format": 0,
+      "sheet": 117,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 3,
+      "facing_group": 1,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-43-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-left/down-left"
+    },
+    {
+      "format": 0,
+      "sheet": 118,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 4,
+      "facing_group": 2,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-44-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "left profile"
+    },
+    {
+      "format": 0,
+      "sheet": 118,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 5,
+      "facing_group": 2,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-44-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "left profile"
+    },
+    {
+      "format": 0,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 0,
+      "sheet": 119,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 7,
+      "facing_group": 3,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 0,
+      "sheet": 119,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 8,
+      "facing_group": 4,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-46-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear/up"
+    },
+    {
+      "format": 0,
+      "sheet": 119,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 9,
+      "facing_group": 4,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-46-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear/up"
+    },
+    {
+      "format": 0,
+      "sheet": 120,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 10,
+      "facing_group": 5,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-47-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-right/up-right"
+    },
+    {
+      "format": 0,
+      "sheet": 120,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 11,
+      "facing_group": 5,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-47-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-right/up-right"
+    },
+    {
+      "format": 0,
+      "sheet": 120,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 12,
+      "facing_group": 6,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "right profile"
+    },
+    {
+      "format": 0,
+      "sheet": 121,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 13,
+      "facing_group": 6,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "right profile"
+    },
+    {
+      "format": 0,
+      "sheet": 121,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 14,
+      "facing_group": 7,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-49-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-right/down-right"
+    },
+    {
+      "format": 0,
+      "sheet": 121,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 15,
+      "facing_group": 7,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-49-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-right/down-right"
+    },
+    {
+      "format": 1,
+      "sheet": 116,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 0,
+      "facing_group": 0,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-42-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front/down"
+    },
+    {
+      "format": 1,
+      "sheet": 117,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 1,
+      "facing_group": 0,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-42-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front/down"
+    },
+    {
+      "format": 1,
+      "sheet": 117,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 2,
+      "facing_group": 1,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-43-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-left/down-left"
+    },
+    {
+      "format": 1,
+      "sheet": 117,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 3,
+      "facing_group": 1,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-43-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-left/down-left"
+    },
+    {
+      "format": 1,
+      "sheet": 118,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 4,
+      "facing_group": 2,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-44-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "left profile"
+    },
+    {
+      "format": 1,
+      "sheet": 118,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 5,
+      "facing_group": 2,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-44-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "left profile"
+    },
+    {
+      "format": 1,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 1,
+      "sheet": 119,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 7,
+      "facing_group": 3,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 1,
+      "sheet": 119,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 8,
+      "facing_group": 4,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-46-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear/up"
+    },
+    {
+      "format": 1,
+      "sheet": 119,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 9,
+      "facing_group": 4,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-46-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear/up"
+    },
+    {
+      "format": 1,
+      "sheet": 120,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 10,
+      "facing_group": 5,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-47-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-right/up-right"
+    },
+    {
+      "format": 1,
+      "sheet": 120,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 11,
+      "facing_group": 5,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-47-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-right/up-right"
+    },
+    {
+      "format": 1,
+      "sheet": 120,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 12,
+      "facing_group": 6,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "right profile"
+    },
+    {
+      "format": 1,
+      "sheet": 121,
+      "frame": 0,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 13,
+      "facing_group": 6,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "right profile"
+    },
+    {
+      "format": 1,
+      "sheet": 121,
+      "frame": 1,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 14,
+      "facing_group": 7,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-49-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-right/down-right"
+    },
+    {
+      "format": 1,
+      "sheet": 121,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 15,
+      "facing_group": 7,
+      "walking_phase": 1,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-49-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "front-right/down-right"
+    }
+  ],
+  "source_proof": [
+    {
+      "file": "Source/Sprites/Sprite_Civilian.cpp",
+      "lines": [
+        235,
+        245,
+        246,
+        249,
+        253,
+        254,
+        255,
+        256,
+        259,
+        260,
+        261,
+        715,
+        729
+      ],
+      "finding": "Native walking phase toggles0/1, direction helper yields even0..14, frame is evenDirection ORphase. Thus facing=frame>>1, phase=frame&1, not a gesture/facing inferred from the mode-zero sheet."
+    },
+    {
+      "file": "Source/Sprites/Sprite_Troop.cpp",
+      "lines": [
+        1991,
+        1993,
+        1994,
+        2113
+      ],
+      "finding": "Enemy mode-zero still selects sheet72..79 and original0-1-2-1 framecycle; renderer resource rows happen to equal CF/D0rows. Use origin facing only for faithful artwork; no civilian runtime/controller/binding activated."
+    }
+  ],
+  "corrections": [
+    {
+      "sheet": 117,
+      "frame": 0,
+      "observed": "Published E01master is angled toward front-left",
+      "required": "Front/down, originCF/D0frame1, group0phase1",
+      "prior_commit": "5b7fe8ff"
+    },
+    {
+      "sheet": 118,
+      "frame": 2,
+      "observed": "Published E01master is left profile",
+      "required": "Rear-left/up-left, originCF/D0frame6, group3phase0",
+      "prior_commit": "f2074b6a"
+    }
+  ],
+  "retained_valid": [
+    "74/F2frontal phase0",
+    "75/F1,F2front-left pair; limb interpretation remains internal visual review, not a controller-proven salute",
+    "76/F0,F1left profile pair"
+  ],
+  "new77_contract": [
+    "77/F0rear-left/up-left phase1",
+    "77/F1,F2rear/up phases0/1; do not infer a salute from flat pale pixels",
+    "78/F0,F1rear-right pair;78/F2right profile phase0;79/F0right profile phase1;79/F1,F2front-right pair"
+  ],
+  "limits": [
+    "Metadata equality and original selector give authoritative origin-view mapping; no native-pixel/runtime alias introduced",
+    "Prior geometry/hash/sanitizer/H3PASS did not certify artistic orientation; visual/gameplay acceptance remains pending",
+    "No actor5AI/RNG/direction/frame/clock/classic/reference changes; no new civilian art/scenario authorization"
+  ],
+  "next": "E3.MR0 — corregir solo la orientación de75/F0 a frontal nativaCF/D0frame1 (grupo0/fase1), usando maestro E01frontal y su referencia propia. Conservar fuentes/derivados/candidatos anteriores, anclas PC14/Amiga12 y proporción; validar/publicar antes de corregir76/F2."
+}
