@@ -703,6 +703,56 @@
       }
     },
     {
+      "sheet": 47,
+      "frame": 0,
+      "family": "death",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-death-2f-f0/manifest.json",
+      "source_sha256": "5b6611a3e9a4a0a73d8a179c506b4fc234bd041ba8f1f05122da75fc45eb9c48",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-death-2f-f0-8x",
+          "sha256": "00d7d31527728dbcd153009e5f9961635463715584bd1f5e6be5712d7e7effaa",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-death-2f-f0-12x",
+          "sha256": "9e645a6191d2ffa680e53fc3a0595a1b803008f9b1f25a8fbc8d87851f93c3ba",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 47,
+      "frame": 1,
+      "family": "death",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-death-2f-f1/manifest.json",
+      "source_sha256": "70fb8368d567cb97b6af07d30857fa4b51ec376892521bfc124594219a4dd181",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-death-2f-f1-8x",
+          "sha256": "765084fa09668b18e0e540c501871b01fdb2561e4249b3ca8e4ff967c3287803",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-death-2f-f1-12x",
+          "sha256": "44e9f79d868de91ac286d2d5405e4d90e345b592960b8ad32e7bf7342412d90e",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 66,
       "frame": 0,
       "family": "walk",
@@ -2929,8 +2979,8 @@
     }
   ],
   "counts": {
-    "poses": 117,
-    "assets": 234
+    "poses": 119,
+    "assets": 238
   },
   "identity": 2
 }
