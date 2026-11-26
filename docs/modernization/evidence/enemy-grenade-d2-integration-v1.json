@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.G2I",
+  "status": "PASS native candidate/contact integration; Miguel global gameplay/shadow acceptance pending",
+  "runtime_source": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-grenade-d2-technical-v1\\8x",
+      "manifest_sha256": "2e8fdc7dc6d3fa55f9b9fb3d541381cf868fbc0f5b76715b1c347e1b202a783b",
+      "assets": 407,
+      "asset_bytes": 22868480,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=527, classic=152, resource-specific no-write=66, modern-owned-shadows=6, ground-components=130, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=527, classic=152, resource-specific no-write=66, modern-owned-shadows=6, ground-components=130, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-grenade-d2-technical-v1\\12x",
+      "manifest_sha256": "d41535d49cb7af837df066d9301187348baa60c8f92b567926a18fe569d41e97",
+      "assets": 407,
+      "asset_bytes": 51454080,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=527, classic=152, resource-specific no-write=66, modern-owned-shadows=6, ground-components=130, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=527, classic=152, resource-specific no-write=66, modern-owned-shadows=6, ground-components=130, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 201,
+    "art_derivatives": 428,
+    "candidate_assets": 407,
+    "native_contracts": 679,
+    "modern_contracts": 527,
+    "modern_bodies": 521,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 82,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 130
+  },
+  "tests": [
+    "679native draws per density/platform PASS; Windows ASan/UBSan and Linux ASan/UBSan/LSan",
+    "Reused current native validator binaries because Source/test implementation unchanged",
+    "Previous native mode-zero anchors, aim/person/fall/sink/slide assertions retained",
+    "Ground35groups/146derivatives pending0; stable within each direction"
+  ],
+  "notes": [
+    "Own lower anchors14and PC/Amiga signatures checked; no mirror or uncontrolled phase/frame changes.",
+    "New3E01masters/export derivatives remain separate from frozen protagonists and version1; global animation/body/shadow acceptance pending."
+  ],
+  "guarantees": [
+    "Source/simulation/AI/RNG/direction/frame/clock/classic/reference unchanged",
+    "Frozen protagonists, previous candidates/launchers and64MiB/real-error fallback preserved",
+    "No invisible no-write or declared-only slot receives new body art; no guessed source alias",
+    "Independent native shadows/height/crops retained; technical PASS is not Miguel acceptance"
+  ],
+  "ci": {
+    "source": "e0d9430b",
+    "status": "Prior fullWindows/Linux/H6 and localH3/A2/Window PASS on identicalSource; no new fullartifactCIclaim"
+  },
+  "next": "E2.G3 — modernizar únicamente granada4D/F0..2 (dirección3/vista trasera arriba-izquierda), con identidad E01, maestros aliados y referencias nativas propias. Verificar6contratos/anclas14, proporción y suelo fijo común antes de publicar; mantener4B/F0 bloqueado sin reintento."
+}
