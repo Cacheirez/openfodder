@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.T7",
+  "status": "PASS source/reference/body-anchor audit; art/integration and global gameplay/shadow review pending",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "7df566f31f09f536b0f3173b2c3f4da89f58d38701ca2829de37ba22c61322f2",
+      "bbox": [
+        4,
+        0,
+        13,
+        14
+      ],
+      "opaque_pixels": 64
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "25bb12bc6fd6b439124316fa99174c6c620b2bf0942321a0f2cdebade8d584a6",
+      "bbox": [
+        2,
+        2,
+        16,
+        13
+      ],
+      "opaque_pixels": 94
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 1,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "a12bbcac6ba65f21ad2e61cde23950b2921a1275731147b1a414881ff95eccf1",
+      "bbox": [
+        5,
+        0,
+        15,
+        14
+      ],
+      "opaque_pixels": 74
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "5258cef7778802cc0ece852a95566222e1a914f481f5eb336d28befdb965a017",
+      "bbox": [
+        3,
+        2,
+        16,
+        13
+      ],
+      "opaque_pixels": 89
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 2,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "f2f9bc86806ba57840e65db2778e0f475d62d4d832cb4569d8d724fb86e239e8",
+      "bbox": [
+        4,
+        0,
+        15,
+        14
+      ],
+      "opaque_pixels": 80
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 121,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "be642a6ac8f00405c0381600c2749400bcad224f89548a6a2da96ca34e1818df",
+      "bbox": [
+        3,
+        2,
+        16,
+        13
+      ],
+      "opaque_pixels": 84
+    }
+  ],
+  "anchors": {
+    "0": {
+      "0": 14,
+      "1": 13
+    },
+    "1": {
+      "0": 14,
+      "1": 13
+    },
+    "2": {
+      "0": 14,
+      "1": 13
+    }
+  },
+  "body_contract": [
+    "Only6produced5/person1contracts;36mode-zero declared-only remains unbound",
+    "No existing friendly37master or exact native signature in current E01library; no guessed path or runtime alias",
+    "Each actual frame posture/gesture inspected in PC/Plus reference; preserve native frame0-1-2-1, no facing inferred from sheet number",
+    "Common derivatives only when all own alpha bounds/lower anchors fit; otherwise original common master with explicit format derivatives"
+  ],
+  "bank_proof": [
+    {
+      "frame": 0,
+      "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+      "plus_posture_only": true,
+      "mask_equal": false
+    },
+    {
+      "frame": 1,
+      "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+      "plus_posture_only": true,
+      "mask_equal": false
+    },
+    {
+      "frame": 2,
+      "amiga_bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "plus_bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+      "plus_posture_only": true,
+      "mask_equal": false
+    }
+  ],
+  "source_evidence": [
+    "Sprite_Troop.cpp:1991..1994 mode-zero selector/frame dispatch unchanged",
+    "Retained verified ILBMdecoder reproduces TheOnebank7a44... and3own signatures; Plus supplied only for posture, masks not equivalent"
+  ],
+  "shadow_contract": [
+    "No new floor inferred from flat TheOne silhouette; bodies separate, native independent commands/height/crop retained",
+    "Global artistic shadow/body review pending; no acceptance or absent-native-shadow proof fabricated"
+  ],
+  "next": "E3.T70 — crear únicamente79/F0, perfil derecho/fase1 segúnCF/D0/fila13; identidad E01 y referencias propias PC/Plus. Anclas PC14/Amiga13 por formato, sin reflejos, alias ni suelo nuevo inferido; validar/publicar antes del frame siguiente.",
+  "native_facing_contract": [
+    {
+      "frame": 0,
+      "origin_frame": 13,
+      "facing_group": 6,
+      "walking_phase": 1,
+      "facing": "right-profile"
+    },
+    {
+      "frame": 1,
+      "origin_frame": 14,
+      "facing_group": 7,
+      "walking_phase": 0,
+      "facing": "front-right/down-right"
+    },
+    {
+      "frame": 2,
+      "origin_frame": 15,
+      "facing_group": 7,
+      "walking_phase": 1,
+      "facing": "front-right/down-right"
+    }
+  ],
+  "native_facing_proof": "enemy-mode-zero-native-facing-map-v1.json"
+}
