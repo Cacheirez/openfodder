@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T40",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 4,
+  "sheet": 118,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-76-f0",
+      "source_sha256": "6526d3b766cf23410f6127ae9e0a95aab6855fee9f53424a22cb4fedf0c87113",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 6,
+        "y": 0,
+        "width": 6,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 184,
+    "assets": 376
+  },
+  "notes": [
+    "Native profile-left pose with empty nearer hand at torso, distinct from prior frontal master; identity/pose internally inspected.",
+    "Common8x/12xderivatives fit both own native boxes; equal lower anchor14, scaleX/Y within5%. No forced format split or native alias.",
+    "No new floor inferred; independent commands/height/crop retained; global shadow/gameplay acceptance pending. Source unchangede0d9430bCI/H3PASS."
+  ],
+  "next": "E3.T41 — crear solo76/F1 de modo-cero5/persona1 con identidad E01 y referencias PC/Plus propias; verificar gesto/mano y pie de ese frame, ancla14 en ambos formatos y proporción. Derivados comunes solo si caben; sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame."
+}

@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Image1 supplies the existing E01 identity/style/proportions: plain grey-green helmet, grey-olive uniform, short dark beard, small brick-red neck cloth, reddish-brown straps/belt/pouches, brown boots, moderate painted rendering and elevated game camera. Create source-known native frame76/F0 using images2 and3 (PC/Plus SAME F0 entry) for the distinct profile posture. Match their upright figure facing screen LEFT in profile, helmet crown visible, nearer empty arm bent in front of torso with hand held around lower-chest height, opposite arm close to far side/back, and the specific slightly offset stepping feet. Do not simply repeat image1's frontal pose, do not copy native civilian clothes and do not add a gun. Follow each native limb placement as closely as the pixel reference allows. Whole isolated figure with both hands/boots complete, upper-left soft lighting and genuine transparent RGBA margins. No floor/ground shadow/water/effects/text/emblems; no mirroring. Engine owns direction/frame/shadow commands.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "6526d3b766cf23410f6127ae9e0a95aab6855fee9f53424a22cb4fedf0c87113",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-pose-75-f0/source.png",
+    "private:enemy-mode-zero-d4-audit/76-f0-native-0.png",
+    "private:enemy-mode-zero-d4-audit/76-f0-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
