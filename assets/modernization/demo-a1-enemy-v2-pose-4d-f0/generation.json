@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. E01enemy game animation sprite4D/F0, single full-body isolated figure with genuine transparent background. Pose from first image: overhead three-quarter REAR-LEFT facing UP-LEFT, broad back visible, small grenade held close behind right shoulder (screen-right), other hand holds lowered compact rifle pointing left/down-left, feet planted. Third is own native enemy silhouette/gesture. Second is approved E01 camera/style/identity: plain grey-green helmet, grey-olive uniform, compact dark jaw beard only on exposed left edge, tiny brick-red neck detail and reddish leather back straps/pouches, moderate painted facets, light upper-left. Keep this exact enemy palette, no allied green camouflage. Redraw in narrow occupied silhouette WIDTH:HEIGHT about1:2 for native7x14; keep elbows close, lower rifle/muzzle close along body and feet close, compact adult proportions and consistent helmet-to-body scale. Preserve action and angle without mirroring. Whole boots, muzzle and hand in frame. No ground/cast shadow, no words, no other figures.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d12ce7770d1c5f902c9483acfa13b718bdc12cdea02c3d43bd2b086c1d882c97",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/soldier-grenade/uniform-a/s11-f0-verde-a.png",
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-native-audit-v2/native/1-5-4d-f0-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

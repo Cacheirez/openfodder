@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.G3",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 3,
+  "sheet": 77,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4d-f0",
+      "source_sha256": "d12ce7770d1c5f902c9483acfa13b718bdc12cdea02c3d43bd2b086c1d882c97",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4d-f1",
+      "source_sha256": "2b7bf720066ff27c53fc63bb35f9e0a2f2b8d2ef0151b7505dc8caf7beb2e700",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4d-f2",
+      "source_sha256": "fea4ac55bb532fbaa2f5ce2bdea0172bbce401211e48b9afaf22c5d27b902738",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 204,
+    "assets": 434
+  },
+  "notes": [
+    "Six source-produced PC/Amiga contracts retain own masks, lower anchor14 and E01rear-left/up-left camera; no mirror or native alias.",
+    "Grenade preparation/armed-back/release empty-hand gestures internally inspected against own native and frozen friendly pose reference; whole projectile remains independent.",
+    "Original sources and C++8x/12x exports retained; moderate-painted grey-olive identity fixed across direction. Global animation/body/shadow acceptance pending."
+  ],
+  "next": "E3.G3I — integrar únicamente4D/F0..2 con suelo fijo cualificado de dirección3 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Mantener Source e0d9430b y candidatos previos; no reintentar4B/F0."
+}

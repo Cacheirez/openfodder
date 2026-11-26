@@ -6,8 +6,8 @@
 **Única autoridad sobre el trabajo inmediato.** Plan2.74 vigente. Rama `modernization/windows-foundation`; PR#1 abierta, borrador y sin fusionar. Nunca modificar master, usar subagentes ni cambiar de modelo sin permiso.
 
 - **Hito AUTORIZADO/en curso:** enemigos completos hasta revisión jugando. Protagonistas aceptados y congelados; no se infiere aceptación global enemiga por pruebas automáticas.
-- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.201poses/428derivados disponibles; versión verde anterior conservada.
-- **Avance E01/v2:** E2.G2 comprobado; registro disponible 201 poses/428 activos, siempre separados de la versión1 conservada. PASS contratos nativos, hashes, alfa/cajas y RGBA/PNG; revisión interna favorable. Integración y aceptación jugando PENDIENTES. [Último bloque](evidence/enemy-v2-grenade-d2.json).
+- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.204poses/434derivados disponibles; versión verde anterior conservada.
+- **Avance E01/v2:** E2.G3 comprobado; registro disponible 204 poses/434 activos, siempre separados de la versión1 conservada. PASS contratos nativos, hashes, alfa/cajas y RGBA/PNG; revisión interna favorable. Integración y aceptación jugando PENDIENTES. [Último bloque](evidence/enemy-v2-grenade-d3.json).
 - **Último bloque E3.G2I PASS técnico:**4C/F0..2 integrado con suelo fijo común y6contratos nuevos;679dibujos por densidad/plataforma y sanitizadores PASS. [Evidencia](evidence/enemy-grenade-d2-integration-v1.json).
 - **Candidatos privados actuales:** `enemy-grenade-d2-technical-v1/8x` y `12x`;407activos,22868480/51454080bytes dentro de64MiB.679contratos:527modernos (521cuerpos/6sombras),82cuerpos sin arte,66no-write y4marcadores. Anteriores intactos; sin ejecutable final enemigo.
 - **Sombras:**35grupos/73poses terrestres y146derivados cualificados; proyección fija aprobada. Suelo de deslizamiento50/51/52 y apuntado0/51; sombra independiente prevalece, altura/recorte/agua/daño conservados.
@@ -26,7 +26,7 @@
 - **E2.T6 comprobado:**78/F0..2,6contratos de5/persona1 y anclas propias por formato verificadas; Plus solo referencia de postura, sin igualdad de máscaras ni maestro inventado. Suelo nuevo no inferido; revisión global pendiente. [Contrato](evidence/enemy-mode-zero-d6-audit-v1.json).
 - **E2.T7 comprobado:**79/F0..2,6contratos de5/persona1 y anclas propias por formato verificadas; Plus solo referencia de postura, sin igualdad de máscaras ni maestro inventado. Suelo nuevo no inferido; revisión global pendiente. [Contrato](evidence/enemy-mode-zero-d7-audit-v1.json).
 - **E2.REST comprobado:**94contratos restantes:42granada,1guardiaPC y51líderPC. Amiga guardia/líder no-write conservado; solo51/F0,F2 tienen equivalencia exacta con49/F0,F1. [Auditoría](evidence/enemy-remaining-contracts-audit-v1.json).
-- **Siguiente tarea única:** E2.G3 — modernizar únicamente granada4D/F0..2 (dirección3/vista trasera arriba-izquierda), con identidad E01, maestros aliados y referencias nativas propias. Verificar6contratos/anclas14, proporción y suelo fijo común antes de publicar; mantener4B/F0 bloqueado sin reintento.
+- **Siguiente tarea única:** E3.G3I — integrar únicamente4D/F0..2 con suelo fijo cualificado de dirección3 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Mantener Source e0d9430b y candidatos previos; no reintentar4B/F0.
 - **Límites:** sin B, civiles generales/vehículos, escenarios nuevos, scroll ni16:9. Mantener simulación/IA/RNG/colisiones/reloj/dirección/frame, clásico independiente, fallback ante errores reales y64MiB. ZIP ajeno y lanzadores anteriores intactos.
 
 
