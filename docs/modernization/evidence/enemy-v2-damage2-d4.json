@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.D24",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 4,
+  "sheet": 110,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-6e-f0",
+      "source_sha256": "e57edfbf1aa830384929a0beb34f43f069b7d819f6de80e31ba3eed9831ffd3e",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 8,
+        "height": 11
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-6e-f1",
+      "source_sha256": "951250fda7e859fac798880e94dd6abe6c1d63487e47a77595676e07665ec21c",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 9,
+        "height": 12
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 83,
+    "assets": 166
+  },
+  "notes": [
+    "Full rear-facing extended/curled reaction frames retain raised empty fists and separate boots; face/beard hidden, enemy cloth visible at nape.",
+    "Native placements3,1,8,11 and3,1,9,12 preserve bottoms12/13 and logical16x14; XYratios1.027/1.030.",
+    "No added ground; height and independent shadows unchanged. Art validation only; integration and Miguel gameplay acceptance pending."
+  ],
+  "next": "E2.D25 — modernizar segunda reacción de daño6F/F0,F1, dirección5, con identidad E01/v2, maestros protagonistas2D y referencias nativas6F. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido."
+}
