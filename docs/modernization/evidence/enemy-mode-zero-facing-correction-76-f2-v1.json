@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.MR1",
+  "status": "PASS internal native-facing correction and own exports; candidate reintegration/Miguel acceptance pending",
+  "sheet": 118,
+  "frame": 2,
+  "native_view_contract": [
+    {
+      "format": 0,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 1,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    }
+  ],
+  "source_sha256": "ffc422219ddcec00f70e25f3c041abf0f2e4d93ee53eab4fbb8dc51d0aa94a67",
+  "previous_source_sha256": "c49a5fc19fbf0648cfe1bac1f327a25f6f085e37c29178c7e51d02a2aca67461",
+  "previous_package": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\mode-zero-facing-before-76-f2",
+  "manifest_sha256": "261a47e0c627527c62fec8048d156a448ad35d7f1b68d2fd9175446000d3bb17",
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-76-f2-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-76-f2-8x",
+      "sha256": "ebe3e4e63d75ec5e3f424ec0dba243b628c2a1756e201fd4b444385796c39a94",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-76-f2-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-76-f2-12x",
+      "sha256": "ef1b22c8903da05acc17a5b43226ca8d04c5836bf43275545a973950a2221bbd",
+      "width": 16
+    }
+  ],
+  "placements": {
+    "x": 5,
+    "y": 1,
+    "width": 6,
+    "height": 13
+  },
+  "counts": {
+    "poses": 186,
+    "assets": 380
+  },
+  "validation": [
+    "Full original/derivatives preserved in backup and Git history; old candidates immutable",
+    "New image is not mirrored; required origin direction/phase verified visually against code-proven reference",
+    "Both own native alpha bounds, lower anchors, hashes and PNG/RGBA registry PASS; Source/classic/simulation unchanged",
+    "Native key/frame selection unchanged; global artistic shadow review pending; candidates must be rebuilt before using corrected art"
+  ],
+  "next": "E3.MRI — reintegrar únicamente las correcciones de orientación75/F0 y76/F2 en candidatos nuevos8×/12×; conservar anteriores y verificar679contratos/anclas/oclusiones pertinentes y sanitizadores Windows/Linux. Source idénticoe0d9430b; no repetir H3/CI completa sin cambio de motor ni inferir aceptación jugando."
+}

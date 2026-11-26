@@ -4211,11 +4211,11 @@
       "assets": [
         {
           "id": "enemy-v2-pose-76-f2-8x",
-          "sha256": "e47147589301f2d4a5321cd4fe21b0a3ad68f39cf32c1a28c4f0e806e7cbffa6"
+          "sha256": "ebe3e4e63d75ec5e3f424ec0dba243b628c2a1756e201fd4b444385796c39a94"
         },
         {
           "id": "enemy-v2-pose-76-f2-12x",
-          "sha256": "e94162932f94f1182746c4f33336e28f077c38fb573bb9c9901a1c2faaf51726"
+          "sha256": "ef1b22c8903da05acc17a5b43226ca8d04c5836bf43275545a973950a2221bbd"
         }
       ]
     },
