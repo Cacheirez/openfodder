@@ -6,8 +6,8 @@
 **Única autoridad sobre el trabajo inmediato.** Plan2.74 vigente. Rama `modernization/windows-foundation`; PR#1 abierta, borrador y sin fusionar. Nunca modificar master, usar subagentes ni cambiar de modelo sin permiso.
 
 - **Hito AUTORIZADO/en curso:** enemigos completos hasta revisión jugando. Protagonistas aceptados y congelados; no se infiere aceptación global enemiga por pruebas automáticas.
-- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.176poses/354derivados disponibles; versión verde anterior conservada.
-- **Avance E01/v2:** E3.ISL3 comprobado;176poses/354derivados. Deslizamiento inicialA4/F3 con maestro/píxeles y ancla propios verificados; contacto cualificado, runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d3.json).
+- **Identidad E01/v2 aprobada:** casco gris verdoso, uniforme gris oliva, barba corta, cuello rojo teja y correajes rojizos.177poses/356derivados disponibles; versión verde anterior conservada.
+- **Avance E01/v2:** E3.ISL4 comprobado;177poses/356derivados. Deslizamiento inicialA4/F4 con maestro/píxeles y ancla propios verificados; contacto cualificado, runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d4.json).
 - **Último bloque E3.SLI PASS técnico:** ocho direccionesA7/F0..7 de deslizamiento integradas para5/36/persona1. [Evidencia](evidence/enemy-slide-integration-v1.json). Auditoría de48contratosAI/inicial y sombras: [E2.SL](evidence/enemy-slide-source-audit-v1.json).
 - **Candidatos privados actuales:** `enemy-slide-technical-v1/8x` y `12x`;366activos,20.517.376/46.164.096bytes dentro de64MiB.679contratos:469modernos (463cuerpos/6sombras),140cuerpos sin arte,66no-write por recurso y4marcadores nativos. Anteriores intactos; aún sin ejecutable final enemigo.
 - **Sombras:**33grupos/59poses terrestres cualificadas;118derivados. Proyección fija aprobada abajo-derecha, luz arriba-izquierda. SueloA7 solo50/51/52; sombra independiente prevalece. Altura/agua/daño/caída/hundimiento conservan tratamientos nativos, sin suelo inventado.
@@ -16,7 +16,7 @@
 - **Corrección registrada:** E3.SL2 se publicó inicialmente antes de cualificar; corregido en1db2cc77. Cuerpo11×7/ancla10, pintura existente13 y dos negativas de anchuras ausentes PASS; originales privados conservados. [Evidencia](evidence/enemy-v2-slide-d2.json).
 - **Pendientes dentro del hito:** ruta inicialA4, granadas restantes, modo-cero75..79, guardiaDC y líder106; integrar/medir antes de revisión jugando. No incorporar claves desconocidas ni referencias antiguas sin vínculo automáticamente. [Registro de bloques](ENEMIGOS_COMPLETOS.md).
 - **ImageGen:** operativo en poses independientes.4B/F0 mantiene rechazo aislado auditado, sin reintento, cambio de herramienta/modelo ni borrado del registro. Soporte no es requisito para el resto. [Registro](evidence/enemy-generation-blocked-4b-f0.json).
-- **Siguiente tarea única:** E3.ISL4 — exportar soloA4/F4 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F4; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+- **Siguiente tarea única:** E3.ISL5 — exportar soloA4/F5 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F5; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
 - **Límites:** sin B, civiles generales/vehículos, escenarios nuevos, scroll ni16:9. Mantener simulación/IA/RNG/colisiones/reloj/dirección/frame, clásico independiente, fallback ante errores reales y64MiB. ZIP ajeno y lanzadores anteriores intactos.
 
 
