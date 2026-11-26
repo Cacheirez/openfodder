@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.D6",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 6,
+  "sheet": 104,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-68-f0",
+      "source_sha256": "a7b114d1d6feb6883fc8cab8b320b38d8f92adec9e96305b83d35b99d584f777",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 0,
+        "width": 7,
+        "height": 12
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-68-f1",
+      "source_sha256": "0596276cb532801ccbf64251599cb4cc6fcd0c8043e69319ff9221b1d19569ef",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 1,
+        "y": 2,
+        "width": 12,
+        "height": 8
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 73,
+    "assets": 146
+  },
+  "notes": [
+    "Right profile reaction/expression and distinct extended/curled poses retained, not mirrored from left.",
+    "Per-frame native placements3,0,7,12 and1,2,12,8 preserve native bottoms12/10 and logical16x14.",
+    "F1 apparent outer matte sampled at three outside-body locations has alpha0; PNG/RGBA native-size inspection clean.",
+    "Height/independent native shadows unchanged, no ground component. Integration and Miguel gameplay acceptance pending."
+  ],
+  "next": "E2.D7 — modernizar daño enemigo69/F0,F1, dirección7, con identidad E01/v2, maestros protagonistas27 necesarios y referencias nativas69. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.69/F2 sigue solo declarado, sin arte/vínculo."
+}
