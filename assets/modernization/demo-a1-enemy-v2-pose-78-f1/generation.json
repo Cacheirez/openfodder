@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Draw alternate walking phase of this exact E01 enemy sprite. Keep camera overhead REAR-RIGHT facing UP-RIGHT, helmet/torso identity, grey-olive palette, reddish rear straps and pouches, brick-red neck detail, moderate painted style. Last two tiny native references show the new stance. Change right-image hand from near head down beside hip; both hands empty below waist. Swap stepping legs: LEFT-image knee now raised forward toward upper-right with boot higher; RIGHT-image leg extended back DOWN toward bottom-right, its boot the lowest in image. Redraw anatomy from fixed rear-right camera, do not mirror or rotate the whole character. Keep broad back visible with only tiny right-side jaw. Natural opposite arm swing, no rifle, no held props, no salute. Whole body and boots within frame, upper-left light, no floor, no cast shadow, no text. Transparent background.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "2fbc3de7622bda7c3fbcc1c487847f0b9377742aa0bffc2ebbd85a06b8dc821a",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-pose-78-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d6-audit/78-f1-native-0.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-mode-zero-d6-audit/78-f1-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
