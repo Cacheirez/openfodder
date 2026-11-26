@@ -978,6 +978,31 @@
       }
     },
     {
+      "sheet": 56,
+      "frame": 1,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-38-f1/manifest.json",
+      "source_sha256": "f4a6ede0ec771483506056950094518b5f52df553fa23cb38c8a91e0fc34e4fd",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-38-f1-8x",
+          "sha256": "ba8185aeb9ca410ffb2c25c90899df3816ab38f4df33fa5f38ba7dbde0ec313b",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-38-f1-12x",
+          "sha256": "9a4aacd2b3d6068fbf380eb2ad1f15a956c0450717189a12e9cbb1dcc0d6abc5",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
       "sheet": 66,
       "frame": 0,
       "family": "walk",
@@ -4017,8 +4042,8 @@
     }
   ],
   "counts": {
-    "poses": 159,
-    "assets": 320
+    "poses": 160,
+    "assets": 322
   },
   "identity": 2
 }
