@@ -69,6 +69,10 @@ def qualify():
             excluded.append(dict(sheet=sheet,frame=0,reason='Native falling body with separate height-driven shadow; no added ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
             continue
+        elif pose['family']=='pose' and sheet in (0x38,0x7a) and pose['frame'] in range(6):
+            excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Audited native sinking with progressive rowsToSkip; no added floor or painted waterline',
+                assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
+            continue
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
         g=groups.setdefault((family,direction),[])
