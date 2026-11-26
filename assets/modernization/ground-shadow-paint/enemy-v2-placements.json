@@ -1017,6 +1017,121 @@
     },
     {
       "family": "grenade",
+      "direction": 4,
+      "owner_type": 5,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 51,
+      "bodies": [
+        {
+          "id": "enemy-v2-pose-4e-f0-8x",
+          "sha256": "51da24a376d9fd737e814583b385f2540dccc7ec3f93b4572ea84e9ab603c247"
+        },
+        {
+          "id": "enemy-v2-pose-4e-f0-12x",
+          "sha256": "73514c8455092d7ec994fc05a00e808fd64e9369423ccf691aaea622b7583e1a"
+        },
+        {
+          "id": "enemy-v2-pose-4e-f1-8x",
+          "sha256": "f88fbd22ab44c8a38529187e1072950972e84444de2eb232da00296128f6d94b"
+        },
+        {
+          "id": "enemy-v2-pose-4e-f1-12x",
+          "sha256": "b6b89407249bb68c671415f68b5fa932b441595e24b45692865511c3568de5a9"
+        },
+        {
+          "id": "enemy-v2-pose-4e-f2-8x",
+          "sha256": "9d85c1a6da2d420e0571bb4ede82186b5034c4cd993d4873459eec972bcf2d8f"
+        },
+        {
+          "id": "enemy-v2-pose-4e-f2-12x",
+          "sha256": "612092533c124e1ae8f56bc5cd9569f69d92d90000842e1c7744551de71ffd8c"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-pose-4e-f0-8x",
+          "contact_pixels": 72,
+          "all_contact_covered": true,
+          "support_center": [
+            8.260606303739076,
+            12.379308383824847
+          ],
+          "shadow_center": [
+            9.765763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4e-f0-12x",
+          "contact_pixels": 162,
+          "all_contact_covered": true,
+          "support_center": [
+            8.260325480554359,
+            12.379926049901478
+          ],
+          "shadow_center": [
+            9.765537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4e-f1-8x",
+          "contact_pixels": 73,
+          "all_contact_covered": true,
+          "support_center": [
+            9.066050355208455,
+            12.384426253605694
+          ],
+          "shadow_center": [
+            9.765763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4e-f1-12x",
+          "contact_pixels": 163,
+          "all_contact_covered": true,
+          "support_center": [
+            9.068478096742236,
+            12.383118136899315
+          ],
+          "shadow_center": [
+            9.765537382385448,
+            14.116789300720322
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4e-f2-8x",
+          "contact_pixels": 79,
+          "all_contact_covered": true,
+          "support_center": [
+            8.851544401229452,
+            12.402112468105377
+          ],
+          "shadow_center": [
+            9.765763154679792,
+            14.11648101816738
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-4e-f2-12x",
+          "contact_pixels": 173,
+          "all_contact_covered": true,
+          "support_center": [
+            8.847769419593629,
+            12.40094113473137
+          ],
+          "shadow_center": [
+            9.765537382385448,
+            14.116789300720322
+          ]
+        }
+      ]
+    },
+    {
+      "family": "grenade",
       "direction": 7,
       "owner_type": 5,
       "width": 7,
