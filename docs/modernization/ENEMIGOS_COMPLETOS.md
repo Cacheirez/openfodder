@@ -390,3 +390,5 @@ Siguiente paso: envío por el canal privado oficial de soporte. No equivale a un
 - **E3.ISK5:**38/F5 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f5.json). Próximo: E3.ISKI — integrar38/F0..5 inicial/persona0 en candidatos nuevos8×/12×; validar sus96recortes5..12 y sombras sin suelo con sanitizadores Windows/Linux. Conservar ancla propiaF5 y contratos separados de7A.
 
 - **E3.SL0 comprobado:** pose, dirección0, A7/F0; registro165 poses/332 activos. [Evidencia](evidence/enemy-v2-slide-d0.json). Próximo: E3.SL1 — crear soloA7/F1, dirección nativa1 de deslizamiento enemigo con referencia protagonistaA4/F1 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL1 comprobado:** pose, dirección1, A7/F1; registro166 poses/334 activos. [Evidencia](evidence/enemy-v2-slide-d1.json). Próximo: E3.SL2 — crear soloA7/F2, dirección nativa2 de deslizamiento enemigo con referencia protagonistaA4/F2 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
