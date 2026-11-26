@@ -47,6 +47,7 @@ def qualify():
         if pose['family']=='walk' and 0x42<=sheet<=0x49:family,direction='walk',sheet-0x42
         elif pose['family']=='pose' and 0x4a<=sheet<=0x51:family,direction='grenade',sheet-0x4a
         elif pose['family']=='prone' and 0x52<=sheet<=0x59:family,direction='aim',sheet-0x52
+        elif pose['family']=='prone' and 0x10<=sheet<=0x17:family,direction='aim',sheet-0x10
         elif pose['family']=='pose' and 0xa8<=sheet<=0xaf and pose['frame']==2:family,direction='rocket',sheet-0xa8
         elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
