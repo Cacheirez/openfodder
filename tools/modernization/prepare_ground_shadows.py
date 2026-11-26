@@ -31,7 +31,7 @@ def checked_file(directory, asset):
     return path
 
 
-def split_enemy_aim_owners(result,assets,sources):
+def split_enemy_shared_owners(result,assets,sources):
     """Separate owner metadata, reusing exact approved pixels, for known AI poses."""
     catalog=result.get('enemy_catalog')
     if not catalog:return {}
@@ -39,14 +39,16 @@ def split_enemy_aim_owners(result,assets,sources):
     by={(p['format'],p['type'],p['sheet'],p['frame']):p for p in poses}
     clones={}
     for p in poses:
-        if p['type']!=36 or not 0x52<=p['sheet']<=0x59 or p['frame']!=0:continue
+        aim=0x52<=p['sheet']<=0x59 and p['frame']==0
+        slide=p['sheet']==0xa7 and p['frame'] in range(8)
+        if p['type']!=36 or not (aim or slide):continue
         for density,identity in list(p['assets'].items()):
             a=assets[identity]
             if a.get('ground_shadow',{}).get('owner_type')!=5:continue
             ordinary=by[p['format'],5,p['sheet'],p['frame']]
             if (ordinary['assets'].get(density)!=identity or ordinary['native_signatures']!=p['native_signatures'] or
                 ordinary['no_write_signatures']!=p['no_write_signatures']):
-                raise ValueError('Owner-specific aim requires exact ordinary/rocket native equivalence')
+                raise ValueError('Owner-specific ground requires exact ordinary/rocket native equivalence')
             clone='owner36-'+identity
             if clone not in assets:
                 descriptor=copy.deepcopy(a);descriptor['id']=clone;descriptor['ground_shadow']['owner_type']=36
@@ -98,7 +100,7 @@ def prepare(base, out, placements_path=None):
                 result['assets'].append(assets[shadow_id])
                 sources[shadow_id] = checked_file(PAINT, leaf)
             changed.add(identity)
-    clones=split_enemy_aim_owners(result,assets,sources) if original['version']==4 else {}
+    clones=split_enemy_shared_owners(result,assets,sources) if original['version']==4 else {}
     assert result['bindings'] == original['bindings']
     assert result.get('player_catalog') == original.get('player_catalog')
     normalized=copy.deepcopy(result.get('enemy_catalog'))
