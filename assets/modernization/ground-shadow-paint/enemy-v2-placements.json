@@ -4358,6 +4358,75 @@
       ]
     },
     {
+      "sheet": 121,
+      "frame": 0,
+      "reason": "Audited mode-zero body with own format masks/anchors; no new floor inferred from silhouette, independent commands retained; global shadow acceptance pending",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-79-f0-pc-8x",
+          "sha256": "64139bdb2dacf804ea0751c52a647945e6e3b5a9f60dfe340ada13cc04865bc0"
+        },
+        {
+          "id": "enemy-v2-pose-79-f0-pc-12x",
+          "sha256": "19e2262afcee8ccf8dbb9c9e772f81f4c4becfb2e75112aae856cc41e7ca41e3"
+        },
+        {
+          "id": "enemy-v2-pose-79-f0-amiga-8x",
+          "sha256": "1a6ce8334225a927620969030d93d36c7b5c206ccb0686b0e5537c410bda16ae"
+        },
+        {
+          "id": "enemy-v2-pose-79-f0-amiga-12x",
+          "sha256": "602517821670a2200fcdb5c176524a40adf903b5bb8e7aecc8379f61a8edeb70"
+        }
+      ]
+    },
+    {
+      "sheet": 121,
+      "frame": 1,
+      "reason": "Audited mode-zero body with own format masks/anchors; no new floor inferred from silhouette, independent commands retained; global shadow acceptance pending",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-79-f1-pc-8x",
+          "sha256": "5b3b6c50acf06acbe1650451723dda90df9d4d4ce9131b7f0f6174ec072a3990"
+        },
+        {
+          "id": "enemy-v2-pose-79-f1-pc-12x",
+          "sha256": "c47aa353e7f9db5c7aa2bafef7af8bf620caec39100b348fdf6301a48212c857"
+        },
+        {
+          "id": "enemy-v2-pose-79-f1-amiga-8x",
+          "sha256": "5690269afee98acc3bfd0cf5ff9e3118e5955a97c165ddae00c0e855fb7a3f9c"
+        },
+        {
+          "id": "enemy-v2-pose-79-f1-amiga-12x",
+          "sha256": "1f594f2bfc299f50eff0f2be1a8c8b47b68aeaf7ba3c86210a86b5f6a26cd614"
+        }
+      ]
+    },
+    {
+      "sheet": 121,
+      "frame": 2,
+      "reason": "Audited mode-zero body with own format masks/anchors; no new floor inferred from silhouette, independent commands retained; global shadow acceptance pending",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-79-f2-pc-8x",
+          "sha256": "309052a35c48d06fad6a3202dde4dc024aaaca1925d4d2648c4f63e34a6cf97f"
+        },
+        {
+          "id": "enemy-v2-pose-79-f2-pc-12x",
+          "sha256": "04e2184580b0b72796112770dbac9dc18fc6e19c848b3412246ed367953d6afb"
+        },
+        {
+          "id": "enemy-v2-pose-79-f2-amiga-8x",
+          "sha256": "7781952dcba4dedafff1681660124404fa2a8ad672d5d08ab9a3b38ee43c5f38"
+        },
+        {
+          "id": "enemy-v2-pose-79-f2-amiga-12x",
+          "sha256": "5fb16ab7b368db4a8e5a929fac0a998e0a5938af790bc88b0f95ee6fa3bf28ca"
+        }
+      ]
+    },
+    {
       "sheet": 122,
       "frame": 0,
       "reason": "Audited native sinking with progressive rowsToSkip; no added floor or painted waterline",
