@@ -1,0 +1,88 @@
+{
+  "status": "Exact E01 falling body reuse with independent native contracts; Miguel gameplay pending",
+  "pose": {
+    "type": 5,
+    "sheet": 187,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-bb-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-bb-f0-8x",
+      "sha256": "b6dc9e5eb5d7488f2d5657a6b7412c8ed970790d2147fdfe2fac9d87744e395a",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-bb-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-bb-f0-12x",
+      "sha256": "d0585dcf6a6d5ac193496f90bc71e0c60db98c28056bf9df987a8c68626cfb80",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "38356c9dd413c27b440c02513d82c20ceef2cc88cef8f2b877297aa7229548e8",
+    "generator": "reuse-existing-E01-source; no new ImageGen call",
+    "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-73-f0/source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      388,
+      183,
+      835,
+      1075
+    ],
+    "placement": {
+      "x": 4,
+      "y": 2,
+      "width": 5,
+      "height": 10
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+        "bbox": [
+          3,
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+        "bbox": [
+          3,
+          1,
+          11,
+          12
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-73-f0/manifest.json",
+    "source_sha256": "38356c9dd413c27b440c02513d82c20ceef2cc88cef8f2b877297aa7229548e8",
+    "generation_metadata_sha256": "f3abbb9150ed20c9a6aa60baeffd45e1b33d8c795408e0f1bf0f7456078e15c0",
+    "reason": "Exact native body/geometry/offset/palette equality verified; own falling actor/person contracts and independent shadow semantics retained"
+  }
+}

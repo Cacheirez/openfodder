@@ -1,0 +1,48 @@
+{
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 187,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+      "source_sheet": 115,
+      "source_frame": 0
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "sheet": 187,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+      "source_sheet": 115,
+      "source_frame": 0
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 187,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+      "source_sheet": 115,
+      "source_frame": 0
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "sheet": 187,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7",
+      "source_sheet": 115,
+      "source_frame": 0
+    }
+  ],
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-73-f0/manifest.json",
+  "source_sha256": "38356c9dd413c27b440c02513d82c20ceef2cc88cef8f2b877297aa7229548e8",
+  "no_ground_component": true,
+  "not_runtime_alias": true
+}
