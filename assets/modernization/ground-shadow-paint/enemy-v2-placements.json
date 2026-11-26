@@ -3428,6 +3428,21 @@
       ]
     },
     {
+      "sheet": 122,
+      "frame": 4,
+      "reason": "Audited native sinking with progressive rowsToSkip; no added floor or painted waterline",
+      "assets": [
+        {
+          "id": "enemy-v2-pose-7a-f4-8x",
+          "sha256": "de8cfeda8a8bfc1544a2ce653faaf32f362e370d31458f75efbef3b1ef625fbd"
+        },
+        {
+          "id": "enemy-v2-pose-7a-f4-12x",
+          "sha256": "aa8d349632470e29c009c54ad82d36363674bf1b8097236f3c039c7c178952db"
+        }
+      ]
+    },
+    {
       "sheet": 176,
       "frame": 0,
       "reason": "Native falling body with separate height-driven shadow; no added ground component",
