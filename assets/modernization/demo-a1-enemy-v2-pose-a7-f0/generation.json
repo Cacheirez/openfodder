@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Image1 is the exact pose and camera reference for native sliding directionA7/F0: crouched low facing down-screen, elevated game camera looking down on helmet crown, right hand (viewer left) extended down-forward and open, left elbow viewer-right bent with left hand open near torso, one knee tucked under body and boots low behind it, same compact crouch silhouette and foreshortening as image1. Image2 supplies approved E01 enemy identity: plain grey-green helmet, grey-olive uniform, short dark beard on exposed jaw, small brick-red neck cloth, reddish-brown straps/belt/pouches, dark brown boots. Apply identity2 to exact pose1 without changing articulation. Moderate painted style, upper-left soft light, restrained readable texture. One complete isolated crouching character, all hands/boots visible, generous transparent RGBA margins. Remove the glow/haze visible around reference1; no ground, floor, shadow, dust, water, effects, text or emblems, no rifle or held objects. Ground component is handled separately by game. Do not mirror.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "dc0a1f231d52f167178e5bdf6e7723360898e0d92924f66a3ceadc1a63fb66dd",
+  "references": [
+    "assets/modernization/demo-a1-player-pose-a4-f0/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
