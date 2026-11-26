@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.TA",
+  "status": "PASS focused source/native/master audit; enemy art and integration pending",
+  "scope": "Only mode-zero direction0 sheet72/F0..2 and exact fallB8..BA relation",
+  "produced_native_contracts": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 114,
+      "frame": 0,
+      "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a",
+      "fall_equivalent": {
+        "sheet": 184,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 114,
+      "frame": 0,
+      "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a",
+      "fall_equivalent": {
+        "sheet": 184,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 114,
+      "frame": 1,
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "fall_equivalent": {
+        "sheet": 185,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 114,
+      "frame": 1,
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "fall_equivalent": {
+        "sheet": 185,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 114,
+      "frame": 2,
+      "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17",
+      "fall_equivalent": {
+        "sheet": 186,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 114,
+      "frame": 2,
+      "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17",
+      "fall_equivalent": {
+        "sheet": 186,
+        "frame": 0
+      },
+      "size": [
+        16,
+        14
+      ]
+    }
+  ],
+  "player_pose_references": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-player-pose-30-f0/source.png",
+      "source_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b",
+      "reused_from": "assets/modernization/demo-a1-player-fall-b0-f0/source.png",
+      "placement": {
+        "x": 4,
+        "y": 1,
+        "width": 7,
+        "height": 10
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-player-pose-30-f1/source.png",
+      "source_sha256": "a2eb650da9506383afad1e45f9e6f87813791ba4d86f55b5fb6e6a0c052e3d8b",
+      "reused_from": null,
+      "placement": {
+        "x": 4,
+        "y": 1,
+        "width": 7,
+        "height": 11
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-player-pose-30-f2/source.png",
+      "source_sha256": "8b801df579df2fd62e9de169fb59c36dd4ea8b9cc190205fd1071ccc1f094f0c",
+      "reused_from": null,
+      "placement": {
+        "x": 4,
+        "y": 1,
+        "width": 6,
+        "height": 11
+      }
+    }
+  ],
+  "source_evidence": [
+    "Source/Sprites.cpp:661..722 person-indexed human30..37/enemy72..79 table offset0x18",
+    "Source/Sprites/Sprite_Troop.cpp:1864,1991..2012 mode-zero and bumped frame selection",
+    "Source/Sprites/Sprite_Core.cpp:934..950 fixed logical modifier update0-1-2-1, no FPS-driven clock",
+    "tools/modernization/inventory_enemy_states.py:98 mode-zero retained independently of protagonist reachability"
+  ],
+  "excluded": "Type36 mode-zero72/F0..2 has6declared-only rows; normal path is rocket-only, never bind these rows",
+  "conclusions": [
+    "All6source-produced infantry contracts for72/F0..2 retain independent type/format identity",
+    "Infantry frames72/F0,F1,F2 exactly equal native bodiesB8,B9,BA/F0 acrossPC/Amiga",
+    "Table nameDeath-3 does not justify inventing injury, stance or frame orientation: use native pose and corresponding existing30reference",
+    "No added ground baked into these falling body resources; native independent shadows remain separate and height-driven",
+    "Exact body equality is not a shared shadow/owner guarantee. Future fall exports require explicit separate contracts; no automatic alias here",
+    "No new art, native bindings, runtime Source or protagonist changes; no Miguel acceptance inferred"
+  ],
+  "next": "E2.T0 \u2014 modernizar72/F0,F1,F2 (direcci\u00f3n0 de tabla modo-cero) con identidad E01/v2, maestros protagonistas30/F0..2 y nativos72. Respetar pose/orientaci\u00f3n de cada frame, anclas y reloj nativo; sin suelo a\u00f1adido, conservando sombras independientes. Exportaciones propias; B8..BA se vincular\u00e1n solo en paso expl\u00edcito posterior."
+}
