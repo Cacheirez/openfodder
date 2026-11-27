@@ -2869,6 +2869,121 @@
       ]
     },
     {
+      "family": "leader-d9",
+      "direction": 3,
+      "owner_type": 106,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 21,
+      "y_quarters": 44,
+      "bodies": [
+        {
+          "id": "enemy-v2-pose-d9-f9-pc-8x",
+          "sha256": "d15efad0de4d659665fdafdeb83174a4ce358dfcd7d10bb9139e069731e55274"
+        },
+        {
+          "id": "enemy-v2-pose-d9-f9-pc-12x",
+          "sha256": "7dc59a79b2497c9a6a4777c09d0f4996aa0b5f2a862264a11c5ddd30dc7d0510"
+        },
+        {
+          "id": "enemy-v2-pose-d9-f10-pc-8x",
+          "sha256": "03a4776f505b0763e768d26453b66e68792b41e4faa282d923b6d57b32eff6d5"
+        },
+        {
+          "id": "enemy-v2-pose-d9-f10-pc-12x",
+          "sha256": "9f97f4c8553a2d21f5248b6c0a1f818f55ab4e47bae214f54c4ff0a3af3806d6"
+        },
+        {
+          "id": "enemy-v2-pose-d9-f11-pc-8x",
+          "sha256": "3c9c4917cc26ad85b55a38e52a83ef37236bdd7590cfce727ba75d9266905659"
+        },
+        {
+          "id": "enemy-v2-pose-d9-f11-pc-12x",
+          "sha256": "4e7086378ee28f55d832551a7ad07d1a92b1c912d71f2766116543fd1548707b"
+        }
+      ],
+      "checks": [
+        {
+          "id": "enemy-v2-pose-d9-f9-pc-8x",
+          "contact_pixels": 41,
+          "all_contact_covered": true,
+          "support_center": [
+            9.065171725132918,
+            10.311077306366721
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            12.366509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-d9-f9-pc-12x",
+          "contact_pixels": 94,
+          "all_contact_covered": true,
+          "support_center": [
+            9.046524808913071,
+            10.31482430209597
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            12.366911956152753
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-d9-f10-pc-8x",
+          "contact_pixels": 37,
+          "all_contact_covered": true,
+          "support_center": [
+            7.871093493108859,
+            10.230353552672373
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            12.366509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-d9-f10-pc-12x",
+          "contact_pixels": 81,
+          "all_contact_covered": true,
+          "support_center": [
+            7.870638242702622,
+            10.231564141189642
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            12.366911956152753
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-d9-f11-pc-8x",
+          "contact_pixels": 44,
+          "all_contact_covered": true,
+          "support_center": [
+            7.626561026009613,
+            10.251518911998563
+          ],
+          "shadow_center": [
+            9.553427077948701,
+            12.366509732446836
+          ]
+        },
+        {
+          "id": "enemy-v2-pose-d9-f11-pc-12x",
+          "contact_pixels": 98,
+          "all_contact_covered": true,
+          "support_center": [
+            7.62431182106526,
+            10.249413712632911
+          ],
+          "shadow_center": [
+            9.553615403883104,
+            12.366911956152753
+          ]
+        }
+      ]
+    },
+    {
       "family": "rocket",
       "direction": 0,
       "owner_type": 36,
