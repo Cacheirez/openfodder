@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E2.LEADER.D9.D5.ART",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 5,
+  "sheet": 217,
+  "frames": [
+    15,
+    16,
+    17
+  ],
+  "packages": [
+    {
+      "frame": 15,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f15",
+      "source_sha256": "65c07ac26b91712d0510a3cc21ff2d5c34485c55794a8859c780ae4098d6b58f",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    },
+    {
+      "frame": 16,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f16",
+      "source_sha256": "7820306e6f70cbaa86e64dfa2e46525e580a79e1d437ff54ecfa1e8fbeaba6f2",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    },
+    {
+      "frame": 17,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f17",
+      "source_sha256": "6f1ebeccd3350d8200501b27e0e4eccea74676407192393382108cfabcbe716d",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 258,
+    "assets": 542
+  },
+  "notes": [
+    "Only106/person2/D9/F15..17 rear up-right arms-low/unarmed, own native gestures and E01/47camera; no mirror or native alias proven.",
+    "PC-only signed empty Amiga retained; common placement7,0,6,12 fits own boxes, preserves colored F17row11 and separates tail. Transparent horizontal crop margins preserve proportions within0.1%, sources unchanged, no creative Python edits.",
+    "Three phases inspected at exact8x/12x, one fixed lower-right contact covers six feet and54previous groups identical. Sourceb2/simulation/RNG/clock/native frame/direction/classic/marker41 unchanged.",
+    "Leader runtime inactive, global Miguel gameplay acceptance pending."
+  ],
+  "next": "E2.LEADER.D9.D6.AUD — auditar únicamente líder106/D9/F18..20, dirección6: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.",
+  "source_unchanged_since": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "shadow_qualification": {
+    "groups": 55,
+    "body_derivatives": 260,
+    "previous_groups_unchanged": 54,
+    "new_group": {
+      "family": "leader-d9",
+      "direction": 5,
+      "owner_type": 106,
+      "width": 8,
+      "height": 3,
+      "x_quarters": 27,
+      "y_quarters": 44
+    },
+    "validation": "All6feet covered and fixed lower-right projection; exact prior groups unchanged. Projection algorithm unchanged since4negative/positive tests passed Windows/Linux inD0, not rerun.",
+    "runtime": "Leader eligibility inactive; no candidate/executable activation inferred",
+    "private_native_size_review": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d9-d5-authoring\\native-size-contact-review.png"
+  }
+}
