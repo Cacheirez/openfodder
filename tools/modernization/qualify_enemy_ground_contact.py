@@ -57,7 +57,7 @@ def qualify():
             # E2.LEADER.D0..D7.AUD: own PC rasters have embedded lower-right contacts.
             # Other leader directions/sheets need their own contact audit first.
             family,direction='leader-d8',pose['frame']//3
-        elif pose['family']=='pose' and sheet==0xd9 and pose['frame'] in range(12):
+        elif pose['family']=='pose' and sheet==0xd9 and pose['frame'] in range(15):
             # E2.LEADER.D9.D0..D2.AUD: own arms-low body/contact, not a D8 alias.
             family,direction='leader-d9',pose['frame']//3
         elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
