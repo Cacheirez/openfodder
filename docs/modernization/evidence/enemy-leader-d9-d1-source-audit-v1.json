@@ -1,0 +1,271 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E2.LEADER.D9.D1.AUD",
+  "status": "PASS auditoría fuente/recursos; interpretación artística interna, sin aceptación jugando",
+  "source_commit": "410a9e3acb7f0ca0bcccbcb5edf8cf732da40fd9",
+  "source_equal_to": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 106,
+      "sheet": 217,
+      "frame": 3,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "0de4a02242b61368cbceb7ff48cf66a210fed829d07dd8efe2cd554e57b65241",
+      "width": 16,
+      "height": 14,
+      "reference": "native/0-106-d9-f3-9273da69.png",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "opaque_pixels": 72
+    },
+    {
+      "format": 0,
+      "type": 106,
+      "sheet": 217,
+      "frame": 4,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "ebcbe4d06dcd2f17aa1f0cd02fe54a3990fbb5ae0406a0dcb2c17063b1ddd27e",
+      "width": 16,
+      "height": 14,
+      "reference": "native/0-106-d9-f4-9273da69.png",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "opaque_pixels": 72
+    },
+    {
+      "format": 0,
+      "type": 106,
+      "sheet": 217,
+      "frame": 5,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "449752e316f65346d7aff27bc77bc05bd77a4f605719db2b601caa3352bfcfe5",
+      "width": 16,
+      "height": 14,
+      "reference": "native/0-106-d9-f5-9273da69.png",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "opaque_pixels": 77
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 3,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "width": 16,
+      "height": 14,
+      "reference": "native/1-106-d9-f3-7a44b4a6.png",
+      "bbox": null,
+      "opaque_pixels": 0
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 4,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "width": 16,
+      "height": 14,
+      "reference": "native/1-106-d9-f4-7a44b4a6.png",
+      "bbox": null,
+      "opaque_pixels": 0
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 5,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+      "width": 16,
+      "height": 14,
+      "reference": "native/1-106-d9-f5-7a44b4a6.png",
+      "bbox": null,
+      "opaque_pixels": 0
+    }
+  ],
+  "source_contract": [
+    "Sprite_Troop.cpp:786..789:106delega en Sprite_Handle_Hostage; alcance exclusivo de este actor, sin civiles generales",
+    "Sprite_Civilian.cpp:1119..1189:persona2,D9en actualización,D8tras desplazamiento; marcador41/C4independiente con posición/altura propias",
+    "Sprite_Civilian.cpp:623..650 y Sprites.cpp:355: ciclo0-1-2-1y grupo*3; conservar dirección/frame/ticks originales",
+    "Sprite_Civilian.cpp:263..286:bloqueoD8/F1y reposoDA/RNGintactos; tres firmas PC propias distintas, Amiga no-write firmado"
+  ],
+  "orientation": "frontal hacia abajo-izquierda con brazos bajos, maestroE01/43",
+  "shadow_facts": [
+    "No creador independiente en controlador no implica ausencia de contacto embebido. Filas12..13PCsolo índice5/transparencia0 en las tres referencias propias",
+    "El índice5 también existe en el cuerpo: no clasificar automáticamente todos sus píxeles como sombra",
+    "F3tiene índice14en fila11y otros detalles de cuerpo en fila10: conservarlos dentro del cuerpo/apoyo. Solo filas12..13cumplen oscuridad pura común; no borrar toda fila11como sombra."
+  ],
+  "lower_row_statistics": [
+    {
+      "frame": 3,
+      "rows": [
+        {
+          "y": 10,
+          "opaque": 5,
+          "indices": [
+            2,
+            5,
+            13
+          ],
+          "x_min": 6,
+          "x_end": 11
+        },
+        {
+          "y": 11,
+          "opaque": 6,
+          "indices": [
+            5,
+            14
+          ],
+          "x_min": 6,
+          "x_end": 12
+        },
+        {
+          "y": 12,
+          "opaque": 8,
+          "indices": [
+            5
+          ],
+          "x_min": 4,
+          "x_end": 12
+        },
+        {
+          "y": 13,
+          "opaque": 5,
+          "indices": [
+            5
+          ],
+          "x_min": 6,
+          "x_end": 11
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "rows": [
+        {
+          "y": 10,
+          "opaque": 5,
+          "indices": [
+            1,
+            2,
+            5
+          ],
+          "x_min": 6,
+          "x_end": 11
+        },
+        {
+          "y": 11,
+          "opaque": 6,
+          "indices": [
+            5
+          ],
+          "x_min": 6,
+          "x_end": 12
+        },
+        {
+          "y": 12,
+          "opaque": 8,
+          "indices": [
+            5
+          ],
+          "x_min": 4,
+          "x_end": 12
+        },
+        {
+          "y": 13,
+          "opaque": 4,
+          "indices": [
+            5
+          ],
+          "x_min": 7,
+          "x_end": 11
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "rows": [
+        {
+          "y": 10,
+          "opaque": 5,
+          "indices": [
+            2,
+            5
+          ],
+          "x_min": 4,
+          "x_end": 11
+        },
+        {
+          "y": 11,
+          "opaque": 8,
+          "indices": [
+            5
+          ],
+          "x_min": 3,
+          "x_end": 12
+        },
+        {
+          "y": 12,
+          "opaque": 7,
+          "indices": [
+            5
+          ],
+          "x_min": 5,
+          "x_end": 12
+        },
+        {
+          "y": 13,
+          "opaque": 4,
+          "indices": [
+            5
+          ],
+          "x_min": 7,
+          "x_end": 11
+        }
+      ]
+    }
+  ],
+  "artistic_interpretation": [
+    "Vista frontal oblicua hacia abajo-izquierda, sin arma, brazos bajos. F3antebrazo de pantalla derecha algo adelantado cerca de cintura y otro brazo más bajo/ocluido, F4manos a los lados en gesto intermedio yF5brazo izquierdo más adelantado mientras el derecho baja/retrocede. Tres fases de piernas distintas, articulación fina interna, sin nuevo salto.",
+    "CajasPCF3/F4[4,0,12,14],F5[3,0,12,14]; tope0y apoyo artístico12separado de cola inferior, celda16×14. No copiar la marcha armada ni reflejar otra dirección.",
+    "IdentidadE01/v2 y cámara maestro43, luz arriba-izquierda y sombra fija existente abajo-derecha común a los tres frames; marcador41separado, Amiga no-write firmado, Source/elegibilidad106inactivos. Sin aceptación visual/jugable inferida."
+  ],
+  "private_proof": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d9-d1-source-audit-v1\\private-native-proof.json",
+  "private_proof_sha256": "b043e28d530f1aea001fb0dfec5e235e65a5080e1091e7e186f2ecbe99f17c45",
+  "next": "E2.LEADER.D9.D1.ART — crear únicamente líder106/D9/F3..5, dirección1 hacia abajo-izquierda con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro43 para cámara. Comparación nativa sin alias válido. Respetar cajas propias y apoyo artístico12; soloPC/no-writeAmiga firmado y contacto fijo común, sin Source ni integración.",
+  "comparison": {
+    "status": "No exact body reuse found; own D9art required",
+    "target_frames": [
+      3,
+      4,
+      5
+    ],
+    "compared_prefix_heights": [
+      11,
+      12
+    ],
+    "approved_v2_registry_poses": 243,
+    "exact_matches": 0,
+    "method": "Exact retained native PNG body-prefix comparison in matching PC bank against available approved E01/v2body keys; no alias by mask/name",
+    "private_diagnostic": "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d9-d1-source-audit-v1/existing-body-match-diagnostic.json",
+    "private_diagnostic_sha256": "ab0a63509dc147d7c717f97b3f330c613d063d8b8a38a70cbb9eacbd12d95a9e"
+  }
+}
