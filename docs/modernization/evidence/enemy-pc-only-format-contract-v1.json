@@ -2,7 +2,7 @@
   "schema": 1,
   "date": "2026-11-27",
   "block": "E2.PCF",
-  "status": "PASS local format contract/export fixture; pertinent published CI pending, no new artwork activated",
+  "status": "PASS local format contract/export fixture and pertinent Windows push/PR Python CI; no new artwork activated",
   "scope": {
     "guard": "5/DC/F0",
     "leader": "106/D8,D9/F0..23;DA/F0..2",
@@ -1071,5 +1071,41 @@
     "Amiga no-write is specific to retained signed resource, not global campaign absence proof",
     "52PCbody poses and blocked4B/F0remain pending; no global visual/gameplay acceptance"
   ],
-  "next": "E2.PCF.CI — consultar las pruebas Python pertinentes de la publicaciónPCF (Windows); no atribuirPASS a CI pendiente. Con ese resultado, auditar únicamente guardia5/DC/F0: postura PC, ausencia Amiga por recurso, suelo/ancla/estado y vínculo con sombra independiente antes de crear/vincular arte. Mantener4B/F0bloqueado."
+  "next": "E2.GUARD — auditar únicamente guardia5/DC/F0: postura PC, ausencia Amiga por recurso, suelo/ancla/estado y vínculo con sombra independiente antes de crear/vincular arte. Usar coberturaPCF comprobada; mantener4B/F0bloqueado, Source/simulación y candidatos previos intactos.",
+  "ci": {
+    "head": "3705532d00201f36287bda1731209a0c6ddbb4bd",
+    "pertinent_python_units": [
+      {
+        "run": 45914888258,
+        "runStatus": "in_progress",
+        "head": "3705532d00201f36287bda1731209a0c6ddbb4bd",
+        "job": 140231619677,
+        "event": "push",
+        "unit": [
+          {
+            "name": "Test the audit gate",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      {
+        "run": 45914896077,
+        "runStatus": "in_progress",
+        "head": "3705532d00201f36287bda1731209a0c6ddbb4bd",
+        "job": 140231646020,
+        "event": "pull_request",
+        "unit": [
+          {
+            "name": "Test the audit gate",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ],
+    "full_workflows": "PENDING; in_progress at snapshot, no fullCI PASS inferred",
+    "workflow_step": "Test the audit gate: python -m unittest discover -s tools/modernization -v",
+    "snapshot_sha256": "cd29eb4d278aba2f2a1b85e2d12f65cbdd7bd82420ceb6d5457d05db677f4aff"
+  }
 }
