@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw D8/F16, distinct middle step of the E01 unarmed raised-arms character. Image1 gives identity/materials and exact overhead REAR UP-RIGHT camera; image2 is original F16 for the intermediate pose. Keep the body/helmet facing diagonally away up-right, back dominant, no frontal turn or mirror. Same grey-olive uniform, grey-green helmet, reddish leather gear, small red neck wrap and beard edge only where naturally visible, moderate painted style and upper-left lighting. Both empty hands remain raised. Lower the high SCREEN-LEFT hand to approximately helmet-crown height for this intermediate phase; SCREEN-RIGHT hand remains a little lower and forward beside the head. Natural rear-view backs/edges of hands, elbows bent and arm occlusion. Boots pass closer beneath the body with modest knee flexion, no jump. Complete hands/helmet/boots within generous transparent margins, compact adult proportions. BODY ONLY clean alpha-zero transparent exterior and gaps; no haze, glow, backdrop, floor, cast shadow or dark tail. No rifle or held item, text or other figure. Separate fixed ground contact is preserved.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "1feab57b0e22bd3af641d16b79b29b3aaf26816f17bd8e24c852c9527eaad714",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d5-authoring/f15-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d5-source-audit-v1/d8-f16-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

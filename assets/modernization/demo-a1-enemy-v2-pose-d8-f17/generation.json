@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw distinct D8/F17, third movement frame of this E01 unarmed raised-arms character. Image1 gives identity, materials and exact overhead REAR UP-RIGHT camera; image2 is original F17 for the gesture. Keep back/helmet dominant, body pointing diagonally away up-right, no frontal turn or mirror. Same grey-olive uniform, grey-green helmet, reddish leather straps/pouches/boots, tiny brick-red rear neck wrap and naturally visible right jaw beard edge, moderate painted style and upper-left light. Both empty hands now sit near the sides of the head at roughly SIMILAR crown/ear height, elbows bent; neither arm extended high above the helmet. Preserve natural rear-view hand backs/edges and native limb occlusion. Alternate the leg phase from F15: RIGHT-side boot is the LOWER planted boot with straighter right leg, LEFT-side knee/boot is slightly LIFTED. Full compact walking step up-right, not a jump; complete helmet/hands/boots within generous margins. BODY ONLY true transparent alpha-zero background/gaps, no fog/glow/backdrop/floor/cast shadow or dark tail. No weapon, held object, text or extra figure. Fixed approved ground contact remains a separate layer.\nLeg-phase correction: Edit image1 ONLY in the legs/boots to make alternate D8/F17 support. Preserve upper body, both raised hands near the helmet, helmet/head, uniform/gear, exact overhead REAR UP-RIGHT camera, identity, painted texture and upper-left light. Image2 is native F17. The current figure incorrectly repeats the F15 supporting leg. REQUIRED: the long straight leg and low boot on the LEFT HALF of the image must BEND at the knee and LIFT its boot. The currently bent leg/raised boot on the RIGHT HALF must become the STRAIGHTER SUPPORT LEG, with its boot extended DOWN to the LOWER RIGHT. Switch which knee bends and which boot is lower; keep both full boots visible and a compact natural up-right walking step, not a jump. Do not mirror, rotate or turn the character frontal. Maintain genuine transparent exterior/limb gaps and clean character cutout, no floor, cast shadow or added backdrop/glow/object/text. Change only leg articulation; the correct intermediate hand gesture stays unchanged.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "f8d75f3bacb784fb9e1efaee2abacd6f10fcb96a3f1a594690aa9a070b92674c",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d5-authoring/f15-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d5-source-audit-v1/d8-f17-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending",
+  "phase_correction": {
+    "reason": "One built-in leg articulation correction before export; upper body and up-right camera preserved",
+    "draft_private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d8-d5-authoring\\f17-pose-draft.png",
+    "draft_sha256": "3c5124306137862415f32a2e2e201c865fbcfd1beb6449ce40707bb0b011b631",
+    "final_source_sha256": "f8d75f3bacb784fb9e1efaee2abacd6f10fcb96a3f1a594690aa9a070b92674c",
+    "creative_python_edits": false
+  }
+}
