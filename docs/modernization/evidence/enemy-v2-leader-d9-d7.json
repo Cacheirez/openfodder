@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E2.LEADER.D9.D7.ART",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 7,
+  "sheet": 217,
+  "frames": [
+    21,
+    22,
+    23
+  ],
+  "packages": [
+    {
+      "frame": 21,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f21",
+      "source_sha256": "28ee20a0c4246a15a941a1509efeab797c135b88d70e940f30c29bae4b8d142f",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 7,
+        "height": 12
+      }
+    },
+    {
+      "frame": 22,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f22",
+      "source_sha256": "a5b0a8c14a1c03d1feec90a0029fd315cf2e02ee542dbfb73bf677ae34f63187",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 7,
+        "height": 12
+      }
+    },
+    {
+      "frame": 23,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f23",
+      "source_sha256": "e583ac9052b7e3ba7a43b6b74442acb70aa4ae1d547548de808fa52bc0ff3d95",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 7,
+        "y": 0,
+        "width": 7,
+        "height": 12
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 264,
+    "assets": 554
+  },
+  "notes": [
+    "Only106/person2/D9/F21..23 front diagonal down-right arms-low/unarmed, own native gestures and E01/49camera; no reflected art or native alias.",
+    "PC-only signed empty Amiga retained; common placement7,0,7,12 fits own boxes and preserves F21colored row11. Transparent horizontal crop margins preserve proportions within0.1%, source images unchanged, no creative Python edits.",
+    "F23first draft repeated F21support; one targeted image edit switched viewer-left boot to lower planted support. Draft/original preserved privately. Halo RGB outside body has alpha0; exact exported composition shows no halo.",
+    "Three phases internally inspected at exact8x/12x, fixed lower-right contact covers six feet and56previous groups exact. Sourceb2/simulation/RNG/clock/native frame/direction/classic/marker41unchanged.",
+    "Leader runtime inactive; Miguel global gameplay acceptance pending."
+  ],
+  "next": "E2.LEADER.DA.AUD — auditar únicamente líder106/DA/F0..2 de reposo: productores y transiciones reales, orientación/gestos, cajasPC propias, no-writeAmiga y contacto embebido; comprobar reutilización solo con evidencia nativa exacta. No asumir dirección ni sombra por semejanza. Arte e integración runtime del líder pendientes.",
+  "source_unchanged_since": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "shadow_qualification": {
+    "groups": 57,
+    "body_derivatives": 272,
+    "previous_groups_unchanged": 56,
+    "new_group": {
+      "family": "leader-d9",
+      "direction": 7,
+      "owner_type": 106,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 33,
+      "y_quarters": 44
+    },
+    "validation": "All6feet covered and fixed lower-right projection; exact prior groups unchanged. Projection algorithm unchanged since4negative/positive tests passed Windows/Linux inD0, not rerun.",
+    "runtime": "Leader eligibility inactive; no candidate/executable activation inferred",
+    "private_native_size_review": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d9-d7-authoring\\native-size-contact-review.png"
+  }
+}
