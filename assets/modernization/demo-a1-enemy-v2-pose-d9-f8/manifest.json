@@ -1,0 +1,91 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 106,
+    "sheet": 217,
+    "frame": 8
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-d9-f8-pc-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-d9-f8-pc-8x",
+      "sha256": "019cc9a1d178eb683c48bae9b14b69816f84bf21c7ec28ad8271bbeafb12ce45",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-d9-f8-pc-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-d9-f8-pc-12x",
+      "sha256": "bbd2f918843c2119a864a07ff355c05622ecbe5105ab0c0a518e777d902513f7",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1059,
+      1485
+    ],
+    "mode": "RGBA",
+    "sha256": "e146dd49d6339ea364f4190ca80b1641976c119246ca158c23f52b880087b5a9",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      206,
+      110,
+      839,
+      1376
+    ],
+    "placement": {
+      "x": 5,
+      "y": 0,
+      "width": 6,
+      "height": 12
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "9349df9b338b5cf791bcb05d35ca698654f8d05eaebd6a00c70562a33f6418b0",
+        "bbox": [
+          3,
+          0,
+          11,
+          14
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands",
+    "native_no_write": [
+      {
+        "format": 1,
+        "segment": 0,
+        "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+        "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+        "logical_size": [
+          16,
+          14
+        ],
+        "bbox": null,
+        "opaque_pixels": 0
+      }
+    ]
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380"
+}
