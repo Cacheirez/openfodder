@@ -2,7 +2,7 @@
   "schema": 1,
   "date": "2026-11-27",
   "block": "E3.LEADER.I",
-  "status": "PASS focal native/composition/sanitizers; broader runtime/CI and Miguel gameplay pending",
+  "status": "PASS native/composition/sanitizers and current-source H3/Window/A2/fullCI; continuity/review pending",
   "parent_head": "e153860d10f3918c48af0b30ec3a54fa26d58831",
   "implementation": [
     {
@@ -92,10 +92,11 @@
     "Authorized elevated execution in existing PowerShell7 compiled and ran successfully without policy changes; logs/binaries retained in new candidate folder."
   ],
   "pending": [
-    "New-source H3/Window/A2/CTest and fullCI",
-    "Continuity measurement and hash-verified playable enemy launcher",
+    "Current-source continuity measurement and hash-verified playable enemy launcher",
     "Miguel enemy visual/gameplay review"
   ],
   "exception": "4B/F0two native contracts intentionally remain classic, isolated ImageGen rejection retained; no retry or platform workaround.",
-  "next": "E3.LEADER.RH — validar el Source nuevo del líder con diagnósticos actuales Windows/Linux, H3 independiente11fases/11361estados por sistema, Window/A2/CTest y CI pertinente completa. Después medir continuidad y preparar lanzador enemigo con hashes para revisión jugando; no entregar antes de esas comprobaciones ni atribuir aceptación visual. Excepción4B/F0auditada sin reintento."
+  "next": "E3.LEADER.RC — medir continuidad con Sourcea192/candidatoenemy-leader-complete-technical-v1 Windows/Linux sobre replay disponible: publicacionesHD, apariciones modernas/clásicas poractor/estado, errores reales y casos no observados. Mantener las51poses líder y excepción4B/F0auditada; después preparar revisión jugando con lanzador y hashes, sin aceptación automática.",
+  "runtime_source": "a192e5c2f813215ff32459042277ee41f04c1e26",
+  "runtime_evidence": "enemy-leader-runtime-ci-h3-a192e5c2.json"
 }
