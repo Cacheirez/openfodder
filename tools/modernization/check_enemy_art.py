@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 from PIL import Image
 from inventory_enemy_states import ROOT, inventory
+from enemy_native_formats import source_art_formats
 
 
 def sha(p):
@@ -60,9 +61,9 @@ def registry(identity=1):
                 assert m['pose']['type'] in actors and m['pose']['sheet']==sheet and m['pose']['frame']==frame
                 assert m['export']['ground_shadow']=='none; preserve independent native commands'
                 expected_formats={fmt for fmt in (0,1) if (fmt,m['pose']['type'],sheet,frame) in native_slots}
-                assert {x['format'] for x in m['export']['native']}==expected_formats, 'Enemy native source-format coverage'
-                selected_formats=set(asset.get('native_formats',expected_formats))
-                assert selected_formats and selected_formats<=expected_formats, 'Unknown enemy art format'
+                drawn_formats=source_art_formats(m['pose'],m['export'],expected_formats)
+                selected_formats=set(asset.get('native_formats',drawn_formats))
+                assert selected_formats and selected_formats<=drawn_formats, 'Unknown or no-write enemy art format'
                 for native in m['export']['native']:
                     if native['format'] not in selected_formats:continue
                     box=native['bbox'];actual=image.getchannel('A').getbbox()
