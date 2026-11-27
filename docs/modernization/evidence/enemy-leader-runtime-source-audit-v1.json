@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E3.LEADER.RA",
+  "status": "PASS source/art contract audit; runtime integration and gameplay pending",
+  "head": "d2e8eea122cb6bb48a07a3d404b24b8ea8066f43",
+  "source_equal_to": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "files": [
+    {
+      "path": "Source/Sprites/Sprite_Civilian.cpp",
+      "sha256": "bbb27ebdc8bc144cf47ecfbbc0581dc27e6019ccbfbd1ace8b8d9ec380c74a25"
+    },
+    {
+      "path": "Source/Sprites/Sprite_Troop.cpp",
+      "sha256": "4710e69bd7661ad3866505542c3b46dcc3eee13629db54a93b42ef7c10a6de91"
+    },
+    {
+      "path": "Source/Sprites/Sprite_Core.cpp",
+      "sha256": "417d606cc89cce9f9f11a51230cfdf60e82dd1242737b5b5afaab34301d21e67"
+    },
+    {
+      "path": "Source/Utils/NativeEnemyCatalog.hpp",
+      "sha256": "f385370e3572960dc6d5a8268a02b2a85108bc52a5e808d26f6f284b61fe8860"
+    },
+    {
+      "path": "Source/Utils/OrderedSoldierRegistry.hpp",
+      "sha256": "eb3c21bdaa23e3077062f755f76f9c855f9a7f42484a3bd4db52c9b51150ff2f"
+    },
+    {
+      "path": "Source/Utils/OrderedSoldierArt.hpp",
+      "sha256": "49b1a87496e1b2087328706c36390b1c9771a16096e19d4a2143913e36a3576e"
+    }
+  ],
+  "verified": {
+    "pc_body_poses": 51,
+    "amiga_signed_empty": 51,
+    "pc_body_derivatives": 102,
+    "native_body_contracts": 102,
+    "source_inventory_assertions": "PASS"
+  },
+  "facts": [
+    "EnemyLeader106 directly calls Hostage handler, no Soldier_Animation dispatch there; own actual D8,D9,DA producers and person2 captured. No other body bank inferred from generic injury tables.",
+    "Hostage clears animation before ordinary body selection; an externally assigned valid nonzero animation can persist until handler update: retain HD body per known catalog, suppress optional ground while off-state. No simulation changes.",
+    "MapRuntime initialization sets7C; vehicle path selects7C/F0 hidden, exit may temporarily retain sheet/person/state. Keep verified native no-write marker; do not create unknown bodies.",
+    "HostageMovement leader rescue removes leader and adjacent marker; vehicle entry uses existing speed/height checks. Person2 remains source requirement; do not broaden to0/1 by resemblance.",
+    "CaptureSoldierSemantic records exact actor/person/animation/height/crop/vehicle/pendingDestroy and retained resource identity. Native catalog validates slot/person/animation/resource/signature before art lookup.",
+    "Leader optional ground eligibility absent and registry owner106 currently rejected: change only these presentation contracts, preserve all other owners and real-error guards.",
+    "Compositor emits optional contact in body turn and independently retained owned shadow takes precedence by scene/generation/slot. Marker41/C4 remains separate; enemy role4 owner scope5/36 remains unchanged because no leader independent shadow producer found.",
+    "All51leader PC poses have own proved native rasters and art,51Amiga slots signed empty. Do not infer visual acceptance or observe leaders in prior M1P2replay."
+  ],
+  "eligibility": {
+    "owner_type": 106,
+    "person": 2,
+    "format": "PC only",
+    "sheets": {
+      "D8": [
+        0,
+        23
+      ],
+      "D9": [
+        0,
+        23
+      ],
+      "DA": [
+        0,
+        2
+      ]
+    },
+    "animation": 0,
+    "height": 0,
+    "rows_to_skip": 0,
+    "in_vehicle": false,
+    "pending_destroy": false
+  },
+  "planned_validation": [
+    "All51PC bodies modern with ground,51emptyAmiga keep without ground, native initial/hidden marker unchanged.",
+    "Off-state animation/person/height/crop/vehicle/destroy/wrong owner/unknown sheet-frame suppress ground; native invalid person/resource/slot still real rejection.",
+    "Composition owner106 ground in body turn, independent shadow precedence, order/occlusion/clips/SaveRestore and budgets; classic untouched.",
+    "New candidate679native cases per density/platform, current-source sanitizers; H3/Window/A2/CTest/CI and continuity required before playable delivery."
+  ],
+  "next": "E3.LEADER.I — habilitar dueño106 únicamente para51posesPC D8/F0..23,D9/F0..23,DA/F0..2 de persona2/animación0 con altura0,recorte0,fuera de vehículo y no destruido. Añadir positivos/negativos de contrato y compositor, preparar candidato nuevo8x/12x y validar679contratos Windows/Linux con sanitizadores; después H3/Window/A2/CI y continuidad antes de entregar. Excepción4B/F0intacta."
+}
