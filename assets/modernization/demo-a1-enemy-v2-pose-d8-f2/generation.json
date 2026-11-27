@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Generate the distinct movement frame D8/F2 for the E01 raised-arms character. Image1 is the modern D8/F0 character reference for identity, uniform, materials, overhead frontal camera and painted style. Image2 is the tiny original D8/F2, the exact posture reference for this frame. Preserve the plain grey-green helmet, short dark beard, small brick-red neck cloth, grey-olive uniform, reddish leather straps/pouches and boots. Both arms remain raised with bent elbows and open empty hands beside the head: this time SCREEN-LEFT hand slightly HIGHER than screen-right, as in original F2. Alternate the step: SCREEN-LEFT boot planted lower, screen-right knee and boot raised slightly; torso still front-facing towards screen-bottom, seen from above. Complete hands, helmet, and both boots visible. Compact natural adult proportions. Do not mirror or flip the source character: redraw this distinct pose with unchanged upper-left lighting. No weapon or object. This is an unarmed movement phase, no jump. BODY ONLY: truly transparent background outside the figure and in gaps, clean cutout edges, no white/grey haze/glow, no floor, no cast shadow or dark tail below the boots. Generous clear margins, no text or other figure.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "c155c1f349ec9b8939d21222acd22bb35d2a9bc663808715c2f1b79d7859b80f",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d0-authoring/f0-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d0-source-audit-v1/d8-f2-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

@@ -53,6 +53,10 @@ def qualify():
             family,direction='slide',pose['frame']
         elif pose['family']=='pose' and sheet==0xdc and pose['frame']==0:
             family,direction='guard',0
+        elif pose['family']=='pose' and sheet==0xd8 and pose['frame'] in (0,1,2):
+            # E2.LEADER.D0.AUD: own PC raster has an embedded lower-right contact.
+            # Other leader directions/sheets need their own contact audit first.
+            family,direction='leader-d8',0
         elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
@@ -83,6 +87,8 @@ def qualify():
             continue
         else:raise ValueError('New family needs source/contact review before qualification')
         path=ROOT/pose['manifest'];manifest=json.loads(path.read_text(encoding='utf-8'))
+        if family=='leader-d8':
+            assert manifest['pose']['type']==106 and all(a.get('native_formats')==[0] for a in manifest['assets'])
         g=groups.setdefault((family,direction),[])
         for a in manifest['assets']:g.append(picture(a,checked_file(path.parent,a)))
     result=[];pending=[]
@@ -101,7 +107,7 @@ def qualify():
         if answer is None:
             pending.append(dict(family=family,direction=direction));continue
         width,xq,yq=answer
-        result.append(dict(family=family,direction=direction,owner_type=36 if family=='rocket' else 5,width=width,height=3,
+        result.append(dict(family=family,direction=direction,owner_type=106 if family=='leader-d8' else 36 if family=='rocket' else 5,width=width,height=3,
             x_quarters=xq,y_quarters=yq,bodies=[dict(id=p['id'],sha256=p['sha256']) for p in images],
             checks=[dict(id=p['id'],contact_pixels=len(p['points']),all_contact_covered=True,
                          support_center=[p['cx'],p['cy']],shadow_center=[xq/4+plates[width,p['d']]['cx'],yq/4+plates[width,p['d']]['cy']]) for p in images]))
