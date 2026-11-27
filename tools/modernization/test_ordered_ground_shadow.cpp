@@ -27,6 +27,18 @@ int main(){
         OrderedSoldierRegistry registry(manifest);
         const auto resolve=[&](const PreparedSpriteDraw& p){return registry.resolve(p,SoldierVariantKey(p,colors),d);};
         const auto art=resolve(a.soldier);assert(art.groundShadow.pixels);
+        for(int animation:{0,1,50,51,52}){
+            auto guard=a.soldier;auto& s=guard.soldier;
+            s.type=5;s.personType=1;s.sheet=0xdc;s.frame=0;s.animation=animation;
+            assert(OrderedGroundShadowEligible(guard,5)==(!amiga && animation==0));
+            s.geometry.height=1;assert(!OrderedGroundShadowEligible(guard,5));
+            s.geometry.height=0;s.geometry.rowsToSkip=1;assert(!OrderedGroundShadowEligible(guard,5));
+            s.geometry.rowsToSkip=0;s.inVehicle=true;assert(!OrderedGroundShadowEligible(guard,5));
+            s.inVehicle=false;s.pendingDestroy=true;assert(!OrderedGroundShadowEligible(guard,5));
+            s.pendingDestroy=false;s.personType=0;assert(!OrderedGroundShadowEligible(guard,5));
+            s.personType=1;s.frame=1;assert(!OrderedGroundShadowEligible(guard,5));
+            s.frame=0;s.type=36;assert(!OrderedGroundShadowEligible(guard,36));
+        }
         for(int type:{5,36})for(int sheet=0x52;sheet<=0x59;++sheet)for(int animation:{0,1,50,51,52,90}){
             auto low=a.soldier;low.soldier.type=type;low.soldier.sheet=sheet;low.soldier.animation=animation;
             assert(OrderedGroundShadowEligible(low,type)==(animation==0 || animation==51));
@@ -56,13 +68,14 @@ int main(){
         const auto shade=SoldierBlend(0x80000000u,0xff112233u);
         // An enemy's separately ordered native shadow suppresses the optional
         // ground component even after its owner's person field changes late.
-        for(int context:{0,1,2,3,4,5}){
+        for(int context:{0,1,2,3,4,5,6}){
+            if(context==6 && amiga)continue; // Guard art is PC-only.
             const int type=(context==2 || context==4)?36:5;
             auto owner=a;owner.soldier.soldier.generation=9;owner.soldier.soldier.slot=3;
             owner.soldier.soldier.type=type;owner.soldier.soldier.personType=(context==0 || context==5)?0:1;
-            owner.soldier.soldier.sheet=context==5?0xa4:context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
-            owner.soldier.soldier.animation=(context==0 || context>=3)?51:0;
-            owner.soldier.soldier.frame=context>=3?3:type==5?0:2;
+            owner.soldier.soldier.sheet=context==6?0xdc:context==5?0xa4:context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
+            owner.soldier.soldier.animation=context==6?0:(context==0 || context>=3)?51:0;
+            owner.soldier.soldier.frame=context==6?0:context>=3?3:type==5?0:2;
             auto enemyArt=art;enemyArt.groundShadow.ownerType=type;
             auto owned=body(amiga,id,40,20);auto& proof=owned.soldier.nativeAmiga8;
             proof.cf1=true;proof.role=4;proof.scene=owner.soldier.soldier.scene;

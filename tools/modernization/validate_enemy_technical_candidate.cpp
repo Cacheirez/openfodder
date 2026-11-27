@@ -18,7 +18,7 @@ int main(int argc,char** argv){try{
     OrderedSoldierRegistry registry=OrderedSoldierRegistry::Load(directory+"candidate-manifest.json");
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
-    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0,sinkingCrops=0,slideGround=0,slideExcluded=0;
+    size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0,sinkingCrops=0,slideGround=0,slideExcluded=0,guardContacts=0,guardExclusions=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -50,6 +50,36 @@ int main(int argc,char** argv){try{
         const bool empty=CF1NativePoseSignature(p)==CF1EmptyEnemyPoseSignature(NativeSpriteWidth(p),size_t(g.rows));
         if(empty!=row.at("no_write").get<bool>())throw std::runtime_error("candidate evidence no-write differs");
         const auto result=registry.resolve(p,"",density,true,384,384*272);
+        if(type==5 && sheet==0xdc && frame==0){
+            if(fmt==1 && (result.decision!=SoldierArtDecision::KeepClassic || !empty || result.groundShadow.pixels))
+                throw std::runtime_error("candidate guard changed empty Amiga command");
+            if(fmt==0 && result.decision==SoldierArtDecision::Replace){
+                size_t bottom=0;
+                for(size_t i=0;i<result.pixels->size();++i)
+                    if((*result.pixels)[i]>>24)bottom=i/(result.width*density)+1;
+                if(bottom!=12*density || !result.groundShadow.pixels)
+                    throw std::runtime_error("candidate guard body/contact anchor differs");
+                ++guardContacts;
+                for(int animation:{1,50,51,52}){
+                    auto other=p;other.soldier.animation=animation;
+                    if(registry.resolve(other,"",density,true,384,384*272).groundShadow.pixels)
+                        throw std::runtime_error("candidate guard shadow survived off-state");
+                    ++guardExclusions;
+                }
+                for(int which=0;which<4;++which){
+                    auto other=p;
+                    if(which==0)other.soldier.geometry.height=1;
+                    if(which==1)other.soldier.geometry.rowsToSkip=1;
+                    if(which==2)other.soldier.inVehicle=true;
+                    if(which==3)other.soldier.pendingDestroy=true;
+                    auto geometry=other.soldier.geometry;geometry.source=other.resource.source();
+                    other.draw=PrepareSpriteDraw(geometry);other.draw.source=nullptr;
+                    if(registry.resolve(other,"",density,true,384,384*272).groundShadow.pixels)
+                        throw std::runtime_error("candidate guard shadow survived geometry/vehicle exclusion");
+                    ++guardExclusions;
+                }
+            }
+        }
         if(type==5 && sheet>=0x5a && sheet<=0x61 && result.groundShadow.pixels)
             throw std::runtime_error("candidate swim unexpectedly received ground shadow");
         if((type==5 || type==36) && sheet>=0x62 && sheet<=0x71 && result.groundShadow.pixels)
@@ -174,6 +204,6 @@ int main(int argc,char** argv){try{
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
-        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<", sinking-native-crops="<<sinkingCrops<<", slide-ground-transitions="<<slideGround<<", slide-ground-exclusions="<<slideExcluded<<"; not gameplay acceptance\n";
+        <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<", sinking-native-crops="<<sinkingCrops<<", slide-ground-transitions="<<slideGround<<", slide-ground-exclusions="<<slideExcluded<<", guard-contacts="<<guardContacts<<", guard-exclusions="<<guardExclusions<<"; not gameplay acceptance\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}

@@ -45,8 +45,12 @@ inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerTyp
     // table. That path bypasses generic independent-shadow creation.
     const bool initialEnemyAim=s.type==5 && s.personType==0 && s.sheet>=0x10 && s.sheet<=0x17 &&
         (s.animation==0 || s.animation==51);
+    // The follower's PC idle has an embedded down-right ground tail. Its
+    // audited Amiga resource is empty; never attach a visible component there.
+    const bool enemyGuard=s.type==5 && s.personType==1 && s.sheet==0xdc && s.frame==0 &&
+        s.animation==0 && g.format==SpriteDrawFormat::PC;
     return (ownerType==0 || ownerType==5 || ownerType==36) && s.type==ownerType &&
-        ((normal && s.animation==0) || celebration || slide || enemySlide || initialEnemySlide || enemyAim || initialEnemyAim) &&
+        ((normal && s.animation==0) || celebration || slide || enemySlide || initialEnemySlide || enemyAim || initialEnemyAim || enemyGuard) &&
         !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
 }
 struct SoldierArtObservation {
