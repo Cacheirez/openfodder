@@ -49,8 +49,13 @@ inline bool OrderedGroundShadowEligible(const PreparedSpriteDraw& p,int ownerTyp
     // audited Amiga resource is empty; never attach a visible component there.
     const bool enemyGuard=s.type==5 && s.personType==1 && s.sheet==0xdc && s.frame==0 &&
         s.animation==0 && g.format==SpriteDrawFormat::PC;
-    return (ownerType==0 || ownerType==5 || ownerType==36) && s.type==ownerType &&
-        ((normal && s.animation==0) || celebration || slide || enemySlide || initialEnemySlide || enemyAim || initialEnemyAim || enemyGuard) &&
+    // Audited leader body/contact resources are PC-only; Amiga commands are
+    // signed empty. DA is a three-frame resting head turn, not eight directions.
+    const bool enemyLeader=s.type==106 && s.personType==2 && s.animation==0 &&
+        g.format==SpriteDrawFormat::PC && s.frame>=0 &&
+        (((s.sheet==0xd8 || s.sheet==0xd9) && s.frame<24) || (s.sheet==0xda && s.frame<3));
+    return (ownerType==0 || ownerType==5 || ownerType==36 || ownerType==106) && s.type==ownerType &&
+        ((normal && s.animation==0) || celebration || slide || enemySlide || initialEnemySlide || enemyAim || initialEnemyAim || enemyGuard || enemyLeader) &&
         !s.inVehicle && !s.pendingDestroy && g.height==0 && g.rowsToSkip==0;
 }
 struct SoldierArtObservation {

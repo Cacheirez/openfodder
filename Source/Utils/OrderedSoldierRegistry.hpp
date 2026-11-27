@@ -162,7 +162,7 @@ class OrderedSoldierRegistry {
                 return v.get<int>();
             };
             const auto& type=config.at("owner_type");
-            if(!type.is_number_integer() || (type.get<int64_t>()!=0 && type.get<int64_t>()!=5 && type.get<int64_t>()!=36))
+            if(!type.is_number_integer() || (type.get<int64_t>()!=0 && type.get<int64_t>()!=5 && type.get<int64_t>()!=36 && type.get<int64_t>()!=106))
                 throw std::invalid_argument("ordered ground shadow owner");
             const auto& paint=found->second;auto& shadow=body.groundShadow;
             shadow.width=paint.width;shadow.height=paint.height;shadow.density=paint.density;

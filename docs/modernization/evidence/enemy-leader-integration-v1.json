@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E3.LEADER.I",
+  "status": "PASS focal native/composition/sanitizers; broader runtime/CI and Miguel gameplay pending",
+  "parent_head": "e153860d10f3918c48af0b30ec3a54fa26d58831",
+  "implementation": [
+    {
+      "path": "Source/Utils/OrderedSoldierArt.hpp",
+      "sha256": "6e3c257bb28cf187a51cb434915e95fa6fb24a918b7950d00d9ae279f8d91899"
+    },
+    {
+      "path": "Source/Utils/OrderedSoldierRegistry.hpp",
+      "sha256": "0affbae987fa39a782698e7089aeba4c2ef904c406e14c0ef783c5a69c84d4b8"
+    },
+    {
+      "path": "tools/modernization/test_ordered_ground_shadow.cpp",
+      "sha256": "6173decbf831029ad5aad476bf4c9883d3e85cfbbccdf1d25432bef2f2d6333e"
+    },
+    {
+      "path": "tools/modernization/validate_enemy_technical_candidate.cpp",
+      "sha256": "3f46da97a52d675a0acd65fbe42170956bed2675027e82ee92a47f182a1e46e6"
+    }
+  ],
+  "changes": [
+    "Optional ground owner106 accepted only after native registry validation and finite PC/person2/animation0/D8,D9,DA frame scope; height/crop/vehicle/destroy exclusions retained.",
+    "Only two presentation headers changed. No AI/simulation/RNG/frame/direction/clock or native source references changed. Native role4 shadow owner validation still5/36; marker41 and hidden7C untouched."
+  ],
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\8x",
+      "manifest_sha256": "2e5cf97dad421e238fdd3c50c639b52983e157b4747fc9c97f10c8c1d3f50ab1",
+      "assets": 473,
+      "asset_bytes": 26653184,
+      "validation": {
+        "win": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\validator-8-win.log",
+          "sha256": "0d3d0a5963ea8a0c95d325ca2eb22a1b43115e1c36ff9beb7924a71d4e9c4988",
+          "result": "PASS private enemy candidate: 679 retained native draws, density=8, modern=607, classic=72, resource-specific no-write=66, modern-owned-shadows=6, ground-components=210, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432, guard-contacts=1, guard-exclusions=8; not gameplay acceptance\nPASS leader: contacts=51, signed-empty=51, off-state-exclusions=408, invalid-person-rejections=102"
+        },
+        "linux": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\validator-8-linux.log",
+          "sha256": "359d9b570d7a52bed1a42f31f5a873fb5d70d3fe20f831b45f4fb008776cabef",
+          "result": "PASS private enemy candidate: 679 retained native draws, density=8, modern=607, classic=72, resource-specific no-write=66, modern-owned-shadows=6, ground-components=210, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432, guard-contacts=1, guard-exclusions=8; not gameplay acceptance\nPASS leader: contacts=51, signed-empty=51, off-state-exclusions=408, invalid-person-rejections=102"
+        }
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\12x",
+      "manifest_sha256": "a8f0d59f2db825ea281d7842fbc4d2a2ac3bfda077ea4216901de397beea6123",
+      "assets": 473,
+      "asset_bytes": 59969664,
+      "validation": {
+        "win": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\validator-12-win.log",
+          "sha256": "93bb58454c05a57c7e5a0916273666a5d381700ee4a2ff19c842bed022cbe29e",
+          "result": "PASS private enemy candidate: 679 retained native draws, density=12, modern=607, classic=72, resource-specific no-write=66, modern-owned-shadows=6, ground-components=210, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432, guard-contacts=1, guard-exclusions=8; not gameplay acceptance\nPASS leader: contacts=51, signed-empty=51, off-state-exclusions=408, invalid-person-rejections=102"
+        },
+        "linux": {
+          "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-complete-technical-v1\\validator-12-linux.log",
+          "sha256": "092b2c4b321b12a36385abd0e7e66a669212a6f6290e6315a346817a04c3b51e",
+          "result": "PASS private enemy candidate: 679 retained native draws, density=12, modern=607, classic=72, resource-specific no-write=66, modern-owned-shadows=6, ground-components=210, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432, guard-contacts=1, guard-exclusions=8; not gameplay acceptance\nPASS leader: contacts=51, signed-empty=51, off-state-exclusions=408, invalid-person-rejections=102"
+        }
+      }
+    }
+  },
+  "counts": {
+    "art_poses": 267,
+    "art_derivatives": 560,
+    "leader_pc_poses": 51,
+    "leader_signed_empty_amiga": 51,
+    "candidate_assets": 473,
+    "native_contracts": 679,
+    "modern_contracts": 607,
+    "modern_bodies": 601,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 2,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 210,
+    "ground_groups": 58,
+    "qualified_ground_derivatives": 278
+  },
+  "tests": [
+    "Windows ASan/UBSan and Linux ASan/UBSan/LSan:679native draws per density/platform;51leader contacts/51emptyAmiga/408off-state exclusions/102invalid-person rejections per density.",
+    "Ground compositor4format-density groups both platforms: finite leader frame/person/animation/owner exclusions, independently owned-shadow precedence, order/occlusions/SaveRestore/crops/budgets/invalid metadata.",
+    "All57previous ground groups exact and six new resting pose feet covered; all51leader supports12.",
+    "check_enemy_art identity2 PASS267poses/560assets, frozen version1 retained; diff-check PASS."
+  ],
+  "tooling": [
+    "PowerShell5 wrapper aborted on native compiler stderr before completing; no game failure diagnosed and no PASS attributed to aborted run.",
+    "Authorized elevated execution in existing PowerShell7 compiled and ran successfully without policy changes; logs/binaries retained in new candidate folder."
+  ],
+  "pending": [
+    "New-source H3/Window/A2/CTest and fullCI",
+    "Continuity measurement and hash-verified playable enemy launcher",
+    "Miguel enemy visual/gameplay review"
+  ],
+  "exception": "4B/F0two native contracts intentionally remain classic, isolated ImageGen rejection retained; no retry or platform workaround.",
+  "next": "E3.LEADER.RH — validar el Source nuevo del líder con diagnósticos actuales Windows/Linux, H3 independiente11fases/11361estados por sistema, Window/A2/CTest y CI pertinente completa. Después medir continuidad y preparar lanzador enemigo con hashes para revisión jugando; no entregar antes de esas comprobaciones ni atribuir aceptación visual. Excepción4B/F0auditada sin reintento."
+}

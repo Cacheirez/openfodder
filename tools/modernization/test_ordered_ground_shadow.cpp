@@ -27,6 +27,20 @@ int main(){
         OrderedSoldierRegistry registry(manifest);
         const auto resolve=[&](const PreparedSpriteDraw& p){return registry.resolve(p,SoldierVariantKey(p,colors),d);};
         const auto art=resolve(a.soldier);assert(art.groundShadow.pixels);
+        for(int sheet:{0xd8,0xd9,0xda})for(int frame=-1;frame<=24;++frame){
+            auto leader=a.soldier;auto& s=leader.soldier;
+            s.type=106;s.personType=2;s.sheet=sheet;s.frame=frame;s.animation=0;
+            const bool known=frame>=0 && frame<(sheet==0xda?3:24);
+            assert(OrderedGroundShadowEligible(leader,106)==(!amiga && known));
+            for(int owner:{0,5,36,107})assert(!OrderedGroundShadowEligible(leader,owner));
+            for(int person:{0,1,3}){s.personType=person;assert(!OrderedGroundShadowEligible(leader,106));}
+            s.personType=2;
+            for(int animation:{1,2,50,51,52,90}){s.animation=animation;assert(!OrderedGroundShadowEligible(leader,106));}
+            s.animation=0;s.geometry.height=1;assert(!OrderedGroundShadowEligible(leader,106));
+            s.geometry.height=0;s.geometry.rowsToSkip=1;assert(!OrderedGroundShadowEligible(leader,106));
+            s.geometry.rowsToSkip=0;s.inVehicle=true;assert(!OrderedGroundShadowEligible(leader,106));
+            s.inVehicle=false;s.pendingDestroy=true;assert(!OrderedGroundShadowEligible(leader,106));
+        }
         for(int animation:{0,1,50,51,52}){
             auto guard=a.soldier;auto& s=guard.soldier;
             s.type=5;s.personType=1;s.sheet=0xdc;s.frame=0;s.animation=animation;
@@ -68,14 +82,14 @@ int main(){
         const auto shade=SoldierBlend(0x80000000u,0xff112233u);
         // An enemy's separately ordered native shadow suppresses the optional
         // ground component even after its owner's person field changes late.
-        for(int context:{0,1,2,3,4,5,6}){
-            if(context==6 && amiga)continue; // Guard art is PC-only.
-            const int type=(context==2 || context==4)?36:5;
+        for(int context:{0,1,2,3,4,5,6,7}){
+            if(context>=6 && amiga)continue; // Guard/leader art is PC-only.
+            const int type=context==7?106:(context==2 || context==4)?36:5;
             auto owner=a;owner.soldier.soldier.generation=9;owner.soldier.soldier.slot=3;
-            owner.soldier.soldier.type=type;owner.soldier.soldier.personType=(context==0 || context==5)?0:1;
-            owner.soldier.soldier.sheet=context==6?0xdc:context==5?0xa4:context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
-            owner.soldier.soldier.animation=context==6?0:(context==0 || context>=3)?51:0;
-            owner.soldier.soldier.frame=context==6?0:context>=3?3:type==5?0:2;
+            owner.soldier.soldier.type=type;owner.soldier.soldier.personType=context==7?2:(context==0 || context==5)?0:1;
+            owner.soldier.soldier.sheet=context==7?0xd8:context==6?0xdc:context==5?0xa4:context>=3?0xa7:context==0?0x10:type==5?0x42:0xa8;
+            owner.soldier.soldier.animation=context>=6?0:(context==0 || context>=3)?51:0;
+            owner.soldier.soldier.frame=context>=6?0:context>=3?3:type==5?0:2;
             auto enemyArt=art;enemyArt.groundShadow.ownerType=type;
             auto owned=body(amiga,id,40,20);auto& proof=owned.soldier.nativeAmiga8;
             proof.cf1=true;proof.role=4;proof.scene=owner.soldier.soldier.scene;

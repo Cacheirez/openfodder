@@ -19,6 +19,7 @@ int main(int argc,char** argv){try{
     std::map<std::string,std::shared_ptr<const std::vector<uint8_t>>> banks;
     std::set<std::tuple<int,int,int,int,std::string>> seen;
     size_t modern=0,classic=0,hidden=0,shadows=0,ground=0,cases=0,aimTransitions=0,formatAnchors=0,fallHeights=0,initialShadows=0,initialAimRejections=0,initialAimOffStates=0,sinkingCrops=0,slideGround=0,slideExcluded=0,guardContacts=0,guardExclusions=0;
+    size_t leaderContacts=0,leaderExclusions=0,leaderEmpty=0,leaderRejections=0;
     for(const auto& row:jsonFile(directory+"native-evidence.json")){
         const int fmt=row.at("format"),type=row.at("type"),sheet=row.at("sheet"),frame=row.at("frame");
         const auto* slot=FindCF1EnemyNativeSlot(fmt,type,sheet,frame);
@@ -77,6 +78,40 @@ int main(int argc,char** argv){try{
                     if(registry.resolve(other,"",density,true,384,384*272).groundShadow.pixels)
                         throw std::runtime_error("candidate guard shadow survived geometry/vehicle exclusion");
                     ++guardExclusions;
+                }
+            }
+        }
+        if(type==106 && (sheet==0xd8 || sheet==0xd9 || sheet==0xda)){
+            if(fmt==1){
+                if(result.decision!=SoldierArtDecision::KeepClassic || !empty || result.groundShadow.pixels)
+                    throw std::runtime_error("candidate leader changed signed empty Amiga command");
+                ++leaderEmpty;
+            }else{
+                if(result.decision!=SoldierArtDecision::Replace || !result.groundShadow.pixels || result.groundShadow.ownerType!=106)
+                    throw std::runtime_error("candidate leader missing body/contact");
+                size_t bottom=0;
+                for(size_t i=0;i<result.pixels->size();++i)if((*result.pixels)[i]>>24)bottom=i/(result.width*density)+1;
+                if(bottom!=12*density)throw std::runtime_error("candidate leader support anchor differs");
+                ++leaderContacts;
+                for(int which=0;which<8;++which){
+                    auto other=p;
+                    if(which<4)other.soldier.animation=which==0?1:which==1?50:which==2?51:52;
+                    if(which==4)other.soldier.geometry.height=1;
+                    if(which==5)other.soldier.geometry.rowsToSkip=1;
+                    if(which==6)other.soldier.inVehicle=true;
+                    if(which==7)other.soldier.pendingDestroy=true;
+                    auto geometry=other.soldier.geometry;geometry.source=other.resource.source();
+                    other.draw=PrepareSpriteDraw(geometry);other.draw.source=nullptr;
+                    const auto excluded=registry.resolve(other,"",density,true,384,384*272);
+                    if(excluded.decision!=SoldierArtDecision::Replace || excluded.pixels!=result.pixels || excluded.groundShadow.pixels)
+                        throw std::runtime_error("candidate leader off-state lost HD body or retained ground");
+                    ++leaderExclusions;
+                }
+                for(int person:{0,1}){
+                    auto invalid=p;invalid.soldier.personType=person;bool rejected=false;
+                    try{registry.resolve(invalid,"",density,true,384,384*272);}catch(const std::invalid_argument&){rejected=true;}
+                    if(!rejected)throw std::runtime_error("candidate leader accepted unverified person");
+                    ++leaderRejections;
                 }
             }
         }
@@ -203,7 +238,9 @@ int main(int argc,char** argv){try{
             if(source.at("format")==slot.format && source.at("segment")==slot.segment &&
                !seen.count({slot.format,slot.type,slot.sheet,slot.frame,source.at("sha256").get<std::string>()}))
                 throw std::runtime_error("candidate incomplete retained source evidence");
+    if(leaderContacts!=51 || leaderEmpty!=51)throw std::runtime_error("candidate leader coverage incomplete");
     std::cout<<"PASS private enemy candidate: "<<cases<<" retained native draws, density="<<density
         <<", modern="<<modern<<", classic="<<classic<<", resource-specific no-write="<<hidden<<", modern-owned-shadows="<<shadows<<", ground-components="<<ground<<", aim-owner-transitions="<<aimTransitions<<", format-native-anchors="<<formatAnchors<<", fall-height-transitions="<<fallHeights<<", initial-person-shadow-associations="<<initialShadows<<", initial-aim-source-rejections="<<initialAimRejections<<", initial-aim-off-state-exclusions="<<initialAimOffStates<<", sinking-native-crops="<<sinkingCrops<<", slide-ground-transitions="<<slideGround<<", slide-ground-exclusions="<<slideExcluded<<", guard-contacts="<<guardContacts<<", guard-exclusions="<<guardExclusions<<"; not gameplay acceptance\n";
+    std::cout<<"PASS leader: contacts="<<leaderContacts<<", signed-empty="<<leaderEmpty<<", off-state-exclusions="<<leaderExclusions<<", invalid-person-rejections="<<leaderRejections<<"\n";
     return 0;
 }catch(const std::exception& e){std::cerr<<"FAIL private enemy candidate: "<<e.what()<<"\n";return 1;}}
