@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. One production game sprite D8/F12, E01 unarmed raised-arms movement viewed directly from BEHIND facing UP. Image1 gives the approved character identity, grey-olive uniform, plain grey-green helmet, reddish leather straps/pouches/boots, tiny brick-red neck wrap, painted materials and exact overhead straight-rear camera. Image2 gives original F12 posture. Keep the back dominant and head/torso/boots facing straight UP, no visible face or beard from behind, no diagonal turn and no mirror. Remove the rifle completely. Both arms bent and raised with empty hands: SCREEN-LEFT hand reaches HIGH above the left side of the helmet, SCREEN-RIGHT hand lower beside the head, as original F12. Natural rear-view backs/edges of hands. Walking phase with SCREEN-LEFT boot planted lower and the RIGHT knee/boot modestly lifted, compact natural stride, not a jump. Full helmet, both hands and complete boots inside generous transparent margins. Same compact adult proportions, moderate painted style, upper-left light. BODY ONLY genuine transparent cutout: exterior and gaps alpha zero, no haze, glow, white/grey backdrop, floor, cast shadow or dark tail under boots. No held object, text or other figure. The approved ground-contact layer is separate.\nBackground extraction pass: Precise background extraction ONLY for this rear-view E01 game sprite. Preserve the complete character, straight-rear overhead camera facing up, raised screen-left hand/high arm, lower screen-right hand, grey-olive uniform, grey-green helmet, red neck wrap, reddish leather, planted left boot/lifted right boot, painted texture and upper-left lighting. Remove ALL brown/grey surrounding fog, glow, soft backdrop and environmental shadow around the character, including around hands, helmet, limbs and boots and in every limb gap. Outside the figure must be fully transparent alpha zero, no residual haze or colored glow. Keep naturally antialiased clean character edges, full helmet/hands/boots and clear transparent margins. No floor or cast shadow. Do not change the pose, add objects, text or another figure. Return one clean full-body character cutout on genuine transparency.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "0feb4e87d1f9308bf0e57c6a31a92f37acd0a72f17ebba4ce7081d9d6e66fd53",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-46-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d4-source-audit-v1/d8-f12-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending",
+  "background_inspection": {
+    "reason": "One built-in extraction pass after apparent preview halo; outer alpha samples0, alpha16body bounds and exact native-size composition inspected, no opaque backdrop",
+    "draft_private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d8-d4-authoring\\f12-background-draft.png",
+    "draft_sha256": "8eee192205c619aeaf10a7fc3b10a7e59acf6017d3e68115b7fece314638fe88",
+    "final_source_sha256": "0feb4e87d1f9308bf0e57c6a31a92f37acd0a72f17ebba4ce7081d9d6e66fd53",
+    "creative_python_edits": false
+  }
+}
