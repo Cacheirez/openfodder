@@ -6007,6 +6007,141 @@
       }
     },
     {
+      "sheet": 216,
+      "frame": 3,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-d8-f3/manifest.json",
+      "source_sha256": "7d557e78ece0179e149ed26c38ec0be66736042e958053653a8bbb7b49331e54",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-d8-f3-pc-8x",
+          "sha256": "77b3a62b39ab1f41f93f92108fc4a7818338624143a12170e6ced1c2c0119c92",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-d8-f3-pc-12x",
+          "sha256": "d9e3b7ef27608abe2e66a4c55333210e8127c2572365774811e9eae1d1d525d4",
+          "size": [
+            192,
+            168
+          ]
+        }
+      },
+      "assets_by_format": {
+        "0": {
+          "8": {
+            "id": "enemy-v2-pose-d8-f3-pc-8x",
+            "sha256": "77b3a62b39ab1f41f93f92108fc4a7818338624143a12170e6ced1c2c0119c92",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-d8-f3-pc-12x",
+            "sha256": "d9e3b7ef27608abe2e66a4c55333210e8127c2572365774811e9eae1d1d525d4",
+            "size": [
+              192,
+              168
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sheet": 216,
+      "frame": 4,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-d8-f4/manifest.json",
+      "source_sha256": "3b91ea7df60839a270eb1d58d51bf218854e5b264da965f7b763b263910159b0",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-d8-f4-pc-8x",
+          "sha256": "df589abe974fb2f3d7af9ef85ec0f287fefd36384bd8e4751acec7b2ecdcc1a5",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-d8-f4-pc-12x",
+          "sha256": "4ee81e5047dd33808e3bd23a7e45d7fb5047f977b12652d51ee9f6dd27831861",
+          "size": [
+            192,
+            168
+          ]
+        }
+      },
+      "assets_by_format": {
+        "0": {
+          "8": {
+            "id": "enemy-v2-pose-d8-f4-pc-8x",
+            "sha256": "df589abe974fb2f3d7af9ef85ec0f287fefd36384bd8e4751acec7b2ecdcc1a5",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-d8-f4-pc-12x",
+            "sha256": "4ee81e5047dd33808e3bd23a7e45d7fb5047f977b12652d51ee9f6dd27831861",
+            "size": [
+              192,
+              168
+            ]
+          }
+        }
+      }
+    },
+    {
+      "sheet": 216,
+      "frame": 5,
+      "family": "pose",
+      "manifest": "assets/modernization/demo-a1-enemy-v2-pose-d8-f5/manifest.json",
+      "source_sha256": "d3b673160db3b5d3ad9eb258e525240c733a67ee952c3f47660b3cd886ad53a8",
+      "assets": {
+        "8": {
+          "id": "enemy-v2-pose-d8-f5-pc-8x",
+          "sha256": "a945602ed9596f38eb8916e6a4b0e7b02176b118f75ba04985380ed9cfa26aca",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-v2-pose-d8-f5-pc-12x",
+          "sha256": "9cd3a3ac844e44853130dbf114158486a0412b1c9ca7ed99ddc3eb4fe694f93a",
+          "size": [
+            192,
+            168
+          ]
+        }
+      },
+      "assets_by_format": {
+        "0": {
+          "8": {
+            "id": "enemy-v2-pose-d8-f5-pc-8x",
+            "sha256": "a945602ed9596f38eb8916e6a4b0e7b02176b118f75ba04985380ed9cfa26aca",
+            "size": [
+              128,
+              112
+            ]
+          },
+          "12": {
+            "id": "enemy-v2-pose-d8-f5-pc-12x",
+            "sha256": "9cd3a3ac844e44853130dbf114158486a0412b1c9ca7ed99ddc3eb4fe694f93a",
+            "size": [
+              192,
+              168
+            ]
+          }
+        }
+      }
+    },
+    {
       "sheet": 220,
       "frame": 0,
       "family": "pose",
@@ -6053,8 +6188,8 @@
     }
   ],
   "counts": {
-    "poses": 219,
-    "assets": 464
+    "poses": 222,
+    "assets": 470
   },
   "identity": 2
 }

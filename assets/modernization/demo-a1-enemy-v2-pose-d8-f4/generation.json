@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Create the distinct middle step D8/F4 of this E01 unarmed raised-arms character. Image1 is the modern D8/F3 character reference: preserve its overhead three-quarter DOWN-LEFT view, identity, helmet, beard, grey-olive uniform, brick-red neck cloth, reddish leather and moderately painted material style. Image2 is the original tiny D8/F4 for the posture. Both arms remain bent and lifted: bring the open hands to a middle gesture at approximately the SAME height near the head/upper shoulders, rather than the strongly uneven hands of F3. Feet pass closer underneath the body for the middle walking phase, no jump; preserve the diagonal down-left orientation. This is a distinct redrawn frame, not a mirror or rotation. Same upper-left lighting and full compact adult proportions. Complete helmet, hands and boots visible. No weapon or object. One full-body BODY ONLY isolated cutout on true transparency, all exterior and gaps fully transparent; no white/grey backdrop, haze or glow, no floor or cast shadow or dark tail. Keep generous transparent margins. No text, no extra figure; separate ground contact will be composed later.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "3b91ea7df60839a270eb1d58d51bf218854e5b264da965f7b763b263910159b0",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d1-authoring/f3-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d1-source-audit-v1/d8-f4-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

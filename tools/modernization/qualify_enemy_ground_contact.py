@@ -53,10 +53,10 @@ def qualify():
             family,direction='slide',pose['frame']
         elif pose['family']=='pose' and sheet==0xdc and pose['frame']==0:
             family,direction='guard',0
-        elif pose['family']=='pose' and sheet==0xd8 and pose['frame'] in (0,1,2):
-            # E2.LEADER.D0.AUD: own PC raster has an embedded lower-right contact.
+        elif pose['family']=='pose' and sheet==0xd8 and pose['frame'] in range(6):
+            # E2.LEADER.D0/D1.AUD: own PC rasters have embedded lower-right contacts.
             # Other leader directions/sheets need their own contact audit first.
-            family,direction='leader-d8',0
+            family,direction='leader-d8',pose['frame']//3
         elif pose['family']=='pose' and 0x5a<=sheet<=0x61 and pose['frame'] in (0,1):
             excluded.append(dict(sheet=sheet,frame=pose['frame'],reason='Native swimming waterline; no ground component',
                 assets=[dict(id=a['id'],sha256=a['sha256']) for a in pose_assets(pose)]))
