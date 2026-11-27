@@ -1,0 +1,97 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 106,
+    "sheet": 218,
+    "frame": 1
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-da-f1-pc-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-da-f1-pc-8x",
+      "sha256": "50b76caf90e48a432884167bfb480f3cc64977276554296483c2f143f47956eb",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-da-f1-pc-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-da-f1-pc-12x",
+      "sha256": "31b9968a4a5e0d61219ddbdfaf8fbdd61fc15cf57079e5571200ad0ccd2c39ed",
+      "width": 16,
+      "native_formats": [
+        0
+      ]
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      948,
+      1659
+    ],
+    "mode": "RGBA",
+    "sha256": "768be19e6efafc43af25f43a512cc146235124434bd990cce17099c3e3b73351",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      132,
+      175,
+      808,
+      1509
+    ],
+    "placement": {
+      "x": 5,
+      "y": 0,
+      "width": 6,
+      "height": 12
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "fcfc373886dece1d653de35e4f42c9762c4363967dc553764e1c9c5ab5b34ff7",
+        "bbox": [
+          4,
+          0,
+          12,
+          14
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands",
+    "native_no_write": [
+      {
+        "format": 1,
+        "segment": 0,
+        "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+        "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff",
+        "logical_size": [
+          16,
+          14
+        ],
+        "bbox": null,
+        "opaque_pixels": 0
+      }
+    ]
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-d9-f1/manifest.json",
+    "source_sha256": "768be19e6efafc43af25f43a512cc146235124434bd990cce17099c3e3b73351",
+    "generation_metadata_sha256": "18279f13e136b3701f764b578b887bdb0ef8baf18cc4e8ebf4d5e13fa2f38648",
+    "reason": "Complete16x14 PC native resource/signature/pixel equivalence DA/F1=D9/F1, same C++ export and identical8x/12x RGBA; no runtime alias"
+  }
+}
