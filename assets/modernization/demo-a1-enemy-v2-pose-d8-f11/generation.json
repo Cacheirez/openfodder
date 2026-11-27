@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw distinct D8/F11 for this E01 unarmed raised-arms movement. Image1 is modern F9 for identity, materials and exact overhead REAR-THREE-QUARTER UP-LEFT camera; image2 is original tiny F11 for the posture. Keep the character facing AWAY diagonally up-left, back dominant, only natural tiny left jaw edge; never turn frontal or mirror. Same grey-olive uniform, plain grey-green helmet, reddish leather straps/pouches/boots, red neck cloth and beard only where naturally visible, moderate painted style and upper-left light. Change the arm phase: the SCREEN-RIGHT hand now reaches HIGH ABOVE the helmet, its arm more extended vertically, while the SCREEN-LEFT open hand is LOWER near shoulder/ear level in front of the left side of the head. Both hands empty, natural rear-view hand backs/edges and limb occlusion. Alternate leg support from F9: screen-left boot planted lower while screen-right knee/boot is slightly lifted; compact up-left walking step, not a jump. Complete hands, helmet and boots within generous transparent margins. BODY ONLY on genuine transparency, no exterior haze, glow, white/grey backdrop, floor, cast shadow or dark tail below boots. No weapon, object, text or extra figure. Separate approved ground-contact paint will be added later.\nLeg-phase correction: Edit image1 only in the LEGS/BOOT articulation for the alternate D8/F11 step. Preserve the upper body, raised arms/hands, helmet, face edge, uniform and gear, overhead REAR UP-LEFT view, character identity, painted style and upper-left light exactly. Image2 is the tiny native F11 pose reference. The current image incorrectly repeats the raised leg of F9. REQUIRED: the leg/boot currently raised on the LEFT HALF OF THE IMAGE must become the STRAIGHTER SUPPORT LEG, extended DOWN to a planted boot at the LOWER LEFT of the figure. The leg currently supporting at the BOTTOM CENTRE/RIGHT must instead BEND at the knee, with its boot LIFTED behind on the RIGHT SIDE. Switch which knee bends and which boot is lower; both complete boots remain visible. Keep a natural compact up-left walking step, not a jump. Do not mirror, rotate or change the rear-facing body. Keep clean genuine transparent background and limb gaps, no floor or cast shadow/haze/glow, no added object or text. Change only the alternate leg support; the correct high screen-right hand stays unchanged.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "8d7bbd25829653f52bac5e8e66909c40ca0bcdc2cdc76077242da0fd155116ea",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d3-authoring/f9-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d3-source-audit-v1/d8-f11-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending",
+  "phase_correction": {
+    "reason": "One built-in leg articulation correction before export; upper body and camera preserved",
+    "draft_private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d8-d3-authoring\\f11-pose-draft.png",
+    "draft_sha256": "ebf0d873f3aca97da2e459bdf9054f1e0309a665bf3168c70013249cf36824fd",
+    "final_source_sha256": "8d7bbd25829653f52bac5e8e66909c40ca0bcdc2cdc76077242da0fd155116ea",
+    "creative_python_edits": false
+  }
+}
