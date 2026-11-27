@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw production sprite D9/F3 of E01 UNARMED ARMS-LOW movement. Image1 supplies identity, materials and exact overhead FRONT-DOWN-LEFT three-quarter camera; image2 is original F3 posture. Keep head/body/boots facing diagonally down-left, no frontal turn or mirror. Same grey-olive uniform, grey-green helmet, short dark jaw beard, small brick-red neck cloth and reddish leather straps/pouches/boots, moderately painted style and upper-left light. Remove rifle. Both arms stay LOW: the nearer arm on SCREEN-RIGHT bends a little forward with relaxed EMPTY hand near the waist; the farther SCREEN-LEFT arm hangs lower and can be partly occluded. Natural relaxed hands, no raised arms. Walking phase with SCREEN-RIGHT boot planted lower and SCREEN-LEFT knee/boot modestly lifted, compact stride, not a jump. Full hands/helmet/boots inside generous transparent margins, compact adult proportions. BODY ONLY clean alpha-zero transparent exterior and gaps, no haze/glow/backdrop/floor/cast shadow/dark tail. No weapon, object, text or extra figure. Fixed approved ground contact remains separate.\nLeg-phase correction: Edit image1 ONLY in the leg/boot articulation for D9/F3. Preserve the correct down-left overhead camera, head/helmet, low relaxed arms/hands, uniform/gear, identity, painted style and upper-left light exactly. Image2 is native F3. Required leg support: the forward low boot on the LEFT HALF of the image must become LIFTED, its knee bent slightly; the currently raised boot on the RIGHT HALF must become the LOWER PLANTED boot with a straighter supporting leg. Switch which knee bends and which boot is lower. Keep compact down-left walking stride, both complete boots visible, no jump. Do not mirror or rotate the character or raise the arms. Preserve genuine transparent exterior/gaps, no floor/cast shadow/backdrop/glow or added object/text. Change only this alternate leg support, leaving upper body untouched.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "ca7d6b88f87fb0193db313229a1c689dfc1dd3fd86d2e6fc8a686f9db3bca348",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-43-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d9-d1-source-audit-v1/d9-f3-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending",
+  "phase_correction": {
+    "reason": "One built-in leg articulation correction, preserving correct low arms and down-left camera",
+    "draft_private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d9-d1-authoring\\f3-pose-draft.png",
+    "draft_sha256": "df1311f120c7b4c08674b7652dafccf5b0ca2cd1725c3de735d252b2270d71c9",
+    "final_source_sha256": "ca7d6b88f87fb0193db313229a1c689dfc1dd3fd86d2e6fc8a686f9db3bca348",
+    "creative_python_edits": false
+  }
+}
