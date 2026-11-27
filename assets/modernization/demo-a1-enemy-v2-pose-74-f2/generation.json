@@ -1,0 +1,16 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: game-asset design with identity preservation. Create one moderately painted E01 enemy infantry sprite for the source-known native frame74/F2. Image1 supplies the existing E01 painted identity and rendering: plain grey-green helmet, grey-olive uniform, short dark beard on visible jaw, small brick-red neck cloth, reddish-brown leather straps/pouches, dark brown boots. Images2 and3 are enlarged native PC and Plus depictions of the SAME table entry: use their frontal/down-screen figure posture and slight walking step, relaxed empty arms near sides and offset feet. Translate that pose into the E01 identity; do not copy civilian colours/clothing or add a rifle. Image4 is the original TheOne flat native silhouette, for coverage/anchor context only, not a red costume. Elevated game camera matching image1, whole body visible, neutral expression, empty hands, modest natural step with boots visibly separated. Keep same restrained painted style and soft upper-left light as image1. Single complete isolated game sprite, generous transparent margins and actual RGBA transparency. No wounds, blood, stains, floor, ground shadow, text, insignia, special effects or mirroring. Do not add equipment beyond E01 belt/shoulder pouches.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "e485b3b92fe911ce9212632b16e07ee702f4df9e8fb7ff137f2db3e47ac1f033",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-pose-72-f0/source.png",
+    "private:enemy-74-f2-pc-native-inspection.png",
+    "private:enemy-74-f2-plus-native-inspection.png",
+    "private:enemy-74-f2-native-inspection.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

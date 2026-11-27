@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "block": "R3-player-slide-complete",
+  "date": "2026-11-21",
+  "base_head": "cf33d7dff6bcd321b7b9eed105fbaf024d0fc832",
+  "poses": [
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 0,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f0/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 1,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f1/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 2,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f2/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 3,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f3/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 4,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f4/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 5,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f5/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 6,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f6/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 164,
+      "frame": 7,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-a4-f7/manifest.json"
+    }
+  ],
+  "authoring": "Authorized autonomous protagonist art; internal inspection, not Miguel global acceptance",
+  "tests": {
+    "windows": "256 actual Window/SDL cases; ASan/UBSan PASS",
+    "linux": "256 actual Window/SDL cases; ASan/UBSan/LSan PASS",
+    "matrix": "native format/frame entries; states 50/52; 4 variants; 8/12 density; two actors, exact SDL, negatives and full recovery"
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-slide-complete-candidate\\candidate-manifest.json",
+    "assets": 338,
+    "covered": 319,
+    "required": 337,
+    "missing": 18,
+    "complete": false,
+    "rgba_bytes": 30366336
+  },
+  "invariants": [
+    "previous assets/pose bindings unchanged",
+    "native geometry and selectors unchanged",
+    "source originals preserved",
+    "independent blood/shadow commands unchanged; embedded ground qualification pending R4",
+    "H3 R2 remains valid; no simulation change",
+    "previous launchers unchanged"
+  ],
+  "next": "R3 \u2014 auditar entrada en veh\u00edculo 0xCC/F4\u2192F0: recursos retenidos transparentes; verificar ruta, datos usados por el lanzador y ausencia de escrituras antes de inventar arte. Despu\u00e9s cuerpo flotante 0x9E.",
+  "ci": "Set CI completion/consultation pending; no full PASS claimed",
+  "reuse": [],
+  "frames_tested": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "fixture_binaries": {
+    "player-pose-window.exe": "b8aadeb3959ebe331656533ee0b73a37a08832a546ed8643e16e3a295029ad9d",
+    "player-pose-window-linux": "8c7c71550a519804238a0cf24a1a1300e03eb1c9644aa0d3c4988a5b672b31b2"
+  }
+}

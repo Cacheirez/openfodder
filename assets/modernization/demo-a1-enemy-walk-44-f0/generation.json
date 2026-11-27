@@ -1,0 +1,9 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. EDIT IMAGE1, an existing transparent enemy soldier master, into its adjacent walk animation FRAME0. Image2 is the small native frame0 reference. Preserve the helmet, head, torso, shoulders, arms, rifle, backpack, paint texture, dark olive and reddish brown colours, camera angle and proportions from image1 EXACTLY. Change ONLY the LEGS AND BOOTS below the belt: put them into a modest forward walking stride toward screen LEFT, leading boot slightly further left and trailing boot slightly further right than image1. Keep both soles on the same ground line and keep the total head-to-foot height unchanged. Maintain a tall portrait full-body silhouette with occupied WIDTH/HEIGHT about0.62 like image1: avoid a broad, squat body or excessively wide stride. This must downsample into an8-by14 occupied box without stretching the helmet. Do not rotate or mirror the character or rifle. Same equipment, face, lighting and moderate painted finish. One sprite only, transparent background, no baked ground shadow, no text or floor. Keep all parts and feet fully visible, similar transparent margins to image1.",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-44-f1/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-44-f0-7a44b4a6.png",
+  "source_sha256": "2e6a3726f02369bae471030c289eeea64c218c9b772761006af7ba145f087575",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

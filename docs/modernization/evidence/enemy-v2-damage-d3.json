@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.D3",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 3,
+  "sheet": 101,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-65-f0",
+      "source_sha256": "7065c3af914642f0888756cbc626ea2476cbd80ccc7c69a36a34a80806c5e3d1",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 1,
+        "width": 9,
+        "height": 10
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-65-f1",
+      "source_sha256": "3008b8d22f3be1d2481834514b201e3fbbc2745c6830d05be05010a2b2effac2",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 6,
+        "width": 13,
+        "height": 5
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 67,
+    "assets": 134
+  },
+  "notes": [
+    "Upright/tilted F0 and horizontal F1 retained exactly; generated authoring canvases differ,1254square/1774x887.",
+    "Per-frame proportional fits inside each native source box retain native bottom11: F0 placement5,1,9,10; F1 placement3,6,13,5. X/Y ratios1.0265/1.0454.",
+    "Native height/independent shadows unchanged, no ground component. Internal inspection only; runtime candidate/Miguel acceptance pending.",
+    "Earlier damage0..2 shared-box fitting is conservative; audit/refit their per-frame native anchors before further production."
+  ],
+  "next": "E3.DA0 — ajustar exportación de62/F0,F1 a la caja/ancla nativa de cada frame, con escala proporcional y originales intactos; después63 y64. Retomar luego producción65..69 pendiente (siguiente66/F0,F1)."
+}

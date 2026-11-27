@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E3.LEADER.RH",
+  "source": "a192e5c2f813215ff32459042277ee41f04c1e26",
+  "status": "PASS current-source H3/Window/A2/fullCI; not Miguel gameplay acceptance",
+  "reports": {
+    "win": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-probe-build\\Release\\native_probe.exe",
+      "sha256": "e3029320f31aae51259e3acd3709c63ac97edf034d73753d6f42d1304b8b46ab",
+      "h3": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-h3-win\\report.json",
+        "sha256": "7556afcd86602eee580983cd91664392931ce8e2e2d6d4600a7a52d5e18bbdd4",
+        "fixtures": 11,
+        "states": 11361,
+        "verdict": "PASS"
+      },
+      "a2": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-runtimechecks\\a2-win\\report.json",
+        "sha256": "72063b108e7c28a1ed7600b74a341c1d803d6bdfc1af403d1d456ff8ed1d9d24",
+        "states": 301,
+        "verdict": "PASS"
+      },
+      "window": {
+        "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-runtimechecks\\ctest-win\\Testing\\Temporary\\LastTest.log",
+        "sha256": "1de6205b877db1509080268ddec3a35aec8f79da3b10af9a03177e1de0b8b99e",
+        "verdict": "PASS",
+        "external_keys": 24,
+        "sdl_intervals": 128
+      }
+    },
+    "linux": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-probe-linux-build\\native_probe",
+      "sha256": "3d4835c5dbd24d0b7d7a11671985ba3dcd274280c3aa8b43a8fdcc0a5c190298",
+      "h3": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-h3-linux\\report.json",
+        "sha256": "acf0e899f816bea4b3252069d68c7617242ce8acf4cd952d45aecbe7a94c8aae",
+        "fixtures": 11,
+        "states": 11361,
+        "verdict": "PASS"
+      },
+      "a2": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-runtimechecks\\a2-linux\\report.json",
+        "sha256": "54f5c11f7ee43f50ef80abe74e42e3cfd1a1e968754c3ae4609c6f4d930cce38",
+        "states": 301,
+        "verdict": "PASS"
+      },
+      "window": {
+        "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-runtimechecks\\ctest-linux\\Testing\\Temporary\\LastTest.log",
+        "sha256": "1ea1b74c67e9635158e08a3195195f7741a85b0ceb241ecadf4b6cea4d355f8c",
+        "verdict": "PASS",
+        "external_keys": 24,
+        "sdl_intervals": 128
+      }
+    }
+  },
+  "ci_runs": {
+    "windows_push": 46013727023,
+    "linux_push": 46013727040,
+    "windows_pr": 46013741292,
+    "linux_pr": 46013741492,
+    "h6_pr": 46013741495
+  },
+  "notes": [
+    "No H3reference changed. Native_probe private Window snapshots retain known2opt-in additions, Source headers current.",
+    "Windows CTest initially NotRun without-CRelease, then Window failed loader0xc0000135while A2passed. Existing Nov17runtime PATH fixed Window; only failed Window rerun. Logs preserved, no toolchain/policy changes.",
+    "Windows2tests passed individually, LinuxCTest2/2same run. No new fullCI PASS claimed.",
+    "No visible/gameplay enemy acceptance inferred;4B/F0exception retained."
+  ],
+  "ci": {
+    "status": "PASS five full workflows on exact Source commit",
+    "runs": [
+      {
+        "conclusion": "success",
+        "databaseId": 46013741495,
+        "headSha": "a192e5c2f813215ff32459042277ee41f04c1e26",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/46013741495",
+        "workflowName": "H6 - offline density review"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 46013741292,
+        "headSha": "a192e5c2f813215ff32459042277ee41f04c1e26",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/46013741292",
+        "workflowName": "Windows - modernization foundation"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 46013741492,
+        "headSha": "a192e5c2f813215ff32459042277ee41f04c1e26",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/46013741492",
+        "workflowName": "linux-build"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 46013727023,
+        "headSha": "a192e5c2f813215ff32459042277ee41f04c1e26",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/46013727023",
+        "workflowName": "Windows - modernization foundation"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 46013727040,
+        "headSha": "a192e5c2f813215ff32459042277ee41f04c1e26",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/46013727040",
+        "workflowName": "linux-build"
+      }
+    ]
+  },
+  "next": "E3.LEADER.RC — medir continuidad con Sourcea192/candidatoenemy-leader-complete-technical-v1 Windows/Linux sobre replay disponible: publicacionesHD, apariciones modernas/clásicas poractor/estado, errores reales y casos no observados. Mantener las51poses líder y excepción4B/F0auditada; después preparar revisión jugando con lanzador y hashes, sin aceptación automática."
+}

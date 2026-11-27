@@ -1,0 +1,88 @@
+{
+  "status": "E01initial-person aim art reuse; ground eligibility/runtime integration and Miguel gameplay pending",
+  "pose": {
+    "type": 5,
+    "sheet": 19,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-prone-13-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-prone-13-f0-8x",
+      "sha256": "b6abe2a1b6e4a1c44505c58c6b4b9cd8f4f51424bee46f49a1c741bfc706f1e2",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-prone-13-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-prone-13-f0-12x",
+      "sha256": "5a875fedd6fb6cb54ce1c0281854054131ff90288d61ae4d101f912fc99a6286",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1353,
+      1162
+    ],
+    "mode": "RGBA",
+    "sha256": "8ed43f4a760e2cbb1dc5ed59e5bf93b37d9f9231b4d3991ced64451e70c61fbc",
+    "generator": "built-in image_gen; original preserved",
+    "reused_from": "assets/modernization/demo-a1-enemy-v2-prone-55-f0/source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      304,
+      240,
+      953,
+      977
+    ],
+    "placement": {
+      "x": 3,
+      "y": 2,
+      "width": 10,
+      "height": 11
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "160f42256b724aa17c238a9a7de82a29f60371eaf587c527af68cd189fc2a078",
+        "bbox": [
+          3,
+          2,
+          14,
+          13
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "5f77e16e1a68986f6e2ff9ce4660c3910d9c7e94381ad6068d013c716af295e7",
+        "bbox": [
+          3,
+          2,
+          13,
+          13
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-prone-55-f0/manifest.json",
+    "source_sha256": "8ed43f4a760e2cbb1dc5ed59e5bf93b37d9f9231b4d3991ced64451e70c61fbc",
+    "generation_metadata_sha256": "7963d1958fd28e939408db19004454e46b7a0ad74c8d8a483979ff1279593e74",
+    "reason": "Shared table aim action/direction/frame and original friendly reference verified; own initial-person signatures and anchors"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E2.A4",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 4,
+  "sheet": 86,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-prone-56-f0",
+      "source_sha256": "8a4851e376450ce7d9bb1606f24a37662b5d85530633b65196c1e78109c0d682",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 2,
+        "width": 8,
+        "height": 11
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 33,
+    "assets": 66
+  },
+  "notes": [
+    "Espalda en apuntado bajo, sin rostro ni barba inventados. Identidad E01 por casco, uniforme, cuello y equipo; postura propia conservada.",
+    "Derivado12× inspeccionado; apoyo cualificado sin editar píxeles. 4B/F0 pendiente; aceptación jugable global pendiente."
+  ],
+  "next": "E2.A5 — preparar apuntado bajo enemigo dirección 5, 57/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente."
+}

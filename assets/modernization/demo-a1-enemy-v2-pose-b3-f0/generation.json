@@ -1,0 +1,21 @@
+{
+  "generator": "reuse-existing-E01-source and derivatives; no new ImageGen call",
+  "identity": 2,
+  "transparent_background": true,
+  "source_sha256": "38356c9dd413c27b440c02513d82c20ceef2cc88cef8f2b877297aa7229548e8",
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-bb-f0/source.png",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-pose-73-f0/generation.json",
+  "original_generation_metadata_sha256": "f3abbb9150ed20c9a6aa60baeffd45e1b33d8c795408e0f1bf0f7456078e15c0",
+  "original_pose_reference": "assets/modernization/demo-a1-player-pose-31-f0/source.png",
+  "friendly_fall_master": null,
+  "friendly_reference_sha256": "95777462e91f2e0d8e3560f22fb48b1a4f0edeb45ae48f1eeab5bc43813c55e9",
+  "verified_native_proxy": true,
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 179,
+    "frame": 0,
+    "direction": 3
+  },
+  "review": "Source/action/native bounds and provenance checked; runtime integration and Miguel gameplay pending"
+}

@@ -1,0 +1,669 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.SK",
+  "status": "PASS source audit; no new art/binding",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 0,
+      "native_signature": "1dc8441731ffe940b7894a681c895d9f9d793f3f0c65806a36073af0e234e0a9",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 0,
+      "native_signature": "1dc8441731ffe940b7894a681c895d9f9d793f3f0c65806a36073af0e234e0a9",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 1,
+      "native_signature": "642e39a1aae9608c4ad069d252b652ce8d1a83107cf1f96760a24bd4844e96b1",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 1,
+      "native_signature": "642e39a1aae9608c4ad069d252b652ce8d1a83107cf1f96760a24bd4844e96b1",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 2,
+      "native_signature": "aa5c2adf2954920212e5bf652707cdea81cb40bfe0829aba43b0ca52cab2edec",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 2,
+      "native_signature": "aa5c2adf2954920212e5bf652707cdea81cb40bfe0829aba43b0ca52cab2edec",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 3,
+      "native_signature": "4ae9137a669834b9dfb8978c5261201cb133e1ad70521760d1f65dc5e39809af",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 3,
+      "native_signature": "4ae9137a669834b9dfb8978c5261201cb133e1ad70521760d1f65dc5e39809af",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 4,
+      "native_signature": "a6d217d46b1d8cb075084dc22a11caf43d6d3b86f595a56211ed1c282c5e02c6",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 4,
+      "native_signature": "a6d217d46b1d8cb075084dc22a11caf43d6d3b86f595a56211ed1c282c5e02c6",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 5,
+      "native_signature": "731bdaa0fc4e24bb56be9d5eff93b07252c26e81d901e6c25738f96372570231",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 122,
+      "frame": 5,
+      "native_signature": "731bdaa0fc4e24bb56be9d5eff93b07252c26e81d901e6c25738f96372570231",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 0,
+      "native_signature": "1dc8441731ffe940b7894a681c895d9f9d793f3f0c65806a36073af0e234e0a9",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 0,
+      "native_signature": "1dc8441731ffe940b7894a681c895d9f9d793f3f0c65806a36073af0e234e0a9",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 1,
+      "native_signature": "642e39a1aae9608c4ad069d252b652ce8d1a83107cf1f96760a24bd4844e96b1",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 1,
+      "native_signature": "642e39a1aae9608c4ad069d252b652ce8d1a83107cf1f96760a24bd4844e96b1",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 2,
+      "native_signature": "aa5c2adf2954920212e5bf652707cdea81cb40bfe0829aba43b0ca52cab2edec",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 2,
+      "native_signature": "aa5c2adf2954920212e5bf652707cdea81cb40bfe0829aba43b0ca52cab2edec",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 3,
+      "native_signature": "4ae9137a669834b9dfb8978c5261201cb133e1ad70521760d1f65dc5e39809af",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 3,
+      "native_signature": "4ae9137a669834b9dfb8978c5261201cb133e1ad70521760d1f65dc5e39809af",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 4,
+      "native_signature": "a6d217d46b1d8cb075084dc22a11caf43d6d3b86f595a56211ed1c282c5e02c6",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 4,
+      "native_signature": "a6d217d46b1d8cb075084dc22a11caf43d6d3b86f595a56211ed1c282c5e02c6",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 5,
+      "native_signature": "731bdaa0fc4e24bb56be9d5eff93b07252c26e81d901e6c25738f96372570231",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 122,
+      "frame": 5,
+      "native_signature": "731bdaa0fc4e24bb56be9d5eff93b07252c26e81d901e6c25738f96372570231",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": false
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 0,
+      "native_signature": "887b376d66d1a01a071b9697c4bc4080443dda90028319e7c643855877dbc921",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 0,
+      "native_signature": "887b376d66d1a01a071b9697c4bc4080443dda90028319e7c643855877dbc921",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        4,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 1,
+      "native_signature": "882f083bcd974b95d723402f2ca1fd89dfe121577a17f200bcb1d3154473551a",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 1,
+      "native_signature": "882f083bcd974b95d723402f2ca1fd89dfe121577a17f200bcb1d3154473551a",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f1/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 2,
+      "native_signature": "1993ef45eecc30bf6e18df9015b3d257dbbdace6e205f75be9546069ddda9c9d",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 2,
+      "native_signature": "1993ef45eecc30bf6e18df9015b3d257dbbdace6e205f75be9546069ddda9c9d",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f2/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 3,
+      "native_signature": "c4f8bc51df36004cf6d4006ae8b6642d6fbf7965548b767d46664125c13a9929",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 3,
+      "native_signature": "c4f8bc51df36004cf6d4006ae8b6642d6fbf7965548b767d46664125c13a9929",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        1,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 4,
+      "native_signature": "645921b424616259a38143b80f7d877451cc287c21893a871cfb7919e4f782eb",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 4,
+      "native_signature": "645921b424616259a38143b80f7d877451cc287c21893a871cfb7919e4f782eb",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        2,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f4/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 5,
+      "native_signature": "925efa513ef5edbf15ba487c1481e1fbbbae593e0ea544ce9ad73d36b5ecdd56",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": true
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 5,
+      "native_signature": "925efa513ef5edbf15ba487c1481e1fbbbae593e0ea544ce9ad73d36b5ecdd56",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "bbox": [
+        3,
+        0,
+        12,
+        14
+      ],
+      "friendly_reference": "assets/modernization/demo-a1-player-pose-38-f5/source.png",
+      "native_equal_to_friendly": true
+    }
+  ],
+  "counts": {
+    "contracts": 36,
+    "ai": 24,
+    "initial": 12
+  },
+  "source_evidence": [
+    {
+      "file": "Source/Sprites/Sprite_Troop.cpp",
+      "lines": [
+        817,
+        1095,
+        1101,
+        1103,
+        1106,
+        1119,
+        1134
+      ],
+      "finding": "mIsSinking==1 selects handler; rowsToSkip starts5, increases on native10tick countdown until13; frame starts0, increments when countdown bit1 clear and caps5. Person0 uses38; other person uses7A. No direction or animation clock replacement."
+    },
+    {
+      "file": "Source/Utils/SpriteDrawState.hpp",
+      "lines": [
+        210,
+        215,
+        217
+      ],
+      "finding": "Native rows minus rowsToSkip sets visible height and y anchor before format clipping; do not bake waterline/crop into art."
+    },
+    {
+      "file": "Source/Utils/OrderedSoldierArt.hpp",
+      "lines": [
+        30,
+        46
+      ],
+      "finding": "Enemy sink sheets excluded from optional floor; rowsToSkip also excludes ground. Existing independent shadow commands remain ordered."
+    }
+  ],
+  "art_strategy": [
+    "Use six accepted friendly38 pose references for pose only; apply approved E01 identity through builtin ImageGen, one frame per microblock",
+    "AI7A and human38 differ in native pixels: no runtime alias or claim of equal signature",
+    "After E017A frames exist, investigate reuse of original E01 masters for initial38 with own lower anchors/native bounds; particularly frames4/5 have different masks",
+    "Both formats have same per-pose native signature/bbox; all source bank hashes retained privately; no commercial pixels published"
+  ],
+  "tests": [
+    "36produced contracts and exact source person masks verified",
+    "12initial native signatures match accepted friendly38 references",
+    "All24AI native references available; pose references6available"
+  ],
+  "next": "E3.SK0 — crear solo7A/F0 de hundimiento enemigo con identidad E01 y referencia propia38/F0; cuerpo completo sin suelo/agua pintados, ancla nativa PC/Amiga. Validar proporciones, recorte y registro antes de continuar con otro frame."
+}

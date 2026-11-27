@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.ISKI",
+  "status": "PASS initial and AI sinking integration; full current-code CI/H3 and Miguel gameplay pending",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-sinking-technical-v1\\8x",
+      "manifest_sha256": "9ab963d719efc620b6e70e6cf3b4cce963eecfafef412806132aa4a83c1061fd",
+      "asset_bytes": 19599872,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=437, classic=242, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=437, classic=242, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-sinking-technical-v1\\12x",
+      "manifest_sha256": "ad17bdabff8f5c9333f9a8867a63ae34878de9b82940fb09785e01f7249f9acf",
+      "asset_bytes": 44099712,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=437, classic=242, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=437, classic=242, resource-specific no-write=66, modern-owned-shadows=6, ground-components=118, aim-owner-transitions=48, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 164,
+    "art_derivatives": 330,
+    "candidate_assets": 350,
+    "native_contracts": 679,
+    "modern_contracts": 437,
+    "modern_bodies": 431,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 172,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 118
+  },
+  "tests": [
+    "679native draws per density/platform PASS; Windows ASan/UBSan and Linux ASan/UBSan/LSan",
+    "288native sinking crops per density/platform PASS:192AI+96initial",
+    "Initial F0..4 derivatives byte-identical to E01AI; F5 original source retained, horizontal placement shifts2->3, scale unchanged",
+    "164poses/330derivatives registry and version1freeze PASS; Python ground4tests PASS; prior aim/fall/format checks remain PASS"
+  ],
+  "next": "E2.SL — auditar deslizamiento enemigoA7/F0..7 e inicialA4/F0..7: selección de frame/dirección, persona, altura/recorte, sombras y referencias/maestros existentes. Buscar reutilización demostrable antes de generar; sin alias ni vínculos todavía.",
+  "guarantees": [
+    "Initial38 produced only type5/person0; AI7A type5/36/person1; signatures/format contracts separate",
+    "Native rowsToSkip5..12 and original10tick/frame0..5 logic unchanged; no ground/water painted",
+    "F5 own initial native box[3,0,12,14] respected, not AI[2,0,12,14]",
+    "No new ImageGen call for six initial masters; frozen protagonists/previous candidates unchanged",
+    "Source unchanged since369be811; current fullCI/H3 pending before final executable;64MiB retained"
+  ],
+  "ci_current": {
+    "head": "4d25b29e",
+    "status": "PENDING; no current full PASS",
+    "obsolete_cleanup": {
+      "head": "b687151f",
+      "requests": 43,
+      "completed_race": 1,
+      "race_run": 45839441179,
+      "race_run_status": "completed/cancelled; read-only verification, no retry"
+    }
+  }
+}

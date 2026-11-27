@@ -1,0 +1,25 @@
+{
+  "source_commit": "961881ea08772b5a7a97d7987504283cfc937916",
+  "probe_only": true,
+  "shipped_source_changed": false,
+  "build": "GCC C++14 -O3 -DNDEBUG -DOPENFODDER_NO_MIXER; derived Sprite_Core object replaces only Source_Sprites_Sprite_Core.cpp.o from engine-hd-cost; SDL software/dummy. See hd-integrated-build-2026-11-01.json for reused build.",
+  "command": "openfodder --appveyor --unit-test --nosound --window --alternate-mouse --campaign \"Amiga The One\"",
+  "environment": {
+    "SDL_VIDEODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_AUDIODRIVER": "dummy",
+    "OPENFODDER_CAPTURE_SOLDIER": "1",
+    "OPENFODDER_PRESENT_MISSION_LAYERS": "1",
+    "OPENFODDER_MISSION_SCREEN_TRANSFORM": "1",
+    "OPENFODDER_MISSION_SCREEN_FIT": "1"
+  },
+  "sha256": {
+    "Source/Sprites/Sprite_Core.cpp": "7795d54333543a2d54e3eefab335f54d0acc61bddbc528886ef738f0046b57c7",
+    "../pilot-inventory/Sprite_Core.cpp": "31278af385b6d2587aaf46d9c3d61c44005544ece787b3446a65a2e0fa04a81f",
+    "../pilot-inventory/openfodder": "2410bfeb67feaca57cc20883d04cbd05bb5897060969e9b33c83aed4fc369654",
+    "tools/modernization/reference-gameplay-v1.json": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+    "Run/Tests/Amiga The One/m1p2.ofd": "b9d3ea3ec77d88f0bfabb647bd06f2d25c52968d55e86d0c21ae1bedae1f0116",
+    "Run/Data/AmigaTheOne/mapm2.map": "6c4809241e9c7ed05b8dd94f1f215ac8591d490d8bf750baa1d35d9c9cc9d8ee",
+    "Run/Data/AmigaTheOne/mapm2.spt": "13868b7cf36130e3d4bf27a7edb13bebf3352a93f1fd7cb3742205cc5e00c150"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 177,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "1df42e5a243d81e9777761e27cbf4a939939462d77bb1aefca2aacd895d56a6f"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 177,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "1df42e5a243d81e9777761e27cbf4a939939462d77bb1aefca2aacd895d56a6f"
+    }
+  ],
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-b9-f0/manifest.json",
+  "source_sha256": "544414a4c38df726f607fe1fb50158cfce895d0c1de1175703a23f020456fb8c",
+  "no_ground_component": true,
+  "not_runtime_alias": true,
+  "initial_person_zero": true
+}

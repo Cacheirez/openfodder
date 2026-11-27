@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "status": "Art identity accepted by Miguel; full enemy milestone authorized through gameplay review",
+  "user_quote": "me parece muy bien lo que propones para el uniforme enemigo. Adelante.",
+  "master": "assets/modernization/enemy-identity-v2/source.png",
+  "master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "previous_proposal": "enemy-identity-proposal-v1.json",
+  "features": [
+    "Plain muted grey-green helmet",
+    "Grey-olive uniform, same moderate painted style",
+    "Short brick-red neck cloth/collar",
+    "Short dark beard where face/jaw is visible",
+    "Existing reddish-brown webbing and equipment"
+  ],
+  "scope": "Artistic identity approval; not acceptance of every pose or gameplay; full enemy milestone remains authorized",
+  "next": "Adapt direction0 walk42/F0-F2, preserve accepted F1 master; one direction/family per checked microblock, continue without routine approval",
+  "preservation": "Version1 art, protagonist art/launcher, classic and native simulation preserved"
+}

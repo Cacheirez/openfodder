@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Create distinct D9/F22 middle walk frame. Image1 E01 identity and exact overhead FRONT THREE-QUARTER DOWN-RIGHT camera, nearly frontal slight rightward asymmetry; image2 own native F22 posture. Keep down-right heading, face partly shaded by helmet, no straight frontal substitution or side profile/reflection. Same grey-green plain helmet, grey-olive uniform, short dark beard, small brick-red neckcloth, reddish leather straps/pouches/boots, moderate painted style upper-left light. UNARMED arms LOW with relaxed empty hands beside hips, slight alternating arm swing, no raised gesture. REQUIRED middle step boots CLOSE UNDER hips, knees gently bent, much shorter stride than image1; one boot only slightly ahead. Complete compact adult figure with generous transparent margins. BODY ONLY clean actual alpha-zero transparency outside/gaps. No background/haze/glow/floor/cast shadow/dark tail/weapon/object/text/extra figure. Ground contact separate.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "a5b0a8c14a1c03d1feec90a0029fd315cf2e02ee542dbfb73bf677ae34f63187",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d9-d7-authoring/f21-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d9-d7-source-audit-v1/d9-f22-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

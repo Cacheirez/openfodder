@@ -1,0 +1,1428 @@
+{
+  "task": "A3-ROCKET-D6",
+  "status": "PASS bounded internal review; in-game acceptance PENDING",
+  "date": "2026-11-08",
+  "base_commit": "c7fb60ce9ef13b3ffd5383a6cca1cab10baec953",
+  "recovered_from_local_commit": "3f23207",
+  "scope": "Only rocket direction 6 frames 0/1/2, no regeneration; all eight directions now present",
+  "poses": 80,
+  "assets": 160,
+  "bindings": 318,
+  "preserved": {
+    "windows-x64": {
+      "assets": 154,
+      "bindings": 306,
+      "descriptors_PNG_RGBA_keys": "exact against D5, both modes"
+    },
+    "windows-llvm23-x86": {
+      "assets": 154,
+      "bindings": 306,
+      "descriptors_PNG_RGBA_keys": "exact against D5, both modes"
+    },
+    "linux": {
+      "assets": 154,
+      "bindings": 306,
+      "descriptors_PNG_RGBA_keys": "exact against D5, both modes"
+    }
+  },
+  "crop_review": {
+    "scope": "D6 crops and six derivatives reviewed and integrated",
+    "source_commit": "3f23207",
+    "alpha_threshold": 16,
+    "frames": [
+      {
+        "frame": 0,
+        "crop": [
+          354,
+          185,
+          1085,
+          988
+        ],
+        "placement": [
+          1,
+          14,
+          14
+        ],
+        "source_sha256": "02dfcf8c2be748b5b47566f4252775bef9a3e9d067a76b66af4b71049a7a3139",
+        "significant_bbox": [
+          354,
+          185,
+          1085,
+          988
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              8,
+              0,
+              120,
+              112
+            ],
+            "edge_alpha_max": 233,
+            "rgba_sha256": "107aff4c5a681639ef734bad913b03d61ca028b96f5b105fc7d5d5d6fb0a59f0",
+            "png_sha256": "9b12dc0a5c39c3c3a753ab6cc0c32f5cd3f4bc4b8a3e47651236c3374c89163b"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              12,
+              0,
+              180,
+              168
+            ],
+            "edge_alpha_max": 220,
+            "rgba_sha256": "96b1f63fdf0198ae90a3810639f514343f5e361d02d29d760f044740a0792f9a",
+            "png_sha256": "6f0231c1ad8139c0054bf2d2eeb00dcdaeaa9b28e16e4ffe234892f880cd48b1"
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "crop": [
+          404,
+          183,
+          1089,
+          974
+        ],
+        "placement": [
+          1,
+          14,
+          14
+        ],
+        "source_sha256": "72b5b0f1f4e27eada93ed79773b7ed0e37a070722fc69ec1d17edc555c586b0d",
+        "significant_bbox": [
+          404,
+          183,
+          1089,
+          974
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              8,
+              0,
+              120,
+              112
+            ],
+            "edge_alpha_max": 222,
+            "rgba_sha256": "7391a6229a409ec4423c271d960517be9012a5aa0e86cb3b72a46db46828092e",
+            "png_sha256": "28d8cbbb61c8e69d4a39480750ff6027c54f40fd62c726fb08f6b92dc4a4310a"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              12,
+              0,
+              180,
+              168
+            ],
+            "edge_alpha_max": 202,
+            "rgba_sha256": "4d85a6f08284f122b244dcbaa131b130659d02f7c7352fdaaef6b7f73c68bd52",
+            "png_sha256": "30691560bc100061b7f90322b26e22875db1fd8b2287637cdd60653fb21a24d9"
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "crop": [
+          375,
+          181,
+          1089,
+          1003
+        ],
+        "placement": [
+          1,
+          14,
+          14
+        ],
+        "source_sha256": "b870493a0cf6ef3f0180184235caeac8742e4345c388f9fbcad44f4add465d5c",
+        "significant_bbox": [
+          375,
+          181,
+          1089,
+          1003
+        ],
+        "excluded_pixels_alpha_ge_16": 0,
+        "derivatives": [
+          {
+            "density": 8,
+            "size": [
+              128,
+              112
+            ],
+            "alpha_bbox": [
+              8,
+              0,
+              120,
+              112
+            ],
+            "edge_alpha_max": 217,
+            "rgba_sha256": "fa344ee72118752beb3b2a18c99d7ddc965cba0bca51375e51f2ba30e0fd3a3d",
+            "png_sha256": "21164400ad49f2827d1fd1d5d0b10e7da0df58cc83a7c9d24a53c82fa2674bfd"
+          },
+          {
+            "density": 12,
+            "size": [
+              192,
+              168
+            ],
+            "alpha_bbox": [
+              12,
+              0,
+              180,
+              168
+            ],
+            "edge_alpha_max": 196,
+            "rgba_sha256": "1fee69ec2ad3cdc03aff339a022e3b2947138770f69553fe6c5bc0512d740543",
+            "png_sha256": "b14e4de931f03a34124e82e2b8eec01078e47d601233e19d0b490e2cfdad21a1"
+          }
+        ]
+      }
+    ],
+    "limitations": [
+      "Internal review only; Miguel in-game acceptance pending"
+    ]
+  },
+  "review": "Internal favorable: C01 style/identity, walk D6 legs and facing, three source masters/six derivatives, four native groups. Amiga captured palettes support silhouette only. Derived top/bottom retain alpha; no transparent padding claim.",
+  "tests": {
+    "windows-x64": {
+      "controlled": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 12672,
+        "bodies": 25344,
+        "sequences": 576,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1584,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [],
+        "log_sha256": "5bbaa4a7a59db41d40b31641bf54097a3fde60f2a9b3c27255fa55dc5758c301",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 11880,
+        "bodies": 23760,
+        "sequences": 540,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1485,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [
+          {
+            "group": 2,
+            "direction": 4,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 0,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          }
+        ],
+        "log_sha256": "6a24be021dc7ee5182e6cf7cb25a874fb8dbb1bae75b8c83c2093cb80def0c94",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    },
+    "windows-llvm23-x86": {
+      "controlled": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 12672,
+        "bodies": 25344,
+        "sequences": 576,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1584,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [],
+        "log_sha256": "5bbaa4a7a59db41d40b31641bf54097a3fde60f2a9b3c27255fa55dc5758c301",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 11880,
+        "bodies": 23760,
+        "sequences": 540,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1485,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [
+          {
+            "group": 2,
+            "direction": 4,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 0,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          }
+        ],
+        "log_sha256": "6a24be021dc7ee5182e6cf7cb25a874fb8dbb1bae75b8c83c2093cb80def0c94",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    },
+    "linux": {
+      "controlled": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "controlled metadata and test-only keys",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 12672,
+        "bodies": 25344,
+        "sequences": 576,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1584,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [],
+        "log_sha256": "2d95e3711bfd442063a98d7c581ea356fe12335c917adbff358dd6abc6208026",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      },
+      "real": {
+        "status": "PASS bounded eight rocket directions; incomplete Amiga walk transitions/campaign/acceptance PENDING",
+        "mode": "source-reconstructed real resources",
+        "directions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "intervals": 11880,
+        "bodies": 23760,
+        "sequences": 540,
+        "densities": [
+          8,
+          12
+        ],
+        "timeout_seconds": 1485,
+        "selector_assertions": 2703,
+        "selector_samples": 576,
+        "three_rejections": true,
+        "c01": "exact",
+        "skipped_native_pairs": [
+          {
+            "group": 2,
+            "direction": 4,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 5,
+            "other_direction": 6,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "direct",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "mouse-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 0,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 7,
+            "route": "target-retained",
+            "initial_frame": 1,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          },
+          {
+            "group": 2,
+            "direction": 6,
+            "other_direction": 0,
+            "route": "target-retained",
+            "initial_frame": 2,
+            "missing_poses": [
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                2
+              ]
+            ]
+          }
+        ],
+        "log_sha256": "27a283d07374d31a58232b7352bcb81e55a3385dbf6e246b5e371dab54af6b5a",
+        "limits": [
+          "geometry stubbed in selector fixture",
+          "prefix/suffix reuse prior walk/aim checks",
+          "reconstructed keys are not replay observations",
+          "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+          "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+        ]
+      }
+    }
+  },
+  "binaries": {
+    "x86": {
+      "fixture.exe": "7effc60733a91dc45a8a86039336e483eaa373fdbdea841216ef0b25e7f3cc0a",
+      "selector.exe": "e052e86aab215e2942e0be02fe0766ed4fc69204252641b10d0b78607e0e2aaa",
+      "SDL3.dll": "e299cfa2e035455eec92a5f8aae672acad1604025caa20fb12f931b99a2c2581"
+    },
+    "x64": {
+      "fixture.exe": "dcd690b650b7b75c7f0a02aa0079cbe5a1406e128d9dcd657907b545a8c0f38b",
+      "selector.exe": "16ebdff6e979bcaed7b0a730d5fce6504f38e6b55c56969297a3e80dc49af10d",
+      "SDL3.dll": "2632e21625861a0dc106f2b1abb649e610d8be88534ba74c76a763abe5aefaa3"
+    }
+  },
+  "linux_binary_hashes": {
+    "openfodder_external_asset_sanitized": "bd013ac546335807b8b224c63560c5cbedfc6dd67217bc0f01650a224a9011f8",
+    "openfodder_rocket_selector_sanitized": "b2506b5dfdaeb19a8b500f4e21205a1513a071624da8dae84d37a5f4a498558b"
+  },
+  "environment": {
+    "windows": "LLVM23.1.5 /MD ASan/UBSan x86+x64; existing validated D3 binaries reused by hash",
+    "linux": "WSL OpenFodderD3 Ubuntu24.04 Clang18.1.3 ASan/UBSan/LSan; existing D3 binaries hashes independently checked",
+    "ASAN_OPTIONS_windows": "detect_leaks=0:halt_on_error=1",
+    "ASAN_OPTIONS_linux": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "SDL": "3.4.0 software; dummy video/audio",
+    "positive_controls": "D3 controls valid for exact reused binaries/runtime; not repeated"
+  },
+  "invariants": {
+    "Source": "unchanged",
+    "selector": "unchanged",
+    "simulation": "unchanged",
+    "launcher": "unchanged",
+    "C01": "exact",
+    "H3": "D3 11 phases/11361 states preserved; not rerun locally for art-only"
+  },
+  "local_artifacts": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\08\\01a1ba8e-a4c3-78f2-8e87-0b833681e8fb\\rocket-d6",
+  "reproduction": {
+    "scripts": [
+      "run_windows_x64.ps1",
+      "run_windows_llvm23_x86.ps1",
+      "run_linux.sh",
+      "review_d6.py",
+      "review_native_d6.py",
+      "record_d6.py"
+    ],
+    "prior_build_cache": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\06\\01a1b328-fed4-7e22-8351-edd56f133b83\\openfodder-d3-crops",
+    "public_recipe": "assets/modernization/soldier-rocket/README.md"
+  },
+  "source_manifest_sha256": "bfed4827cc9a1158f3cb34d354839cc56d865d2855a49d3d18d98e137763de85",
+  "derived_manifest_sha256": "fa4cc26bd5ca25e8a7cd28ca0f3747b2c3e3c908a3645ededc2bf2363a5e0dd1",
+  "pending": [
+    "general Linux CI 42469760868 still running at handoff; check existing result without rerunning valid tests",
+    "two ordinary Amiga D6 walk keys and incomplete paired transitions",
+    "Miguel in-game acceptance",
+    "campaign/audio/GPU/CD32/global soldier acceptance"
+  ],
+  "cross_platform_PNG": "RGBA exact; PNG exact within each platform against D5, Linux/Windows zlib encoding differs",
+  "implementation_commit": "28e469c2568148fbac9713f3691b464c690d817c",
+  "ci_d6": [
+    {
+      "id": 42469760932,
+      "name": "Windows - modernization foundation",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760932"
+    },
+    {
+      "id": 42469760868,
+      "name": "linux-build",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760868"
+    },
+    {
+      "id": 42469760879,
+      "name": "H6 - offline density review",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/42469760879"
+    }
+  ],
+  "closure_basis": "D6 exit criteria satisfied by six focused local sanitizer runs, exact preservation and internal art review; full Windows and density CI PASS. General Linux CI still running at handoff, not claimed PASS. No new executable delivered; check this existing run first in the post-D6 review.",
+  "documentation_handoff": "Documentation-only follow-up; Windows/density implementation CI PASS, general Linux and handoff CI PENDING"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "status": "PASS launcher -Comprobar and immutable copy; Miguel visual/gameplay review PENDING",
+  "source": "a192e5c2f813215ff32459042277ee41f04c1e26",
+  "directory": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-final-review",
+  "files": {
+    "native_probe.exe": "e3029320f31aae51259e3acd3709c63ac97edf034d73753d6f42d1304b8b46ab",
+    "SDL3.dll": "167790565d69e62a3ba357a22299cb10a8480452a9f392524fefe127779143c8",
+    "candidate-manifest.json": "a8f0d59f2db825ea281d7842fbc4d2a2ac3bfda077ea4216901de397beea6123",
+    "PROBAR_ENEMIGOS_P1.cmd": "6bebcd9e7b94591039b11b71978e5fa8d59d15af33b74c5dce79f583e3da95ec",
+    "Probar-P1-Enemigos.ps1": "1a5906ca0b02d4e9778270b548673fd16d7e42ead0841b05a1e17352528af27e"
+  },
+  "assets": 473,
+  "asset_bytes": 59969664,
+  "player_contracts": 339,
+  "enemy_contracts": 679,
+  "modern_enemy_contracts": 607,
+  "classic_body_exception": "4B/F0 PC+Amiga, retained audit",
+  "previous_launchers": {
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\PROBAR_DANO_AJUSTADO_P1.cmd": "d5488019707980789ae06d393a6eb788c6745c244471e865efcb353917399d2b",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\PROBAR_DANO_SOMBRAS_P1.cmd": "2c441ca72e8d480a2e455bdd445cf46f0565e2122bc5319939e2bdf80e9d03ed",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\PROBAR_PELOTONES_P1.cmd": "5133dc676936e88b54f5ec1af8f2c70653b7c99cd5703d1631a533ccc67c785d",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\PROBAR_PROTAGONISTAS_COMPLETOS_P1.cmd": "99bb37570e4cb34bd59feea5394ff6b18026f7846c27f8a91e8b4214bb47b454",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\PROBAR_REINICIO_P1.cmd": "d8847fc99f26edddaa7cf4a203235b4526690e5f697b105f8b46699c7260cb99",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\Probar-P1-DanoAjustado.ps1": "f425bee3686d63ea2aedff54055ce93916a66a5a43f1a8c2094e63f49e77df9d",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\Probar-P1-DanoSombras.ps1": "b0345d5d1eff470d1b0f741644b72a00e25252c4fd1dfda00286e3a4e8c20e80",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\Probar-P1-Pelotones.ps1": "fa667cb882a636521d12758b3516b64f9d6b78797e638baa4c91994d41c50def",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\Probar-P1-ProtagonistasCompletos.ps1": "d655f10d8c33f78841faf61d5796a0cc473cb51be610395e48502e9374457272",
+    "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\Probar-P1-Reinicio.ps1": "01f56358d0bb22bc94b295dd4fdaac99947d0c85324a5a25ddd40c5acca5af90"
+  },
+  "date": "2026-11-27",
+  "block": "E3.ENEMY.REVIEW.PREP",
+  "unique_rgba_files": 457,
+  "launcher_check": "Actual CMD -Comprobar exit0; no manual game opened",
+  "previous_launchers_verified": 10,
+  "runtime_evidence": "enemy-leader-runtime-ci-h3-a192e5c2.json",
+  "continuity_evidence": "enemy-leader-continuity-m1p2-v1.json",
+  "limitations": [
+    "4B/F0PC+Amiga classic, isolated generation rejection retained",
+    "GuardDC,rocket36,leader106 not observed in M1P2; native contracts/composition separate from gameplay",
+    "No global enemy visual/gameplay acceptance inferred"
+  ],
+  "source_unchanged": true,
+  "next": "REVISION_MIGUEL_ENEMIGOS — esperar la revisión visual/jugable del candidato preparado con PROBAR_ENEMIGOS_P1.cmd. Solicitar resultado y rutas de registro/capturas; no inferir aceptación ni avanzar de hito.4B/F0(2contratos) sigue clásico como excepción conocida; guardiaDC,36y106no observados enM1P2. Corregir defectos comunicados dentro del alcance autorizado; B,nuevasfamilias/escenarios,scroll y16:9sin autorización."
+}

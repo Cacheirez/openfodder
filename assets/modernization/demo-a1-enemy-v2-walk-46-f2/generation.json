@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. EXACT RECOLOUR OF IMAGE1, enemy walk BACK FRAME2. Image2 is E01 colour reference ONLY, do NOT copy its front pose. Critical feet invariant: IMAGE1 SCREEN-LEFT leg is the LONG STRAIGHT leg extending down to bottom; SCREEN-RIGHT leg is BENT with raised boot higher up. Preserve this EXACT arrangement. Do NOT swap legs, do NOT mirror any part. Preserve rifle on screen-left, arms, torso, belt, head size and camera. Only recolour helmet to plain grey-green, cloth uniform grey-olive, retain red-brown leather, tiny brick-red cloth at visible nape. NO beard or face, viewed from rear. Same painted moderate texture upper-left lighting, transparency, no floor or baked shadow. Entire boots/muzzle visible. This is sheet46/F2 opposite to F0, not F0 again.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "45f44cbce40599595e35b15d7727884efc23dd2501681718c50584d9c4773819",
+  "references": [
+    "assets/modernization/demo-a1-enemy-walk-46-f2/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

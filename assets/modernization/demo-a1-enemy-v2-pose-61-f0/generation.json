@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Edit image1, painted soldier swimming diagonally screen lower-right, frame0 with the visible hand extended. Preserve EXACT stroke, hand/arm placement, camera, head/body proportions, direction, waterline and small existing wake/ripples. Apply ONLY approved enemy identity from image2: plain grey-green helmet, grey-olive sleeves, short dark beard on exposed jaw, small brick-red neck cloth only above the real waterline, reddish-brown visible straps. No new gear or exposed submerged parts. Same moderate painted style and upper-left light. Image3 native61/F0 defines direction/stroke. Single isolated waterline cutout, generous transparent margin, RGBA transparency outside existing small ripples. No floor, ground shadow, broad water background, text, insignia, mirroring or different pose.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "472e25af8e54ca291b8c5b2aa6c70ef2031427798cefb2e0d08261be15737589",
+  "references": [
+    "assets/modernization/demo-a1-player-swim-1f-f0/source.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-61-f0-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw production game sprite D9/F0 of the E01 character in the original UNARMED ARMS-LOW walking posture. Image1 gives approved identity, exact overhead FRONT-facing camera, adult compact proportions and moderately painted materials; image2 gives the native D9/F0 posture. Keep plain grey-green helmet, grey-olive uniform, short dark jaw beard, tiny brick-red neck cloth and reddish leather straps/pouches/boots, upper-left light. Remove the rifle completely. BOTH ARMS ARE DOWN alongside the torso/hips, not raised: screen-left forearm swings a little forward with relaxed empty hand near the waist/upper thigh; screen-right arm/hand hangs farther back and can be partly occluded by the body. Natural relaxed hands, no held item. Walking phase from the native reference: right-side boot planted lower, left knee/boot lifted modestly. Face and body directly towards screen-bottom, viewed from above. Full helmet, hands and boots inside clear transparent margins; compact adult body, no jump. BODY ONLY clean genuine alpha-zero transparent exterior and gaps; no haze/glow/backdrop/floor/cast shadow or dark tail below boots. One character, no text. Approved fixed ground contact is composed separately.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "b2947ccff7079af73831531f7918376610b82934559c5047f875bcd241389261",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-42-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d9-d0-source-audit-v1/d9-f0-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

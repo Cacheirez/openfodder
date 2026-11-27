@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.T2R",
+  "status": "PASS reference/data diagnosis; art/export/runtime integration pending",
+  "observations": [
+    "The planned player32master does not exist; no invented provenance",
+    "74/F0,F1 are exact BE/BF bodies in both formats, already published separately",
+    "74/F2 does not equal fallB8..BF. Source tables address first CF/D0 resource frame; this remains an infantry5 draw, no civilian family authorization inferred",
+    "TheOne native raster is a valid opaque flat-index silhouette, not an SDL/data decode failure. PC and other locally available banks provide a multicolour figure at that table entry"
+  ],
+  "independent_static_bank_inspection": [
+    {
+      "dataset": "AmigaTheOne",
+      "file_sha256": "ace4fd0537d414a181c2fa761a34650ae3b9772bc72576ffe5a2f00cb3c2fd74",
+      "width": 320,
+      "height": 336,
+      "bank_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "unique_nonzero_indices": [
+        15
+      ],
+      "opaque_pixels": 86,
+      "native_74_f2_signature": "9eaeadcc139fde0e788954877d1dc9e760988d73d4e36837fb5ea92540a3e1b9"
+    },
+    {
+      "dataset": "AmigaAction",
+      "file_sha256": "dadafd0047a8194052e6a4e84e621346c42ff47ad6742d425830aee3998af9a4",
+      "width": 320,
+      "height": 336,
+      "bank_sha256": "b59c2b8f5d36c0b3e024fd468a0738ed76ffd35f34cfa810f9a6127057604925",
+      "unique_nonzero_indices": [
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "opaque_pixels": 81,
+      "native_74_f2_signature": "f44be23b1f72bdd03ae5887a00769558ea3ce7ece3218e28c9dab98ae940bcfb"
+    },
+    {
+      "dataset": "Plus",
+      "file_sha256": "0e8cae5ee2a57a7ee31fcadaeef0f250e0e0d0db2fba845abc712cf13ae16c41",
+      "width": 320,
+      "height": 336,
+      "bank_sha256": "66bcd06309b038c171a6ca5ce55aac5dbc678df84bf4402286c2f2db6ebc3089",
+      "unique_nonzero_indices": [
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "opaque_pixels": 86,
+      "native_74_f2_signature": "e6ee6cc827c46c216e5847bdb26a6840e85e10a2a5593080e8721dc901c6d21a"
+    }
+  ],
+  "diagnostic_method": "Read existing ILBM files only; ByteRun1/deinterleave reconstruction exactly reproduces retained TheOneSHA7a44b4a6. No campaign execution, new asset-bank activation or native pixels published",
+  "rejected_hypotheses": [
+    {
+      "expected": "PNG palette display alone hides existing body colours",
+      "observed": "FAIL: TheOne decoded indices are only0/15",
+      "resolution": "Preserve resource truth; no fake colour body equality"
+    },
+    {
+      "expected": "Plus body opaque mask exactly equals TheOne silhouette",
+      "observed": "FAIL: opaque counts both86 but masks differ",
+      "resolution": "No native alias or automatic cross-resource binding. Use only as artistic posture reference"
+    }
+  ],
+  "artistic_inference": "PC/Plus table entry provides posture evidence for a newly painted E01enemy rendition. This is authoring interpretation across resources, not proof of pixel/raster equivalence or Miguel gameplay acceptance",
+  "format_native_boxes": {
+    "0": [
+      3,
+      0,
+      13,
+      14
+    ],
+    "1": [
+      0,
+      1,
+      14,
+      12
+    ]
+  },
+  "technical_conclusion": "A common placement cannot preserve both native lower anchors14/12. Need explicit format-specific derivatives/bindings for this source-known pose; engine native signature/resource/owner checks remain intact",
+  "guarantees": [
+    "Do not add shadow by similarity",
+    "No modification of simulation, source frame selection, RNG, clock, H3, classic recovery or64MiB cap",
+    "No new opaque resource signature/bank accepted here",
+    "No new body/generation/binding for74/F2 in this audit"
+  ],
+  "next": "E2.T2b \u2014 producir74/F2 de infanter\u00eda5 usando E01 y postura PC/Plus como referencia art\u00edstica expl\u00edcita (no alias nativo). Exportar por formato con anclas propias PC14/Amiga12, ampliando solo verificadores/preparador de cat\u00e1logo; mantener firmas y recuperaci\u00f3n nativas, sin activar otros bancos/campa\u00f1as ni civiles. Validar679contratos y sanitizadores Windows/Linux antes de cerrar."
+}

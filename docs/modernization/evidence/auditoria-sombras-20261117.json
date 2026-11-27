@@ -1,0 +1,272 @@
+{
+  "date": "2026-11-17",
+  "source_head": "cd4da48b6a2923f181407cd5fdba3f64657d4c2a",
+  "scope": "Auditoria documental, sin cambios del motor ni arte",
+  "pr": {
+    "head": "modernization/windows-foundation",
+    "number": 1,
+    "state": "open",
+    "draft": true,
+    "merged": false
+  },
+  "replay": {
+    "source_head": "cd4da48b6a2923f181407cd5fdba3f64657d4c2a",
+    "method": "Reanalysis of retained real replay; not a new replay or visual acceptance.",
+    "files": [
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\16\\01a1e578-b4e6-7bc2-add9-1f79c31a6e09\\impacto-probe-replay\\classic-enemies\\engine.log",
+        "bytes": 10405221,
+        "sha256": "37b083aefb9c6c56a6ff1eb11dd76e325312649ffd03d072c0b1dc0ad9d03fe8"
+      },
+      {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\16\\01a1e578-b4e6-7bc2-add9-1f79c31a6e09\\impacto-probe-replay\\classic-enemies\\traces\\Amiga_The_One_m1_p2.jsonl",
+        "bytes": 21337099,
+        "sha256": "0c66a75f84959d2892c17f8864268b330a6e570c3c0998316c1b1e3d03a9c9bf"
+      }
+    ],
+    "shadow_commands": [
+      {
+        "type": 22,
+        "sheet": "0x97",
+        "frame": 0,
+        "decision": "keep",
+        "count": 393,
+        "example": {
+          "attempt": "1452",
+          "order": "3",
+          "slot": "38",
+          "generation": "1442",
+          "key": "7b4ff0bb190c56e33aa2d231d277ac1613c6fb340a2bea0461f14925173016c8"
+        }
+      },
+      {
+        "type": 22,
+        "sheet": "0x97",
+        "frame": 1,
+        "decision": "keep",
+        "count": 1347,
+        "example": {
+          "attempt": "1446",
+          "order": "3",
+          "slot": "38",
+          "generation": "1442",
+          "key": "c7fcc929ce1739035307df6e6b084f2a5d05dea74dba4ec2c8487cf3cdef04e1"
+        }
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 0,
+        "decision": "missing",
+        "count": 162,
+        "example": {
+          "attempt": "4803",
+          "order": "3",
+          "slot": "21",
+          "generation": "4800",
+          "key": "1791fb52419be43a10bad9c58778c61044d678769b1aba3c1101dc00b62b7877"
+        }
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 1,
+        "decision": "missing",
+        "count": 12,
+        "example": {
+          "attempt": "9570",
+          "order": "3",
+          "slot": "1",
+          "generation": "9537",
+          "key": "c8c10aa3c6ff2f20ed2c0fc5e4eb0bd9b8ac3e457a421c19ee7af3628f54f20c"
+        }
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 2,
+        "decision": "missing",
+        "count": 12,
+        "example": {
+          "attempt": "9584",
+          "order": "3",
+          "slot": "1",
+          "generation": "9537",
+          "key": "371aa3a92e44558ba0b4181e7dd446bf3f8e581e3dd27df555dc65e6767e5b29"
+        }
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 3,
+        "decision": "missing",
+        "count": 24,
+        "example": {
+          "attempt": "9596",
+          "order": "3",
+          "slot": "1",
+          "generation": "9537",
+          "key": "8c6160224205cc21fdad48a96efc7f05f7bf98fdfee0d8d64fe1a6bd9a5f8cd7"
+        }
+      },
+      {
+        "type": 35,
+        "sheet": "0x8d",
+        "frame": 1,
+        "decision": "missing",
+        "count": 17,
+        "example": {
+          "attempt": "9773",
+          "order": "7",
+          "slot": "33",
+          "generation": "9770",
+          "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924"
+        }
+      }
+    ],
+    "trace_shadow_samples": {
+      "22": 587,
+      "3": 70,
+      "35": 7
+    },
+    "type22_owner_type_tag_samples": {
+      "5": 463,
+      "0": 124
+    },
+    "normal_body_type_and_has_shadow_samples": {
+      "(0, 0)": 6170,
+      "(5, 0)": 14186
+    },
+    "published_shadow_commands": [
+      {
+        "type": 22,
+        "sheet": "0x97",
+        "frame": 0,
+        "count": 297
+      },
+      {
+        "type": 22,
+        "sheet": "0x97",
+        "frame": 1,
+        "count": 879
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 0,
+        "count": 0
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 1,
+        "count": 0
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 2,
+        "count": 0
+      },
+      {
+        "type": 3,
+        "sheet": "0x7e",
+        "frame": 3,
+        "count": 0
+      },
+      {
+        "type": 35,
+        "sheet": "0x8d",
+        "frame": 1,
+        "count": 0
+      }
+    ],
+    "trace_has_height": false,
+    "trace_has_owner": false,
+    "limitations": "A command is not necessarily published. Trace lacks explicit owner and height. Counts do not prove body-shadow pairing or visual correctness."
+  },
+  "tests": [
+    {
+      "sanitizers": "No ejecutados en este bloque",
+      "compiler": "MSVC, C++14",
+      "log": "shadow-run.log",
+      "renderer": "SDL 3.4.0 software/dummy",
+      "result": "PASS",
+      "densities": [
+        8,
+        12
+      ],
+      "name": "WindowHD actual, sombra nativa 0x97/F1"
+    },
+    {
+      "sanitizers": "No ejecutados en este bloque",
+      "compiler": "MSVC, C++14",
+      "log": "hybrid-run.log",
+      "renderer": "SDL 3.4.0 software/dummy",
+      "result": "PASS",
+      "densities": [
+        8,
+        12
+      ],
+      "name": "WindowHD actual, contrato hibrido incluido 0x97/F0 sintetico"
+    }
+  ],
+  "recovery_directory": "C:/Users/migue/.codex/visualizations/2026/11/17/01a1ea7b-b727-78f2-a6ac-a4b32dc39150",
+  "artifacts": [
+    {
+      "bytes": 3172,
+      "file": "audit_shadow_logs.py",
+      "sha256": "44802f4aec6bbaa2a2dec92ffe6db656180648dc52c820ca5ca6325ab98b8bae"
+    },
+    {
+      "bytes": 4375,
+      "file": "shadow-replay-summary.json",
+      "sha256": "ba7b91dac04e6c4f050c0ee94b4e1019cb5e470ba63e971632c8d0390a2bfc2d"
+    },
+    {
+      "bytes": 19968,
+      "file": "shadow-fixture.cpp",
+      "sha256": "a129f3d9c76cff71106b6660c4289b8ab97b48c268131039b01f301fa91a519c"
+    },
+    {
+      "bytes": 1561088,
+      "file": "shadow-fixture.exe",
+      "sha256": "58ced527f44984cade7cabc42bb99ae338d32ae36daad85e1bf7274bc5817e9f"
+    },
+    {
+      "bytes": 1418752,
+      "file": "hybrid-fixture.exe",
+      "sha256": "1e19cf144a24e4da38dec45d5f8205b8f96afbe2c378f346e486e1397e709a74"
+    },
+    {
+      "bytes": 20,
+      "file": "shadow-build.log",
+      "sha256": "3f5487e283e5150c224f0e3c53396013dbd669bcc270c32da9f24434270d9f5e"
+    },
+    {
+      "bytes": 20,
+      "file": "hybrid-build.log",
+      "sha256": "3f5487e283e5150c224f0e3c53396013dbd669bcc270c32da9f24434270d9f5e"
+    },
+    {
+      "bytes": 1454,
+      "file": "shadow-run.log",
+      "sha256": "0420d3ef1b4ea9a0b16890e35e8fa2e921d39ea84ce35939923cf102f0fd95b0"
+    },
+    {
+      "bytes": 547,
+      "file": "hybrid-run.log",
+      "sha256": "bcb7c26ccc5a80faa9194a5bac34082c9128b86b08defd15c7608804d6ebce1f"
+    }
+  ],
+  "not_exercised": [
+    "Nuevo replay",
+    "H3 completo",
+    "CI",
+    "ASan/UBSan/LSan nuevos",
+    "CD32 comercial",
+    "GPU",
+    "Audio",
+    "Aceptacion visual de Miguel"
+  ]
+}

@@ -152,7 +152,9 @@ void cFodder::Map_Load()
 
 void cFodder::Map_Collect_TileTracks()
 {
-    uint8 *tilePtr = mMap->data() + 0x62;
+    // Some original maps do not contain every tile implied by their dimensions.
+    // Preserve the legacy starting offset, but never read beyond the file.
+    size_t tileOffset = 0x62;
 
     uint16_t heightCount = 0, widthCount;
 
@@ -164,14 +166,17 @@ void cFodder::Map_Collect_TileTracks()
 
         while (widthCount < mMapLoaded->getWidth())
         {
-            uint16_t tile = (readLE<uint16>(tilePtr) & 0xE000) >> 8;
+            if (tileOffset > mMap->size() || mMap->size() - tileOffset < sizeof(uint16))
+                return;
+
+            uint16_t tile = (readLE<uint16>(mMap->data() + tileOffset) & 0xE000) >> 8;
 
             if (tile != 0)
             {
                 mMapTileTracks.emplace_back(widthCount, heightCount, tile >> 5);
             }
 
-            tilePtr += 2;
+            tileOffset += sizeof(uint16);
             widthCount++;
         }
 
@@ -286,36 +291,15 @@ void cFodder::Map_Overview_Prepare()
     mSurfaceMapOverview = new cSurface(Size * 16, Size * 16);
     mSurfaceMapOverview->clearBuffer();
 
-    int16 *MapPtr = (int16 *)(mMap->data() + 0x60);
-
-    mSurfaceMapTop = mSurfaceMapLeft = 0;
-
-    if (mMapLoaded->getHeight() < mMapLoaded->getWidth())
-    {
-        mSurfaceMapTop = (mMapLoaded->getWidth() / 2) - (mMapLoaded->getHeight() / 2);
-        if (mSurfaceMapTop < 0)
-            mSurfaceMapTop = 0;
+    const auto plan=openfodder::CaptureOverviewPlan(mMap->data(),mMap->size(),
+        mMapLoaded->getWidth(),mMapLoaded->getHeight());
+    mSurfaceMapLeft=plan.left; mSurfaceMapTop=plan.top;
+    openfodder::IndexedProducerDraw overview;
+    for(const auto& tile:plan.tiles){
+        const auto draw=mGraphics->CaptureOverviewTile(tile.id,tile.x,tile.y);
+        overview.writes.insert(overview.writes.end(),draw.writes.begin(),draw.writes.end());
     }
-
-    if (mMapLoaded->getWidth() < mMapLoaded->getHeight())
-    {
-        mSurfaceMapLeft = (mMapLoaded->getHeight() / 2) - (mMapLoaded->getWidth() / 2);
-        if (mSurfaceMapLeft < 0)
-            mSurfaceMapLeft = 0;
-    }
-
-    for (uint16 dx = 0; dx < mMapLoaded->getHeight(); ++dx)
-    {
-
-        for (uint16 cx = 0; cx < mMapLoaded->getWidth(); ++cx, ++MapPtr)
-        {
-
-            if (MapPtr < (int16 *)mMap->data() || MapPtr >= (int16 *)(mMap->data() + mMap->size()))
-                continue;
-
-            mGraphics->MapOverview_Render_Tiles(*MapPtr & 0x1FF, cx + mSurfaceMapLeft, dx + mSurfaceMapTop);
-        }
-    }
+    openfodder::RasterizeIndexedProducer(overview,mSurfaceMapOverview->GetSurfaceBuffer());
 }
 
 int16 cFodder::Map_Sprite_Check_Around_Position(sSprite *pSprite)
@@ -1150,7 +1134,7 @@ loc_2DF7B:;
 loc_2DFC7:;
     int16 ax = (mMap_Destroy_Tile_X >> 4);
     ax -= mMapTile_MovedHorizontal;
-    ax <<= 4;
+    ax = wrapShiftLeft16(ax, 4);
     ax -= mMapTile_ColumnOffset;
     ax += 0x40;
 
@@ -1158,7 +1142,7 @@ loc_2DFC7:;
 
     ax = (mMap_Destroy_Tile_Y >> 4);
     ax -= mMapTile_MovedVertical;
-    ax <<= 4;
+    ax = wrapShiftLeft16(ax, 4);
     ax -= mMapTile_RowOffset;
     ax += 0x10;
 

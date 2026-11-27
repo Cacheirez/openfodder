@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.G1",
+  "status": "BLOCKED platform safety; no usable image returned",
+  "head": "6ff562b5dd8eb8606be4f3616e58a8c20c0b18c2",
+  "operation": "Built-in image_gen, enemy grenade preparation direction1 sheet4B/F0, transparent sprite",
+  "error": {
+    "http": 400,
+    "code": "moderation_blocked",
+    "category": "illicit",
+    "stage": "output",
+    "request_id": "d0b0ba1a-05a9-416c-aa3c-3c603d2441aa"
+  },
+  "attempts": 1,
+  "retries": 0,
+  "prompt": "Use case: precise-object-edit. CF1 ENEMY grenade preparation sheet4B/F0 direction1. IMAGE1 pose target: elevated FRONT-LEFT three-quarter facing LOWER LEFT, right hand at SCREEN-LEFT chest holds grenade, left hand supports lowered rifle with muzzle LOWER LEFT; feet planted. IMAGE2 E01 appearance ONLY, IMAGE3 native enemy pose authority. Apply E01 plain grey-green helmet, grey-olive subdued uniform, short brick-red neck cloth, compact dark brown jaw/chin beard, reddish-brown leather. Preserve camera/stance/hand positions/equipment proportions, moderate-painted C style upper-left light. No allied camouflage, mirror/rotation/new gear/floor/text/baked shadow or flying projectile. Whole transparent sprite boots/hands/muzzle intact, native8-by14 occupied proportions.",
+  "references": [
+    "assets/modernization/soldier-grenade/uniform-a/s9-f0-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-4b-f0-7a44b4a6.png"
+  ],
+  "retained": {
+    "approved_identity": "assets/modernization/enemy-identity-v2/source.png",
+    "available_poses": 27,
+    "available_assets": 54,
+    "last_art": "6ff562b",
+    "density_loading": "805f426",
+    "foreign_zip": "untouched"
+  },
+  "ci": {
+    "on_head": "6ff562b",
+    "H6": "success",
+    "Windows": "in_progress",
+    "Linux": "in_progress",
+    "full_PASS": false
+  },
+  "rule": "AGENTS.md: Una señal o bloqueo de seguridad de la plataforma no se sortea: detener la operación afectada y conservar el estado reproducible.",
+  "recovery": "Keep E2.G1 pending. Resolve platform rejection before another attempt; no alternate tool/model, reformulation loop or new family to bypass it. No partial enemy executable delivered."
+}

@@ -1,0 +1,18 @@
+{
+  "generator": "reuse existing E01 master; no ImageGen call",
+  "identity": 2,
+  "source_sha256": "4080e45473c7ad93c4704d5d832cc90f045f0406851cc77588a0768942283813",
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-7a-f3/source.png",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-pose-7a-f3/generation.json",
+  "original_generation_metadata_sha256": "1277c765484259a3769e9b4029728ec34ac193c3a921f0d11891bf44b4a96e34",
+  "original_pose_reference": "assets/modernization/demo-a1-player-pose-38-f3/source.png",
+  "pose_reference_sha256": "d8870ae984dcefa50c61965ba2ad621e0aa5388a0315b388f9f2aff718fcd91b",
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 56,
+    "frame": 3
+  },
+  "derivatives_copied_unchanged": true,
+  "ground": "none; preserve native crop and independent commands"
+}

@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Image1 gives EXACT full-body low sliding/crouching pose for native directionA7/F4: directly rear view facing screen up, elevated camera on helmet crown/back, compact folded knees, both boot soles visible at bottom, elbows bent out with two open empty hands raised beside shoulders, symmetric articulation as image1. Image2 supplies approved E01 enemy identity: plain grey-green helmet, grey-olive uniform, reddish-brown straps/belt/pouches, brown boots; brick-red neck cloth only at exposed back neck if visible. Rear view has no visible face or beard. Apply identity2 to pose1 without rotating/mirroring or changing hand positions, same moderately painted style and upper-left light. Single whole isolated crouching figure, all fingers/boots visible, generous genuine transparent RGBA margins. No gun/held objects, no ground/floor/shadow/water/effects/text/emblems. Game handles shadow separately.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "c05795db2cf812e513560332cf651498437ae998b4d8d20e6e886512f974eb0e",
+  "references": [
+    "assets/modernization/demo-a1-player-pose-a4-f4/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

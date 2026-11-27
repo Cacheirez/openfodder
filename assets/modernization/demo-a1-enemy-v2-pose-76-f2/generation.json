@@ -1,0 +1,44 @@
+{
+  "generator": "built-in image_gen",
+  "identity": 2,
+  "transparent_background": true,
+  "prompt": "Use case: precise native-facing correction of painted game sprite76/F2. Code proves target origin CF/D0frame6 is facing UP-LEFT, REAR THREE-QUARTER view, phase0. Image1 gives the correct E01 rear-up-left body/helmet orientation: the broad back, rear straps and back belt/pouches must be visible as in image1. Image2 is the old incorrect76/F2left-profile master, supplied only for consistent uniform texture/proportions; do NOT keep its profile/chest angle. Images3/4 are actual target native PC/Plus references for empty-limb/foot posture. Create one complete upright E01 figure walking toward top-left of screen, viewed from elevated rear-right; face largely hidden, at most tiny left edge of jaw visible, no front chest buttons visible. REMOVE the rifle from image1: both hands empty with a natural small walking swing, near arm forward on the left partly hidden, far arm near side/back, use native phase0foot stance. Keep grey-green plain helmet, grey-olive uniform, reddish leather straps/belt/pouches, brown boots; red neck cloth only at exposed collar, beard only at genuinely visible jaw. Same moderate painted style, upper-left light, generous true transparent RGBA margins. No ground/floor shadow/water/effects/text/emblems. Do not mirror an asset or change the game's selected frame.",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+    "private:mode-zero-facing-before-76-f2/source.png",
+    "private:enemy-mode-zero-d4-audit/76-f2-native-0.png",
+    "private:enemy-mode-zero-d4-audit/76-f2-plus-posture.png"
+  ],
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "ffc422219ddcec00f70e25f3c041abf0f2e4d93ee53eab4fbb8dc51d0aa94a67",
+  "native_view_contract": [
+    {
+      "format": 0,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    },
+    {
+      "format": 1,
+      "sheet": 118,
+      "frame": 2,
+      "origin_sheet": "CF/D0",
+      "origin_frame": 6,
+      "facing_group": 3,
+      "walking_phase": 0,
+      "orientation_master": "assets/modernization/demo-a1-enemy-v2-walk-45-f0/source.png",
+      "master_is_orientation_reference_only": true,
+      "native_facing": "rear-left/up-left"
+    }
+  ],
+  "previous_source_sha256": "c49a5fc19fbf0648cfe1bac1f327a25f6f085e37c29178c7e51d02a2aca67461",
+  "previous_package": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\mode-zero-facing-before-76-f2",
+  "review": "Internal orientation compared with code-proven origin view and E01master; global Miguel gameplay/shadow review pending"
+}

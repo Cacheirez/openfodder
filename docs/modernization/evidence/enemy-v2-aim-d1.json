@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E2.A1",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 1,
+  "sheet": 83,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-prone-53-f0",
+      "source_sha256": "d5f2ce2373487ca28de87afc435045d0cbcf89b11529338f36f4c21060d14b16",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 2,
+        "width": 10,
+        "height": 11
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 30,
+    "assets": 60
+  },
+  "notes": [
+    "Postura baja frontal izquierda conservada; E01 y derivados inspeccionados internamente. Contacto se cualifica con pintura aprobada sin cambiar cuerpo.",
+    "Imagen independiente de 4B/F0, que permanece pendiente. Aceptación jugable global pendiente."
+  ],
+  "next": "E2.A2 — preparar apuntado bajo enemigo dirección 2, 54/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente."
+}

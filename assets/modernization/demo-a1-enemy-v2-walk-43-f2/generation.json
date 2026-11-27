@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Repaint IMAGE1 CF1 enemy walk sheet43 FRAME2 direction1 to approved E01 identity IMAGE2. Image1 is exact pose/silhouette target, image2 appearance reference ONLY. Preserve front three-quarter elevated LOWER LEFT camera, head/body proportions, rifle/hands, specific opposite walking step and raised boot from IMAGE1, boots, equipment shapes, transparent margins. Change ONLY appearance: plain grey-green charcoal helmet, subdued grey-olive uniform, short brick-red neck cloth and compact dark brown beard on visible jaw/chin as IMAGE2. Keep reddish-brown leather webbing/backpack. Same C moderate-painted style, upper-left lighting; beard only on visible face, never through helmet. No mirroring, rotating, copying feet-together pose, changed gear, floor, text, baked shadow. One whole-body transparent sprite, feet and muzzle uncropped, native8-by14 occupied proportions.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "96622417394978af068e9e2693b640326046aac27ece84c53e6f83e92d34d60a",
+  "references": [
+    "assets/modernization/demo-a1-enemy-walk-43-f2/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

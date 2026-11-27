@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.G1R",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 1,
+  "sheet": 75,
+  "frames": [
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4b-f1",
+      "source_sha256": "c0270eadfcb5b33a5c4b24783da6103204e232076c529a661c66cbb2e1e51365",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4b-f2",
+      "source_sha256": "8a00c23b98f5f597de8cd1858f1377705c1a1fda43c4fe0a8419e9df953a5a66",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 2,
+        "width": 9,
+        "height": 12
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 215,
+    "assets": 456
+  },
+  "notes": [
+    "Only4B/F1,F2armed-back/release poses generated,4source-produced PC/Amiga contracts.4B/F0remains absent and its original blocked-operation evidence untouched; no retry or alternate route.",
+    "Own front-left/down-left camera, raised grenade and empty follow-through hand inspected against own native and frozen friendly pose reference; no mirror, source alias or projectile in body.",
+    "Own alpha bounds/lower anchors14and8x/12x C++exports checked; fixed contact qualified only for available pair. Direction1 is explicitly incomplete until4B/F0resolved; global acceptance pending."
+  ],
+  "next": "E3.G1RI — integrar únicamente4B/F1,F2 con suelo fijo cualificado del par disponible en candidatos nuevos8×/12×; verificar4contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Mantener4B/F0ausente y su bloqueo auditado, Source e0d9430b y candidatos anteriores intactos."
+}

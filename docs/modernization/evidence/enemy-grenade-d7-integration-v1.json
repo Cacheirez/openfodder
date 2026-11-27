@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.G7I",
+  "status": "PASS grenade51 native integration/contact; global gameplay/shadow acceptance pending",
+  "runtime_source": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-grenade-d7-technical-v1\\8x",
+      "manifest_sha256": "67437674849844bb1a6d442cfb6061305afb446ea154338f217e7cd690272112",
+      "asset_bytes": 22696448,
+      "assets": 404,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=521, classic=158, resource-specific no-write=66, modern-owned-shadows=6, ground-components=124, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=521, classic=158, resource-specific no-write=66, modern-owned-shadows=6, ground-components=124, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-grenade-d7-technical-v1\\12x",
+      "manifest_sha256": "32eb718b707363ae86d7b205241eb54b8767d9b434d221b41338cedaeef4a81e",
+      "asset_bytes": 51067008,
+      "assets": 404,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=521, classic=158, resource-specific no-write=66, modern-owned-shadows=6, ground-components=124, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=521, classic=158, resource-specific no-write=66, modern-owned-shadows=6, ground-components=124, aim-owner-transitions=48, format-native-anchors=32, fall-height-transitions=96, initial-person-shadow-associations=6, initial-aim-source-rejections=16, initial-aim-off-state-exclusions=32, sinking-native-crops=288, slide-ground-transitions=144, slide-ground-exclusions=432; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 198,
+    "art_derivatives": 422,
+    "candidate_assets": 404,
+    "native_contracts": 679,
+    "modern_contracts": 521,
+    "modern_bodies": 515,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 88,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 124
+  },
+  "next": "E2.G2 — modernizar únicamente granada4C/F0..2 (dirección2/perfil izquierdo), con E01 y referencias aliadas/nativas propias. Verificar6contratos PC/Amiga, anclas14 y proporción; cualificar suelo fijo común a los3frames antes de publicar. No generar otra dirección ni reintentar4B/F0 en este microbloque.",
+  "tests": [
+    "679native draws per density/platform PASS; Windows ASan/UBSan and Linux ASan/UBSan/LSan",
+    "Six new51format contracts and their ground components resolved; exact source/derivative reuse for0/2 checked at authoring",
+    "Ground34groups/140derivatives pending0; one fixed contact placement for51threeframes",
+    "Previous mode-zero32anchors, aim/person/fall/sink/slide assertions retained",
+    "Runtime Source unchanged e0d9430b; reused existing validator binaries, no redundant compile/H3/CI"
+  ],
+  "guarantees": [
+    "Only source-produced5/person1;36mode-zero declared-only remains unbound",
+    "Runtime Source byte-identical toe0d9430b fullCI/H3PASS; no redundant fullCI/H3run for inactive art",
+    "No new floor inferred from TheOne flat silhouettes; existing independent commands/height/crop preserved; global shadow/gameplay review pending",
+    "No guessed native alias, missing friendly master, unknown binding or bank activation",
+    "Frozen protagonists, older candidates/launchers,64MiB budget and real-error fallback retained"
+  ],
+  "ci": {
+    "source": "e0d9430bca15fbfdbcb2b78b9adb06c2a4f29490",
+    "status": "FullWindows/Linux/H6 and localH3/A2/Window PASS on identicalSource; no new fullartifactCIclaim"
+  }
+}

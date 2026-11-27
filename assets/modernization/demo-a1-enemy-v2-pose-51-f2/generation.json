@@ -1,0 +1,32 @@
+{
+  "generator": "reuse existing E01 source and derivatives; no ImageGen call",
+  "identity": 2,
+  "source_sha256": "c64168957a8abe8cbd3bbebfac45f95b1338cc54fa439aee2ee835263574e212",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-walk-49-f1/generation.json",
+  "original_generation_metadata_sha256": "ef7ed760929da511a2991eda4e9eb8a5ba77e58af7e300b7d3dedc5165857fb8",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 81,
+      "frame": 2,
+      "source_sheet": 73,
+      "source_frame": 1,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "9e3bae0c23a529531bf922c63e5c83a70cfa29ad18d3ac5fb8a01c6b20a41a20"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 81,
+      "frame": 2,
+      "source_sheet": 73,
+      "source_frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "9e3bae0c23a529531bf922c63e5c83a70cfa29ad18d3ac5fb8a01c6b20a41a20"
+    }
+  ],
+  "review": "Exact native equivalence and own bounds; gameplay/shadow acceptance pending"
+}

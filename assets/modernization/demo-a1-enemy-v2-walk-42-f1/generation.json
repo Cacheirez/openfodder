@@ -1,0 +1,7 @@
+{
+  "generator": "built-in image_gen; accepted original reused without regeneration",
+  "source_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "prompt": "assets/modernization/enemy-identity-v2/generation.json",
+  "identity_reference": "assets/modernization/enemy-identity-v2/source.png",
+  "status": "Accepted identity master; gameplay acceptance pending"
+}

@@ -1,0 +1,79 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 73,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-walk-49-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-walk-49-f0-8x",
+      "sha256": "3dcec78ad5e6403ef272c00f069892b35da59033a69ca7cd819a0cf3f7caf55f",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-walk-49-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-walk-49-f0-12x",
+      "sha256": "57f628a741bef470cd4d7236600bfb9d27a56badb7c6f5d7d399169cf0d1bc68",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      887,
+      1773
+    ],
+    "mode": "RGBA",
+    "sha256": "4901105f3d8637af89425c0286e26d286d2355e073307db1e71cb90998437c33",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      61,
+      216,
+      799,
+      1550
+    ],
+    "placement": {
+      "x": 5,
+      "y": 0,
+      "width": 7,
+      "height": 14
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7",
+        "bbox": [
+          5,
+          0,
+          12,
+          14
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7",
+        "bbox": [
+          5,
+          0,
+          12,
+          14
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  }
+}

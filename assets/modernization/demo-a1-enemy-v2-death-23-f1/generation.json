@@ -1,0 +1,21 @@
+{
+  "generator": "reuse-existing-E01-source; no new ImageGen call",
+  "identity": 2,
+  "transparent_background": true,
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-death-65-f1/source.png",
+  "source_sha256": "3008b8d22f3be1d2481834514b201e3fbbc2745c6830d05be05010a2b2effac2",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-death-65-f1/generation.json",
+  "original_generation_metadata_sha256": "f5b8fc595d27a85516f7e330caad42ec344a05add7bc6e1ce47886a771971b50",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 35,
+    "frame": 1,
+    "formats": [
+      0,
+      1
+    ]
+  },
+  "review": "Same action/direction/frame and target-native-size inspection; Miguel gameplay pending"
+}

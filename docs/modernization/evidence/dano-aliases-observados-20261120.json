@@ -1,0 +1,326 @@
+{
+  "date": "2026-11-20",
+  "scope": "Four observed aliases only; no new artwork, engine change, unknown keys or automatic normal-reference batch",
+  "contract": {
+    "scope": "Four observed M1P2 damage/walk-during-impact aliases; identical native raster, full palette and geometry; animation only",
+    "status": "PASS native reconstruction and exact Window/SDL 8x/12x, negatives/full recovery; Windows ASan/UBSan and Linux ASan/UBSan/LSan. Gameplay review pending.",
+    "bindings": [
+      {
+        "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+        "source_key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+        "sheet": 47,
+        "frame": 1,
+        "animation": 6,
+        "source_animation": 1,
+        "assets": {
+          "8": "player-hitdeath-2f-f1-8x",
+          "12": "player-hitdeath-2f-f1-12x"
+        }
+      },
+      {
+        "key": "349a4d1eca5fcd524b673827b2b03cd40c50dbb2d2ef3cdf306aa3395a6d1743",
+        "source_key": "598da8efb9769c715bf38d7ecc8a1a834d74abfd2f19c46fdc3247f7337e256b",
+        "sheet": 3,
+        "frame": 0,
+        "animation": 1,
+        "source_animation": 0,
+        "assets": {
+          "8": "s3-f0-8",
+          "12": "s3-f0-12"
+        }
+      },
+      {
+        "key": "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28",
+        "source_key": "52726ffe1c10684c2e615f3c08ab0d6f5eb87b34655d4c589683b8e7277724e5",
+        "sheet": 4,
+        "frame": 0,
+        "animation": 1,
+        "source_animation": 0,
+        "assets": {
+          "8": "s4-f0-8",
+          "12": "s4-f0-12"
+        }
+      },
+      {
+        "key": "3674c1ec877a1748400fc04873ee10683c086f49e82aa91cb146f804ee44b1b8",
+        "source_key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+        "sheet": 2,
+        "frame": 0,
+        "animation": 1,
+        "source_animation": 0,
+        "assets": {
+          "8": "s2-f0-8",
+          "12": "s2-f0-12"
+        }
+      }
+    ]
+  },
+  "candidate": {
+    "assets": 244,
+    "bindings": 391,
+    "manifest_sha256": "e55ea50b2d421218c875456765681790bfcf82f02dd2f01cf681d2f27d1f8730",
+    "all_base_assets_and_387_bindings_unchanged": true
+  },
+  "tests": {
+    "windows": "PASS 32 actual Window cases, ASan/UBSan",
+    "linux": "PASS 32 actual Window cases, ASan/UBSan/LSan",
+    "dimensions": [
+      8,
+      12
+    ],
+    "variants": [
+      "two actors + overlap",
+      "height 12",
+      "skip three rows",
+      "zero-writing occluder"
+    ],
+    "oracle": "actual SDL pixels equal expanded ordered composition; full classic recovery under injected SDL failure",
+    "negatives": [
+      "wrong animation",
+      "wrong resource offset"
+    ],
+    "h3": "Not repeated: unchanged engine SHA-256 and asset bytes; previous 11/11361 Windows/Linux remains valid",
+    "ci": "Engine unchanged from a480740; complete Windows/Linux/density PASS on 9b920a0. New metadata/tool commit CI pending publication",
+    "gameplay": "PENDING Miguel"
+  },
+  "projections": [
+    {
+      "log": "OpenFodder-P1-DanoSombras-hibrido-20261119-235700.log",
+      "before": {
+        "outcomes": {
+          "published": 9431,
+          "missing-variant": 219,
+          "no-body": 131
+        },
+        "same_actor_returns": 16,
+        "returns_excluding_verified_empty_marker": 16,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 9479,
+          "missing-variant": 171,
+          "no-body": 131
+        },
+        "same_actor_returns": 15,
+        "returns_excluding_verified_empty_marker": 11,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 20581,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20593,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20607,
+            "outcome": "no-body",
+            "same_actor": true,
+            "missing": [],
+            "players": [
+              {
+                "key": "82a12b8640bd6c6d5b5c7873771d81e47f102a89bba29000c0c1c44c93dfc81c",
+                "decision": "keep"
+              }
+            ]
+          },
+          {
+            "attempt": 20619,
+            "outcome": "no-body",
+            "same_actor": false,
+            "missing": [],
+            "players": []
+          }
+        ]
+      }
+    },
+    {
+      "log": "engine.log",
+      "before": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "returns_excluding_verified_empty_marker": 8,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Sombras-hibrido-20261119-133605.log",
+      "before": {
+        "outcomes": {
+          "published": 7630,
+          "missing-variant": 207,
+          "no-body": 119
+        },
+        "same_actor_returns": 10,
+        "returns_excluding_verified_empty_marker": 10,
+        "short_attempt_runs": 4,
+        "short_endings": [
+          {
+            "attempt": 16817,
+            "outcome": "missing-variant",
+            "same_actor": false,
+            "missing": [
+              "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+            ],
+            "players": [
+              {
+                "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+                "decision": "missing"
+              }
+            ]
+          },
+          {
+            "attempt": 16829,
+            "outcome": "missing-variant",
+            "same_actor": false,
+            "missing": [
+              "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+            ],
+            "players": [
+              {
+                "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+                "decision": "missing"
+              }
+            ]
+          },
+          {
+            "attempt": 16841,
+            "outcome": "missing-variant",
+            "same_actor": false,
+            "missing": [
+              "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+            ],
+            "players": [
+              {
+                "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+                "decision": "missing"
+              }
+            ]
+          },
+          {
+            "attempt": 16853,
+            "outcome": "missing-variant",
+            "same_actor": false,
+            "missing": [
+              "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+            ],
+            "players": [
+              {
+                "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+                "decision": "missing"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "outcomes": {
+          "published": 7669,
+          "missing-variant": 168,
+          "no-body": 119
+        },
+        "same_actor_returns": 7,
+        "returns_excluding_verified_empty_marker": 7,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    },
+    {
+      "log": "OpenFodder-P1-Sombras-hibrido-20261119-151304.log",
+      "before": {
+        "outcomes": {
+          "published": 8158,
+          "missing-variant": 1279
+        },
+        "same_actor_returns": 6,
+        "returns_excluding_verified_empty_marker": 6,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      },
+      "after": {
+        "outcomes": {
+          "published": 8161,
+          "missing-variant": 1276
+        },
+        "same_actor_returns": 5,
+        "returns_excluding_verified_empty_marker": 5,
+        "short_attempt_runs": 0,
+        "short_endings": []
+      }
+    }
+  ],
+  "projection_note": "Not a replay of the new user input. Keep raw returns and short runs; four added short runs end in existing no-body states: three with only verified zero-writing death marker and one without player command. No protection or clock change.",
+  "logs": [
+    {
+      "file": "residual-fixtures\\e30e5009f038\\window-win.log",
+      "sha256": "75d6383185a50f512ae220d58819f188992f2b052bd6ab6535773aebe051488c"
+    },
+    {
+      "file": "residual-fixtures\\e30e5009f038\\window-linux.log",
+      "sha256": "7e33f10e4ce62fec77b37b6e854b2ce9ebc274ee9ccf302b6fd617b661ffba10"
+    },
+    {
+      "file": "residual-fixtures\\349a4d1eca5f\\window-win.log",
+      "sha256": "a1e3b3f7ffc6c9c870502ebc4d198b92e9cb3988c921e33b38435b66f0272015"
+    },
+    {
+      "file": "residual-fixtures\\349a4d1eca5f\\window-linux.log",
+      "sha256": "c9778e4756d10876cf625028663f30ca97a120abf29347805e28c269e332ce32"
+    },
+    {
+      "file": "residual-fixtures\\7508dbf71777\\window-win.log",
+      "sha256": "242643701a8029e8820e68401c2946eeeb1ef16af61f4c821acb1aedaed81e9a"
+    },
+    {
+      "file": "residual-fixtures\\7508dbf71777\\window-linux.log",
+      "sha256": "9580d8404fb42aa2f6ef2897de0b57e9a66a7c4b9b1723f3d2c84cae550292e8"
+    },
+    {
+      "file": "residual-fixtures\\3674c1ec877a\\window-win.log",
+      "sha256": "077c3b74cce00c29b6b0cf8140035318ac53429b30f1173f89822ca835b816da"
+    },
+    {
+      "file": "residual-fixtures\\3674c1ec877a\\window-linux.log",
+      "sha256": "205b283efba34b8b8b1dd862191608896f61ada880b4cca55674a4bd028cecbb"
+    }
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3",
+  "launcher": {
+    "file": "PROBAR_DANO_AJUSTADO_P1.cmd",
+    "script": "Probar-P1-DanoAjustado.ps1",
+    "unchanged_engine_sha256": "0158fd7c91b2e98a930bd24362d9729934c42981b81c27f97eabe19bb82709ef"
+  }
+}

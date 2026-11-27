@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T72",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 7,
+  "sheet": 121,
+  "frames": [
+    2
+  ],
+  "packages": [
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-79-f2",
+      "source_sha256": "991e2a3f40ebeaab04f17c8ebea11a0d1718e79fc369668f3b8fed8bfb0759e2",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 6,
+          "y": 0,
+          "width": 7,
+          "height": 14
+        },
+        "1": {
+          "x": 6,
+          "y": 2,
+          "width": 6,
+          "height": 11
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 195,
+    "assets": 416
+  },
+  "notes": [
+    "CF/D0 row15 proves front-right/down-right group7 phase1; lowered hands and alternate forward boot inspected, no mirror or controller change.",
+    "Own PC14/Amiga13 native anchors and bounds preserved with format-specific derivatives. No new floor inferred; global gameplay/shadow acceptance pending."
+  ],
+  "next": "E3.T7I — integrar únicamente79/F0..2 de5/persona1 en candidatos nuevos8×/12×; verificar6contratos nuevos, anclas PC14/Amiga13 y formato propio, presupuesto y sanitizadores Windows/Linux. Conservar Source e0d9430b, protagonistas y candidatos anteriores; sin suelo nuevo inferido."
+}

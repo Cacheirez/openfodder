@@ -1,0 +1,74 @@
+{
+  "scope": "Five lower-aim keys directly observed in current M1P2 review; native captures equal qualified references; no bulk binding",
+  "status": "PASS exact native reconstruction and qualified descriptors; 40 Window cases per platform ASan/UBSan(+LSan Linux); gameplay pending",
+  "bindings": [
+    {
+      "key": "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607",
+      "sheet": 20,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s20-f0-8",
+        "12": "s20-f0-12"
+      }
+    },
+    {
+      "key": "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3",
+      "sheet": 21,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s21-f0-8",
+        "12": "s21-f0-12"
+      }
+    },
+    {
+      "key": "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893",
+      "sheet": 19,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s19-f0-8",
+        "12": "s19-f0-12"
+      }
+    },
+    {
+      "key": "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5",
+      "sheet": 22,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s22-f0-8",
+        "12": "s22-f0-12"
+      }
+    },
+    {
+      "key": "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c",
+      "sheet": 18,
+      "frame": 0,
+      "animation": 0,
+      "assets": {
+        "8": "s18-f0-8",
+        "12": "s18-f0-12"
+      }
+    }
+  ],
+  "qualified_asset_descriptors": {
+    "s20-f0-8": "ce378ccc2433c01dcb2908f05098d3a47fda7f560862555a6ac6dc9145bf95ed",
+    "s20-f0-12": "d47eb88b13c678a2676c4278d2b3756550fa88da5420287dcfa1530afe02b47b",
+    "ground-shadow-10x3-8x": "4bde7b3b8ef01fadb7df30f7dfc12a2b995d8036cb91189f867ea7e7c27f753f",
+    "ground-shadow-10x3-12x": "3f41bf2121895f3928110021d65424e278b451270f2f617c91f077e8ba9d8dc2",
+    "s21-f0-8": "119e70d5c93bd73c851fc9bfbd3e1066e57cf800e596979a79d40a80623be4b4",
+    "s21-f0-12": "e02eb2b5e517cc62c3c474308e02729533c37bb0316f44c602201babefaba9e9",
+    "ground-shadow-9x3-8x": "5dd512421043ce9eb741f960fb3e5714db6b39f850ce21040b682406c37622c4",
+    "ground-shadow-9x3-12x": "a13e8e54a70d92941ae39fb310c437d7a595d4bd7b185ad12248450f1e7180c1",
+    "s19-f0-8": "0b796524f2853caac529667f195ffd36926427fcb39094039af5b75793ff3469",
+    "s19-f0-12": "8c9b6ed8968f3831aac3cb9ac501713d8aa1f152f76314b0818324115fa50d4b",
+    "s22-f0-8": "70cb20a83b3691bec03168fbd8760850229aa9a297bb724aa2daf06f5235be8c",
+    "s22-f0-12": "a088315b2bea6a28ac8ea59718216635df62b8cceadd8d507557488e587fc987",
+    "ground-shadow-8x3-8x": "3c641f2865f0dc0665aebe69cd2238ce2a7da17c812a4258e2f2827dea592b6d",
+    "ground-shadow-8x3-12x": "870356c3c46afb58155ca96460f854ce70c853e1b1c0ba0e5351cf1abcd11df3",
+    "s18-f0-8": "390d72dba75da2c7c3f66bfac1f82da525d24363ed19a532dddefd2c4ec16522",
+    "s18-f0-12": "02327af5d81d82ddd938d45de004e591f53d81e54561a5fdc993e1ca99b21c9f"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "base": "08d49db",
+  "block": "R4.1-special-ground",
+  "native_audit": "38/9F embedded ground; A4 dark tail verified separately; 41 owns independent 97; 38 sinking has rowsToSkip and is excluded",
+  "placements": "assets/modernization/ground-shadow-paint/player-special-placements.json",
+  "changed_descriptors": 36,
+  "body_bytes_and_native_catalog_unchanged": true,
+  "independent_shadow": "Same-scene owner slot/generation/type proof suppresses optional ground component; original independent draw turn retained",
+  "tests": {
+    "window_sdl_initial_cases_per_platform": 704,
+    "corrected_contact_cases_per_platform": 96,
+    "final_unique_window_cases_per_platform": 704,
+    "cpu_ground_groups_per_platform": 4,
+    "windows": "ASan/UBSan; no LSan support",
+    "linux": "ASan/UBSan/LSan",
+    "coverage": [
+      "two actors",
+      "8x/12x",
+      "all native slide states",
+      "ground excluded with height and water crop",
+      "zero-write occlusion",
+      "Save/Restore",
+      "native boundary clipping",
+      "budget rejection",
+      "bad descriptors rejected",
+      "independent shadow owner generation and precedence",
+      "SDL whole-scene recovery"
+    ]
+  },
+  "internal_review": {
+    "image": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\r4-ground-reviewed-contact.png",
+    "sha256": "c56d266ba96adb9748adb231094c185f467b5458fddb418258af9f4d2271c0a1",
+    "contact_adjusted_frames": [
+      "A4/F1",
+      "A4/F5"
+    ]
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-special-ground-reviewed-candidate\\candidate-manifest.json",
+    "assets": 352,
+    "covered": 337,
+    "required": 337,
+    "activated": false
+  },
+  "limits": [
+    "Palette/phase transition guards and actual continuity next",
+    "R5 final H3/CI/replay and review launcher pending",
+    "No global Miguel visual/gameplay acceptance"
+  ]
+}

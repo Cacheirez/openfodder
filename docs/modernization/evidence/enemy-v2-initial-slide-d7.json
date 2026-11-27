@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.ISL7",
+  "status": "PASS source/master reuse and own anchors; initial ground runtime/gameplay pending",
+  "sheet": 164,
+  "frame": 7,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-a7-f7/manifest.json",
+  "source_sha256": "72c4f29f71908b0815c5e583fb32811af4a76160520d1c02e9ccf694f861e658",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 7,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 7,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d"
+    }
+  ],
+  "placement": {
+    "x": 6,
+    "y": 2,
+    "width": 10,
+    "height": 9
+  },
+  "body_lower_anchor": 11,
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-a4-f7-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f7-8x",
+      "sha256": "449ba72f7cd5bdf5a42fd25f229bc3d1e5567f91d15efbcd4c2c171431a0c41f",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-a4-f7-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f7-12x",
+      "sha256": "72be6fc272e2b2a2396bc9f1836b1f569aa0289ba10b0bfda2e819891bbe9bdd",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 180,
+    "assets": 362
+  },
+  "validation": [
+    "Exact original friendly A4direction reference and own source-person0 signatures checked",
+    "E01original source/PNG/RGBA copied byte-identical; no ImageGen call, mirroring or runtime alias",
+    "Body lower anchor separated from native embedded tail; both native alpha bounds checked",
+    "Existing fixed lower-right slide contact reused; runtime initial eligibility remains pending"
+  ],
+  "next": "E3.ISLI \u2014 integrarA4/F0..7 inicial5/persona0 y su suelo en candidatos nuevos8\u00d7/12\u00d7. Habilitar solo50/51/52 con guardas existentes y supresi\u00f3n ante sombra independiente; validar Windows/Linux/sanitizadores. Despu\u00e9s actualizar ejecutables y verificar H3/CI pertinente antes de revisi\u00f3n jugando."
+}

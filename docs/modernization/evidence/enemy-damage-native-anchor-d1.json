@@ -1,0 +1,273 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.DA1",
+  "status": "PASS native export/internal inspection; not Miguel gameplay acceptance",
+  "direction": 1,
+  "sheet": 99,
+  "frames": [
+    0,
+    1
+  ],
+  "rows": [
+    {
+      "frame": 0,
+      "source_sha256": "7a4180c1d4bc83a37dfacaaca06dc56a96085024e9a377b10a0d1bbdaf49888f",
+      "old_export": {
+        "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+        "crop": [
+          313,
+          258,
+          893,
+          1079
+        ],
+        "placement": {
+          "x": 4,
+          "y": 1,
+          "width": 8,
+          "height": 11
+        },
+        "logical_size": [
+          16,
+          14
+        ],
+        "native": [
+          {
+            "format": 0,
+            "native_signature": "8c466833e82e8c71ec1707dbbe680676862771270629678c81cb8f55e79645af",
+            "bbox": [
+              3,
+              0,
+              12,
+              12
+            ]
+          },
+          {
+            "format": 1,
+            "native_signature": "8c466833e82e8c71ec1707dbbe680676862771270629678c81cb8f55e79645af",
+            "bbox": [
+              3,
+              0,
+              12,
+              12
+            ]
+          }
+        ],
+        "ground_shadow": "none; preserve independent native commands"
+      },
+      "new_export": {
+        "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+        "crop": [
+          332,
+          265,
+          888,
+          1079
+        ],
+        "placement": {
+          "x": 3,
+          "y": 0,
+          "width": 8,
+          "height": 12
+        },
+        "logical_size": [
+          16,
+          14
+        ],
+        "native": [
+          {
+            "format": 0,
+            "native_signature": "8c466833e82e8c71ec1707dbbe680676862771270629678c81cb8f55e79645af",
+            "bbox": [
+              3,
+              0,
+              12,
+              12
+            ]
+          },
+          {
+            "format": 1,
+            "native_signature": "8c466833e82e8c71ec1707dbbe680676862771270629678c81cb8f55e79645af",
+            "bbox": [
+              3,
+              0,
+              12,
+              12
+            ]
+          }
+        ],
+        "ground_shadow": "none; preserve independent native commands"
+      },
+      "original_assets": [
+        {
+          "density": 8,
+          "file": "enemy-v2-death-63-f0-8x.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f0-8x",
+          "sha256": "110502f1f6709630c0e445bf864dc1773f9774f78ea54680de59eac4b014fe75",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "enemy-v2-death-63-f0-12x.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f0-12x",
+          "sha256": "000aadf9d4550a091484be26226716e385ec374eb454ce23264a64838136812d",
+          "width": 16
+        }
+      ],
+      "active_assets": [
+        {
+          "density": 8,
+          "file": "enemy-v2-death-63-f0-8x-native-anchor-v2.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f0-8x",
+          "sha256": "bede9db8efa07a3dc7665ba34314aefad630cb695caafe55a5fb3442268917d8",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "enemy-v2-death-63-f0-12x-native-anchor-v2.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f0-12x",
+          "sha256": "7a86e9a1efe2ca27162e0ec63f25542cf242d55a23c8518390e0e0afa4a7cce5",
+          "width": 16
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "source_sha256": "06b329b19e57c6f0927bba79feee28b8f5249082229e4941f1f307a858f2cdc1",
+      "old_export": {
+        "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+        "crop": [
+          313,
+          258,
+          893,
+          1079
+        ],
+        "placement": {
+          "x": 4,
+          "y": 1,
+          "width": 8,
+          "height": 11
+        },
+        "logical_size": [
+          16,
+          14
+        ],
+        "native": [
+          {
+            "format": 0,
+            "native_signature": "ade3a2278c42b6d9dbdfd30e36ab0060fce7404ddf72d2be01b2bd0c879cd8b3",
+            "bbox": [
+              4,
+              0,
+              14,
+              12
+            ]
+          },
+          {
+            "format": 1,
+            "native_signature": "ade3a2278c42b6d9dbdfd30e36ab0060fce7404ddf72d2be01b2bd0c879cd8b3",
+            "bbox": [
+              4,
+              0,
+              14,
+              12
+            ]
+          }
+        ],
+        "ground_shadow": "none; preserve independent native commands"
+      },
+      "new_export": {
+        "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+        "crop": [
+          313,
+          258,
+          893,
+          1032
+        ],
+        "placement": {
+          "x": 4,
+          "y": 0,
+          "width": 9,
+          "height": 12
+        },
+        "logical_size": [
+          16,
+          14
+        ],
+        "native": [
+          {
+            "format": 0,
+            "native_signature": "ade3a2278c42b6d9dbdfd30e36ab0060fce7404ddf72d2be01b2bd0c879cd8b3",
+            "bbox": [
+              4,
+              0,
+              14,
+              12
+            ]
+          },
+          {
+            "format": 1,
+            "native_signature": "ade3a2278c42b6d9dbdfd30e36ab0060fce7404ddf72d2be01b2bd0c879cd8b3",
+            "bbox": [
+              4,
+              0,
+              14,
+              12
+            ]
+          }
+        ],
+        "ground_shadow": "none; preserve independent native commands"
+      },
+      "original_assets": [
+        {
+          "density": 8,
+          "file": "enemy-v2-death-63-f1-8x.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f1-8x",
+          "sha256": "9255b4307951b2b0d4bda814c805c2bdc951dc64d29a561c99e13f47bad6a4b9",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "enemy-v2-death-63-f1-12x.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f1-12x",
+          "sha256": "6b50a23ddd8ac26b9decc1283d5346ba29cd3938f51ae295f0285a0a3d86e664",
+          "width": 16
+        }
+      ],
+      "active_assets": [
+        {
+          "density": 8,
+          "file": "enemy-v2-death-63-f1-8x-native-anchor-v2.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f1-8x",
+          "sha256": "9e39a6127417e854ef94c740b157ce333b06ebd5fd956c0a2205bdfebfd3fd14",
+          "width": 16
+        },
+        {
+          "density": 12,
+          "file": "enemy-v2-death-63-f1-12x-native-anchor-v2.rgba",
+          "height": 14,
+          "id": "enemy-v2-death-63-f1-12x",
+          "sha256": "5d42936ad6671c03fa37e6ee311727a9aa7f78a76c42526f3d5d88c9c293ad8d",
+          "width": 16
+        }
+      ]
+    }
+  ],
+  "guarantees": [
+    "Source PNG hashes and old PNG/RGBA/manifest preserved",
+    "Native logical dimensions, signatures, layout and command anchors unchanged",
+    "Each frame fitted proportionally inside its own native opaque box, rather than both-frame intersection",
+    "Native height/independent shadow commands retained; no ground component"
+  ],
+  "tests": [
+    "Existing C++ exporters8x/12x native-bound/SHA/PNG-RGBA checks PASS",
+    "Internal native-size pose/identity review completed; full new candidate integration pending"
+  ],
+  "next": "E3.DA2 — ajustar exportación de64/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69."
+}

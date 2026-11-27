@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T71",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 7,
+  "sheet": 121,
+  "frames": [
+    1
+  ],
+  "packages": [
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-79-f1",
+      "source_sha256": "1cb01c255428c9539f6e3b62eba21ed73d128e7d9ac9f78d014e3fd3e24fae08",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 6,
+          "y": 0,
+          "width": 8,
+          "height": 14
+        },
+        "1": {
+          "x": 6,
+          "y": 2,
+          "width": 6,
+          "height": 11
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 194,
+    "assets": 412
+  },
+  "notes": [
+    "CF/D0 row14 proves front-right/down-right group7 phase0; raised hand on screen-left and stance interpreted from own PC/Plus refs. Global animation acceptance pending.",
+    "PC14/Amiga13 anchors and own native boxes preserved in four derivatives; no mirroring, copied rifle or new floor inferred."
+  ],
+  "next": "E3.T72 — crear únicamente79/F2, vista frontal abajo-derecha/fase1 segúnCF/D0/fila15; identidad E01 y referencias propias PC/Plus, anclas PC14/Amiga13. Bajar mano y conservar paso nativo sin reflejos; validar/publicar antes de integrar79/F0..2."
+}

@@ -1,0 +1,89 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 100,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-death-64-f0-8x-native-anchor-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-death-64-f0-8x",
+      "sha256": "a6a5281b74d7fbde75294de4de2f3dc6ed5743b60a83714f61073fda37c330cf",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-death-64-f0-12x-native-anchor-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-death-64-f0-12x",
+      "sha256": "77e79ef673c6c829437ac4e333f9818d721bf03fac46a29f05cd6134613f4f51",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "sha256": "6a96e9cfdf10594704f2ac7436b4a5a895c662d723805b1a2e1a177598fe1dbb",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      314,
+      143,
+      944,
+      1098
+    ],
+    "placement": {
+      "x": 6,
+      "y": 0,
+      "width": 8,
+      "height": 12
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "54b1e6f3343acdd591d7b1310637bbd20358ca04b9fc653f64f4b2ad82322fbe",
+        "bbox": [
+          6,
+          0,
+          14,
+          12
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "54b1e6f3343acdd591d7b1310637bbd20358ca04b9fc653f64f4b2ad82322fbe",
+        "bbox": [
+          6,
+          0,
+          14,
+          12
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "native-anchor-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-native-anchor-v2.json",
+      "reason": "Per-frame proportional native box fit; original master/derivatives preserved"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 16,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "e89f1ff54375495a82facffea10a10416f7d4fd844dc423a51d23a480ebdb08f"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 16,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "0a3c50946dee53d0b6d2d549e12d72bfe3ac576e89201171b592814d821b8efc"
+    }
+  ],
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-prone-52-f0/manifest.json",
+  "source_sha256": "a9859d1c836c20bb58b565d5db98a5b9a8d08328f3fd7383b6664e86c44c2eea",
+  "not_runtime_alias": true,
+  "initial_person_zero": true,
+  "ground_contract": "Existing aim ground qualified separately; runtime initial-person eligibility pending"
+}

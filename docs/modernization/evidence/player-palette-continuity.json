@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "date": "2026-11-21",
+  "base": "b5406b9",
+  "block": "R4.2-native-fades-and-continuity",
+  "implementation": "Opt-in CF1 catalogue: verify monotone per-channel native reference/current transfer; preserve alpha, native background, draw order and native fade function; retain same-scene destination lifetime identity; legacy routes keep transition guard",
+  "memory": "Immutable original art; shared per-publication transferred vectors capped at 8 MiB, unchanged original registry/composition caps; allocation errors recover classic",
+  "sources": {
+    "Source/WindowHD.cpp": "01ad6705730a0637b8d1004e6f550f799afbf28468cf10386d4d25a1d7dc43cf",
+    "Source/Surface.hpp": "e2639f85cf701b460246434e6f9f4c76504048c179cfb54af179bf284eca630f",
+    "Source/Utils/PaletteTransfer.hpp": "59c73937e7c2e6929dc219131d42accf1f86ffeb497901ee2ae98ee369aa807e"
+  },
+  "tests": {
+    "native_fade_states_per_platform": 50,
+    "window_sdl_cases_per_platform": 256,
+    "window_fade_cases_per_platform": 112,
+    "window_existing_pose_cases_per_platform": 144,
+    "checks": [
+      "exact native palette knots and target accessor",
+      "read-only native fade/clock",
+      "source RGB immutable and alpha preserved",
+      "same-scene/destination reference isolation",
+      "non-monotone/invalid mapping rejection",
+      "black invisible scene remains classic",
+      "SDL error during fade repaints complete native viewport",
+      "legacy pause/map/callback/renderer/stale-scene guards preserved"
+    ],
+    "windows": "ASan/UBSan; LSan unsupported",
+    "linux": "Clang and GCC ASan/UBSan/LSan",
+    "h3": {
+      "phases": 11,
+      "canonical_states": 11361,
+      "platforms": [
+        "Windows",
+        "Linux"
+      ],
+      "reference": "5e6a4f3834a0a491468ea659f45f8e5f4fb785a8"
+    }
+  },
+  "runtime": {
+    "win": {
+      "published": 4635,
+      "missing": 0,
+      "unresolved": 0,
+      "protagonist_modern_command_presentations": 18913,
+      "native_no_write_presentations": 36,
+      "native_no_write_sheet": 124,
+      "native_no_write_frame": 1,
+      "classic_visible_protagonist_bodies": 0,
+      "h3_m1p2": 1546
+    },
+    "linux": {
+      "published": 4635,
+      "missing": 0,
+      "unresolved": 0,
+      "protagonist_modern_command_presentations": 18913,
+      "native_no_write_presentations": 36,
+      "native_no_write_sheet": 124,
+      "native_no_write_frame": 1,
+      "classic_visible_protagonist_bodies": 0,
+      "h3_m1p2": 1546
+    }
+  },
+  "initial_reasons": [
+    "missing-audit-interval",
+    "black-palette",
+    "ordered-published"
+  ],
+  "limits": [
+    "Actual replay covers public Amiga The One M1P2, not every death/retail CD32 campaign",
+    "All native protagonist body slots have art; full manual visual/gameplay acceptance still Miguel pending",
+    "Final complete CI/CTest and hash-checked local review launcher R5 pending"
+  ]
+}

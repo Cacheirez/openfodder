@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.D0",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 98,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-62-f0",
+      "source_sha256": "b488537ff737538bc259129b64f332e99a23a10869286450c4a31c76c61f149f",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 3,
+        "width": 9,
+        "height": 9
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-death-62-f1",
+      "source_sha256": "7d4a3b5a8c50549cc656f38fcdd94d1d7689f33bce96c6c86a219e0192ca1562",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 3,
+        "width": 9,
+        "height": 9
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 61,
+    "assets": 122
+  },
+  "notes": [
+    "Source animation table maps enemy62 to first damage direction; produced F0/F1 only.",
+    "Proportional shared crop249,177,1007,957 and placement3,3,9,9 retain native boot bottom12 and logical16x14; X/Y ratio1.029.",
+    "Native damage-specific/independent shadows preserved; no added ground component. Four native contracts gain art only upon later candidate integration; no protagonist/initial-human aliases added.",
+    "Internal native-size inspection preserves distinct hunched/open-arm states; Miguel global gameplay acceptance pending."
+  ],
+  "next": "E2.D1 — modernizar daño enemigo63/F0,F1, dirección1, con identidad E01/v2, maestros protagonistas21 necesarios y referencias nativas63. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0."
+}

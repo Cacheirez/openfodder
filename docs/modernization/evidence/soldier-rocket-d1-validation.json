@@ -1,0 +1,130 @@
+{
+  "task": "A3-ROCKET-D1",
+  "base_commit": "b54e19fdf134c9efb0b458434f6c3bbeecf6d6f0",
+  "recovered_from_local_commit": "3f23207f5744c2fcb52139ff2c35f7c74c041759",
+  "scope": "direction 1 only; 0/7 regression; directions 2-6 excluded",
+  "poses": 65,
+  "assets": 130,
+  "bindings": 258,
+  "preserved": {
+    "assets": 124,
+    "bindings": 246,
+    "result": "exact descriptors/files/bindings against tested D0 output"
+  },
+  "review": "three alpha masters and density-12 derivatives inspected internally; in-game acceptance PENDING",
+  "tests": {
+    "controlled": {
+      "status": "PASS bounded directions 0, 1 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "controlled metadata and test-only keys",
+      "directions": [
+        0,
+        1,
+        7
+      ],
+      "intervals": 4752,
+      "bodies": 9504,
+      "sequences": 216,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_124_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "1110025f7a4e9ba4dbe7b2711d445bec225381b9913b2ad67d3dbca914e8b927",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "ec4885a396796638b462693eb783c9587ad63421a1f387767a0aaca0b385eadd"
+    },
+    "native": {
+      "status": "PASS bounded directions 0, 1 and 7; other directions/campaign/acceptance PENDING",
+      "mode": "source-reconstructed real resources",
+      "directions": [
+        0,
+        1,
+        7
+      ],
+      "intervals": 4752,
+      "bodies": 9504,
+      "sequences": 216,
+      "densities": [
+        8,
+        12
+      ],
+      "selector_assertions": 2703,
+      "selector_samples": 576,
+      "three_rejections": true,
+      "previous_124_assets": "exact",
+      "c01": "exact",
+      "log_sha256": "f577d7126298bef77eb8ba105af1aaaf38aa6d679552571f2e847079805e1577",
+      "limits": [
+        "geometry stubbed in selector fixture",
+        "prefix/suffix reuse prior walk/aim checks",
+        "reconstructed keys are not replay observations",
+        "CPU compositor reused as SDL expectation; no independent anatomical oracle",
+        "not full player handler, campaign, GPU/CD32, projectile or user in-game acceptance"
+      ],
+      "derived_manifest_sha256": "ec4885a396796638b462693eb783c9587ad63421a1f387767a0aaca0b385eadd"
+    }
+  },
+  "not_run": [
+    "ASan/UBSan D1 (no C++ changes; D0 result not attributed to D1)",
+    "full local Windows/Linux build",
+    "full H3",
+    "campaign",
+    "GPU",
+    "CD32",
+    "LSan",
+    "Miguel in-game acceptance"
+  ],
+  "ci_base": {
+    "sha": "b54e19fdf134c9efb0b458434f6c3bbeecf6d6f0",
+    "density": {
+      "run_id": 42207963929,
+      "conclusion": "success"
+    },
+    "windows": {
+      "run_id": 42207963839,
+      "status": "in_progress"
+    },
+    "linux": {
+      "run_id": 42207963936,
+      "status": "in_progress"
+    }
+  },
+  "recovery": {
+    "url": "https://chatgpt.com/library?file_id=libfile_a040196c2a608191856a972395a23b36&account_id=personal",
+    "remaining_unpublished_directions": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "masters": [
+    {
+      "file": "r1-f0.png",
+      "sha256": "2d8b04420c937c3099c3af1e8116a7c31951a41f0c07ebe4e0c54d1a19a1c7a3"
+    },
+    {
+      "file": "r1-f1.png",
+      "sha256": "ecaa6952138690836d17df60d13c56fb0e04975ba97fc178847a34f07c6640ff"
+    },
+    {
+      "file": "r1-f2.png",
+      "sha256": "a9438c73759a29b4427f8947bbd1b3c97b58a48bc620f1b0243aa7320eceec90"
+    }
+  ],
+  "reused_fixture": {
+    "reason": "Source, fixture generator, C++ cases and generated pilot headers unchanged from D0",
+    "binary_sha256": "8c9073b680e4755ccba5f0fa1e7f33068ebac3f079dff47005a8380c74f43cfc"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. Create CF1 ENEMY grenade armed throw body, sheet4A/F1 direction0. IMAGE1 POSE TARGET only: existing overhead grenade pose, right arm SCREEN-LEFT raised holding grenade above helmet; left hand SCREEN-RIGHT supports lowered rifle. IMAGE2 approved E01 identity ONLY: grey-green helmet, grey-olive uniform, compact dark beard on jaw/chin, short brick-red neck cloth, reddish-brown leather. IMAGE3 native enemy frame is pose/silhouette authority. Preserve IMAGE1 elevated straight FRONT camera and exact stance, arm/grenade positions, rifle/boots/proportions; apply E01 appearance consistently. C moderate-painted style upper-left light. No camouflage, new gear, mirrored or rotated pose, floor, text or baked shadow. No airborne projectile; grenade remains in raised hand. Full transparent sprite feet/muzzle/grenade intact, native10-by14 occupied proportions.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "aa0336bf86dd36ac27d28646d65e0a716ceac7f70e33857a158bf325ae46dce7",
+  "references": [
+    "assets/modernization/soldier-grenade/uniform-a/s8-f1-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-5-4a-f1-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

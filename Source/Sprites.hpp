@@ -21,6 +21,8 @@
  */
 
 
+#include "Utils/SoldierSemantic.hpp"
+
 enum eSprites {
 	eSprite_Player								= 0,
 	eSprite_Grenade								= 2,
@@ -329,6 +331,8 @@ struct sSprite
 	sSprite *mFollowTarget; // Hostage: Following Sprite
 	int8 mHeliRestartFrame; // Helicopter: Restart Anim Frame Number
 	int8 field_75;			// Power-up flags + heli call state (invincibility/homing, callpad)
+
+    uint64_t mPresentationGeneration = 0; // Not serialized or included in gameplay traces.
 
 	sSprite()
 	{

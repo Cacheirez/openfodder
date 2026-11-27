@@ -21,6 +21,7 @@
  */
 
 #include "Sprites.hpp"
+#include "Utils/ResolvedSpriteResource.hpp"
 #include "GameData.hpp"
 
 #define INVALID_SPRITE_PTR (sSprite*) -1
@@ -112,9 +113,13 @@ public:
     
 	cPseudorand				mRandom;
     sSprite                 mSprite_Spare;
+    uint64_t mPresentationScene = 0;
+    void CaptureSoldierSemantic(sSprite*, int16, int16, const openfodder::SpriteDrawInput&, openfodder::PreparedSpriteDraw&);
     std::vector<sSprite>    mSprites;
 
     const sSpriteSheet**    mSprite_SheetPtr;
+    const std::size_t*      mSprite_FrameCounts;
+    std::size_t             mSprite_SheetCount;
 
     void                    (cFodder::*mSprite_Function[118])(sSprite* pSprite);
 	std::string				mSprite_Names[118];
@@ -151,15 +156,16 @@ public:
 
     bool            mInput_Enabled;
 
-    uint16          mPhase_InterruptTicks;
-    volatile bool   mVideo_Ticked;
-    volatile bool   mVideo_Done;
+    std::atomic<uint16> mPhase_InterruptTicks{0}; // Shared game/interrupt tick counter.
+    std::atomic<size_t> mInterruptSleepDelta{20}; // Avoid reading mutable mParams from the timer thread.
+    std::atomic<bool> mVideo_Ticked{false}; // Cross-thread notification.
+    std::atomic<bool> mVideo_Done{true}; // Cross-thread acknowledgement.
 
     int16           mInterruptTick;
 
     std::function<void()> mInterruptCallback;
 
-    volatile bool   mExit;
+    std::atomic<bool> mExit{false}; // Thread shutdown request.
 
     int16           mButtonPressLeft, mButtonPressRight;
 
@@ -607,6 +613,7 @@ public:
 
 	bool			Engine_Loop();
 
+    void            GameplayTraceCapture(); // Optional, read-only H3 regression trace.
     virtual int16   Mission_Loop();
 	virtual int16	Phase_Cycle();
     virtual int16   Phase_Loop();
@@ -614,6 +621,7 @@ public:
     void            Phase_Paused();
 
     void            Interrupt_Sim();
+    void            SetInterruptSleepDelta(size_t sleepDelta);
 #ifdef EMSCRIPTEN
     void            Interrupt_Sim_Tick();
 #endif
@@ -727,6 +735,8 @@ public:
 
     void            GUI_Draw_Frame_8(int32 pSpriteType, int32 pFrame, const size_t pPositionX, const size_t pPositionY);
     void            GUI_Draw_Frame_16(int16 pSpriteType, int16 pFrame, const size_t pPosX, const size_t pPosY);
+    bool            Sprite_PrepareLegacyFrame(sSprite* pDi, int16 pSpriteType, int16 pFrame, openfodder::PreparedSpriteDraw& prepared);
+    bool            Sprite_CommitPendingDestroy(sSprite* sprite);
     void            Sprite_Draw_Frame(sSprite* pDi, int16 pSpriteType, int16 pFrame, cSurface *pDestination = 0);
 
     bool            Sprite_OnScreen_Check();
@@ -1222,6 +1232,7 @@ public:
     void            GUI_Sidebar_SquadIcon_Update();
     void            GUI_Sidebar_SquadIcon_Current_Draw();
     int16           GUI_Sidebar_SquadIcon_Set();
+    void            GUI_Sidebar_UpdateWeaponSelection();
     void            GUI_Sidebar_Draw();
     void            GUI_Sidebar_SquadIcons_Draw();
     void            GUI_Sidebar_Grenades_CurrentSquad_Draw();
@@ -1267,6 +1278,7 @@ public:
     void            Sidebar_Render_To_BackBuffer();
     void            Sidebar_Render_To_ScreenBuffer();
     void            Squad_Switch_Weapon();
+    bool            Mission_Final_TimeToDie_Update();
     void            Mission_Final_TimeToDie();
     int16           Squad_UpdateLeader(sSprite*& pData20);
 
@@ -1322,6 +1334,7 @@ public:
     int16           Mouse_Button_Right_Toggled();
     void            Mouse_Cursor_Handle();
     void            Mouse_UpdateCursor();
+    void            Mouse_CommitCursorRequest();
     void            Mouse_DrawCursor();
     virtual void    Mouse_ReadInputs();
     void            Mouse_Inputs_Check();
@@ -1347,7 +1360,11 @@ public:
     cFodder(std::shared_ptr<cWindow> pWindow);
     virtual         ~cFodder();
 
-    void            SetActiveSpriteSheetPtr(const sSpriteSheet** pSpriteSheet);
+    void            SetActiveSpriteSheetPtr(const sSpriteSheet** pSpriteSheet, const std::size_t* pCounts, std::size_t pSheetCount);
+    template<std::size_t N>
+    void SetActiveSpriteSheetPtr(const sSpriteSheet* (&sheets)[N], const std::size_t (&counts)[N]) {
+        SetActiveSpriteSheetPtr(sheets, counts, N);
+    }
 
     void            String_Input_Print(int16 pPosY);
     void            String_Input_Check();

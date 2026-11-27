@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.SK3",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 122,
+  "frames": [
+    3
+  ],
+  "packages": [
+    {
+      "frame": 3,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-7a-f3",
+      "source_sha256": "4080e45473c7ad93c4704d5d832cc90f045f0406851cc77588a0768942283813",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 0,
+        "width": 10,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 156,
+    "assets": 314
+  },
+  "notes": [
+    "Empty open hand/elbow position and E01 identity inspected; native lower anchor14 retained with scaleX/Y within5%.",
+    "No floor, painted waterline or runtime crop in image."
+  ],
+  "next": "E3.SK4 — crear solo7A/F4 de hundimiento enemigo con referencia protagonista38/F4 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del último frame."
+}

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.G0",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 74,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4a-f0",
+      "source_sha256": "e9efbf033a04170f75135b641da03ef69d0ef0e3f3ca244a51eaa7df4edddcb1",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 0,
+        "width": 10,
+        "height": 14
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4a-f1",
+      "source_sha256": "aa0336bf86dd36ac27d28646d65e0a716ceac7f70e33857a158bf325ae46dce7",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 0,
+        "width": 10,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-4a-f2",
+      "source_sha256": "f4e5d6826524bb00a67910037ff279b6aa6506f49a210c142cb2f53d99d5ed0c",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 3,
+        "y": 0,
+        "width": 9,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 27,
+    "assets": 54
+  },
+  "notes": [
+    "Referencia aliada usada solo para postura; apariencia enemiga E01 con barba, cuello rojo y equipo marrón rojizo. Referencias nativas PC/Amiga 4A verificadas.",
+    "Preparación, brazo armado y mano vacía tras suelta revisados a 12×. Proyectil y sombras independientes sin cambios.",
+    "Desde E3.D, Source difiere de 1b40748 solo por la carga de densidad publicada; este bloque artístico no modifica Source."
+  ],
+  "next": "E2.G1 — preparar granada enemiga dirección 1, 4B/F0-F2, con identidad E01 y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado."
+}

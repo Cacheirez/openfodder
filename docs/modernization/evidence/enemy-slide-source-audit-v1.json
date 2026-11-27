@@ -1,0 +1,950 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.SL",
+  "status": "PASS source and reference audit; no new art/binding",
+  "counts": {
+    "produced_contracts": 48,
+    "ai": 32,
+    "initial": 16
+  },
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "d9eac8b1e4948ed3f5fb50c31de769d3a25c1606e3271ccb50bf3a6cd6494e04",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "d9eac8b1e4948ed3f5fb50c31de769d3a25c1606e3271ccb50bf3a6cd6494e04",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "d9eac8b1e4948ed3f5fb50c31de769d3a25c1606e3271ccb50bf3a6cd6494e04",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "d9eac8b1e4948ed3f5fb50c31de769d3a25c1606e3271ccb50bf3a6cd6494e04",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 0,
+      "bbox": [
+        3,
+        2,
+        14,
+        13
+      ],
+      "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "294b80516cc5b835a21a04d9beda1aebf27cc6530402f3c28362d51bc7f819a5",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "294b80516cc5b835a21a04d9beda1aebf27cc6530402f3c28362d51bc7f819a5",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "4952ec8f6ea3fbf719b28596aa17a6fa68ae489ff6325402561621c4108d15d7",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "294b80516cc5b835a21a04d9beda1aebf27cc6530402f3c28362d51bc7f819a5",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "294b80516cc5b835a21a04d9beda1aebf27cc6530402f3c28362d51bc7f819a5",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 1,
+      "bbox": [
+        2,
+        2,
+        15,
+        14
+      ],
+      "native_signature": "4952ec8f6ea3fbf719b28596aa17a6fa68ae489ff6325402561621c4108d15d7",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "634d925139dfd6865bf396fede446c7900ec00bfd9e416794ae1b9449ef5e569",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "634d925139dfd6865bf396fede446c7900ec00bfd9e416794ae1b9449ef5e569",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "580242bcee156be059fec6ee6a0529508f691eaf5fe06d45e1451747001383b9",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "634d925139dfd6865bf396fede446c7900ec00bfd9e416794ae1b9449ef5e569",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "634d925139dfd6865bf396fede446c7900ec00bfd9e416794ae1b9449ef5e569",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 2,
+      "bbox": [
+        1,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "580242bcee156be059fec6ee6a0529508f691eaf5fe06d45e1451747001383b9",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "efa9fdee2e409ec24e7b76df6e17a1b6ab84aa2f2fbc367ababaf6953407d19f",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "efa9fdee2e409ec24e7b76df6e17a1b6ab84aa2f2fbc367ababaf6953407d19f",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "7db9129ffbfd7bcfe7e0a4448976d948598d419caba9853a292da8a091d2eb43",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "efa9fdee2e409ec24e7b76df6e17a1b6ab84aa2f2fbc367ababaf6953407d19f",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "efa9fdee2e409ec24e7b76df6e17a1b6ab84aa2f2fbc367ababaf6953407d19f",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 3,
+      "bbox": [
+        1,
+        1,
+        16,
+        14
+      ],
+      "native_signature": "7db9129ffbfd7bcfe7e0a4448976d948598d419caba9853a292da8a091d2eb43",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "c7d4ffb6fb85ad93385e26c29be543580e0838cf0e0c61785bb27045b7b9b9ed",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "c7d4ffb6fb85ad93385e26c29be543580e0838cf0e0c61785bb27045b7b9b9ed",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "a93c001f7bbaa86db4c092e551f97efc8559ad7736ebc44fb380453af82d0b59",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "c7d4ffb6fb85ad93385e26c29be543580e0838cf0e0c61785bb27045b7b9b9ed",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "c7d4ffb6fb85ad93385e26c29be543580e0838cf0e0c61785bb27045b7b9b9ed",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 4,
+      "bbox": [
+        3,
+        1,
+        15,
+        14
+      ],
+      "native_signature": "a93c001f7bbaa86db4c092e551f97efc8559ad7736ebc44fb380453af82d0b59",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "91daf1aebe82fa3847bdcaea3128c41e9909db604e0b770b0b04a456b6b337ab",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "91daf1aebe82fa3847bdcaea3128c41e9909db604e0b770b0b04a456b6b337ab",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "91daf1aebe82fa3847bdcaea3128c41e9909db604e0b770b0b04a456b6b337ab",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "91daf1aebe82fa3847bdcaea3128c41e9909db604e0b770b0b04a456b6b337ab",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 5,
+      "bbox": [
+        3,
+        0,
+        14,
+        13
+      ],
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "c5f4d583b80c99714d3580d7bb4b73347fbb602b19dd4c6f6c23016f2a593a47",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "c5f4d583b80c99714d3580d7bb4b73347fbb602b19dd4c6f6c23016f2a593a47",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "e41ae44a2d6fe321bd362cf2faca688606faade0bb90d62d37b99fb520fda360",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "c5f4d583b80c99714d3580d7bb4b73347fbb602b19dd4c6f6c23016f2a593a47",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "c5f4d583b80c99714d3580d7bb4b73347fbb602b19dd4c6f6c23016f2a593a47",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 6,
+      "bbox": [
+        4,
+        1,
+        15,
+        13
+      ],
+      "native_signature": "e41ae44a2d6fe321bd362cf2faca688606faade0bb90d62d37b99fb520fda360",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "bbcabbd345346a4d7f6f37f82cea655730b20db3419f821cfa060ed6c965fd3c",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "bbcabbd345346a4d7f6f37f82cea655730b20db3419f821cfa060ed6c965fd3c",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d",
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 1,
+      "sheet": 167,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "bbcabbd345346a4d7f6f37f82cea655730b20db3419f821cfa060ed6c965fd3c",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "person": 1,
+      "sheet": 167,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "bbcabbd345346a4d7f6f37f82cea655730b20db3419f821cfa060ed6c965fd3c",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 7,
+      "bbox": [
+        5,
+        2,
+        16,
+        13
+      ],
+      "native_signature": "a41b385d6257ee04a2d705a62fd2f250e32037edd2e53065c87eadf4d93d293d",
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134"
+    }
+  ],
+  "pose_references": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f0/source.png",
+      "sha256": "05c5e9994ce499ff6d4bbd7146548d0141cf23f971244602a078d12733a06ab8",
+      "placement": {
+        "x": 3,
+        "y": 2,
+        "width": 9,
+        "height": 9
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f1/source.png",
+      "sha256": "9d22fead2cc22143d02d91993012ffec25eae454bf03996c2d499b007b4a803e",
+      "placement": {
+        "x": 2,
+        "y": 2,
+        "width": 7,
+        "height": 9
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f2/source.png",
+      "sha256": "482a3b95066145042cc87708cb7fbdc23ca105824568bfb244cdf2c72459ef7c",
+      "placement": {
+        "x": 1,
+        "y": 1,
+        "width": 11,
+        "height": 9
+      }
+    },
+    {
+      "frame": 3,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f3/source.png",
+      "sha256": "f03e94900a936a20695f9921e3b6563e6be29e4b891b8dc521ec4eed8779af45",
+      "placement": {
+        "x": 1,
+        "y": 1,
+        "width": 11,
+        "height": 11
+      }
+    },
+    {
+      "frame": 4,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f4/source.png",
+      "sha256": "a57e457df3b48f9887ed6c415aaa96ddb9c05beec635a5acb0bc4643cece6f4d",
+      "placement": {
+        "x": 3,
+        "y": 1,
+        "width": 9,
+        "height": 11
+      }
+    },
+    {
+      "frame": 5,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f5/source.png",
+      "sha256": "267e696f74053bc8e7bb356d19222b7470eeb87abe9fa235236d3f3e9061a7ee",
+      "placement": {
+        "x": 4,
+        "y": 0,
+        "width": 9,
+        "height": 11
+      }
+    },
+    {
+      "frame": 6,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f6/source.png",
+      "sha256": "8ead1f7f35048e72dc6bbf58c43458b9e2933809244901d9c28485ea89417c98",
+      "placement": {
+        "x": 4,
+        "y": 1,
+        "width": 11,
+        "height": 9
+      }
+    },
+    {
+      "frame": 7,
+      "path": "assets/modernization/demo-a1-player-pose-a4-f7/source.png",
+      "sha256": "50e21d16f30fa5645750afdf84635d2b996dc8c9a9a19c4d85cf0a9ecc6923ce",
+      "placement": {
+        "x": 6,
+        "y": 2,
+        "width": 8,
+        "height": 9
+      }
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "Source/Sprites/Sprite_Troop.cpp",
+      "lines": [
+        823,
+        827,
+        830,
+        1293,
+        1299,
+        1308,
+        1311,
+        1313,
+        1315,
+        1330,
+        1338,
+        1343,
+        1352,
+        1357,
+        1363,
+        1369,
+        1371,
+        1373,
+        1375,
+        2113
+      ],
+      "finding": "Slide1/3 selectA4 if person0 elseA7; frame is native direction helper result/2,8directions rather than8sequential animation frames. Slide2 decelerates then switches to person aim table offset0x30 before clearing state. Early dispatch bypasses generic shadow creation. Preserve RNG/direction/speed/frame logic."
+    },
+    {
+      "file": "Source/Utils/OrderedSoldierArt.hpp",
+      "lines": [
+        31,
+        33,
+        34,
+        46
+      ],
+      "finding": "Accepted protagonistA4 uses optional ground for animations50/51/52 with geometry guards. Enemy5/36 A7 and initial5/person0 A4 need explicit eligibility during later integration, no current enemy floor PASS asserted."
+    }
+  ],
+  "shadow_facts": [
+    "NativeA7 andA4 lower3rows match pixel-for-pixel for all8directions in both retained formats; body uniform pixels differ. Native lower region plus accepted A4ground contract establishes embedded-shadow treatment, not a new independent command",
+    "Accepted protagonistA4/body export excludes embedded tail; candidate carries approved optional floor separately in same body turn. Reuse this separation for E01, qualify actual new body contact before runtime",
+    "Any real independent shadow retains order/owner association and suppresses optional floor; height/rowsToSkip/vehicle/destruction constraints remain"
+  ],
+  "reuse_result": "No exact native signature match to164existing E01poses. All8accepted protagonistA4original references and16own initial signatures verified; author new E01direction then initial master reuse with own bounds, not runtime alias.",
+  "next": "E3.SL0 — crear soloA7/F0 de deslizamiento enemigo con referencia protagonistaA4/F0 e identidad E01; respetar postura/cámara y cuerpo separado de sombra incrustada nativa. Cualificar suelo fijo aprobado, sin habilitar runtime hasta integración. Validar/publicar antes de otra dirección.",
+  "native_lower_region_comparison": [
+    {
+      "format": 0,
+      "frame": 0,
+      "lower_three_rows_sha256": "b68e34acc8198cbf8d7548ac6a25bb6f3340deabd66beb7abfb38efb0993f247"
+    },
+    {
+      "format": 0,
+      "frame": 1,
+      "lower_three_rows_sha256": "c27fd2f40468223ad184d633ac7cbb90b1533ee9618cb7fed524d27c14a814ce"
+    },
+    {
+      "format": 0,
+      "frame": 2,
+      "lower_three_rows_sha256": "589e8e9b259a022321333b4e9f4fe3121024472fd003aaba327a9b0860110705"
+    },
+    {
+      "format": 0,
+      "frame": 3,
+      "lower_three_rows_sha256": "0ca219889e92f4c6a8d782eef0a4ee7b985c11cd0c6e27bcabab7d6fc30c637e"
+    },
+    {
+      "format": 0,
+      "frame": 4,
+      "lower_three_rows_sha256": "f0fb3418c135a0e694489458992c8b2bf13234e3156a9d73baa82dbbf6ad2b29"
+    },
+    {
+      "format": 0,
+      "frame": 5,
+      "lower_three_rows_sha256": "459d25faf051584df7ed059e488bab9d44d93eba1e5844d9daced59b35ca5f64"
+    },
+    {
+      "format": 0,
+      "frame": 6,
+      "lower_three_rows_sha256": "589e8e9b259a022321333b4e9f4fe3121024472fd003aaba327a9b0860110705"
+    },
+    {
+      "format": 0,
+      "frame": 7,
+      "lower_three_rows_sha256": "8e4c981d585f590dcc82b88bf460502ed6fca6872a0e7ac045abc9eb1e1382ee"
+    },
+    {
+      "format": 1,
+      "frame": 0,
+      "lower_three_rows_sha256": "d101b3577f819ab88e7507d64ff0c5be9f41f204accbb685011464331b2470d6"
+    },
+    {
+      "format": 1,
+      "frame": 1,
+      "lower_three_rows_sha256": "d806b7d109fc6d250a84a74d3928ced39994c74266eb659fe4ff5331559de231"
+    },
+    {
+      "format": 1,
+      "frame": 2,
+      "lower_three_rows_sha256": "07e5ab4d3f66003599fe2dec47c5bfa05f11141fb3815777ad3ca9c20af31993"
+    },
+    {
+      "format": 1,
+      "frame": 3,
+      "lower_three_rows_sha256": "2b0fe6f895ab9330a711fbc60a7558b2a020b0803a246fdfebdd3111639f45a1"
+    },
+    {
+      "format": 1,
+      "frame": 4,
+      "lower_three_rows_sha256": "c42ded967542a376a485a02a859187c59ea808f412f7c867ad2c9cefcf297e2a"
+    },
+    {
+      "format": 1,
+      "frame": 5,
+      "lower_three_rows_sha256": "b7135e4ff8b8e585bcfd25c4fd563614f43e865b5a8c817641b0ab09deaff338"
+    },
+    {
+      "format": 1,
+      "frame": 6,
+      "lower_three_rows_sha256": "07e5ab4d3f66003599fe2dec47c5bfa05f11141fb3815777ad3ca9c20af31993"
+    },
+    {
+      "format": 1,
+      "frame": 7,
+      "lower_three_rows_sha256": "ee0f0b413db00eeddf7c38966b188acde7f876eda454afcfbf03bec386cd018d"
+    }
+  ]
+}

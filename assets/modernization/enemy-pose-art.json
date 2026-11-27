@@ -1,0 +1,660 @@
+{
+  "schema": 1,
+  "status": "internally checked available masters; not runtime integration or Miguel acceptance",
+  "poses": [
+    {
+      "sheet": 66,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f0/manifest.json",
+      "source_sha256": "e4327830f296a66ccd78cbd18b8710dc52e0726fa0f639feb2dc665a0ee7fa32",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f0-8x",
+          "sha256": "d8a301637f56230a9794759bf0db1f3a07d2b34b5d4dad8db51f218729456075",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f0-12x",
+          "sha256": "9fd5a2cb49142678ae25d6b56358b459e679956d8bc5e6c4eaa0a7b95145a200",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 66,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f1/manifest.json",
+      "source_sha256": "3998579eeb76f9667109464b6e3fee6024d850635b58360fc532f6fe71a52c2b",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f1-8x",
+          "sha256": "682ddbc2572042d1ea20bf0871ab344cc4ba9ab9449cf6e59162b99d3ce60a8f",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f1-12x",
+          "sha256": "677e0c722a3bf53632b69ff0a3b5ce40e0fe10a4086b634a3ddae1f6358a8732",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 66,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-42-f2/manifest.json",
+      "source_sha256": "2081d9764457e4a75271c30c3b7d8a554edf9fdf219c1d970cfcdaf44c69c7a5",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-42-f2-8x",
+          "sha256": "c5fcbc6aa680b2d2737aae970f42f028810f8a8ba6e9bfa1ecb1657e08922c37",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-42-f2-12x",
+          "sha256": "36069bea47c356be989ca0730d8872ec8f66dce9d068d3e0c80d97f48e2c7c46",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 67,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f0/manifest.json",
+      "source_sha256": "a65b0f7f06e4bf277ffba619f4484f9c8ee7e2b5643b64ae6b401bb1682f2ded",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f0-8x",
+          "sha256": "71e312baf7dcaab5cdcbd236bf13a82b34d757de76b7a9b6aab636d89e4ef18b",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f0-12x",
+          "sha256": "f3dfad0ff2b2d73f0f9651676836894c10a6e5de43fc11024da8770ce372576d",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 67,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f1/manifest.json",
+      "source_sha256": "55ccc8efaaad1e44e8fb998f012d8a233c0849810bab3db25c69019d17a47860",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f1-8x",
+          "sha256": "6c0083994f3ba718043e8f0302e33310a47dfa8910d20c5e441b34260ecf56d2",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f1-12x",
+          "sha256": "2517f9c2bf4b0fc5ae2c1307064b96e1e79bb9a988d0b5352638b294b4001c3b",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 67,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-43-f2/manifest.json",
+      "source_sha256": "5ff4c3439f59473659b47d98d2da211257c45d60a371ec305425165565b1a981",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-43-f2-8x",
+          "sha256": "e8d07db1883830dad4877523b0a219bba3a29bf094d8b057677b22e48354d3af",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-43-f2-12x",
+          "sha256": "d39b75fe5ce22f203f1459a3b8e30f3b0bc33fffd3b5c94f504141348e3fbf22",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 68,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-44-f0/manifest.json",
+      "source_sha256": "2e6a3726f02369bae471030c289eeea64c218c9b772761006af7ba145f087575",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-44-f0-8x",
+          "sha256": "7341f65e2ad14944560055ce5c0d56650498b4d6e7d339fc5c12c0aa69185d2e",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-44-f0-12x",
+          "sha256": "a656ad305af8fbc73723a27c14d19f2d8b7e34c376b961c144ca346dcd964013",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 68,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-44-f1/manifest.json",
+      "source_sha256": "5d53188d8988bc90ccd1b70c55cf40c114cfea6ccd0bb2534c5716ba9ca19f4c",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-44-f1-8x",
+          "sha256": "e88ea45e84b87577b72cac8e51341eec3c82441477cd990274845d4d0c428c6b",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-44-f1-12x",
+          "sha256": "13b79f8272b8553b227ae0ae487f21b4750c91a176fafdf26803a9d9cfdd603a",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 68,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-44-f2/manifest.json",
+      "source_sha256": "dedbb1ee896280d99f84f9d11e92b1edca963c693caf6244d128409de5c5f6ca",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-44-f2-8x",
+          "sha256": "9bf3212a873d88403660df7feade4645e426d3596a2eb51c27c2d2d12c986fd5",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-44-f2-12x",
+          "sha256": "5f4a307929833ca4d65cae7f2dc5eeffbf21d9416041d4e8950455ebf6921112",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 69,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-45-f0/manifest.json",
+      "source_sha256": "6f95270b625bf147f8b3b5b96b310e99aaa55272dc3a7378c0b9c3c1dd8a467d",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-45-f0-8x",
+          "sha256": "e01bcdf18a1a6401f8b69382eb92df6338730b2793d7161b74dae79736132dc3",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-45-f0-12x",
+          "sha256": "a810d98fda77d47837d402e25ec58d09a2ac929652e96f442af14b4b8594298b",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 69,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-45-f1/manifest.json",
+      "source_sha256": "6cf5d1cdc1f6efef6173dac2920c8ed1a6fedab266fc93a079059281b7324bc3",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-45-f1-8x",
+          "sha256": "12cdd3c9727c38c83b437b48cf1e507e7d836f4774ce533399cde71fa8e0032a",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-45-f1-12x",
+          "sha256": "c3e62bfcbe674c8203f3c121b50ac884f9d80a6f890748c4a16d450c2596f807",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 69,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-45-f2/manifest.json",
+      "source_sha256": "0f14e584cc9c6654ca7b99d89ac0ed06202feb1b4b6123ef46d54835af39b65b",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-45-f2-8x",
+          "sha256": "957fd7ea3a9bc4a753547fe3e51b8b97b5ea07fd463810d84f1d2e5001caa71d",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-45-f2-12x",
+          "sha256": "9a2189011bf1154ecadd030e7ef84f97fc066f1de6e042d4c6cf0ac025ec7e94",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 70,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-46-f0/manifest.json",
+      "source_sha256": "bd1780bb1b366d15facc96f675071c4292000d5dcb7bea757e2649596255a8bb",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-46-f0-8x",
+          "sha256": "2c4e06181230f2c443af91c9236d6e6d33aa4b73a3f259826334458bc1ad2c78",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-46-f0-12x",
+          "sha256": "df70294bfe2f01a0ab1e23298e1e3a9bda67e2f55643a37b9721102f835d2cc9",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 70,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-46-f1/manifest.json",
+      "source_sha256": "c96dc5e4e2a8f087d8d53590be16174634821821f5d82267041993aae1bff679",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-46-f1-8x",
+          "sha256": "4e264d5dd82cea4030ef9674aa275df95f7c452f72d5ad6b511d9d2eb588acf5",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-46-f1-12x",
+          "sha256": "07596c662abc22394a2009edd9af72bf630b3239fe57e6596b3de6d4e9fe1529",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 70,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-46-f2/manifest.json",
+      "source_sha256": "487492906323d5c543b57dea12d56f9dfaeadd17723048224b03d64f38e901f1",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-46-f2-8x",
+          "sha256": "bb37eb8b17d42f4ff0992a0a34d6a0de73d3752de9d8d45706c95edb53aa194d",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-46-f2-12x",
+          "sha256": "dbcb6f242bfb06113d44512ba6d79a4925555bb7a9123e16b67c328ca3adc3c5",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 71,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-47-f0/manifest.json",
+      "source_sha256": "efa2e376a21e7c2624828ad7426351852e4dc4df2ebe6cdd3e0e9a66fb48ef98",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-47-f0-8x",
+          "sha256": "0a7a2ba770deed092f2717017f2e78f95d0c2629b3ff53b7ac61a612c1362355",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-47-f0-12x",
+          "sha256": "b53f688f38994348ae5cff143edfbc699e953c43847f0190246f8e1cf8039478",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 71,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-47-f1/manifest.json",
+      "source_sha256": "ab1f8aae8efe778a21416b1c1fab2c41e1c07d5b79045c8ed5457e49a026d51c",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-47-f1-8x",
+          "sha256": "d2f31b334656928d9328382db97f379afdea9331fe6f923287d6433d3c213e79",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-47-f1-12x",
+          "sha256": "46ffa01edcf32eee672701646ef09877188b45c945ada0866b4e2ad21d03fabc",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 71,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-47-f2/manifest.json",
+      "source_sha256": "8bfce7057b0aee41fbc5ef217a3be3d427c9faad89d69f6a08056295934d1648",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-47-f2-8x",
+          "sha256": "97e51f833a500b618eed401db2ba7e92db131a94a4ed3931c988728d1596d1df",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-47-f2-12x",
+          "sha256": "f8aae933854a69fdec2c0787d5d98a44aa80181fb0ea7e1b613f14f434317586",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 72,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-48-f0/manifest.json",
+      "source_sha256": "2d56597e61a0c83b914cbfb37db6f0373d99d2e9a1ae6098be5fcfc9514555fa",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-48-f0-8x",
+          "sha256": "58eeb718e19a0b4ae781b871f5888fe8e104f31141374bd7e881b00d06965f9a",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-48-f0-12x",
+          "sha256": "e9e44deda7857d446651f427d4596ca37c6c5850268db4a6d2bbfa120e108eb2",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 72,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-48-f1/manifest.json",
+      "source_sha256": "8ce67c768eb174a184d5f2b9926b31c709b360ccaa8c90694b308c92b3be79e6",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-48-f1-8x",
+          "sha256": "db899f324dc3040581bda05b0df9d222052b6d89d99f627adaa2b896b1832112",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-48-f1-12x",
+          "sha256": "e74b61aa53461030637a8bed5319acc1befce398d143374956ca3701f6b8b32e",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 72,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-48-f2/manifest.json",
+      "source_sha256": "c7e9447d92c8841b76ee9713ec9f5d2d7c4008f7a217690e888d76d8a28b01ee",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-48-f2-8x",
+          "sha256": "ed972d3c9f50720014c40b3da54f41a56746bd2f3517db4cd836ff0ca5bc66f2",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-48-f2-12x",
+          "sha256": "572287757011318592c077c9e5391efeedede197ac8e72c8248312a81a52d92c",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 73,
+      "frame": 0,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f0/manifest.json",
+      "source_sha256": "4901105f3d8637af89425c0286e26d286d2355e073307db1e71cb90998437c33",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f0-8x",
+          "sha256": "3dcec78ad5e6403ef272c00f069892b35da59033a69ca7cd819a0cf3f7caf55f",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f0-12x",
+          "sha256": "57f628a741bef470cd4d7236600bfb9d27a56badb7c6f5d7d399169cf0d1bc68",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 73,
+      "frame": 1,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f1/manifest.json",
+      "source_sha256": "768c4f3acb35592ed8d06a63296ab4b2469d31e119371cd58a1a7e5a38a27b45",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f1-8x",
+          "sha256": "ec6950ed5ff3fae7cfadb8ba8b32c706237acd6a4ac12db8fba4ac3c4f15b893",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f1-12x",
+          "sha256": "e5385d91cf1c6e3cb54668a6b18cc0056bbebc8571514c791bd732925a93f601",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 73,
+      "frame": 2,
+      "family": "walk",
+      "manifest": "assets/modernization/demo-a1-enemy-walk-49-f2/manifest.json",
+      "source_sha256": "9893948febdc13ee252863adb65e79a9723fcb337731353291bcbe4130661304",
+      "assets": {
+        "8": {
+          "id": "enemy-walk-49-f2-8x",
+          "sha256": "a5353eefc68cb3345f4dc97427eb10dfc18ac917604f383e3d1ece50a69b3a56",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-walk-49-f2-12x",
+          "sha256": "decd308108972af8119a2802a1784204e56a487de9466ee2f658ff390aa5c36c",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 89,
+      "frame": 0,
+      "family": "prone",
+      "manifest": "assets/modernization/demo-a1-enemy-prone/manifest.json",
+      "source_sha256": "6378ee0023531c8045e196ff06f7897af18a6ad531e07fd8a90f8942c84783cf",
+      "assets": {
+        "8": {
+          "id": "enemy-prone-59-f0-8x",
+          "sha256": "a6112cabbd00664b8e2d2bf5e62d364abbf4c6f42e9379cfdc1bd420f0306ebf",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-prone-59-f0-12x",
+          "sha256": "44d03ee4fd5a1e1c91792b5ac4f1dcd424c44cc62b085f7119866053367e365f",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    },
+    {
+      "sheet": 113,
+      "frame": 1,
+      "family": "death",
+      "manifest": "assets/modernization/demo-a1-enemy-death-71-f1/manifest.json",
+      "source_sha256": "c091f9328fcdcafb0bdb4b4a0b68120bc830de71420a9438ac8e7bb1c985928d",
+      "assets": {
+        "8": {
+          "id": "enemy-death-71-f1-8x",
+          "sha256": "419aa13ec909eb268cf8db1e06c6bc511055a8a8af4f908976fd95d61fcf7a0b",
+          "size": [
+            128,
+            112
+          ]
+        },
+        "12": {
+          "id": "enemy-death-71-f1-12x",
+          "sha256": "945af734af1198aae4f054805681930d1edf2c0005bf14945b5cb30dcadb0966",
+          "size": [
+            192,
+            168
+          ]
+        }
+      }
+    }
+  ],
+  "counts": {
+    "poses": 26,
+    "assets": 52
+  }
+}

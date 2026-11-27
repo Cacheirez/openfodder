@@ -1,0 +1,14 @@
+{
+  "commit": "d2e05e88e26cd3f0c437bcaab003b3d3c886e7ce",
+  "run_id": 40903703370,
+  "job_id": 123552602053,
+  "conclusion": "failure",
+  "step": "Build",
+  "errors": [
+    "build_soldier_art.cpp(19,263): error C2039: to_string is not a member of std",
+    "error C3861: to_string identifier not found"
+  ],
+  "fix": "Add explicit #include <string>; no algorithm or engine change",
+  "replacement_ci": "pending",
+  "linux_previous": "still in progress before replacement; not a claimed full PASS"
+}

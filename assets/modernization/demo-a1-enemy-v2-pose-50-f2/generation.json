@@ -1,0 +1,16 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Single full-body isolated E01 enemy game animation sprite50/F2. First reference defines action/stance: overhead three-quarter RIGHT PROFILE facing RIGHT screen, throwing hand extended forward RIGHT with open EMPTY fingers after release, opposite hand supports compact lowered rifle RIGHT; no projectile in body sprite, planted boots. Third tiny image is own native pose authority. Second approved E01master fixes camera/identity: plain grey-green helmet, grey-olive subdued uniform, short dark jaw beard, small brick-red neck cloth, reddish leather straps/pouches and moderate painted style with upper-left light. Do not retain allied green camouflage. Keep adult compact proportions and consistent helmet/body scale, NARROW/TALL occupied silhouette WIDTH:HEIGHT about0.5 to fit native7x14. Compact elbows and rifle close to body, short foreshortened gesture while keeping hand action clear. Entire hand/muzzle/helmet/boots in frame, no mirror of left-facing art, no camera rotation to front/back, no floor/cast shadow/text/extra figures. Truly transparent background. Fourth image is the first E01frame of this exact direction; keep its identity, camera, helmet/body scale and narrow compact proportions while changing action per first reference.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "edac70cb7743ddf8f53809f2daf36b9cdabf7aee1b6c1b9961701bbd024f0a85",
+  "references": [
+    "C:/Users/migue/Projects/openfodder/assets/modernization/soldier-grenade/uniform-a/s14-f2-verde-a.png",
+    "C:/Users/migue/Projects/openfodder/assets/modernization/demo-a1-enemy-v2-walk-48-f0/source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-native-audit-v2/native/1-5-50-f2-7a44b4a6.png",
+    "C:/Users/migue/.codex/generated_images/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/exec-70eb497e-c89b-4593-bbd5-7fddff5fad6e.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

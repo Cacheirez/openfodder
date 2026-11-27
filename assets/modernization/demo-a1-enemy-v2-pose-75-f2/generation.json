@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve painted game sprite. Create source-known native frame75/F2 using image1 as the E01 identity/style master, and images2/3 (PC/Plus SAME F2 entry) as exact posture references. Keep the grey-green plain helmet, grey-olive uniform, short beard, small brick-red neck cloth, reddish-brown leather, brown boots and elevated camera of image1. Follow F2's specific empty-arm and foot posture: arm on LEFT SIDE OF PICTURE is bent outward at the elbow with its hand lowered to waist/lower-chest level during the swing; it is NOT held beside the helmet as in F1. Opposite right-side arm stays low near the body. Retain the figure's native screen-left/down-left orientation and F2's offset stepping feet, with the opposite leg subtly forward compared with image1. Whole isolated upright figure, complete hands/boots visible, moderate painted rendering with soft upper-left light and genuine transparent RGBA margins. No weapon or held objects, no floor/ground shadow/water/effects/text/emblems; do not mirror or copy civilian costume. Engine retains native frame cycle.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "3b037e48a43d4968139e785d273076428170fb0444fe2b9b3fd3487150b08ce4",
+  "references": [
+    "assets/modernization/demo-a1-enemy-v2-pose-75-f0/source.png",
+    "private:enemy-mode-zero-d3-audit/75-f2-native-0.png",
+    "private:enemy-mode-zero-d3-audit/75-f2-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

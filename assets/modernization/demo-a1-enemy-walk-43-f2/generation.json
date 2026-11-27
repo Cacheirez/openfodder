@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit, CF1 enemy walk direction1 FRAME2 sheet43. EDIT IMAGE1 new lower-left enemy frame0 master. Preserve helmet/head, upper body/arms/rifle, front three-quarter elevated camera toward LOWER LEFT, dark olive uniform, reddish brown harness/backpack, exact identity and moderate painted finish. Change ONLY legs/boots into frame2 opposite stepping pose in IMAGE2: one boot raised/forward toward screen-left while the other carries weight lower-right, opposite phase to frame0 and distinct from feet-together frame1. IMAGE2 pose reference only; IMAGE3 native frame2; IMAGE4 C01 finish. Same tall occupied portrait proportions around0.60 width/height compatible8-by14; both boots and muzzle fully visible on transparent margins; upper-left light. No mirrored pose, new direction, extra gear, floor, text or baked shadow. One matching enemy animation key.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s1-f2-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-43-f0/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-43-f2-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "5ff4c3439f59473659b47d98d2da211257c45d60a371ec305425165565b1a981",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

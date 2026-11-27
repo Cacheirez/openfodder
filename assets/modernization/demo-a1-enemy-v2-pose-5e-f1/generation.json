@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Create the second swim stroke of image3, keeping the same E01 enemy, plain grey-green helmet, grey-olive cloth, reddish-brown straps, moderate painted style, soft upper-left lighting, camera and DIRECTLY SCREEN-UP facing from behind. Image1 original native5E/F1 determines frame1 hand/arm positions: change the swim stroke to frame1 (leading left-on-image arm drawn back; right arm near waterline as native) rather than copying frame0's fully extended left arm. Image2 approved identity master governs appearance. Face/jaw remain hidden behind the helmet; no face or beard on back of head. Keep lower body submerged and only small native-scale ripples/wake. One complete isolated waterline game cutout, generous transparent margin, transparent RGBA outside the small wake. No floor, ground shadow, broad water background, text, insignia, new gear, mirroring or changed direction.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "31076d7d5ff5859526ea2bd3e5e2a1446def1d5b0042df105e15912efaaa15c4",
+  "references": [
+    "private:enemy-native-audit-v2/native/1-5-5e-f1-7a44b4a6.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "assets/modernization/demo-a1-enemy-v2-pose-5e-f0/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

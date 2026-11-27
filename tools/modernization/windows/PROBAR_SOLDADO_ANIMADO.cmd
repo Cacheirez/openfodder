@@ -1,0 +1,20 @@
+@echo off
+setlocal
+set "OPENFODDER_HD_DIAGNOSTICS=1"
+set "OPENFODDER_HD_COMPARE=0"
+set "OPENFODDER_SOLDIER_BATCH=1"
+cd /d "%~dp0"
+set "OPENFODDER_MISSION_SCREEN_TRANSFORM=1"
+set "OPENFODDER_MISSION_SCREEN_FIT=1"
+set "OPENFODDER_CAPTURE_SOLDIER=1"
+set "OPENFODDER_REPLACE_SOLDIER_POSE=0"
+set "OPENFODDER_SOLDIER_ART=0"
+set "OPENFODDER_PRESENT_MISSION_LAYERS=1"
+set "OPENFODDER_AUDIT_MISSION_LAYERS=0"
+set "OPENFODDER_SOLDIER_HD=12"
+openfodder.exe --window --alternate-mouse --skipintro --campaign "Amiga The One" --mission 1 --phase 2 > SOLDADO_ANIMADO.log 2>&1
+if errorlevel 1 (
+  echo Error: see SOLDADO_ANIMADO.log
+  pause
+)
+endlocal

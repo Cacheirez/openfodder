@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.ISK2",
+  "status": "PASS verified master reuse and own anchors; integration/gameplay pending",
+  "sheet": 56,
+  "frame": 2,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-7a-f2/manifest.json",
+  "source_sha256": "fd0a1bde89a4026b0935e8b218e7e90551bda04e881e0ef77ba765c1274ad1d6",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 2,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "1993ef45eecc30bf6e18df9015b3d257dbbdace6e205f75be9546069ddda9c9d"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 56,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "1993ef45eecc30bf6e18df9015b3d257dbbdace6e205f75be9546069ddda9c9d"
+    }
+  ],
+  "placement": {
+    "x": 2,
+    "y": 0,
+    "width": 10,
+    "height": 14
+  },
+  "derivatives_copied_unchanged": true,
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-38-f2-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-38-f2-8x",
+      "sha256": "c062fead45b49ea7e202727d2b954d1f663f372680ebed80d3b3dfcbf69ad7fd",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-38-f2-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-38-f2-12x",
+      "sha256": "885b624643b18d9f2c4ee04c14a93a2707009bcc772a14e84bddc18608da2df7",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 161,
+    "assets": 324
+  },
+  "validation": [
+    "Original E01generation refers to exact friendly38frame; both native signatures match that reference",
+    "Own source person0/type5 and alpha bounds/lower anchor verified; no unknown resource or runtime alias",
+    "No ground/waterline painted; native crop/independent shadows preserved",
+    "Original sources/previous exports/protagonists unchanged"
+  ],
+  "next": "E3.ISK3 \u2014 exportar solo38/F3 de hundimiento inicial5/persona0 desde maestro E01 de7A/F3; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame."
+}

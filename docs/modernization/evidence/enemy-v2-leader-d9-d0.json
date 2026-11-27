@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-11-27",
+  "block": "E2.LEADER.D9.D0.ART",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 0,
+  "sheet": 217,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f0",
+      "source_sha256": "b2947ccff7079af73831531f7918376610b82934559c5047f875bcd241389261",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f1",
+      "source_sha256": "768be19e6efafc43af25f43a512cc146235124434bd990cce17099c3e3b73351",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-d9-f2",
+      "source_sha256": "adfde1861088c95f3e87dd670fdcaac4fa926b748968e5a3887766b2fa072d60",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 6,
+        "height": 12
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 243,
+    "assets": 512
+  },
+  "notes": [
+    "Only106/person2/D9/F0..2, frontal unarmed arms-low postures, own native gestures and E01/42camera; exact native body-prefix comparison found no D8/existingapprovedbody alias.",
+    "PC-only exports retain signed empty Amiga; common placement5,0,6,12fits own native[4,0,12,14]box and support12separates tail while preserving body/boot color of row11.",
+    "Original three images and exact C++8x/12x derivatives retained, ScaleX/Ydeviations below2%, no creative Python pixel edits. Distinct step/hand phases, original source0-1-2-1timing unchanged.",
+    "Outer alpha samples0 and exact native-size body/contact composition inspected. Six feet must use one fixed lower-right painted contact,49previous contact groups exact.",
+    "D8poses24prepared and first3D9prepared; full leader51poses/runtime integration remain pending. Source/simulation/RNG/clock/direction/frame/classic and marker41unchanged, no global Miguel acceptance inferred."
+  ],
+  "next": "E2.LEADER.D9.D1.AUD — auditar únicamente líder106/D9/F3..5, dirección1: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.",
+  "source_unchanged_since": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "shadow_qualification": {
+    "groups": 50,
+    "body_derivatives": 230,
+    "previous_groups_unchanged": 49,
+    "new_group": {
+      "family": "leader-d9",
+      "direction": 0,
+      "owner_type": 106,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 44
+    },
+    "validation": "All6feet covered and fixed lower-right projection; exact prior groups unchanged. Projection algorithm unchanged since4negative/positive tests passed Windows/Linux inD0, not rerun.",
+    "runtime": "Leader eligibility inactive; no candidate/executable activation inferred",
+    "private_native_size_review": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d9-d0-authoring\\native-size-contact-review.png"
+  }
+}

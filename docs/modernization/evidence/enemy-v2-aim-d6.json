@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E2.A6",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 6,
+  "sheet": 88,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-prone-58-f0",
+      "source_sha256": "0ac268e2e3456d04b3fa2912ec404c395c066879c31aada2ea2738b50a05bc06",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 2,
+        "width": 8,
+        "height": 11
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 35,
+    "assets": 70
+  },
+  "notes": [
+    "Perfil derecho propio, sin reflejar el izquierdo. E01 conserva cámara, postura y arma; derivados inspeccionados.",
+    "Apuntado bajo: ocho direcciones disponibles. Contacto se cualifica sin cambiar píxeles; candidato congelado aún no actualizado; aceptación visual global pendiente."
+  ],
+  "next": "E3.A — integrar las ocho poses de apuntado bajo E01 en candidatos técnicos y verificar sombras por propietario5/36, geometría, faltantes y presupuesto. Conservar candidatos/lanzadores anteriores; no presentar lote parcial como final."
+}

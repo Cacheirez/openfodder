@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/DirectionLUT.hpp"
 
 const int32 CAMERA_PAN_TO_START_ACCELARATION = 0x80000; // Dos: Original 0x80000
 const int32 CAMERA_PAN_TO_SQUAD_ACCELERATION = 0x20000; // Dos: Original 0x20000
@@ -290,7 +291,7 @@ void cFodder::Camera_Speed_Calculate()
     //  Calculate maximum right position of camera
     const int32 originXPixels = (int32)getMapVisibleOriginX() << 4;
     Data0 = originXPixels + getMapVisibleWidthPixels() - getCameraWidth();
-    Data0 = (Data0 << 16) | (Data0 >> 16);
+    Data0 = wrapShiftLeft32(Data0, 16) | (Data0 >> 16);
 
     int32 Data4 = mCameraX + mCamera_Speed_X;
     if (Data4 > Data0)
@@ -301,7 +302,7 @@ void cFodder::Camera_Speed_Calculate()
     // loc_11BE8
     const int32 originYPixels = (int32)getMapVisibleOriginY() << 4;
     Data0 = originYPixels + getMapVisibleHeightPixels() - getCameraHeight();
-    Data0 = (Data0 << 16) | (Data0 >> 16);
+    Data0 = wrapShiftLeft32(Data0, 16) | (Data0 >> 16);
 
     Data4 = mCameraY + mCamera_Speed_Y;
 
@@ -704,45 +705,13 @@ void cFodder::Camera_Acceleration_Set()
 
 int16 cFodder::Direction_Between_Points_LUT(int16 &pX1, int16 &pY1, int16 pX2, int16 pY2)
 {
-
-    int16 Data10 = 0, Data14 = 0;
-
-    pX1 -= pX2;
-    pY1 -= pY2;
-
-    if (pX1 < 0)
-        Data10 = 1;
-
-    Data10 = -Data10;
-    if (pX1 < 0)
-        pX1 = -pX1;
-
-    if (pY1 < 0)
-        Data14 = 1;
-
-    Data14 = -Data14;
-    if (pY1 < 0)
-        pY1 = -pY1;
-
-    int16 count = 0;
-    for (count = 0x0E; count >= 0; --count)
-    {
-        if (pX1 & (1 << count))
-            break;
-        if (pY1 & (1 << count))
-            break;
-    }
-
-    count -= 4;
-    if (count >= 0)
-    {
-        pX1 >>= count;
-        pY1 >>= count;
-    }
-    pY1 <<= 5;
-    pY1 |= pX1;
-
-    pY1 = mMap_DirectionsBetweenPoints[pY1];
+    const int32_t dx = int32_t(pX1) - int32_t(pX2);
+    const int32_t dy = int32_t(pY1) - int32_t(pY2);
+    const int16 Data10 = dx < 0 ? -1 : 0;
+    const int16 Data14 = dy < 0 ? -1 : 0;
+    const DirectionLutSample sample = directionLutNormalize(dx, dy);
+    pX1 = static_cast<int16>(sample.x);
+    pY1 = mMap_DirectionsBetweenPoints[sample.index];
     if (pY1 < 0)
         return -1;
 

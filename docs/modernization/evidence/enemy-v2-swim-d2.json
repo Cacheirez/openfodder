@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E2.S2",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 2,
+  "sheet": 92,
+  "frames": [
+    0,
+    1
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-5c-f0",
+      "source_sha256": "2c3a38cb0d3f361060c5a9207f2ea781ea064cf9a6dfb7497faf0ee57366cb2b",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 0,
+        "y": 3,
+        "width": 15,
+        "height": 11
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-5c-f1",
+      "source_sha256": "98c5282d1b750957311a01f37fa531b3501c6852d8727e266f2b4e3acdf129b1",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 0,
+        "y": 3,
+        "width": 15,
+        "height": 11
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 49,
+    "assets": 98
+  },
+  "notes": [
+    "Native swim profile, waterline and two distinct strokes retained; no mirroring.",
+    "Explicitly excluded from ground paint; no submerged parts invented. Runtime/gameplay acceptance pending."
+  ],
+  "next": "E2.S3 — modernizar natación enemiga5D/F0,F1, dirección3, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0."
+}

@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E3.CI",
+  "status": "PASS full Windows push + Linux PR + H6 for exact code/art HEAD; not all PR checks green",
+  "tested_head": "76db816c7f1d797f60df8714a4d3d890b1589357",
+  "runs": [
+    {
+      "id": 45687322096,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45687322096",
+      "successful_steps": 30,
+      "non_success": []
+    },
+    {
+      "id": 45687335306,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45687335306",
+      "successful_steps": 57,
+      "non_success": []
+    },
+    {
+      "id": 45687334996,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45687334996",
+      "successful_steps": 11,
+      "non_success": []
+    },
+    {
+      "id": 45687335234,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45687335234",
+      "successful_steps": 26,
+      "non_success": [
+        {
+          "name": "H6 - six-key batch publication and original Amiga H3",
+          "conclusion": "cancelled"
+        }
+      ]
+    },
+    {
+      "id": 45687322051,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Cacheirez/openfodder/actions/runs/45687322051",
+      "successful_steps": 57,
+      "non_success": []
+    }
+  ],
+  "windows_pr_duplicate": {
+    "id": 45687335234,
+    "conclusion": "cancelled",
+    "annotation": "The job has exceeded the maximum execution time of 1h0m0s",
+    "not_game_failure": true,
+    "equivalent_windows_push_pass": 45687322096,
+    "same_head_and_tree": "PR base4e748c656eed0ab5fa440d773e7eb97b9eca5daa equals origin/master and is ancestor of HEAD; default checkout source trees equal; no event-specific test paths",
+    "rerun": "Not repeated: same exact code already passed complete Windows controls"
+  },
+  "python": "87 tests PASS locally",
+  "local": "Both8x/12x candidates:679real bank draws per platform,140modern,539classic; ASan/UBSan Windows, ASan/UBSan/LSan Linux PASS",
+  "gameplay": "PENDING; no enemy final acceptance or executable delivered",
+  "next": "E3.V0 — contrastar proporciones de natación5A/F0,F1 (una dirección) frente al maestro y referencia nativa: el ajuste independiente X/Y parece alargar el casco. Preparar comparación y corregir solo si se confirma, conservando fuentes, derivados/candidatos anteriores, caja16×14, ancla y agua. Después retomar daño enemigo62/F0,F1.",
+  "verified_date": "2026-11-26"
+}

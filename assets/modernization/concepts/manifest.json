@@ -1,0 +1,52 @@
+{
+  "archived_on": "2026-10-28",
+  "provenance": "Original imagegen concepts recovered without re-encoding; no commercial image inputs per original generation briefs.",
+  "selected": "C01-painted.png",
+  "limitations": "Concept sheets, not game screenshots, pixel-perfect comparisons or production atlases. Generated thumbnails are illustrative. Exact bytes preserved; prompts do not reproduce stochastic generation bit-for-bit.",
+  "files": [
+    {
+      "file": "B00-initial.png",
+      "original_name": "Soldado 2D en jungla: ficha conceptual.png",
+      "sha256": "207095b034d57fb69705f500abf1cd6133fc9d6dcddd17c400f92e5ae348873c",
+      "bytes": 1529425,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "status": "B inicial, histórica"
+    },
+    {
+      "file": "B01-clean.png",
+      "original_name": "Soldado de oliva en sendero selvático.png",
+      "sha256": "397bacb0697479d858e830c709003bb44ecf4a5e53785d631ff10a341a355d9c",
+      "bytes": 1397991,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "status": "B refinada, no elegida"
+    },
+    {
+      "file": "A01-pixel.png",
+      "original_name": "Soldado en la jungla, píxel refinado.png",
+      "sha256": "26c9a4e78c10d91e3c6f3c21caea418a64de4b5d1e5254c493a26f1b2860ea97",
+      "bytes": 1335298,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "status": "A descartada"
+    },
+    {
+      "file": "C01-painted.png",
+      "original_name": "Soldado de jungla en estilo pintado.png",
+      "sha256": "221be3bd269d96a4cd9ed44df94bbc2e22838d34c3091053bd9500367c512bbf",
+      "bytes": 1620302,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "status": "C elegida por Miguel"
+    }
+  ]
+}

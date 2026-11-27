@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.T2b",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export and format-specific native integration; not Miguel gameplay acceptance",
+  "direction": 2,
+  "sheet": 116,
+  "frames": [
+    2
+  ],
+  "packages": [
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-74-f2",
+      "source_sha256": "e485b3b92fe911ce9212632b16e07ee702f4df9e8fb7ff137f2db3e47ac1f033",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 3,
+          "y": 0,
+          "width": 9,
+          "height": 14
+        },
+        "1": {
+          "x": 3,
+          "y": 1,
+          "width": 7,
+          "height": 11
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "See enemy-mode-zero-first3-integration-v1.json:679native draws per density/platform, sanitizers, anchor cross-wire negative test and23Python tests PASS",
+  "available_counts": {
+    "poses": 128,
+    "assets": 258
+  },
+  "notes": [
+    "Explicit E01interpretation of source-known74/F2 using PC/Plus posture references; TheOne native silhouette remains a separately signed resource. This is authoring reference, never native raster equivalence or a civilian-family rollout.",
+    "One preserved original, fourderivatives tagged pc/amiga. PC placement3,0,9,14 and Amiga3,1,7,11 retain native lower anchors14/12, logical16x14; XYratios1.021/1.010.",
+    "Registry/preparer select asset by source format; common art unchanged. Every produced format must have complete8x/12x pair, no duplicate, unknown format or wrong native alpha bounds.",
+    "No ground added, native independent commands/height preserved. Runtime integration and regression rejection checks recorded separately before publication; Miguel gameplay acceptance pending."
+  ],
+  "next": "E3.F0 \u2014 verificar y exportar ca\u00eddaB8/F0, direcci\u00f3n0, de enemigos5/36 reutilizando maestro E01 de72/F0 por igualdad nativa comprobada. Mantener firmas/anclas propias, altura y sombra independiente; sin suelo a\u00f1adido ni alias autom\u00e1tico. Solo esta direcci\u00f3n antes de validar/publicar.",
+  "integration_evidence": "docs/modernization/evidence/enemy-mode-zero-first3-integration-v1.json"
+}

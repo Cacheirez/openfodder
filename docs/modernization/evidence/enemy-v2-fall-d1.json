@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.F1",
+  "status": "PASS exact E01 art/geometry reuse; native runtime integration and Miguel gameplay pending",
+  "direction": 1,
+  "sheet": 185,
+  "frame": 0,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-72-f1/manifest.json",
+  "source_sha256": "544414a4c38df726f607fe1fb50158cfce895d0c1de1175703a23f020456fb8c",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 185,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "source_sheet": 114,
+      "source_frame": 1
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "sheet": 185,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "source_sheet": 114,
+      "source_frame": 1
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 185,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "source_sheet": 114,
+      "source_frame": 1
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "sheet": 185,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef",
+      "source_sheet": 114,
+      "source_frame": 1
+    }
+  ],
+  "placement": {
+    "x": 4,
+    "y": 3,
+    "width": 7,
+    "height": 9
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-b9-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b9-f0-8x",
+      "sha256": "c07ba0a5ae89a1598c504618a3d687907405bd2b5ab736754467d12773883d78",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-b9-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b9-f0-12x",
+      "sha256": "f05b7e43b2021dbe4b842efd39b635f06be2f5c21fcc6441a667f6d5b15796d0",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 130,
+    "assets": 262
+  },
+  "validation": [
+    "Exact retained body raster and native geometry/offset/palette equality in4cases (PC/Amiga,type5/36)",
+    "Original E01source and8x/12x PNG/RGBA hashes preserved; explicit separate target package/catalog keys",
+    "Registry provenance/source/native alpha bounds and version1 freeze checked",
+    "No ImageGen call, runtime contract alias, new resource bank or ground component; independent native shadow and height preserved"
+  ],
+  "reproduction": "python tools/modernization/reuse_enemy_fall_pose.py --direction 1 --atlas <private enemy-native-audit-v2>",
+  "next": "E3.F2 \u2014 verificar y exportar ca\u00eddaBA/F0, direcci\u00f3n2, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geom\u00e9trica y procedencia expl\u00edcitas; firmas/anclas propias, altura y sombra independiente. Sin suelo a\u00f1adido ni nueva generaci\u00f3n; solo esta direcci\u00f3n antes de validar/publicar."
+}

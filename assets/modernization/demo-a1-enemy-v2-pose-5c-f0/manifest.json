@@ -1,0 +1,89 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 92,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-5c-f0-8x-proportions-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-5c-f0-8x",
+      "sha256": "33c828c84e8caf8875710e6d69019184068b5b80125f6db5cafbe9d23a8f7fa9",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-5c-f0-12x-proportions-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-5c-f0-12x",
+      "sha256": "679ba655f5f6baf0df4dfec0e293e3fdb3c449bb997915e825117c5790794151",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1341,
+      1173
+    ],
+    "mode": "RGBA",
+    "sha256": "2c3a38cb0d3f361060c5a9207f2ea781ea064cf9a6dfb7497faf0ee57366cb2b",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      90,
+      324,
+      1221,
+      751
+    ],
+    "placement": {
+      "x": 1,
+      "y": 9,
+      "width": 13,
+      "height": 5
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "8f6aedfd82514231d00d1c946695cbb54c0fa86b7a81d52f865d20bb910014ae",
+        "bbox": [
+          0,
+          3,
+          15,
+          14
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "8f6aedfd82514231d00d1c946695cbb54c0fa86b7a81d52f865d20bb910014ae",
+        "bbox": [
+          0,
+          3,
+          15,
+          14
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "proportions-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-proportions-v2.json",
+      "reason": "Near-uniform quantized scale and shared direction anchor; originals preserved"
+    }
+  ]
+}

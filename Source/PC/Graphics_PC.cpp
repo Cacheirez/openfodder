@@ -21,6 +21,7 @@
  */
 
 #include "stdafx.hpp"
+#include "Utils/IndexedProducer.hpp"
 #include "PC/SpriteData_PC.hpp"
 #include <chrono>
 #include <algorithm>
@@ -118,7 +119,7 @@ uint8* cGraphics_PC::GetSpriteData( uint16 pSegment ) {
 	return 0;
 }
 
-void cGraphics_PC::Mouse_DrawCursor() {
+openfodder::PreparedSpriteDraw cGraphics_PC::Cursor_PrepareLegacyDraw() {
 	
 	const sSpriteSheet_pstuff* di = &mSpriteSheet_PStuff[mFodder->mMouseSpriteCurrent];
 
@@ -131,7 +132,12 @@ void cGraphics_PC::Mouse_DrawCursor() {
 	mFodder->mVideo_Draw_FrameDataPtr = di->GetGraphicsPtr(ax +bx);
 	mFodder->mVideo_Draw_PaletteIndex = 0xF0;
 	
-	Video_Draw_8();
+	return CaptureCursorDraw();
+}
+
+void cGraphics_PC::Mouse_DrawCursor() {
+    const auto prepared = Cursor_PrepareLegacyDraw();
+    Video_Draw_8_Resolved(prepared);
 }
 
 void cGraphics_PC::SetActiveSpriteSheet( eGFX_Types pSpriteType ) {
@@ -139,29 +145,29 @@ void cGraphics_PC::SetActiveSpriteSheet( eGFX_Types pSpriteType ) {
 	switch (pSpriteType) {
 		case eGFX_IN_GAME:
             if (mFodder->mVersionCurrent->isCannonFodder2())
-                mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC2);
+                mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC2, mSpriteSheetTypes_InGame_PC2_FrameCounts);
             else
-    			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_InGame_PC );
+    			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_InGame_PC, mSpriteSheetTypes_InGame_PC_FrameCounts);
 			return;
 
 		case eGFX_FONT:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Font_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Font_PC, mSpriteSheetTypes_Font_PC_FrameCounts);
 			return;
 
 		case eGFX_RECRUIT:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Recruit_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Recruit_PC, mSpriteSheetTypes_Recruit_PC_FrameCounts);
 			return;
 
 		case eGFX_HILL:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Hill_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Hill_PC, mSpriteSheetTypes_Hill_PC_FrameCounts);
 			return;
 		
 		case eGFX_BRIEFING:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Briefing_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Briefing_PC, mSpriteSheetTypes_Briefing_PC_FrameCounts);
 			return;
 
 		case eGFX_SERVICE:
-			mFodder->SetActiveSpriteSheetPtr( mSpriteSheetTypes_Service_PC );
+			mFodder->SetActiveSpriteSheetPtr(mSpriteSheetTypes_Service_PC, mSpriteSheetTypes_Service_PC_FrameCounts);
 			return;
 
         default:
@@ -286,81 +292,28 @@ void cGraphics_PC::Map_Tile_Draw( cSurface *pTarget, uint16 pTile, uint16 pX, ui
 	}
 }
 
-void cGraphics_PC::MapTiles_Draw() {
-
-    uint8* Target = mSurface->GetSurfaceBuffer();
-
-    uint8* CurrentMapPtr = mFodder->mMap->data() + mFodder->mMapTile_Ptr;
-
-    // Y
-    for (uint16 cx = 0; cx <= g_Fodder->getWindowRows() + 1; ++cx) {
-        uint8* MapPtr = CurrentMapPtr;
-        uint8* TargetRow = Target;
-
-        uint16 StartY = 0;
-
-        if (cx == 0)
-            StartY = mFodder->mMapTile_RowOffset;
-
-        // X
-        for (uint16 cx2 = 0; cx2 <= g_Fodder->getWindowColumns() + 1; ++cx2) {
-            uint8* TargetTmp = TargetRow;
-
-            // Verify we are inside the actual map data
-            if (MapPtr >= mFodder->mMap->data()) {
-
-                if (MapPtr >= mFodder->mMap->data() + mFodder->mMap->size())
-                    continue;
-
-                uint16 Tile = readLE<uint16>(MapPtr) & 0x1FF;
-                if (Tile > 0x1DF)
-                    Tile = 0;
-
-                uint8* TilePtr = mTile_Gfx_Ptrs[Tile];
-                uint16 StartX = 0;
-
-                TilePtr += StartY * 0x140;
-
-                if (cx2 == 0)
-                    StartX = mFodder->mMapTile_ColumnOffset;
-
-                // Each Tile Row
-                for (uint16 i = StartY; i < 16; ++i) {
-
-                    memcpy(TargetTmp, TilePtr + StartX, 16 - StartX);
-
-                    TilePtr += 0x140;
-                    TargetTmp += mSurface->GetWidth();
-                }
-
-                MapPtr += 2;
-                TargetRow += (16 - StartX);
-            }
-        }
-
-        Target += mSurface->GetWidth() * (16 - StartY);
-        CurrentMapPtr += mFodder->mMapLoaded->getWidth() << 1;
-    }
-    mSurface->Save();
+openfodder::TerrainDraw cGraphics_PC::CaptureVisibleTerrain() {
+    return openfodder::PrepareTerrain(*mFodder->mMap, mFodder->mMapTile_Ptr,
+        mFodder->mMapLoaded->getWidth(), g_Fodder->getWindowRows(), g_Fodder->getWindowColumns(),
+        mFodder->mMapTile_RowOffset, mFodder->mMapTile_ColumnOffset,
+        openfodder::TerrainFormat::PC, mTerrainAtlas.capture(0, *mFodder->mTile_BaseBlk),
+        mTerrainAtlas.capture(1, *mFodder->mTile_SubBlk));
 }
 
-void cGraphics_PC::MapOverview_Render_Tiles( uint16 pTile, uint16 pDestX, uint16 pDestY ) {
-	uint8* Target = mFodder->mSurfaceMapOverview->GetSurfaceBuffer();
+void cGraphics_PC::MapTiles_Draw() {
+    const auto terrain = CaptureVisibleTerrain();
+    mSurface->RecordMissionTerrain(terrain);
+    openfodder::RasterizeTerrain(terrain, mSurface->GetSurfaceBuffer(),
+        mSurface->GetWidth(), mSurface->GetSurfaceBufferSize());
+    mSurface->Save(); // Background for the subsequent sprite pass, once as before.
+}
 
-	pDestX *= 16;
-
-	Target += (pDestY * 16) * mFodder->mSurfaceMapOverview->GetWidth();
-	Target += pDestX;
-	
-	uint8* TilePtr = mTile_Gfx_Ptrs[pTile];
-
-	for (uint16 i = 0; i < 16; ++i) {
-
-        memcpy(Target, TilePtr, 16);
-
-		TilePtr += 320;
-		Target += mFodder->mSurfaceMapOverview->GetWidth();
-	}
+openfodder::IndexedProducerDraw cGraphics_PC::CaptureOverviewTile(uint16 pTile,uint16 pDestX,uint16 pDestY) const {
+    return openfodder::CaptureOverviewPC(mTile_Gfx_Ptrs[pTile],pDestX,pDestY,mFodder->mSurfaceMapOverview->GetWidth());
+}
+void cGraphics_PC::MapOverview_Render_Tiles(uint16 pTile,uint16 pDestX,uint16 pDestY) {
+    const auto draw=CaptureOverviewTile(pTile,pDestX,pDestY);
+    openfodder::RasterizeIndexedProducer(draw,mFodder->mSurfaceMapOverview->GetSurfaceBuffer());
 }
 
 void cGraphics_PC::Map_Load_Resources() {
@@ -392,73 +345,24 @@ void cGraphics_PC::Map_Load_Resources() {
 	SetActiveSpriteSheet( eGFX_IN_GAME );
 }
 
-void cGraphics_PC::Video_Draw_8(cSurface *pTarget, const uint8* RowPallete) {
-	if (!pTarget)
-		pTarget = mSurface;
-
-	uint8*	di = pTarget->GetSurfaceBuffer();
-	uint8* 	si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += pTarget->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mVideo_Draw_Columns >>= 1;
-	mFodder->mDraw_Source_SkipPixelsPerRow = 160 - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = (uint16)(pTarget->GetWidth() - (mFodder->mVideo_Draw_Columns * 2));
-
-	for (int16 dx = 0; dx < mFodder->mVideo_Draw_Rows; ++dx) {
-		uint8 Palette = mFodder->mVideo_Draw_PaletteIndex;
-		if (RowPallete) {
-			int16 bx = mFodder->mVideo_Draw_PosY + dx;
-
-			Palette = RowPallete[bx];
-		}
-
-		for (int16 cx = mFodder->mVideo_Draw_Columns; cx > 0; --cx) {
-			uint8 ah = *si;
-
-
-			uint8 al = ah >> 4;
-			if (al)
-				*di = al | Palette;
-
-			al = ah & 0x0F;
-			if (al)
-				*(di + 1) = al | Palette;
-
-			si++;
-			di+=2;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+openfodder::SpriteRasterLayout cGraphics_PC::GetSpriteRasterLayout() const {
+    return {};
 }
 
 void cGraphics_PC::Video_Draw_16(const uint8* RowPallete) {
-	uint8*	di = mSurface->GetSurfaceBuffer();
-	uint8* 	si = mFodder->mVideo_Draw_FrameDataPtr;
-
-	di += mSurface->GetWidth() * mFodder->mVideo_Draw_PosY;
-	di += mFodder->mVideo_Draw_PosX;
-
-	mFodder->mDraw_Source_SkipPixelsPerRow = mFodder->mVideo_Draw_ColumnsMax - mFodder->mVideo_Draw_Columns;
-	mFodder->mDraw_Dest_SkipPixelsPerRow = mSurface->GetWidth() - mFodder->mVideo_Draw_Columns;
-
-	for (int16 dx = mFodder->mVideo_Draw_Rows; dx > 0; --dx) {
-
-		for (int16 cx = mFodder->mVideo_Draw_Columns; cx > 0; --cx) {
-			int8 al = *si;
-			if (al)
-				*di = al;
-
-			si++;
-			di++;
-		}
-
-		si += mFodder->mDraw_Source_SkipPixelsPerRow;
-		di += mFodder->mDraw_Dest_SkipPixelsPerRow;
-	}
+    openfodder::ProducerGeometry geometry;
+    geometry.x=mFodder->mVideo_Draw_PosX; geometry.y=mFodder->mVideo_Draw_PosY;
+    geometry.columns=mFodder->mVideo_Draw_Columns; geometry.rows=mFodder->mVideo_Draw_Rows;
+    geometry.columnsMax=mFodder->mVideo_Draw_ColumnsMax;
+    geometry.palette=mFodder->mVideo_Draw_PaletteIndex;
+    const auto capture=openfodder::CaptureProducerRaster(openfodder::ProducerRaster::PC16,
+        mFodder->mVideo_Draw_FrameDataPtr,geometry,GetSpriteRasterLayout(),mSurface->GetWidth(),mSurface->GetHeight());
+    if(capture.writesRegisters) {
+        mFodder->mVideo_Draw_Columns=capture.columns;
+        mFodder->mDraw_Source_SkipPixelsPerRow=capture.sourceSkip;
+        mFodder->mDraw_Dest_SkipPixelsPerRow=capture.destinationSkip;
+    }
+    openfodder::RasterizeIndexedProducer(capture.draw,mSurface->GetSurfaceBuffer());
 }
 
 void cGraphics_PC::Sidebar_Copy_To_Surface( int16 pStartY, cSurface* pSurface) {
@@ -646,23 +550,11 @@ void cGraphics_PC::Load_And_Draw_Image( const std::string &pFilename, unsigned i
 	auto fileBuffer = g_Resource->fileGet(Filename);
 	uint8* srcBuffer = fileBuffer->data();
 
-	uint8 *Buffer = 0;
 
 	mSurface->clearBuffer();
 
-	for (unsigned int Plane = 0; Plane < 4; Plane++) {
-		Buffer = mSurface->GetSurfaceBuffer() + (16 * mSurface->GetWidth()) + 16;
-		
-		for (unsigned int Y = 0; Y < 200; ++Y) {
-
-			for (unsigned int X = Plane; X < 320; X += 4 ) {
-
-				Buffer[X] = *srcBuffer++;
-			}
-
-			Buffer += mSurface->GetWidth();
-		}
-	}
+    const auto draw=openfodder::CapturePCImage(srcBuffer,mSurface->GetWidth());
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 
 	if(pColors)
 		PaletteLoad( fileBuffer->data() + (fileBuffer->size() - (0x100 * 3)), pColors );
@@ -732,153 +624,14 @@ bool cGraphics_PC::Sprite_OnScreen_Check() {
 	return true;
 }
 
-void cGraphics_PC::HeliIntro_BlitMaskedAlignedX(tSharedBuffer pSource, int16 pCx)
-{
-	uint8* pDs = pSource->data();
-	uint8* pDsEnd = pSource->data() + pSource->size();
-
-	// Original works in 4-pixel groups
-	const int16 groupX = (pCx >> 2);
-	int16 ax = groupX;
-	int16 dx = ax;
-
-	ax -= 80;
-	int16 word_4285F = -ax;
-
-	const int planeShift = (pCx & 3); // <-- sub-pixel (0..3)
-
-	// first 4-pixel group for pCx
-	uint8* base = mSurface->GetSurfaceBuffer() + mMission_Intro_DrawY + (dx * 4);
-
-	++dx;
-
-	// Loop the 4 source planes, but map them to dest planes with shift
-	for (uint8 srcPlane = 0; srcPlane < 4; ++srcPlane)
-	{
-		const int dstPlane = (srcPlane + planeShift) & 3;
-		const int groupCarry = ((srcPlane + planeShift) >> 2) & 1;
-
-		uint8* destPtr = base + (groupCarry * 4) + dstPlane;
-		uint8* di = destPtr;
-
-		for (int16 bx = mMission_Intro_DrawX; bx > 0; --bx)
-		{
-			int16 cx;
-
-			for (cx = word_4285F; cx > 0; --cx)
-			{
-				if (pDs >= pDsEnd)
-					return;
-
-				uint8 al = *pDs;
-				if (al)
-					*di = al;
-
-				++pDs;
-				di += 4;
-			}
-
-			di -= mSurface->GetWidth() - 12 - 16;
-			--pDs;
-
-			for (cx = dx; cx > 0; --cx)
-			{
-				if (pDs >= pDsEnd)
-					return;
-
-				uint8 al = *pDs;
-				if (al)
-					*di = al;
-
-				++pDs;
-				di += 4;
-			}
-
-			di += mSurface->GetWidth();
-		}
-	}
+void cGraphics_PC::HeliIntro_BlitMaskedAlignedX(tSharedBuffer pSource,int16 pCx) {
+    const auto draw=openfodder::CapturePCSceneMasked(pSource->data(),pSource->size(),mSurface->GetWidth(),mMission_Intro_DrawX,mMission_Intro_DrawY,pCx);
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 }
 
-void cGraphics_PC::HeliIntroBlit_OpaqueAlignedX(tSharedBuffer pDsSi, int16 pCx)
-{
-	uint8* Ds = pDsSi->data();
-
-	// Original logic works in 4-pixel groups (80 groups for 320px wide).
-	const int16 groupX = (pCx >> 2);
-	int16 ax = groupX;
-	int16 dx = ax;
-
-	ax -= 80;
-	int16 word_4285F = -ax;
-
-	const int planeShift = (pCx & 3); // <-- the bit the old code discards
-
-	// Base points at the first 4-pixel group for pCx, Y offset unchanged.
-	uint8* base = mSurface->GetSurfaceBuffer() + mMission_Intro_DrawY + (groupX * 4);
-
-	++dx;
-
-	for (uint8 srcPlane = 0; srcPlane < 4; ++srcPlane)
-	{
-		// Map source plane (0..3) to the correct destination plane for pixel-accurate X.
-		const int dstPlane = (srcPlane + planeShift) & 3;
-
-		// If the plane rotation wraps (e.g. planeShift=3, srcPlane=2 -> 5),
-		// that plane's pixels start one 4-pixel group later.
-		const int groupCarry = ((srcPlane + planeShift) >> 2) & 1;
-
-		// we might start in the next group depending on carry.
-		uint8* destPtr = base + (groupCarry * 4) + dstPlane;
-		uint8* di = destPtr;
-
-		for (int16 bx = mMission_Intro_DrawX; bx > 0; --bx)
-		{
-			int16 cx = word_4285F;
-
-			if (cx & 1)
-			{
-				*di = *Ds++;
-				di += 4;
-			}
-
-			cx >>= 1;
-			while (cx > 0)
-			{
-				*di = *Ds++;
-				di += 4;
-
-				*di = *Ds++;
-				di += 4;
-
-				--cx;
-			}
-
-			cx = dx;
-
-			di -= mSurface->GetWidth() - 12 - 16;
-			--Ds;
-
-			if (cx & 1)
-			{
-				*di = *Ds++;
-				di += 4;
-			}
-
-			cx >>= 1;
-			while (cx > 0)
-			{
-				*di = *Ds++;
-				di += 4;
-
-				*di = *Ds++;
-				di += 4;
-
-				--cx;
-			}
-
-			di += mSurface->GetWidth();
-		}
-	}
+void cGraphics_PC::HeliIntroBlit_OpaqueAlignedX(tSharedBuffer pDsSi,int16 pCx) {
+    const auto draw=openfodder::CapturePCSceneOpaque(pDsSi->data(),pDsSi->size(),mSurface->GetWidth(),mMission_Intro_DrawX,mMission_Intro_DrawY,pCx);
+    openfodder::RasterizeIndexedProducer(draw,mSurface->GetSurfaceBuffer());
 }
 
 
@@ -964,4 +717,19 @@ void cGraphics_PC::Briefing_Intro_Helicopter_Play( const bool pShowHelicopter, c
 
 	} while (mFodder->mBriefingHelicopter_NotDone || mFodder->mSurface->isPaletteAdjusting());
 	
+}
+
+// Ownership lookup only; legacy selection effects remain in GetSpriteData.
+tSharedBuffer cGraphics_PC::GetSpriteResourceStorage(uint16 segment) const {
+    switch (segment) {
+    case eGFX_IN_GAME: return mSpriteSheet_InGame1.mData;
+    case eGFX_IN_GAME2: return mSpriteSheet_InGame2.mData;
+    case eGFX_RANKFONT: return mSpriteSheet_RankFont.mData;
+    case eGFX_FONT: return mImageFonts.mData;
+    case eGFX_PSTUFF: return mImagePStuff.mData;
+    case eGFX_RECRUIT: return mImageRecruit.mData;
+    case eGFX_HILL: return mImageHillSprites.mData;
+    case eGFX_SERVICE: return mImageService.mData;
+    default: return {};
+    }
 }

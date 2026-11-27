@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "block": "R3-player-entry-pc-complete",
+  "date": "2026-11-21",
+  "base_head": "1d7ca1759f139cea2d85935ae70a09e2f03b337a",
+  "poses": [
+    {
+      "type": 0,
+      "sheet": 204,
+      "frame": 4,
+      "formats": [
+        0
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-cc-f4/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 204,
+      "frame": 3,
+      "formats": [
+        0
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-cc-f3/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 204,
+      "frame": 2,
+      "formats": [
+        0
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-cc-f2/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 204,
+      "frame": 1,
+      "formats": [
+        0
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-cc-f1/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 204,
+      "frame": 0,
+      "formats": [
+        0
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-cc-f0/manifest.json"
+    }
+  ],
+  "authoring": "Authorized autonomous protagonist art; internal inspection, not Miguel global acceptance",
+  "tests": {
+    "windows": "80 actual Window/SDL cases; ASan/UBSan PASS",
+    "linux": "80 actual Window/SDL cases; ASan/UBSan/LSan PASS",
+    "matrix": "native format/frame entries; states 90/91; 4 variants; 8/12 density; two actors, exact SDL, negatives and full recovery"
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-entry-pc-complete-candidate\\candidate-manifest.json",
+    "assets": 348,
+    "covered": 329,
+    "required": 337,
+    "missing": 8,
+    "complete": false,
+    "rgba_bytes": 31298176
+  },
+  "invariants": [
+    "previous assets/pose bindings unchanged",
+    "native geometry and selectors unchanged",
+    "source originals preserved",
+    "independent blood/shadow commands unchanged; embedded ground qualification pending R4",
+    "H3 R2 remains valid; no simulation change",
+    "previous launchers unchanged"
+  ],
+  "next": "R3 \u2014 auditar identidad del cad\u00e1ver flotante tipo 27 y preparar 9E/F0-F1, sin modernizar enemigos; conservar geometr\u00eda y agua propias.",
+  "ci": "Set CI completion/consultation pending; no full PASS claimed",
+  "reuse": [],
+  "frames_tested": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "fixture_binaries": {
+    "player-pose-window.exe": "c7fa5f00b0ef739fe1b69d3d01d1a2ed20e75ed267d28f45358a5ccaa80f694f",
+    "player-pose-window-linux": "44e9c3ce4e3c701dab3e6f4e64e76f1f496d7550652aac2939847c7103e2c390"
+  }
+}

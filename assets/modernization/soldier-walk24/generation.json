@@ -1,0 +1,139 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "C01 identity/style; public demo native poses guide only; generated rear masters for continuity",
+  "master_editing": "No script retouching of generated masters. Explicit registration/crops only for build derivatives.",
+  "prompts": [
+    {
+      "sheet": 0,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset type: ONE painted game soldier animation frame. Image 1 is the accepted C01 identity/style/camera reference. Image 2 is a public-demo native pose guide only: use its direction and gait, NOT its pixelated visual style. Create the same soldier facing straight toward the bottom of the image (south/front), torso square to camera, from the SAME elevated oblique top-down camera as C01, NOT eye-level. Olive helmet and uniform, brown straps/pouches, black rifle held across front with both hands, brown boots, same proportions, painted facets, palette and light as C01. Frame 0 of walk: modest stride with image-right boot forward/lower and image-left boot back/higher. Rifle points toward lower front with slight image-right angle; no muzzle flash. Keep the character height and helmet diameter close to C01, keep entire body inside the same 1353x1162 transparent canvas, helmet top around y176 and forward sole around y1026. Single full soldier only, actual transparent background, no ground, no shadow, no text, no grid, no multiple frames. Aim for consistency and readable top-down silhouette, not extra detail.",
+      "role": "selected"
+    },
+    {
+      "sheet": 0,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this south-facing soldier animation master. Create frame 1, the compact passing pose between opposite strides. Change ONLY legs and boots below the belt. Bring the boots close together beneath the hips, both soles nearly level, at the same ground baseline as the lowest sole in the input. No stretched long legs, no kneeling. Keep helmet, face, torso, arms, hands, rifle, pouches, camera, paint texture, light, character scale and image placement unchanged. SAME straight south/front orientation, not diagonal. Single entire soldier on actual transparent background; no floor, shadow, text, extra frames or sheet. Preserve the input canvas size.",
+      "role": "selected"
+    },
+    {
+      "sheet": 0,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit target: the attached front/south-facing soldier master, walk frame 0. Create walk frame 2, opposite leg stride. Change ONLY legs and boots below the belt: image-LEFT boot forward/lower, image-RIGHT boot back/higher. This must visibly reverse the legs from the input, not duplicate it. Keep a compact walking stride, not a run or lunge. Keep the forward boot sole near the input's lowest sole, same overall body height. Preserve helmet, face, torso, hands, rifle, straps, bags, paint, light, camera, scale and placement. Exactly SAME straight south/front orientation. Actual transparent background; one whole soldier, no shadow, ground, text, extra frames. Preserve input canvas size.",
+      "role": "selected"
+    },
+    {
+      "sheet": 2,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset: ONE painted game soldier walk frame. Image 1 C01 is the exact identity, equipment, paint and elevated top-down CAMERA reference. Image 2 is a native public-demo pose guide only, not a style reference. Turn this same soldier to face exactly WEST: head, shoulders, chest, feet and rifle point horizontally LEFT on screen, a true left profile seen from above, NOT facing lower-left or toward the viewer. We see the soldier's side and helmet top, only a sliver of face at left. Keep C01 olive helmet/uniform, brown straps/pouches and boots, dark rifle, proportions and lighting. Frame 0 modest walk stride: near boot extended toward screen-left, far boot behind toward screen-right; both feet near same ground baseline. Rifle held in both hands points screen-left approximately horizontally. Same elevated camera looking down, no eye-level side view. Single whole soldier, original 1353x1162 canvas and comparable character scale; transparent background, no shadow/floor/text/grid/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 2,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this WEST/left-profile soldier. Create frame 1 of the walk: compact passing pose, both boots close together under the hips with soles close to the same ground baseline as the input boots. Change ONLY legs and boots below belt, keep same helmet, face sliver, torso, arms, hands, rifle, straps, pouch positions, camera, painted texture, palette, light and scale. Do not rotate or mirror the soldier. Rifle must still point straight screen-left. Elevated top-down side view, NOT front or southwest. Single entire soldier, actual transparent background, no floor/shadow/text/extra frames. Preserve input canvas and upper-body position.",
+      "role": "selected"
+    },
+    {
+      "sheet": 2,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit target: this compact WEST/left-profile soldier. Create frame 2, opposite walk stride. Change ONLY legs and boots below the belt. The NEAR leg, directly below the large pouch on image-right, swings BACK toward image-right: its boot must be lower/right of the hips. The FAR leg steps FORWARD toward image-left: its boot appears left of the hips and slightly higher in the picture. Both toes still point LEFT. Make the legs clearly distinguishable, a modest walk stride, not a kick, run or lunge. Preserve EXACTLY helmet, torso, arms, hands, gun, pouches, camera, scale, paint, light, and upper-body placement. Do not mirror or rotate the whole soldier. Same native WEST direction, rifle straight screen-left. Single whole soldier, actual transparent background, no shadow/floor/text/extra frames, preserve input canvas.",
+      "role": "selected"
+    },
+    {
+      "sheet": 3,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset: ONE painted soldier walk frame. Image 1 is accepted C01 identity/style/elevated top-down camera. Image 2 is the native direction/pose guide, not the pixel style. Show the SAME olive soldier facing NORTHWEST, diagonally toward UPPER-LEFT on screen, seen from BEHIND and above. His back and rear/left of helmet are visible; do NOT show his face or front chest. Rifle carried in both hands in front of him points upper-left and is partly occluded by body. Same C01 uniform, helmet shape, brown webbing straps and small belt pouches, dark rifle and brown boots, same painted facets, light and proportions. No new large backpack or extra equipment. Frame 0 modest stride: nearest boot trails toward lower-right; farther leg steps toward upper-left. Both legs readable, not running. Maintain same high camera as C01 and comparable scale within 1353x1162 canvas. Single entire character, actual transparent background, no ground/shadow/text/grid/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 3,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this NORTHWEST rear-view soldier. Create walk frame 1, compact passing stance: legs together under hips, two boots close, toes still toward UPPER-LEFT. Change ONLY legs and boots below belt. Keep a natural compact stance with soles near a common ground baseline, similar overall height. Preserve exact rear-left orientation, helmet, back, webbing, pouches, arms, hands, rifle, paint, lighting, camera, scale and upper-body placement. Do not show a face, do not rotate/mirror the whole character, do not add equipment. Single full soldier on actual transparency; no shadow/floor/text/extra frames, same canvas.",
+      "role": "selected"
+    },
+    {
+      "sheet": 3,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit target: this NORTHWEST rear soldier, frame 0. Create frame 2 with the OPPOSITE walking stride. Change only legs and boots below belt. In the input the image-right boot is lower and trails behind; reverse this: the image-LEFT boot now trails lower near bottom-left, while the image-RIGHT leg bends/steps ahead toward upper-left with its boot higher near the hips. The two legs must visibly swap which foot is leading. Keep toes aimed upper-left, a modest walk not a kick. Preserve the entire upper body exactly: helmet, back, arms, rifle, straps, pouches, light, paint, scale, camera and placement. Do not mirror the whole image or turn the character. One whole soldier, true transparent background, no shadow/ground/text/extra frames, same canvas.",
+      "role": "superseded"
+    },
+    {
+      "sheet": 4,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset: ONE painted soldier walking frame. Image 1 C01 is identity/style/camera; image 2 is the same soldier's rear equipment; image 3 is native pose/direction only. Show the soldier facing straight NORTH, away toward the TOP of the picture, exactly centered rear view seen from the same elevated top-down camera. See helmet rear/top, back, brown shoulder webbing and the same small belt pouches; NO face or front chest. Olive uniform and helmet, brown boots, same paint facets, scale and light as C01. Rifle held ahead in both hands, mostly hidden by back and helmet, only a small side portion visible pointing UP; no gun firing. Frame 0 compact stride: image-right boot trails lower/down, image-left leg steps ahead with boot higher nearer hips. Same head/body proportions, no new backpack/equipment. Entire single soldier in 1353x1162 canvas, comparable height to C01. Actual transparent background, no floor/shadow/text/grid/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 4,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this straight NORTH rear-view soldier. Create walk frame 1: compact passing stance, legs close and two boots together under hips, both heels visible at nearly the same height. Change only legs/boots below belt. Keep compact walking proportions and similar total height; do not elongate the legs. Preserve helmet/back/rifle/arms/hands/webbing/pouches exactly, same scale, paint, lighting and elevated camera, same centered rear orientation and placement. No face, no rotation or whole-image mirror. One complete soldier on actual transparency; no floor/shadow/text/extra frames, same canvas.",
+      "role": "selected"
+    },
+    {
+      "sheet": 4,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit target: this NORTH rear-facing compact soldier. Make walk frame 2. Change ONLY legs/boots below belt: image-LEFT leg extends down/back with its heel at approximately x600 y1040; image-RIGHT leg bends forward/up, ending in a smaller higher boot near x735 y850. Left boot must be clearly LOWER than right. A compact opposite stride, same leg length as frame 0, no lunge. Preserve helmet, back, rifle, arms, hands, straps, pouches, camera, scale, paint, lighting and upper-body position exactly. Straight north, do not mirror whole character or show face. Entire soldier on actual transparency, same canvas, no floor/shadow/text/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 5,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset: ONE painted soldier walk frame. Image 1 C01 is accepted identity/style/light/elevated camera; image 2 is rear equipment continuity; image 3 is native pose/direction guide only. Turn the SAME soldier to NORTH-EAST, toward UPPER-RIGHT on screen, rear three-quarter view from above. See back and right rear of helmet, no front chest or full face. Rifle held ahead in both hands points upper-right, partly occluded by torso. Same olive helmet/uniform, brown straps and small belt pouches, dark rifle and boots, painted facets and scale. Keep the light from upper-left as in C01, do NOT mirror the lighting or flip the input. No big backpack or new equipment. Frame 0 modest stride: image-LEFT boot trails lower/down-left; image-RIGHT leg steps ahead up-right, with boot higher closer to hips. Single full character, comparable height within 1353x1162 transparent canvas; no ground/shadow/text/grid/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 5,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this NORTHEAST rear-view soldier. Create walk frame 1, compact passing stance: legs close under the hips and two boots together with heels near the same level. Only change legs and boots below the belt, maintain normal compact leg length. Keep exact helmet, back, straps, pouches, arms, rifle, hands, light, camera, painted texture, scale and upper-body position. Do not rotate or mirror character or lighting, no front face. Rifle remains upper-right. One whole soldier on actual transparent background, same canvas, no ground/shadow/text/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 5,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit target: this NORTHEAST rear-facing compact soldier. Create frame 2 opposite stride. Only change legs and boots below belt. The image-RIGHT leg beneath the right belt pouch trails down/back, its heel lower near x820 y1020. The image-LEFT leg bends forward/up toward upper-right, boot higher near x540 y830. RIGHT boot clearly LOWER than LEFT; keep normal compact leg length, no lunge. Preserve helmet, back, webbing, pouches, rifle, arms, hands, camera, light, paint, scale and upper-body position exactly. Do not mirror or rotate character. One whole soldier on actual transparent background, same canvas, no shadow/ground/text/extra frames.",
+      "role": "superseded"
+    },
+    {
+      "sheet": 6,
+      "frame": 0,
+      "prompt": "Use case: stylized-concept. Asset: ONE painted soldier walking frame. Image 1 C01 is accepted identity/style/light/elevated top-down camera; image 2 is native pose/direction only. Turn SAME soldier to exact EAST, pointing straight RIGHT on screen, true right-side profile viewed from ABOVE, not southeast or northeast. Helmet top and only a sliver of side face visible; chest/feet/rifle all point horizontally right. Same olive helmet/uniform, brown webbing and small pouches, dark rifle and brown boots, same proportions, painted facets, camera height and light from upper-left. Do NOT mirror C01 or flip lighting/equipment. Frame 0 modest stride: near leg steps toward screen-right with forward boot lower/right; far boot behind toward screen-left slightly higher. Rifle held in both hands pointing horizontally RIGHT. Entire single soldier, comparable scale in 1353x1162 canvas, actual transparent background; no ground/shadow/text/grid/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 6,
+      "frame": 1,
+      "prompt": "Use case: precise-object-edit. Edit target: this EAST/right-profile soldier. Create walk frame 1: compact passing stance, boots close under hips, both toes point RIGHT and soles nearly level. Change ONLY legs and boots below belt, normal compact leg proportions. Keep all helmet, side face, torso, webbing/pouches, arms/hands/rifle, light, paint, scale, camera and upper-body position exactly. Same true EAST profile viewed from above, do not turn toward viewer or mirror. Single entire soldier on actual transparency, same canvas, no floor/shadow/text/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 6,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit only legs/boots of this EAST/right-profile compact soldier. Make opposite stride frame 2. The NEAR leg below the large pouch on the LEFT side of the picture swings BACK to screen-left: its boot ends lower near (440,970). The FAR leg steps FORWARD toward screen-right: its boot ends higher near (840,900). Both toes point RIGHT. This must swap the visible leading leg relative to frame 0, not simply spread identical boots. Modest natural walking legs, no lunge. Preserve ALL upper-body pixels: helmet, face sliver, torso, gear, hands, rifle, light, texture, scale and camera. No whole-image mirroring/rotation. Single full soldier on actual transparent background, same canvas, no shadow/floor/text/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 3,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Animation correction, edit ONLY legs below the belt of this NORTHWEST rear-facing soldier. Draw the exact opposite stride: the leg beneath the LEFT belt pouch must extend DOWN and LEFT, ending in a large trailing boot near canvas position x500 y1010. The leg beneath the RIGHT belt pouch must be SHORTENED and bent, ending in a smaller higher boot near x760 y840. Thus the LEFT boot must be CLEARLY LOWER on the canvas than the RIGHT boot. Do NOT put a long leg down to bottom-right; that is the rejected old stride. Keep both boots oriented upper-left/backward view with heels visible. Do not change any pixel of helmet/back/arms/rifle/pouches, no mirroring, same elevated camera, same upper-body position, olive/brown paint and scale. One whole soldier on actual transparent background; same canvas, no text/shadow/floor/extra frames.",
+      "role": "superseded"
+    },
+    {
+      "sheet": 3,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Edit only the long image-LEFT leg and boot of this NORTHWEST rear soldier. The leg swap is now correct, but the trailing left leg is too long. Shorten that leg to normal compact walking proportions: bend the left knee slightly and raise the large left boot by about 140 pixels so its lowest sole ends around y1010 instead of the bottom edge. Keep the image-right bent leg and boot unchanged. Keep the left boot still visibly lower than the right boot, without a lunge. Preserve ALL upper-body pixels, helmet, torso, pouches, rifle, arms, lighting, scale, camera and canvas placement. Single whole soldier, actual transparent background, no shadow/floor/text/extra frames.",
+      "role": "selected"
+    },
+    {
+      "sheet": 5,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Correct ONLY legs below belt in this rear NORTHEAST soldier. Required image-space layout: a LARGE TRAILING BOOT must be in the BOTTOM-RIGHT at approximately (860,1020). A SMALLER RAISED BOOT must be at LEFT near (530,820). The whole BOTTOM-LEFT area below y900 must be EMPTY TRANSPARENT: absolutely NO boot or long leg there. Extend the trouser leg on the RIGHT SIDE OF THE PICTURE downward to the bottom-right boot; bend/shorten the leg on the LEFT SIDE OF THE PICTURE upward to the higher boot. Do not use anatomical left/right. Reverse the old stride, compact normal legs, no lunge. Preserve helmet, torso, back, pouches, straps, arms, hands, rifle and all upper-body position/light/paint/camera/scale. Do not flip or rotate the whole image. One entire soldier on actual transparent background, same canvas, no text/ground/shadow/extra frames.",
+      "role": "superseded"
+    },
+    {
+      "sheet": 5,
+      "frame": 2,
+      "prompt": "Use case: precise-object-edit. Correct only the LONG leg and boot at the BOTTOM-RIGHT of this NORTHEAST rear soldier. The leg swap is correct but the right leg is too long. Bend that knee slightly and shorten it so the lowest right boot sole ends around y1040 instead of y1095, raising that boot about 55 pixels. Keep the higher image-left leg and boot unchanged. Keep right boot still lower than left. Preserve all upper-body pixels, helmet, back, gear, rifle, arms, light, texture, scale, camera and placement. No whole-image mirroring/rotation. One full soldier on actual transparent background, same canvas, no shadow/floor/text/extra frames.",
+      "role": "selected"
+    }
+  ]
+}

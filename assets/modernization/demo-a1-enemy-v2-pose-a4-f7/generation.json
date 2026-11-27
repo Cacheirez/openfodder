@@ -1,0 +1,18 @@
+{
+  "generator": "reuse existing E01 master and derivatives; no ImageGen call",
+  "identity": 2,
+  "source_sha256": "72c4f29f71908b0815c5e583fb32811af4a76160520d1c02e9ccf694f861e658",
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-a7-f7/source.png",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-pose-a7-f7/generation.json",
+  "original_generation_metadata_sha256": "12f66493a72b4fbd4146915321973d0732d921ace79db53003f152f311f3eb9c",
+  "original_pose_reference": "assets/modernization/demo-a1-player-pose-a4-f7/source.png",
+  "pose_reference_sha256": "50e21d16f30fa5645750afdf84635d2b996dc8c9a9a19c4d85cf0a9ecc6923ce",
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 164,
+    "frame": 7,
+    "direction": 7
+  },
+  "ground": "Existing slide contact reused; initial-person runtime eligibility pending"
+}

@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "kind": "Miguel requirement clarification; source inspection, no runtime/visual acceptance",
+  "user_requirement": "Los soldados enemigos también tienen que tener sombra en la misma posición que los protagonistas; localizar todas las poses en todas las situaciones.",
+  "shadow_contract": [
+    "Same approved screen-space light direction: upper-left; ground projection lower-right independently of facing.",
+    "Same position relative to the support/feet as protagonists; fit anchors per pose, not one universal bitmap offset.",
+    "Preserve independent native shadow commands, ownership, ordering, occlusion, clipping and height behavior.",
+    "Water, flight, fall and injury keep source-specific treatments; do not add ground shadows by resemblance.",
+    "Document verified native absences separately, including leader controller; no invented shadow or universal absence inferred from empty demo resources."
+  ],
+  "source_facts": {
+    "file": "Source/Sprites/Sprite_Troop.cpp",
+    "handler": "Sprite_Handle_Player_Shadow",
+    "creation": "Sprite_Create_Player_Shadow",
+    "owners": [
+      5,
+      36
+    ],
+    "independent_type": 22,
+    "states": [
+      {
+        "sheet": 141,
+        "frame": 2,
+        "stage": "creation"
+      },
+      {
+        "sheet": 151,
+        "frame": 0,
+        "stage": "air"
+      },
+      {
+        "sheet": 151,
+        "frame": 1,
+        "stage": "ground"
+      }
+    ],
+    "native_coordinates": "Creation x+4; update x+5+(height>>2), y-3+(height>>2). These are engine coordinates, not the final visual foot-contact offset."
+  },
+  "coverage_contract": [
+    "Cross every source-produced actor/state/direction/frame and transition, including pre-first-update injury.",
+    "Include ordinary/rocket enemies and leader within their respective native controllers.",
+    "Record valid no-write states and declared-but-unproduced rows explicitly; never invent body artwork for them.",
+    "Require modern body continuity and coherent shadows throughout supported enemy states before gameplay handoff."
+  ],
+  "catalog": {
+    "path": "docs/modernization/evidence/enemy-state-catalog-v1.json",
+    "sha256": "80e121744c7ca5ee4b459fe7d8b90f8ccb189f7cae519e86b5ebb18ee81ad952",
+    "revision": 4,
+    "platforms": {
+      "Amiga": {
+        "produced": 340,
+        "declared_only": 143,
+        "families": [
+          "aim_low",
+          "bleeding_irrecoverable",
+          "damage_ballistic",
+          "damage_override",
+          "fall",
+          "follower_guard_idle",
+          "grenade",
+          "initial_person_zero_injury",
+          "leader_hidden_vehicle",
+          "leader_idle",
+          "leader_marker_association",
+          "leader_walk",
+          "mode_zero",
+          "native_hidden_marker",
+          "owned_shadow",
+          "rocket",
+          "sinking",
+          "slide",
+          "swim",
+          "walk"
+        ]
+      },
+      "PC": {
+        "produced": 339,
+        "declared_only": 143,
+        "families": [
+          "aim_low",
+          "bleeding_irrecoverable",
+          "damage_ballistic",
+          "damage_override",
+          "fall",
+          "follower_guard_idle",
+          "grenade",
+          "initial_person_zero_injury",
+          "leader_hidden_vehicle",
+          "leader_idle",
+          "leader_marker_association",
+          "leader_walk",
+          "mode_zero",
+          "native_hidden_marker",
+          "owned_shadow",
+          "rocket",
+          "sinking",
+          "slide",
+          "swim",
+          "walk"
+        ]
+      }
+    }
+  },
+  "status": "Requirement recorded; source inventory available; enemy shadow integration and exhaustive runtime/visual verification pending.",
+  "unchanged": "No new art, bindings, simulation changes or repeated tests. E2.G1 platform rejection remains the single pending task."
+}

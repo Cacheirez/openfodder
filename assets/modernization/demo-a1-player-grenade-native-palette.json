@@ -1,0 +1,54 @@
+{
+  "scope": "Three observed Amiga M1P2 throw-left keys, effective native palette 0, approved same-direction HD artwork reused; native colors differ from source palette 128, alpha and geometry match",
+  "status": "technical verified SDL 8x/12x Windows ASan/UBSan and Linux ASan/UBSan/LSan; visual acceptance pending",
+  "bindings": [
+    {
+      "sheet": 10,
+      "frame": 0,
+      "key": "e53cd99a351a5388e45047de563df4dc39b5c3039e3c4c15578862db46453008",
+      "source_key": "d5a83c8e17e4c98ed2d1a9ffed195425dc6d277f2cac632d8cb4b8efdfc8eb8c",
+      "animation": 0,
+      "palette": 0,
+      "source_palette": 128,
+      "same_native_source": true,
+      "same_alpha": true,
+      "same_native_colors": false,
+      "assets": {
+        "8": "s10-f0-8",
+        "12": "s10-f0-12"
+      }
+    },
+    {
+      "sheet": 10,
+      "frame": 1,
+      "key": "2d6e879a1676d2417c6acc3a5ad7cdab576c076060c37bad48c2cd0b30774df8",
+      "source_key": "56af9aa7dbe2b6ed485cb7d0cf5773b2de38d124b19f911fd4f61880001b7056",
+      "animation": 0,
+      "palette": 0,
+      "source_palette": 128,
+      "same_native_source": true,
+      "same_alpha": true,
+      "same_native_colors": false,
+      "assets": {
+        "8": "s10-f1-8",
+        "12": "s10-f1-12"
+      }
+    },
+    {
+      "sheet": 10,
+      "frame": 2,
+      "key": "d3e47dcfc202f27261746e97144beed858bb3c9358595ec07631994a64d7c5a7",
+      "source_key": "627147105067636282ce28fa3116d74769896b1585d6590e480f8bb69f9f2419",
+      "animation": 0,
+      "palette": 0,
+      "source_palette": 128,
+      "same_native_source": true,
+      "same_alpha": true,
+      "same_native_colors": false,
+      "assets": {
+        "8": "s10-f2-8",
+        "12": "s10-f2-12"
+      }
+    }
+  ]
+}

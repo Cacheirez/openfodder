@@ -1,0 +1,231 @@
+{
+  "date": "2026-11-20",
+  "checkout_head": "46229d63816cd9d3f73c1b577ca45f2ccaa5e4dd",
+  "launcher": "PROBAR_DANO_AJUSTADO_P1.cmd;244/391;engine a480740;aliases 46229d6",
+  "manual": "Miguel: clasico al aparecer soldados tras reinicio por muerte total; al dividir mientras dos pelotones siguen en pantalla; mejora en muertes, sin certeza de cobertura completa",
+  "log": "OpenFodder-P1-DanoAjustado-hibrido-20261120-132407.log",
+  "sha256": "b53126dc96d3d97af3818285b00762342867ac7fe7edd8102655fff8f88bd2d0",
+  "attempts": 13607,
+  "outcomes": {
+    "missing-variant": 1049,
+    "no-body": 131,
+    "published": 12427
+  },
+  "native_snapshots": 28,
+  "same_actor_returns": [
+    {
+      "attempt": 10092,
+      "outcome": "missing-variant",
+      "missing": [
+        "07aa3b2c9b064e45dce71307e0e58acd08b19ce0e34b7632a3e0da5b97fd089b"
+      ]
+    },
+    {
+      "attempt": 10290,
+      "outcome": "missing-variant",
+      "missing": [
+        "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+        "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a"
+      ]
+    },
+    {
+      "attempt": 13748,
+      "outcome": "missing-variant",
+      "missing": [
+        "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893"
+      ]
+    },
+    {
+      "attempt": 15955,
+      "outcome": "missing-variant",
+      "missing": [
+        "61359956313fdba938c9a24e93029aa3402817f613526a4a13053baab1ce3277"
+      ]
+    },
+    {
+      "attempt": 18435,
+      "outcome": "missing-variant",
+      "missing": [
+        "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893"
+      ]
+    },
+    {
+      "attempt": 21529,
+      "outcome": "missing-variant",
+      "missing": [
+        "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893"
+      ]
+    },
+    {
+      "attempt": 27933,
+      "outcome": "no-body",
+      "missing": []
+    },
+    {
+      "attempt": 27945,
+      "outcome": "no-body",
+      "missing": []
+    },
+    {
+      "attempt": 27957,
+      "outcome": "no-body",
+      "missing": []
+    },
+    {
+      "attempt": 27969,
+      "outcome": "no-body",
+      "missing": []
+    }
+  ],
+  "missing": [
+    {
+      "key": "0b9b6d18f60a401bc935e4f86bec50e94b4928d2bd89fade6603e228a0878607",
+      "count": 681,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 20,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "2c93b2ed124e70bce61bd667391829771cdea5cf5c861efac0ca06923ce92ca3",
+      "count": 676,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 21,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "973d27bf6498bc62e6bfffdfc33ceb693874e55989b73d424c7bbda940bee893",
+      "count": 573,
+      "starts_returns": 3,
+      "type": 0,
+      "sheet": 19,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "9362b9ba313fa673e68a72f292278680d686258a6c5f03e57e52a9ae2509abb5",
+      "count": 102,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 22,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "97b50df56cae77401077d880471c0f8765bd1b48bb472c031e80c67164a55e0c",
+      "count": 12,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 18,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "07aa3b2c9b064e45dce71307e0e58acd08b19ce0e34b7632a3e0da5b97fd089b",
+      "count": 6,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 14,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "a64852ff67a70f27c12daeaa3a9a9e8d5a0edca13e7c8f69f154322acf1d9588",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 14,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "f6cc4056e63ff16d6c35fbf51a1969dc29b395c024f7908777711f58f951dd77",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 14,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a",
+      "count": 6,
+      "starts_returns": 1,
+      "type": 15,
+      "sheet": 145,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 35,
+      "sheet": 141,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "61359956313fdba938c9a24e93029aa3402817f613526a4a13053baab1ce3277",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 0,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    }
+  ],
+  "scenes": {
+    "186": {
+      "first_attempt": 366,
+      "outcomes": {
+        "published": 12134,
+        "missing-variant": 1049,
+        "no-body": 131
+      },
+      "first_missing": {
+        "attempt": 10092,
+        "missing": [
+          {
+            "type": "0",
+            "sheet": "14",
+            "frame": "0",
+            "key": "07aa3b2c9b064e45dce71307e0e58acd08b19ce0e34b7632a3e0da5b97fd089b"
+          }
+        ]
+      }
+    },
+    "28340": {
+      "first_attempt": 28520,
+      "outcomes": {
+        "published": 293
+      },
+      "first_missing": null
+    }
+  }
+}

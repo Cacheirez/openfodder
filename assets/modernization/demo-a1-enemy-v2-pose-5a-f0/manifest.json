@@ -1,0 +1,90 @@
+{
+  "status": "Authorized autonomous enemy art; internal inspection and exact export; not global visual/gameplay acceptance",
+  "pose": {
+    "type": 5,
+    "sheet": 90,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-5a-f0-8x-proportions-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-5a-f0-8x",
+      "sha256": "c489277cd51a6c0ea46174710e3b192ddfee72c1e861b638df361670ad45560f",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-5a-f0-12x-proportions-v2.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-5a-f0-12x",
+      "sha256": "a9e745b1959d1dbd2977978cfc2620c3ca6130fd449b9a8d2fd391a960de8f8e",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1341,
+      1173
+    ],
+    "mode": "RGBA",
+    "sha256": "d7c6e12c7662909c89941cd12414da902551404d3151d6331ebcaba173afd897",
+    "generator": "built-in image_gen; original preserved"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      246,
+      342,
+      1083,
+      877
+    ],
+    "placement": {
+      "x": 3,
+      "y": 6,
+      "width": 11,
+      "height": 7
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "e5e3b2ece461f7be6ab6cae0d57b74afbcce0d663a5baf695cd865d47091e0a5",
+        "bbox": [
+          2,
+          1,
+          14,
+          13
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "e5e3b2ece461f7be6ab6cae0d57b74afbcce0d663a5baf695cd865d47091e0a5",
+        "bbox": [
+          2,
+          1,
+          14,
+          13
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "revisions": [
+    {
+      "name": "proportions-v2",
+      "date": "2026-11-26",
+      "previous_manifest": "manifest-before-proportions-v2.json",
+      "reason": "Uniform source scale and common direction crop; original RGBA/PNG/source preserved",
+      "native_waterline_bottom": 13
+    }
+  ]
+}

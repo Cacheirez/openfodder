@@ -1,0 +1,329 @@
+{
+  "date": "2026-11-20",
+  "checkout_head": "9b920a0915ea67b7739b1ed3978bc0d2856b62df",
+  "launcher": "PROBAR_DANO_SOMBRAS_P1.cmd;244/387;implementation a480740",
+  "manual": "Miguel aprecia mejora de imagenes al recibir dano; quedan retornos puntuales al diseno anterior; no aceptacion global",
+  "log": "OpenFodder-P1-DanoSombras-hibrido-20261119-235700.log",
+  "sha256": "72dbb311fc708bcebce51a2b7bc55b73b9215b567392c0765dd58bab364d33ee",
+  "attempts": 9781,
+  "outcomes": {
+    "missing-variant": 219,
+    "no-body": 131,
+    "published": 9431
+  },
+  "native_snapshots": 28,
+  "same_actor_returns": [
+    {
+      "attempt": 8282,
+      "outcome": "missing-variant",
+      "missing": [
+        "349a4d1eca5fcd524b673827b2b03cd40c50dbb2d2ef3cdf306aa3395a6d1743"
+      ]
+    },
+    {
+      "attempt": 8436,
+      "outcome": "missing-variant",
+      "missing": [
+        "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+      ]
+    },
+    {
+      "attempt": 8549,
+      "outcome": "missing-variant",
+      "missing": [
+        "44b9574e54568b90d57f51ba0d972421726d750a41de6bfad860a1c361aeff2e"
+      ]
+    },
+    {
+      "attempt": 8764,
+      "outcome": "missing-variant",
+      "missing": [
+        "76cc85fa0e039653867dcda0826a4cbd91d1d0740529184c01f1ab5afdaeff3c"
+      ]
+    },
+    {
+      "attempt": 8947,
+      "outcome": "missing-variant",
+      "missing": [
+        "9545eb63c68e8fcc645bf2bbfaeb327c33dde794deb900bcd9af018710e415e1"
+      ]
+    },
+    {
+      "attempt": 9079,
+      "outcome": "missing-variant",
+      "missing": [
+        "44b9574e54568b90d57f51ba0d972421726d750a41de6bfad860a1c361aeff2e"
+      ]
+    },
+    {
+      "attempt": 9121,
+      "outcome": "missing-variant",
+      "missing": [
+        "76cc85fa0e039653867dcda0826a4cbd91d1d0740529184c01f1ab5afdaeff3c"
+      ]
+    },
+    {
+      "attempt": 9169,
+      "outcome": "missing-variant",
+      "missing": [
+        "b88929fc330e62037bf418928a7448f2136ceb184c46d118ff1ab34b5c9696e9"
+      ]
+    },
+    {
+      "attempt": 9239,
+      "outcome": "missing-variant",
+      "missing": [
+        "9545eb63c68e8fcc645bf2bbfaeb327c33dde794deb900bcd9af018710e415e1"
+      ]
+    },
+    {
+      "attempt": 9394,
+      "outcome": "missing-variant",
+      "missing": [
+        "5736042fcc8ff9cd3e43fe81f4dc9cfd99bd3576d39c452ae8df6bb42807407c"
+      ]
+    },
+    {
+      "attempt": 12464,
+      "outcome": "missing-variant",
+      "missing": [
+        "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28"
+      ]
+    },
+    {
+      "attempt": 19618,
+      "outcome": "missing-variant",
+      "missing": [
+        "3674c1ec877a1748400fc04873ee10683c086f49e82aa91cb146f804ee44b1b8"
+      ]
+    },
+    {
+      "attempt": 19642,
+      "outcome": "missing-variant",
+      "missing": [
+        "a9b407521f8c61e0113a8c571a7268c112c6a1c351768d1cc01acc22bab4f73c"
+      ]
+    },
+    {
+      "attempt": 20220,
+      "outcome": "missing-variant",
+      "missing": [
+        "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a"
+      ]
+    },
+    {
+      "attempt": 20268,
+      "outcome": "missing-variant",
+      "missing": [
+        "3bd6398249777dba631401c62e5e0b374045c4fc3a38a570221c8dc8ad28501f"
+      ]
+    },
+    {
+      "attempt": 20527,
+      "outcome": "missing-variant",
+      "missing": [
+        "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a"
+      ]
+    }
+  ],
+  "missing": [
+    {
+      "key": "76cc85fa0e039653867dcda0826a4cbd91d1d0740529184c01f1ab5afdaeff3c",
+      "count": 63,
+      "starts_returns": 2,
+      "type": 0,
+      "sheet": 28,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+      "count": 39,
+      "starts_returns": 2,
+      "type": 0,
+      "sheet": 47,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "9545eb63c68e8fcc645bf2bbfaeb327c33dde794deb900bcd9af018710e415e1",
+      "count": 36,
+      "starts_returns": 2,
+      "type": 0,
+      "sheet": 28,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "44b9574e54568b90d57f51ba0d972421726d750a41de6bfad860a1c361aeff2e",
+      "count": 24,
+      "starts_returns": 2,
+      "type": 0,
+      "sheet": 27,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "b88929fc330e62037bf418928a7448f2136ceb184c46d118ff1ab34b5c9696e9",
+      "count": 9,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 27,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+      "count": 6,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 8,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+      "count": 6,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 8,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "3bd6398249777dba631401c62e5e0b374045c4fc3a38a570221c8dc8ad28501f",
+      "count": 6,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 11,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "349a4d1eca5fcd524b673827b2b03cd40c50dbb2d2ef3cdf306aa3395a6d1743",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 3,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "ac146c675d3bb2a2952cb19e03854e29360217fa5ab07d9a28c7f74d3bc320a3",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 29,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "5736042fcc8ff9cd3e43fe81f4dc9cfd99bd3576d39c452ae8df6bb42807407c",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 37,
+      "sheet": 194,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "10f6d126038bb7ac6a7fdc59d4dcd3a5b280fb1f86a5f763f572248f71b2a781",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 12,
+      "sheet": 194,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 4,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "3674c1ec877a1748400fc04873ee10683c086f49e82aa91cb146f804ee44b1b8",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 0,
+      "sheet": 2,
+      "frame": 0,
+      "native_snapshot": true,
+      "animation": 1,
+      "person": 0
+    },
+    {
+      "key": "a9b407521f8c61e0113a8c571a7268c112c6a1c351768d1cc01acc22bab4f73c",
+      "count": 3,
+      "starts_returns": 1,
+      "type": 22,
+      "sheet": 141,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 8,
+      "frame": 2,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "837767e2c660a76dd13080d3b98418abd3cbc126b8f573718aed7bcfeddc081c",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 9,
+      "frame": 0,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    },
+    {
+      "key": "7237cad75403bb66e071311680c774ca8b61c37612815f5a9b4511d16188f09a",
+      "count": 3,
+      "starts_returns": 0,
+      "type": 0,
+      "sheet": 11,
+      "frame": 1,
+      "native_snapshot": false,
+      "animation": null,
+      "person": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Edit image1, a painted game soldier standing in profile facing screen-left and aiming a rocket launcher horizontally left. Keep EXACT pose, camera elevation, body proportions, foot placements, hands, launcher and orientation. Transfer only identity from approved enemy image2: grey-green plain helmet, grey-olive uniform, small brick-red neck cloth, short dark beard only where jaw is visible, reddish-brown leather straps/pouches and brown boots. Keep launcher; do not introduce rifle from image2. Match moderate painted style, soft upper-left light, clean readable game sprite. Image3 native enemy AA/F2 establishes orientation. Single complete character, transparent RGBA background, generous transparent margin. No floor, ground shadow, text, insignia, muzzle flash, projectile, added equipment. Never mirror or change stance.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "4dc4680ee35d215e975019b4a20564ff3c5316fc4d8cc2710493b2a6e441cc23",
+  "references": [
+    "assets/modernization/soldier-rocket/uniform-a/s59-f2-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-36-aa-f2-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

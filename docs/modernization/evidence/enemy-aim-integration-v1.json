@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "date": "2026-11-25",
+  "block": "E3.A",
+  "status": "PASS focused integration; full new-code CI and gameplay pending",
+  "parent_head": "5022b571976b5b5d8373a8ef3fcdcc075c263b38",
+  "candidates": {
+    "8": {
+      "private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-aim-technical-v1\\8x",
+      "manifest_sha256": "25f5650758863a7ae9deb72f6c87239daa4e2db62492fa248cf4283b5c0ede95",
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 8,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 517,
+          "modern": 92,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 35,
+        "assets": 220,
+        "asset_bytes": 12145152,
+        "missing_body_contracts": 517,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Technical contact qualification attached; Miguel visual acceptance pending",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ],
+        "qualified_ground_bodies": 35,
+        "owner_specific_ground_assets": 8
+      },
+      "native_validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=92, classic=587, resource-specific no-write=66, modern-owned-shadows=6, ground-components=86, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=92, classic=587, resource-specific no-write=66, modern-owned-shadows=6, ground-components=86, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-aim-technical-v1\\12x",
+      "manifest_sha256": "18b3a27ad6ff35ec6fff2a53f923fdbbb12981a2c8319a536feb279347082b22",
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 12,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 517,
+          "modern": 92,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 35,
+        "assets": 220,
+        "asset_bytes": 27326592,
+        "missing_body_contracts": 517,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Technical contact qualification attached; Miguel visual acceptance pending",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ],
+        "qualified_ground_bodies": 35,
+        "owner_specific_ground_assets": 8
+      },
+      "native_validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=92, classic=587, resource-specific no-write=66, modern-owned-shadows=6, ground-components=86, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=92, classic=587, resource-specific no-write=66, modern-owned-shadows=6, ground-components=86, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    }
+  },
+  "changes": [
+    "Eight low-aim poses, shared across types5/36 and both native formats",
+    "Eight owner36 descriptors reuse exact same approved RGBA and qualified paint; no new source keys",
+    "Native Slide2 animation51 selects AI low aim before clearing next update; ground eligible at animations0/51 only",
+    "Height/water/crop/independent-shadow exclusions, native order and 64MiB cap retained"
+  ],
+  "tests": [
+    "Windows ASan/UBSan: enemy catalog18284, player15441, density1376, capture60+2073, ground4groups PASS",
+    "Linux ASan/UBSan/LSan same focused suites PASS",
+    "Both candidates:679 real bank draws,92modern/587classic,66no-write,6owned shadows,86ground,32aim owner transitions PASS per density/platform",
+    "Python density6/contact4 PASS; diff-check PASS"
+  ],
+  "tool_limitations": [
+    "Initial airborne validator fixture changed geometry without recomputing prepared draw; native anchor guard correctly rejected. Fixture corrected and both platforms pass.",
+    "Linux wrapper returned1 after both validators passed due standalone trailing CR; script normalized to LF. This wrapper issue is distinct from sanitizer/validator results."
+  ],
+  "ci": "PR1 open/draft/unmerged; complete CI14025f9 PASS retained. CI5022b57 pending; new integration CI pending after push.",
+  "gameplay": "PENDING; candidates private and partial, no final launcher delivered",
+  "next": "E2.R0 — modernizar la pose de lanzacohetes A8/F2, dirección0, con identidad E01/v2 y referencia nativa; validar exportación y sombra de propietario36. No reintentar la imagen4B/F0 pendiente."
+}

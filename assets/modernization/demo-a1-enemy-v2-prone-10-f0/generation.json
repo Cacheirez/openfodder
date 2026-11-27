@@ -1,0 +1,19 @@
+{
+  "generator": "reuse-existing-E01-source and derivatives; no new ImageGen call",
+  "identity": 2,
+  "transparent_background": true,
+  "source_sha256": "a9859d1c836c20bb58b565d5db98a5b9a8d08328f3fd7383b6664e86c44c2eea",
+  "reused_from": "assets/modernization/demo-a1-enemy-v2-prone-52-f0/source.png",
+  "original_generation_metadata": "assets/modernization/demo-a1-enemy-v2-prone-52-f0/generation.json",
+  "original_generation_metadata_sha256": "724bcdd790a567e35be28e01a1fd87b3c59fa98a150cc96f0c212794c6e81c43",
+  "original_pose_reference": "assets/modernization/soldier-aim/uniform-a/s16-f0-verde-a.png",
+  "friendly_reference_sha256": "37e639ac9ba578a9b86da83945e85b25c67187bf9e5874d443d97dc1174e055d",
+  "target": {
+    "type": 5,
+    "person": 0,
+    "sheet": 16,
+    "frame": 0,
+    "direction": 0
+  },
+  "review": "Art/native bounds verified; Slide2 initial-person ground eligibility must be integrated before gameplay"
+}

@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw distinct D8/F14, third movement frame of this E01 unarmed raised-arms character. Image1 is the modern F12 reference for exact overhead STRAIGHT REAR camera facing UP, identity, uniform and painted materials. Image2 is original F14 for the opposite raised-arm gesture. Keep the back dominant and body pointing straight up, no face/barbe visible from behind, no diagonal turn and NO mirror. Same grey-olive uniform, grey-green helmet, small brick-red rear neck wrap and reddish leather straps/pouches/boots, upper-left light. REQUIRED opposite phase from F12: SCREEN-RIGHT hand HIGH above the right of the helmet, its arm more extended; SCREEN-LEFT open empty hand LOWER beside the head/shoulder. Both hands naturally seen from behind with elbows bent. Alternate legs from F12: RIGHT-side boot planted LOWER with straighter right leg; LEFT-side knee/boot slightly LIFTED. This is a compact walking step, not jumping. Complete helmet, hands and boots inside clear margins; compact adult proportions. BODY ONLY on actual transparent alpha outside the figure and in limb gaps, no haze/glow/background/floor/cast shadow or dark tail. No rifle, object, text or extra figure. Separate approved ground-contact layer remains unchanged.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "62acab8640c8d2b9bf398837f6688e96967c7cedba690c0c5a5e0e2ac8da48fe",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d4-authoring/f12-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d4-source-audit-v1/d8-f14-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

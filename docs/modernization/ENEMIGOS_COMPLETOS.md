@@ -1,0 +1,548 @@
+# Soldados enemigos completos — A3
+
+Miguel autoriza expresamente el 22-11-2026 la modernización completa de soldados enemigos hasta su revisión jugando. Protagonistas aceptados y conservados; no se autoriza B, escenarios, civiles en general, vehículos, scroll ni 16:9. El jefe tipo106 pertenece al alcance enemigo aunque su controlador sea el de rehenes. PR #1 abierta, borrador y sin fusionar, rama modernization/windows-foundation.
+
+## E1.1 — inventario inicial de fuente comprobado
+
+[Catálogo reproducible](evidence/enemy-state-catalog-v1.json), generado por `tools/modernization/inventory_enemy_states.py`; ocho pruebas de límites en `test_enemy_state_catalog.py`. PC y Amiga: 423 contratos por formato, 228 filas de metadatos distintas. Cuenta por tipo: 5/36, 182 cada uno; jefe106, 52; sombra22, tres (creación8D/F2 y actualización97/F0-F1, propietarios5/36 explícitos); marcador41/C4, cuatro asociaciones. Son límites iniciales conservadores, no 423 imágenes distintas ni declaración de arte completo.
+
+- Tabla enemiga de nueve grupos: marcha, daño direccional y balístico, modo cero, agua, granada, apuntado, cohete y caída. Las filas72..79 no heredan la prueba de latencia del protagonista: el selector depende de estado temporal compartido.
+- El controlador de lanzacohetes fuerza F2 después de seleccionar; no se aplica por semejanza el ciclo del arma del jugador.
+- Sangrado irrecuperable63/F0-F1, hundimiento7A, deslizamientoA7, entradaCC y marcadores7C quedan explícitos. CC y7C exigen raster nativo verificado; ningún cuerpo ficticio ni vínculo automático.
+- Un enemigo que vigila un rehén puede elegir DC/F0. La presencia de esa hoja no moderniza por extensión una familia de civiles.
+- El jefe106 recorre D8/D9 (dirección × tres frames), DA/F0-F2 e invisible7C/F0; marcador C4 independiente. No crea sombra de suelo en su controlador: no inventarla.
+- Un enemigo del mapa empieza con persona nativa0 y el controlador cambia a IA después de comprobar daño. La cobertura anterior al primer cambio exige investigación explícita, no una suposición.
+
+El catálogo conserva metadatos, rutas y hashes de funciones nativas. No contiene bitmaps comerciales. La igualdad de metadatos solo propone reutilización: no demuestra equivalencia artística ni de identidad. Los cuatro recursos enemigos del experimento previo son maestros disponibles, no aceptación global.
+
+## Próximo microbloque único
+
+E1.2 comprobado: [límites y referencias](evidence/enemy-source-native-audit.json). Catálogo revisión3: 483 filas Amiga/482 PC, de las cuales 342/341 con productor (incluido límite conservador del daño anterior a IA) y 141 declaradas por formato. Once pruebas PASS; 965 referencias privadas, cuatro bancos por SHA, 310 rasters distintos. Los recursos posteriores vacíos de la demo Amiga conservan ausencia nativa; no prueban ausencia de un jefe en el juego comercial. No se ha modificado el motor ni la simulación.
+
+E2.1 comprobado: dirección2, 44/F0-F2, con F1 anterior conservado y F0/F2 nuevos; [evidencia](evidence/enemy-walk-d2.json). Registro de arte disponible: seis poses/doce activos, sin integrarlos todavía como cobertura completa.
+
+E2.2 comprobado: dirección3,45/F0-F2; F1 anterior intacto, F0/F2 nuevos, tres poses/seis derivados. [Evidencia](evidence/enemy-walk-d3.json). Registro total ocho poses/dieciséis activos.
+
+E2.3 comprobado: dirección4,46/F0-F2; tres maestros y seis derivados nuevos, marcha atrás hacia arriba con alternancia nativa de piernas. [Evidencia](evidence/enemy-walk-d4.json). Registro total once poses/veintidós activos.
+
+E2.4 comprobado: dirección5,47/F0-F2; tres maestros/seis derivados nuevos, vista diagonal hacia arriba-derecha sin reflejos. [Evidencia](evidence/enemy-walk-d5.json). Registro total catorce poses/veintiocho activos; doce poses de marcha en cuatro direcciones.
+
+E2.5 comprobado: dirección6,48/F0-F2; tres maestros/seis derivados nuevos, orientación derecha y proporciones de casco corregidas antes de publicar. [Evidencia](evidence/enemy-walk-d6.json). Registro total diecisiete poses/treinta y cuatro activos; quince poses de marcha en cinco direcciones.
+
+E2.6 comprobado: dirección7,49/F0-F2; tres maestros/seis derivados nuevos, frente diagonal abajo-derecha y alternancia de pasos. [Evidencia](evidence/enemy-walk-d7.json). Registro total veinte poses/cuarenta activos; dieciocho poses de marcha en seis direcciones.
+
+E2.7 comprobado: dirección 0, 42/F0-F2; tres maestros/seis derivados nuevos, cuerpo de frente hacia abajo. [Evidencia](evidence/enemy-walk-d0.json). Registro total 23 poses/46 activos;21 poses de marcha en siete direcciones.
+
+E2.8 comprobado: dirección1,43/F0-F2; tres maestros/seis derivados nuevos, diagonal abajo-izquierda desde sus referencias. [Evidencia](evidence/enemy-walk-d1.json). Marcha completa: 8×3, 24 poses/48 derivados. Registro total 26 poses/52 activos; los cuatro paquetes enemigos anteriores siguen exactos. Source intacto respecto a 1b40748.
+
+E2.9 siguiente: auditar candidatos de reutilización explícita por raster nativo y semántica, junto al presupuesto combinado, antes de las familias restantes. No añadir vínculos automáticamente por una coincidencia ni modernizar filas solo declaradas. Hito enemigo en curso, no integrado ni aceptado jugando.
+
+Condición de E3: respetar el presupuesto existente de 64 MiB de activos. Medir el manifiesto combinado; reutilizar recursos equivalentes explícitos y organizar densidades cargadas sin elevar el límite ni perder verificación. La producción actual no activa ni cambia ese presupuesto.
+
+## Recorrido autorizado hasta revisión
+
+1. E1: inventario cerrado de estados, variantes, propietarios y firmas nativas.
+2. E2: diseño y producción por una dirección/familia por microbloque; reutilizar maestros válidos con trazabilidad y conservar originales/derivados.
+3. E3: integrar catálogo explícito de cuerpos y sombras en compositor ordenado; protagonistas y enemigos modernos con identidad estable.
+4. E4: comprobaciones focalizadas, H3 independiente y CI Windows/Linux; medir publicaciones y retornos por errores reales, conservar clásico y recuperación.
+5. E5: diagnóstico local congelado con hashes y revisión visual/jugable de Miguel. No inventar aceptación a partir de contadores.
+
+IA, simulación, RNG, colisiones, reloj lógico, dirección/frame y referencias clásicas intactos. CD32 es el destino principal; metadatos Amiga/TheOne contrastados no equivalen a ejecutar campaña comercial CD32. Pruebas aún no ejercitadas permanecen pendientes.
+
+## Revisión de identidad — petición de Miguel, 22-11
+
+Miguel considera que los enemigos se parecen demasiado a los aliados; propone barba y un distintivo, observando rojo en el cuello original. Se ha verificado color rojizo en esa franja, sin atribuir con certeza una prenda al bitmap. Propuesta local sin integrar: casco liso gris verdoso, uniforme gris oliva, cuello rojo teja corto y barba corta como rasgo secundario. El casco/uniforme conservan reconocimiento desde atrás. [Muestra y recuperación](evidence/enemy-identity-proposal-v1.json). Esperar la elección artística de Miguel antes de extender diseño; las 24 poses anteriores se conservan. No se anula el hito completo autorizado.
+
+E1.3 comprobado: catálogo revisión4, 340 contratos producidos Amiga/339 PC y 143 solo declarados por formato; 69/F2 no lo produce el controlador de daño acotado a 0/1. Once pruebas PASS, sin cambios en Source ni arte activo. [Evidencia](evidence/enemy-source-bounds-r4.json). E2.9 está en curso y pendiente de cierre; sus candidatos preliminares de reutilización no se han convertido en vínculos.
+
+## Identidad E01/v2 aprobada —22-11
+
+Miguel acepta expresamente la propuesta completa: casco y uniforme gris verdoso, cuello rojo teja y barba corta. [Decisión y SHA](evidence/enemy-identity-approved-v2.json) · [maestro](../../assets/modernization/enemy-identity-v2/). No requiere otra aprobación rutinaria para propagarla por el hito autorizado. Se preservan los 26 maestros verdes versión 1; nuevos paquetes/registros separados para evitar mezcla. La aprobación es de identidad, no una aceptación jugable anticipada.
+
+Siguiente microbloque único E2.V2.0: marcha dirección 0, 42/F0-F2; reutilizar exactamente F1 aprobado y editar F0/F2 manteniendo postura, anclas, orden y tamaños nativos. Validar/exportar 8×/12×, publicar y encadenar otras direcciones/estados. Reutilización y presupuesto (E2.9) siguen pendientes antes del conjunto restante/integración.
+
+## Registro de arte E01/v2
+
+- **E2.V2.0 comprobado:** walk, dirección0, 42/F0,1,2; registro3 poses/6 activos. [Evidencia](evidence/enemy-v2-walk-d0.json). Próximo: E2.V2.1 — adaptar marcha enemiga dirección1, 43/F0-F2, a E01/v2; mantener poses y geometría, validar8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.1 comprobado:** walk, dirección1, 43/F0,1,2; registro6 poses/12 activos. [Evidencia](evidence/enemy-v2-walk-d1.json). Próximo: E2.V2.2 — adaptar marcha enemiga dirección 2, 44/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.2 comprobado:** walk, dirección2, 44/F0,1,2; registro9 poses/18 activos. [Evidencia](evidence/enemy-v2-walk-d2.json). Próximo: E2.V2.3 — adaptar marcha enemiga dirección 3, 45/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.3 comprobado:** walk, dirección3, 45/F0,1,2; registro12 poses/24 activos. [Evidencia](evidence/enemy-v2-walk-d3.json). Próximo: E2.V2.4 — adaptar marcha enemiga dirección 4, 46/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.4 comprobado:** walk, dirección4, 46/F0,1,2; registro15 poses/30 activos. [Evidencia](evidence/enemy-v2-walk-d4.json). Próximo: E2.V2.5 — adaptar marcha enemiga dirección 5, 47/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.5 comprobado:** walk, dirección5, 47/F0,1,2; registro18 poses/36 activos. [Evidencia](evidence/enemy-v2-walk-d5.json). Próximo: E2.V2.6 — adaptar marcha enemiga dirección 6, 48/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado.
+
+- **E2.V2.6 comprobado:** walk, dirección6, 48/F0,1,2; registro21 poses/42 activos. [Evidencia](evidence/enemy-v2-walk-d6.json). Próximo: E2.V2.7 — adaptar marcha enemiga dirección 7, 49/F0-F2, a E01/v2; validar 8×/12× y publicar. Después retomar E2.9, reutilización y presupuesto, antes de restantes estados e integración.
+
+- **E2.V2.7 comprobado:** walk, dirección7, 49/F0,1,2; registro24 poses/48 activos. [Evidencia](evidence/enemy-v2-walk-d7.json). Próximo: E2.9 — medir reutilización nativa verificable y presupuesto combinado de protagonistas/enemigos, manteniendo el límite de 64 MiB; fijar organización de carga antes de restantes estados e integración. Continuar autónomamente dentro del hito autorizado.
+
+## E2.9 — reutilización y presupuesto comprobados
+
+- **E2.9 comprobado:** 268 poses corporales opacas distintas por clave; once candidatos de reutilización nativa explícitos, sin vínculos automáticos. Estimación combinada sin ahorros: 81.404.544 bytes a ambas densidades (excede 64 MiB), 56.356.992 a 12×; con reserva de tres sombras, quedan 10.364.800 bytes. Cinco pruebas del informe PASS. Decisión: cargar solo la densidad elegida, sin elevar el límite; implementación PENDIENTE. [Medición reproducible](evidence/enemy-reuse-budget-v1.json).
+
+E3.D — implementar catálogo de densidad explícita (8× o 12×), con preflight de 64 MiB y rechazo seguro de densidad incorrecta; mantener manifiestos y candidato de protagonistas previos. Validar el cambio focalizado antes de restantes estados e integración enemiga.
+
+## E3.D — carga por densidad comprobada
+
+- **E3.D comprobado:** carga explícita por densidad, manifiesto4/schema2; versiones anteriores intactas y preflight64 MiB conservado. Windows/Linux: 1.376 casos nuevos de densidad, 15.441 previos de catálogo y cuatro grupos de sombras PASS con ASan/UBSan; LSan Linux PASS. Integración enemiga, H3/CI completa del candidato y aceptación jugando PENDIENTES. [Contrato](CATALOGO_DENSIDAD.md), [evidencia](evidence/enemy-density-loading-v1.json).
+
+E2.G0 — preparar granada enemiga dirección 0, 4A/F0-F2, con identidad E01 aprobada y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.
+
+- **E2.G0 comprobado:** pose, dirección0, 4A/F0,1,2; registro27 poses/54 activos. [Evidencia](evidence/enemy-v2-grenade-d0.json). Próximo: E2.G1 — preparar granada enemiga dirección 1, 4B/F0-F2, con identidad E01 y referencias nativas; validar 8×/12× y publicar antes de otra dirección. Continuar hasta revisión jugando dentro del hito autorizado.
+
+## E2.G1 — bloqueo de generación
+
+- **BLOQUEO E2.G1 de plataforma:** ImageGen rechazó la salida de 4B/F0 con HTTP400, moderation_blocked/illicit (output), petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa. Un intento, sin imagen utilizable y sin reintento/cambio de herramienta o modelo. [Reproducción y recuperación](evidence/enemy-generation-blocked-4b-f0.json). Arte publicado: 27 poses/54 activos, último bloque 6ff562b; carga por densidad 805f426. No hay ejecutable enemigo nuevo. CI de 6ff562b: H6 PASS; Windows/Linux EN CURSO, sin PASS completo.
+
+E2.G1 BLOQUEADO — resolver el rechazo de plataforma antes de retomar granada dirección 1, 4B/F0-F2. Conservar prompt/referencias y 27 poses/54 activos; no sortear el bloqueo ni activar un lote parcial. Requiere intervención sobre la herramienta, no otra aprobación artística.
+
+## Criterio obligatorio de sombras y cobertura — aclaración de Miguel
+
+- **Criterio de Miguel — sombras y cobertura completa:** enemigos con la misma proyección fija abajo-derecha y luz arriba-izquierda que los protagonistas, independientemente de su orientación, con el mismo apoyo relativo de los pies y ajuste por pose. Cubrir cada estado, dirección/frame y transición producido por la fuente, incluidos reinicios, daño previo a IA y desangrado; registrar ocultos y filas no producidas. Conservar sombras independientes y tratamientos de agua/altura/caída; documentar ausencias nativas sin inventarlas. Inventario disponible no equivale a integración ni aceptación visual completa. [Requisito y fuente](evidence/enemy-shadow-coverage-requirement.json).
+
+Inspección focalizada: propietarios5/36 comparten el controlador nativo de sombras con protagonistas. Los tres estados22/8D-F2 y97-F0/F1 ya están inventariados. Integración y comprobación jugando PENDIENTES; el bloqueo de plataforma E2.G1 continúa sin reintentos.
+
+## E3.T1 — contrato técnico de enemigos
+
+- **E3.T1 comprobado:** tabla nativa enemiga generada desde fuente: 965 contratos, 679 producidos (339 PC/340 Amiga), 286 solo declarados. Roles separados de cuerpo/sombra/asociado y máscaras de persona para daño inicial; cuatro pruebas y control de deriva PASS. Sin captura ni arte nuevo activados. [Evidencia](evidence/enemy-native-table-v1.json).
+
+E3.T2 — conectar catálogo enemigo opt-in, captura de cuerpos y sombras propias, firmas nativas y rechazo de fallos reales; mantener catálogo de desarrollo explícitamente incompleto y protagonistas independientes. Validar en Windows/Linux antes de preparar candidato técnico.
+
+## E3.T2 — integración técnica opt-in
+
+- **E3.T2 comprobado:** catálogo enemigo opt-in y captura de cuerpos/sombras, 679 estados firmables obligatorios; cobertura artística separada. Windows/Linux: 18.284 casos de catálogo/despacho, 2.073 de captura enemiga, 15.441 de catálogo protagonista, 1.376 de densidad y 60 de captura previa PASS; sombras y sanitizadores focalizados PASS (LSan Linux). Fuente de simulación intacta; faltantes válidos conservan clásico y errores reales rechazan. Candidato/replay/H3/CI completa y contacto visual enemigos PENDIENTES. [Evidencia](evidence/enemy-catalog-integration-v1.json).
+
+El manifiesto4 puede incorporar enemy_catalog schema1 a la misma densidad. Se exigen todos los contratos producidos, firmas por raster y ausencia nativa por firma cero, con assets vacíos solo como desarrollo explícito. complete_art impide declarar terminado un catálogo con cuerpos o sombras opacos sin arte. El entorno debe activar ambos catálogos; sin la opción enemiga se conserva la ruta anterior. Marcador C4 independiente, jefe sin sombra inventada.
+
+E3.T3 — preparar candidatos técnicos privados por densidad con protagonistas conservados, 679 contratos enemigos firmados y arte E01 disponible; medir faltantes y sombras pendientes sin presentarlos como revisión final. Validar carga/recursos antes del replay técnico.
+
+## E3.T3 — candidatos técnicos privados
+
+- **E3.T3 comprobado:** candidatos privados 8×/12×, 679 contratos: 54 corporales E01, seis sombras modernas reutilizadas por igualdad nativa, 66 no-write, cuatro marcadores nativos y 549 cuerpos sin arte. 204 activos por densidad; 11.227.648/25.262.208 bytes, dentro de 64 MiB. Validación C++ con bancos retenidos Windows/Linux y sanitizadores PASS; tres pruebas de conversión PASS. Contacto de suelo, replay/H3/CI y revisión final PENDIENTES. [Evidencia](evidence/enemy-technical-candidates-v1.json).
+
+Preparador: tools/modernization/prepare_enemy_technical_candidate.py. Validador C++: validate_enemy_technical_candidate.cpp. Recuperación local: C:\Users\migue\.codex\visualizations\2026\11\19\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\enemy-technical-v2. Recalcula firmas desde cuatro bancos verificados, conserva descriptores/bytes protagonistas y separa faltantes de recursos vacíos. No hay lanzador de revisión final.
+
+E3.T4 — cualificar y adjuntar la pintura de sombra de suelo aprobada a las 27 poses E01 existentes, con apoyo/proyección comunes por dirección y hashes corporales intactos; validar contratos y candidatos sin generar arte nuevo ni activar revisión final.
+
+## E3.T4 — sombras de suelo cualificadas
+
+Nueve grupos/27 poses/54 derivados con apoyo inferior y centro de sombra abajo-derecha; colocación común por dirección. Pintura aprobada y cuerpos intactos. Candidatos y catálogo conservados; validación Windows/Linux con bancos retenidos y sanitizadores PASS. [Evidencia](evidence/enemy-ground-contact-integration-v1.json). No es aceptación visual global.
+
+E3.T5 — compilar diagnóstico privado con la integración actual; ejecutar replay técnico de cuerpos/sombras y H3 pertinente en Windows/Linux, consultar CI y medir continuidad/faltantes. No entregar el candidato parcial como revisión final.
+
+## E3.T5 — replay/H3 local comprobados, CI pendiente
+
+- **E3.T5 local PASS, CI PENDIENTE:** diagnóstico compilado Windows/Linux; H3 clásico11 fases/11.361 estados y M1P2 técnico1.546 estados intactos, 4.635 publicaciones HD en ambos sistemas. Enemigo5: 1.673 dibujos modernos/5.022 clásicos por arte pendiente; sin missing de datos. CI Windows de37de241 falló por guardia de captura antigua; corrección y85 pruebas Python PASS locales, pendiente de CI. [Evidencia](evidence/enemy-technical-replay-v1.json).
+
+Los analizadores antiguos de captura y diagnóstico se adaptan al contrato enemigo opt-in; nuevos controles negativos impiden clasificar cadáveres nativos como cuerpos. Se actualizan solo hashes de procedencia del inventario protagonista. No se modifican referencias H3 ni cuerpos/poses. Pendiente verificar CI completa de la corrección.
+
+## E3.T5.CI — integración técnica comprobada (25-11-2026)
+
+CI completa de14025f9: Windows, Linux y H6 PASS; ejecuciones PR y push confirmadas. El diagnóstico local conserva H3 en ambos sistemas y publica cuerpos E01/sombras con faltantes artísticos explícitos. [Cierre reproducible](evidence/enemy-technical-ci-20261125.json). No hay aceptación visual global ni revisión final de enemigos. Siguiente tarea única: E2.G1, resolver bloqueo de generación antes de continuar arte. No se ha repetido ni sorteado el rechazo.
+
+## E2.G1.R — solicitud de revisión preparada (25-11-2026)
+
+- **E2.G1.R — revisión preparada, NO enviada:** comprobado rechazo de salida concreto, no bloqueo general de cuenta/servicio demostrado. ImageGen no ofrece aquí acción de revisión/desbloqueo. Informe de soporte reproducible con petición d0b0ba1a-05a9-416c-aa3c-3c603d2441aa conservado localmente, sin imágenes ni recursos comerciales adjuntos. Sin nueva generación ni elusión. [Vía oficial y entrega](evidence/enemy-imagegen-review-request-20261125.json).
+
+Siguiente paso: envío por el canal privado oficial de soporte. No equivale a una petición enviada ni a rechazo resuelto. El bloqueo de arte continúa y la integración técnica comprobada se conserva.
+
+- **E2.A7 comprobado:** prone, dirección7, 59/F0; registro28 poses/56 activos. [Evidencia](evidence/enemy-v2-aim-d7.json). Próximo: E2.A0 — preparar apuntado bajo enemigo dirección 0, 52/F0, con E01 y referencias nativas; validar 8×/12×, apoyo de sombra y publicar antes de otra dirección. 4B/F0 queda pendiente sin bloquear otras poses.
+
+- **E2.A0 comprobado:** prone, dirección0, 52/F0; registro29 poses/58 activos. [Evidencia](evidence/enemy-v2-aim-d0.json). Próximo: E2.A1 — preparar apuntado bajo enemigo dirección 1, 53/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A1 comprobado:** prone, dirección1, 53/F0; registro30 poses/60 activos. [Evidencia](evidence/enemy-v2-aim-d1.json). Próximo: E2.A2 — preparar apuntado bajo enemigo dirección 2, 54/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A2 comprobado:** prone, dirección2, 54/F0; registro31 poses/62 activos. [Evidencia](evidence/enemy-v2-aim-d2.json). Próximo: E2.A3 — preparar apuntado bajo enemigo dirección 3, 55/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A3 comprobado:** prone, dirección3, 55/F0; registro32 poses/64 activos. [Evidencia](evidence/enemy-v2-aim-d3.json). Próximo: E2.A4 — preparar apuntado bajo enemigo dirección 4, 56/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A4 comprobado:** prone, dirección4, 56/F0; registro33 poses/66 activos. [Evidencia](evidence/enemy-v2-aim-d4.json). Próximo: E2.A5 — preparar apuntado bajo enemigo dirección 5, 57/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar antes de otra dirección. 4B/F0 permanece pendiente.
+
+- **E2.A5 comprobado:** prone, dirección5, 57/F0; registro34 poses/68 activos. [Evidencia](evidence/enemy-v2-aim-d5.json). Próximo: E2.A6 — preparar apuntado bajo enemigo dirección 6, 58/F0, con E01 y referencias nativas; validar 8×/12×, apoyo y publicar. Después revisar integración del conjunto de ocho direcciones sin activar un lote parcial como final.
+
+- **E2.A6 comprobado:** prone, dirección6, 58/F0; registro35 poses/70 activos. [Evidencia](evidence/enemy-v2-aim-d6.json). Próximo: E3.A — integrar las ocho poses de apuntado bajo E01 en candidatos técnicos y verificar sombras por propietario5/36, geometría, faltantes y presupuesto. Conservar candidatos/lanzadores anteriores; no presentar lote parcial como final.
+
+- **E3.A comprobado:** ocho poses de apuntado integradas; propietarios5/36 y transición51 verificados.35 poses,92 contratos modernos; candidatos anteriores conservados. [Evidencia](evidence/enemy-aim-integration-v1.json). Próximo: E2.R0 — modernizar la pose de lanzacohetes A8/F2, dirección0, con identidad E01/v2 y referencia nativa; validar exportación y sombra de propietario36. No reintentar la imagen4B/F0 pendiente.
+
+- **E2.R0 comprobado:** pose, dirección0, A8/F2; registro36 poses/72 activos. [Evidencia](evidence/enemy-v2-rocket-d0.json). Próximo: E2.R1 — modernizar la pose de lanzacohetes A9/F2, dirección1, con identidad E01/v2, referencia nativa y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R1 comprobado:** pose, dirección1, A9/F2; registro37 poses/74 activos. [Evidencia](evidence/enemy-v2-rocket-d1.json). Próximo: E2.R2 — modernizar la pose de lanzacohetes AA/F2, dirección2, con identidad E01/v2, referencia nativa y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R2 comprobado:** pose, dirección2, AA/F2; registro38 poses/76 activos. [Evidencia](evidence/enemy-v2-rocket-d2.json). Próximo: E2.R3 — modernizar lanzacohetes AB/F2, dirección3, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R3 comprobado:** pose, dirección3, AB/F2; registro39 poses/78 activos. [Evidencia](evidence/enemy-v2-rocket-d3.json). Próximo: E2.R4 — modernizar lanzacohetes AC/F2, dirección4, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R4 comprobado:** pose, dirección4, AC/F2; registro40 poses/80 activos. [Evidencia](evidence/enemy-v2-rocket-d4.json). Próximo: E2.R5 — modernizar lanzacohetes AD/F2, dirección5, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R5 comprobado:** pose, dirección5, AD/F2; registro41 poses/82 activos. [Evidencia](evidence/enemy-v2-rocket-d5.json). Próximo: E2.R6 — modernizar lanzacohetes AE/F2, dirección6, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R6 comprobado:** pose, dirección6, AE/F2; registro42 poses/84 activos. [Evidencia](evidence/enemy-v2-rocket-d6.json). Próximo: E2.R7 — modernizar lanzacohetes AF/F2, dirección7, con identidad E01/v2 y sombra de propietario36. Conservar4B/F0 pendiente sin reintento.
+
+- **E2.R7 comprobado:** pose, dirección7, AF/F2; registro43 poses/86 activos. [Evidencia](evidence/enemy-v2-rocket-d7.json). Próximo: E3.R — integrar las ocho poses de lanzacohetes A8..AF/F2 en candidatos nuevos8×/12×; validar contratos nativos, sombra de propietario36 y presupuesto. Mantener4B/F0 pendiente y candidatos previos intactos.
+
+- **E3.R comprobado:** lanzacohetes8direcciones integrado,108contratos modernos,501cuerpos pendientes de arte; candidato privado conservado, no revisión final. [Evidencia](evidence/enemy-rocket-integration-v1.json). Próximo: E2.S0 — modernizar natación enemiga5A/F0,F1, dirección0, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S0 comprobado:** pose, dirección0, 5A/F0,1; registro45 poses/90 activos. [Evidencia](evidence/enemy-v2-swim-d0.json). Próximo: E2.S1 — modernizar natación enemiga5B/F0,F1, dirección1, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S1 comprobado:** pose, dirección1, 5B/F0,1; registro47 poses/94 activos. [Evidencia](evidence/enemy-v2-swim-d1.json). Próximo: E2.S2 — modernizar natación enemiga5C/F0,F1, dirección2, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S2 comprobado:** pose, dirección2, 5C/F0,1; registro49 poses/98 activos. [Evidencia](evidence/enemy-v2-swim-d2.json). Próximo: E2.S3 — modernizar natación enemiga5D/F0,F1, dirección3, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S3 comprobado:** pose, dirección3, 5D/F0,1; registro51 poses/102 activos. [Evidencia](evidence/enemy-v2-swim-d3.json). Próximo: E2.S4 — modernizar natación enemiga5E/F0,F1, dirección4, con identidad E01/v2 y referencias nativas directas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S4 comprobado:** pose, dirección4, 5E/F0,1; registro53 poses/106 activos. [Evidencia](evidence/enemy-v2-swim-d4.json). Próximo: E2.S5 — modernizar natación enemiga5F/F0,F1, dirección5, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S5 comprobado:** pose, dirección5, 5F/F0,1; registro55 poses/110 activos. [Evidencia](evidence/enemy-v2-swim-d5.json). Próximo: E2.S6 — modernizar natación enemiga60/F0,F1, dirección6, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S6 comprobado:** pose, dirección6, 60/F0,1; registro57 poses/114 activos. [Evidencia](evidence/enemy-v2-swim-d6.json). Próximo: E2.S7 — modernizar natación enemiga61/F0,F1, dirección7, con identidad E01/v2 y referencias nativas. Preservar agua y ausencia de sombra de suelo; no reintentar4B/F0.
+
+- **E2.S7 comprobado:** pose, dirección7, 61/F0,1; registro59 poses/118 activos. [Evidencia](evidence/enemy-v2-swim-d7.json). Próximo: E3.S — integrar las16 poses de natación5A..61/F0,F1 en candidatos nuevos8×/12×; validar contratos nativos, ausencia de sombra de suelo y presupuesto. Mantener4B/F0 pendiente y candidatos anteriores intactos.
+
+- **E3.S comprobado:** natación16poses integrada sin suelo añadido;59poses,140contratos modernos,469cuerpos pendientes. [Evidencia](evidence/enemy-swim-integration-v1.json). Próximo: E3.CI — cerrar CI Windows/Linux/H6 del código y arte actuales; conservar resultados focalizados válidos, resolver solo fallos demostrados. Después retomar la siguiente dirección/familia producida del hito enemigo. No entregar aún revisión parcial como final.
+
+- **E3.CI comprobado:** CI completa del código/arte76db816 PASS: Windows push/Linux PR/H6; PR Windows duplicado cancelado60min, separado de PASS equivalente.87 pruebas Python. [Evidencia](evidence/enemy-ci-20261125-76db816.json). Próximo: E3.V0 — contrastar proporciones de natación5A/F0,F1 (una dirección) frente al maestro y referencia nativa: el ajuste independiente X/Y parece alargar el casco. Preparar comparación y corregir solo si se confirma, conservando fuentes, derivados/candidatos anteriores, caja16×14, ancla y agua. Después retomar daño enemigo62/F0,F1.
+
+- **E3.V0 comprobado:** corregida deformación de casco en5A/F0,F1 por escala no uniforme; fuentes/derivados previos intactos. [Evidencia](evidence/enemy-swim-proportions-d0.json). Próximo: E3.V1 — corregir proporciones de natación5B/F0,F1, dirección1, con recorte/escala compartidos, conservando originales, caja/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V1 comprobado:** natación5B/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d1.json). Próximo: E3.V2 — corregir proporciones de natación5C/F0,F1, dirección2, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V2 comprobado:** natación5C/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d2.json). Próximo: E3.V3 — corregir proporciones de natación5D/F0,F1, dirección3, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V3 comprobado:** natación5D/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d3.json). Próximo: E3.V4 — corregir proporciones de natación5E/F0,F1, dirección4, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V4 comprobado:** natación5E/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d4.json). Próximo: E3.V5 — corregir proporciones de natación5F/F0,F1, dirección5, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V5 comprobado:** natación5F/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d5.json). Próximo: E3.V6 — corregir proporciones de natación60/F0,F1, dirección6, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V6 comprobado:** natación60/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d6.json). Próximo: E3.V7 — corregir proporciones de natación61/F0,F1, dirección7, conservando fuentes/derivados previos, geometría/ancla/agua. Tras las ocho direcciones, validar candidato nuevo y retomar daño62/F0,F1.
+
+- **E3.V7 comprobado:** natación61/F0,F1 proporcional, originales conservados. [Evidencia](evidence/enemy-swim-proportions-d7.json). Próximo: E3.VI — integrar las16 poses de natación corregidas en candidatos nuevos8×/12×; verificar contratos nativos, agua, ausencia de suelo, presupuesto y continuidad. Conservar candidatos anteriores; después retomar daño62/F0,F1.
+
+- **E3.VI comprobado:** natación proporcional integrada con originales conservados;679contratos por densidad/plataforma y sanitizadores PASS. [Evidencia](evidence/enemy-swim-proportions-integration-v2.json). Próximo: E2.D0 — modernizar daño enemigo62/F0,F1, dirección0, con identidad E01/v2, maestros protagonistas20 necesarios y referencias nativas62. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
+
+- **E2.D0 comprobado:** death, dirección0, 62/F0,1; registro61 poses/122 activos. [Evidencia](evidence/enemy-v2-damage-d0.json). Próximo: E2.D1 — modernizar daño enemigo63/F0,F1, dirección1, con identidad E01/v2, maestros protagonistas21 necesarios y referencias nativas63. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
+
+- **E2.D1 comprobado:** death, dirección1, 63/F0,1; registro63 poses/126 activos. [Evidencia](evidence/enemy-v2-damage-d1.json). Próximo: E2.D2 — modernizar daño enemigo64/F0,F1, dirección2, con identidad E01/v2, maestros protagonistas22 necesarios y referencias nativas64. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
+
+- **E2.D2 comprobado:** death, dirección2, 64/F0,1; registro65 poses/130 activos. [Evidencia](evidence/enemy-v2-damage-d2.json). Próximo: E2.D3 — modernizar daño enemigo65/F0,F1, dirección3, con identidad E01/v2, maestros protagonistas23 necesarios y referencias nativas65. Mantener sombras específicas/independientes, sin suelo añadido; no reintentar4B/F0.
+
+- **E2.D3 comprobado:** death, dirección3, 65/F0,1; registro67 poses/134 activos. [Evidencia](evidence/enemy-v2-damage-d3.json). Próximo: E3.DA0 — ajustar exportación de62/F0,F1 a la caja/ancla nativa de cada frame, con escala proporcional y originales intactos; después63 y64. Retomar luego producción65..69 pendiente (siguiente66/F0,F1).
+
+- **E3.DA0 comprobado:** daño62, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d0.json). Próximo: E3.DA1 — ajustar exportación de63/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69.
+
+- **E3.DA1 comprobado:** daño63, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d1.json). Próximo: E3.DA2 — ajustar exportación de64/F0,F1 a la caja/ancla nativa de cada frame, escala proporcional y originales intactos; retomar luego producción66..69.
+
+- **E3.DA2 comprobado:** daño64, ajuste proporcional por frame, originales conservados. [Evidencia](evidence/enemy-damage-native-anchor-d2.json). Próximo: E2.D4 — modernizar daño enemigo66/F0,F1, dirección4, con identidad E01/v2, maestros protagonistas24 necesarios y referencias nativas66. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.
+
+- **E2.D4 comprobado:** death, dirección4, 66/F0,1; registro69 poses/138 activos. [Evidencia](evidence/enemy-v2-damage-d4.json). Próximo: E2.D5 — modernizar daño enemigo67/F0,F1, dirección5, con identidad E01/v2, maestros protagonistas25 necesarios y referencias nativas67. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.
+
+- **E2.D5 comprobado:** death, dirección5, 67/F0,1; registro71 poses/142 activos. [Evidencia](evidence/enemy-v2-damage-d5.json). Próximo: E2.D6 — modernizar daño enemigo68/F0,F1, dirección6, con identidad E01/v2, maestros protagonistas26 necesarios y referencias nativas68. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.
+
+- **E2.D6 comprobado:** death, dirección6, 68/F0,1; registro73 poses/146 activos. [Evidencia](evidence/enemy-v2-damage-d6.json). Próximo: E2.D7 — modernizar daño enemigo69/F0,F1, dirección7, con identidad E01/v2, maestros protagonistas27 necesarios y referencias nativas69. Ajuste proporcional/ancla por frame; conservar sombras específicas/independientes, sin suelo añadido.69/F2 sigue solo declarado, sin arte/vínculo.
+
+- **E2.D7 comprobado:** death, dirección7, 69/F0,1; registro75 poses/150 activos. [Evidencia](evidence/enemy-v2-damage-d7.json). Próximo: E3.DI — integrar las16 poses de daño62..69/F0,F1 en candidatos nuevos8×/12×; verificar contratos nativos, anclas, ausencia de suelo, presupuesto y continuidad. Conservar candidatos anteriores; no activar69/F2 ni4B/F0.
+
+- **2026-11-26 E3.DI:** primera familia de daño16poses integrada;204contratos modernos frente a140anteriores, sin suelo añadido.679dibujos por densidad/plataforma y sanitizadores Windows/Linux PASS. [Evidencia](evidence/enemy-damage-integration-v1.json). Próximo: E2.D20 — modernizar segunda reacción de daño6A/F0,F1, dirección0, con identidad E01/v2, maestros protagonistas28 y referencias nativas6A. Ajuste proporcional/ancla por frame; conservar altura y sombras independientes, sin suelo añadido. No reintentar4B/F0.
+
+- **E2.D20 comprobado:** death, dirección0, 6A/F0,1; registro77 poses/154 activos. [Evidencia](evidence/enemy-v2-damage2-d0.json). Próximo: E2.D21 — modernizar segunda reacción de daño6B/F0,F1, dirección1, con identidad E01/v2, maestros protagonistas29 y referencias nativas6B. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.64 se reutiliza en dirección2 por fuente; no crear6C.
+
+- **E2.D21 comprobado:** death, dirección1, 6B/F0,1; registro79 poses/158 activos. [Evidencia](evidence/enemy-v2-damage2-d1.json). Próximo: E2.D23 — modernizar segunda reacción de daño6D/F0,F1, dirección3, con identidad E01/v2, maestros protagonistas2B y referencias nativas6D. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido. Dirección2 ya cubierta por64; no crear6C.
+
+- **E2.D23 comprobado:** death, dirección3, 6D/F0,1; registro81 poses/162 activos. [Evidencia](evidence/enemy-v2-damage2-d3.json). Próximo: E2.D24 — modernizar segunda reacción de daño6E/F0,F1, dirección4, con identidad E01/v2, maestros protagonistas2C y referencias nativas6E. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
+
+- **E2.D24 comprobado:** death, dirección4, 6E/F0,1; registro83 poses/166 activos. [Evidencia](evidence/enemy-v2-damage2-d4.json). Próximo: E2.D25 — modernizar segunda reacción de daño6F/F0,F1, dirección5, con identidad E01/v2, maestros protagonistas2D y referencias nativas6F. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
+
+- **E2.D25 comprobado:** death, dirección5, 6F/F0,1; registro85 poses/170 activos. [Evidencia](evidence/enemy-v2-damage2-d5.json). Próximo: E2.D26 — modernizar segunda reacción de daño70/F0,F1, dirección6, con identidad E01/v2, maestros protagonistas2E y referencias nativas70. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido.
+
+- **E2.D26 comprobado:** death, dirección6, 70/F0,1; registro87 poses/174 activos. [Evidencia](evidence/enemy-v2-damage2-d6.json). Próximo: E2.D27 — modernizar segunda reacción de daño71/F0,F1, dirección7, con identidad E01/v2, maestros protagonistas2F y referencias nativas71. Mantener anclas por frame, altura y sombras independientes; sin suelo añadido. Después integrar familia completa sin6C.
+
+- **E2.D27 comprobado:** death, dirección7, 71/F0,1; registro89 poses/178 activos. [Evidencia](evidence/enemy-v2-damage2-d7.json). Próximo: E3.D2I — integrar las14 poses propias de segunda reacción6A,6B,6D..71/F0,F1 en candidatos nuevos8×/12×, junto a64 reutilizado por la fuente. Verificar contratos nativos, anclas, ausencia de suelo, presupuesto y sanitizadores Windows/Linux. Conservar candidatos anteriores; sin6C ni4B/F0.
+
+- **2026-11-26 E3.D2I:** segunda reacción integrada,260contratos modernos y274activos dentro de64MiB.679dibujos por densidad/plataforma y sanitizadores Windows/Linux PASS. [Evidencia](evidence/enemy-damage2-integration-v1.json). Próximo: E3.RA — auditar reutilización explícita de maestros E01 en daño inicial enemigo tipo5/persona0, empezando solo20/F0,F1. Verificar productor, acción/dirección/frame, geometría y procedencia; decidir exportación propia sin alias nativo ni generación redundante. No incorporar53referencias ni claves declaradas por lote.
+
+- **2026-11-26 E3.RA:** reutilización artística explícita de E01 para20/F0,F1 viable por acción/dirección/frame y procedencia. Sin alias de firmas ni exportación aún. [Auditoría](evidence/enemy-initial-master-reuse-audit-v1.json). Próximo: E3.R0 — exportar daño inicial20/F0 (PC/Amiga) y20/F1 (soloAmiga) reutilizando maestros E01 de62, con firma/geometría/ancla y procedencia propias. Ajustar verificador a formatos realmente producidos, excluir suelo y comprobar PNG/RGBA. Sin vínculo20/F1PC, alias nativo, nuevas generaciones ni cambios protagonistas.
+
+- **2026-11-26 E3.R0:** daño inicial20,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d0.json). Próximo: E3.R1 — verificar y exportar daño inicial21/F0,F1 de tipo5/persona0, dirección1, reutilizando maestros E01 de63 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R1:** daño inicial21,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d1.json). Próximo: E3.R2 — verificar y exportar daño inicial22/F0,F1 de tipo5/persona0, dirección2, reutilizando maestros E01 de64 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R2:** daño inicial22,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d2.json). Próximo: E3.R3 — verificar y exportar daño inicial23/F0,F1 de tipo5/persona0, dirección3, reutilizando maestros E01 de65 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R3:** daño inicial23,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d3.json). Próximo: E3.R4 — verificar y exportar daño inicial24/F0,F1 de tipo5/persona0, dirección4, reutilizando maestros E01 de66 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R4:** daño inicial24,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d4.json). Próximo: E3.R5 — verificar y exportar daño inicial25/F0,F1 de tipo5/persona0, dirección5, reutilizando maestros E01 de67 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R5:** daño inicial25,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d5.json). Próximo: E3.R6 — verificar y exportar daño inicial26/F0,F1 de tipo5/persona0, dirección6, reutilizando maestros E01 de68 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R6:** daño inicial26,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d6.json). Próximo: E3.R7 — verificar y exportar daño inicial27/F0,F1 de tipo5/persona0, dirección7, reutilizando maestros E01 de69 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones.
+
+- **2026-11-26 E3.R7:** daño inicial27,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage-d7.json). Próximo: E3.RI — integrar daño inicial20..27 producido, con formatos y contratos propios, en candidatos nuevos8×/12×. Verificar sanitizadores Windows/Linux, presupuesto y ausencia de suelo; no crear frames inexistentes ni tocar protagonistas.
+
+- **2026-11-26 E3.RI:**31contratos iniciales pasan aHD con16maestros E01reutilizados;291contratos modernos y290activos.679dibujos por densidad/plataforma y sanitizadores Windows/Linux PASS. [Evidencia](evidence/enemy-initial-damage-integration-v1.json). Próximo: E3.R20 — verificar y exportar segunda reacción inicial28/F0,F1 de tipo5/persona0, dirección0, reutilizando maestros E01 de6A. Comprobar acción/frame/procedencia, formatos producidos, firmas y anclas propias; sin suelo añadido, alias ni nuevas generaciones.2A no se crea: la fuente reutiliza22.
+
+- **2026-11-26 E3.R20:** daño inicial28,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d0.json). Próximo: E3.R21 — verificar y exportar segunda reacción inicial29/F0,F1 de tipo5/persona0, dirección1, reutilizando maestros E01 de6B con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R21:** daño inicial29,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d1.json). Próximo: E3.R23 — verificar y exportar segunda reacción inicial2B/F0,F1 de tipo5/persona0, dirección3, reutilizando maestros E01 de6D con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R23:** daño inicial2B,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d3.json). Próximo: E3.R24 — verificar y exportar segunda reacción inicial2C/F0,F1 de tipo5/persona0, dirección4, reutilizando maestros E01 de6E con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R24:** daño inicial2C,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d4.json). Próximo: E3.R25 — verificar y exportar segunda reacción inicial2D/F0,F1 de tipo5/persona0, dirección5, reutilizando maestros E01 de6F con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R25:** daño inicial2D,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d5.json). Próximo: E3.R26 — verificar y exportar segunda reacción inicial2E/F0,F1 de tipo5/persona0, dirección6, reutilizando maestros E01 de70 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R26:** daño inicial2E,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d6.json). Próximo: E3.R27 — verificar y exportar segunda reacción inicial2F/F0,F1 de tipo5/persona0, dirección7, reutilizando maestros E01 de71 con acción/frame/procedencia comprobados. Firmas, formatos y anclas propios; sin suelo añadido, alias ni nuevas generaciones. Dirección2 ya cubierta por22; no crear2A.
+
+- **2026-11-26 E3.R27:** daño inicial2F,2maestros E01 reutilizados explícitamente, contratos y formatos propios. [Evidencia](evidence/enemy-initial-damage2-d7.json). Próximo: E3.R2I — integrar segunda reacción inicial28,29,2B..2F producida en candidatos nuevos8×/12×, junto a22 reutilizado por la fuente. Verificar contratos, sanitizadores Windows/Linux, presupuesto y ausencia de suelo; sin2A ni frames inexistentes.
+
+- **2026-11-26 E3.R2I:**59contratos iniciales enHD con30maestros E01reutilizados;319contratos modernos y304activos.679dibujos por densidad/plataforma y sanitizadores Windows/Linux PASS. [Evidencia](evidence/enemy-initial-damage2-integration-v1.json). Próximo: E2.TA — auditar tercera tabla de daño enemiga72/F0,F1,F2 (una dirección), su productor real y relación con caídaB8..BF. Consultar solo controladores, referencias nativas y maestros pertinentes; fijar poses, anclas y tratamiento de sombra antes de exportar/generar. No extrapolar la prueba de estados dormidos protagonista a enemigos.
+
+- **2026-11-26 E2.TA:**72/F0..2 de infantería5 y equivalentesB8..BA verificados en6contratos PC/Amiga; tipo36solo declarado. Reloj y maestros30 identificados; no generación ni alias automático. [Auditoría](evidence/enemy-mode-zero-d0-audit-v1.json). Próximo: E2.T0 — modernizar72/F0,F1,F2 (dirección0 de tabla modo-cero) con identidad E01/v2, maestros protagonistas30/F0..2 y nativos72. Respetar pose/orientación de cada frame, anclas y reloj nativo; sin suelo añadido, conservando sombras independientes. Exportaciones propias; B8..BA se vincularán solo en paso explícito posterior.
+
+- **E2.T0 comprobado:** pose, dirección0, 72/F0,1,2; registro122 poses/244 activos. [Evidencia](evidence/enemy-v2-mode-zero-d0.json). Próximo: E2.T1 — verificar y modernizar73/F0,F1,F2 (dirección1 de tabla modo-cero), con E01/v2, maestros protagonistas31 y nativos73. Confirmar equivalencia de cuerposBB..BD y conservar cada pose/orientación/ancla; sin suelo añadido ni vínculo automático de caída. Solo contratos producidos de infantería5.
+
+- **E2.T1 comprobado:** pose, dirección1, 73/F0,1,2; registro125 poses/250 activos. [Evidencia](evidence/enemy-v2-mode-zero-d1.json). Próximo: E2.T2 — verificar y modernizar74/F0,F1,F2 (dirección2 de tabla modo-cero), con E01/v2, maestros protagonistas32 y nativos74. Comprobar pose/ancla de cada frame y relación BE/BF de los dos primeros; no extender equivalencias al tercero sin prueba. Sombras según fuente, sin vincular caída automáticamente.
+
+- **E2.T2a comprobado:** pose, dirección2, 74/F0,1; registro127 poses/254 activos. [Evidencia](evidence/enemy-v2-mode-zero-d2-first-pair.json). Próximo: E2.T2R — resolver semántica y referencia de74/F2 antes de generar/vincular. Contrastar productor modo-cero, alias de datos CF/D0 y bancos privados disponibles; Amiga conserva86píxeles índice15, PC cuerpo multicolor. No convertir silueta en soldado, inventar maestro32 ni declarar dirección2 completa. Conservar74/F0,F1 comprobados.
+
+- **2026-11-26 E2.T2R:** referencia de postura74/F2 identificada en datos PC/Plus; hipótesis de igualdad de máscaras descartada, sin alias. Anclas14/12 exigen exportación por formato. [Diagnóstico](evidence/enemy-mode-zero-74-f2-reference-diagnosis.json). Próximo: E2.T2b — producir74/F2 de infantería5 usando E01 y postura PC/Plus como referencia artística explícita (no alias nativo). Exportar por formato con anclas propias PC14/Amiga12, ampliando solo verificadores/preparador de catálogo; mantener firmas y recuperación nativas, sin activar otros bancos/campañas ni civiles. Validar679contratos y sanitizadores Windows/Linux antes de cerrar.
+
+- **E2.T2b comprobado:** pose, dirección2, 74/F2; registro128 poses/258 activos. [Evidencia](evidence/enemy-v2-mode-zero-d2-last-frame.json). Próximo: E3.F0 — verificar y exportar caídaB8/F0, dirección0, de enemigos5/36 reutilizando maestro E01 de72/F0 por igualdad nativa comprobada. Mantener firmas/anclas propias, altura y sombra independiente; sin suelo añadido ni alias automático. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.TI:**337contratos modernos y314activos;74/F2 con anclas por formato14/12.679dibujos por densidad/plataforma, sanitizadores y rechazo al intercambiar formatos PASS;23Python PASS. [Evidencia](evidence/enemy-mode-zero-first3-integration-v1.json). Próximo: E3.F0 — verificar y exportar caídaB8/F0, dirección0, de enemigos5/36 reutilizando maestro E01 de72/F0 por igualdad nativa comprobada. Mantener firmas/anclas propias, altura y sombra independiente; sin suelo añadido ni alias automático. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F0:** caídaB8/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d0.json). Próximo: E3.F1 — verificar y exportar caídaB9/F0, dirección1, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F1:** caídaB9/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d1.json). Próximo: E3.F2 — verificar y exportar caídaBA/F0, dirección2, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F2:** caídaBA/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d2.json). Próximo: E3.F3 — verificar y exportar caídaBB/F0, dirección3, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F3:** caídaBB/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d3.json). Próximo: E3.F4 — verificar y exportar caídaBC/F0, dirección4, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F4:** caídaBC/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d4.json). Próximo: E3.F5 — verificar y exportar caídaBD/F0, dirección5, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F5:** caídaBD/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d5.json). Próximo: E3.F6 — verificar y exportar caídaBE/F0, dirección6, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F6:** caídaBE/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d6.json). Próximo: E3.F7 — verificar y exportar caídaBF/F0, dirección7, para enemigos5/36 con maestro E01 equivalente de tabla modo-cero. Igualdad nativa/geométrica y procedencia explícitas; firmas/anclas propias, altura y sombra independiente. Sin suelo añadido ni nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.F7:** caídaBF/F0 con E01reutilizado sin alterar píxeles;4contratos nativos propios. [Evidencia](evidence/enemy-v2-fall-d7.json). Próximo: E3.FI — integrar caídaB8..BF/F0 completa en candidatos nuevos8×/12×. Verificar679contratos, anclas, sombras independientes/altura, presupuesto y sanitizadores Windows/Linux; no tocar candidatos anteriores. Después retomar estados enemigos restantes según inventario, sin claves desconocidas.
+
+- **2026-11-26 E3.FI:**8caídas integradas sin cambio de píxeles;369contratos modernos y322activos.679dibujos por densidad/plataforma, sanitizadores y64transiciones de altura PASS. [Evidencia](evidence/enemy-fall-integration-v1.json). Próximo: E3.IF0 — verificar y exportar caída inicialB0/F0, dirección0 de tipo5/persona0, reutilizando maestro E01 deB8 con procedencia hacia el maestro protagonista B0 comprobada. Contratos, formatos, ancla y asociación de sombra propios; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF0:** caídaB0/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d0.json). Próximo: E3.IF1 — verificar y exportar caída inicialB1/F0, dirección1, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF1:** caídaB1/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d1.json). Próximo: E3.IF2 — verificar y exportar caída inicialB2/F0, dirección2, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF2:** caídaB2/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d2.json). Próximo: E3.IF3 — verificar y exportar caída inicialB3/F0, dirección3, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF3:** caídaB3/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d3.json). Próximo: E3.IF4 — verificar y exportar caída inicialB4/F0, dirección4, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF4:** caídaB4/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d4.json). Próximo: E3.IF5 — verificar y exportar caída inicialB5/F0, dirección5, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF5:** caídaB5/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d5.json). Próximo: E3.IF6 — verificar y exportar caída inicialB6/F0, dirección6, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF6:** caídaB6/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d6.json). Próximo: E3.IF7 — verificar y exportar caída inicialB7/F0, dirección7, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo añadido ni nueva generación. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IF7:** caídaB7/F0 con E01reutilizado sin alterar píxeles;2contratos iniciales propios. [Evidencia](evidence/enemy-v2-initial-fall-d7.json). Próximo: E3.IFI — integrar caída inicialB0..B7/F0 en candidatos nuevos8×/12×. Verificar679contratos, alturas, sombras de dueño persona0, anclas y presupuesto con sanitizadores Windows/Linux. Conservar candidatos/protagonistas; después retomar estados enemigos restantes.
+
+- **2026-11-26 E3.IFI:** caída inicial integrada,385contratos modernos/330activos.679dibujos por densidad/plataforma, sanitizadores,96transiciones de altura y6sombras persona0 PASS; CI actual QUEUED. [Evidencia](evidence/enemy-initial-fall-integration-v1.json). Próximo: E3.IA0 — verificar y exportar apuntado inicial10/F0, dirección0 de tipo5/persona0, reutilizando maestro E01 de52 y la referencia protagonista que conste en su generación. Auditar ancla y sombra de estado herido antes de añadir suelo; contratos/formatos propios, sin nueva generación ni claves desconocidas. Solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA0:** apuntado inicial10/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d0.json). Próximo: E3.IA1 — verificar y exportar apuntado inicial11/F0, dirección1 de tipo5/persona0, reutilizando maestro E01 de53 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA1:** apuntado inicial11/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d1.json). Próximo: E3.IA2 — verificar y exportar apuntado inicial12/F0, dirección2 de tipo5/persona0, reutilizando maestro E01 de54 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA2:** apuntado inicial12/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d2.json). Próximo: E3.IA3 — verificar y exportar apuntado inicial13/F0, dirección3 de tipo5/persona0, reutilizando maestro E01 de55 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA3:** apuntado inicial13/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d3.json). Próximo: E3.IA4 — verificar y exportar apuntado inicial14/F0, dirección4 de tipo5/persona0, reutilizando maestro E01 de56 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA4:** apuntado inicial14/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d4.json). Próximo: E3.IA5 — verificar y exportar apuntado inicial15/F0, dirección5 de tipo5/persona0, reutilizando maestro E01 de57 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA5:** apuntado inicial15/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d5.json). Próximo: E3.IA6 — verificar y exportar apuntado inicial16/F0, dirección6 de tipo5/persona0, reutilizando maestro E01 de58 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA6:** apuntado inicial16/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d6.json). Próximo: E3.IA7 — verificar y exportar apuntado inicial17/F0, dirección7 de tipo5/persona0, reutilizando maestro E01 de59 y su referencia protagonista real. Contratos/formatos/anclas propios y contacto de suelo de familia apuntado; habilitación runtime de persona0 pendiente de integración. Sin nueva generación; solo esta dirección antes de validar/publicar.
+
+- **2026-11-26 E3.IA7:** apuntado inicial17/F0 con E01/anclas propios; contacto de suelo cualificado, elegibilidad runtime persona0 pendiente. [Evidencia](evidence/enemy-v2-initial-aim-d7.json). Próximo: E3.IAI — integrar apuntado inicial10..17/F0 y suelo correspondiente en candidatos nuevos8×/12×. Habilitar solo tipo5/persona0, animaciones0/51, con restricciones existentes de altura/recorte/vehículo/destrucción y supresión ante sombra independiente. Validar Windows/Linux/sanitizadores y registrar CI/H3 pertinente antes de entregar ejecutable; mantener simulación y clásico.
+
+- **E3.SK0 comprobado:** pose, dirección0, 7A/F0; registro153 poses/308 activos. [Evidencia](evidence/enemy-v2-sinking-f0.json). Próximo: E3.SK1 — crear solo7A/F1 de hundimiento enemigo, con referencia protagonista38/F1 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del frame siguiente.
+
+- **E3.SK1 comprobado:** pose, dirección0, 7A/F1; registro154 poses/310 activos. [Evidencia](evidence/enemy-v2-sinking-f1.json). Próximo: E3.SK2 — crear solo7A/F2 de hundimiento enemigo con referencia protagonista38/F2 e identidad E01; respetar ancla y recorte nativo, sin suelo. Validar/publicar antes del siguiente frame.
+
+- **E3.SK2 comprobado:** pose, dirección0, 7A/F2; registro155 poses/312 activos. [Evidencia](evidence/enemy-v2-sinking-f2.json). Próximo: E3.SK3 — crear solo7A/F3 de hundimiento enemigo con referencia protagonista38/F3 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del siguiente frame.
+
+- **E3.SK3 comprobado:** pose, dirección0, 7A/F3; registro156 poses/314 activos. [Evidencia](evidence/enemy-v2-sinking-f3.json). Próximo: E3.SK4 — crear solo7A/F4 de hundimiento enemigo con referencia protagonista38/F4 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes del último frame.
+
+- **E3.SK4 comprobado:** pose, dirección0, 7A/F4; registro157 poses/316 activos. [Evidencia](evidence/enemy-v2-sinking-f4.json). Próximo: E3.SK5 — crear solo7A/F5 de hundimiento enemigo con referencia protagonista38/F5 e identidad E01; conservar ancla/recorte nativos y no añadir suelo. Validar/publicar antes de integrar los seis frames.
+
+- **E3.SK5 comprobado:** pose, dirección0, 7A/F5; registro158 poses/318 activos. [Evidencia](evidence/enemy-v2-sinking-f5.json). Próximo: E3.SKI — integrar los seis frames7A/F0..5 de hundimiento5/36 en candidatos nuevos8×/12×; validar todos los recortes nativos5..12, anclas, ausencia de suelo y sanitizadores Windows/Linux. Sin activar ruta inicial38 todavía.
+
+- **E3.ISK0:**38/F0 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f0.json). Próximo: E3.ISK1 — exportar solo38/F1 de hundimiento inicial5/persona0 desde maestro E01 de7A/F1; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK1:**38/F1 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f1.json). Próximo: E3.ISK2 — exportar solo38/F2 de hundimiento inicial5/persona0 desde maestro E01 de7A/F2; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK2:**38/F2 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f2.json). Próximo: E3.ISK3 — exportar solo38/F3 de hundimiento inicial5/persona0 desde maestro E01 de7A/F3; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK3:**38/F3 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f3.json). Próximo: E3.ISK4 — exportar solo38/F4 de hundimiento inicial5/persona0 desde maestro E01 de7A/F4; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK4:**38/F4 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f4.json). Próximo: E3.ISK5 — exportar solo38/F5 de hundimiento inicial5/persona0 desde maestro E01 de7A/F5; verificar referencia protagonista y caja/ancla nativas propias. Sin suelo ni alias runtime; validar/publicar antes de otro frame.
+
+- **E3.ISK5:**38/F5 con maestro E01/anclas propios; integración pendiente. [Evidencia](evidence/enemy-v2-initial-sinking-f5.json). Próximo: E3.ISKI — integrar38/F0..5 inicial/persona0 en candidatos nuevos8×/12×; validar sus96recortes5..12 y sombras sin suelo con sanitizadores Windows/Linux. Conservar ancla propiaF5 y contratos separados de7A.
+
+- **E3.SL0 comprobado:** pose, dirección0, A7/F0; registro165 poses/332 activos. [Evidencia](evidence/enemy-v2-slide-d0.json). Próximo: E3.SL1 — crear soloA7/F1, dirección nativa1 de deslizamiento enemigo con referencia protagonistaA4/F1 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL1 comprobado:** pose, dirección1, A7/F1; registro166 poses/334 activos. [Evidencia](evidence/enemy-v2-slide-d1.json). Próximo: E3.SL2 — crear soloA7/F2, dirección nativa2 de deslizamiento enemigo con referencia protagonistaA4/F2 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL2 comprobado:** pose, dirección2, A7/F2; registro167 poses/336 activos. [Evidencia](evidence/enemy-v2-slide-d2.json). Próximo: E3.SL3 — crear soloA7/F3, dirección nativa3 de deslizamiento enemigo con referencia protagonistaA4/F3 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL3 comprobado:** pose, dirección3, A7/F3; registro168 poses/338 activos. [Evidencia](evidence/enemy-v2-slide-d3.json). Próximo: E3.SL4 — crear soloA7/F4, dirección nativa4 de deslizamiento enemigo con referencia protagonistaA4/F4 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL4 comprobado:** pose, dirección4, A7/F4; registro169 poses/340 activos. [Evidencia](evidence/enemy-v2-slide-d4.json). Próximo: E3.SL5 — crear soloA7/F5, dirección nativa5 de deslizamiento enemigo con referencia protagonistaA4/F5 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL5 comprobado:** pose, dirección5, A7/F5; registro170 poses/342 activos. [Evidencia](evidence/enemy-v2-slide-d5.json). Próximo: E3.SL6 — crear soloA7/F6, dirección nativa6 de deslizamiento enemigo con referencia protagonistaA4/F6 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección.
+
+- **E3.SL6 comprobado:** pose, dirección6, A7/F6; registro171 poses/344 activos. [Evidencia](evidence/enemy-v2-slide-d6.json). Próximo: E3.SL7 — crear soloA7/F7, dirección nativa7 de deslizamiento enemigo con referencia protagonistaA4/F7 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de integrar.
+
+- **E3.SL7 comprobado:** pose, dirección7, A7/F7; registro172 poses/346 activos. [Evidencia](evidence/enemy-v2-slide-d7.json). Próximo: E3.SLI — integrarA7/F0..7 y suelo de deslizamiento5/36 en candidatos nuevos8×/12×. Clonar descriptores de dueño sin modificar píxeles; habilitar solo50/51/52 con restricciones de altura/recorte/vehículo/destrucción y supresión ante sombra independiente. Validar Windows/Linux/sanitizadores; CI/H3 actuales pendientes antes de ejecutable final.
+
+- **E3.ISL0:**A4/F0 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d0.json). Próximo: E3.ISL1 — exportar soloA4/F1 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F1; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL1:**A4/F1 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d1.json). Próximo: E3.ISL2 — exportar soloA4/F2 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F2; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL2:**A4/F2 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d2.json). Próximo: E3.ISL3 — exportar soloA4/F3 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F3; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL3:**A4/F3 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d3.json). Próximo: E3.ISL4 — exportar soloA4/F4 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F4; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL4:**A4/F4 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d4.json). Próximo: E3.ISL5 — exportar soloA4/F5 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F5; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL5:**A4/F5 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d5.json). Próximo: E3.ISL6 — exportar soloA4/F6 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F6; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL6:**A4/F6 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d6.json). Próximo: E3.ISL7 — exportar soloA4/F7 de deslizamiento inicial5/persona0 desde maestro E01 deA7/F7; verificar referencia protagonista y contratos/ancla propios. Píxeles/contacto de suelo intactos; runtime inicial pendiente. Validar/publicar antes de otra dirección.
+
+- **E3.ISL7:**A4/F7 inicial con maestro/derivados E01 intactos y ancla propia; suelo runtime pendiente. [Evidencia](evidence/enemy-v2-initial-slide-d7.json). Próximo: E3.ISLI — integrarA4/F0..7 inicial5/persona0 y su suelo en candidatos nuevos8×/12×. Habilitar solo50/51/52 con guardas existentes y supresión ante sombra independiente; validar Windows/Linux/sanitizadores. Después actualizar ejecutables y verificar H3/CI pertinente antes de revisión jugando.
+
+- **E3.T30 comprobado:** pose, dirección3, 75/F0; registro181 poses/366 activos. [Evidencia](evidence/enemy-v2-mode-zero-d3-f0.json). Próximo: E3.T31 — crear solo75/F1 de infantería modo-cero, con identidad E01 y referencias nativas PC/Plus de esa entrada; anclas PC14/Amiga13 y derivados por formato, sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame de esta dirección.
+
+- **E3.T31 comprobado:** pose, dirección3, 75/F1; registro182 poses/370 activos. [Evidencia](evidence/enemy-v2-mode-zero-d3-f1.json). Próximo: E3.T32 — crear solo75/F2 de infantería modo-cero con identidad E01 y referencias nativas PC/Plus de esa entrada. Verificar gesto/mano y apoyo propios, PC14/Amiga13; exportar por formato sin alias ni suelo nuevo inferido. Validar/publicar antes de integrar esta dirección.
+
+- **E3.T32 comprobado:** pose, dirección3, 75/F2; registro183 poses/374 activos. [Evidencia](evidence/enemy-v2-mode-zero-d3-f2.json). Próximo: E3.T3I — integrar75/F0..2 de5/persona1 en candidatos nuevos8×/12×, con derivados/anclas nativos por formato y sin suelo nuevo inferido. Validar6contratos nuevos, rechazo al intercambiar formatos y sanitizadores Windows/Linux; Source clásico/simulación intactos.
+
+- **E3.T40 comprobado:** pose, dirección4, 76/F0; registro184 poses/376 activos. [Evidencia](evidence/enemy-v2-mode-zero-d4-f0.json). Próximo: E3.T41 — crear solo76/F1 de modo-cero5/persona1 con identidad E01 y referencias PC/Plus propias; verificar gesto/mano y pie de ese frame, ancla14 en ambos formatos y proporción. Derivados comunes solo si caben; sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame.
+
+- **E3.T41 comprobado:** pose, dirección4, 76/F1; registro185 poses/378 activos. [Evidencia](evidence/enemy-v2-mode-zero-d4-f1.json). Próximo: E3.T42 — crear solo76/F2 de modo-cero5/persona1 con identidad E01 y referencias PC/Plus propias; respetar gesto y apoyo del frame, ancla14 en ambos formatos y proporción. Derivados comunes solo si caben; sin alias ni suelo nuevo inferido. Validar/publicar antes de integrar esta dirección.
+
+- **E3.T42 comprobado:** pose, dirección4, 76/F2; registro186 poses/380 activos. [Evidencia](evidence/enemy-v2-mode-zero-d4-f2.json). Próximo: E3.T4I — integrar76/F0..2 de5/persona1 en candidatos nuevos8×/12×; validar6contratos nuevos y anclas14 en ambos formatos, presupuesto y sanitizadores Windows/Linux. Mantener derivados comunes solo con cajas verificadas, sin alias ni suelo nuevo inferido; Source clásico/simulación intactos.
+
+- **E3.T50 comprobado:** pose, dirección5, 77/F0; registro187 poses/384 activos. [Evidencia](evidence/enemy-v2-mode-zero-d5-f0.json). Próximo: E3.T51 — crear únicamente77/F1, vista trasera hacia arriba y fase0 segúnCF/D0/fila8; identidad E01 y referencias propias, anclas PC14/Amiga11 por formato. Sin saludo frontal supuesto ni suelo nuevo inferido; validar/publicar antes del último frame.
+
+- **E3.T51 comprobado:** pose, dirección5, 77/F1; registro188 poses/388 activos. [Evidencia](evidence/enemy-v2-mode-zero-d5-f1.json). Próximo: E3.T52 — crear únicamente77/F2, vista trasera hacia arriba y fase1 segúnCF/D0/fila9; referencias propias PC/Plus, identidad E01 y anclas PC14/Amiga11 por formato. Conservar fase/gesto nativos, validar/publicar antes de integrar77/F0..2.
+
+- **E3.T52 comprobado:** pose, dirección5, 77/F2; registro189 poses/392 activos. [Evidencia](evidence/enemy-v2-mode-zero-d5-f2.json). Próximo: E3.T5I — integrar únicamente77/F0..2 de5/persona1 en candidatos nuevos8×/12×; verificar6contratos nuevos, anclas PC14/Amiga12-11 y formato propio, presupuesto y sanitizadores Windows/Linux. Mantener Source e0d9430b y candidatos previos intactos; sin suelo nuevo inferido.
+
+- **E3.T60 comprobado:** pose, dirección6, 78/F0; registro190 poses/396 activos. [Evidencia](evidence/enemy-v2-mode-zero-d6-f0.json). Próximo: E3.T61 — crear únicamente78/F1, vista trasera arriba-derecha/fase1 segúnCF/D0/fila11; referencias propias PC/Plus, identidad E01 y anclas PC14/Amiga12. Alternar gesto/paso sin reflejos, validar/publicar antes del último frame.
+
+- **E3.T61 comprobado:** pose, dirección6, 78/F1; registro191 poses/400 activos. [Evidencia](evidence/enemy-v2-mode-zero-d6-f1.json). Próximo: E3.T62 — crear únicamente78/F2, perfil derecho/fase0 segúnCF/D0/fila12; identidad E01 y referencias propias PC/Plus. Anclas PC14/Amiga12, sin reflejar el perfil izquierdo ni inferir suelo; validar/publicar antes de integrar78/F0..2.
+
+- **E3.T62 comprobado:** pose, dirección6, 78/F2; registro192 poses/404 activos. [Evidencia](evidence/enemy-v2-mode-zero-d6-f2.json). Próximo: E3.T6I — integrar únicamente78/F0..2 de5/persona1 en candidatos nuevos8×/12×; verificar6contratos nuevos, anclas PC14/Amiga12 y formato propio, presupuesto y sanitizadores Windows/Linux. Mantener Source e0d9430b y candidatos anteriores, sin suelo nuevo inferido.
+
+- **E3.T70 comprobado:** pose, dirección7, 79/F0; registro193 poses/408 activos. [Evidencia](evidence/enemy-v2-mode-zero-d7-f0.json). Próximo: E3.T71 — crear únicamente79/F1, vista frontal abajo-derecha/fase0 segúnCF/D0/fila14; identidad E01 y referencias propias PC/Plus. Anclas PC14/Amiga13, sin reflejos ni suelo nuevo inferido; validar/publicar antes del último frame.
+
+- **E3.T71 comprobado:** pose, dirección7, 79/F1; registro194 poses/412 activos. [Evidencia](evidence/enemy-v2-mode-zero-d7-f1.json). Próximo: E3.T72 — crear únicamente79/F2, vista frontal abajo-derecha/fase1 segúnCF/D0/fila15; identidad E01 y referencias propias PC/Plus, anclas PC14/Amiga13. Bajar mano y conservar paso nativo sin reflejos; validar/publicar antes de integrar79/F0..2.
+
+- **E3.T72 comprobado:** pose, dirección7, 79/F2; registro195 poses/416 activos. [Evidencia](evidence/enemy-v2-mode-zero-d7-f2.json). Próximo: E3.T7I — integrar únicamente79/F0..2 de5/persona1 en candidatos nuevos8×/12×; verificar6contratos nuevos, anclas PC14/Amiga13 y formato propio, presupuesto y sanitizadores Windows/Linux. Conservar Source e0d9430b, protagonistas y candidatos anteriores; sin suelo nuevo inferido.
+
+- **E2.G7 comprobado:** pose, dirección7, 51/F0,1,2; registro198 poses/422 activos. [Evidencia](evidence/enemy-v2-grenade-d7.json). Próximo: E3.G7I — integrar únicamente51/F0..2 en candidatos nuevos8×/12× con suelo fijo cualificado común a la dirección. Verificar6contratos nativos nuevos, reutilización exacta de extremos, apoyo/anclas y sanitizadores Windows/Linux; Source e0d9430b intacto. No reintentar4B/F0.
+
+- **E2.G2 comprobado:** pose, dirección2, 4C/F0,1,2; registro201 poses/428 activos. [Evidencia](evidence/enemy-v2-grenade-d2.json). Próximo: E3.G2I — integrar únicamente4C/F0..2 con suelo fijo cualificado de dirección2 en candidatos nuevos8×/12×. Verificar6contratos nuevos, anclas14/contacto y sanitizadores Windows/Linux; conservar Source e0d9430b y candidatos previos. No reintentar4B/F0.
+
+- **E2.G3 comprobado:** pose, dirección3, 4D/F0,1,2; registro204 poses/434 activos. [Evidencia](evidence/enemy-v2-grenade-d3.json). Próximo: E3.G3I — integrar únicamente4D/F0..2 con suelo fijo cualificado de dirección3 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Mantener Source e0d9430b y candidatos previos; no reintentar4B/F0.
+
+- **E2.G4 comprobado:** pose, dirección4, 4E/F0,1,2; registro207 poses/440 activos. [Evidencia](evidence/enemy-v2-grenade-d4.json). Próximo: E3.G4I — integrar únicamente4E/F0..2 con suelo fijo cualificado de dirección4 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Source e0d9430b y candidatos previos intactos; no reintentar4B/F0.
+
+- **E2.G5 comprobado:** pose, dirección5, 4F/F0,1,2; registro210 poses/446 activos. [Evidencia](evidence/enemy-v2-grenade-d5.json). Próximo: E3.G5I — integrar únicamente4F/F0..2 con suelo fijo cualificado de dirección5 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Source e0d9430b y candidatos previos intactos; no reintentar4B/F0.
+
+- **E2.G6 comprobado:** pose, dirección6, 50/F0,1,2; registro213 poses/452 activos. [Evidencia](evidence/enemy-v2-grenade-d6.json). Próximo: E3.G6I — integrar únicamente50/F0..2 con suelo fijo cualificado de dirección6 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Source e0d9430b y candidatos previos intactos; no reintentar4B/F0.
+
+- **E2.G1R comprobado:** pose, dirección1, 4B/F1,2; registro215 poses/456 activos. [Evidencia](evidence/enemy-v2-grenade-d1-last-pair.json). Próximo: E3.G1RI — integrar únicamente4B/F1,F2 con suelo fijo cualificado del par disponible en candidatos nuevos8×/12×; verificar4contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Mantener4B/F0ausente y su bloqueo auditado, Source e0d9430b y candidatos anteriores intactos.
+
+- **E3.GUARD.A comprobado:** pose, dirección0, DC/F0; registro216 poses/458 activos. [Evidencia](evidence/enemy-v2-guard-dc.json). Próximo: E3.GUARD.I — habilitar solo el suelo opcional de5/persona1/DC/F0, animación0, altura0/recorte0 y guardas existentes, con supresión por sombra independiente actual. Integrar candidato nuevo8×/12×; verificar contratos/ancla12, exclusiones y composición/sanitizadores. Al cambiar Source, actualizar diagnósticos y comprobar H3/CI pertinentes antes de cerrar el bloque.
+
+- **E3.GUARD.I cerrado técnicamente** (27-11-2026): guardiaDC/F0PC con apoyo12 y suelo fijo integrado; 216poses/458derivados, 679contratos/556modernos y53cuerpos pendientes. Sanitizadores focalizados, H3(11fases/11361estados por sistema), Window/A2, M1P2(4635publicaciones/1546estados por sistema) y cinco checksCI de Sourceb2acffd6 PASS. Guardia no observado en M1P2; no se infiere aceptación visual/jugable. [Evidencia](evidence/enemy-guard-runtime-ci-h3-b2acffd6.json). Próximo: E2.LEADER.D0.AUD — auditar únicamente líder106/D8/F0..2 (dirección0): selector, orientación y gesto nativos, cajas PC propias, no-write Amiga firmado y sombra (incluida posible cola embebida). No inferir ausencia de suelo por faltar creador independiente; no generar arte antes de comprobar este contrato. Dentro del hito autorizado.
+
+- **E2.LEADER.D0.AUD comprobado:** seis contratos propios106/D8/F0..2; cuerposPC frontales con brazos levantados, contacto oscuro embebido inferior y tres Amiga no-write verificados. Apoyo12 como interpretación artística interna; marcador independiente y Source intactos. [Auditoría](evidence/enemy-leader-d8-d0-source-audit-v1.json). Próximo: E2.LEADER.D0.ART — crear únicamente líder106/D8/F0..2, dirección0 frontal hacia abajo, desarmado con brazos levantados y gesto propio de cada frame; identidad E01/v2. Celda16×14, cuerpo con apoyo artístico12 separado del contacto inferior auditado, soloPC con no-write Amiga firmado. Cualificar sombra fija existente; sin modificar Source ni integrar todavía. Una dirección/familia, tres frames; conservar marcadores y protagonistas.
+
+- **E2.LEADER.D0.ART comprobado:** pose, dirección0, D8/F0,1,2; registro219 poses/464 activos. [Evidencia](evidence/enemy-v2-leader-d8-d0.json). Próximo: E2.LEADER.D1.AUD — auditar únicamente líder106/D8/F3..5 (dirección1), orientación/gestos y cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Continuar una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D1.AUD comprobado:** tres posesPC propias hacia abajo-izquierda y tres Amiga no-write de106/D8/F3..5, contacto inferior auditado; fuente y marcadores intactos. [Evidencia](evidence/enemy-leader-d8-d1-source-audit-v1.json). Próximo: E2.LEADER.D1.ART — crear únicamente líder106/D8/F3..5, dirección1 hacia abajo-izquierda, sin arma y con brazos levantados/gesto propio; identidad E01/v2 y maestro43 para cámara. Celda16×14, apoyo artístico12 separado del contacto embebido auditado; soloPC y no-writeAmiga firmado. Cualificar sombra fija común a los tres frames; no modificar Source ni integrar todavía.
+
+- **E2.LEADER.D1.ART comprobado:** pose, dirección1, D8/F3,4,5; registro222 poses/470 activos. [Evidencia](evidence/enemy-v2-leader-d8-d1.json). Próximo: E2.LEADER.D2.AUD — auditar únicamente líder106/D8/F6..8 (dirección2), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D2.AUD comprobado:**106/D8/F6..8 perfil izquierdo, cajas superiores0/1/0 y contacto inferior propios; seis firmas/recursos PC+Amiga verificados, no-write conservado. [Evidencia](evidence/enemy-leader-d8-d2-source-audit-v1.json). Próximo: E2.LEADER.D2.ART — crear únicamente líder106/D8/F6..8, dirección2 de perfil izquierdo, sin arma y con brazos levantados/oclusiones y gesto propio; identidadE01/v2 y maestro44 para cámara. Respetar caja superior propia (F7desde1), celda16×14 y apoyo artístico12 separado del contacto inferior auditado. SoloPC/no-writeAmiga firmado; cualificar sombra fija común, sin Source ni integración.
+
+- **E2.LEADER.D2.ART comprobado:** pose, dirección2, D8/F6,7,8; registro225 poses/476 activos. [Evidencia](evidence/enemy-v2-leader-d8-d2.json). Próximo: E2.LEADER.D3.AUD — auditar únicamente líder106/D8/F9..11 (dirección3), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D3.AUD comprobado:**D8/F9..11de106/persona2, trasera hacia arriba-izquierda, maestroE01/45; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d8-d3-source-audit-v1.json). Próximo: E2.LEADER.D3.ART — crear únicamente líder106/D8/F9..11, dirección3 de espaldas hacia arriba-izquierda, sin arma y brazos levantados/gestos propios; identidadE01/v2 y maestro45 para cámara. Respetar cajas superiores1/1/0 y detalle de cuerpo en fila11; apoyo artístico12 separado del contacto auditado. SoloPC/no-writeAmiga, sombra fija común; sin Source ni integración.
+
+- **E2.LEADER.D3.ART comprobado:** pose, dirección3, D8/F9,10,11; registro228 poses/482 activos. [Evidencia](evidence/enemy-v2-leader-d8-d3.json). Próximo: E2.LEADER.D4.AUD — auditar únicamente líder106/D8/F12..14 (dirección4), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D4.AUD comprobado:**D8/F12..14de106/persona2, trasera hacia arriba, maestroE01/46; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d8-d4-source-audit-v1.json). Próximo: E2.LEADER.D4.ART — crear únicamente líder106/D8/F12..14, dirección4 de espaldas hacia arriba, sin arma y brazos levantados/gestos propios; identidadE01/v2 y maestro46 para cámara. Respetar cajas y topes0/1/0, apoyo artístico12 separado del contacto auditado. SoloPC/no-writeAmiga firmado y sombra fija común; sin Source ni integración.
+
+- **E2.LEADER.D4.ART comprobado:** pose, dirección4, D8/F12,13,14; registro231 poses/488 activos. [Evidencia](evidence/enemy-v2-leader-d8-d4.json). Próximo: E2.LEADER.D5.AUD — auditar únicamente líder106/D8/F15..17 (dirección5), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D5.AUD comprobado:**D8/F15..17de106/persona2, trasera hacia arriba-derecha, maestroE01/47; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d8-d5-source-audit-v1.json). Próximo: E2.LEADER.D5.ART — crear únicamente líder106/D8/F15..17, dirección5 de espaldas hacia arriba-derecha, sin arma y gestos propios; identidadE01/v2 y maestro47 para cámara. Respetar cajas desdeX6/topes0/1/1 y detalle de cuerpo en fila11; apoyo artístico12 separado del contacto auditado. SoloPC/no-writeAmiga y sombra fija común; sin Source ni integración.
+
+- **E2.LEADER.D5.ART comprobado:** pose, dirección5, D8/F15,16,17; registro234 poses/494 activos. [Evidencia](evidence/enemy-v2-leader-d8-d5.json). Próximo: E2.LEADER.D6.AUD — auditar únicamente líder106/D8/F18..20 (dirección6), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D6.AUD comprobado:**D8/F18..20de106/persona2, perfil derecho, maestroE01/48; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d8-d6-source-audit-v1.json). Próximo: E2.LEADER.D6.ART — crear únicamente líder106/D8/F18..20, dirección6 de perfil derecho, sin arma y gestos/oclusiones propios; identidadE01/v2 y maestro48 para cámara. Respetar cajas[6,0,15,14], apoyo artístico12 y detalle del cuerpo fila10; separar contacto auditado. SoloPC/no-writeAmiga y sombra fija común; sin Source ni integración.
+
+- **E2.LEADER.D6.ART comprobado:** pose, dirección6, D8/F18,19,20; registro237 poses/500 activos. [Evidencia](evidence/enemy-v2-leader-d8-d6.json). Próximo: E2.LEADER.D7.AUD — auditar únicamente líder106/D8/F21..23 (dirección7), orientación/gestos, cajas propiasPC, no-writeAmiga y contacto embebido antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin nuevas familias ni claves desconocidas.
+
+- **E2.LEADER.D7.AUD comprobado:**D8/F21..23de106/persona2, frontal hacia abajo-derecha, maestroE01/49; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d8-d7-source-audit-v1.json). Próximo: E2.LEADER.D7.ART — crear únicamente líder106/D8/F21..23, dirección7 frontal hacia abajo-derecha, sin arma y gestos propios; identidadE01/v2 y maestro49 para cámara. Respetar cajas[5,1,16,14]y apoyo artístico12 separado del contacto auditado. SoloPC/no-writeAmiga firmado y sombra fija común; sin Source ni integración.
+
+- **E2.LEADER.D7.ART comprobado:** pose, dirección7, D8/F21,22,23; registro240 poses/506 activos. [Evidencia](evidence/enemy-v2-leader-d8-d7.json). Próximo: E2.LEADER.D9.D0.AUD — auditar únicamente líder106/D9/F0..2, dirección0: selector/transiciónD8-D9, orientación/gestos y cajasPC propios, no-writeAmiga y contacto embebido. Comparar cuerpo nativo con D8/F0..2antes de decidir generación o reutilización; no asumir igualdad por nombre/silueta ni incorporar claves desconocidas. Integración runtime del líder pendiente.
+
+- **E2.LEADER.D9.D0.AUD comprobado:**D9/F0..2de106/persona2, frontal hacia abajo, brazos bajos, maestroE01/42; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d0-source-audit-v1.json). Próximo: E2.LEADER.D9.D0.ART — crear únicamente líder106/D9/F0..2, dirección0 frontal hacia abajo con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro42 para cámara. Sin aliasD8: comparación de cuerpo negativo. Respetar caja[4,0,12,14]y apoyo artístico12, soloPC/no-writeAmiga firmado y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D0.ART comprobado:** pose, dirección0, D9/F0,1,2; registro243 poses/512 activos. [Evidencia](evidence/enemy-v2-leader-d9-d0.json). Próximo: E2.LEADER.D9.D1.AUD — auditar únicamente líder106/D9/F3..5, dirección1: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta antes de crear arte. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D1.AUD comprobado:**D9/F3..5de106/persona2, frontal hacia abajo-izquierda con brazos bajos, maestroE01/43; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d1-source-audit-v1.json). Próximo: E2.LEADER.D9.D1.ART — crear únicamente líder106/D9/F3..5, dirección1 hacia abajo-izquierda con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro43 para cámara. Comparación nativa sin alias válido. Respetar cajas propias y apoyo artístico12; soloPC/no-writeAmiga firmado y contacto fijo común, sin Source ni integración.
+
+- **E2.LEADER.D9.D1.ART comprobado:** pose, dirección1, D9/F3,4,5; registro246 poses/518 activos. [Evidencia](evidence/enemy-v2-leader-d9-d1.json). Próximo: E2.LEADER.D9.D2.AUD — auditar únicamente líder106/D9/F6..8, dirección2: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D2.AUD comprobado:**D9/F6..8de106/persona2, perfil izquierdo con brazos bajos, maestroE01/44; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d2-source-audit-v1.json). Próximo: E2.LEADER.D9.D2.ART — crear únicamente líder106/D9/F6..8, dirección2 de perfil izquierdo con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro44 para cámara. Respetar cajas propias y apoyo artístico12; no alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común, sin Source ni integración.
+
+- **E2.LEADER.D9.D2.ART comprobado:** pose, dirección2, D9/F6,7,8; registro249 poses/524 activos. [Evidencia](evidence/enemy-v2-leader-d9-d2.json). Próximo: E2.LEADER.D9.D3.AUD — auditar únicamente líder106/D9/F9..11, dirección3: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D3.AUD comprobado:**D9/F9..11de106/persona2, trasera hacia arriba-izquierda con brazos bajos, maestroE01/45; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d3-source-audit-v1.json). Próximo: E2.LEADER.D9.D3.ART — crear únicamente líder106/D9/F9..11, dirección3 de espaldas hacia arriba-izquierda con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro45 para cámara. Respetar cajas propias y apoyo artístico12, sin alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D3.ART comprobado:** pose, dirección3, D9/F9,10,11; registro252 poses/530 activos. [Evidencia](evidence/enemy-v2-leader-d9-d3.json). Próximo: E2.LEADER.D9.D4.AUD — auditar únicamente líder106/D9/F12..14, dirección4: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D4.AUD comprobado:**D9/F12..14de106/persona2, trasera central hacia arriba con brazos bajos, maestroE01/46; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d4-source-audit-v1.json). Próximo: E2.LEADER.D9.D4.ART — crear únicamente líder106/D9/F12..14, dirección4 de espaldas hacia arriba con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro46 para cámara. Respetar cajas propias y apoyo artístico12, sin alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D4.ART comprobado:** pose, dirección4, D9/F12,13,14; registro255 poses/536 activos. [Evidencia](evidence/enemy-v2-leader-d9-d4.json). Próximo: E2.LEADER.D9.D5.AUD — auditar únicamente líder106/D9/F15..17, dirección5: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D5.AUD comprobado:**D9/F15..17de106/persona2, trasera hacia arriba-derecha con brazos bajos, maestroE01/47; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d5-source-audit-v1.json). Próximo: E2.LEADER.D9.D5.ART — crear únicamente líder106/D9/F15..17, dirección5 de espaldas hacia arriba-derecha con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro47 para cámara. Respetar cajas propias y apoyo artístico12, sin alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D5.ART comprobado:** pose, dirección5, D9/F15,16,17; registro258 poses/542 activos. [Evidencia](evidence/enemy-v2-leader-d9-d5.json). Próximo: E2.LEADER.D9.D6.AUD — auditar únicamente líder106/D9/F18..20, dirección6: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D6.AUD comprobado:**D9/F18..20de106/persona2, perfil derecho con brazos bajos, maestroE01/48; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d6-source-audit-v1.json). Próximo: E2.LEADER.D9.D6.ART — crear únicamente líder106/D9/F18..20, dirección6 de perfil derecho con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro48 para cámara. Respetar cajas propias y apoyo artístico12, sin alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D6.ART comprobado:** pose, dirección6, D9/F18,19,20; registro261 poses/548 activos. [Evidencia](evidence/enemy-v2-leader-d9-d6.json). Próximo: E2.LEADER.D9.D7.AUD — auditar únicamente líder106/D9/F21..23, dirección7: orientación/gestos, cajasPC propios, no-writeAmiga y contacto embebido; comprobar posible reutilización solo con evidencia nativa exacta. Una dirección/familia por microbloque; integración runtime del líder pendiente, sin claves desconocidas.
+
+- **E2.LEADER.D9.D7.AUD comprobado:**D9/F21..23de106/persona2, frontal diagonal hacia abajo-derecha con brazos bajos, maestroE01/49; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-d9-d7-source-audit-v1.json). Próximo: E2.LEADER.D9.D7.ART — crear únicamente líder106/D9/F21..23, dirección7 frontal diagonal abajo-derecha con brazos bajos/manos libres y fases propias; identidadE01/v2 y maestro49 para cámara. Respetar cajas propias y apoyo artístico12, sin alias nativo válido. SoloPC/no-writeAmiga y contacto fijo común; sin Source ni integración.
+
+- **E2.LEADER.D9.D7.ART comprobado:** pose, dirección7, D9/F21,22,23; registro264 poses/554 activos. [Evidencia](evidence/enemy-v2-leader-d9-d7.json). Próximo: E2.LEADER.DA.AUD — auditar únicamente líder106/DA/F0..2 de reposo: productores y transiciones reales, orientación/gestos, cajasPC propias, no-writeAmiga y contacto embebido; comprobar reutilización solo con evidencia nativa exacta. No asumir dirección ni sombra por semejanza. Arte e integración runtime del líder pendientes.
+
+- **E2.LEADER.DA.AUD comprobado:**DA/F0..2de106/persona2, reposo frontal, tres miradas izquierda/centro/derecha con cuerpo fijo y brazos bajos; seis firmas/recursos propios PC+Amiga, contacto inferior auditado, sin Source ni integración. [Contrato](evidence/enemy-leader-da-d0-source-audit-v1.json). Próximo: E2.LEADER.DA.ART — preparar únicamente líder106/DA/F0..2 de reposo: reutilizar fuente D9/F1 por igualdad nativa completa paraF1 y crear miradas izquierda/derecha F0/F2 con cuerpo frontal fijo/manos bajas. E01/v2, cajas propias/apoyo12, PCsolo/Amiga vacío firmado y sombra fija común. Sin Source ni integración.
+
+- **E2.LEADER.DA.ART comprobado:** pose, dirección0, DA/F0,1,2; registro267 poses/560 activos. [Evidencia](evidence/enemy-v2-leader-da.json). Próximo: E3.LEADER.RA — auditar rutas reales del líder106 antes de integrar sus51posesPC D8/D9/DA y contacto: altura/recorte/vehículo/destrucción, cambios de persona/estado y dueño/sombras en capturador/compositor/decoder. Concretar elegibilidad finita y casos positivos/negativos, presupuestos y candidato nuevo; no activar sin contrato y validación. Excepción4B/F0conservada, sin reintento.
+
+- **E3.LEADER.RA comprobado:**51posesPC/51no-writeAmiga de106/persona2 y rutas reales de reposo/movimiento/vehículo/marcador; elegibilidad finita y exclusiones definidas, sin cambio Source. [Contrato](evidence/enemy-leader-runtime-source-audit-v1.json). Próximo: E3.LEADER.I — habilitar dueño106 únicamente para51posesPC D8/F0..23,D9/F0..23,DA/F0..2 de persona2/animación0 con altura0,recorte0,fuera de vehículo y no destruido. Añadir positivos/negativos de contrato y compositor, preparar candidato nuevo8x/12x y validar679contratos Windows/Linux con sanitizadores; después H3/Window/A2/CI y continuidad antes de entregar. Excepción4B/F0intacta.
+
+- **E3.LEADER.I PASS focal:**51PC+51Amiga vacío, candidato473activos/607contratos modernos y210contactos; H3/Window/A2/CI nueva Source pendientes. [Evidencia](evidence/enemy-leader-integration-v1.json). Próximo: E3.LEADER.RH — validar el Source nuevo del líder con diagnósticos actuales Windows/Linux, H3 independiente11fases/11361estados por sistema, Window/A2/CTest y CI pertinente completa. Después medir continuidad y preparar lanzador enemigo con hashes para revisión jugando; no entregar antes de esas comprobaciones ni atribuir aceptación visual. Excepción4B/F0auditada sin reintento.
+
+- **E3.LEADER.RH PASS técnico:**Sourcea192, H3 Windows/Linux11fases/11361estados cadauno; Window/A2/CTest ycincoCI completosSUCCESS. Continuidad/revisión jugando pendientes. [Evidencia](evidence/enemy-leader-runtime-ci-h3-a192e5c2.json). Próximo: E3.LEADER.RC — medir continuidad con Sourcea192/candidatoenemy-leader-complete-technical-v1 Windows/Linux sobre replay disponible: publicacionesHD, apariciones modernas/clásicas poractor/estado, errores reales y casos no observados. Mantener las51poses líder y excepción4B/F0auditada; después preparar revisión jugando con lanzador y hashes, sin aceptación automática.
+
+- **E3.LEADER.RC PASS técnico:**replaySourcea192/candidato473activos Windows/Linux,1546estados/4635publicacionesHD cadauno,6524apariciones modernas deinfantería y171keepvacío; cero cuerpos visibles enemigosclásicos observados. Líder/rocket/guardia no observados. [Evidencia](evidence/enemy-leader-continuity-m1p2-v1.json). Próximo: E3.ENEMY.REVIEW.PREP — preparar revisión jugando de enemigos con ejecutable Windows Sourcea192, candidato473activos y hashes verificados, sin sobrescribir lanzadores previos. Comprobar lanzador sin abrir partida, documentar comando/modo clásico/recuperación y límites:4B/F0clásico(2contratos), líder/lanzacohetes/guardia no observados enM1P2. Publicar relevo y detenerse ante revisión visual/jugable de Miguel; no inferir aceptación.
+
+- **E3.ENEMY.REVIEW.PREP comprobado:**copia aislada y lanzador con hashes verificado sin abrir partida.473activos/457RGBA,51posesPC líder integradas; excepción4B/F0conservada. Se detiene ante revisión de Miguel, sin aceptación inferida ni nuevo hito. [Comando/instrucciones](REVISION_ENEMIGOS_P1.md).

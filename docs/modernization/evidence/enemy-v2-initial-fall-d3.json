@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.IF3",
+  "status": "PASS exact E01 art/geometry reuse; native runtime integration and Miguel gameplay pending",
+  "direction": 3,
+  "sheet": 179,
+  "frame": 0,
+  "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-bb-f0/manifest.json",
+  "source_sha256": "38356c9dd413c27b440c02513d82c20ceef2cc88cef8f2b877297aa7229548e8",
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 179,
+      "frame": 0,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "b668c79af349e751d1375642750680935c93fec3990fec8d24cb2ae13a9085df"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 179,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "b668c79af349e751d1375642750680935c93fec3990fec8d24cb2ae13a9085df"
+    }
+  ],
+  "placement": {
+    "x": 4,
+    "y": 2,
+    "width": 5,
+    "height": 10
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-b3-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b3-f0-8x",
+      "sha256": "b6dc9e5eb5d7488f2d5657a6b7412c8ed970790d2147fdfe2fac9d87744e395a",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-b3-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-b3-f0-12x",
+      "sha256": "d0585dcf6a6d5ac193496f90bc71e0c60db98c28056bf9df987a8c68626cfb80",
+      "width": 16
+    }
+  ],
+  "counts": {
+    "poses": 140,
+    "assets": 282
+  },
+  "validation": [
+    "Source-produced initial-person0 type5 fall in2cases PC/Amiga; own signatures and lower anchors checked",
+    "Original E01source and8x/12x PNG/RGBA hashes preserved; original friendly-pose reference verified transitively; separate initial-person keys",
+    "Registry provenance/source/native alpha bounds and version1 freeze checked",
+    "No ImageGen call, runtime contract alias, new resource bank or ground component; independent native shadow and height preserved"
+  ],
+  "reproduction": "python tools/modernization/reuse_enemy_initial_fall_pose.py --direction 3 --atlas <private enemy-native-audit-v2>",
+  "next": "E3.IF4 \u2014 verificar y exportar ca\u00edda inicialB4/F0, direcci\u00f3n4, de tipo5/persona0 con maestro E01 equivalente y referencia protagonista de origen comprobada. Contratos/formatos/anclas propios y sombra independiente; sin suelo a\u00f1adido ni nueva generaci\u00f3n. Solo esta direcci\u00f3n antes de validar/publicar."
+}

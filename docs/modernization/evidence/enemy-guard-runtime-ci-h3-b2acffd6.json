@@ -1,0 +1,229 @@
+{
+  "source_commit": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+  "date": "2026-11-27",
+  "status": "PASS current-source runtime/H3/Window/A2/fullCI; not gameplay acceptance",
+  "platforms": {
+    "win": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-probe-build\\Release\\native_probe.exe",
+      "executable_sha256": "0fa053fc2544ef1280426ca2191b76057f3a631d513b80bd0ae5e721d724ec34",
+      "h3": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-h3-win\\report.json",
+        "sha256": "1fdd9e78aa89f2d749fe866ac7f9c34027d5c7550ac8ade9ac0f0a7a8321732c",
+        "phases": 11,
+        "states": 11361
+      },
+      "a2": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-runtimechecks\\a2-win\\report.json",
+        "sha256": "f88c7ee8139452d1770a86de83ebc55aeb6518cae24aded8e9fea3c067d1f2cc",
+        "states": 301
+      },
+      "window_ctest": {
+        "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-runtimechecks\\ctest-win\\Testing\\Temporary\\LastTest.log",
+        "sha256": "7b156cf864c125a67234837c7a3825d7da098fcfdb651bc56afe549d779d99d1",
+        "status": "PASS actualWindow/external assets andA2",
+        "external_asset_intervals": 128,
+        "sanitizers": "ASan/UBSan"
+      }
+    },
+    "linux": {
+      "executable": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-probe-linux-build\\native_probe",
+      "executable_sha256": "25bc20806a967fed21ab8b904c3124bb84fe2de51d261df8b4454e127159be6c",
+      "h3": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-h3-linux\\report.json",
+        "sha256": "1494aa8705205ef490f1db89bfc0d137f59573db947db49fbf55b1edf388452e",
+        "phases": 11,
+        "states": 11361
+      },
+      "a2": {
+        "report": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-runtimechecks\\a2-linux\\report.json",
+        "sha256": "be1039cd3b0ea51d4f92e52394b6c78562cca970bf155e2dcf9bd4e52bf77f6e",
+        "states": 301
+      },
+      "window_ctest": {
+        "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-runtimechecks\\ctest-linux\\Testing\\Temporary\\LastTest.log",
+        "sha256": "e1036cff576d9404b9645376dabf241c93965f606dc6d85431d6096d73fa60d5",
+        "status": "PASS actualWindow/external assets andA2",
+        "external_asset_intervals": 128,
+        "sanitizers": "ASan/UBSan/LSan"
+      }
+    }
+  },
+  "limits": [
+    "H3without ordered manifest checks simulation/presentation invariants, not HDenemy continuity or gameplay acceptance",
+    "Windowsfixture compilation reports36existing CRTdeprecation warnings; no runtime sanitizer findings, no toolchain changes",
+    "WindowsCTestlog usescp1252; initial UTF8metadata read failed, corrected encoding without rerunning passed tests",
+    "No final enemy launcher delivered; original diagnostics/candidates retained"
+  ],
+  "schema": 1,
+  "block": "E3.GUARD.I",
+  "ci": {
+    "status": "PASS five complete workflows on exact source commit",
+    "runs": [
+      {
+        "conclusion": "success",
+        "databaseId": 45916424159,
+        "event": "pull_request",
+        "headSha": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/45916424159",
+        "workflowName": "Windows - modernization foundation"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 45916424033,
+        "event": "pull_request",
+        "headSha": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/45916424033",
+        "workflowName": "H6 - offline density review"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 45916424043,
+        "event": "pull_request",
+        "headSha": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/45916424043",
+        "workflowName": "linux-build"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 45916414716,
+        "event": "push",
+        "headSha": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/45916414716",
+        "workflowName": "Windows - modernization foundation"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 45916414862,
+        "event": "push",
+        "headSha": "b2acffd644f69e57182ec01f4c938756e784ba6e",
+        "status": "completed",
+        "url": "https://github.com/Cacheirez/openfodder/actions/runs/45916414862",
+        "workflowName": "linux-build"
+      }
+    ]
+  },
+  "source_header_sha256": "49b1a87496e1b2087328706c36390b1c9771a16096e19d4a2143913e36a3576e",
+  "next": "E2.LEADER.D0.AUD — auditar únicamente líder106/D8/F0..2 (dirección0): selector, orientación y gesto nativos, cajas PC propias, no-write Amiga firmado y sombra (incluida posible cola embebida). No inferir ausencia de suelo por faltar creador independiente; no generar arte antes de comprobar este contrato. Dentro del hito autorizado.",
+  "current_candidate_m1p2": {
+    "status": "PASS current manifest load/continuity and logical baseline on bothplatforms; not gameplay acceptance",
+    "candidate": "enemy-guard-dc-technical-v1/12x",
+    "platforms": {
+      "win": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-replay-win",
+        "coverage_sha256": "63b02d22913db6d3b894b00612c2b1996fb6fd61f3d172572e5918a202405827",
+        "actor_metrics": {
+          "0": {
+            "states": 330,
+            "modern": 18913,
+            "classic": 36,
+            "missing": 0
+          },
+          "5": {
+            "states": 292,
+            "modern": 6524,
+            "classic": 171,
+            "missing": 0
+          },
+          "22": {
+            "states": 32,
+            "modern": 1740,
+            "classic": 0,
+            "missing": 0
+          },
+          "36": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          },
+          "106": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          }
+        },
+        "logical_states": 1546,
+        "hd_publications": 4635,
+        "guard_observed": false,
+        "leader_observed": false,
+        "enemy_keep": {
+          "sheet": 124,
+          "frame": 1,
+          "count": 171,
+          "interpretation": "Verified invisible native marker; no visible classic infantry body in this replay"
+        },
+        "diagnostic_reasons": [
+          "missing-audit-interval",
+          "black-palette",
+          "ordered-published"
+        ]
+      },
+      "linux": {
+        "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-guard-replay-linux",
+        "coverage_sha256": "72083d571e9120e7e76322431bdf35a4b73216fc5f4cd94f53d60571059979cc",
+        "actor_metrics": {
+          "0": {
+            "states": 330,
+            "modern": 18913,
+            "classic": 36,
+            "missing": 0
+          },
+          "5": {
+            "states": 292,
+            "modern": 6524,
+            "classic": 171,
+            "missing": 0
+          },
+          "22": {
+            "states": 32,
+            "modern": 1740,
+            "classic": 0,
+            "missing": 0
+          },
+          "36": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          },
+          "106": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          }
+        },
+        "logical_states": 1546,
+        "hd_publications": 4635,
+        "guard_observed": false,
+        "leader_observed": false,
+        "enemy_keep": {
+          "sheet": 124,
+          "frame": 1,
+          "count": 171,
+          "interpretation": "Verified invisible native marker; no visible classic infantry body in this replay"
+        },
+        "diagnostic_reasons": [
+          "missing-audit-interval",
+          "black-palette",
+          "ordered-published"
+        ]
+      }
+    },
+    "reason_for_new_run": "Changed Source guard eligibility and new PC-only descriptor; old replay used prior manifest. This verifies current full registry load rather than repeating unchanged-art tests.",
+    "limits": [
+      "Guard, rocket enemy36 and leader106not observed; direct679native cases cover guard separately",
+      "H3payload SHA checked against independent pinned reference; prior continuity metrics retained, no global art acceptance inferred"
+    ]
+  },
+  "local_artifact_integrity": {
+    "status": "PASS",
+    "checked": "SHA256 of both executables, H3/A2 reports, CTest logs (8 files) and current Source header matches evidence",
+    "rerun_tests": false
+  }
+}

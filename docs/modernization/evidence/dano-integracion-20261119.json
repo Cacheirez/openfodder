@@ -1,0 +1,319 @@
+{
+  "date": "2026-11-19",
+  "scope": "Complete prepared damage plus two verified dependencies; no new artwork or unknown bindings",
+  "candidate": {
+    "assets": 244,
+    "bindings": 387,
+    "manifest_sha256": "fe6a427c9ede78f08f5f160629a74fc4f26db504c7950ca7f623d6e01a25236c",
+    "old_assets_and_bindings_unchanged": true
+  },
+  "tests": {
+    "focal_windows": "PASS ASan/UBSan: strict/hybrid Window, empty marker negatives and SDL recovery, exact fall alias at 8x/12x",
+    "focal_linux": "PASS ASan/UBSan/LSan: same cases",
+    "h3_windows": "PASS 11 phases / 11361 canonical states",
+    "h3_linux": "PASS 11 phases / 11361 canonical states",
+    "ci": {
+      "source_sha": "a480740ac05b5fd7d9c50efa4ce2612eba6fbba4",
+      "windows": {
+        "run": 44528313141,
+        "ctest": "success",
+        "a2": "success",
+        "full_status": "in_progress",
+        "full_conclusion": null
+      },
+      "linux": {
+        "run": 44528313090,
+        "ctest": "success",
+        "a2": "success",
+        "full_status": "in_progress",
+        "full_conclusion": null
+      },
+      "density": {
+        "run": 44528313103,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    },
+    "gameplay": "PENDING Miguel",
+    "a2_local_windows": "PASS ordered empty-manifest gate, pause/resume; 301 first-phase canonical states",
+    "a2_local_linux": "PASS ordered empty-manifest gate, pause/resume; 301 first-phase canonical states"
+  },
+  "logs": [
+    {
+      "file": "window-strict-win.log",
+      "sha256": "f71561b52a2e56146ca24c4476e313f392a00af495509bbf158d06df5953e24e"
+    },
+    {
+      "file": "window-hybrid-win.log",
+      "sha256": "c17a49787f8c5c8aec0e73cc82642f4fe0b675f9a1c7fd92841faf0b787985e8"
+    },
+    {
+      "file": "alias-win.log",
+      "sha256": "37a3bdb4d93c0d4dda2f0e59e518fe3558b8e0f2d8183f47665e559bf316de1c"
+    },
+    {
+      "file": "window-strict-linux.log",
+      "sha256": "b45314c8eb0edd93c5e2e151df7a51506930d7b2a5902f9c8e7554871281b1dd"
+    },
+    {
+      "file": "window-hybrid-linux.log",
+      "sha256": "4725b1fda59f871ec3407ec49706a07a2672bdc09697b3a8b2d337e5e12ddaca"
+    },
+    {
+      "file": "alias-linux.log",
+      "sha256": "3481cd32baf7b94f00362eba43ca54344b3bed8cecdeaa9bd638daeaa0043dde"
+    }
+  ],
+  "replay": {
+    "win": {
+      "base": {
+        "sha256": "b0094b9b07582688b9a529124f0e53d465e12480b59a0578098a64f5a8fe5bb7",
+        "outcomes": {
+          "published": 4096,
+          "missing-variant": 458
+        },
+        "same_actor_returns": 10,
+        "short_attempt_runs": 1
+      },
+      "current": {
+        "sha256": "136ea50cac5f7deee908961e771d1e77d8551102dab2e032b1aaecac1e97add3",
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "short_attempt_runs": 0
+      },
+      "remaining_missing": [
+        {
+          "type": 35,
+          "sheet": 141,
+          "frame": 1,
+          "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+          "count": 17
+        },
+        {
+          "type": 15,
+          "sheet": 145,
+          "frame": 0,
+          "key": "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a",
+          "count": 17
+        },
+        {
+          "type": 0,
+          "sheet": 179,
+          "frame": 0,
+          "key": "35242e2cf8329803d401fff8e75a31bf94eecaf56087a560038a700ee40284a6",
+          "count": 12
+        },
+        {
+          "type": 0,
+          "sheet": 12,
+          "frame": 0,
+          "key": "561c0602eec7538ce04e7c53a5c739ed9d6b7d5f81b7bd9662f85269237b33d7",
+          "count": 12
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 0,
+          "key": "def36ad5ce5fa7fb29329965293f0d0c14905a1edfc2ca9727e3695bdf036354",
+          "count": 9
+        },
+        {
+          "type": 0,
+          "sheet": 11,
+          "frame": 0,
+          "key": "3bd6398249777dba631401c62e5e0b374045c4fc3a38a570221c8dc8ad28501f",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 1,
+          "key": "e7747b635af8515d0540b2cb70304ffd4ebf88a79bd1eb455bf7a81db16e60c6",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 2,
+          "key": "8ba31bc6946d7ca1db3c664eef29ab8f777da4ba19f0b204e62172ed5d408c66",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 0,
+          "key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 1,
+          "key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 2,
+          "key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 4,
+          "frame": 1,
+          "key": "921c9a9ce71d575b7e06659b9e797d677abdeb6cc05cea1f97d21be93309ed12",
+          "count": 3
+        },
+        {
+          "type": 0,
+          "sheet": 56,
+          "frame": 0,
+          "key": "25de6674803443e674028ee51a083cae1b250d462ce08130f49fa401c6eff8b8",
+          "count": 2
+        }
+      ]
+    },
+    "linux": {
+      "base": {
+        "sha256": "2719aedbab6b5eb32089e162c0cff663968bdd4f3ab92adb764d61ed0b5bd707",
+        "outcomes": {
+          "published": 4096,
+          "missing-variant": 458
+        },
+        "same_actor_returns": 10,
+        "short_attempt_runs": 1
+      },
+      "current": {
+        "sha256": "ef2158a918e671d9d8d22725692cda5818fbe1c6dc456ddf1faacb95033a26f3",
+        "outcomes": {
+          "published": 4465,
+          "missing-variant": 89
+        },
+        "same_actor_returns": 8,
+        "short_attempt_runs": 0
+      },
+      "remaining_missing": [
+        {
+          "type": 35,
+          "sheet": 141,
+          "frame": 1,
+          "key": "a6053c3155b722a01f83981d35eee6985c2ebcfe7f0b7423e06a3e9d62f1c924",
+          "count": 17
+        },
+        {
+          "type": 15,
+          "sheet": 145,
+          "frame": 0,
+          "key": "ec662520538d5e95001f7a36b635d36cbee3f7eab66c9616778c5e1b0ccc598a",
+          "count": 17
+        },
+        {
+          "type": 0,
+          "sheet": 179,
+          "frame": 0,
+          "key": "35242e2cf8329803d401fff8e75a31bf94eecaf56087a560038a700ee40284a6",
+          "count": 12
+        },
+        {
+          "type": 0,
+          "sheet": 12,
+          "frame": 0,
+          "key": "561c0602eec7538ce04e7c53a5c739ed9d6b7d5f81b7bd9662f85269237b33d7",
+          "count": 12
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 0,
+          "key": "def36ad5ce5fa7fb29329965293f0d0c14905a1edfc2ca9727e3695bdf036354",
+          "count": 9
+        },
+        {
+          "type": 0,
+          "sheet": 11,
+          "frame": 0,
+          "key": "3bd6398249777dba631401c62e5e0b374045c4fc3a38a570221c8dc8ad28501f",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 1,
+          "key": "e7747b635af8515d0540b2cb70304ffd4ebf88a79bd1eb455bf7a81db16e60c6",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 13,
+          "frame": 2,
+          "key": "8ba31bc6946d7ca1db3c664eef29ab8f777da4ba19f0b204e62172ed5d408c66",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 0,
+          "key": "551a2fd1d935d5f478475399067310c954c64ca9647378063d1aa20c8429578a",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 1,
+          "key": "eae83143c676829d9bc64b3e6d62d152240dee64da7e9509cc36819792cdd225",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 8,
+          "frame": 2,
+          "key": "cf96840a8b95b2ecf6bb953503d4798fde159ebb7d63a2e4281422418b4eec8a",
+          "count": 6
+        },
+        {
+          "type": 0,
+          "sheet": 4,
+          "frame": 1,
+          "key": "921c9a9ce71d575b7e06659b9e797d677abdeb6cc05cea1f97d21be93309ed12",
+          "count": 3
+        },
+        {
+          "type": 0,
+          "sheet": 56,
+          "frame": 0,
+          "key": "25de6674803443e674028ee51a083cae1b250d462ce08130f49fa401c6eff8b8",
+          "count": 2
+        }
+      ]
+    },
+    "all_4096_previous_publications_retained": true,
+    "new_publications": 369,
+    "empty_marker_kept": 36
+  },
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3",
+  "final_phase_diagnosis": {
+    "source": "Source/Sprites/Sprite_Troop.cpp:1502 Sprite_Handle_Player_MissionOver",
+    "sheets": [
+      "0x38",
+      "0x9F",
+      "0x41"
+    ],
+    "note": "Phase completion selects dedicated animations; no claim of capture/acceptance. New final-phase artwork not started. Earlier sheet_7A counter is not an audit of human salute."
+  },
+  "implementation_sha": "a480740ac05b5fd7d9c50efa4ce2612eba6fbba4",
+  "launcher": {
+    "file": "PROBAR_DANO_SOMBRAS_P1.cmd",
+    "script": "Probar-P1-DanoSombras.ps1",
+    "checks": "PASS executable SHA-256, manifest SHA-256 and all 244 asset hashes / 387 bindings",
+    "sha256": {
+      "PROBAR_DANO_SOMBRAS_P1.cmd": "2c441ca72e8d480a2e455bdd445cf46f0565e2122bc5319939e2bdf80e9d03ed",
+      "Probar-P1-DanoSombras.ps1": "b0345d5d1eff470d1b0f741644b72a00e25252c4fd1dfda00286e3a4e8c20e80",
+      "probe-build/Release/native_probe.exe": "0158fd7c91b2e98a930bd24362d9729934c42981b81c27f97eabe19bb82709ef"
+    }
+  }
+}

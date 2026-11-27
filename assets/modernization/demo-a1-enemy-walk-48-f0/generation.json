@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept precise animation master. Create a NEW RIGHT-FACING enemy soldier walk FRAME0 sheet48 direction6. IMAGE1 is the enemy character/proportion master, IMAGE2 is original native right-facing frame0 silhouette, IMAGE3 supplies rightward leg-stride reference ONLY, IMAGE4 is C01 style reference. Draw the same enemy from image1 in the native SCREEN-RIGHT direction independently; do NOT mirror the left-facing art. Preserve its helmet/head shape and head-to-body ratio, dark olive clothing, reddish brown harness/backpack, compact dark rifle, dark boots and moderate painted finish. Use the TALL PORTRAIT occupied proportions of image1: full character occupied WIDTH/HEIGHT close0.62, not the wide/squat proportions of image3. Keep rifle compact so it does not make the silhouette wider; helmet should remain round after fitting8x14. Frame0 legs in a modest rightward stride, forward boot right and trailing boot left, whole-body height like image1. Camera slightly elevated native side view, full body and feet visible with transparent margins. Upper-left light. Exactly one sprite; no floor, text, baked shadow, extras or changed direction.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s6-f0-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-44-f1/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-48-f0-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "2d56597e61a0c83b914cbfb37db6f0373d99d2e9a1ae6098be5fcfc9514555fa",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

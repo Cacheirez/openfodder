@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E3.T5",
+  "status": "LOCAL PASS; full CI correction awaiting verification",
+  "diagnostics": {
+    "Windows": {
+      "executable_sha256": "beae8630d1d20bb6c5382a0da3693e0de8962f6ba5a7d1f8eef0928a4cce52f9",
+      "h3_classic": {
+        "verdict": "PASS",
+        "settings": {
+          "flags": [
+            "--appveyor",
+            "--unit-test",
+            "--nosound"
+          ],
+          "publication": true,
+          "contrast": true,
+          "cadence": "classic producers",
+          "mission_presentations": 1,
+          "pause_probe": false,
+          "soldier_probe": false,
+          "pose_probe": false,
+          "art_probe": false,
+          "hd_probe": null,
+          "coverage": "11 reference phases"
+        },
+        "fixtures_sha256": "9e9b3adb34184be7dbc4895956e71aff64810996edc5441451ae91bcc9543269",
+        "fixture_count": 11,
+        "campaigns": [
+          {
+            "campaign": "PC Format",
+            "phases": 8,
+            "pause_transitions": 0,
+            "soldier_scenes": 0,
+            "pose_scenes": 0,
+            "art_scenes": 0,
+            "hd_published": false,
+            "ordered_variant_keys": 0,
+            "ordered_published": false,
+            "ordered_missing": false,
+            "seconds": 51.173,
+            "executable_sha256": "beae8630d1d20bb6c5382a0da3693e0de8962f6ba5a7d1f8eef0928a4cce52f9"
+          },
+          {
+            "campaign": "Amiga The One",
+            "phases": 3,
+            "pause_transitions": 0,
+            "soldier_scenes": 0,
+            "pose_scenes": 0,
+            "art_scenes": 0,
+            "hd_published": false,
+            "ordered_variant_keys": 0,
+            "ordered_published": false,
+            "ordered_missing": false,
+            "seconds": 38.746,
+            "executable_sha256": "beae8630d1d20bb6c5382a0da3693e0de8962f6ba5a7d1f8eef0928a4cce52f9"
+          }
+        ],
+        "canonical_states": 11361
+      },
+      "technical_replay": {
+        "canonical_states": 1546,
+        "published": 4635,
+        "actor_metrics": {
+          "0": {
+            "states": 330,
+            "modern": 18913,
+            "classic": 36,
+            "missing": 0
+          },
+          "5": {
+            "states": 292,
+            "modern": 1673,
+            "classic": 5022,
+            "missing": 0
+          },
+          "22": {
+            "states": 32,
+            "modern": 1740,
+            "classic": 0,
+            "missing": 0
+          },
+          "36": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          },
+          "106": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          }
+        }
+      }
+    },
+    "Linux": {
+      "executable_sha256": "b660b088ea219856975665baea987f94476650544f06c8ec97bba51cb8c75c96",
+      "h3_classic": {
+        "verdict": "PASS",
+        "settings": {
+          "flags": [
+            "--appveyor",
+            "--unit-test",
+            "--nosound"
+          ],
+          "publication": true,
+          "contrast": true,
+          "cadence": "classic producers",
+          "mission_presentations": 1,
+          "pause_probe": false,
+          "soldier_probe": false,
+          "pose_probe": false,
+          "art_probe": false,
+          "hd_probe": null,
+          "coverage": "11 reference phases"
+        },
+        "fixtures_sha256": "9e9b3adb34184be7dbc4895956e71aff64810996edc5441451ae91bcc9543269",
+        "fixture_count": 11,
+        "campaigns": [
+          {
+            "campaign": "PC Format",
+            "phases": 8,
+            "pause_transitions": 0,
+            "soldier_scenes": 0,
+            "pose_scenes": 0,
+            "art_scenes": 0,
+            "hd_published": false,
+            "ordered_variant_keys": 0,
+            "ordered_published": false,
+            "ordered_missing": false,
+            "seconds": 36.653,
+            "executable_sha256": "b660b088ea219856975665baea987f94476650544f06c8ec97bba51cb8c75c96"
+          },
+          {
+            "campaign": "Amiga The One",
+            "phases": 3,
+            "pause_transitions": 0,
+            "soldier_scenes": 0,
+            "pose_scenes": 0,
+            "art_scenes": 0,
+            "hd_published": false,
+            "ordered_variant_keys": 0,
+            "ordered_published": false,
+            "ordered_missing": false,
+            "seconds": 29.814,
+            "executable_sha256": "b660b088ea219856975665baea987f94476650544f06c8ec97bba51cb8c75c96"
+          }
+        ],
+        "canonical_states": 11361
+      },
+      "technical_replay": {
+        "canonical_states": 1546,
+        "published": 4635,
+        "actor_metrics": {
+          "0": {
+            "states": 330,
+            "modern": 18913,
+            "classic": 36,
+            "missing": 0
+          },
+          "5": {
+            "states": 292,
+            "modern": 1673,
+            "classic": 5022,
+            "missing": 0
+          },
+          "22": {
+            "states": 32,
+            "modern": 1740,
+            "classic": 0,
+            "missing": 0
+          },
+          "36": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          },
+          "106": {
+            "states": 0,
+            "modern": 0,
+            "classic": 0,
+            "missing": 0
+          }
+        }
+      }
+    }
+  },
+  "tools": {
+    "python_tests": 85,
+    "status": "PASS",
+    "ci_failure": "37de241 Windows audit guard disallowed every role2; now requires opt-in types5/36/106 exactly and still excludes native map corpse27",
+    "provenance": "Only two current capture-source hashes updated in player inventory; state/pose/art/H3 references unchanged",
+    "replay_analyser": "Reanalysed retained logs using current process-bounded diagnostic format; no duplicate engine replay"
+  },
+  "limits": [
+    "No enemies36/106 observed in M1P2; source/native fixtures cover them, gameplay remains pending",
+    "Type22 totals include protagonist and enemy shadows; do not attribute all1740 draws to enemies",
+    "Private technical candidate intentionally retains classic bodies without E01 art; not a final visual/gameplay handoff",
+    "CI Windows/Linux after correction remains pending; no full PASS inferred"
+  ],
+  "next": "Verify full CI on corrected code, then stop at remaining blocked artwork; no image-generation retry"
+}

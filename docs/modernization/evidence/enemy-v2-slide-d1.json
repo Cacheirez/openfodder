@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.SL1",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 1,
+  "sheet": 167,
+  "frames": [
+    1
+  ],
+  "packages": [
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-a7-f1",
+      "source_sha256": "10c593c7edad7ff63bc9d402457a556499eab6e7f1cc5ccfed0b47c2834c7dd3",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 2,
+        "y": 2,
+        "width": 10,
+        "height": 9
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 166,
+    "assets": 334
+  },
+  "notes": [
+    "Native direction helper frame1 preserved; body/native bounds, original body lower anchor and scaleX/Y within5% verified.",
+    "Empty-hand low crouch and E01 identity inspected. Source matte RGB is outside visible alpha; C++export ignores alpha<16.",
+    "Approved optional shadow contact qualified separately; owner36/runtime eligibility pending integration."
+  ],
+  "next": "E3.SL2 — crear soloA7/F2, dirección nativa2 de deslizamiento enemigo con referencia protagonistaA4/F2 e identidad E01. Mantener cuerpo/sombra separados y ancla corporal propia; cualificar suelo y validar/publicar antes de otra dirección."
+}

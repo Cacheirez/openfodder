@@ -217,10 +217,16 @@ void cSound_Amiga::Music_Play( int16 pTrack, int16 pSong) {
 	mPlayingTrack = pTrack;
 	mPlayingSong = pSong;
 
+    // Build the new stream outside the callback lock. Publish it only while
+    // holding the same mutex used by audioBufferFill().
+    Audio::Rjp1* newMusic = nullptr;
     if (mSound_Music.mCurrentMusicSongData && mSound_Music.mCurrentMusicInstrumentData) {
         if (mSound_Music.mCurrentMusicSongData->size() && mSound_Music.mCurrentMusicInstrumentData->size())
-            mCurrentMusic = Audio::makeRjp1Stream(mSound_Music.mCurrentMusicSongData, mSound_Music.mCurrentMusicInstrumentData, Number);
+            newMusic = Audio::makeRjp1Stream(mSound_Music.mCurrentMusicSongData, mSound_Music.mCurrentMusicInstrumentData, Number);
     }
+    if (mLock) SDL_LockMutex(mLock);
+    mCurrentMusic = newMusic;
+    if (mLock) SDL_UnlockMutex(mLock);
 
     if (mAudioStream) {
         SDL_ResumeAudioStreamDevice(mAudioStream);
@@ -242,28 +248,29 @@ void cSound_Amiga::Music_Stop() {
 }
 
 void cSound_Amiga::Music_SetVolume(int16 pChannel, int16 pVolume) {
-	if (!mCurrentMusic)
-		return;
-
-	if (pChannel == -1) {
-		for (int Ch = 0; Ch < mCurrentMusic->NUM_VOICES; ++Ch) {
-			mCurrentMusic->volumeMax[Ch] = pVolume;
-		}
-		return;
-	}
-
-	mCurrentMusic->volumeMax[pChannel] = pVolume;
+    // The SDL callback reads these per-channel volumes under mLock.
+    if (mLock) SDL_LockMutex(mLock);
+    if (mCurrentMusic) {
+        if (pChannel == -1) {
+            for (int Ch = 0; Ch < mCurrentMusic->NUM_VOICES; ++Ch)
+                mCurrentMusic->volumeMax[Ch] = pVolume;
+        } else if (pChannel >= 0 && pChannel < mCurrentMusic->NUM_VOICES) {
+            mCurrentMusic->volumeMax[pChannel] = pVolume;
+        }
+    }
+    if (mLock) SDL_UnlockMutex(mLock);
 }
 
 int16 cSound_Amiga::Music_GetVolume(int16 pChannel) {
-	if (!mCurrentMusic)
-		return 0;
-
-	if (pChannel == -1) {
-		pChannel = 0;
-	}
-
-	return mCurrentMusic->volumeMax[pChannel];
+    if (mLock) SDL_LockMutex(mLock);
+    int16 volume = 0;
+    if (mCurrentMusic) {
+        if (pChannel == -1) pChannel = 0;
+        if (pChannel >= 0 && pChannel < mCurrentMusic->NUM_VOICES)
+            volume = mCurrentMusic->volumeMax[pChannel];
+    }
+    if (mLock) SDL_UnlockMutex(mLock);
+    return volume;
 }
 
 void cSound_Amiga::Sound_Stop() {

@@ -241,7 +241,7 @@ loc_23056:;
     Data0 += 3;
     pSprite->mHeight = Data0;
     Data0 = -Data0;
-    pSprite->mFixedPoint = (((int64)pSprite->mFixedPoint & 0xFFFF) | (Data0 << 16));
+    pSprite->mFixedPoint = (((int64)pSprite->mFixedPoint & 0xFFFF) | (static_cast<int64>(Data0) * 65536));
     return;
 
 loc_230B0:;
@@ -250,7 +250,7 @@ loc_230B0:;
         return;
 
     pSprite->mHeight = 1;
-    Dataa0 = pSprite->mSpeed << 16;
+    Dataa0 = static_cast<int32>(pSprite->mSpeed) * 65536;
     Dataa0 >>= 3;
     pSprite->mFixedPoint = Dataa0;
     return;
@@ -260,7 +260,7 @@ loc_23100:;
         return;
 
     pSprite->mHeight = 1;
-    Dataa0 = pSprite->mSpeed << 16;
+    Dataa0 = static_cast<int32>(pSprite->mSpeed) * 65536;
     Dataa0 >>= 2;
     pSprite->mFixedPoint = Dataa0;
     pSprite->mSpeed <<= 1;

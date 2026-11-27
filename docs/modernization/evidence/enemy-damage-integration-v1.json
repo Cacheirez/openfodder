@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.DI",
+  "status": "PASS native first-damage integration; Miguel gameplay pending",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-damage-technical-v1\\8x",
+      "manifest_sha256": "9a3eb8428a432ea55ecc59ad2435226f4ce54127c11f574009ad0d4f545ee953",
+      "asset_bytes": 14438912,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=204, classic=475, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=204, classic=475, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-damage-technical-v1\\12x",
+      "manifest_sha256": "315ac01f525a7aff2af8b17ccc1808569d519fc79ceb3ce0c0f0db45fb0a4684",
+      "asset_bytes": 32487552,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=204, classic=475, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=204, classic=475, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 75,
+    "art_derivatives": 150,
+    "candidate_assets": 260,
+    "native_contracts": 679,
+    "modern_contracts": 204,
+    "modern_bodies": 198,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 405,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 102
+  },
+  "guarantees": [
+    "16first-damage poses62..69/F0,F1 replace64native contracts acrossPC/Amiga and enemy types5/36",
+    "Every produced slot retains its source geometry, raster signatures and person mask; no69/F2 binding",
+    "Per-frame proportional exports preserve native bottom/anchor and logical16x14",
+    "Damage receives no added ground; height and independent shadow commands retained",
+    "Frozen protagonists and earlier candidates untouched;64MiB cap unchanged",
+    "Runtime Source identical to76db816 full CI; native validator gained focused damage/no-ground assertion"
+  ],
+  "tests": [
+    "679 actual native draws per density/platform PASS",
+    "ASan/UBSan Windows and ASan/UBSan/LSan Linux PASS",
+    "75poses/150art derivatives and25groundgroups/86derivatives checked",
+    "Full CI/H3 not repeated for inactive art; baseline evidence preserved"
+  ],
+  "ci": "76db816 Windows push/Linux/H6 PASS; duplicate PR Windows timeout documented, not all PR checks green",
+  "next": "E2.D20 \u2014 modernizar segunda reacci\u00f3n de da\u00f1o6A/F0,F1, direcci\u00f3n0, con identidad E01/v2, maestros protagonistas28 y referencias nativas6A. Ajuste proporcional/ancla por frame; conservar altura y sombras independientes, sin suelo a\u00f1adido. No reintentar4B/F0."
+}

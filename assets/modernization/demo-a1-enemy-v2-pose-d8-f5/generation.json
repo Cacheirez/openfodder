@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw the distinct third movement frame D8/F5 of this E01 unarmed raised-arms character. Reference1 is modern D8/F3, to retain the SAME overhead DOWN-LEFT camera, identity, helmet, beard, grey-olive uniform, tiny brick-red neck cloth, reddish leather gear and moderate painted style. Reference2 is original D8/F5 posture: both elbows bent and both empty open hands raised, but SCREEN-LEFT hand is now HIGHER, SCREEN-RIGHT hand lower near shoulder level. Alternate the leg support from F3: screen-right boot planted lower and nearer the body, screen-left knee/boot lifted a little, still walking diagonally down-left without jumping. Body and face must remain down-left, never turn frontal or mirror the image. Small natural phase changes in folds; full compact adult body, complete helmet/hands/boots. No weapon, held object or extra figure. Upper-left light preserved. BODY ONLY isolated clean cutout on true transparency, fully transparent outside and between limbs; no white/grey haze, backdrop, glow, floor, cast shadow or dark extension below boots. Generous transparent margins, no text. Ground-contact paint remains a separate layer.\nTargeted phase correction: Edit target image1: the E01 down-left raised-arms sprite. Image2 is the required native D8/F5 pose. Correct ONLY the limb articulation to the OPPOSITE phase while keeping identity, uniform, helmet, face, overhead DOWN-LEFT camera, full body, materials and upper-left lighting unchanged. The current image has the wrong arm higher. REQUIRED: the hand on the LEFT SIDE OF THE IMAGE (viewer-left) must be HIGH, beside the TOP LEFT of the helmet. The hand on the RIGHT SIDE OF THE IMAGE (viewer-right) must be LOW, near the RIGHT SHOULDER, clearly BELOW the left hand. Both hands open and empty; both elbows bent. Do not mirror or rotate the character; move the two arm joints to match the native reference. Also swap leg support for this alternate step: the boot on the RIGHT side of the image is the LOWER planted boot; the LEFT-side boot is lifted with a slightly bent knee. Keep feet fully visible and natural, no jump. Maintain the clean transparent cutout, no haze, backdrop, floor, cast shadow or dark tail, no rifle or object, no text. This is a distinct third walking frame, not a repeat of frame0.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d3b673160db3b5d3ad9eb258e525240c733a67ee952c3f47660b3cd886ad53a8",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d1-authoring/f3-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d1-source-audit-v1/d8-f5-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending",
+  "phase_correction": {
+    "reason": "Initial draft repeated F3 arm/support; one built-in joint-pose correction before export",
+    "draft_private_path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-leader-d8-d1-authoring\\f5-pose-draft.png",
+    "draft_sha256": "c0c65d5c8e99ca43a4a49ab4a2cb513f5d0daf8be615044f2da4d1aff958dbf7",
+    "final_source_sha256": "d3b673160db3b5d3ad9eb258e525240c733a67ee952c3f47660b3cd886ad53a8",
+    "creative_python_edits": false
+  }
+}

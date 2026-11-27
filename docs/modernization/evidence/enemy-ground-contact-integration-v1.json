@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E3.T4",
+  "status": "PASS technical contact and retained-native candidate validation; not Miguel visual acceptance",
+  "qualification": {
+    "groups": 9,
+    "body_poses": 27,
+    "density_derivatives": 54,
+    "placements_sha256": "3e6498836b6e573b090babf373a5d091a1a11fbcafc0fb23c75cad2bc75df410",
+    "body_pixels_unchanged": true,
+    "paint_pixels_unchanged": true,
+    "stable_per_direction": true,
+    "contact": "All bottom contact samples covered at alpha>=16; shadow centroid lower-right of support"
+  },
+  "results": {
+    "Windows": "PASS 679 retained-native draws per density; 54 body ground components and six independent modern shadows; ASan/UBSan",
+    "Linux": "PASS same cases; ASan/UBSan/LSan",
+    "authoring_tests": "PASS four density/immutability tests plus four contact/projection tests; no site packages required"
+  },
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-technical-ground-v1\\8x",
+      "manifest_sha256": "a33ea756cc6351d4ae68416edfb4a08f20b35e031d5cd973c007d10ebbba6d2e",
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 8,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 549,
+          "modern": 60,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 27,
+        "assets": 204,
+        "asset_bytes": 11227648,
+        "missing_body_contracts": 549,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Technical contact qualification attached; Miguel visual acceptance pending",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ],
+        "qualified_ground_bodies": 27
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-technical-ground-v1\\12x",
+      "manifest_sha256": "cc0d6ec6fda29ddafd9373481b7f30671b6ed9ff258a336685ca7d14b9fc84ce",
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 12,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 549,
+          "modern": 60,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 27,
+        "assets": 204,
+        "asset_bytes": 25262208,
+        "missing_body_contracts": 549,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Technical contact qualification attached; Miguel visual acceptance pending",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ],
+        "qualified_ground_bodies": 27
+      }
+    }
+  },
+  "limits": [
+    "549 missing body contracts remain verified classic in this private development candidate",
+    "Runtime replay/H3/full CI not inferred from contact or native-source fixtures",
+    "Enemy overall visual/gameplay acceptance pending; no final launcher delivered"
+  ],
+  "next": "E3.T5 — compilar diagnóstico privado con la integración actual; ejecutar replay técnico de cuerpos/sombras y H3 pertinente en Windows/Linux, consultar CI y medir continuidad/faltantes. No entregar el candidato parcial como revisión final."
+}

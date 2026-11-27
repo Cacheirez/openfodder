@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve. Create one transparent-background painted game sprite by editing image1, a standing rocket-launcher soldier facing screen-down. Preserve image1 EXACT pose, camera elevation, body proportions, both feet positions, arms and hands, launcher geometry and its muzzle aimed down toward the viewer. Apply ONLY the approved enemy visual identity from image2: grey-green plain helmet, grey-olive cloth uniform, small brick-red neck cloth, short dark beard along the visible jaw, reddish-brown leather straps and pouches, dark brown boots. This is E01/v2 in the same moderate hand-painted style and soft upper-left lighting as image2. Image3 is the original tiny native enemy pose A8/F2 and establishes orientation only. Keep image1 launcher; do not add image2 rifle. One character only, complete silhouette with generous transparent margin. No text, insignia, scenery, ground, ground shadow, muzzle flash, projectile or extra equipment. Do not mirror, change direction, change stance or invent a different animation. Produce a clean RGBA cutout suitable for native-size sprite export.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "300cd5e141385a3c50b9f5a3e4003c08f50ee9d91bde5a700a09b21c79107a4e",
+  "references": [
+    "assets/modernization/soldier-rocket/uniform-a/s57-f2-verde-a.png",
+    "assets/modernization/enemy-identity-v2/source.png",
+    "private:enemy-native-audit-v2/native/1-36-a8-f2-7a44b4a6.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

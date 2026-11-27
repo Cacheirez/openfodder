@@ -1,0 +1,54 @@
+{
+  "scope": "Four observed M1P2 damage/walk-during-impact aliases; identical native raster, full palette and geometry; animation only",
+  "status": "PASS native reconstruction and exact Window/SDL 8x/12x, negatives/full recovery; Windows ASan/UBSan and Linux ASan/UBSan/LSan. Gameplay review pending.",
+  "bindings": [
+    {
+      "key": "e30e5009f03846016ccf443698d63da4304b330795838729dbcc7fa024574e0a",
+      "source_key": "20e8049b11702ac59f9a86c8d731fd7a3c0ec9adb767f3993739d7cf34db1b9d",
+      "sheet": 47,
+      "frame": 1,
+      "animation": 6,
+      "source_animation": 1,
+      "assets": {
+        "8": "player-hitdeath-2f-f1-8x",
+        "12": "player-hitdeath-2f-f1-12x"
+      }
+    },
+    {
+      "key": "349a4d1eca5fcd524b673827b2b03cd40c50dbb2d2ef3cdf306aa3395a6d1743",
+      "source_key": "598da8efb9769c715bf38d7ecc8a1a834d74abfd2f19c46fdc3247f7337e256b",
+      "sheet": 3,
+      "frame": 0,
+      "animation": 1,
+      "source_animation": 0,
+      "assets": {
+        "8": "s3-f0-8",
+        "12": "s3-f0-12"
+      }
+    },
+    {
+      "key": "7508dbf71777409168c8720565d7201c084f6d2c887f8791775e25a0a82ddc28",
+      "source_key": "52726ffe1c10684c2e615f3c08ab0d6f5eb87b34655d4c589683b8e7277724e5",
+      "sheet": 4,
+      "frame": 0,
+      "animation": 1,
+      "source_animation": 0,
+      "assets": {
+        "8": "s4-f0-8",
+        "12": "s4-f0-12"
+      }
+    },
+    {
+      "key": "3674c1ec877a1748400fc04873ee10683c086f49e82aa91cb146f804ee44b1b8",
+      "source_key": "33d4a1327a410e482b87d7c5f6d81e2b8da8f8d956368632d676849220317b64",
+      "sheet": 2,
+      "frame": 0,
+      "animation": 1,
+      "source_animation": 0,
+      "assets": {
+        "8": "s2-f0-8",
+        "12": "s2-f0-12"
+      }
+    }
+  ]
+}

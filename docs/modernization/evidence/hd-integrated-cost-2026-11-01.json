@@ -1,0 +1,300 @@
+{
+  "verdict": "PASS",
+  "commit": "a66b4fa95a0cdb88adf8daa17e1a7ff667aafdf2",
+  "executable_sha256": "3e5b2300a0c68e9737b5ab5ec229876085459557a7589f72418b7d89a8d60b6a",
+  "build_description": "GCC C++14 -O3 -DNDEBUG, OPENFODDER_NO_MIXER, static SDL 3.4.0; engine source a66b4fa identical to validated 3ee12e9; tmpfs outputs",
+  "fixtures_sha256": "3208f5f28ba2a155094cfe4df77f5a3a13d06b0aaa70fba9028720973ca8b0fd",
+  "fixture_count": 29,
+  "baseline_sha256": "60fb814cb4b9fc3c7dba6e427776b5ecbe436c65dc5c3f5a2596b3a2062fa4de",
+  "tool_sha256": "4fcce0ce03fa033359c98b87de56544de46da75e0c52e8cc8d99630f80ae037b",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "cpu_max": "800000 100000",
+  "memory_max": "8589934592",
+  "campaign": "Amiga The One",
+  "rounds": 3,
+  "runs": [
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "classic",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 20.024427285,
+      "user_seconds": 20.970756,
+      "system_seconds": 0.39946899999999996,
+      "peak_rss_kib": 17588,
+      "cpu_seconds": 21.370225
+    },
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "publication",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 48.41566445400031,
+      "user_seconds": 52.152435,
+      "system_seconds": 0.751767,
+      "peak_rss_kib": 23280,
+      "cpu_seconds": 52.904202
+    },
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "hd8",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 79.69334252499993,
+      "user_seconds": 84.019428,
+      "system_seconds": 0.9087729999999999,
+      "peak_rss_kib": 24032,
+      "cpu_seconds": 84.928201
+    },
+    {
+      "round": -1,
+      "warmup": true,
+      "mode": "hd12",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 78.27052563300003,
+      "user_seconds": 82.672923,
+      "system_seconds": 0.903041,
+      "peak_rss_kib": 23908,
+      "cpu_seconds": 83.575964
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "classic",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 19.924145569000302,
+      "user_seconds": 20.851774,
+      "system_seconds": 0.426707,
+      "peak_rss_kib": 17592,
+      "cpu_seconds": 21.278481
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "publication",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 49.62088989599988,
+      "user_seconds": 53.670306,
+      "system_seconds": 0.7593059999999999,
+      "peak_rss_kib": 23368,
+      "cpu_seconds": 54.429612
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "hd8",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 76.8018559279999,
+      "user_seconds": 80.991556,
+      "system_seconds": 0.937067,
+      "peak_rss_kib": 24176,
+      "cpu_seconds": 81.928623
+    },
+    {
+      "round": 0,
+      "warmup": false,
+      "mode": "hd12",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 76.55146329800027,
+      "user_seconds": 80.677937,
+      "system_seconds": 0.8848349999999999,
+      "peak_rss_kib": 24176,
+      "cpu_seconds": 81.562772
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "publication",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 49.50165186799995,
+      "user_seconds": 53.433528,
+      "system_seconds": 0.880524,
+      "peak_rss_kib": 23520,
+      "cpu_seconds": 54.314052000000004
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "hd8",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 76.81588445399984,
+      "user_seconds": 81.03663,
+      "system_seconds": 0.827193,
+      "peak_rss_kib": 24372,
+      "cpu_seconds": 81.863823
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "hd12",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 76.34502644699978,
+      "user_seconds": 80.611798,
+      "system_seconds": 0.8678319999999999,
+      "peak_rss_kib": 24088,
+      "cpu_seconds": 81.47962999999999
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "mode": "classic",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 19.82844165100005,
+      "user_seconds": 20.843158,
+      "system_seconds": 0.319708,
+      "peak_rss_kib": 17600,
+      "cpu_seconds": 21.162865999999998
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "hd8",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 77.25608242099997,
+      "user_seconds": 81.37413,
+      "system_seconds": 0.896844,
+      "peak_rss_kib": 24252,
+      "cpu_seconds": 82.270974
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "hd12",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 77.05119164100006,
+      "user_seconds": 81.148009,
+      "system_seconds": 0.9359489999999999,
+      "peak_rss_kib": 24292,
+      "cpu_seconds": 82.083958
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "classic",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 19.970010515000013,
+      "user_seconds": 20.861836,
+      "system_seconds": 0.415751,
+      "peak_rss_kib": 17512,
+      "cpu_seconds": 21.277587
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "mode": "publication",
+      "canonical_states": 3405,
+      "returncode": 0,
+      "wall_seconds": 50.316306003000136,
+      "user_seconds": 54.32306,
+      "system_seconds": 0.877301,
+      "peak_rss_kib": 23236,
+      "cpu_seconds": 55.200361
+    }
+  ],
+  "summary": {
+    "classic": {
+      "wall_seconds": {
+        "n": 3,
+        "median": 19.924145569000302,
+        "minimum": 19.82844165100005,
+        "maximum": 19.970010515000013
+      },
+      "cpu_seconds": {
+        "n": 3,
+        "median": 21.277587,
+        "minimum": 21.162865999999998,
+        "maximum": 21.278481
+      },
+      "peak_rss_kib": {
+        "n": 3,
+        "median": 17592,
+        "minimum": 17512,
+        "maximum": 17600
+      }
+    },
+    "publication": {
+      "wall_seconds": {
+        "n": 3,
+        "median": 49.62088989599988,
+        "minimum": 49.50165186799995,
+        "maximum": 50.316306003000136
+      },
+      "cpu_seconds": {
+        "n": 3,
+        "median": 54.429612,
+        "minimum": 54.314052000000004,
+        "maximum": 55.200361
+      },
+      "peak_rss_kib": {
+        "n": 3,
+        "median": 23368,
+        "minimum": 23236,
+        "maximum": 23520
+      }
+    },
+    "hd8": {
+      "wall_seconds": {
+        "n": 3,
+        "median": 76.81588445399984,
+        "minimum": 76.8018559279999,
+        "maximum": 77.25608242099997
+      },
+      "cpu_seconds": {
+        "n": 3,
+        "median": 81.928623,
+        "minimum": 81.863823,
+        "maximum": 82.270974
+      },
+      "peak_rss_kib": {
+        "n": 3,
+        "median": 24252,
+        "minimum": 24176,
+        "maximum": 24372
+      }
+    },
+    "hd12": {
+      "wall_seconds": {
+        "n": 3,
+        "median": 76.55146329800027,
+        "minimum": 76.34502644699978,
+        "maximum": 77.05119164100006
+      },
+      "cpu_seconds": {
+        "n": 3,
+        "median": 81.562772,
+        "minimum": 81.47962999999999,
+        "maximum": 82.083958
+      },
+      "peak_rss_kib": {
+        "n": 3,
+        "median": 24176,
+        "minimum": 24088,
+        "maximum": 24292
+      }
+    }
+  },
+  "method": "Full three-phase campaign; one excluded warmup/mode, rotated order, fresh process per sample; identical executable, FIT, no sound and trace I/O; no export or pause probe",
+  "limits": [
+    "Whole-process wall/CPU and high-water RSS, not per-frame latency or GPU time",
+    "Shared Linux software SDL; not user Windows, UHD, hardware GPU or VRAM",
+    "Three measured samples per mode by default; no p95/p99 or performance acceptance threshold",
+    "Publication includes semantic capture; HD comparison isolates its additional path",
+    "HD marker confirms at least one publication, not replacement rate or per-patch cost"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "status": "E01 initial sliding art reuse; ground runtime integration/gameplay pending",
+  "pose": {
+    "type": 5,
+    "sheet": 164,
+    "frame": 0
+  },
+  "assets": [
+    {
+      "density": 8,
+      "file": "enemy-v2-pose-a4-f0-8x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f0-8x",
+      "sha256": "158cf15b88c15e45cbd3a7180bb32a1fab446aaafcc045d35aa959e307962561",
+      "width": 16
+    },
+    {
+      "density": 12,
+      "file": "enemy-v2-pose-a4-f0-12x.rgba",
+      "height": 14,
+      "id": "enemy-v2-pose-a4-f0-12x",
+      "sha256": "8fa508ed7ccc02cb289e4408fcb7a09b363723d3da8e8a1f1eeacce2bc135b55",
+      "width": 16
+    }
+  ],
+  "bindings": [],
+  "source": {
+    "file": "source.png",
+    "size": [
+      1328,
+      1184
+    ],
+    "mode": "RGBA",
+    "sha256": "dc0a1f231d52f167178e5bdf6e7723360898e0d92924f66a3ceadc1a63fb66dd",
+    "generator": "built-in image_gen; original preserved",
+    "reused_from": "assets/modernization/demo-a1-enemy-v2-pose-a7-f0/source.png"
+  },
+  "export": {
+    "builder": "existing build_soldier_batch.cpp + build_ordered_soldier_asset.cpp",
+    "crop": [
+      191,
+      170,
+      1092,
+      988
+    ],
+    "placement": {
+      "x": 3,
+      "y": 2,
+      "width": 10,
+      "height": 9
+    },
+    "logical_size": [
+      16,
+      14
+    ],
+    "native": [
+      {
+        "format": 0,
+        "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5",
+        "bbox": [
+          3,
+          2,
+          14,
+          13
+        ]
+      },
+      {
+        "format": 1,
+        "native_signature": "16c4513715c7b03c840927842ec389bef07a8918d4125a37e4b54fd9f771dff5",
+        "bbox": [
+          3,
+          2,
+          14,
+          13
+        ]
+      }
+    ],
+    "ground_shadow": "none; preserve independent native commands"
+  },
+  "enemy_identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "authoring_reuse": {
+    "source_manifest": "assets/modernization/demo-a1-enemy-v2-pose-a7-f0/manifest.json",
+    "source_sha256": "dc0a1f231d52f167178e5bdf6e7723360898e0d92924f66a3ceadc1a63fb66dd",
+    "generation_metadata_sha256": "f0956455a8a2ec5d400708fb0b2959cb4895639fa7da1384a7e40e5be173b6ee",
+    "reason": "Original pose reference and own initial native signature/body anchor verified; no runtime alias"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit, CF1 enemy walk direction7 FRAME0 sheet49. IMAGE1 defines exact front three-quarter elevated camera, diagonal LOWER RIGHT facing pose and step; IMAGE2 is enemy colour/equipment identity reference only; IMAGE3 native frame0 silhouette/orientation; IMAGE4 approved C01 style only. Preserve image1's head/body proportions, rifle held across chest with muzzle pointing LOWER RIGHT, one boot advanced lower right and the other back left. Change tan webbing/pouches to muted reddish brown leather and match image2's dark olive helmet/uniform, charcoal rifle and dark boots. Same chunky moderate painted finish, light upper left. Keep a tall occupied portrait silhouette compatible7-by14 without a broad squat body; make the gun compact while retaining image1 weapon design. One whole character with all feet/muzzle visible, transparent margins. No mirrored pose, new angle, added gear, text, floor or baked shadow.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s7-f0-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-48-f0/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-49-f0-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "4901105f3d8637af89425c0286e26d286d2355e073307db1e71cb90998437c33",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.T30",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 3,
+  "sheet": 117,
+  "frames": [
+    0
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-75-f0",
+      "source_sha256": "88bce5e2abd457c57feb847451da5025efe1b0b7d25490528900d2b4874d6183",
+      "reused_approved_master": false,
+      "placement": {
+        "0": {
+          "x": 5,
+          "y": 0,
+          "width": 7,
+          "height": 14
+        },
+        "1": {
+          "x": 3,
+          "y": 0,
+          "width": 6,
+          "height": 12
+        }
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 181,
+    "assets": 366
+  },
+  "notes": [
+    "Own native PC/Plus posture interpreted with E01identity; no non-existent friendly33master referenced, no native alias.",
+    "Source541x1066alpha cropped; PC7x14/Amiga6x12 preserve X/Yratio0.9852 and own lower anchors14/12.4derivatives from common source.",
+    "No new floor inferred from flat TheOne silhouette; independent native commands retained; global shadow/gameplay acceptance pending.",
+    "Runtime Source unchanged from e0d9430b fullCI/H3PASS; inactive art only, no redundant fullCI/H3 rerun."
+  ],
+  "next": "E3.T31 — crear solo75/F1 de infantería modo-cero, con identidad E01 y referencias nativas PC/Plus de esa entrada; anclas PC14/Amiga13 y derivados por formato, sin alias ni suelo nuevo inferido. Validar/publicar antes del último frame de esta dirección.",
+  "superseded_artistic_orientation": "enemy-mode-zero-facing-correction-75-f0-v1.json",
+  "original_package_recovery": "Git5b7fe8ff and private mode-zero-facing-before-75-f0"
+}

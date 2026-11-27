@@ -1,0 +1,27 @@
+{
+  "native_cases": [
+    {
+      "format": 0,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 5,
+      "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "person": 0,
+      "sheet": 164,
+      "frame": 5,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "45b6ef1374d0a0392639e8de604938f2c8452c3b167c80d953224d03e2c522a1"
+    }
+  ],
+  "not_runtime_alias": true,
+  "source_sha256": "2b78484662e8043f3b5c0dcef7c25cea65cebdf45d3e1f3bed224c3c31cbb430",
+  "derivatives_copied_unchanged": true,
+  "body_lower_anchor": 11,
+  "initial_person_zero": true
+}

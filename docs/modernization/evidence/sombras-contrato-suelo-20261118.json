@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-18",
+  "source_head": "04d5c0c9d25ba5df089ecef6e664af664dfa7fa0",
+  "worktree_sources": [
+    {
+      "file": "Source\\Utils\\OrderedSoldierArt.hpp",
+      "sha256": "5bfe7788087314187d52809ef5ac512838b46e8cfc383e527b367ff79b0e7e94"
+    },
+    {
+      "file": "Source\\Utils\\OrderedSoldierRegistry.hpp",
+      "sha256": "26262bd2057d91e00aa8c023d38cef9871406516e3a8f34050e5ad4d9de25a3d"
+    },
+    {
+      "file": "tools\\modernization\\test_ordered_ground_shadow.cpp",
+      "sha256": "04edf3d4e8190c928b1dfdf0f6377ee2c27356559be0963f1f4450dc02802352"
+    },
+    {
+      "file": "tools\\modernization\\test_ordered_soldier_sdl.cpp",
+      "sha256": "e3865f4421f094bc08551b2f96dac84c5e1085a0badfe2fe20c65b855a0ec453"
+    },
+    {
+      "file": "CMakeLists.txt",
+      "sha256": "7b2db9a164364048ce84030774f748d4076c27b7952020ca966989108b143889"
+    }
+  ],
+  "local_tests": [
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_ground_shadow-win.log",
+      "sha256": "fd1ca72877b650cb64a4e30fcd6d5603bcd2a61bf78fb712842d1e3a62000c34",
+      "result": "PASS ordered ground shadow: 4 format/density groups; dimensions retained, ordered occlusion, Save/Restore, clipping, budgets, height/water/state exclusions and invalid metadata"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_soldier_art-win.log",
+      "sha256": "a02d52b0ffae4e10f4a9784d0d3b2b7acc3534502edd98035111078efcedb9c3",
+      "result": "PASS ordered compositor: 156 scenarios; PC/Amiga 1x/8x/12x, multiple/repeated bodies, alpha, water/top crop, destinations, same-color/zero/OR, Save/Restore/Clear, terrain/HUD, missing coverage, budget"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_soldier_sdl-win.log",
+      "sha256": "e424ebf6b10a29c4348295b15c62275a9413c4abd8bec4a1407c04bc431d2cd0",
+      "result": "PASS ordered SDL: 388 failure/crop/coverage/re-entry cases with extended ground shadows, PC/Amiga at 8x/12x"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\pilot\\window-win.log",
+      "sha256": "39be5dd840e663c9c06d9052177979ea7c61f5366d9e53376394b769056403e6",
+      "window_cases": 28
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_ground_shadow-linux.log",
+      "sha256": "595b8b3c7e99d1546af31e500208c2ffe882766c2dea9f52815d33d3a9105472",
+      "result": "PASS ordered ground shadow: 4 format/density groups; dimensions retained, ordered occlusion, Save/Restore, clipping, budgets, height/water/state exclusions and invalid metadata"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_soldier_art-linux.log",
+      "sha256": "e6e33e2905a6c16738d5a6bb8b345e5fe30fc177d8516b86155030d6cc22f666",
+      "result": "PASS ordered compositor: 156 scenarios; PC/Amiga 1x/8x/12x, multiple/repeated bodies, alpha, water/top crop, destinations, same-color/zero/OR, Save/Restore/Clear, terrain/HUD, missing coverage, budget"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\test_ordered_soldier_sdl-linux.log",
+      "sha256": "4ef40afc394652ee1edb8c2984111b1990ddc281b75ed3e416c987129f2e2c48",
+      "result": "PASS ordered SDL: 388 failure/crop/coverage/re-entry cases with extended ground shadows, PC/Amiga at 8x/12x"
+    },
+    {
+      "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\pilot\\window-linux.log",
+      "sha256": "0edd81f9a20b12894522387ed01e70a4c9cb4a8e78fc901c4521099e7cb8f20c",
+      "window_cases": 28
+    }
+  ],
+  "h3": {
+    "platform": "Windows",
+    "phases": 11,
+    "states": 11361,
+    "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\h3.log",
+    "sha256": "2da9dcdf437dfbe03a7a03021df861edd607362fbf990988fe90079152324520"
+  },
+  "replay": {
+    "phase": "Amiga The One M1P2",
+    "states": 1546,
+    "published": 4096,
+    "missing": 458,
+    "assets": 200,
+    "bindings": 363,
+    "log": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract\\runtime-replay.log",
+    "sha256": "c386f20e30904fd9888b060c6b64a5dca8952d6c252ae04d9bb2b829efd2039b"
+  },
+  "probe": {
+    "file": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-probe-build\\Release\\native_probe.exe",
+    "sha256": "a0a7d550651517d8010f0e88608db0eb069ab18dd265770a0f44aec6a29446a6"
+  },
+  "pending": [
+    "Focused Windows/Linux CI including Linux H3",
+    "Propagation to 83 existing normal poses after source/contact checks",
+    "Full CI, GPU, CD32, audio and visual/gameplay acceptance of full set"
+  ],
+  "recovery": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\17\\01a1ea7b-b727-78f2-a6ac-a4b32dc39150\\ground-contract",
+  "qualification_20261119": {
+    "contract_commit": "653d19d080f71520fac7228118fb474f1c7d61ec",
+    "windows_ci": {
+      "run": 44416432197,
+      "result": "complete success"
+    },
+    "linux_ci": {
+      "run": 44416432186,
+      "observed": "CTest, A2, full original H3 and relevant ordered publication steps success; remaining full-engine diagnostics in progress"
+    },
+    "linux_h3": "PASS 11 phases / 11361 pinned canonical states",
+    "normal_pose_qualification": {
+      "poses": 83,
+      "density_assets": 166,
+      "platforms": [
+        "Windows ASan/UBSan",
+        "Linux ASan/UBSan/LSan"
+      ],
+      "window_cases_per_platform": 332,
+      "runtime_activation": false
+    }
+  }
+}

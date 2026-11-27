@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit, CF1 enemy sprite animation. Edit IMAGE1 into enemy walk direction5 FRAME0 sheet47. IMAGE1 is exact pose/camera target; IMAGE2 is enemy identity/palette from neighbouring upward direction; IMAGE3 native frame0 orientation/silhouette; IMAGE4 approved C01 painted style. Preserve image1's rear three-quarter view facing UPPER RIGHT, rifle aimed upper right, helmet/body proportions, stride and boots (left leg trailing down-left, right leg advancing). Change tan harness/pouches to the muted reddish brown leather and match the dark olive helmet/uniform of image2. Same compact charcoal rifle, no backpack invented. Tall full-body silhouette, native occupied aspect around7-by14, all feet and weapon uncropped with transparent margins. No mirroring: this is the native upper-right direction, not a reflected upper-left sprite. Same moderate painted finish, upper-left light. No floor, text, baked shadow, scene, extra gear or new pose.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s5-f0-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-46-f0/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-47-f0-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "efa2e376a21e7c2624828ad7426351852e4dc4df2ebe6cdd3e0e9a66fb48ef98",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

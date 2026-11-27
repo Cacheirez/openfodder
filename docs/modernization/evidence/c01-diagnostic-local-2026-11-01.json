@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-01",
+  "environment": "Linux local SDL 3.4.0 software, no mixer",
+  "canonical_replay": {
+    "verdict": "PASS",
+    "campaign": "PC Format",
+    "scope": "8 reference phases",
+    "executable_sha256": "ca1f85cfdcd57bc3661b08e4716c3afbbc5ac9a5c57adbfd33bc1db7331fcdd9",
+    "densities": [
+      {
+        "density": 8,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_8.html",
+            "sha256": "96d48c10bcc4166fd7f105a1e81e5ea7eaee15d7776749dbbcd5bd6ce63996ae"
+          },
+          {
+            "name": "C01_8_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_8_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_8_parche.bmp",
+            "sha256": "5a19bc9d929d63502391dda1a73648c37fea43ab8e39fd545cfb2c0d9bcd9754"
+          }
+        ]
+      },
+      {
+        "density": 12,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_12.html",
+            "sha256": "4bccba4818eb2ad538d0de1f7240591ea6b68f9939d974ec1ce69f53dd19d0f0"
+          },
+          {
+            "name": "C01_12_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_12_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_12_parche.bmp",
+            "sha256": "22f8b6d131e3e33bef79be53a00e6f83447feab19d78ba738ce1d72f30e3c2de"
+          }
+        ]
+      }
+    ]
+  },
+  "checks": {
+    "python_tests": 31,
+    "window_method_sanitized": "PASS, rejection reasons and lifecycle",
+    "sdl_transactions_sanitized": "PASS, 176 failure/transition cases",
+    "screen_transform": "PASS 544000 coordinates and existing mission/overview/pause/GUI tests",
+    "export_write_failure": "PASS, successful draw retained in non-writable /proc",
+    "comparison_js_syntax": "PASS",
+    "browser_render": "Not run: browser binaries could not be downloaded",
+    "comparison_canvas": "PASS generated JavaScript with Skia Canvas: BMP load, Src crop, zoom, toggle; preview inspected. Not browser DOM."
+  },
+  "rejected_attempts": [
+    {
+      "scope": "PC m2p1 direct start",
+      "result": "H3 mismatch: 787 samples, different hash; reference unchanged"
+    },
+    {
+      "scope": "Full PC forced --mission 1 --phase 1",
+      "result": "8x PASS; 12x incomplete/invalid trace and failed H3. Replaced by exact standard replay CLI, which passed both densities."
+    }
+  ],
+  "final_crop": "PASS: final Src-cropped exporter, standard replay invocation, both densities",
+  "final_replay": {
+    "verdict": "PASS",
+    "campaign": "PC Format",
+    "scope": "8 reference phases",
+    "executable_sha256": "b02963745aac5c1ce50cba6bbd456f98a83642179b1b2b2290397de153bf90c1",
+    "densities": [
+      {
+        "density": 8,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_8.html",
+            "sha256": "a31000242e0c5fafa957b7af919d8baa6c4c244d3fe808523efc1210967b62f6"
+          },
+          {
+            "name": "C01_8_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_8_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_8_parche.bmp",
+            "sha256": "5a19bc9d929d63502391dda1a73648c37fea43ab8e39fd545cfb2c0d9bcd9754"
+          }
+        ]
+      },
+      {
+        "density": 12,
+        "canonical_states": 7956,
+        "hd_published": true,
+        "files": [
+          {
+            "name": "C01_12.html",
+            "sha256": "0c14e39122a108163c57364641c0c40a4353cb3ece5010b584a28131686781a3"
+          },
+          {
+            "name": "C01_12_clasico.bmp",
+            "sha256": "89f884e7e7331c02292219ad5822e547552ce7ece544d0791a6dd2b77a27b863"
+          },
+          {
+            "name": "C01_12_fondo.bmp",
+            "sha256": "d6c268fbdbab7dd0b4aca25e8ed129d7aa764b5e245f97789a18f24ecbbaf483"
+          },
+          {
+            "name": "C01_12_parche.bmp",
+            "sha256": "22f8b6d131e3e33bef79be53a00e6f83447feab19d78ba738ce1d72f30e3c2de"
+          }
+        ]
+      }
+    ]
+  }
+}

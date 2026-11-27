@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.V2.1",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 1,
+  "sheet": 67,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-43-f0",
+      "source_sha256": "9470704197ee98c18b2a39b94277d4a9d24b6d781dae8dfd4c205166f9c135fc",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-43-f1",
+      "source_sha256": "c44ec642d808a5ac1138da348820e17eba545ae4aa90d43b5aa641163ca4464f",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-walk-43-f2",
+      "source_sha256": "96622417394978af068e9e2693b640326046aac27ece84c53e6f83e92d34d60a",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 4,
+        "y": 0,
+        "width": 8,
+        "height": 14
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": true,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 6,
+    "assets": 12
+  },
+  "notes": [
+    "Se conserva la cámara y las tres poses previas; identidad E01 aplicada sin cambiar selección nativa ni sombras."
+  ],
+  "next": "E2.V2.2 — adaptar marcha enemiga dirección 2, 44/F0-F2, a E01/v2; validar 8×/12× y publicar antes de otra dirección. Continuar dentro del hito completo autorizado."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E2.8 enemy walk direction1; ordinary walk art complete",
+  "status": "PASS internal art/export; runtime integration and Miguel review pending",
+  "sheet": 67,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "sequence": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "new_frames": [
+    0,
+    1,
+    2
+  ],
+  "logical_size": [
+    16,
+    14
+  ],
+  "density": [
+    8,
+    12
+  ],
+  "occupied_boxes": {
+    "0": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "1": [
+      4,
+      0,
+      12,
+      14
+    ],
+    "2": [
+      4,
+      0,
+      12,
+      14
+    ]
+  },
+  "validation": [
+    "Both native format boxes verified; hashes, lengths, PNG/RGBA equality and alpha bounds PASS",
+    "Internal derivative review: independently drawn lower-left direction, stride/passing/opposite steps, same identity",
+    "All8 directions x3 frames exist;48 walk derivatives; registry26 poses/52 assets including prior prone/death",
+    "All four legacy enemy packages byte-for-byte equal to protagonist acceptance HEAD1b40748",
+    "Entire Source tree unchanged from protagonist acceptance HEAD; no repeated game replay for inactive art"
+  ],
+  "next": "E2.9 audit explicit native-raster reuse candidates and combined budget before further art; then remaining source families within authorized enemy milestone"
+}

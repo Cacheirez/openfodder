@@ -1,0 +1,236 @@
+// GPL-3.0-or-later. Experimental per-draw HD presentation; classic by default.
+#include "stdafx.hpp"
+#include "Utils/SoldierArtSDL.hpp"
+#include "Utils/SoldierArtCompare.hpp"
+#include "c01_8.hpp"
+#include "c01_12.hpp"
+#include "Utils/SoldierArtBatch.hpp"
+#include "Utils/OrderedSoldierSDL.hpp"
+#include "Utils/OrderedSoldierRegistry.hpp"
+#include "Utils/OrderedSoldierCoverage.hpp"
+#include "Utils/PaletteTransfer.hpp"
+#include <set>
+
+bool cSurface::ClassicEnemyExperimentEnabled() {
+    static const bool enabled = [] {
+        const auto* option = std::getenv("OPENFODDER_SOLDIER_ORDERED_CLASSIC_ENEMIES");
+        return option && std::strcmp(option, "1") == 0;
+    }();
+    if (!enabled || !g_Fodder->mVersionCurrent->isAmigaTheOne())
+        return false;
+    const auto& game = g_Fodder->mGame_Data;
+    return game.mMission_Number == 1 && game.mMission_Phase == 2 &&
+        game.mCampaign.getName() == "Amiga The One";
+}
+
+openfodder::NativeAmiga8Frame cSurface::CaptureNativeAmiga8Frame(
+        const openfodder::PreparedSpriteDraw& prepared, bool classicEnemies) {
+    const auto& state = prepared.soldier;
+    if(openfodder::CF1PlayerCatalogEnabled() && g_Fodder->mVersionCurrent->isCannonFodder1()){
+        const auto& r=prepared.resource;const auto& g=state.geometry;
+        if(!state.valid || !r || r.offset>65535 ||
+           (g.format!=openfodder::SpriteDrawFormat::PC && g.format!=openfodder::SpriteDrawFormat::Amiga8))return {};
+        const auto* row=g_Fodder->Sprite_Get_Sheet(state.sheet,state.frame);
+        if(!row || row->mLoadSegment!=state.segment || row->mLoadOffset>r.offset ||
+           row->mColCount!=g.columns || row->mRowCount!=g.rows || row->mModX!=g.modX || row->mModY!=g.modY)return {};
+        openfodder::NativeAmiga8Frame n={state.type,state.sheet,state.frame,state.segment,uint16_t(r.offset),
+            row->mColCount,row->mRowCount,row->mModX,row->mModY,
+            state.scene,state.generation,state.slot,r.generation,r.bytes};
+        n.cf1=true;n.layout=r.layout;n.palette=r.palette;n.frameOffset=row->mLoadOffset;
+        if(state.slot<g_Fodder->mSprites.size()){
+            const auto& actor=g_Fodder->mSprites[state.slot];
+            if(actor.mPresentationGeneration!=state.generation || actor.mSpriteType!=state.type || actor.mPersonType!=state.personType)return {};
+            if(state.type==0 && state.personType==0)n.role=1;
+            else if(openfodder::CF1EnemyCatalogEnabled() && (state.type==5 || state.type==36 || state.type==106))n.role=2;
+            else if(openfodder::CF1EnemyCatalogEnabled() && state.type==41 && state.sheet==0xc4)n.role=6;
+            else if(state.type==22){
+                bool ownerFound=false;
+                for(size_t ownerSlot=0;ownerSlot<g_Fodder->mSprites.size();++ownerSlot){
+                    const auto& owner=g_Fodder->mSprites[ownerSlot];
+                    if(&owner!=actor.mOwnerSprite)continue;
+                    if(ownerSlot==state.slot || actor.mCurrentVehicle!=&owner ||
+                       !owner.mPresentationGeneration || actor.mAIAggression<0)return {};
+                    ownerFound=true;n.ownerSlot=ownerSlot;n.ownerGeneration=owner.mPresentationGeneration;
+                    // mAIAggression retains the native owner type at creation;
+                    // a later destruction in this tick must not change its art.
+                    n.ownerType=actor.mAIAggression;n.ownerPerson=owner.mPersonType;
+                    n.ownerX=owner.mPosX;n.ownerY=owner.mPosY;n.ownerHeight=owner.mHeight;
+                    if(n.ownerType==0 && n.ownerPerson==0)n.role=3;
+                    else if(openfodder::CF1EnemyCatalogEnabled() && (n.ownerType==5 || n.ownerType==36))n.role=4;
+                    break;
+                }
+                if(!ownerFound)return {};
+            }
+        }
+        return n;
+    }
+    const bool firstSheet = classicEnemies && state.type == eSprite_Enemy && state.segment == eGFX_IN_GAME;
+    if (!state.valid || !g_Fodder->mVersionCurrent->isAmigaTheOne() ||
+        (state.segment != eGFX_IN_GAME2 && !firstSheet))
+        return {};
+    const auto* row = g_Fodder->Sprite_Get_Sheet(state.sheet, state.frame);
+    if (!row)
+        return {};
+    return {state.type, state.sheet, state.frame, row->mLoadSegment, row->mLoadOffset,
+        row->mColCount, row->mRowCount, row->mModX, row->mModY,
+        state.scene, state.generation, state.slot, prepared.resource.generation, prepared.resource.bytes};
+}
+
+int cWindow::TryRenderMissionHD(cSurface* image,const SDL_FRect& src,const SDL_FRect& dst) {
+    const char* option=std::getenv("OPENFODDER_SOLDIER_HD");
+    if(!option || (std::string(option)!="8" && std::string(option)!="12"))return -1;
+    // Opt-in, bounded diagnostics: each distinct reason once per process.
+    auto report=[&](const char* reason){
+        const char* trace=std::getenv("OPENFODDER_HD_DIAGNOSTICS");
+        if(!trace || std::string(trace)!="1")return;
+        static const char* seen[40]={};static unsigned count=0;
+        for(unsigned i=0;i<count;++i)if(std::strcmp(seen[i],reason)==0)return;
+        if(count<40){seen[count++]=reason;std::fprintf(stderr,
+            "SOLDIER_HD_REASON: %s density=%s\n",reason,option);
+            if(std::strncmp(reason,"sdl-error",9)==0)std::fprintf(stderr,"SOLDIER_HD_SDL_ERROR: %s\n",SDL_GetError());}
+    };
+    auto classic=[&](const char* reason){report(reason);return -1;};
+    const char* native=std::getenv("OPENFODDER_SOLDIER_ART");
+    if(native && std::string(native)=="1")return classic("native-art-enabled");
+    if(!cSurface::MissionPublicationEnabled())return classic("publication-disabled");
+    if(image!=g_Fodder->mSurface)return classic("not-mission-surface");
+    if(!g_Fodder->mPhase_In_Progress)return classic("outside-mission");
+    const bool frozenPause=g_Fodder->mPhase_Paused && openfodder::CF1PlayerCatalogEnabled();
+    if(g_Fodder->mPhase_Paused && !frozenPause)return classic("paused");
+    if(frozenPause && (!g_Fodder->mSurface2 || g_Fodder->mSurface2==image))return classic("missing-pause-text");
+    if(g_Fodder->mPhase_ShowMapOverview)return classic("map-overview");
+    if(g_Fodder->mInterruptCallback)return classic("scene-callback");
+    if(image->isLoadedImage())return classic("loaded-image");
+    const bool paletteTransition=image->isPaletteAdjusting() && !image->paletteMatchesTarget();
+    if(paletteTransition && !openfodder::CF1PlayerCatalogEnabled())return classic("palette-transition");
+    if(!image->MissionAuditActive() && !frozenPause)return classic("missing-audit-interval");
+    float sx=0,sy=0;int w=0,h=0;
+    SDL_RendererLogicalPresentation logical=SDL_LOGICAL_PRESENTATION_DISABLED;
+    if(SDL_GetRenderTarget(mRenderer))return classic("renderer-target");
+    if(SDL_RenderClipEnabled(mRenderer))return classic("renderer-clip");
+    if(!SDL_GetRenderScale(mRenderer,&sx,&sy) || sx!=1 || sy!=1)return classic("renderer-scale");
+    if(!SDL_GetRenderLogicalPresentation(mRenderer,&w,&h,&logical) ||
+       logical!=SDL_LOGICAL_PRESENTATION_DISABLED)return classic("renderer-logical-presentation");
+    try {
+        // Verify the current interval and late palette before any SDL write.
+        // Oracle mismatches still propagate as runtime errors.
+        const auto scene=image->VerifyMissionAudit(g_Fodder->mSurfaceFinal,nullptr,frozenPause);
+        if(scene.destinations.empty())return classic(frozenPause?"ordered-pause-invalid-audit":"ordered-invalid-audit");
+        const auto current=image->CapturePresentation();
+        bool nonBlack=false;for(auto color:current.indexed.colors)nonBlack|=(color&0xffffffu)!=0;
+        if(!nonBlack)return classic("black-palette");
+        // Retain only a palette from this presentation scene. No simulation or
+        // fade step is advanced here; unknown/non-monotone transitions reject.
+        static openfodder::PresentationDestinationId paletteDestination;static uint64_t paletteScene=0;
+        static std::array<uint32_t,255> paletteReference{};static bool referenceValid=false;
+        if(paletteDestination!=current.destination || paletteScene!=g_Fodder->mPresentationScene){
+            paletteDestination=current.destination;paletteScene=g_Fodder->mPresentationScene;referenceValid=false;
+        }
+        openfodder::MissionPaletteArt paletteArt;
+        if(paletteTransition){
+            const auto target=image->missionPaletteTarget();
+            if(paletteArt.transfer.build(target,current.indexed.colors)){
+                paletteReference=target;referenceValid=true;
+            }else if(!referenceValid || !paletteArt.transfer.build(paletteReference,current.indexed.colors))
+                return classic("palette-transition");
+        }else {paletteReference=current.indexed.colors;referenceValid=true;}
+        for(const auto& layer:scene.layers)
+            if(layer.operation==openfodder::MissionLayerOperation::Soldier &&
+               layer.soldier.soldier.scene!=g_Fodder->mPresentationScene)return classic("stale-scene");
+        const char* orderedPath=std::getenv("OPENFODDER_SOLDIER_ORDERED_MANIFEST");
+        if(orderedPath && *orderedPath){
+            const bool hybrid=openfodder::HybridMissionArtEnabled();
+            const unsigned density=std::string(option)=="12"?12:8;
+            openfodder::OrderedSoldierCoverage coverage(scene,current.destination,density);
+            // Exclusive route: missing bindings never fall into the pilot.
+            static std::string loadedPath;
+            static std::shared_ptr<const openfodder::OrderedSoldierRegistry> registry;
+            try {
+                if(!registry || loadedPath!=orderedPath){
+                    auto next=std::make_shared<const openfodder::OrderedSoldierRegistry>(
+                        openfodder::OrderedSoldierRegistry::Load(orderedPath));
+                    registry=std::move(next);loadedPath=orderedPath;
+                }
+            } catch(const std::exception&) {
+                coverage.finish("manifest-invalid");return classic("ordered-manifest-invalid");
+            }
+            const char* trace=std::getenv("OPENFODDER_ORDERED_KEYS");
+            const bool traceKeys=trace && std::string(trace)=="1";
+            static std::set<std::string> reportedKeys;
+            std::vector<openfodder::OrderedSoldierAsset> resolvedCommands;
+            bool missing=false;
+            for(size_t order=0;order<scene.layers.size();++order){
+                const auto& layer=scene.layers[order];
+                if(layer.destination!=current.destination || layer.operation!=openfodder::MissionLayerOperation::Soldier)continue;
+                const auto& command=layer.soldier;
+                const auto key=openfodder::SoldierVariantKey(command,current.indexed.colors);
+                auto resolved=registry->resolve(command,key,density,hybrid,
+                    current.indexed.width,current.indexed.indices->size(),scene.classicEnemies);
+                if(paletteTransition)resolved=paletteArt.apply(std::move(resolved));
+                coverage.resolved(order,key,resolved.decision);
+                if(traceKeys && reportedKeys.size()<8192 && reportedKeys.insert(key).second)
+                    std::fprintf(stderr,"SOLDIER_ORDERED_KEY: key=%s type=%d sheet=%d frame=%d decision=%d\n",
+                        key.c_str(),command.soldier.type,command.soldier.sheet,command.soldier.frame,int(resolved.decision));
+                missing|=resolved.decision==openfodder::SoldierArtDecision::Missing;
+                resolvedCommands.push_back(resolved);
+            }
+            // Census first; reject incomplete intervals before CPU/GPU work.
+            if(missing){coverage.finish("missing-variant");return classic("ordered-missing-variant");}
+            size_t commandIndex=0;
+            auto frame=openfodder::ComposeOrderedSoldierArt(scene,current.destination,density,
+                [&](const openfodder::PreparedSpriteDraw&){return resolvedCommands.at(commandIndex++);});
+            if(frozenPause)openfodder::ApplyOrderedPauseText(frame,
+                openfodder::RasterizePresentationSurface(g_Fodder->mSurface2->CapturePresentation()));
+            if(!frame.complete()){coverage.finish("no-body");return classic("ordered-no-body");}
+            bool replaced=false;
+            const bool drawn=openfodder::RenderOrderedSoldierHD(mRenderer,frame,image->GetTexture(),src,dst,replaced);
+            coverage.finish(replaced?"published":drawn?"classic-recovered":"recovery-failed");
+            if(!replaced)report(drawn?"sdl-error-classic-recovered":"sdl-error-recovery-failed");
+            if(replaced)report("ordered-published");
+            if(replaced && frozenPause)report("ordered-pause-published");
+            return drawn?1:0;
+        }
+        if(paletteTransition)return classic("palette-transition"); // Legacy fixed-art paths retain their guard.
+        static const auto a8=std::make_shared<const std::vector<uint32_t>>(
+            openfodder::SoldierArtPixels8().begin(),openfodder::SoldierArtPixels8().end());
+        static const auto a12=std::make_shared<const std::vector<uint32_t>>(
+            openfodder::SoldierArtPixels12().begin(),openfodder::SoldierArtPixels12().end());
+        const bool high=std::string(option)=="12";
+        openfodder::SoldierArtHDAsset asset;asset.density=high?12:8;asset.pixels=high?a12:a8;
+        const char* batch=std::getenv("OPENFODDER_SOLDIER_BATCH");
+        const bool useBatch=batch && std::string(batch)=="1";
+        if(useBatch){
+            asset=openfodder::SelectSoldierBatch(scene,current.destination,high?12:8);
+            if(!asset.pixels)return classic("no-eligible-batch-key");
+        }
+        const auto composeStart=SDL_GetTicksNS();
+        const auto frame=openfodder::ComposeSoldierArtHDLayers(scene,current.destination,true,asset);
+        if(frame.status!=openfodder::SoldierArtHDStatus::Replaced)return classic(frame.reason);
+        const auto composeNS=SDL_GetTicksNS()-composeStart;
+        SDL_FRect patchRect;
+        if(!openfodder::SoldierHDRect(frame,src,dst,patchRect))return classic("viewport-body-clipped");
+        bool replaced=false;
+        const auto renderStart=SDL_GetTicksNS();
+        const bool drawn=openfodder::RenderSoldierHD(mRenderer,frame,image->GetTexture(),src,dst,replaced);
+        if(!replaced)report(drawn?"sdl-error-classic-recovered":"sdl-error-recovery-failed");
+        if(replaced){
+            const char* diagnostics=std::getenv("OPENFODDER_HD_DIAGNOSTICS");
+            if(useBatch && diagnostics && std::string(diagnostics)=="1"){
+                static uint64_t published[6]={};
+                const int key=(asset.sheet==2?0:3)+asset.frame;
+                const auto count=++published[key];
+                if(count==1 || count%256==0)std::fprintf(stderr,
+                    "SOLDIER_BATCH_PUBLISHED: sheet=%d frame=%d count=%llu compose_ns=%llu sdl_ns=%llu\n",
+                    asset.sheet,asset.frame,(unsigned long long)count,
+                    (unsigned long long)composeNS,(unsigned long long)(SDL_GetTicksNS()-renderStart));
+            }
+            openfodder::SaveSoldierArtComparison(scene,current.destination,frame,src);
+            static bool reported=false;
+            if(!reported){std::fprintf(stderr,"SOLDIER_HD_SDL: published native background and HD patch\n");reported=true;}
+        }
+        return drawn?1:0;
+    } catch(const std::bad_alloc&) {return classic("allocation-failed");}
+      catch(const std::invalid_argument&) {return classic("ordered-invalid-resource");}
+      catch(const std::out_of_range&) {return classic("ordered-resource-bounds");}
+      catch(const std::length_error&) {return classic("ordered-budget-exceeded");}
+}

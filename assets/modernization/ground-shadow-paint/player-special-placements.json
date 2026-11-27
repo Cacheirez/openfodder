@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "criterion": "Native embedded ground verified; approved paint, unchanged body, screen down-right, contact at corrected boots; water/height excluded; independent owner shadow takes precedence",
+  "groups": [
+    {
+      "family": "salute",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f0-8x",
+          "sha256": "1b631ae684f0fabddf1de65c2d39eadb2600a65a9986fafaa572a0c0ac89d683"
+        },
+        {
+          "id": "player-pose-38-f0-12x",
+          "sha256": "cba4a7d80d662c64ec0b713893cfc3eadeaeed4198f2c5b07e78b3dfe363eb3d"
+        }
+      ]
+    },
+    {
+      "family": "salute",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f1-8x",
+          "sha256": "c0039e5eb00aa596205df3f402c8a67ebf0d3481a140bb3398a94dfbae68c081"
+        },
+        {
+          "id": "player-pose-38-f1-12x",
+          "sha256": "7d045556ab6f6485a6951f2ab58b194472276a6e16b7dedf9e9fdb3c8152d1fb"
+        }
+      ]
+    },
+    {
+      "family": "salute",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f2-8x",
+          "sha256": "b46256dabd716e8af4cbdb90075d4d144da5155e8477a295016cf4c12d389d5d"
+        },
+        {
+          "id": "player-pose-38-f2-12x",
+          "sha256": "8665148e7aef8d975be5b662794db6b879c5b8a3379217f6c9106e128fb9fa93"
+        }
+      ]
+    },
+    {
+      "family": "salute",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f3-8x",
+          "sha256": "63f5f678ea94a825b74da28bab99cbcb1b06784f6e3d1f271e0fbb42f700ef57"
+        },
+        {
+          "id": "player-pose-38-f3-12x",
+          "sha256": "1d7f18b7ad16ab045c4877d8af02640e43a9b8406cf1dd738664ed9d58b9abed"
+        }
+      ]
+    },
+    {
+      "family": "salute",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f4-8x",
+          "sha256": "95bb7b8f78aa444b87586b7ce62f1ee424369d9265c1b067ed9fb7b1439990bb"
+        },
+        {
+          "id": "player-pose-38-f4-12x",
+          "sha256": "0d2ddf6329e9048ea6a1036b61c5ead687de950beae084f9df2fd23e80f58fd4"
+        }
+      ]
+    },
+    {
+      "family": "salute",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-38-f5-8x",
+          "sha256": "845fc005a2875aa1fb15f36f184795eb103589f4bbedbae9926aed3f582481bc"
+        },
+        {
+          "id": "player-pose-38-f5-12x",
+          "sha256": "4fdcc36261330e9b427078060d35e960b376f259a2377d7df7ebf54c8858017c"
+        }
+      ]
+    },
+    {
+      "family": "cheer",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-9f-f0-8x",
+          "sha256": "6d07bfdc792d26f344e25bbaf3885956f7250438a2975831a255a74456b56f65"
+        },
+        {
+          "id": "player-pose-9f-f0-12x",
+          "sha256": "80d066a7ef4166e541d3fac6dbc4b840cb843595006c3b468a61c3062d1a351b"
+        }
+      ]
+    },
+    {
+      "family": "cheer",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-9f-f1-8x",
+          "sha256": "12882813e7e5e15e6d4254fce5899ec835a9d45d4d8c96a4aa5667c69027b03e"
+        },
+        {
+          "id": "player-pose-9f-f1-12x",
+          "sha256": "ede8f269fb57bee633935fc1cbb392d31a2dfeadfe4e8df42be8fc8cf83f20f8"
+        }
+      ]
+    },
+    {
+      "family": "cheer",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-9f-f2-8x",
+          "sha256": "8d14f9512beba64c096829fc3499719e0888ce7c46e01320e55aa916577f995e"
+        },
+        {
+          "id": "player-pose-9f-f2-12x",
+          "sha256": "63719ae7c892b14e29d18607d28b3d48932679d538c0c1d962a8f0f2a59a748a"
+        }
+      ]
+    },
+    {
+      "family": "cheer",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 24,
+      "y_quarters": 52,
+      "bodies": [
+        {
+          "id": "player-pose-9f-f3-8x",
+          "sha256": "79e68d2c846ef9250dbbcd88599d924abd9bf25b064f307a97e4b550ad736bd1"
+        },
+        {
+          "id": "player-pose-9f-f3-12x",
+          "sha256": "d1fba6b1251ac11558ff937cc1b6b82ceaa2564db8125772f33bd772b8a5ab1f"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 0,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 40,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f0-8x",
+          "sha256": "09389f9bb11deb44922958685c49f680aba8a89913d5861fd7ea7ebbcd95cfd9"
+        },
+        {
+          "id": "player-pose-a4-f0-12x",
+          "sha256": "26f6c968dc303ea64692c9549c989f92e9e49be955cf20372a0d1e62e3df4378"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 1,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 11,
+      "y_quarters": 38,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f1-8x",
+          "sha256": "f52d42bc4ea16c9f6a81260ee87ad3e13ef8d9c92e23c14d0740821adb372d94"
+        },
+        {
+          "id": "player-pose-a4-f1-12x",
+          "sha256": "5ef618b091feaacf41fc00683471fc91d9764598bb89e74f71c0f116409fea50"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 2,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 36,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f2-8x",
+          "sha256": "7ced09787c1f2f769e72b0ef5bb7e5802ebacb548f51bdd1e75d50f019e29420"
+        },
+        {
+          "id": "player-pose-a4-f2-12x",
+          "sha256": "de748ed7ec94ca7f6437c00f52472ac7280299ae752679d96c6fe80f4c4dd8c8"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 3,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 44,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f3-8x",
+          "sha256": "cf2551543849f3a2b4a868abd279e5908cb832486be00ea3c5aa6d674ccf2a3d"
+        },
+        {
+          "id": "player-pose-a4-f3-12x",
+          "sha256": "b95c0a227298968376c0b0f0ac40d0423ab687c2496c2746871abd05ddaf0292"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 4,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 23,
+      "y_quarters": 44,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f4-8x",
+          "sha256": "2b7fac144138a30da0bc485343d262d0e3c1e04cc86027a69ca3520b766b9adc"
+        },
+        {
+          "id": "player-pose-a4-f4-12x",
+          "sha256": "a733764f5145c4ff615ad08d13ec0f00c28acec4454a7cc3b9512b1aac60fad3"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 5,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 19,
+      "y_quarters": 38,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f5-8x",
+          "sha256": "0ccf3ffb72f5576af9a1a1dad3b5c5102b32567d7cb622f0b00bc100ede3399f"
+        },
+        {
+          "id": "player-pose-a4-f5-12x",
+          "sha256": "325b93d4c08a1c2ac39f5f5996345e93a7094e9a8aafa540bd4c3898c7590ed2"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 6,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 31,
+      "y_quarters": 36,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f6-8x",
+          "sha256": "742d87ee065b83d71592e8523a527527e250fa99eb1ed0c14779887e8113b69f"
+        },
+        {
+          "id": "player-pose-a4-f6-12x",
+          "sha256": "6741cfbb6f17aa3c15bc20ab9236018486ee7356e18bff28238fb054876a76af"
+        }
+      ]
+    },
+    {
+      "family": "slide",
+      "direction": 7,
+      "owner_type": 0,
+      "width": 7,
+      "height": 3,
+      "x_quarters": 33,
+      "y_quarters": 40,
+      "bodies": [
+        {
+          "id": "player-pose-a4-f7-8x",
+          "sha256": "8904d5e063f399dc562c375fdedb0213c3e7a8090c8cad859ce63c73f4f34e03"
+        },
+        {
+          "id": "player-pose-a4-f7-12x",
+          "sha256": "f480ac813206322a2e3bc7213eeb64a12676fab8e7ec6bcec0476c1f5a08f2ee"
+        }
+      ]
+    }
+  ]
+}

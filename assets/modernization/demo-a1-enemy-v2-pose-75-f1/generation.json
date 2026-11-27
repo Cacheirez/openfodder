@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Precise single-arm edit of image1. Preserve the whole existing character, head direction, camera, clothing, boots and stance. Change ONLY the arm on the LEFT SIDE OF THE PICTURE, next to the LARGE HIP POUCH (screen x about30percent): its currently hanging empty hand must rise to the LEFT EDGE of the helmet at face level (target screen x28percent,y33percent). Bend that same sleeve/elbow outward on the left. The opposite arm on the RIGHT SIDE OF THE PICTURE next to the SMALL VERTICAL POUCH (screen x65percent) must stay hanging down, with hand near its current low position. Native image2 confirms the raised pale hand on the LEFT of the helmet. Do NOT raise the right-side arm, do NOT mirror/rotate the image, and do NOT change anything in the legs or other clothing. Same E01 moderate painted style, upper-left light, genuinely transparent RGBA background. Whole body, no shadow/floor/text/effects or held object.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "b76ec9bbc7f087b9de3047de763e5fb03da0655a593a9ee863130835d7f66a87",
+  "references": [
+    "private:generated_images/exec-94df70f7-0b1c-4158-99b9-4e04a457191b.png",
+    "private:enemy-mode-zero-d3-audit/75-f1-plus-posture.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

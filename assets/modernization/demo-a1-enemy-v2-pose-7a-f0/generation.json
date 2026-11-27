@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: identity-preserve game sprite. Image1 is the exact pose reference: keep its whole-body frontal down-screen pose, elevated game camera, helmet covering eyes, empty hands, bent right elbow with hand near upper abdomen (viewer left), other hand relaxed low (viewer right), feet close and parallel. Image2 supplies the approved E01 enemy identity and painted rendering: plain grey-green helmet, grey-olive uniform, short dark beard on exposed jaw, small brick-red neck cloth, reddish-brown shoulder straps, belt and pouches, dark brown boots. Apply image2 identity to image1 pose without copying image2 rifle or aiming posture. This is the complete body master for native frame7A/F0 of a retro game; engine handles all clipping separately. Moderate painted style, restrained readable details and upper-left lighting, same proportions and overhead camera as image1. Single isolated complete character with generous margins, genuinely transparent RGBA background. No gun, no weapons, no floor, no shadow, no water, no effects, no text, no emblems. Do not mirror or rotate pose.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "d39cb486be181d21cd86c44cc9b56f75949c6c55f99412c3668822b68039d4c3",
+  "references": [
+    "assets/modernization/demo-a1-player-pose-38-f0/source.png",
+    "assets/modernization/enemy-identity-v2/source.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}

@@ -1,0 +1,967 @@
+{
+  "schema": 1,
+  "catalog_revision": 4,
+  "native_formats": {
+    "PC": {
+      "opaque_body_contracts": 327,
+      "exact_raster_groups": 256,
+      "distinct_body_poses": 267
+    },
+    "Amiga": {
+      "opaque_body_contracts": 276,
+      "exact_raster_groups": 206,
+      "distinct_body_poses": 216
+    }
+  },
+  "distinct_opaque_body_poses": 268,
+  "verified_reuse_candidates": [
+    {
+      "destination": [
+        81,
+        0
+      ],
+      "source": [
+        73,
+        0
+      ],
+      "reason": "grenade preparation uses walking pose",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "4e005bcc2cffff96a58e33ecd4812bab548101a54bbd04483187f1ddb687abd7"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        81,
+        2
+      ],
+      "source": [
+        73,
+        1
+      ],
+      "reason": "grenade recovery uses walking passing pose",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "9e3bae0c23a529531bf922c63e5c83a70cfa29ad18d3ac5fb8a01c6b20a41a20"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "9e3bae0c23a529531bf922c63e5c83a70cfa29ad18d3ac5fb8a01c6b20a41a20"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        184,
+        0
+      ],
+      "source": [
+        114,
+        0
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "5ac6d6cba81cade01530740bf51c964d5c338640d06381e0ccf00d000a68e79a"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        185,
+        0
+      ],
+      "source": [
+        114,
+        1
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "49a1e0cd71869b3bef6dffc710c6a32fad88b4c98d3fb5ec537bb27090a587ef"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        186,
+        0
+      ],
+      "source": [
+        114,
+        2
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "a96bd5ea76e7787ba2ced0821b5d1b6edfc4ff09f4ae6b3c36b3ed0500df1b17"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        187,
+        0
+      ],
+      "source": [
+        115,
+        0
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "40d12b3b5cd370af08f760f6ef5ac14ecb5d9035074401e2f8c1abfb1a2637b7"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        188,
+        0
+      ],
+      "source": [
+        115,
+        1
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "556dbf8f9485b99970219a0c553bb7615a8c99b7d827f0634ad996da127e303c"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "556dbf8f9485b99970219a0c553bb7615a8c99b7d827f0634ad996da127e303c"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "556dbf8f9485b99970219a0c553bb7615a8c99b7d827f0634ad996da127e303c"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "556dbf8f9485b99970219a0c553bb7615a8c99b7d827f0634ad996da127e303c"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        189,
+        0
+      ],
+      "source": [
+        115,
+        2
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "72cf4ee34fafbfbb85f4dc197ce919dab0ec5ec52927cb4121e2f6afafdac6ee"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "72cf4ee34fafbfbb85f4dc197ce919dab0ec5ec52927cb4121e2f6afafdac6ee"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "72cf4ee34fafbfbb85f4dc197ce919dab0ec5ec52927cb4121e2f6afafdac6ee"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "72cf4ee34fafbfbb85f4dc197ce919dab0ec5ec52927cb4121e2f6afafdac6ee"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        190,
+        0
+      ],
+      "source": [
+        116,
+        0
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "fd07dfa4ac17a464fe376a637f78652a5c8eec54d84fdb29f818e2faae2e5219"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "fd07dfa4ac17a464fe376a637f78652a5c8eec54d84fdb29f818e2faae2e5219"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "fd07dfa4ac17a464fe376a637f78652a5c8eec54d84fdb29f818e2faae2e5219"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "fd07dfa4ac17a464fe376a637f78652a5c8eec54d84fdb29f818e2faae2e5219"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        191,
+        0
+      ],
+      "source": [
+        116,
+        1
+      ],
+      "reason": "native falling table aliases the first eight low-mode rows",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d"
+        },
+        {
+          "format": 0,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d"
+        },
+        {
+          "format": 1,
+          "type": 5,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d"
+        },
+        {
+          "format": 1,
+          "type": 36,
+          "source_type": 5,
+          "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+          "native_signature": "7c4fa9e82436374946cd3873847d81e61c4fff32ec3502e7427061a05e27c79d"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    },
+    {
+      "destination": [
+        218,
+        1
+      ],
+      "source": [
+        217,
+        1
+      ],
+      "reason": "leader idle reuses leader walking passing pose",
+      "proofs": [
+        {
+          "format": 0,
+          "type": 106,
+          "source_type": 106,
+          "resource_sha256": "9273da69dc57b632c0069b9399c56985206e946c4aedbdcdee892f90c5832a3d",
+          "native_signature": "fcfc373886dece1d653de35e4f42c9762c4363967dc553764e1c9c5ab5b34ff7"
+        }
+      ],
+      "status": "verified native reuse candidate; no automatic runtime binding"
+    }
+  ],
+  "resource_specific_no_write_bodies": [
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 0,
+      "type": 5,
+      "sheet": 124,
+      "frame": 1,
+      "resource_sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 0,
+      "type": 36,
+      "sheet": 124,
+      "frame": 1,
+      "resource_sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 0,
+      "type": 106,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "7dbed19eb8767876e88f8dea9a736aabbb0649ab8111d3ceae0a863d2997dfbd",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 124,
+      "frame": 1,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 5,
+      "sheet": 220,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 36,
+      "sheet": 124,
+      "frame": 1,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 124,
+      "frame": 0,
+      "resource_sha256": "3dd8d73e4700b42f081f25b25b547b5bd76c9124580ecbd5e01729527e9d8f11",
+      "native_signature": "e629188120e39bf0c2b38c71eaab1308914f354d43ab16b4a877a5614bdf8b80"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 3,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 4,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 5,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 6,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 7,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 8,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 9,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 10,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 11,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 12,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 13,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 14,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 15,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 16,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 17,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 18,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 19,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 20,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 21,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 22,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 216,
+      "frame": 23,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 3,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 4,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 5,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 6,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 7,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 8,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 9,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 10,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 11,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 12,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 13,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 14,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 15,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 16,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 17,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 18,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 19,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 20,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 21,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 22,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 217,
+      "frame": 23,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 218,
+      "frame": 0,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 218,
+      "frame": 1,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    },
+    {
+      "format": 1,
+      "type": 106,
+      "sheet": 218,
+      "frame": 2,
+      "resource_sha256": "7a44b4a6dafa1350da974825ea1e2028fd5d3d946f415781966ea1cadc9bb134",
+      "native_signature": "ade391261d6ccf3ac17537693852745296cf14637676be75fa41f0babe28b4ff"
+    }
+  ],
+  "budget_bytes": 67108864,
+  "density_estimates": {
+    "8": {
+      "player_bytes": 9679360,
+      "enemy_body_upper_bound_bytes": 15368192,
+      "combined_bytes": 25047552,
+      "remaining_bytes": 42061312,
+      "fits": true
+    },
+    "12": {
+      "player_bytes": 21778560,
+      "enemy_body_upper_bound_bytes": 34578432,
+      "combined_bytes": 56356992,
+      "remaining_bytes": 10751872,
+      "fits": true
+    }
+  },
+  "independent_shadow_reserve_bytes": {
+    "8": 172032,
+    "12": 387072
+  },
+  "both_densities": {
+    "bytes": 81404544,
+    "fits": false
+  },
+  "decision": "Load only the explicitly selected density; preserve 64 MiB preflight and legacy manifests.",
+  "limits": [
+    "Estimates, not loaded runtime coverage or gameplay acceptance.",
+    "Opaque body estimate includes all produced poses without alias savings.",
+    "Leader native marker remains an independent verified native draw.",
+    "Empty resources need resource-specific signature and no-write proof at runtime.",
+    "No aliases, unknown keys or unproduced rows are activated by this report."
+  ],
+  "inputs": {
+    "native_audit_sha256": "48e21a5c4990f2b7368e6fa5c431ddc795179b2f57c140d7c4daf967a6fcd4cc",
+    "player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae"
+  }
+}

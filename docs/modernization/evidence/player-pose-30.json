@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "block": "R3-player-low30-final",
+  "date": "2026-11-21",
+  "base_head": "0220ce04fcb9993631a61a63e348e0d46932d822",
+  "poses": [
+    {
+      "type": 0,
+      "sheet": 48,
+      "frame": 0,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-30-f0/manifest.json",
+      "kind": "master-reexport"
+    },
+    {
+      "type": 0,
+      "sheet": 48,
+      "frame": 1,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-30-f1/manifest.json"
+    },
+    {
+      "type": 0,
+      "sheet": 48,
+      "frame": 2,
+      "formats": [
+        0,
+        1
+      ],
+      "manifest": "assets/modernization/demo-a1-player-pose-30-f2/manifest.json"
+    }
+  ],
+  "authoring": "Authorized autonomous protagonist art; internal inspection, not Miguel global acceptance",
+  "tests": {
+    "windows": "96 actual Window/SDL cases; ASan/UBSan PASS",
+    "linux": "96 actual Window/SDL cases; ASan/UBSan/LSan PASS",
+    "matrix": "6 native format/frame entries x states 0/1 x 4 variants x 8/12 density = 96 cases; two actors, exact SDL, negatives and full recovery",
+    "native_states": [
+      0,
+      1
+    ]
+  },
+  "candidate": {
+    "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\player-low30-coherent-candidate\\candidate-manifest.json",
+    "assets": 278,
+    "covered": 259,
+    "missing": 126,
+    "complete": false,
+    "rgba_bytes": 24775296
+  },
+  "invariants": [
+    "previous assets/pose bindings unchanged",
+    "native geometry and selectors unchanged",
+    "source originals preserved",
+    "blood/shadow commands remain independent",
+    "H3 R2 remains valid; no simulation change",
+    "previous launchers unchanged"
+  ],
+  "next": "R3 \u2014 locomoci\u00f3n baja direcci\u00f3n 1, 0x31/F0\u2013F2.",
+  "ci": "Set CI completion/consultation pending; no full PASS claimed",
+  "reuse": [
+    {
+      "actor_type": 0,
+      "sheet": 48,
+      "frame": 0,
+      "source_sheet": 176,
+      "source_frame": 0,
+      "status": "internally-reviewed-native-identical",
+      "review": "Native table/raster identical in PC and Amiga; reuse the exact immutable C01 master image, but export separate target derivatives inside the native 0x30 box to keep low-locomotion scale coherent with F1/F2. The accepted B0 fall derivatives remain unchanged. Action, height, frame, clocks and shadow policy remain engine-owned. Internal delegated review, not new human visual acceptance.",
+      "kind": "master-reexport",
+      "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b"
+    }
+  ],
+  "frames_tested": [
+    0,
+    1,
+    2
+  ],
+  "fixture_binaries": {
+    "player-pose-window.exe": "5d3b15eff7c15129463630c60777128efb9790fd465884d07aa507cadb4fda28",
+    "player-pose-window-linux": "d5dc0a8f81005caab716f2a04981a300be38f0e342d10f8c1b1ac9f0a9a53c1e"
+  },
+  "reuse_proof": [
+    {
+      "format": 0,
+      "native_signatures": [
+        "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179"
+      ],
+      "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b",
+      "master_identical": true,
+      "rgba_projection_shared": false,
+      "target_assets": {
+        "8": "player-pose-30-f0-8x",
+        "12": "player-pose-30-f0-12x"
+      },
+      "source_assets": {
+        "8": "player-fall-b0-f0-8x",
+        "12": "player-fall-b0-f0-12x"
+      }
+    },
+    {
+      "format": 1,
+      "native_signatures": [
+        "7c2e97c353e77fb406721e5bd10d1b31e96d00ecabd413cf5453f1b4c55d5179"
+      ],
+      "source_master_sha256": "31541bdb4a40d015c83d9fc97c92ca56d9ce051a0be9eabca4c828c48965bc5b",
+      "master_identical": true,
+      "rgba_projection_shared": false,
+      "target_assets": {
+        "8": "player-pose-30-f0-8x",
+        "12": "player-pose-30-f0-12x"
+      },
+      "source_assets": {
+        "8": "player-fall-b0-f0-8x",
+        "12": "player-fall-b0-f0-12x"
+      }
+    }
+  ],
+  "placement_adjustment": {
+    "frame": 2,
+    "native_box": [
+      3,
+      1,
+      8,
+      11
+    ],
+    "chosen": [
+      4,
+      1,
+      6,
+      11
+    ],
+    "center_x": 7,
+    "bottom": 12,
+    "logical_cell": [
+      16,
+      14
+    ],
+    "reason": "Keep C01 profile scale coherent with F0/F1; native geometry/anchor unchanged; art fits strictly inside native box",
+    "previous_export": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\rejected-low30-f2-wide"
+  },
+  "art_review": {
+    "frame2": "One corrected orientation master after initial too-frontal variant; final left-profile master retained unchanged; then exact derivative width fit",
+    "discarded_orientation": "exec-ca61208f-dcb6-4b46-9659-b62d7e45a15c.png retained in generated_images",
+    "native_masks_private": true
+  },
+  "coherence_correction": {
+    "no_new_generation": true,
+    "accepted_B0_unchanged": true,
+    "kind": "master-reexport",
+    "F0_placement": [
+      4,
+      1,
+      7,
+      10
+    ],
+    "upper_silhouette_widths_12x_logical": [
+      5.75,
+      5.67,
+      4.92
+    ],
+    "previous_B0_width": 7.5,
+    "states": [
+      0,
+      1
+    ],
+    "windows": "96 cases PASS ASan/UBSan",
+    "linux": "96 cases PASS ASan/UBSan/LSan"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E2.G6",
+  "identity": 2,
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "status": "PASS internal art/export; not runtime integration or Miguel gameplay acceptance",
+  "direction": 6,
+  "sheet": 80,
+  "frames": [
+    0,
+    1,
+    2
+  ],
+  "packages": [
+    {
+      "frame": 0,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-50-f0",
+      "source_sha256": "9e3d01f7bab0402eb0c6becd31fa0c92c3c4f034a5b0b9ac7e73eeb5de3021c4",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    },
+    {
+      "frame": 1,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-50-f1",
+      "source_sha256": "b53054300df3dd4cc7032e4267c8616414b49fbb292b60ae3d51ee96fed0d18c",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 0,
+        "width": 7,
+        "height": 14
+      }
+    },
+    {
+      "frame": 2,
+      "path": "assets/modernization/demo-a1-enemy-v2-pose-50-f2",
+      "source_sha256": "edac70cb7743ddf8f53809f2daf36b9cdabf7aee1b6c1b9961701bbd024f0a85",
+      "reused_approved_master": false,
+      "placement": {
+        "x": 5,
+        "y": 1,
+        "width": 7,
+        "height": 13
+      }
+    }
+  ],
+  "validation": [
+    "Native contract geometries, alpha bounds, source/PNG/RGBA SHA and byte equality PASS",
+    "Version1 registry and all26 earlier masters/derivatives unchanged",
+    "Identity2 registry isolated from version1;8x/12x assets complete for these poses",
+    "Internal native-size pose/identity inspection completed; no automatic artistic/gameplay acceptance"
+  ],
+  "source_tree_equal_to_protagonist_acceptance": false,
+  "runtime_tests": "No new H3/CI or gameplay result inferred from inactive art; required integration checks remain pending",
+  "available_counts": {
+    "poses": 213,
+    "assets": 452
+  },
+  "notes": [
+    "Six own PC/Amiga native contracts preserve right-profile camera, lower anchor14 and source action phases; no mirroring4C.",
+    "Preparation, armed-back and empty-hand follow-through inspected in own native boxes; E01helmet/uniform/beard/neck cloth retained, no projectile baked into body.",
+    "Established C++8x/12x derivatives checked for source/PNG/RGBA byte equality and aspect tolerance8%; fixed contact qualified before publication. Global animation/body/shadow acceptance pending."
+  ],
+  "next": "E3.G6I — integrar únicamente50/F0..2 con suelo fijo cualificado de dirección6 en candidatos nuevos8×/12×; verificar6contratos nuevos, apoyo/anclas y sanitizadores Windows/Linux. Source e0d9430b y candidatos previos intactos; no reintentar4B/F0."
+}

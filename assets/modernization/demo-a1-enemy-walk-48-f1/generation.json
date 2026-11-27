@@ -1,0 +1,11 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit, CF1 enemy walk direction6 FRAME1 sheet48. EDIT IMAGE1, the corrected portrait RIGHT-facing enemy master frame0. Preserve its helmet/head, torso, arms, compact rifle, dark olive uniform, reddish brown leather backpack/harness, exact camera angle and painted finish. Change ONLY legs and boots into the compact middle walking step from IMAGE2, the pose reference: boots nearer together beneath body, not a full wide stride. IMAGE3 is native frame1; IMAGE4 is C01 style only. Keep image1's tall occupied proportions around0.62 width/height, same head-to-body scale and overall height, rifle aimed SCREEN RIGHT. Full body/feet visible with transparent margins, light from upper left. No reflection, new angle, extra gear, floor, text or baked shadow. One matching enemy frame; do not adopt the squat/wide overall proportions of image2.",
+  "pose_reference": "assets/modernization/soldier-walk24/uniform-a/s6-f1-verde-a.png",
+  "identity_reference": "assets/modernization/demo-a1-enemy-walk-48-f0/source.png",
+  "native_reference": "private enemy-native-audit-v2/native/1-5-48-f1-7a44b4a6.png",
+  "style_reference": "assets/modernization/soldier-c01/source.png",
+  "source_sha256": "8ce67c768eb174a184d5f2b9926b31c709b360ccaa8c90694b308c92b3be79e6",
+  "review": "Internal art/derivative inspection; Miguel gameplay acceptance pending"
+}

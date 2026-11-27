@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "block": "E3.T3",
+  "status": "PASS private candidates; development only",
+  "candidates": {
+    "8": {
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 8,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 549,
+          "modern": 60,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 27,
+        "assets": 204,
+        "asset_bytes": 11227648,
+        "missing_body_contracts": 549,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Pending qualification/attachment for normal modern bodies; independent shadows reused by exact native equality",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ]
+      },
+      "manifest_sha256": "9568ff352734eb24578a82c61d04d8758f48c20d1e4a98cd17ac56223043cfa1"
+    },
+    "12": {
+      "summary": {
+        "schema": 1,
+        "status": "PRIVATE TECHNICAL DEVELOPMENT; partial enemies, not final gameplay review",
+        "density": 12,
+        "enemy_contracts": 679,
+        "representations": {
+          "classic-missing-art": 549,
+          "modern": 60,
+          "no-write": 66,
+          "native-marker": 4
+        },
+        "available_enemy_body_poses": 27,
+        "assets": 204,
+        "asset_bytes": 25262208,
+        "missing_body_contracts": 549,
+        "modern_owned_shadow_contracts": 6,
+        "enemy_ground_contact": "Pending qualification/attachment for normal modern bodies; independent shadows reused by exact native equality",
+        "frozen_player_manifest_sha256": "2c1d672b79099678319f80479608fc670461f49979517958c686f6a10b4808ae",
+        "guarantees": [
+          "Frozen player body/shadow bytes and pose bindings preserved for selected density",
+          "Every produced enemy source slot signed; no observed/unknown keys added",
+          "No incomplete enemy art declared complete; no native pixels copied to public repository"
+        ]
+      },
+      "manifest_sha256": "15bfe218cec89349077f3b5f4502077e3f8ffdd64ac74a78a609f1bcd52d7461"
+    }
+  },
+  "validation": {
+    "Windows": "PASS 679 native source draws per density; ASan/UBSan",
+    "Linux": "PASS 679 native source draws per density; ASan/UBSan/LSan",
+    "authoring_tests": "PASS three selected-player conversion tests"
+  },
+  "shadow_reuse": "Six PC/Amiga shadow slots share exact native signatures, geometry and approved protagonist shadow artwork; no new shadow pixels generated",
+  "counts": {
+    "modern_body_contracts": 54,
+    "modern_shadow_contracts": 6,
+    "verified_no_write_contracts": 66,
+    "native_marker_contracts": 4,
+    "missing_body_contracts": 549
+  },
+  "limits": [
+    "No gameplay binary/launcher handed to Miguel",
+    "Normal E01 ground contact pending qualification",
+    "Remaining art blocked; source coverage does not imply complete modern bodies",
+    "Replay/H3/full CI pending for integrated game"
+  ],
+  "next": "E3.T4 — cualificar y adjuntar la pintura de sombra de suelo aprobada a las 27 poses E01 existentes, con apoyo/proyección comunes por dirección y hashes corporales intactos; validar contratos y candidatos sin generar arte nuevo ni activar revisión final."
+}

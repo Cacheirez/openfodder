@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "date": "2026-11-26",
+  "block": "E3.IFI",
+  "status": "PASS initial-person falling native integration; Miguel gameplay pending",
+  "candidates": {
+    "8": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-fall-technical-v1\\8x",
+      "manifest_sha256": "4798981031d1b49568d71a963c80fa211dfda2304549630032a5046278bbbede",
+      "asset_bytes": 18452992,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=8, modern=385, classic=294, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=8, modern=385, classic=294, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6; not gameplay acceptance"
+      }
+    },
+    "12": {
+      "path": "C:\\Users\\migue\\.codex\\visualizations\\2026\\11\\19\\01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3\\enemy-initial-fall-technical-v1\\12x",
+      "manifest_sha256": "52ffd43d192fbaf91cc5efbb548b557b929c7095a8d3fb86e44d8d96a78cb161",
+      "asset_bytes": 41519232,
+      "validation": {
+        "win": "PASS private enemy candidate: 679 retained native draws, density=12, modern=385, classic=294, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6; not gameplay acceptance",
+        "linux": "PASS private enemy candidate: 679 retained native draws, density=12, modern=385, classic=294, resource-specific no-write=66, modern-owned-shadows=6, ground-components=102, aim-owner-transitions=32, format-native-anchors=2, fall-height-transitions=96, initial-person-shadow-associations=6; not gameplay acceptance"
+      }
+    }
+  },
+  "counts": {
+    "poses": 144,
+    "art_derivatives": 290,
+    "candidate_assets": 330,
+    "native_contracts": 679,
+    "modern_contracts": 385,
+    "modern_bodies": 379,
+    "modern_owned_shadows": 6,
+    "missing_body_contracts": 224,
+    "verified_no_write": 66,
+    "native_markers": 4,
+    "ground_components": 102
+  },
+  "tests": [
+    "679retained native draws per density/platform PASS; ASan/UBSan Windows, ASan/UBSan/LSan Linux",
+    "8initial-person falling poses add16native body contracts; actual native role/person/geometry/signature checks exercised",
+    "96falling height1/16transitions per density/platform retain HD/body pixels and no ground (64AI+32initial)",
+    "6independent native shadow contracts keep identical HD when ownerPerson changes1->0; generation/owner-type/slot checks preserved",
+    "PC14/Amiga12 native lower anchors remain PASS; prior cross-format swap rejection retained",
+    "144poses/290derivatives registry, version1freeze and25groundgroups/86derivatives reproduced;4ground tests rerun only when initial family added"
+  ],
+  "guarantees": [
+    "Initial-person type5 B0..B7 signed separately; no type36human-row binding",
+    "B1..B5 master files are canonical friendly30/31 poses: equality to initial native signatures checked, no nonexistent friendly-fall path invented",
+    "Original E01source and derivatives copied without pixel changes; own target-native lower anchors and alpha bounds verified",
+    "Native capture records owner.mPersonType without excluding0 (WindowHD.cpp:56); catalogue source association checks retained",
+    "No ground added; height/independent shadows and frozen protagonists/candidates preserved",
+    "Runtime Source identical to76db816 completeCI;64MiB unchanged; no fresh fullCI/H3 or gameplay acceptance inferred"
+  ],
+  "next": "E3.IA0 \u2014 verificar y exportar apuntado inicial10/F0, direcci\u00f3n0 de tipo5/persona0, reutilizando maestro E01 de52 y la referencia protagonista que conste en su generaci\u00f3n. Auditar ancla y sombra de estado herido antes de a\u00f1adir suelo; contratos/formatos propios, sin nueva generaci\u00f3n ni claves desconocidas. Solo esta direcci\u00f3n antes de validar/publicar.",
+  "ci_current": {
+    "head": "add8422e3ab477e441b12cbb47873e55571db475",
+    "pr_state": "OPEN",
+    "draft": true,
+    "status": "5PR checks QUEUED; no new CI PASS attributed",
+    "baseline": "76db816 fullWindows/Linux/H6 evidence retained; runtime Source unchanged"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Draw D8/F13, the middle movement frame of this E01 unarmed raised-arms character. Image1 gives the character identity, materials and exact overhead STRAIGHT REAR view facing UP. Image2 is original F13 for the posture. Keep the back and helmet dominant, body facing straight up with no face/beard visible, no diagonal turn or mirror. Same grey-olive uniform, grey-green helmet, reddish leather straps/pouches/boots and small red neck wrap at rear collar, moderately painted style and upper-left light. Both empty hands are raised beside the head at approximately the SAME height near the helmet crown, elbows bent, natural rear-view hand backs/edges. Unlike F12 neither hand strongly higher. Feet pass close beneath hips for the middle walking phase with slight knee flexion; no jump. Complete hands, helmet and boots visible, compact adult proportions and clear margins. BODY ONLY isolated clean transparent cutout, fully transparent exterior and gaps, no haze/glow/backdrop/floor/cast shadow or dark tail. No weapon or held object, text or extra character. Separate ground-contact layer will be composed later.",
+  "identity": 2,
+  "identity_master": "assets/modernization/enemy-identity-v2/source.png",
+  "identity_master_sha256": "4ab63283d6e83d74128145ad08326e0726ab0d3aa437a5718dce3b5c2044d380",
+  "source_sha256": "9ea386dec8b04c914b9318ff6884f42359ae4c2936d505a620efeb8a16ff03f2",
+  "references": [
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d4-authoring/f12-source.png",
+    "C:/Users/migue/.codex/visualizations/2026/11/19/01a1f3ca-14cf-76a1-a9ab-bf2ff6bf17c3/enemy-leader-d8-d4-source-audit-v1/d8-f13-native-0.png"
+  ],
+  "review": "Internal pose/native-size inspection; Miguel global gameplay acceptance pending"
+}
